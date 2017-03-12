@@ -17,21 +17,15 @@
     <properties>
         <!--架包版本变量 start-->
 
-        <!--2016-02-20注释掉代码，切换到spring3试试-->
-        <!--mybatis官网看到,如果要使用spring4的话,要用：mybatis-2-spring这个架包,http://blog.mybatis.org/2015/11/spring-4-got-you-down-with-no-ibatis.html-->
-        <!--<spring.version>4.0.2.RELEASE</spring.version>-->
-        <!--<mybatis.version>3.2.6</mybatis.version>-->
-        <!--<mybatis-spring.version>1.2.2</mybatis-spring.version>-->
-
         <!--2016-02-20切换到spring3试试-->
         <!--mybatis官网：http://blog.mybatis.org/2016/02/mybatis-331-and-mybatis-spring-124.html,在2016-02-13发布了3.3.1版本-->
-        <spring.version>3.2.16.RELEASE</spring.version>
-        <mybatis.version>3.3.1</mybatis.version>
-        <mybatis-spring.version>1.2.4</mybatis-spring.version>
+        <spring.version>4.3.3.RELEASE</spring.version>
+        <mybatis.version>3.4.1</mybatis.version>
+        <mybatis-spring.version>1.3.0</mybatis-spring.version>
 
 
         <!--下面这两个是springAOP需要用到-->
-        <aspectjweaver.version>1.7.2</aspectjweaver.version>
+        <aspectjweaver.version>1.8.9</aspectjweaver.version>
         <persistence-api.version>1.0.2</persistence-api.version>
 
 
