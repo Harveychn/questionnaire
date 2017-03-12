@@ -6,27 +6,6 @@ http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
     
     <!--上面的xsd最好和当前使用的Spring版本号一致,如果换了Spring版本,这个最好也跟着改-->
 
-    <!--
-    使用dbcp连接方式,需要导入commons-dbcp的架包(版本:1.2.2)
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-        destroy-method="close">
-        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="${data_source_url}" />
-        <property name="username" value="${data_source_username}" />
-        <property name="password" value="${data_source_passworddata_source_password}" />
-        &lt;!&ndash; 初始化连接大小 &ndash;&gt;
-        <property name="initialSize" value="0"></property>
-        &lt;!&ndash; 连接池最大数量 &ndash;&gt;
-        <property name="maxActive" value="20"></property>
-        &lt;!&ndash; 连接池最大空闲 &ndash;&gt;
-        <property name="maxIdle" value="20"></property>
-        &lt;!&ndash; 连接池最小空闲 &ndash;&gt;
-        <property name="minIdle" value="1"></property>
-        &lt;!&ndash; 获取连接最大等待时间 &ndash;&gt;
-        <property name="maxWait" value="60000"></property>
-    </bean>
-    -->
-
     <!-- 使用阿里的druid配置数据源 start-->
     <!--具体查看官网信息：https://github.com/alibaba/druid/wiki/%E9%85%8D%E7%BD%AE_DruidDataSource%E5%8F%82%E8%80%83%E9%85%8D%E7%BD%AE-->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">

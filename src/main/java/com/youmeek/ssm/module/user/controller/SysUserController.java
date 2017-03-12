@@ -18,7 +18,6 @@ import java.util.Date;
 public class SysUserController {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(SysUserController.class);
-	
 	@Resource
 	private SysUserService sysUserService;
 	
