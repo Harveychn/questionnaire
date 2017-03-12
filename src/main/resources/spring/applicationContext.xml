@@ -24,7 +24,7 @@ http://www.springframework.org/schema/context/spring-context-4.3.xsd">
     <!--http://blog.csdn.net/u012763117/article/details/17253849-->
     <!--http://casheen.iteye.com/blog/295348-->
     <!--http://blog.csdn.net/zhang854429783/article/details/6785574-->
-    <context:component-scan base-package="com.youmeek.**.service,com.youmeek.**.mapper"/>
+    <context:component-scan base-package="com.zxh.**.service,com.zxh.**.mapper"/>
 
 
 </beans>

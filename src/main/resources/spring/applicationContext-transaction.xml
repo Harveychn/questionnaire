@@ -18,7 +18,7 @@ http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
     <bean id="druid-stat-pointcut" class="org.springframework.aop.support.JdkRegexpMethodPointcut" scope="prototype">
         <property name="patterns">
             <list>
-                <value>com.youmeek.ssm.module.*.service.*</value>
+                <value>com.zxh.ssm.module.*.service.*</value>
                 <!--如果使用的是 hibernate 则这里也要扫描路径，但是 mybatis 不需要-->
                 <!--<value>com.youmeek.ssm.module.*.dao.*</value>-->
             </list>
@@ -92,7 +92,7 @@ http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
         http://lavasoft.blog.51cto.com/62575/172292/
         http://blog.csdn.net/partner4java/article/details/7015946
         -->
-        <aop:pointcut id="transactionPointcut" expression="execution(* com.youmeek.ssm.module.*.service.impl.*.*(..) )"/>
+        <aop:pointcut id="transactionPointcut" expression="execution(* com.zxh.ssm.module.*.service.impl.*.*(..) )"/>
         <!--<aop:pointcut id="transactionPointcut" expression="execution(* *..*Service*.*(..))"/>-->
         <aop:advisor pointcut-ref="transactionPointcut" advice-ref="transactionAdvice"/>
     </aop:config>

@@ -11,9 +11,8 @@
 
     <!--上面的xsd最好和当前使用的Spring版本号一致,如果换了Spring版本,这个最好也跟着改-->
 
-
     <!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->
-    <context:component-scan base-package="com.youmeek.ssm.**.controller"/>
+    <context:component-scan base-package="com.zxh.ssm.**.controller"/>
 
     <!-- 配置注解驱动 -->
     <mvc:annotation-driven/>

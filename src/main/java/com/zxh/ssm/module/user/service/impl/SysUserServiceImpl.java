@@ -1,8 +1,8 @@
-package com.youmeek.ssm.module.user.service.impl;
+package com.zxh.ssm.module.user.service.impl;
 
-import com.youmeek.ssm.module.user.mapper.SysUserMapper;
-import com.youmeek.ssm.module.user.pojo.SysUser;
-import com.youmeek.ssm.module.user.service.SysUserService;
+import com.zxh.ssm.module.user.mapper.SysUserMapper;
+import com.zxh.ssm.module.user.pojo.SysUser;
+import com.zxh.ssm.module.user.service.SysUserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
