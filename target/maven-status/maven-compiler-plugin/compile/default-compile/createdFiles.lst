@@ -1,0 +1,5 @@
+com\youmeek\ssm\module\user\pojo\SysUser.class
+com\youmeek\ssm\module\user\mapper\SysUserMapper.class
+com\youmeek\ssm\module\user\controller\SysUserController.class
+com\youmeek\ssm\module\user\service\SysUserService.class
+com\youmeek\ssm\module\user\service\impl\SysUserServiceImpl.class

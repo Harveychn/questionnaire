@@ -1,7 +1,5 @@
 package com.youmeek.ssm;
 
-import com.zxh.ssm.module.user.pojo.SysUser;
-import com.zxh.ssm.module.user.service.SysUserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -14,12 +12,12 @@ import javax.annotation.Resource;
 public class SSMTest {
 
 	
-	@Resource
-	private SysUserService sysUserService;
+//	@Resource
+//	private SysUserService sysUserService;
 
 	@Test
 	public void test1() {
-		SysUser sysUser = sysUserService.getById(1L);
-		System.out.println("--------------------------------" + sysUser.toString());
+//		SysUser sysUser = sysUserService.getById(1L);
+//		System.out.println("--------------------------------" + sysUser.toString());
 	}
 }
