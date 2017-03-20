@@ -27,12 +27,6 @@ public class SysUserController {
         try {
             subject.login(token);
             token.setRememberMe(true);
-//            if (subject.isAuthenticated()) {
-//                request.getSession().setAttribute("user", user);
-//                return "login/success";
-//            } else {
-//                return "redirect:/";
-//            }
         } catch (IncorrectCredentialsException e) {
             request.getSession().setAttribute("user", user);
             errorMessage = "用户名/密码错误！";

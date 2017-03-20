@@ -4,7 +4,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!--自定义实现Reaml-->
-    <bean id="myRealm" class="com.shiro.realm.MyRealm">
+    <bean id="myRealm" class="com.questionnaire.ssm.module.shiro.realm.MyRealm">
         <property name="cacheManager" ref="cacheManager"/>
         <property name="credentialsMatcher" ref="credentialsMatcher"/>
         <property name="cachingEnabled" value="false"/>
@@ -21,13 +21,12 @@
     <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
 
     <!-- 密码匹配对象 -->
-    <bean id="credentialsMatcher" class="com.shiro.util.RetryLimitHashedCredentialsMatcher">
+    <bean id="credentialsMatcher" class="com.questionnaire.ssm.module.shiro.util.RetryLimitHashedCredentialsMatcher">
         <constructor-arg ref="cacheManager"/>
-        <property name="hashAlgorithmName" value="MD5"/>
-        <!--   true means hex encoded, false means base64 encoded -->
-        <property name="storedCredentialsHexEncoded" value="true"/>
-        <!-- 迭代次数 -->
-        <property name="hashIterations" value="1" />
+        <property name="hashAlgorithmName" value="md5" />
+        <!--迭代次数 3-->
+        <property name="hashIterations" value="3" />
+        <property name="storedCredentialsHexEncoded" value="true" />
     </bean>
 
     <!-- 缓存管理 -->

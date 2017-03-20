@@ -2,34 +2,31 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.youmeek</groupId>
+    <groupId>com.questionnaire</groupId>
     <artifactId>ssm</artifactId>
     <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
     <name>ssm</name>
     <description>
-        为了方便以后的一些问题的讲解特地准备一个最精简的 SpringMVC+Spring+Mybatis 框架整合，方便以后的一些问题的演示
+        SpringMVC+Spring+Mybatis+shiro 框架
     </description>
-    <url>http://code.YouMeek.com</url>
 
     <!-- 集中定义公用的依赖版本号 -->
     <!--版本变量设置 start-->
     <properties>
         <!--架包版本变量 start-->
 
-        <!--2016-02-20切换到spring3试试-->
         <!--mybatis官网：http://blog.mybatis.org/2016/02/mybatis-331-and-mybatis-spring-124.html,在2016-02-13发布了3.3.1版本-->
-        <spring.version>4.3.3.RELEASE</spring.version>
+        <spring.version>4.3.7.RELEASE</spring.version>
         <mybatis.version>3.4.1</mybatis.version>
         <mybatis-spring.version>1.3.0</mybatis-spring.version>
-
 
         <!--下面这两个是springAOP需要用到-->
         <aspectjweaver.version>1.8.9</aspectjweaver.version>
         <persistence-api.version>1.0.2</persistence-api.version>
 
-
-        <junit.version>4.11</junit.version>
+        <!--2017.3.20更新JUnit 4.11 到4.12-->
+        <junit.version>4.12</junit.version>
         <mysql-connector.version>5.1.21</mysql-connector.version>
         <druid.version>1.0.4</druid.version>
 
@@ -45,6 +42,10 @@
         <!--ehcache-->
         <ehcache.version>2.4.8</ehcache.version>
 
+        <!--validation-->
+        <validation-api.version>1.1.0.Final</validation-api.version>
+        <hibernate-validator.version>5.4.0.Final</hibernate-validator.version>
+
         <commons-fileupload.version>1.3.1</commons-fileupload.version>
         <commons-io.version>2.4</commons-io.version>
         <commons-lang3.version>3.3.2</commons-lang3.version>
@@ -52,7 +53,7 @@
         <commons-beanutils.version>1.9.2</commons-beanutils.version>
 
         <httpclient.version>4.3.3</httpclient.version>
-        <jackson-databind.version>2.4.2</jackson-databind.version>
+        <jackson-databind.version>2.8.5</jackson-databind.version>
         <fastjson.version>1.1.43</fastjson.version>
         <!--架包版本变量 end-->
 
@@ -73,7 +74,8 @@
 
         <!--其他变量 start-->
         <war-name.version>ssm</war-name.version>
-        <jdk.version>1.7</jdk.version>
+        <!--2017.3.20版本1.7改为1.8-->
+        <jdk.version>1.8</jdk.version>
 
         <tomcat-port.version>8080</tomcat-port.version>
         <tomcat-uri-encoding.version>UTF-8</tomcat-uri-encoding.version>
@@ -195,6 +197,19 @@
             <version>${persistence-api.version}</version>
         </dependency>
 
+        <!--validator 以下两个包需要同时使用（接口与具体实现）-->
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>${validation-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate-validator.version}</version>
+        </dependency>
+        <!--Validator 验证包-->
+
         <!-- ############################################################### Spring 相关包 end ############################################################### -->
 
 
@@ -270,21 +285,21 @@
         <!--下面这三个是配套使用：http://blog.csdn.net/woshiwxw765/article/details/7624556-->
         <!--使用log4j start-->
         <!--<dependency>-->
-            <!--<groupId>log4j</groupId>-->
-            <!--<artifactId>log4j</artifactId>-->
-            <!--<version>${log4j.version}</version>-->
+        <!--<groupId>log4j</groupId>-->
+        <!--<artifactId>log4j</artifactId>-->
+        <!--<version>${log4j.version}</version>-->
         <!--</dependency>-->
 
         <!--<dependency>-->
-            <!--<groupId>org.slf4j</groupId>-->
-            <!--<artifactId>slf4j-api</artifactId>-->
-            <!--<version>${slf4j.version}</version>-->
+        <!--<groupId>org.slf4j</groupId>-->
+        <!--<artifactId>slf4j-api</artifactId>-->
+        <!--<version>${slf4j.version}</version>-->
         <!--</dependency>-->
 
         <!--<dependency>-->
-            <!--<groupId>org.slf4j</groupId>-->
-            <!--<artifactId>slf4j-log4j12</artifactId>-->
-            <!--<version>${slf4j.version}</version>-->
+        <!--<groupId>org.slf4j</groupId>-->
+        <!--<artifactId>slf4j-log4j12</artifactId>-->
+        <!--<version>${slf4j.version}</version>-->
         <!--</dependency>-->
         <!--使用log4j end-->
 
