@@ -1,6 +1,6 @@
 package com.questionnaire.ssm.module.login.utils;
 
-import com.questionnaire.ssm.module.global.pojo.User;
+import com.questionnaire.ssm.module.generated.pojo.User;
 
 /**
  * Created by 郑晓辉 on 2017/3/20.

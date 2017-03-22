@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>登陆成功</title>
+</head>
+<body>
+<h1 align="center">恭喜您已经成功登录！</h1>
+<div align="center">
+    欢迎你 <label th:text="${user.userTel}">用户账号</label>
+    <a href="/user/logout">退出</a>
+</div>
+</body>
+</html>

@@ -1,13 +1,9 @@
 package com.questionnaire.ssm.module.login.service.impl;
 
-import com.questionnaire.ssm.module.global.mapper.RoleMapper;
-import com.questionnaire.ssm.module.global.mapper.UserMapper;
-import com.questionnaire.ssm.module.global.pojo.RoleExample;
-import com.questionnaire.ssm.module.global.pojo.User;
+import com.questionnaire.ssm.module.generated.mapper.UserMapper;
+import com.questionnaire.ssm.module.generated.pojo.User;
 import com.questionnaire.ssm.module.login.mapper.SysUserMapper;
 import com.questionnaire.ssm.module.login.service.LoginService;
-import org.apache.shiro.authc.LockedAccountException;
-import org.apache.shiro.authc.UnknownAccountException;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>首页</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <style>
+        .errorClass {
+            color: red;
+            font-size: smaller;
+        }
+    </style>
+</head>
+<body>
+<h1 align="center">登录界面</h1>
+
+<div align="center">
+    <form action="/user/login" method="post" th:object="${user}">
+        <div class="errorClass" th:if="${#fields.hasErrors('*')}">
+            <ul>
+                <li th:each="err :${#fields.errors('*')}" th:text="${err}">Input is unCorrect</li>
+            </ul>
+        </div>
+        <label>用户名：<input type="text" th:field="*{userTel}"
+                          placeholder="input username"/></label>
+        <label>密码：<input type="password" th:field="*{password}"
+                         placeholder="input password"/></label><br>
+        <input type="submit" value="登录"/><br>
+        <div th:if="${errorMessage}!=null">
+            <label style="color: red; font-size: small;" th:text="${errorMessage}"></label>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,6 +1,6 @@
 package com.questionnaire.ssm.module.shiro.realm;
 
-import com.questionnaire.ssm.module.global.pojo.User;
+import com.questionnaire.ssm.module.generated.pojo.User;
 import com.questionnaire.ssm.module.login.service.LoginService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -11,8 +11,6 @@ import org.apache.shiro.util.ByteSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import javax.annotation.Resource;
 
 /**
  * Created by 郑晓辉 on 2017/3/12.

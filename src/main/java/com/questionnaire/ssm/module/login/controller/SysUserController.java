@@ -1,6 +1,6 @@
 package com.questionnaire.ssm.module.login.controller;
 
-import com.questionnaire.ssm.module.global.pojo.User;
+import com.questionnaire.ssm.module.login.pojo.IndexVO;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.UnauthorizedException;
@@ -20,21 +20,22 @@ public class SysUserController {
     private static final Logger LOG = LoggerFactory.getLogger(SysUserController.class);
 
     @RequestMapping("/login")
-    public String login(User user, HttpServletRequest request, Model model) throws Exception {
+    public String login(IndexVO indexVO, HttpServletRequest request, Model model) throws Exception {
+
         Subject subject = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken(user.getUserTel(), user.getPassword());
+        UsernamePasswordToken token = new UsernamePasswordToken(indexVO.getUserTel(), indexVO.getPassword());
         String errorMessage = null;
         try {
             subject.login(token);
             token.setRememberMe(true);
         } catch (IncorrectCredentialsException e) {
-            request.getSession().setAttribute("user", user);
+            request.getSession().setAttribute("user", indexVO);
             errorMessage = "用户名/密码错误！";
         } catch (ExcessiveAttemptsException e) {
-            request.getSession().setAttribute("user", user);
+            request.getSession().setAttribute("user", indexVO);
             errorMessage = "错误次数超过限制，请您于10分钟后再试！";
         } catch (UnauthorizedException e) {
-            request.getSession().setAttribute("user", user);
+            request.getSession().setAttribute("user", indexVO);
             errorMessage = "您没有得到相应的授权！";
         } catch (UnknownAccountException e) {
             errorMessage = "账号信息不存在！";
@@ -42,10 +43,11 @@ public class SysUserController {
             errorMessage = "您的账户信息被锁定，请联系系统管理员！";
         }
         if (null != errorMessage) {
-            request.getSession().setAttribute("error", errorMessage);
-            return "redirect:/";
+            model.addAttribute("errorMessage", errorMessage);
+            model.addAttribute("user", indexVO);
+            return "../../index";
         } else {
-            model.addAttribute("user", user);
+            model.addAttribute("user", indexVO);
             return "login/success";
         }
     }
@@ -58,5 +60,6 @@ public class SysUserController {
         }
         return "redirect:/";
     }
+
 
 }

@@ -1,9 +1,12 @@
 package com.questionnaire.ssm.module.login.service.impl;
 
 import com.questionnaire.ssm.module.global.enums.ModifyUserEnum;
-import com.questionnaire.ssm.module.global.mapper.UserMapper;
-import com.questionnaire.ssm.module.global.pojo.User;
+import com.questionnaire.ssm.module.generated.mapper.UserMapper;
+import com.questionnaire.ssm.module.generated.pojo.User;
 import com.questionnaire.ssm.module.login.service.UserService;
+import com.questionnaire.ssm.module.login.utils.UserUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +17,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService {
 
+    private final static Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
     private UserMapper userMapper;
 
     @Autowired
@@ -21,11 +25,17 @@ public class UserServiceImpl implements UserService {
         this.userMapper = userMapper;
     }
 
-    public int updateUserPassword(User userNew) throws Exception {
-        if (null == userNew.getUserTel() || userNew.getUserTel().equals("")) {
-            return ModifyUserEnum.ARGS_NULL.getCode();
+    public int updateUserInfoSelective(User userNew) throws Exception {
+
+        int updateResult = 0;
+        try {
+            updateResult = userMapper.updateByPrimaryKeySelective(UserUtil.cloneUser(userNew));
+        } catch (Exception e) {
+            logger.error("[MESSAGE]:" + e.getMessage() + "\n[CAUSE]:" + e.getCause());
+            return ModifyUserEnum.UPDATE_FAIL.getCode();
         }
-        if (1 == userMapper.updateByPrimaryKeySelective(userNew)) {
+
+        if (1 == updateResult) {
             return ModifyUserEnum.UPDATE_SUCCESS.getCode();
         }
         return ModifyUserEnum.UPDATE_FAIL.getCode();

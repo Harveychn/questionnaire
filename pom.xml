@@ -46,6 +46,9 @@
         <validation-api.version>1.1.0.Final</validation-api.version>
         <hibernate-validator.version>5.4.0.Final</hibernate-validator.version>
 
+        <!--thymeleaf版本-->
+        <thymeleaf.version>3.0.3.RELEASE</thymeleaf.version>
+
         <commons-fileupload.version>1.3.1</commons-fileupload.version>
         <commons-io.version>2.4</commons-io.version>
         <commons-lang3.version>3.3.2</commons-lang3.version>
@@ -209,6 +212,19 @@
             <version>${hibernate-validator.version}</version>
         </dependency>
         <!--Validator 验证包-->
+
+        <!--Thymeleaf视图解析器-->
+        <dependency>
+            <groupId>org.thymeleaf</groupId>
+            <artifactId>thymeleaf-spring4</artifactId>
+            <version>3.0.3.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.thymeleaf</groupId>
+            <artifactId>thymeleaf</artifactId>
+            <version>3.0.3.RELEASE</version>
+        </dependency>
 
         <!-- ############################################################### Spring 相关包 end ############################################################### -->
 

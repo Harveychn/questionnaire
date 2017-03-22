@@ -32,7 +32,7 @@ http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
     <!-- Druid 和 Spring 关联监控配置 end-->
 
 
-    <!-- (事务管理器)transaction manager, use JtaTransactionManager for global tx -->
+    <!-- (事务管理器)transaction manager, use JtaTransactionManager for generated tx -->
     <!--http://www.mybatis.org/spring/zh/transactions.html-->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource" />
