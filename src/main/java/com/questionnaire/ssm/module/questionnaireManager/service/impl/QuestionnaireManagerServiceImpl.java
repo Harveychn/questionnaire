@@ -12,6 +12,7 @@ import com.questionnaire.ssm.module.global.enums.OperateDBEnum;
 import com.questionnaire.ssm.module.questionnaireManager.exception.InsertException;
 import com.questionnaire.ssm.module.questionnaireManager.pojo.CreateQuestionnaireVO;
 import com.questionnaire.ssm.module.questionnaireManager.pojo.QuestionDTO;
+import com.questionnaire.ssm.module.questionnaireManager.service.QuestionnaireManagerService;
 import com.questionnaire.ssm.module.questionnaireManager.util.QuestionnaireObjUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,7 +27,7 @@ import java.util.List;
  * Description:问卷管理 具体实现
  */
 @Service
-public class QuestionnaireManagerServiceImpl {
+public class QuestionnaireManagerServiceImpl implements QuestionnaireManagerService {
 
     private static final Logger logger = LoggerFactory.getLogger(QuestionnaireManagerServiceImpl.class);
     private QuestionnaireMapper questionnaireMapper;
@@ -40,6 +41,7 @@ public class QuestionnaireManagerServiceImpl {
      * @param questionnaireVO
      * @throws Exception 抛出操作数据库插入异常信息
      */
+    @Override
     @Transactional
     public void insertQuestionnaire(CreateQuestionnaireVO questionnaireVO) throws Exception {
         int questionnaireId
