@@ -8,7 +8,7 @@ public class ResponsePkt<T> {
     /*状态码*/
     private int code;
     /*简要信息*/
-    private String Messge;
+    private String Message;
     /*具体数据*/
     private T data;
 
@@ -21,11 +21,11 @@ public class ResponsePkt<T> {
     }
 
     public String getMessge() {
-        return Messge;
+        return Message;
     }
 
     public void setMessge(String messge) {
-        Messge = messge;
+        Message = messge;
     }
 
     public T getData() {

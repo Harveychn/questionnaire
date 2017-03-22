@@ -22,7 +22,7 @@ public class QuestionnaireObjUtil {
     /**
      * 提取视图中问卷数据到数据库 questionnaire 表,其中 questionnaire_id 由数据库自动生成
      *
-     * @param questionnaireVO
+     * @param questionnaireVO 问卷信息
      * @return
      * @throws Exception
      */
@@ -46,7 +46,7 @@ public class QuestionnaireObjUtil {
      * 提取问卷中题目的题目信息以及题目的选项数据信息，question_id 以及 option_id 均为赋值
      * 需要在将数据插入的数据库是赋值
      *
-     * @param questions
+     * @param questions 问卷题目信息
      * @return
      * @throws Exception
      */
