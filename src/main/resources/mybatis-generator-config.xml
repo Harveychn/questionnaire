@@ -40,7 +40,7 @@
         </javaModelGenerator>
 
         <!--要生成的 Mapper.xml 文件位置-->
-        <sqlMapGenerator targetPackage="module.global.mapper" targetProject="THIS_CONFIGURATION_IS_NOT_REQUIRED">
+        <sqlMapGenerator targetPackage="module.generated.mapper" targetProject="THIS_CONFIGURATION_IS_NOT_REQUIRED">
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
 

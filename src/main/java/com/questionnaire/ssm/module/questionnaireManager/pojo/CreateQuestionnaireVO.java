@@ -10,6 +10,7 @@ public class CreateQuestionnaireVO {
     /**
      * 问卷基本信息
      */
+    private Long questionnaireId;//问卷id 创建时默认为0
     private String questionnaireTitle;//问卷标题
     private String questionnaireSubtitle;//问卷副标题
     private Boolean isTemplate;//是否创建为模板
@@ -22,6 +23,13 @@ public class CreateQuestionnaireVO {
     private List<QuestionDO> questions;
 
 
+    public Long getQuestionnaireId() {
+        return questionnaireId;
+    }
+
+    public void setQuestionnaireId(Long questionnaireId) {
+        this.questionnaireId = questionnaireId;
+    }
 
     public String getQuestionnaireTitle() {
         return questionnaireTitle;

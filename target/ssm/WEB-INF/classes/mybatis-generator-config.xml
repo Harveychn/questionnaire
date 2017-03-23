@@ -33,19 +33,19 @@
         </javaTypeResolver>
 
         <!--要生成的 pojo 模块位置-->
-        <javaModelGenerator targetPackage="com.questionnaire.ssm.module.global.pojo"
+        <javaModelGenerator targetPackage="com.questionnaire.ssm.module.generated.pojo"
                             targetProject="THIS_CONFIGURATION_IS_NOT_REQUIRED">
             <property name="enableSubPackages" value="false"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
         <!--要生成的 Mapper.xml 文件位置-->
-        <sqlMapGenerator targetPackage="module.global.mapper" targetProject="THIS_CONFIGURATION_IS_NOT_REQUIRED">
+        <sqlMapGenerator targetPackage="module.generated.mapper" targetProject="THIS_CONFIGURATION_IS_NOT_REQUIRED">
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
 
         <!--要生成的 Mapper 接口类-->
-        <javaClientGenerator targetPackage="com.questionnaire.ssm.module.global.mapper"
+        <javaClientGenerator targetPackage="com.questionnaire.ssm.module.generated.mapper"
                              targetProject="THIS_CONFIGURATION_IS_NOT_REQUIRED" type="XMLMAPPER">
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
@@ -63,13 +63,30 @@
         </table>
         <table tableName="permission">
             <generatedKey column="permission_id" sqlStatement="MySql" identity="true"/>
-         </table>
+        </table>
         <table tableName="mapping_role_permission">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
         <table tableName="unit">
             <generatedKey column="unit_id" sqlStatement="MySql" identity="true"/>
         </table>
+
+        <table tableName="record_operate_questionnaire">
+            <generatedKey column="record_id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <table tableName="questionnaire">
+            <generatedKey column="questionnaire_id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <table tableName="question">
+            <generatedKey column="question_id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <table tableName="question_option">
+            <generatedKey column="option_id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <table tableName="mapping_questionnaire_question">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+
 
     </context>
 </generatorConfiguration>

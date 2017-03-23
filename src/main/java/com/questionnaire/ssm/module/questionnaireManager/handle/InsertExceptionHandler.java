@@ -6,6 +6,7 @@ import com.questionnaire.ssm.module.global.util.ResultUtil;
 import com.questionnaire.ssm.module.questionnaireManager.exception.InsertException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Created by 郑晓辉 on 2017/3/22.
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class InsertExceptionHandler {
 
     @ExceptionHandler(value = Exception.class)
+    @ResponseBody
     public ResponsePkt insertHandler(Exception e) {
         if (e instanceof InsertException) {
             InsertException insertException = (InsertException) e;

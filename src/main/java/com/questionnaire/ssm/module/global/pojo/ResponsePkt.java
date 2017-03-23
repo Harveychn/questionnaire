@@ -20,12 +20,12 @@ public class ResponsePkt<T> {
         this.code = code;
     }
 
-    public String getMessge() {
+    public String getMessage() {
         return Message;
     }
 
-    public void setMessge(String messge) {
-        Message = messge;
+    public void setMessage(String message) {
+        Message = message;
     }
 
     public T getData() {
