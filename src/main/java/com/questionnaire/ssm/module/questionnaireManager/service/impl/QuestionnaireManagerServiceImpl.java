@@ -7,6 +7,7 @@ import com.questionnaire.ssm.module.generated.mapper.QuestionnaireMapper;
 import com.questionnaire.ssm.module.generated.pojo.MappingQuestionnaireQuestion;
 import com.questionnaire.ssm.module.generated.pojo.Question;
 import com.questionnaire.ssm.module.generated.pojo.QuestionOption;
+import com.questionnaire.ssm.module.generated.pojo.Questionnaire;
 import com.questionnaire.ssm.module.global.enums.DBTableEnum;
 import com.questionnaire.ssm.module.global.enums.OperateDBEnum;
 import com.questionnaire.ssm.module.questionnaireManager.exception.InsertException;
@@ -19,6 +20,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -45,60 +47,69 @@ public class QuestionnaireManagerServiceImpl implements QuestionnaireManagerServ
     @Override
     @Transactional
     public void insertQuestionnaire(CreateQuestionnaireVO questionnaireVO) throws Exception {
-        int questionnaireId
-                = questionnaireMapper.insertSelective(QuestionnaireObjUtil.toQuestionnaireDO(questionnaireVO));
+        Questionnaire questionnaire = QuestionnaireObjUtil.toQuestionnaireDO(questionnaireVO);
+        int insertResult = 0;
+        try {
+            insertResult = questionnaireMapper.insertSelective(questionnaire);
+        } catch (Exception e) {
+            throw new InsertException(OperateDBEnum.INSERT_FAIL, DBTableEnum.QUESTIONNAIRE.getTableName());
+        }
+        if (insertResult != 1) {
+            logger.error(OperateDBEnum.INSERT_FAIL.getMessage() + "\n" + DBTableEnum.QUESTIONNAIRE.getTableName());
+            return;
+        }
+        insertResult = 0;
 
         QuestionDTO questionDTO = QuestionnaireObjUtil.toQuestionMultiDO(questionnaireVO.getQuestions());
         List<Question> questions = questionDTO.getQuestion();
         List<QuestionOption> options = questionDTO.getQuestionOption();
 
         MappingQuestionnaireQuestion mapping = new MappingQuestionnaireQuestion();
-        mapping.setQuestionId((long) questionnaireId);
+        mapping.setQuestionId(questionnaire.getQuestionnaireId());
 
         int questionSize = questions.size();
         for (int order = 0; order < questionSize; order++) {
-            int optionId = 0;
+            insertResult = 0;
             try {
-                optionId = questionOptionMapper.insertSelective(options.get(order));
+                insertResult = questionOptionMapper.insertSelective(options.get(order));
             } catch (Exception e) {
                 throw new InsertException(OperateDBEnum.INSERT_FAIL, DBTableEnum.QUESTION_OPTION.getTableName());
             }
 
-            if (optionId == 0) {
+            if (insertResult != 1) {
                 logger.error(OperateDBEnum.INSERT_FAIL.getMessage() + "\n" + DBTableEnum.QUESTION_OPTION.getTableName());
                 break;
             }
+            insertResult = 0;
 
-            questions.get(order).setOptionId((long) optionId);
+            questions.get(order).setOptionId(options.get(order).getOptionId());
 
-            int questionId = 0;
             try {
-                questionId = questionMapper.insertSelective(questions.get(order));
+                insertResult = questionMapper.insertSelective(questions.get(order));
             } catch (Exception e) {
                 throw new InsertException(OperateDBEnum.INSERT_FAIL, DBTableEnum.QUESTION.getTableName());
             }
-            if (questionId == 0) {
+            if (insertResult != 1) {
                 logger.error(OperateDBEnum.INSERT_FAIL.getMessage() + "\n" + DBTableEnum.QUESTION.getTableName());
                 break;
             }
+            insertResult = 0;
 
-            mapping.setQuestionId((long) questionId);
+            mapping.setQuestionId(questions.get(order).getQuestionId());
             mapping.setQuestionOrder(order);
 
-            int mappingId = 0;
             try {
-                mappingId = mappingQuestionnaireQuestionMapper.insertSelective(mapping);
+                insertResult = mappingQuestionnaireQuestionMapper.insertSelective(mapping);
             } catch (Exception e) {
                 throw new InsertException(OperateDBEnum.INSERT_FAIL, DBTableEnum.MAPPING_QUESTIONNAIRE_QUESTION.getTableName());
             }
 
-            if (mappingId == 0) {
+            if (insertResult != 1) {
                 logger.error(OperateDBEnum.INSERT_FAIL.getMessage() + "\n" + DBTableEnum.MAPPING_QUESTIONNAIRE_QUESTION.getTableName());
                 break;
             }
+            insertResult = 0;
         }
-
-
     }
 
     @Autowired
