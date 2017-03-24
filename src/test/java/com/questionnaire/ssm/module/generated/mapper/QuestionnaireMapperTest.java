@@ -70,13 +70,13 @@ public class QuestionnaireMapperTest {
                 questionDO.setQuestionType(QuestionTypeEnum.SINGLE_CHOICE.getCode());
                 questionDO.setMust(true);
             }
-            questionDO.setQuestionDescription("问题描述" + i);
-            questionDO.setQuestionContext("问题" + i);
+            questionDO.setQuestionDescription("问题描述" + (i+1));
+            questionDO.setQuestionContext("问题" + (i+1));
             optionsDemo = new ArrayList<>();
             for (int j = 0; j < 5; j++) {
                 questionOptionDO = new QuestionOptionDO();
                 questionOptionDO.setOptionOrder(j);
-                questionOptionDO.setOption("问题" + i + ":选项" + j);
+                questionOptionDO.setOption("问题" + (i+1) + ":选项" + (j+1));
                 optionsDemo.add(j, questionOptionDO);
             }
             questionDO.setOptions(optionsDemo);
@@ -98,7 +98,7 @@ public class QuestionnaireMapperTest {
         List<QuestionOption> options = questionDTO.getQuestionOption();
 
         MappingQuestionnaireQuestion mapping = new MappingQuestionnaireQuestion();
-        mapping.setQuestionId(questionnaire.getQuestionnaireId());
+        mapping.setQuestionnaireId(questionnaire.getQuestionnaireId());
 
         int questionSize = questions.size();
         for (int order = 0; order < questionSize; order++) {

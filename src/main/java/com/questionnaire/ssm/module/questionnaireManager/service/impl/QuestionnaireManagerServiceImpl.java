@@ -4,10 +4,7 @@ import com.questionnaire.ssm.module.generated.mapper.MappingQuestionnaireQuestio
 import com.questionnaire.ssm.module.generated.mapper.QuestionMapper;
 import com.questionnaire.ssm.module.generated.mapper.QuestionOptionMapper;
 import com.questionnaire.ssm.module.generated.mapper.QuestionnaireMapper;
-import com.questionnaire.ssm.module.generated.pojo.MappingQuestionnaireQuestion;
-import com.questionnaire.ssm.module.generated.pojo.Question;
-import com.questionnaire.ssm.module.generated.pojo.QuestionOption;
-import com.questionnaire.ssm.module.generated.pojo.Questionnaire;
+import com.questionnaire.ssm.module.generated.pojo.*;
 import com.questionnaire.ssm.module.global.enums.DBTableEnum;
 import com.questionnaire.ssm.module.global.enums.OperateDBEnum;
 import com.questionnaire.ssm.module.questionnaireManager.exception.InsertException;
@@ -65,11 +62,12 @@ public class QuestionnaireManagerServiceImpl implements QuestionnaireManagerServ
         List<QuestionOption> options = questionDTO.getQuestionOption();
 
         MappingQuestionnaireQuestion mapping = new MappingQuestionnaireQuestion();
-        mapping.setQuestionId(questionnaire.getQuestionnaireId());
+        mapping.setQuestionnaireId(questionnaire.getQuestionnaireId());
 
         int questionSize = questions.size();
         for (int order = 0; order < questionSize; order++) {
             insertResult = 0;
+
             try {
                 insertResult = questionOptionMapper.insertSelective(options.get(order));
             } catch (Exception e) {
@@ -80,6 +78,7 @@ public class QuestionnaireManagerServiceImpl implements QuestionnaireManagerServ
                 logger.error(OperateDBEnum.INSERT_FAIL.getMessage() + "\n" + DBTableEnum.QUESTION_OPTION.getTableName());
                 break;
             }
+
             insertResult = 0;
 
             questions.get(order).setOptionId(options.get(order).getOptionId());

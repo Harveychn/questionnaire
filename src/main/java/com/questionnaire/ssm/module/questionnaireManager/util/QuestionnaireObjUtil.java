@@ -66,7 +66,6 @@ public class QuestionnaireObjUtil {
             question.setIsMust(questions.get(questionOrder).getMust());
             question.setQuestionType(questions.get(questionOrder).getQuestionType());
 
-            question.setAnswerId(0L);//默认值为 0
             /**需要进行数据库操作，有数据库返回的自增值或者已有值来完成赋值*/
             //question.setOptionId();
             //question.setQuestionId();
@@ -76,10 +75,10 @@ public class QuestionnaireObjUtil {
 
             optionStrBuilder = new StringBuilder();
             for (int optionOrder = 0; optionOrder < optionSize; optionOrder++) {
-                optionStrBuilder.append(options.get(optionOrder));
+                optionStrBuilder.append(options.get(optionOrder).getOption());
                 if (optionSize != optionOrder + 1) {
                     //是否需要根据题目类型采用不同的切割符号？？？
-                    optionStrBuilder.append(OptionStrDivideEnum.DIVIDE_SYMBOL);
+                    optionStrBuilder.append(OptionStrDivideEnum.DIVIDE_SYMBOL.getDivider());
                 }
             }
 
