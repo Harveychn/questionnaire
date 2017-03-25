@@ -6,7 +6,7 @@ import com.questionnaire.ssm.module.questionnaireManager.pojo.CreateQuestionnair
  * Created by 郑晓辉 on 2017/3/22.
  * Description:问卷管理模块service 接口
  */
-public interface QuestionnaireManagerService {
+public interface QesManagerService {
 
     /**
      * 创建问卷

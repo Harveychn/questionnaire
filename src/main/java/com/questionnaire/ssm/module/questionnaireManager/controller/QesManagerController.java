@@ -1,11 +1,10 @@
 package com.questionnaire.ssm.module.questionnaireManager.controller;
 
-import com.questionnaire.ssm.module.global.enums.RequestResultEnum;
 import com.questionnaire.ssm.module.global.pojo.ResponsePkt;
 import com.questionnaire.ssm.module.global.util.ResultUtil;
 import com.questionnaire.ssm.module.questionnaireManager.enums.CheckInValidEnum;
 import com.questionnaire.ssm.module.questionnaireManager.pojo.CreateQuestionnaireVO;
-import com.questionnaire.ssm.module.questionnaireManager.service.QuestionnaireManagerService;
+import com.questionnaire.ssm.module.questionnaireManager.service.QesManagerService;
 import com.questionnaire.ssm.module.questionnaireManager.util.CheckVOValidUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 @RequestMapping("/questionnaireManager")
-public class QuestionnaireManagerController {
+public class QesManagerController {
 
     /**
      * 获取创建问卷的视图
@@ -50,7 +49,7 @@ public class QuestionnaireManagerController {
             return ResultUtil.error(CheckInValidEnum.QUESTIONNAIRE_TITLE_NULL.getCode(),
                     CheckInValidEnum.QUESTIONNAIRE_TITLE_NULL.getMessage());
         }
-        questionnaireManagerService.insertQuestionnaire(createQuestionnaireVO);
+        qesManagerService.insertQuestionnaire(createQuestionnaireVO);
         return ResultUtil.success();
     }
 
@@ -65,11 +64,11 @@ public class QuestionnaireManagerController {
         return new ResponsePkt();
     }
 
-    private static final Logger logger = LoggerFactory.getLogger(QuestionnaireManagerController.class);
-    private QuestionnaireManagerService questionnaireManagerService;
+    private static final Logger logger = LoggerFactory.getLogger(QesManagerController.class);
+    private QesManagerService qesManagerService;
 
     @Autowired
-    public QuestionnaireManagerController(QuestionnaireManagerService questionnaireManagerService) {
-        this.questionnaireManagerService = questionnaireManagerService;
+    public QesManagerController(QesManagerService qesManagerService) {
+        this.qesManagerService = qesManagerService;
     }
 }

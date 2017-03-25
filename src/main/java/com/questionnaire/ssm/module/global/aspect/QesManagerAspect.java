@@ -1,7 +1,10 @@
 package com.questionnaire.ssm.module.global.aspect;
 
+import com.questionnaire.ssm.module.global.enums.PermissionEnum;
+import com.questionnaire.ssm.module.global.enums.RequestResultEnum;
 import com.questionnaire.ssm.module.global.enums.UserValidaEnum;
 import com.questionnaire.ssm.module.global.util.UserValidationUtil;
+import com.questionnaire.ssm.module.questionnaireManager.exception.UserValidaException;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -9,7 +12,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import static com.questionnaire.ssm.module.global.enums.UserValidaEnum.*;
+import javax.xml.bind.ValidationException;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by 郑晓辉 on 2017/3/24.
@@ -17,24 +22,39 @@ import static com.questionnaire.ssm.module.global.enums.UserValidaEnum.*;
  */
 @Aspect
 @Component
-public class QuestionnaireManagerAspect {
+public class QesManagerAspect {
 
-    private static final Logger logger = LoggerFactory.getLogger(QuestionnaireManagerAspect.class);
+    private static final Logger logger = LoggerFactory.getLogger(QesManagerAspect.class);
 
-    @Pointcut("execution(public * com.questionnaire.ssm.module.questionnaireManager.controller.QuestionnaireManagerController.Create(..))")
-    public void createQuestionnairePointcut() {
+    @Pointcut("execution(public * com.questionnaire.ssm.module.questionnaireManager.controller.QesManagerController.getCreateView(..))")
+    public void getCreateQuestionnaireViewPointcut() {
 
     }
 
-    @Before("createQuestionnairePointcut()")
+    /**
+     * 获取创建问卷的视图之前，校验用户是否有相应的权限、角色
+     */
+    @Before("getCreateQuestionnaireViewPointcut()")
     public void beforeCreateQuestionnaire() {
-        try {
-            int result = UserValidationUtil.isValid("疾控中心管理员");
-            if (result == UserValidaEnum.NOT_LOGIN.getCode()){
+        int result = 0;
 
-            }
+        try {
+            Set<String> needPermissions = new HashSet<>();
+            needPermissions.add(PermissionEnum.CREATE_QUESTIONNAIRE.getPermission());
+            result = UserValidationUtil.isValid("疾控中心管理员", needPermissions);
         } catch (Exception e) {
             logger.error(e.getMessage());
+            throw new UserValidaException(UserValidaEnum.UNKNOWN_ERROR);
+        }
+
+        if (result == UserValidaEnum.NOT_LOGIN.getCode()) {
+            throw new UserValidaException(UserValidaEnum.NOT_LOGIN);
+        }
+        if (result == UserValidaEnum.NO_ROLE.getCode()) {
+            throw new UserValidaException(UserValidaEnum.NO_ROLE);
+        }
+        if (result == UserValidaEnum.NO_PERMISSION.getCode()) {
+            throw new UserValidaException(UserValidaEnum.NO_PERMISSION);
         }
     }
 }

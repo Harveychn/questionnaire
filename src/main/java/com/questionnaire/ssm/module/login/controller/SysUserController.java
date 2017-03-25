@@ -16,11 +16,20 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * 用户登录管理，登陆成功后
+ * 可以通过 subject.getSession 中的 userTel 获取当前登录用户名
+ */
 @Controller
 @RequestMapping("/user")
 public class SysUserController {
 
     private static final Logger logger = LoggerFactory.getLogger(SysUserController.class);
+
+    @GetMapping(value = "/getInitView")
+    public String getInitView() throws Exception {
+        return "../../login";
+    }
 
     @PostMapping(value = "/login")
     public String login(LoginVO loginVO, HttpServletRequest request, Model model) throws Exception {
@@ -73,6 +82,9 @@ public class SysUserController {
     }
 
 
+    /**
+     * 测试权限及角色管理
+     */
     @GetMapping(value = "/testRoleLimit")
     @ResponseBody
     public String testRoleLimit() throws Exception {

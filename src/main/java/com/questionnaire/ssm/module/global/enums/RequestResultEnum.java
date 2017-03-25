@@ -6,7 +6,8 @@ package com.questionnaire.ssm.module.global.enums;
  */
 public enum RequestResultEnum {
     SUCCESS(1, "成功！"),
-    ERROR(-1, "失败！"),;
+    ERROR(-1, "失败！"),
+    UNKNOWN_ERROR(-2, "未知错误！");
 
     /*结果编码*/
     private int code;

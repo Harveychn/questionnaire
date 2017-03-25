@@ -11,7 +11,7 @@ import com.questionnaire.ssm.module.questionnaireManager.exception.InsertExcepti
 
 import com.questionnaire.ssm.module.questionnaireManager.pojo.CreateQuestionnaireVO;
 import com.questionnaire.ssm.module.questionnaireManager.pojo.QuestionDTO;
-import com.questionnaire.ssm.module.questionnaireManager.service.QuestionnaireManagerService;
+import com.questionnaire.ssm.module.questionnaireManager.service.QesManagerService;
 import com.questionnaire.ssm.module.questionnaireManager.util.QuestionnaireDBObjUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,9 +28,9 @@ import java.util.List;
  * 1.创建问卷
  */
 @Service
-public class QuestionnaireManagerServiceImpl implements QuestionnaireManagerService {
+public class QesManagerServiceImpl implements QesManagerService {
 
-    private static final Logger logger = LoggerFactory.getLogger(QuestionnaireManagerServiceImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(QesManagerServiceImpl.class);
     private QuestionnaireMapper questionnaireMapper;
     private QuestionMapper questionMapper;
     private QuestionOptionMapper questionOptionMapper;
@@ -123,7 +123,7 @@ public class QuestionnaireManagerServiceImpl implements QuestionnaireManagerServ
     }
 
     @Autowired
-    public QuestionnaireManagerServiceImpl(
+    public QesManagerServiceImpl(
             QuestionnaireMapper questionnaireMapper,
             QuestionMapper questionMapper,
             QuestionOptionMapper questionOptionMapper,
