@@ -1,6 +1,7 @@
 package com.questionnaire.ssm.module.global.aspect;
 
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +18,12 @@ public class QuestionnaireManagerAspect {
     private static final Logger logger = LoggerFactory.getLogger(QuestionnaireManagerAspect.class);
 
     @Pointcut("execution(public * com.questionnaire.ssm.module.questionnaireManager.controller.QuestionnaireManagerController.Create(..))")
-    public void createQuestionnaire() {
+    public void createQuestionnairePointcut() {
+
+    }
+
+    @Before("createQuestionnairePointcut()")
+    public void beforeCreateQuestionnaire(){
 
     }
 }

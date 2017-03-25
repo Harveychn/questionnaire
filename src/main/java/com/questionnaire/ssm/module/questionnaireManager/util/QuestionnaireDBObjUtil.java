@@ -1,6 +1,5 @@
 package com.questionnaire.ssm.module.questionnaireManager.util;
 
-
 import com.questionnaire.ssm.module.generated.pojo.Question;
 import com.questionnaire.ssm.module.generated.pojo.QuestionOption;
 import com.questionnaire.ssm.module.generated.pojo.Questionnaire;
@@ -17,7 +16,7 @@ import java.util.List;
  * Created by 郑晓辉 on 2017/3/22.
  * Description:用于前台VO实体转换为后台数据库实体类
  */
-public class QuestionnaireObjUtil {
+public class QuestionnaireDBObjUtil {
 
     /**
      * 提取视图中问卷数据到数据库 questionnaire 表,其中 questionnaire_id 由数据库自动生成

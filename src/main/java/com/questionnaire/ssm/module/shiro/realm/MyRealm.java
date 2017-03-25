@@ -47,13 +47,13 @@ public class MyRealm extends AuthorizingRealm {
         try {
             simpleAuthorizationInfo.setRoles(loginService.listUserRole(userTel));
         } catch (Exception e) {
-            logger.error("set user roles Error: " + e.getMessage());
+            logger.error(e.getMessage());
         }
         //设置用户权限
         try {
             simpleAuthorizationInfo.setStringPermissions(loginService.listUserPermission(userTel));
         } catch (Exception e) {
-            logger.error("set user permission Error: " + e.getMessage());
+            logger.error(e.getMessage());
         }
         return simpleAuthorizationInfo;
     }

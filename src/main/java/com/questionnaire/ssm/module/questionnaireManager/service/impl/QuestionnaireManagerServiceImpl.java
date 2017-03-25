@@ -12,19 +12,20 @@ import com.questionnaire.ssm.module.questionnaireManager.exception.InsertExcepti
 import com.questionnaire.ssm.module.questionnaireManager.pojo.CreateQuestionnaireVO;
 import com.questionnaire.ssm.module.questionnaireManager.pojo.QuestionDTO;
 import com.questionnaire.ssm.module.questionnaireManager.service.QuestionnaireManagerService;
-import com.questionnaire.ssm.module.questionnaireManager.util.QuestionnaireObjUtil;
+import com.questionnaire.ssm.module.questionnaireManager.util.QuestionnaireDBObjUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by 郑晓辉 on 2017/3/22.
  * Description:问卷管理 具体实现
+ * 1.创建问卷
  */
 @Service
 public class QuestionnaireManagerServiceImpl implements QuestionnaireManagerService {
@@ -36,7 +37,7 @@ public class QuestionnaireManagerServiceImpl implements QuestionnaireManagerServ
     private MappingQuestionnaireQuestionMapper mappingQuestionnaireQuestionMapper;
 
     /**
-     * 插入问卷相关信息：问卷信息、题目信息、题目选项信息
+     * 插入问卷（创建问卷）相关信息：问卷信息、题目信息、题目选项信息
      *
      * @param questionnaireVO
      * @throws Exception 抛出操作数据库插入异常信息
@@ -44,7 +45,7 @@ public class QuestionnaireManagerServiceImpl implements QuestionnaireManagerServ
     @Override
     @Transactional
     public void insertQuestionnaire(CreateQuestionnaireVO questionnaireVO) throws Exception {
-        Questionnaire questionnaire = QuestionnaireObjUtil.toQuestionnaireDO(questionnaireVO);
+        Questionnaire questionnaire = QuestionnaireDBObjUtil.toQuestionnaireDO(questionnaireVO);
         int insertResult = 0;
         try {
             insertResult = questionnaireMapper.insertSelective(questionnaire);
@@ -57,7 +58,7 @@ public class QuestionnaireManagerServiceImpl implements QuestionnaireManagerServ
         }
         insertResult = 0;
 
-        QuestionDTO questionDTO = QuestionnaireObjUtil.toQuestionMultiDO(questionnaireVO.getQuestions());
+        QuestionDTO questionDTO = QuestionnaireDBObjUtil.toQuestionMultiDO(questionnaireVO.getQuestions());
         List<Question> questions = questionDTO.getQuestion();
         List<QuestionOption> options = questionDTO.getQuestionOption();
 
@@ -109,6 +110,16 @@ public class QuestionnaireManagerServiceImpl implements QuestionnaireManagerServ
             }
             insertResult = 0;
         }
+    }
+
+    /**
+     * 获取用户创建的所有问卷信息
+     *
+     * @return
+     * @throws Exception
+     */
+    public List<Questionnaire> listQuestionnaireInfo() throws Exception {
+        return new ArrayList<>();
     }
 
     @Autowired

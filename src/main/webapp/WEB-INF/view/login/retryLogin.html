@@ -19,14 +19,15 @@
 <div align="center">
     <form action="/user/login" method="post">
         <label>用户名：<input type="text" name="userTel"
-                          placeholder="input username"/></label>
+                          th:value="${user.getUserTel()}" placeholder="input username"/></label>
         <label>密码：<input type="password" name="password"
-                         placeholder="input password"/></label><br>
+                         th:value="${user.getPassword()}" placeholder="input password"/></label><br>
+        <label>记住我：<input type="checkbox" name="rememberMe" value="true"/></label><br/>
         <input type="submit" value="登录"/><br>
-        <div class="errorClass" th:if="${errorMessage} ">
-            <label style="color: red; font-size: small;" th:text="${errorMessage}"></label>
-        </div>
     </form>
+    <div class="errorClass" th:if="${errorMessage}">
+        <label th:text="${errorMessage}"></label>
+    </div>
 </div>
 
 </body>

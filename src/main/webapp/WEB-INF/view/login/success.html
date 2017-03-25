@@ -6,8 +6,11 @@
 <body>
 <h1 align="center">恭喜您已经成功登录！</h1>
 <div align="center">
-    欢迎你 <label th:text="${user.userTel}">用户账号</label>
-    <a href="/user/logout">退出</a>
+    欢迎你 <label th:text="${user.getUserTel()}">用户账号</label>
+    <a href="/user/logout">退出</a><br>
+
+    <a href="/user/testRoleLimit">测试角色</a><br/>
+    <a href="/user/testPermissionLimit">测试权限</a><br/>
 </div>
 </body>
 </html>

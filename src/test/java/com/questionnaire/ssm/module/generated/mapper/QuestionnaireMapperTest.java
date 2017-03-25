@@ -4,16 +4,12 @@ import com.questionnaire.ssm.module.generated.pojo.MappingQuestionnaireQuestion;
 import com.questionnaire.ssm.module.generated.pojo.Question;
 import com.questionnaire.ssm.module.generated.pojo.QuestionOption;
 import com.questionnaire.ssm.module.generated.pojo.Questionnaire;
-import com.questionnaire.ssm.module.global.enums.DBTableEnum;
-import com.questionnaire.ssm.module.global.enums.OperateDBEnum;
 import com.questionnaire.ssm.module.questionnaireManager.enums.QuestionTypeEnum;
-import com.questionnaire.ssm.module.questionnaireManager.exception.InsertException;
 import com.questionnaire.ssm.module.questionnaireManager.pojo.CreateQuestionnaireVO;
 import com.questionnaire.ssm.module.questionnaireManager.pojo.QuestionDO;
 import com.questionnaire.ssm.module.questionnaireManager.pojo.QuestionDTO;
 import com.questionnaire.ssm.module.questionnaireManager.pojo.QuestionOptionDO;
-import com.questionnaire.ssm.module.questionnaireManager.util.QuestionnaireObjUtil;
-import org.junit.Assert;
+import com.questionnaire.ssm.module.questionnaireManager.util.QuestionnaireDBObjUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -24,7 +20,6 @@ import javax.annotation.Resource;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import static org.junit.Assert.*;
 
@@ -86,14 +81,14 @@ public class QuestionnaireMapperTest {
 
 
         //=====================================================
-        Questionnaire questionnaire = QuestionnaireObjUtil.toQuestionnaireDO(questionnaireVO);
+        Questionnaire questionnaire = QuestionnaireDBObjUtil.toQuestionnaireDO(questionnaireVO);
         int insertResult = 0;
         insertResult = questionnaireMapper.insertSelective(questionnaire);
         assertEquals(insertResult, 1);
 
         insertResult = 0;
 
-        QuestionDTO questionDTO = QuestionnaireObjUtil.toQuestionMultiDO(questionnaireVO.getQuestions());
+        QuestionDTO questionDTO = QuestionnaireDBObjUtil.toQuestionMultiDO(questionnaireVO.getQuestions());
         List<Question> questions = questionDTO.getQuestion();
         List<QuestionOption> options = questionDTO.getQuestionOption();
 

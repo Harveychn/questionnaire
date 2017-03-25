@@ -16,22 +16,14 @@
 </head>
 <body>
 <h1 align="center">登录界面</h1>
-
 <div align="center">
-    <form action="/user/login" method="post" th:object="${user}">
-        <div class="errorClass" th:if="${#fields.hasErrors('*')}">
-            <ul>
-                <li th:each="err :${#fields.errors('*')}" th:text="${err}">Input is unCorrect</li>
-            </ul>
-        </div>
-        <label>用户名：<input type="text" th:field="*{userTel}"
+    <form action="/user/login" method="post">
+        <label>用户名：<input type="text" name="userTel"
                           placeholder="input username"/></label>
-        <label>密码：<input type="password" th:field="*{password}"
+        <label>密码：<input type="password" name="password"
                          placeholder="input password"/></label><br>
+        <label>记住我：<input type="checkbox" name="rememberMe" value="true"/></label><br/>
         <input type="submit" value="登录"/><br>
-        <div th:if="${errorMessage}!=null">
-            <label style="color: red; font-size: small;" th:text="${errorMessage}"></label>
-        </div>
     </form>
 </div>
 

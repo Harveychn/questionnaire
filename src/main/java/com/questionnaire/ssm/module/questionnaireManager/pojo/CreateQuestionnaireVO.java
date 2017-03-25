@@ -11,10 +11,10 @@ public class CreateQuestionnaireVO {
      * 问卷基本信息
      */
     private Long questionnaireId;//问卷id 创建时默认为0
-    private String questionnaireTitle;//问卷标题
+    private String questionnaireTitle;//问卷标题 (必填字段，不得为空)
     private String questionnaireSubtitle;//问卷副标题
-    private Boolean isTemplate;//是否创建为模板
-    private Boolean isDone;//是否编辑完成的问卷
+    private Boolean isTemplate;//是否创建为模板 (必填字段，默认为false)
+    private Boolean isDone;//是否编辑完成的问卷 （必填字段，默认为false）
     private String questionnaireDescription;//问卷描述
 
     /**

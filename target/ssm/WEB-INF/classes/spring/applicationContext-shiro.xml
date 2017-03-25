@@ -15,6 +15,7 @@
         <!-- Single realm app.  If you have multiple realms, use the 'realms' property instead. -->
         <property name="realm" ref="myRealm"/>
         <property name="cacheManager" ref="cacheManager"/>
+        <property name="rememberMeManager" ref="rememberMeManager"/>
     </bean>
 
     <!--保证实现了shiro内部lifecycle函数的备案执行-->
@@ -23,10 +24,10 @@
     <!-- 密码匹配对象 -->
     <bean id="credentialsMatcher" class="com.questionnaire.ssm.module.shiro.util.RetryLimitHashedCredentialsMatcher">
         <constructor-arg ref="cacheManager"/>
-        <property name="hashAlgorithmName" value="md5" />
+        <property name="hashAlgorithmName" value="md5"/>
         <!--迭代次数 3-->
-        <property name="hashIterations" value="3" />
-        <property name="storedCredentialsHexEncoded" value="true" />
+        <property name="hashIterations" value="3"/>
+        <property name="storedCredentialsHexEncoded" value="true"/>
     </bean>
 
     <!-- 缓存管理 -->
@@ -34,19 +35,38 @@
         <property name="cacheManagerConfigFile" value="classpath:shiro/ehcache.xml"/>
     </bean>
 
+    <bean id="sessionIdCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+        <constructor-arg value="sid"/>
+        <property name="httpOnly" value="true"/>
+        <!-- -1 表示浏览器关闭时失效此Cookie-->
+        <property name="maxAge" value="-1"/>
+    </bean>
+    <bean id="rememberMeCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+        <constructor-arg value="rememberMe"/>
+        <property name="httpOnly" value="true"/>
+        <property name="maxAge" value="2592000"/><!-- 30天 -->
+    </bean>
+
+    <!-- rememberMe管理器,cipherKey是加密rememberMe Cookie的密钥；默认AES算法；-->
+    <bean id="rememberMeManager"  class="org.apache.shiro.web.mgt.CookieRememberMeManager">
+        <property name="cipherKey" value="#{T(org.apache.shiro.codec.Base64).decode('4AvVhmFLUs0KTA3Kprsdag==')}"/>
+        <property name="cookie" ref="rememberMeCookie"/>
+    </bean>
+
     <!--shiro过滤器-->
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <!--shiro的核心安全接口，这个属性是必须的-->
         <property name="securityManager" ref="securityManager"/>
         <!--身份认证失败，则跳转到登录页面的设置-->
-        <property name="loginUrl" value="/login.jsp"/>
+        <property name="loginUrl" value="/"/>
         <!--权限认证失败，则跳转到指定页面-->
         <property name="unauthorizedUrl" value="/unauthorized.jsp"/>
         <!-- Shiro连接约束配置,即过滤链的定义 -->
         <property name="filterChainDefinitions">
             <value>
-                /user/login=anon
-                /user/admin*=authc
+                /login=anon
+                /admin*=authc
+                /success=authc
             </value>
         </property>
     </bean>
