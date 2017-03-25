@@ -25,6 +25,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class QuestionnaireManagerController {
 
     /**
+     * 获取创建问卷的视图
+     *
+     * @return
+     * @throws Exception
+     */
+    @GetMapping(value = "getCreateView")
+    public String getCreateView() throws Exception {
+        return "questionnaireManager/createQuestionnaire";
+    }
+
+    /**
      * 校验前台参数，失败直接返回失败原因
      * 否则创建问卷 创建正常则返回正常代码，错误会抛出InsertException
      *
