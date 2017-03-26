@@ -26,8 +26,8 @@ public class SysUserController {
 
     private static final Logger logger = LoggerFactory.getLogger(SysUserController.class);
 
-    @GetMapping(value = "/getInitView")
-    public String getInitView() throws Exception {
+    @GetMapping(value = "/getLoginView")
+    public String getLoginView() throws Exception {
         return "../../login";
     }
 

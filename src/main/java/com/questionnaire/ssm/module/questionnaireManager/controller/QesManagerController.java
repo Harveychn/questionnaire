@@ -44,7 +44,7 @@ public class QesManagerController {
      */
     @PostMapping(value = "/create")
     @ResponseBody
-    public ResponsePkt Create(CreateQuestionnaireVO createQuestionnaireVO) throws Exception {
+    public ResponsePkt create(CreateQuestionnaireVO createQuestionnaireVO) throws Exception {
         if (!CheckVOValidUtil.createQuestionnaireVOValid(createQuestionnaireVO)) {
             return ResultUtil.error(CheckInValidEnum.QUESTIONNAIRE_TITLE_NULL.getCode(),
                     CheckInValidEnum.QUESTIONNAIRE_TITLE_NULL.getMessage());
