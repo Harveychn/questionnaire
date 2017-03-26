@@ -7,7 +7,7 @@ import com.questionnaire.ssm.module.generated.mapper.QuestionnaireMapper;
 import com.questionnaire.ssm.module.generated.pojo.*;
 import com.questionnaire.ssm.module.global.enums.DBTableEnum;
 import com.questionnaire.ssm.module.global.enums.OperateDBEnum;
-import com.questionnaire.ssm.module.questionnaireManager.exception.InsertException;
+import com.questionnaire.ssm.module.global.exception.OperateDBException;
 
 import com.questionnaire.ssm.module.questionnaireManager.pojo.CreateQuestionnaireVO;
 import com.questionnaire.ssm.module.questionnaireManager.pojo.QuestionDTO;
@@ -40,21 +40,23 @@ public class QesManagerServiceImpl implements QesManagerService {
      * 插入问卷（创建问卷）相关信息：问卷信息、题目信息、题目选项信息
      *
      * @param questionnaireVO
+     * @return 返回创建完成的问卷ID
      * @throws Exception 抛出操作数据库插入异常信息
      */
     @Override
     @Transactional
-    public void insertQuestionnaire(CreateQuestionnaireVO questionnaireVO) throws Exception {
+    public long insertQuestionnaire(CreateQuestionnaireVO questionnaireVO) throws Exception {
         Questionnaire questionnaire = QuestionnaireDBObjUtil.toQuestionnaireDO(questionnaireVO);
+
         int insertResult = 0;
         try {
             insertResult = questionnaireMapper.insertSelective(questionnaire);
         } catch (Exception e) {
-            throw new InsertException(OperateDBEnum.INSERT_FAIL, DBTableEnum.QUESTIONNAIRE.getTableName());
+            throw new OperateDBException(OperateDBEnum.UNKNOWN_ERROR, DBTableEnum.QUESTIONNAIRE.getTableName());
         }
         if (insertResult != 1) {
             logger.error(OperateDBEnum.INSERT_FAIL.getMessage() + "\n" + DBTableEnum.QUESTIONNAIRE.getTableName());
-            return;
+            throw new OperateDBException(OperateDBEnum.INSERT_FAIL, DBTableEnum.QUESTIONNAIRE.getTableName());
         }
         insertResult = 0;
 
@@ -72,14 +74,12 @@ public class QesManagerServiceImpl implements QesManagerService {
             try {
                 insertResult = questionOptionMapper.insertSelective(options.get(order));
             } catch (Exception e) {
-                throw new InsertException(OperateDBEnum.INSERT_FAIL, DBTableEnum.QUESTION_OPTION.getTableName());
+                throw new OperateDBException(OperateDBEnum.UNKNOWN_ERROR, DBTableEnum.QUESTION_OPTION.getTableName());
             }
-
             if (insertResult != 1) {
                 logger.error(OperateDBEnum.INSERT_FAIL.getMessage() + "\n" + DBTableEnum.QUESTION_OPTION.getTableName());
-                break;
+                throw new OperateDBException(OperateDBEnum.INSERT_FAIL, DBTableEnum.QUESTION_OPTION.getTableName());
             }
-
             insertResult = 0;
 
             questions.get(order).setOptionId(options.get(order).getOptionId());
@@ -87,11 +87,11 @@ public class QesManagerServiceImpl implements QesManagerService {
             try {
                 insertResult = questionMapper.insertSelective(questions.get(order));
             } catch (Exception e) {
-                throw new InsertException(OperateDBEnum.INSERT_FAIL, DBTableEnum.QUESTION.getTableName());
+                throw new OperateDBException(OperateDBEnum.UNKNOWN_ERROR, DBTableEnum.QUESTION.getTableName());
             }
             if (insertResult != 1) {
                 logger.error(OperateDBEnum.INSERT_FAIL.getMessage() + "\n" + DBTableEnum.QUESTION.getTableName());
-                break;
+                throw new OperateDBException(OperateDBEnum.INSERT_FAIL, DBTableEnum.QUESTION.getTableName());
             }
             insertResult = 0;
 
@@ -101,15 +101,15 @@ public class QesManagerServiceImpl implements QesManagerService {
             try {
                 insertResult = mappingQuestionnaireQuestionMapper.insertSelective(mapping);
             } catch (Exception e) {
-                throw new InsertException(OperateDBEnum.INSERT_FAIL, DBTableEnum.MAPPING_QUESTIONNAIRE_QUESTION.getTableName());
+                throw new OperateDBException(OperateDBEnum.UNKNOWN_ERROR, DBTableEnum.MAPPING_QUESTIONNAIRE_QUESTION.getTableName());
             }
-
             if (insertResult != 1) {
                 logger.error(OperateDBEnum.INSERT_FAIL.getMessage() + "\n" + DBTableEnum.MAPPING_QUESTIONNAIRE_QUESTION.getTableName());
-                break;
+                throw new OperateDBException(OperateDBEnum.INSERT_FAIL, DBTableEnum.MAPPING_QUESTIONNAIRE_QUESTION.getTableName());
             }
             insertResult = 0;
         }
+        return questionnaire.getQuestionnaireId();
     }
 
     /**

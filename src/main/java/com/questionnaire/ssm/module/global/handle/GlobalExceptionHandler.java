@@ -1,10 +1,10 @@
-package com.questionnaire.ssm.module.questionnaireManager.handle;
+package com.questionnaire.ssm.module.global.handle;
 
 import com.questionnaire.ssm.module.global.enums.RequestResultEnum;
 import com.questionnaire.ssm.module.global.pojo.ResponsePkt;
 import com.questionnaire.ssm.module.global.util.ResultUtil;
-import com.questionnaire.ssm.module.questionnaireManager.exception.InsertException;
-import com.questionnaire.ssm.module.questionnaireManager.exception.UserValidaException;
+import com.questionnaire.ssm.module.global.exception.OperateDBException;
+import com.questionnaire.ssm.module.global.exception.UserValidaException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -14,15 +14,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * Description: 异常处理器
  */
 @ControllerAdvice
-public class QesManagerExceptionHandler {
+public class GlobalExceptionHandler {
 
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
     public ResponsePkt insertHandler(Exception e) {
-        /*插入异常*/
-        if (e instanceof InsertException) {
-            InsertException insertException = (InsertException) e;
-            return ResultUtil.error(insertException.getCode(), insertException.getMessage());
+        /*操作数据库异常*/
+        if (e instanceof OperateDBException) {
+            OperateDBException operateDBException = (OperateDBException) e;
+            return ResultUtil.error(operateDBException.getCode(), operateDBException.getMessage());
         }
         /*用户校验异常（未登录、无角色、无权限）*/
         if (e instanceof UserValidaException) {

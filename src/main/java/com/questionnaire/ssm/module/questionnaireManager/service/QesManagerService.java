@@ -12,7 +12,7 @@ public interface QesManagerService {
      * 创建问卷
      *
      * @param questionnaireVO
-     * @throws Exception 异常时会抛出 InsertException
+     * @throws Exception 异常时会抛出 OperateDBException
      */
-    void insertQuestionnaire(CreateQuestionnaireVO questionnaireVO) throws Exception;
+    long insertQuestionnaire(CreateQuestionnaireVO questionnaireVO) throws Exception;
 }

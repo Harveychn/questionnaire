@@ -1,4 +1,4 @@
-package com.questionnaire.ssm.module.questionnaireManager.exception;
+package com.questionnaire.ssm.module.global.exception;
 
 import com.questionnaire.ssm.module.global.enums.OperateDBEnum;
 
@@ -6,13 +6,13 @@ import com.questionnaire.ssm.module.global.enums.OperateDBEnum;
  * Created by 郑晓辉 on 2017/3/22.
  * Description:插入数据库异常
  */
-public class InsertException extends RuntimeException {
+public class OperateDBException extends RuntimeException {
     /*错误编号*/
     private int code;
     /*错误表格*/
     private String tableNme;
 
-    public InsertException(OperateDBEnum operateDBEnum, String tableNme) {
+    public OperateDBException(OperateDBEnum operateDBEnum, String tableNme) {
         super(operateDBEnum.getMessage());
         this.code = operateDBEnum.getCode();
         this.tableNme = tableNme;

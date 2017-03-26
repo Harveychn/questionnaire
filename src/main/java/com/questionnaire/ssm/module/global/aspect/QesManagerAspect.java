@@ -1,10 +1,13 @@
 package com.questionnaire.ssm.module.global.aspect;
 
+import com.questionnaire.ssm.module.generated.mapper.RecordOperateQuestionnaireMapper;
+import com.questionnaire.ssm.module.generated.pojo.RecordOperateQuestionnaire;
+import com.questionnaire.ssm.module.global.enums.DBTableEnum;
+import com.questionnaire.ssm.module.global.enums.OperateDBEnum;
 import com.questionnaire.ssm.module.global.enums.PermissionEnum;
-import com.questionnaire.ssm.module.global.enums.RequestResultEnum;
-import com.questionnaire.ssm.module.global.enums.UserValidaEnum;
+import com.questionnaire.ssm.module.global.enums.UserActionEnum;
+import com.questionnaire.ssm.module.global.exception.OperateDBException;
 import com.questionnaire.ssm.module.global.util.UserValidationUtil;
-import com.questionnaire.ssm.module.questionnaireManager.exception.UserValidaException;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -12,9 +15,10 @@ import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.xml.bind.ValidationException;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -37,13 +41,6 @@ public class QesManagerAspect {
     }
 
     /**
-     * 创建问卷过程切点
-     */
-    @Pointcut("execution(public * com.questionnaire.ssm.module.questionnaireManager.controller.QesManagerController.create(..))")
-    public void createQuestionnaireProcess(){
-
-    }
-    /**
      * 获取创建问卷的视图之前，校验用户是否有相应的权限、角色
      */
     @Before("getCreateQuestionnaireViewPointcut()")
@@ -51,31 +48,57 @@ public class QesManagerAspect {
         Set<String> needPermissions = new HashSet<>();
         needPermissions.add(PermissionEnum.CREATE_QUESTIONNAIRE.getPermission());
         String role = "疾控中心管理员";
-        UserValidationUtil.checkUserValid(role,needPermissions,logger);
-//        int result = 0;
-//
-//        try {
-//            Set<String> needPermissions = new HashSet<>();
-//            needPermissions.add(PermissionEnum.CREATE_QUESTIONNAIRE.getPermission());
-//            result = UserValidationUtil.isValid("疾控中心管理员", needPermissions);
-//        } catch (Exception e) {
-//            logger.error(e.getMessage());
-//            throw new UserValidaException(UserValidaEnum.UNKNOWN_ERROR);
-//        }
-//
-//        if (result == UserValidaEnum.NOT_LOGIN.getCode()) {
-//            throw new UserValidaException(UserValidaEnum.NOT_LOGIN);
-//        }
-//        if (result == UserValidaEnum.NO_ROLE.getCode()) {
-//            throw new UserValidaException(UserValidaEnum.NO_ROLE);
-//        }
-//        if (result == UserValidaEnum.NO_PERMISSION.getCode()) {
-//            throw new UserValidaException(UserValidaEnum.NO_PERMISSION);
-//        }
+        UserValidationUtil.checkUserValid(role, needPermissions, logger);
     }
 
-    @Around("createQuestionnaireProcess()")
-    public void aroundCreateQuestionnaireProcess(ProceedingJoinPoint joinPoint){
 
+    /**
+     * 创建问卷过程切点
+     */
+    @Pointcut("execution(public * com.questionnaire.ssm.module.questionnaireManager.service.impl.QesManagerServiceImpl.insertQuestionnaire(..))")
+    public void createQuestionnaireProcess() {
+
+    }
+
+    /**
+     * 完成问卷插入后，插入用户操作问卷的记录
+     *
+     * @param joinPoint
+     * @return
+     * @throws Throwable
+     */
+    @Around("createQuestionnaireProcess()")
+    public long aroundCreateQuestionnaireProcess(ProceedingJoinPoint joinPoint) throws Throwable {
+        //检查用户是否登录
+        UserValidationUtil.checkUserValid(logger);
+        Date currentDate = new Date();
+        String userTel = UserValidationUtil.getUserTel(logger);
+        Long questionnaireId = (Long) joinPoint.proceed();
+
+        RecordOperateQuestionnaire recordOperateQuestionnaire = new RecordOperateQuestionnaire();
+        recordOperateQuestionnaire.setOperateDate(currentDate);
+        recordOperateQuestionnaire.setQuestionnaireId(questionnaireId);
+        recordOperateQuestionnaire.setUserTel(userTel);
+        recordOperateQuestionnaire.setAction(UserActionEnum.INSERT_ACTION.getAction());
+
+        int result = 0;
+        try {
+            result = recordOperateQuestionnaireMapper.insertSelective(recordOperateQuestionnaire);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            throw new OperateDBException(OperateDBEnum.UNKNOWN_ERROR, DBTableEnum.RECORD_OPERATE_QUESTIONNAIRE.getTableName());
+        }
+        if (result != 1) {
+            throw new OperateDBException(OperateDBEnum.INSERT_FAIL, DBTableEnum.RECORD_OPERATE_QUESTIONNAIRE.getTableName());
+        }
+
+        return questionnaireId;
+    }
+
+    private RecordOperateQuestionnaireMapper recordOperateQuestionnaireMapper;
+
+    @Autowired
+    public QesManagerAspect(RecordOperateQuestionnaireMapper recordOperateQuestionnaireMapper) {
+        this.recordOperateQuestionnaireMapper = recordOperateQuestionnaireMapper;
     }
 }

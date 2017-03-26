@@ -36,7 +36,7 @@ public class QuestionnaireDBObjUtil {
 
         questionnaire.setIsDelete(false);
         questionnaire.setIsShare(false);
-        questionnaire.setIsVisiable(true);
+        questionnaire.setIsVisible(true);
 
         return questionnaire;
     }
@@ -57,19 +57,19 @@ public class QuestionnaireDBObjUtil {
         QuestionOption option = null;
         StringBuilder optionStrBuilder = null;
 
-        for (int questionOrder = 0; questionOrder < questions.size(); questionOrder++) {
+        for (QuestionDO currentQuestion : questions) {
 
             question = new Question();
-            question.setQuestionContext(questions.get(questionOrder).getQuestionContext());
-            question.setQuestionDescription(questions.get(questionOrder).getQuestionDescription());
-            question.setIsMust(questions.get(questionOrder).getMust());
-            question.setQuestionType(questions.get(questionOrder).getQuestionType());
+            question.setQuestionContext(currentQuestion.getQuestionContext());
+            question.setQuestionDescription(currentQuestion.getQuestionDescription());
+            question.setIsMust(currentQuestion.getMust());
+            question.setQuestionType(currentQuestion.getQuestionType());
 
             /**需要进行数据库操作，有数据库返回的自增值或者已有值来完成赋值*/
             //question.setOptionId();
             //question.setQuestionId();
 
-            List<QuestionOptionDO> options = questions.get(questionOrder).getOptions();
+            List<QuestionOptionDO> options = currentQuestion.getOptions();
             int optionSize = options.size();
 
             optionStrBuilder = new StringBuilder();

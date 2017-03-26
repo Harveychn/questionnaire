@@ -2,7 +2,7 @@ package com.questionnaire.ssm.module.global.util;
 
 
 import com.questionnaire.ssm.module.global.enums.UserValidaEnum;
-import com.questionnaire.ssm.module.questionnaireManager.exception.UserValidaException;
+import com.questionnaire.ssm.module.global.exception.UserValidaException;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
@@ -121,6 +121,17 @@ public class UserValidationUtil {
         }
     }
 
+    /**
+     * 获取在线用户的用户名(用户账号)
+     *
+     * @param logger 异常日志记录
+     * @return
+     * @throws Exception
+     */
+    public static String getUserTel(Logger logger) throws Exception {
+        checkUserValid(logger);
+        return (String) SecurityUtils.getSubject().getSession().getAttribute("userTel");
+    }
 
     /**
      * 检查用户是否登录

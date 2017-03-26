@@ -35,7 +35,7 @@ public class MyRealm extends AuthorizingRealm {
             throw new LockedAccountException();
         }
         return new SimpleAuthenticationInfo(user.getUserTel(), user.getPassword(),
-                ByteSource.Util.bytes(user.getUserRealName() + user.getMailAddress()), getName());
+                ByteSource.Util.bytes(user.getUserTel() + user.getUserRealName()), getName());
     }
 
     //为当前登陆成功的用户授予权限和角色(授权)

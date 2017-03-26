@@ -12,7 +12,9 @@ public enum OperateDBEnum {
     UPDATE_SUCCESS(1, "更新成功！"),
     INSERT_SUCCESS(2, "插入成功！"),
     SELECT_SUCCESS(3, "查询成功！"),
-    DELETE_SUCCESS(4, "删除成功！");
+    DELETE_SUCCESS(4, "删除成功！"),
+    UNKNOWN_ERROR(0, "未知错误！")
+    ;
 
     /*异常编号*/
     private int code;

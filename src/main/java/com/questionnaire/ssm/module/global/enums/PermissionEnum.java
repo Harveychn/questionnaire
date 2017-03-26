@@ -14,7 +14,8 @@ public enum PermissionEnum {
     CREATE_NOTICE("新建公告"),
     DELETE_NOTICE("删除公告"),
     DELETE_INVESTIGATOR("删除公告"),
-    DELETE_BUSINESS_ADMIN("删除疾控中心管理员"),;
+    DELETE_BUSINESS_ADMIN("删除疾控中心管理员"),
+    CHANGE_PASSWORD("更改密码");
     private String permission;
 
     PermissionEnum(String permission) {

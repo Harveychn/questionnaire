@@ -514,63 +514,63 @@ public class QuestionnaireExample {
             return (Criteria) this;
         }
 
-        public Criteria andIsVisiableIsNull() {
-            addCriterion("is_visiable is null");
+        public Criteria andIsVisibleIsNull() {
+            addCriterion("is_visible is null");
             return (Criteria) this;
         }
 
-        public Criteria andIsVisiableIsNotNull() {
-            addCriterion("is_visiable is not null");
+        public Criteria andIsVisibleIsNotNull() {
+            addCriterion("is_visible is not null");
             return (Criteria) this;
         }
 
-        public Criteria andIsVisiableEqualTo(Boolean value) {
-            addCriterion("is_visiable =", value, "isVisiable");
+        public Criteria andIsVisibleEqualTo(Boolean value) {
+            addCriterion("is_visible =", value, "isVisible");
             return (Criteria) this;
         }
 
-        public Criteria andIsVisiableNotEqualTo(Boolean value) {
-            addCriterion("is_visiable <>", value, "isVisiable");
+        public Criteria andIsVisibleNotEqualTo(Boolean value) {
+            addCriterion("is_visible <>", value, "isVisible");
             return (Criteria) this;
         }
 
-        public Criteria andIsVisiableGreaterThan(Boolean value) {
-            addCriterion("is_visiable >", value, "isVisiable");
+        public Criteria andIsVisibleGreaterThan(Boolean value) {
+            addCriterion("is_visible >", value, "isVisible");
             return (Criteria) this;
         }
 
-        public Criteria andIsVisiableGreaterThanOrEqualTo(Boolean value) {
-            addCriterion("is_visiable >=", value, "isVisiable");
+        public Criteria andIsVisibleGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("is_visible >=", value, "isVisible");
             return (Criteria) this;
         }
 
-        public Criteria andIsVisiableLessThan(Boolean value) {
-            addCriterion("is_visiable <", value, "isVisiable");
+        public Criteria andIsVisibleLessThan(Boolean value) {
+            addCriterion("is_visible <", value, "isVisible");
             return (Criteria) this;
         }
 
-        public Criteria andIsVisiableLessThanOrEqualTo(Boolean value) {
-            addCriterion("is_visiable <=", value, "isVisiable");
+        public Criteria andIsVisibleLessThanOrEqualTo(Boolean value) {
+            addCriterion("is_visible <=", value, "isVisible");
             return (Criteria) this;
         }
 
-        public Criteria andIsVisiableIn(List<Boolean> values) {
-            addCriterion("is_visiable in", values, "isVisiable");
+        public Criteria andIsVisibleIn(List<Boolean> values) {
+            addCriterion("is_visible in", values, "isVisible");
             return (Criteria) this;
         }
 
-        public Criteria andIsVisiableNotIn(List<Boolean> values) {
-            addCriterion("is_visiable not in", values, "isVisiable");
+        public Criteria andIsVisibleNotIn(List<Boolean> values) {
+            addCriterion("is_visible not in", values, "isVisible");
             return (Criteria) this;
         }
 
-        public Criteria andIsVisiableBetween(Boolean value1, Boolean value2) {
-            addCriterion("is_visiable between", value1, value2, "isVisiable");
+        public Criteria andIsVisibleBetween(Boolean value1, Boolean value2) {
+            addCriterion("is_visible between", value1, value2, "isVisible");
             return (Criteria) this;
         }
 
-        public Criteria andIsVisiableNotBetween(Boolean value1, Boolean value2) {
-            addCriterion("is_visiable not between", value1, value2, "isVisiable");
+        public Criteria andIsVisibleNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("is_visible not between", value1, value2, "isVisible");
             return (Criteria) this;
         }
 
