@@ -4,120 +4,14 @@
     <bookmark url="file://$PROJECT_DIR$/src/test/java/com/questionnaire/ssm/module/generated/mapper/QuestionnaireMapperTest.java" line="43" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b71ccd9-b479-4e1c-80a4-7d2729296279" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/enums/UserActionEnum.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/login/pojo/NewPasswordVO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/login/utils/UserDBObjUtil.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/login/newKey.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/login/newKeySuccess.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/questionnaireManager/exception/InsertException.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/questionnaireManager/exception/UserValidaException.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/questionnaireManager/handle/QesManagerExceptionHandler.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/questionnaireManager/exception/InsertException.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/questionnaireManager/exception/UserValidaException.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/questionnaireManager/handle/QesManagerExceptionHandler.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/view/login/success.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/generated/pojo/Questionnaire.class" afterPath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/generated/pojo/Questionnaire.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/generated/pojo/QuestionnaireExample$Criteria.class" afterPath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/generated/pojo/QuestionnaireExample$Criteria.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/generated/pojo/QuestionnaireExample$GeneratedCriteria.class" afterPath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/generated/pojo/QuestionnaireExample$GeneratedCriteria.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/global/aspect/QesManagerAspect.class" afterPath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/global/aspect/QesManagerAspect.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/global/enums/DBTableEnum.class" afterPath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/global/enums/DBTableEnum.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/global/enums/OperateDBEnum.class" afterPath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/global/enums/OperateDBEnum.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/global/enums/PermissionEnum.class" afterPath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/global/enums/PermissionEnum.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/global/enums/RequestResultEnum.class" afterPath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/global/enums/RequestResultEnum.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/global/enums/UserValidaEnum.class" afterPath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/global/enums/UserValidaEnum.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/global/util/UserValidationUtil.class" afterPath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/global/util/UserValidationUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/login/controller/SysUserController.class" afterPath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/login/controller/SysUserController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/login/service/UserService.class" afterPath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/login/service/UserService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/login/service/impl/UserServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/login/service/impl/UserServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/login/utils/UserUtil.class" afterPath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/login/utils/UserUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/questionnaireManager/controller/QesManagerController.class" afterPath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/questionnaireManager/controller/QesManagerController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/questionnaireManager/service/QesManagerService.class" afterPath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/questionnaireManager/service/QesManagerService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/questionnaireManager/service/impl/QesManagerServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/questionnaireManager/service/impl/QesManagerServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/questionnaireManager/util/QuestionnaireDBObjUtil.class" afterPath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/questionnaireManager/util/QuestionnaireDBObjUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/shiro/realm/MyRealm.class" afterPath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/shiro/realm/MyRealm.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/generated/pojo/Questionnaire.class" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/generated/pojo/Questionnaire.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/generated/pojo/QuestionnaireExample$Criteria.class" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/generated/pojo/QuestionnaireExample$Criteria.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/generated/pojo/QuestionnaireExample$GeneratedCriteria.class" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/generated/pojo/QuestionnaireExample$GeneratedCriteria.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/global/aspect/QesManagerAspect.class" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/global/aspect/QesManagerAspect.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/global/enums/DBTableEnum.class" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/global/enums/DBTableEnum.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/global/enums/OperateDBEnum.class" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/global/enums/OperateDBEnum.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/global/enums/PermissionEnum.class" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/global/enums/PermissionEnum.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/global/enums/RequestResultEnum.class" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/global/enums/RequestResultEnum.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/global/enums/UserValidaEnum.class" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/global/enums/UserValidaEnum.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/global/util/UserValidationUtil.class" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/global/util/UserValidationUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/login/controller/SysUserController.class" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/login/controller/SysUserController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/login/service/UserService.class" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/login/service/UserService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/login/service/impl/UserServiceImpl.class" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/login/service/impl/UserServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/login/utils/UserUtil.class" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/login/utils/UserUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/questionnaireManager/controller/QesManagerController.class" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/questionnaireManager/controller/QesManagerController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/questionnaireManager/service/QesManagerService.class" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/questionnaireManager/service/QesManagerService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/questionnaireManager/service/impl/QesManagerServiceImpl.class" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/questionnaireManager/service/impl/QesManagerServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/questionnaireManager/util/QuestionnaireDBObjUtil.class" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/questionnaireManager/util/QuestionnaireDBObjUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/shiro/realm/MyRealm.class" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/shiro/realm/MyRealm.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/questionnaire/ssm/module/generated/mapper/UserMapperTest.class" afterPath="$PROJECT_DIR$/target/test-classes/com/questionnaire/ssm/module/generated/mapper/UserMapperTest.class" />
+    <list default="true" id="1b71ccd9-b479-4e1c-80a4-7d2729296279" name="Default" comment="ignore文件">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/Questionnaire.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/Questionnaire.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/QuestionnaireExample.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/QuestionnaireExample.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/aspect/QesManagerAspect.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/aspect/QesManagerAspect.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/enums/DBTableEnum.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/enums/DBTableEnum.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/enums/OperateDBEnum.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/enums/OperateDBEnum.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/enums/PermissionEnum.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/enums/PermissionEnum.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/enums/RequestResultEnum.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/enums/RequestResultEnum.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/enums/UserValidaEnum.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/enums/UserValidaEnum.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/util/UserValidationUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/util/UserValidationUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/login/controller/SysUserController.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/login/controller/SysUserController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/login/service/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/login/service/UserService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/login/service/impl/UserServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/login/service/impl/UserServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/login/utils/UserUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/login/utils/UserUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManager/service/QesManagerService.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManager/service/QesManagerService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManager/service/impl/QesManagerServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManager/service/impl/QesManagerServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManager/util/QuestionnaireDBObjUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManager/util/QuestionnaireDBObjUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/shiro/realm/MyRealm.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/shiro/realm/MyRealm.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/MappingQuestionnaireQuestionMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/MappingQuestionnaireQuestionMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/MappingRolePermissionMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/MappingRolePermissionMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/PermissionMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/PermissionMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/QuestionMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/QuestionMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/QuestionOptionMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/QuestionOptionMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/QuestionnaireMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/QuestionnaireMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/RecordLoginMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/RecordLoginMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/RecordOperateQuestionnaireMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/RecordOperateQuestionnaireMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/RoleMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/RoleMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/UnitMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/UnitMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/UserMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/UserMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/questionnaireManager/createQuestionnaire.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/questionnaireManager/createQuestionnaire.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/questionnaire/ssm/module/generated/mapper/UserMapperTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/questionnaire/ssm/module/generated/mapper/UserMapperTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/module/generated/mapper/MappingQuestionnaireQuestionMapper.xml" afterPath="$PROJECT_DIR$/target/classes/module/generated/mapper/MappingQuestionnaireQuestionMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/module/generated/mapper/MappingRolePermissionMapper.xml" afterPath="$PROJECT_DIR$/target/classes/module/generated/mapper/MappingRolePermissionMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/module/generated/mapper/PermissionMapper.xml" afterPath="$PROJECT_DIR$/target/classes/module/generated/mapper/PermissionMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/module/generated/mapper/QuestionMapper.xml" afterPath="$PROJECT_DIR$/target/classes/module/generated/mapper/QuestionMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/module/generated/mapper/QuestionOptionMapper.xml" afterPath="$PROJECT_DIR$/target/classes/module/generated/mapper/QuestionOptionMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/module/generated/mapper/QuestionnaireMapper.xml" afterPath="$PROJECT_DIR$/target/classes/module/generated/mapper/QuestionnaireMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/module/generated/mapper/RecordLoginMapper.xml" afterPath="$PROJECT_DIR$/target/classes/module/generated/mapper/RecordLoginMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/module/generated/mapper/RecordOperateQuestionnaireMapper.xml" afterPath="$PROJECT_DIR$/target/classes/module/generated/mapper/RecordOperateQuestionnaireMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/module/generated/mapper/RoleMapper.xml" afterPath="$PROJECT_DIR$/target/classes/module/generated/mapper/RoleMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/module/generated/mapper/UnitMapper.xml" afterPath="$PROJECT_DIR$/target/classes/module/generated/mapper/UnitMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/module/generated/mapper/UserMapper.xml" afterPath="$PROJECT_DIR$/target/classes/module/generated/mapper/UserMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/module/generated/mapper/MappingQuestionnaireQuestionMapper.xml" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/module/generated/mapper/MappingQuestionnaireQuestionMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/module/generated/mapper/MappingRolePermissionMapper.xml" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/module/generated/mapper/MappingRolePermissionMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/module/generated/mapper/PermissionMapper.xml" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/module/generated/mapper/PermissionMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/module/generated/mapper/QuestionMapper.xml" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/module/generated/mapper/QuestionMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/module/generated/mapper/QuestionOptionMapper.xml" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/module/generated/mapper/QuestionOptionMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/module/generated/mapper/QuestionnaireMapper.xml" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/module/generated/mapper/QuestionnaireMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/module/generated/mapper/RecordLoginMapper.xml" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/module/generated/mapper/RecordLoginMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/module/generated/mapper/RecordOperateQuestionnaireMapper.xml" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/module/generated/mapper/RecordOperateQuestionnaireMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/module/generated/mapper/RoleMapper.xml" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/module/generated/mapper/RoleMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/module/generated/mapper/UnitMapper.xml" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/module/generated/mapper/UnitMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/module/generated/mapper/UserMapper.xml" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/module/generated/mapper/UserMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/view/questionnaireManager/createQuestionnaire.html" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/view/questionnaireManager/createQuestionnaire.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManager/exception/InsertException.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/exception/OperateDBException.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManager/exception/UserValidaException.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/exception/UserValidaException.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManager/handle/QesManagerExceptionHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/handle/GlobalExceptionHandler.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/login/success.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/login/loginSuccess.html" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="src/main/java/com/questionnaire/ssm/module/generated/" />
     <ignored path="src/main/resources/module/generated/" />
+    <ignored path="target/" />
+    <ignored path="logFiles/" />
     <manually-removed-from-ignored>
       <directory path="src/test/" />
       <directory path="/" />
@@ -536,104 +430,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="questionnaire" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="questionnaire" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="questionnaire" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="questionnaire" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="module" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="questionnaire" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="questionnaire" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="module" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mapper" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1069,7 +865,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Ignored.Files" />
     <property name="js.eslint.eslintPackage" value="" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -1084,7 +880,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
     <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/module/generated" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/logFiles" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -1809,7 +1605,7 @@
       <workItem from="1490436207906" duration="3272000" />
       <workItem from="1490440145781" duration="5890000" />
       <workItem from="1490491190679" duration="17288000" />
-      <workItem from="1490510298805" duration="7480000" />
+      <workItem from="1490510298805" duration="8010000" />
     </task>
     <task id="LOCAL-00001" summary="configure changed-no DB">
       <created>1489288376258</created>
@@ -1930,7 +1726,14 @@
       <option name="project" value="LOCAL" />
       <updated>1490496620792</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="更改密码-未完成切面">
+      <created>1490518434994</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1490518434994</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1966,7 +1769,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="194011000" />
+    <option name="totallyTimeSpent" value="194541000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1979,7 +1782,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -2009,7 +1811,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.76229507" sideWeight="0.49394855" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21028744" sideWeight="0.46393442" order="5" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21028744" sideWeight="0.46393442" order="5" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2549168" sideWeight="0.5065574" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="JRebel" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19742814" sideWeight="0.5360656" order="9" side_tool="true" content_ui="tabs" />
@@ -2053,7 +1855,8 @@
     <MESSAGE value="修改了applicationContext-transaction，事务管理统一使用@Transactional&#10;" />
     <MESSAGE value="修改了applicationContext-transaction，事务管理统一使用@Transactional" />
     <MESSAGE value="为避免异常、忽略了mybatis生成目录的git（generated目录文件）" />
-    <option name="LAST_COMMIT_MESSAGE" value="为避免异常、忽略了mybatis生成目录的git（generated目录文件）" />
+    <MESSAGE value="更改密码-未完成切面" />
+    <option name="LAST_COMMIT_MESSAGE" value="更改密码-未完成切面" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2167,6 +1970,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-706">
           <caret line="113" column="13" lean-forward="false" selection-start-line="113" selection-start-column="13" selection-end-line="113" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2182,6 +1986,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
           <caret line="13" column="4" lean-forward="true" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
+          <folding>
+            <element signature="e#430#431#0" expanded="true" />
+            <element signature="e#457#458#0" expanded="true" />
+            <element signature="e#490#491#0" expanded="true" />
+            <element signature="e#519#520#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2204,6 +2014,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-520">
           <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2252,6 +2063,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="194">
           <caret line="42" column="4" lean-forward="false" selection-start-line="42" selection-start-column="4" selection-end-line="42" selection-end-column="4" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2318,6 +2130,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2325,6 +2138,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
           <caret line="35" column="9" lean-forward="true" selection-start-line="35" selection-start-column="9" selection-end-line="35" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2332,6 +2146,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-55">
           <caret line="47" column="16" lean-forward="false" selection-start-line="47" selection-start-column="16" selection-end-line="47" selection-end-column="16" />
+          <folding>
+            <element signature="docComment;method#insertQuestionnaire#0;class#QesManagerServiceImpl#0" expanded="false" />
+            <element signature="docComment;method#listQuestionnaireInfo#0;class#QesManagerServiceImpl#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2357,6 +2175,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="17" column="28" lean-forward="true" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2364,6 +2183,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="27" column="49" lean-forward="false" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="49" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2611,7 +2431,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>Maven: ch.qos.logback:logback-classic:1.1.7</last-edited>
+          <last-edited>Maven: ch.qos.logback:logback-classic:1.2.1</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
