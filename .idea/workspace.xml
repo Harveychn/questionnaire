@@ -5,74 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b71ccd9-b479-4e1c-80a4-7d2729296279" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/deployment.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/webServers.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/aspect/LoginManageAspect.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/controller/QesManageRestController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/mapper/QesManageMapper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/pojo/DisplayQuestionnaireVO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/pojo/ListQuestionnaireVO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/module/QesManage/mapper/QesManageMapper.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/css/bootstrap.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/qesManage/createQuestionnaire.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/qesManage/displayQuestionnaire.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/qesManage/listQuestionnaire.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/questionnaire/ssm/module/generated/mapper/QuestionOptionMapperTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/questionnaire/ssm/module/questionnaireManage/mapper/QesManageMapperTest.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManager/enums/OptionStrDivideEnum.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/questionnaireManager/createQuestionnaire.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/global/aspect/QesManagerAspect.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/questionnaireManager/controller/QesManagerController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/questionnaireManager/enums/CheckInValidEnum.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/questionnaireManager/enums/OptionStrDivideEnum.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/questionnaireManager/enums/QuestionTypeEnum.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/questionnaireManager/pojo/CreateQuestionnaireVO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/questionnaireManager/pojo/QuestionDO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/questionnaireManager/pojo/QuestionDTO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/questionnaireManager/pojo/QuestionOptionDO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/questionnaireManager/service/QesManagerService.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/questionnaireManager/service/impl/QesManagerServiceImpl.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/questionnaireManager/util/CheckVOValidUtil.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/questionnaireManager/util/QuestionnaireDBObjUtil.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/global/aspect/QesManagerAspect.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/questionnaireManager/controller/QesManagerController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/questionnaireManager/enums/CheckInValidEnum.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/questionnaireManager/enums/OptionStrDivideEnum.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/questionnaireManager/enums/QuestionTypeEnum.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/questionnaireManager/pojo/CreateQuestionnaireVO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/questionnaireManager/pojo/QuestionDO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/questionnaireManager/pojo/QuestionDTO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/questionnaireManager/pojo/QuestionOptionDO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/questionnaireManager/service/QesManagerService.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/questionnaireManager/service/impl/QesManagerServiceImpl.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/questionnaireManager/util/CheckVOValidUtil.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/questionnaireManager/util/QuestionnaireDBObjUtil.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/view/questionnaireManager/createQuestionnaire.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/login/controller/SysUserController.class" afterPath="$PROJECT_DIR$/target/classes/com/questionnaire/ssm/module/login/controller/SysUserController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/login/controller/SysUserController.class" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/questionnaire/ssm/module/login/controller/SysUserController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/questionnaire/ssm/module/generated/mapper/QuestionnaireMapperTest.class" afterPath="$PROJECT_DIR$/target/test-classes/com/questionnaire/ssm/module/generated/mapper/QuestionnaireMapperTest.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/enums/UserActionEnum.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/enums/UserActionEnum.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/login/controller/SysUserController.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/login/controller/SysUserController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/login/pojo/NewPasswordVO.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/login/pojo/NewPasswordVO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/spring/applicationContext-shiro.xml" afterPath="$PROJECT_DIR$/src/main/resources/spring/applicationContext-shiro.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/login/loginSuccess.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/login/loginSuccess.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/questionnaire/ssm/module/generated/mapper/QuestionnaireMapperTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/questionnaire/ssm/module/generated/mapper/QuestionnaireMapperTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ssm.iml" afterPath="$PROJECT_DIR$/ssm.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/spring/applicationContext-shiro.xml" afterPath="$PROJECT_DIR$/target/classes/spring/applicationContext-shiro.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/spring/applicationContext-shiro.xml" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/spring/applicationContext-shiro.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/aspect/QesManagerAspect.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/aspect/QesManageAspect.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManager/controller/QesManagerController.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/controller/QesManageController.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManager/enums/CheckInValidEnum.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/enums/CheckInValidEnum.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManager/enums/QuestionTypeEnum.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/enums/QuestionTypeEnum.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManager/pojo/CreateQuestionnaireVO.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/pojo/CreateQuestionnaireVO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManager/pojo/QuestionDO.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/pojo/QuestionVO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManager/pojo/QuestionDTO.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/pojo/QuestionDTO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManager/pojo/QuestionOptionDO.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/pojo/QuestionOptionVO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManager/service/QesManagerService.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/service/QesManageService.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManager/service/impl/QesManagerServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/service/impl/QesManageServiceImpl.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManager/util/CheckVOValidUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/util/CheckVOValidUtil.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManager/util/QuestionnaireDBObjUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/util/QesManageVODOUtil.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="src/main/java/com/questionnaire/ssm/module/generated/" />
@@ -1947,7 +1885,7 @@
       <workItem from="1490529945292" duration="5268000" />
       <workItem from="1490578281101" duration="26235000" />
       <workItem from="1490608878266" duration="6804000" />
-      <workItem from="1490616954278" duration="3811000" />
+      <workItem from="1490616954278" duration="3858000" />
     </task>
     <task id="LOCAL-00001" summary="configure changed-no DB">
       <created>1489288376258</created>
@@ -2082,7 +2020,14 @@
       <option name="project" value="LOCAL" />
       <updated>1490518764712</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="浏览问卷完成">
+      <created>1490621541208</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1490621541208</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -2118,7 +2063,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="236768000" />
+    <option name="totallyTimeSpent" value="236815000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
