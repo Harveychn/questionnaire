@@ -8,7 +8,7 @@ public enum UserActionEnum {
     INSERT_ACTION(1, "增加动作"),
     DELETE_ACTION(2, "删除动作"),
     UPDATE_ACTION(3, "更新动作"),
-    ;
+    SELECT_ACTION(4, "查询动作");
 
     private int code;
     private String action;

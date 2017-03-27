@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>创建问卷</title>
+</head>
+<body>
+<h1 align="center">创建问卷视图</h1>
+<div align="center">
+    <form th:action="@{/questionnaireManager/create}" method="post" th:object="${createQuestionnaireVO}">
+        <div>
+            <label>问卷标题:<input type="text" th:field="*{questionnaireTitle}"/></label>
+        </div>
+        <div>
+            <label>问卷副标题:<input type="text" th:field="*{questionnaireSubtitle}"/></label>
+        </div>
+        <div>
+            <label>问卷描述:<input type="text" id="questionnaireDescription" name="questionnaireDescription"
+                               th:value="*{questionnaireDescription}"/></label>
+        </div>
+        <div>
+            <label>是否模板:<input type="checkbox" th:field="*{template}"/></label>
+        </div>
+        <div>
+            <label>是否创建完成:<input type="checkbox" th:field="*{done}"/> </label>
+        </div>
+        <div>
+            <label>问题1题目：<input type="text" th:field="*{questions[0].questionContext}"></label>
+        </div>
+        <div>
+            <label>问题1题目类型(单选、多选)：<input type="text" th:field="*{questions[0].questionType}" th:value="1"></label>
+        </div>
+        <div>
+            <label>问题1题目是否必做：<input type="checkbox" th:field="*{questions[0].must}"></label>
+        </div>
+        <div>
+            <label>问题1选项顺序：<input type="number" th:field="*{questions[0].options[0].optionOrder}"/> </label>
+            <label>问题1选项内容：<input type="text" th:field="*{questions[0].options[0].option}"/> </label>
+        </div>
+        <div>
+            <label>问题1选项顺序：<input type="number" th:field="*{questions[0].options[1].optionOrder}"/> </label>
+            <label>问题1选项内容：<input type="text" th:field="*{questions[0].options[1].option}"/> </label>
+        </div>
+
+
+        <div>
+            <label>问题2题目：<input type="text" th:field="*{questions[1].questionContext}"></label>
+        </div>
+        <div>
+            <label>问题2题目类型(单选、多选)：<input type="text" th:field="*{questions[1].questionType}" th:value="1"></label>
+        </div>
+        <div>
+            <label>问题2题目是否必做：<input type="checkbox" th:field="*{questions[1].must}"></label>
+        </div>
+        <div>
+            <label>问题2选项顺序：<input type="number" th:field="*{questions[1].options[0].optionOrder}"/> </label>
+            <label>问题2选项内容：<input type="text" th:field="*{questions[1].options[0].option}"/> </label>
+        </div>
+        <div>
+            <label>问题2选项顺序：<input type="number" th:field="*{questions[1].options[1].optionOrder}"/> </label>
+            <label>问题2选项内容：<input type="text" th:field="*{questions[1].options[1].option}"/> </label>
+        </div>
+        <div>
+            <input type="submit" value="提交"/>
+        </div>
+    </form>
+</div>
+</body>
+</html>

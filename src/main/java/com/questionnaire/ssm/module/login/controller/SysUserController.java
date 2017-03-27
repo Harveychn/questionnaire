@@ -39,6 +39,7 @@ public class SysUserController {
         UsernamePasswordToken token = new UsernamePasswordToken(loginVO.getUserTel(), loginVO.getPassword());
         if (null == loginVO.getRememberMe()) {
             token.setRememberMe(false);
+            subject.isRemembered();
         } else {
             token.setRememberMe(true);
         }
