@@ -3,10 +3,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.questionnaire</groupId>
-    <artifactId>ssm</artifactId>
+    <artifactId>questionnaire</artifactId>
     <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
-    <name>ssm</name>
+    <name>questionnaire</name>
     <description>
         SpringMVC+Spring+Mybatis+shiro 框架
     </description>
@@ -76,7 +76,7 @@
         <!--插件版本变量 end-->
 
         <!--其他变量 start-->
-        <war-name.version>ssm</war-name.version>
+        <war-name.version>questionnaire</war-name.version>
         <!--2017.3.20版本1.7改为1.8-->
         <jdk.version>1.8</jdk.version>
 
