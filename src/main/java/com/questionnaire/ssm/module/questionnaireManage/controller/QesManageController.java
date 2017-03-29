@@ -5,7 +5,6 @@ import com.questionnaire.ssm.module.global.util.ResultUtil;
 import com.questionnaire.ssm.module.global.util.UserValidationUtil;
 import com.questionnaire.ssm.module.questionnaireManage.enums.CheckInValidEnum;
 import com.questionnaire.ssm.module.questionnaireManage.pojo.CreateQuestionnaireVO;
-import com.questionnaire.ssm.module.questionnaireManage.pojo.DisplayQuestionnaireVO;
 import com.questionnaire.ssm.module.questionnaireManage.service.QesManageService;
 import com.questionnaire.ssm.module.questionnaireManage.util.CheckVOValidUtil;
 import org.slf4j.Logger;
