@@ -32,25 +32,24 @@
             <td>
                 <label th:if="${questionnaireInfoVO.isDone() == false}">
                     <a th:href="@{/questionnaireManage/test/{id}(id=${questionnaireInfoVO.getQuestionnaireId()})}"
-                       class="btn btn-sm btn-link">继续</a>
+                       class="btn btn-sm btn-link">编辑</a>
                 </label>
                 <label th:if="${questionnaireInfoVO.isDone() == true}">
                     <a th:href="@{/questionnaireManage/displayQuestionnaire/{id}(id=${questionnaireInfoVO.getQuestionnaireId()})}"
                        class="btn btn-sm btn-link">查看</a>
                 </label>
                 <label>
-                    <a th:href="@{/questionnaireManage/test/{id}(id=${questionnaireInfoVO.getQuestionnaireId()})}"
+                    <a th:href="@{/questionnaireManage/delTemporaryQuestionnaire/{id}(id=${questionnaireInfoVO.getQuestionnaireId()})}"
                        class="btn btn-sm btn-link">删除</a>
                 </label>
                 <label th:if="${questionnaireInfoVO.isShare()==false}">
-                    <a th:href="@{/questionnaireManage/test/{id}(id=${questionnaireInfoVO.getQuestionnaireId()})}"
+                    <a th:href="@{/questionnaireManage/shareQuestionnaire/{id}(id=${questionnaireInfoVO.getQuestionnaireId()})}"
                        class="btn btn-sm btn-link">分享</a>
                 </label>
                 <label th:if="${questionnaireInfoVO.isTemplate()==false}">
-                    <a th:href="@{/questionnaireManage/test/{id}(id=${questionnaireInfoVO.getQuestionnaireId()})}"
+                    <a th:href="@{/questionnaireManage/templateQuestionnaire/{id}(id=${questionnaireInfoVO.getQuestionnaireId()})}"
                        class="btn btn-sm btn-link">模板化</a>
                 </label>
-
             </td>
         </tr>
         </tbody>

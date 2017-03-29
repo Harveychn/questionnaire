@@ -25,8 +25,8 @@
         </commentGenerator>
 
         <!--添加你的 JDBC 连接信息-->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1:3306/questionnaire"
-                        userId="root" password="zxh980278090"/>
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://106.14.26.144:3306/questionnaire"
+                        userId="developer" password="dev2017"/>
 
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>

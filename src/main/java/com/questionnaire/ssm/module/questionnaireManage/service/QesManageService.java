@@ -1,5 +1,6 @@
 package com.questionnaire.ssm.module.questionnaireManage.service;
 
+import com.questionnaire.ssm.module.generated.pojo.Questionnaire;
 import com.questionnaire.ssm.module.questionnaireManage.pojo.CreateQuestionnaireVO;
 import com.questionnaire.ssm.module.questionnaireManage.pojo.DisplayQuestionnaireVO;
 import com.questionnaire.ssm.module.questionnaireManage.pojo.ListQuestionnaireVO;
@@ -29,5 +30,32 @@ public interface QesManageService {
      */
     List<ListQuestionnaireVO> listQuestionnaireInfoByUserTel(String userTel) throws Exception;
 
+    /**
+     * 展示问卷
+     *
+     * @param questionnaireId 要展示的问卷Id
+     * @return
+     * @throws Exception
+     */
     DisplayQuestionnaireVO getQuestionnaireById(long questionnaireId) throws Exception;
+
+    /**
+     * 操作单张问卷
+     * 删除、共享、模板化
+     *
+     * @param questionnaireId 要操作问卷的id
+     * @param questionnaire   操作的问卷数据
+     * @throws Exception
+     */
+    void operateQuestionnaireById(long questionnaireId, Questionnaire questionnaire) throws Exception;
+
+    /**
+     * 批量操作问卷
+     *
+     * @param questionnaireIds 批量操作问卷的id信息
+     * @param questionnaire    批量操作的动作
+     * @throws Exception
+     */
+    void operateQuestionnaireByIds(List<Long> questionnaireIds, Questionnaire questionnaire) throws Exception;
+
 }

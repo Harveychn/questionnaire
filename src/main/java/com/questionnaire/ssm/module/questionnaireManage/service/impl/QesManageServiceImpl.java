@@ -206,6 +206,59 @@ public class QesManageServiceImpl implements QesManageService {
         return displayQuestionnaireVO;
     }
 
+    /**
+     * 操作单张问卷
+     * 删除、共享、模板化
+     *
+     * @param questionnaireId 要操作问卷的ID
+     * @throws Exception
+     */
+    @Override
+    @Transactional
+    public void operateQuestionnaireById(long questionnaireId, Questionnaire questionnaire) throws Exception {
+        int result = 0;
+        QuestionnaireExample questionnaireExample = new QuestionnaireExample();
+        questionnaireExample.createCriteria().andQuestionnaireIdEqualTo(questionnaireId);
+        questionnaire.setIsVisible(false);
+        try {
+            result = questionnaireMapper.updateByExampleSelective(questionnaire, questionnaireExample);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            throw new OperateDBException(OperateDBEnum.UNKNOWN_ERROR, DBTableEnum.QUESTIONNAIRE.getTableName());
+        }
+
+        if (result != 1) {
+            throw new OperateDBException(OperateDBEnum.UPDATE_FAIL, DBTableEnum.QUESTIONNAIRE.getTableName());
+        }
+    }
+
+    /**
+     * 批量操作问卷
+     * 删除、共享、模板化
+     *
+     * @param questionnaireIds 批量操作问卷的id信息
+     * @param questionnaire    批量操作的动作
+     * @throws Exception
+     */
+    @Override
+    @Transactional
+    public void operateQuestionnaireByIds(List<Long> questionnaireIds, Questionnaire questionnaire) throws Exception {
+        int result = 0;
+        QuestionnaireExample questionnaireExample = new QuestionnaireExample();
+        questionnaireExample.createCriteria().andQuestionnaireIdIn(questionnaireIds);
+
+        try {
+            result = questionnaireMapper.updateByExampleSelective(questionnaire, questionnaireExample);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            throw new OperateDBException(OperateDBEnum.UNKNOWN_ERROR, DBTableEnum.QUESTIONNAIRE.getTableName());
+        }
+
+        if (result != questionnaireIds.size()) {
+            throw new OperateDBException(OperateDBEnum.UPDATE_FAIL, DBTableEnum.QUESTIONNAIRE.getTableName());
+        }
+    }
+
     private static final Logger logger = LoggerFactory.getLogger(QesManageServiceImpl.class);
     private QuestionnaireMapper questionnaireMapper;
     private QuestionMapper questionMapper;
