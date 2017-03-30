@@ -1,10 +1,10 @@
 package com.questionnaire.ssm.module.questionnaireManage.controller;
 
 import com.questionnaire.ssm.module.generated.pojo.Questionnaire;
+import com.questionnaire.ssm.module.global.enums.CodeEnum;
 import com.questionnaire.ssm.module.global.pojo.ResponsePkt;
 import com.questionnaire.ssm.module.global.util.ResultUtil;
 import com.questionnaire.ssm.module.global.util.UserValidationUtil;
-import com.questionnaire.ssm.module.questionnaireManage.enums.CheckInValidEnum;
 import com.questionnaire.ssm.module.questionnaireManage.pojo.CreateQuestionnaireVO;
 import com.questionnaire.ssm.module.questionnaireManage.service.QesManageService;
 import com.questionnaire.ssm.module.questionnaireManage.util.CheckVOValidUtil;
@@ -17,12 +17,12 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import javax.xml.transform.Result;
 import java.util.Arrays;
 
 /**
  * Created by 郑晓辉 on 2017/3/22.
  * Description:问卷管理控制层
+ *  获取创建问卷视图、创建问卷、查询我的问卷信息、查看问卷、暂时删除问卷、永久删除问卷、共享问卷
  */
 @Controller
 @RequestMapping("/questionnaireManage")
@@ -54,8 +54,8 @@ public class QesManageController {
     @ResponseBody
     public ResponsePkt create(@Valid CreateQuestionnaireVO createQuestionnaireVO) throws Exception {
         if (!CheckVOValidUtil.createQuestionnaireVOValid(createQuestionnaireVO)) {
-            return ResultUtil.error(CheckInValidEnum.QUESTIONNAIRE_TITLE_NULL.getCode(),
-                    CheckInValidEnum.QUESTIONNAIRE_TITLE_NULL.getMessage());
+            return ResultUtil.error(CodeEnum.QUESTIONNAIRE_TITLE_NULL.getCode(),
+                    CodeEnum.QUESTIONNAIRE_TITLE_NULL.getMessage());
         }
         qesManageService.insertQuestionnaire(createQuestionnaireVO);
         return ResultUtil.success();
@@ -163,7 +163,11 @@ public class QesManageController {
      */
     @PostMapping(value = "/delTemporaryMultiQuestionnaire")
     @ResponseBody
-    public ResponsePkt delTemporaryMultiQuestionnaire(Long[] questionnaireIds) throws Exception {
+    public ResponsePkt delTemporaryMultiQuestionnaire(@RequestParam("questionnaireIds") Long[] questionnaireIds) throws Exception {
+        if (questionnaireIds.length <= 0) {
+            return ResultUtil.error(CodeEnum.QUESTIONNAIRE_IDS_NULL.getCode(),
+                    CodeEnum.QUESTIONNAIRE_IDS_NULL.getMessage());
+        }
         Questionnaire questionnaire = OperateQuestionnaireUtil.deleteTemporaryAction();
         qesManageService.operateQuestionnaireByIds(Arrays.asList(questionnaireIds), questionnaire);
         return ResultUtil.success();
@@ -178,7 +182,11 @@ public class QesManageController {
      */
     @PostMapping(value = "/delForeverMultiQuestionnaire")
     @ResponseBody
-    public ResponsePkt delForeverMultiQuestionnaire(Long[] questionnaireIds) throws Exception {
+    public ResponsePkt delForeverMultiQuestionnaire(@RequestParam("questionnaireIds") Long[] questionnaireIds) throws Exception {
+        if (questionnaireIds.length <= 0) {
+            return ResultUtil.error(CodeEnum.QUESTIONNAIRE_IDS_NULL.getCode(),
+                    CodeEnum.QUESTIONNAIRE_IDS_NULL.getMessage());
+        }
         Questionnaire questionnaire = OperateQuestionnaireUtil.deleteForeverAction();
         qesManageService.operateQuestionnaireByIds(Arrays.asList(questionnaireIds), questionnaire);
         return ResultUtil.success();
@@ -194,7 +202,11 @@ public class QesManageController {
      */
     @PostMapping(value = "/shareMultiQuestionnaire")
     @ResponseBody
-    public ResponsePkt shareMultiQuestionnaire(Long[] questionnaireIds) throws Exception {
+    public ResponsePkt shareMultiQuestionnaire(@RequestParam("questionnaireIds") Long[] questionnaireIds) throws Exception {
+        if (questionnaireIds.length <= 0) {
+            return ResultUtil.error(CodeEnum.QUESTIONNAIRE_IDS_NULL.getCode(),
+                    CodeEnum.QUESTIONNAIRE_IDS_NULL.getMessage());
+        }
         Questionnaire questionnaire = OperateQuestionnaireUtil.shareAction();
         qesManageService.operateQuestionnaireByIds(Arrays.asList(questionnaireIds), questionnaire);
         return ResultUtil.success();
@@ -209,7 +221,11 @@ public class QesManageController {
      */
     @PostMapping(value = "/templateMultiQuestionnaire")
     @ResponseBody
-    public ResponsePkt templateMultiQuestionnaire(Long[] questionnaireIds) throws Exception {
+    public ResponsePkt templateMultiQuestionnaire(@RequestParam("questionnaireIds") Long[] questionnaireIds) throws Exception {
+        if (questionnaireIds.length <= 0) {
+            return ResultUtil.error(CodeEnum.QUESTIONNAIRE_IDS_NULL.getCode(),
+                    CodeEnum.QUESTIONNAIRE_IDS_NULL.getMessage());
+        }
         Questionnaire questionnaire = OperateQuestionnaireUtil.templateAction();
         qesManageService.operateQuestionnaireByIds(Arrays.asList(questionnaireIds), questionnaire);
         return ResultUtil.success();

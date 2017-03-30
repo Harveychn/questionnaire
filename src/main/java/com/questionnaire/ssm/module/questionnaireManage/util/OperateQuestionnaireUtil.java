@@ -4,7 +4,7 @@ import com.questionnaire.ssm.module.generated.pojo.Questionnaire;
 
 /**
  * Created by 郑晓辉 on 2017/3/29.
- * Description: 操作问卷的工具包
+ * Description: 操作问卷动作的工具包
  */
 public class OperateQuestionnaireUtil {
 

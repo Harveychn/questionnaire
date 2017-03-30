@@ -1,6 +1,6 @@
 package com.questionnaire.ssm.module.global.util;
 
-import com.questionnaire.ssm.module.global.enums.RequestResultEnum;
+import com.questionnaire.ssm.module.global.enums.CodeEnum;
 import com.questionnaire.ssm.module.global.pojo.ResponsePkt;
 
 /**
@@ -16,8 +16,8 @@ public class ResultUtil {
      */
     public static ResponsePkt success(Object object) {
         ResponsePkt responsePkt = new ResponsePkt();
-        responsePkt.setCode(RequestResultEnum.SUCCESS.getCode());
-        responsePkt.setMessage(RequestResultEnum.SUCCESS.getMessage());
+        responsePkt.setCode(CodeEnum.REQUEST_SUCCESS.getCode());
+        responsePkt.setMessage(CodeEnum.REQUEST_SUCCESS.getMessage());
         responsePkt.setData(object);
         return responsePkt;
     }
@@ -34,8 +34,8 @@ public class ResultUtil {
     /**
      * 响应错误状态以及错误信息
      *
-     * @param code
-     * @param message
+     * @param code    错误代码
+     * @param message 错误信息
      * @return
      */
     public static ResponsePkt error(int code, String message) {

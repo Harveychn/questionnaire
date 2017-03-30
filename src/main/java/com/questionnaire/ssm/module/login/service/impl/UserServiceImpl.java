@@ -2,15 +2,14 @@ package com.questionnaire.ssm.module.login.service.impl;
 
 import com.questionnaire.ssm.module.generated.mapper.UserMapper;
 import com.questionnaire.ssm.module.generated.pojo.User;
+import com.questionnaire.ssm.module.global.enums.CodeEnum;
 import com.questionnaire.ssm.module.global.enums.DBTableEnum;
-import com.questionnaire.ssm.module.global.enums.OperateDBEnum;
-import com.questionnaire.ssm.module.global.enums.UserValidaEnum;
+import com.questionnaire.ssm.module.global.enums.CodeEnum;
 import com.questionnaire.ssm.module.global.exception.OperateDBException;
 import com.questionnaire.ssm.module.global.exception.UserValidaException;
 import com.questionnaire.ssm.module.global.util.UserValidationUtil;
 import com.questionnaire.ssm.module.login.pojo.NewPasswordVO;
 import com.questionnaire.ssm.module.login.service.UserService;
-import com.questionnaire.ssm.module.login.utils.UserDBObjUtil;
 import com.questionnaire.ssm.module.login.utils.UserUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,18 +32,18 @@ public class UserServiceImpl implements UserService {
         try {
             userNew = userMapper.selectByPrimaryKey(userTel);
         } catch (Exception e) {
-            logger.error(OperateDBEnum.UNKNOWN_ERROR.getMessage() + "\n" + DBTableEnum.USER.getTableName());
-            throw new OperateDBException(OperateDBEnum.UNKNOWN_ERROR, DBTableEnum.USER.getTableName());
+            logger.error(CodeEnum.UNKNOWN_ERROR.getMessage() + "\n" + DBTableEnum.USER.getTableName());
+            throw new OperateDBException(CodeEnum.UNKNOWN_ERROR, DBTableEnum.USER.getTableName());
         }
         if (userNew == null) {
-            throw new OperateDBException(OperateDBEnum.SELECT_FAIL, DBTableEnum.USER.getTableName());
+            throw new OperateDBException(CodeEnum.DB_SELECT_FAIL, DBTableEnum.USER.getTableName());
         }
 
         String oldPassword = userNew.getPassword();
         userNew.setPassword(newPasswordVO.getOldPassword());
         /*旧密码不相同*/
         if (!oldPassword.equals(UserUtil.encodePassword(userNew))) {
-            throw new UserValidaException(UserValidaEnum.OLD_PASSWORD_ERROR);
+            throw new UserValidaException(CodeEnum.OLD_PASSWORD_ERROR);
         }
 
         userNew.setPassword(newPasswordVO.getNewPassword());
@@ -53,11 +52,11 @@ public class UserServiceImpl implements UserService {
         try {
             result = userMapper.updateByPrimaryKeySelective(UserUtil.encoded(userNew));
         } catch (Exception e) {
-            logger.error(OperateDBEnum.UNKNOWN_ERROR.getMessage() + "\n" + DBTableEnum.USER.getTableName());
-            throw new OperateDBException(OperateDBEnum.UNKNOWN_ERROR, DBTableEnum.USER.getTableName());
+            logger.error(CodeEnum.UNKNOWN_ERROR.getMessage() + "\n" + DBTableEnum.USER.getTableName());
+            throw new OperateDBException(CodeEnum.UNKNOWN_ERROR, DBTableEnum.USER.getTableName());
         }
         if (result != 1) {
-            throw new OperateDBException(OperateDBEnum.UPDATE_FAIL, DBTableEnum.USER.getTableName());
+            throw new OperateDBException(CodeEnum.DB_UPDATE_FAIL, DBTableEnum.USER.getTableName());
         }
     }
 
