@@ -99,31 +99,6 @@ public class SysUserController {
         return "login/newKeySuccess";
     }
 
-    /**
-     * 测试权限及角色管理
-     */
-    @GetMapping(value = "/testRoleLimit")
-    @ResponseBody
-    public String testRoleLimit() throws Exception {
-        Subject subject = SecurityUtils.getSubject();
-        if (subject.hasRole("系统管理员")) {
-            return "role OK";
-        } else {
-            return "role Fail";
-        }
-    }
-
-    @GetMapping(value = "/testPermissionLimit")
-    @ResponseBody
-    public String testPermissionLimit() throws Exception {
-        Subject subject = SecurityUtils.getSubject();
-        if (subject.isPermitted("权限1")) {
-            return "permission OK";
-        } else {
-            return "permission Fail";
-        }
-    }
-
     private UserService userService;
 
     @Autowired

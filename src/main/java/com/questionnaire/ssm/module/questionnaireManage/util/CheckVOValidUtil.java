@@ -8,6 +8,14 @@ import com.questionnaire.ssm.module.questionnaireManage.pojo.CreateQuestionnaire
  */
 public class CheckVOValidUtil {
 
+    /**
+     * 校验创建问卷的VO实体
+     * 问卷标题不得为空
+     *
+     * @param questionnaireVO
+     * @return
+     * @throws Exception
+     */
     public static boolean createQuestionnaireVOValid(CreateQuestionnaireVO questionnaireVO) throws Exception {
         if (null == questionnaireVO.getQuestionnaireTitle()
                 || "".equals(questionnaireVO.getQuestionnaireTitle().trim())) {

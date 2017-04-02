@@ -1,12 +1,15 @@
 package com.questionnaire.ssm.module.questionnaireManage.controller;
 
+import com.questionnaire.ssm.module.generated.pojo.Questionnaire;
+import com.questionnaire.ssm.module.global.enums.CodeForVOEnum;
+import com.questionnaire.ssm.module.global.enums.UserActionEnum;
 import com.questionnaire.ssm.module.global.pojo.ResponsePkt;
 import com.questionnaire.ssm.module.global.util.ResultUtil;
 import com.questionnaire.ssm.module.global.util.UserValidationUtil;
-import com.questionnaire.ssm.module.questionnaireManage.enums.CheckInValidEnum;
 import com.questionnaire.ssm.module.questionnaireManage.pojo.CreateQuestionnaireVO;
 import com.questionnaire.ssm.module.questionnaireManage.service.QesManageService;
 import com.questionnaire.ssm.module.questionnaireManage.util.CheckVOValidUtil;
+import com.questionnaire.ssm.module.questionnaireManage.util.OperateQuestionnaireUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +18,12 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.Arrays;
 
 /**
  * Created by 郑晓辉 on 2017/3/22.
  * Description:问卷管理控制层
+ * 获取创建问卷视图、创建问卷、查询我的问卷信息、查看问卷、暂时删除问卷、永久删除问卷、共享问卷
  */
 @Controller
 @RequestMapping("/questionnaireManage")
@@ -50,8 +55,8 @@ public class QesManageController {
     @ResponseBody
     public ResponsePkt create(@Valid CreateQuestionnaireVO createQuestionnaireVO) throws Exception {
         if (!CheckVOValidUtil.createQuestionnaireVOValid(createQuestionnaireVO)) {
-            return ResultUtil.error(CheckInValidEnum.QUESTIONNAIRE_TITLE_NULL.getCode(),
-                    CheckInValidEnum.QUESTIONNAIRE_TITLE_NULL.getMessage());
+            return ResultUtil.error(CodeForVOEnum.QUESTIONNAIRE_TITLE_NULL.getCode(),
+                    CodeForVOEnum.QUESTIONNAIRE_TITLE_NULL.getMessage());
         }
         qesManageService.insertQuestionnaire(createQuestionnaireVO);
         return ResultUtil.success();
@@ -88,12 +93,147 @@ public class QesManageController {
         return modelAndView;
     }
 
-    @GetMapping(value = "/test/{id}")
+    /**
+     * 单张问卷根据问卷Id暂时删除问卷(visible = false)
+     *
+     * @param questionnaireId 要删除的问卷id
+     * @return
+     * @throws Exception
+     */
+    @GetMapping(value = "/delTemporaryQuestionnaire/{questionnaireId}")
     @ResponseBody
-    public String test(@PathVariable("id") long id) throws Exception {
-        System.out.println(id);
-        return "ok! id=" + id;
+    public ResponsePkt delTemporaryQuestionnaire(@PathVariable("questionnaireId") long questionnaireId) throws Exception {
+        Questionnaire questionnaire = OperateQuestionnaireUtil.deleteTemporaryAction();
+        qesManageService.delOrTemplateQesById(questionnaireId, questionnaire, UserActionEnum.DELETE_TEMPORARY_QUESTIONNAIRE);
+        return ResultUtil.success();
     }
+
+    /**
+     * 单张问卷永久删除(delete = true)
+     *
+     * @param questionnaireId 要删除问卷的id
+     * @return
+     * @throws Exception
+     */
+    @GetMapping(value = "/delForeverQuestionnaire/{questionnaireId}")
+    @ResponseBody
+    public ResponsePkt delForeverQuestionnaire(@PathVariable("questionnaireId") long questionnaireId) throws Exception {
+        Questionnaire questionnaire = OperateQuestionnaireUtil.deleteForeverAction();
+        qesManageService.delOrTemplateQesById(questionnaireId, questionnaire, UserActionEnum.DELETE_FOREVER_QUESTIONNAIRE);
+        return ResultUtil.success();
+    }
+
+    /**
+     * 单张问卷根据问卷Id分享问卷
+     *
+     * @param questionnaireId 要分享的问卷id
+     * @return
+     * @throws Exception
+     */
+    @GetMapping(value = "/shareQuestionnaire/{questionnaireId}")
+    @ResponseBody
+    public ResponsePkt shareQuestionnaire(@PathVariable("questionnaireId") long questionnaireId) throws Exception {
+        qesManageService.shareQesPaperById(questionnaireId, UserActionEnum.SHARE_QUESTIONNAIRE);
+        return ResultUtil.success();
+    }
+
+    /**
+     * 单张问卷模板化
+     *
+     * @param questionnaireId 要模板化问卷的id
+     * @return
+     * @throws Exception
+     */
+    @GetMapping(value = "/templateQuestionnaire/{questionnaireId}")
+    @ResponseBody
+    public ResponsePkt templateQuestionnaire(@PathVariable("questionnaireId") long questionnaireId) throws Exception {
+        Questionnaire questionnaire = OperateQuestionnaireUtil.templateAction();
+        qesManageService.delOrTemplateQesById(questionnaireId, questionnaire, UserActionEnum.ADD_TO_MY_TEMPLATE);
+        return ResultUtil.success();
+    }
+
+
+    /*批量操作开始*/
+
+    /**
+     * 批量暂时删除问卷(visible = false)
+     *
+     * @return
+     * @throws Exception
+     */
+    @PostMapping(value = "/delTemporaryMultiQuestionnaire")
+    @ResponseBody
+    public ResponsePkt delTemporaryMultiQuestionnaire(@RequestParam("questionnaireIds") Long[] questionnaireIds) throws Exception {
+        if (questionnaireIds.length <= 0) {
+            return ResultUtil.error(CodeForVOEnum.QUESTIONNAIRE_IDS_NULL.getCode(),
+                    CodeForVOEnum.QUESTIONNAIRE_IDS_NULL.getMessage());
+        }
+        Questionnaire questionnaire = OperateQuestionnaireUtil.deleteTemporaryAction();
+        qesManageService.delOrTemplateQesByIds(Arrays.asList(questionnaireIds)
+                , questionnaire, UserActionEnum.DELETE_TEMPORARY_MULTI_QUESTIONNAIRE);
+        return ResultUtil.success();
+    }
+
+    /**
+     * 批量永久删除问卷（delete = true）
+     *
+     * @param questionnaireIds
+     * @return
+     * @throws Exception
+     */
+    @PostMapping(value = "/delForeverMultiQuestionnaire")
+    @ResponseBody
+    public ResponsePkt delForeverMultiQuestionnaire(@RequestParam("questionnaireIds") Long[] questionnaireIds) throws Exception {
+        if (questionnaireIds.length <= 0) {
+            return ResultUtil.error(CodeForVOEnum.QUESTIONNAIRE_IDS_NULL.getCode(),
+                    CodeForVOEnum.QUESTIONNAIRE_IDS_NULL.getMessage());
+        }
+        Questionnaire questionnaire = OperateQuestionnaireUtil.deleteForeverAction();
+        qesManageService.delOrTemplateQesByIds(Arrays.asList(questionnaireIds)
+                , questionnaire, UserActionEnum.DELETE_FOREVER_MULTI_QUESTIONNAIRE);
+        return ResultUtil.success();
+    }
+
+
+    /**
+     * 批量共享问卷
+     *
+     * @param questionnaireIds
+     * @return
+     * @throws Exception
+     */
+    @PostMapping(value = "/shareMultiQuestionnaire")
+    @ResponseBody
+    public ResponsePkt shareMultiQuestionnaire(@RequestParam("questionnaireIds") Long[] questionnaireIds) throws Exception {
+        if (questionnaireIds.length <= 0) {
+            return ResultUtil.error(CodeForVOEnum.QUESTIONNAIRE_IDS_NULL.getCode(),
+                    CodeForVOEnum.QUESTIONNAIRE_IDS_NULL.getMessage());
+        }
+        qesManageService.shareQesPaperByIds(Arrays.asList(questionnaireIds),
+                UserActionEnum.SHARE_MULTI_QUESTIONNAIRE);
+        return ResultUtil.success();
+    }
+
+    /**
+     * 批量模板化问卷
+     *
+     * @param questionnaireIds
+     * @return
+     * @throws Exception
+     */
+    @PostMapping(value = "/templateMultiQuestionnaire")
+    @ResponseBody
+    public ResponsePkt templateMultiQuestionnaire(@RequestParam("questionnaireIds") Long[] questionnaireIds) throws Exception {
+        if (questionnaireIds.length <= 0) {
+            return ResultUtil.error(CodeForVOEnum.QUESTIONNAIRE_IDS_NULL.getCode(),
+                    CodeForVOEnum.QUESTIONNAIRE_IDS_NULL.getMessage());
+        }
+        Questionnaire questionnaire = OperateQuestionnaireUtil.templateAction();
+        qesManageService.delOrTemplateQesByIds(Arrays.asList(questionnaireIds)
+                , questionnaire, UserActionEnum.MULTI_ADD_TO_MY_TEMPLATE);
+        return ResultUtil.success();
+    }
+
 
     private static final Logger logger = LoggerFactory.getLogger(QesManageController.class);
     private QesManageService qesManageService;

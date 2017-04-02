@@ -5,7 +5,7 @@ import org.apache.shiro.crypto.hash.SimpleHash;
 
 /**
  * Created by 郑晓辉 on 2017/3/20.
- * Description:
+ * Description: login模块用户工具类
  */
 public class UserUtil {
 

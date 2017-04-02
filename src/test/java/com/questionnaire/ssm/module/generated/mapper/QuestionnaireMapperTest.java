@@ -1,9 +1,6 @@
 package com.questionnaire.ssm.module.generated.mapper;
 
-import com.questionnaire.ssm.module.generated.pojo.MappingQuestionnaireQuestion;
-import com.questionnaire.ssm.module.generated.pojo.Question;
-import com.questionnaire.ssm.module.generated.pojo.QuestionOption;
-import com.questionnaire.ssm.module.generated.pojo.Questionnaire;
+import com.questionnaire.ssm.module.generated.pojo.*;
 import com.questionnaire.ssm.module.questionnaireManage.enums.QuestionTypeEnum;
 import com.questionnaire.ssm.module.questionnaireManage.pojo.CreateQuestionnaireVO;
 import com.questionnaire.ssm.module.questionnaireManage.pojo.QuestionVO;
@@ -18,7 +15,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
+import java.sql.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -65,13 +64,13 @@ public class QuestionnaireMapperTest {
                 questionVO.setQuestionType(QuestionTypeEnum.SINGLE_CHOICE.getCode());
                 questionVO.setMust(true);
             }
-            questionVO.setQuestionDescription("xxx问题描述" + (i+1));
-            questionVO.setQuestionContext("xxx问题" + (i+1));
+            questionVO.setQuestionDescription("xxx问题描述" + (i + 1));
+            questionVO.setQuestionContext("xxx问题" + (i + 1));
             optionsDemo = new ArrayList<>();
             for (int j = 0; j < 5; j++) {
                 questionOptionVO = new QuestionOptionVO();
                 questionOptionVO.setOptionOrder(j);
-                questionOptionVO.setOption("xxx问题" + (i+1) + ":xx选项" + (j+1));
+                questionOptionVO.setOption("xxx问题" + (i + 1) + ":xx选项" + (j + 1));
                 optionsDemo.add(j, questionOptionVO);
             }
             questionVO.setOptions(optionsDemo);
@@ -118,5 +117,20 @@ public class QuestionnaireMapperTest {
             insertResult = 0;
         }
 
+    }
+
+    @Test
+    public void updateMultiQuestionnaires() throws Exception {
+        Long[] questionnaireIds = {9L, 10L, 11L};
+        int result = 0;
+        QuestionnaireExample questionnaireExample = new QuestionnaireExample();
+        questionnaireExample.createCriteria().andQuestionnaireIdIn(Arrays.asList(questionnaireIds));
+
+        Questionnaire questionnaire = new Questionnaire();
+        questionnaire.setIsVisible(true);
+
+        result = questionnaireMapper.updateByExampleSelective(questionnaire, questionnaireExample);
+
+        assertEquals(3, result);
     }
 }
