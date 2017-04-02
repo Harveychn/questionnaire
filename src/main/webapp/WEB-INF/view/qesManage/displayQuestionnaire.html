@@ -9,7 +9,7 @@
 <h1 align="center">问卷详细信息</h1>
 <div align="center">
     <div th:if="${displayQuestionnaireVO!=null}"
-         th:class="${displayQuestionnaireVO!=null}? 'table table-bordered':''">
+         class="table table-bordered">
         <div><label th:text="${displayQuestionnaireVO.questionnaireId}"></label></div>
         <div><label th:text="${displayQuestionnaireVO.questionnaireTitle}"></label></div>
         <div><label th:text="${displayQuestionnaireVO.questionnaireSubtitle}"></label></div>

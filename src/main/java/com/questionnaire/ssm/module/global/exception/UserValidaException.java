@@ -1,6 +1,6 @@
 package com.questionnaire.ssm.module.global.exception;
 
-import com.questionnaire.ssm.module.global.enums.CodeEnum;
+import com.questionnaire.ssm.module.global.enums.CodeForVOEnum;
 
 /**
  * Created by 郑晓辉 on 2017/3/25.
@@ -10,9 +10,9 @@ public class UserValidaException extends RuntimeException {
     /*错误代码*/
     private int code;
 
-    public UserValidaException(CodeEnum codeEnum) {
-        super(codeEnum.getMessage());
-        this.code = codeEnum.getCode();
+    public UserValidaException(CodeForVOEnum codeForVOEnum) {
+        super(codeForVOEnum.getMessage());
+        this.code = codeForVOEnum.getCode();
     }
 
     public int getCode() {

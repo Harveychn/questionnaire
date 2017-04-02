@@ -1,5 +1,6 @@
 package com.questionnaire.ssm.module.questionnaireManage.util;
 
+import com.questionnaire.ssm.module.generated.pojo.MappingQuestionnaireQuestion;
 import com.questionnaire.ssm.module.generated.pojo.Questionnaire;
 
 /**
@@ -55,5 +56,50 @@ public class OperateQuestionnaireUtil {
         Questionnaire questionnaire = new Questionnaire();
         questionnaire.setIsTemplate(true);
         return questionnaire;
+    }
+
+    /**
+     * 共享问卷时，需要赋值一份新的问卷信息
+     *
+     * @param questionnaire 要复制的问卷信息
+     * @return
+     * @throws Exception
+     */
+    public static Questionnaire copyQesPaper(Questionnaire questionnaire) throws Exception {
+        Questionnaire copiedQuestionnaire = new Questionnaire();
+        /*公共问卷均为模板*/
+        copiedQuestionnaire.setIsShare(true);
+        copiedQuestionnaire.setIsTemplate(true);
+
+        copiedQuestionnaire.setIsVisible(true);
+        copiedQuestionnaire.setIsDelete(false);
+        copiedQuestionnaire.setIsDone(true);
+
+        /*问卷标题不得为空*/
+        copiedQuestionnaire.setQuestionnaireTitle(questionnaire.getQuestionnaireTitle());
+        if (questionnaire.getQuestionnaireSubtitle() != null) {
+            copiedQuestionnaire.setQuestionnaireSubtitle(questionnaire.getQuestionnaireSubtitle());
+        }
+        if (questionnaire.getQuestionnaireDescription() != null) {
+            copiedQuestionnaire.setQuestionnaireDescription(questionnaire.getQuestionnaireDescription());
+        }
+        return copiedQuestionnaire;
+    }
+
+    /**
+     * 共享问卷时，需要赋值一份问卷-问题映射关系
+     *
+     * @param mappingQuestionnaireQuestion 其中问卷id为新获取的问卷id
+     * @return
+     * @throws Exception
+     */
+    public static MappingQuestionnaireQuestion copyMapQesPaperQes(MappingQuestionnaireQuestion mappingQuestionnaireQuestion) throws Exception {
+        MappingQuestionnaireQuestion copiedMap = new MappingQuestionnaireQuestion();
+
+        copiedMap.setQuestionnaireId(mappingQuestionnaireQuestion.getQuestionnaireId());
+        copiedMap.setQuestionId(mappingQuestionnaireQuestion.getQuestionId());
+        copiedMap.setQuestionOrder(mappingQuestionnaireQuestion.getQuestionOrder());
+
+        return copiedMap;
     }
 }

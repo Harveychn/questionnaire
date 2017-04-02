@@ -1,6 +1,6 @@
 package com.questionnaire.ssm.module.global.util;
 
-import com.questionnaire.ssm.module.global.enums.CodeEnum;
+import com.questionnaire.ssm.module.global.enums.CodeForVOEnum;
 import com.questionnaire.ssm.module.global.pojo.ResponsePkt;
 
 /**
@@ -16,8 +16,8 @@ public class ResultUtil {
      */
     public static ResponsePkt success(Object object) {
         ResponsePkt responsePkt = new ResponsePkt();
-        responsePkt.setCode(CodeEnum.REQUEST_SUCCESS.getCode());
-        responsePkt.setMessage(CodeEnum.REQUEST_SUCCESS.getMessage());
+        responsePkt.setCode(CodeForVOEnum.REQUEST_SUCCESS.getCode());
+        responsePkt.setMessage(CodeForVOEnum.REQUEST_SUCCESS.getMessage());
         responsePkt.setData(object);
         return responsePkt;
     }

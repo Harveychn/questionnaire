@@ -1,6 +1,6 @@
 package com.questionnaire.ssm.module.global.exception;
 
-import com.questionnaire.ssm.module.global.enums.CodeEnum;
+import com.questionnaire.ssm.module.global.enums.CodeForVOEnum;
 
 /**
  * Created by 郑晓辉 on 2017/3/22.
@@ -12,9 +12,9 @@ public class OperateDBException extends RuntimeException {
     /*错误表格*/
     private String tableNme;
 
-    public OperateDBException(CodeEnum codeEnum, String tableNme) {
-        super(codeEnum.getMessage());
-        this.code = codeEnum.getCode();
+    public OperateDBException(CodeForVOEnum codeForVOEnum, String tableNme) {
+        super(codeForVOEnum.getMessage());
+        this.code = codeForVOEnum.getCode();
         this.tableNme = tableNme;
     }
 
