@@ -1,8 +1,13 @@
 package com.questionnaire.ssm.module.login.service.impl;
 
-import com.questionnaire.ssm.module.global.enums.ModifyUserEnum;
 import com.questionnaire.ssm.module.generated.mapper.UserMapper;
 import com.questionnaire.ssm.module.generated.pojo.User;
+import com.questionnaire.ssm.module.global.enums.CodeForVOEnum;
+import com.questionnaire.ssm.module.global.enums.DBTableEnum;
+import com.questionnaire.ssm.module.global.exception.OperateDBException;
+import com.questionnaire.ssm.module.global.exception.UserValidaException;
+import com.questionnaire.ssm.module.global.util.UserValidationUtil;
+import com.questionnaire.ssm.module.login.pojo.NewPasswordVO;
 import com.questionnaire.ssm.module.login.service.UserService;
 import com.questionnaire.ssm.module.login.utils.UserUtil;
 import org.slf4j.Logger;
@@ -17,27 +22,49 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService {
 
+    @Override
+    public void updateUserPassword(NewPasswordVO newPasswordVO) throws Exception {
+
+        User userNew = null;
+
+        String userTel = UserValidationUtil.getUserTel(logger);
+        try {
+            userNew = userMapper.selectByPrimaryKey(userTel);
+        } catch (Exception e) {
+            logger.error(CodeForVOEnum.UNKNOWN_ERROR.getMessage() + "\n" + DBTableEnum.USER.getTableName());
+            throw new OperateDBException(CodeForVOEnum.UNKNOWN_ERROR, DBTableEnum.USER.getTableName());
+        }
+        if (userNew == null) {
+            throw new OperateDBException(CodeForVOEnum.DB_SELECT_FAIL, DBTableEnum.USER.getTableName());
+        }
+
+        String oldPassword = userNew.getPassword();
+        userNew.setPassword(newPasswordVO.getOldPassword());
+        /*旧密码不相同*/
+        if (!oldPassword.equals(UserUtil.encodePassword(userNew))) {
+            throw new UserValidaException(CodeForVOEnum.OLD_PASSWORD_ERROR);
+        }
+
+        userNew.setPassword(newPasswordVO.getNewPassword());
+
+        int result = 0;
+        try {
+            result = userMapper.updateByPrimaryKeySelective(UserUtil.encoded(userNew));
+        } catch (Exception e) {
+            logger.error(CodeForVOEnum.UNKNOWN_ERROR.getMessage() + "\n" + DBTableEnum.USER.getTableName());
+            throw new OperateDBException(CodeForVOEnum.UNKNOWN_ERROR, DBTableEnum.USER.getTableName());
+        }
+        if (result != 1) {
+            throw new OperateDBException(CodeForVOEnum.DB_UPDATE_FAIL, DBTableEnum.USER.getTableName());
+        }
+    }
+
+
     private final static Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
     private UserMapper userMapper;
 
     @Autowired
     public UserServiceImpl(UserMapper userMapper) {
         this.userMapper = userMapper;
-    }
-
-    public int updateUserInfoSelective(User userNew) throws Exception {
-
-        int updateResult = 0;
-        try {
-            updateResult = userMapper.updateByPrimaryKeySelective(UserUtil.cloneUser(userNew));
-        } catch (Exception e) {
-            logger.error("[MESSAGE]:" + e.getMessage() + "\n[CAUSE]:" + e.getCause());
-            return ModifyUserEnum.UPDATE_FAIL.getCode();
-        }
-
-        if (1 == updateResult) {
-            return ModifyUserEnum.UPDATE_SUCCESS.getCode();
-        }
-        return ModifyUserEnum.UPDATE_FAIL.getCode();
     }
 }

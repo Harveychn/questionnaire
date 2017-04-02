@@ -29,8 +29,10 @@ public class UserMapperTest {
     public void updateByPrimaryKeySelective() throws Exception {
         User user = new User();
         user.setUserTel("11111111111");
+//        user.setUserTel("17764591959");
         user.setUserRealName("admin");
-        user.setId("111");
+//        user.setId("111");
+        user.setRoleId(2L);
         user.setRoleId(1L);
         user.setUnitId(1L);
         user.setMailAddress("980278090@qq.com");
@@ -40,10 +42,10 @@ public class UserMapperTest {
 
         //加密处理
         String algorithmName = "md5";
-        String password = "2222";
+        String password = "222222";
         int hashIterations = 3;
         SimpleHash hash = new SimpleHash(algorithmName, password,
-                user.getUserRealName() + user.getMailAddress(), hashIterations);
+                user.getUserTel() + user.getUserRealName(), hashIterations);
         String encodedPassword = hash.toHex();
 //        System.out.println(encodedPassword);
 

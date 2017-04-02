@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>展示问卷视图</title>
+    <link th:href="@{/css/bootstap.min.css}" rel="stylesheet"/>
+</head>
+<body>
+<h1 align="center">问卷详细信息</h1>
+<div align="center">
+    <div th:if="${displayQuestionnaireVO!=null}"
+         class="table table-bordered">
+        <div><label th:text="${displayQuestionnaireVO.questionnaireId}"></label></div>
+        <div><label th:text="${displayQuestionnaireVO.questionnaireTitle}"></label></div>
+        <div><label th:text="${displayQuestionnaireVO.questionnaireSubtitle}"></label></div>
+        <div><label th:text="${displayQuestionnaireVO.questionnaireDescription}"></label></div>
+        <div th:if="${displayQuestionnaireVO.questions.size()>0}">
+            <div th:each="question : ${displayQuestionnaireVO.questions}">
+                <label th:text="${questionStat.count}"></label>
+                <label th:text="${question.questionContext}"></label><br/>
+                <label th:text="${question.questionDescription}"></label><br/>
+                <label th:text="${question.must}"></label><br/>
+                <label th:text="${question.questionType}"></label><br/>
+                <div th:if="${question.options.size()>0}">
+                    <div th:each=" option : ${question.options}">
+                        <lable th:text="${option.optionOrder}"></lable>
+                        <label th:text="${option.option}"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

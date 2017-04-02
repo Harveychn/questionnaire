@@ -7,7 +7,7 @@ package com.questionnaire.ssm.module.global.enums;
 public enum DBTableEnum {
     ANSWER(1, "answer"),
     ANSWER_PAPER(2, "answer_paper"),
-    MAPPING_ANSWER_PAPER_QUESTION(3, "mapping_answer_paper_question"),
+    MAPPING_ANSWER_PAPER_ANSWER(3, "mapping_answer_paper_answer"),
     MAPPING_MISSION_QUESTIONNAIRE(4, "mapping_answer_mission_questionnaire"),
     MAPPING_MISSION_ROLE(5, "mapping_mission_role"),
     MAPPING_MISSION_UNIT(6, "mapping_mission_unit"),

@@ -1,20 +1,22 @@
 package com.questionnaire.ssm.module.login.controller;
 
 import com.questionnaire.ssm.module.login.pojo.LoginVO;
+import com.questionnaire.ssm.module.login.pojo.NewPasswordVO;
+import com.questionnaire.ssm.module.login.service.UserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.UnauthorizedException;
 import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 /**
  * 用户登录管理，登陆成功后
@@ -26,8 +28,8 @@ public class SysUserController {
 
     private static final Logger logger = LoggerFactory.getLogger(SysUserController.class);
 
-    @GetMapping(value = "/getInitView")
-    public String getInitView() throws Exception {
+    @GetMapping(value = "/getLoginView")
+    public String getLoginView() throws Exception {
         return "../../login";
     }
 
@@ -37,6 +39,7 @@ public class SysUserController {
         UsernamePasswordToken token = new UsernamePasswordToken(loginVO.getUserTel(), loginVO.getPassword());
         if (null == loginVO.getRememberMe()) {
             token.setRememberMe(false);
+            subject.isRemembered();
         } else {
             token.setRememberMe(true);
         }
@@ -68,7 +71,7 @@ public class SysUserController {
         } else {
             subject.getSession().setAttribute("userTel", loginVO.getUserTel());
             model.addAttribute("user", loginVO);
-            return "login/success";
+            return "login/loginSuccess";
         }
     }
 
@@ -81,30 +84,25 @@ public class SysUserController {
         return "redirect:/";
     }
 
-
-    /**
-     * 测试权限及角色管理
-     */
-    @GetMapping(value = "/testRoleLimit")
-    @ResponseBody
-    public String testRoleLimit() throws Exception {
-        Subject subject = SecurityUtils.getSubject();
-        if (subject.hasRole("系统管理员")) {
-            return "role OK";
-        } else {
-            return "role Fail";
-        }
+    @GetMapping(value = "/newPasswordView")
+    public String newPasswordView(Model model) throws Exception {
+        model.addAttribute("newPasswordVO", new NewPasswordVO());
+        return "login/newKey";
     }
 
-    @GetMapping(value = "/testPermissionLimit")
-    @ResponseBody
-    public String testPermissionLimit() throws Exception {
-        Subject subject = SecurityUtils.getSubject();
-        if (subject.isPermitted("权限1")) {
-            return "permission OK";
-        } else {
-            return "permission Fail";
+    @PostMapping(value = "/changPassword")
+    public String changPassword(@Valid NewPasswordVO newPasswordVO, BindingResult result) throws Exception {
+        if (result.hasErrors()){
+           return "login/newKey";
         }
+        userService.updateUserPassword(newPasswordVO);
+        return "login/newKeySuccess";
     }
 
+    private UserService userService;
+
+    @Autowired
+    public SysUserController(UserService userService) {
+        this.userService = userService;
+    }
 }
