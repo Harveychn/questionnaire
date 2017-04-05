@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.questionnaire.ssm.module.qesTemplateManage.mapper.QesTemplateManageMapper">
+
+    <resultMap id="publicTemplateInfoMap"
+               type="com.questionnaire.ssm.module.qesTemplateManage.pojo.ListPublicTemplateInfoVO">
+        <id property="questionnaireId" column="questionnaireId"/>
+        <result property="questionnaireTitle" column="questionnaireTitle"/>
+        <result property="questionnaireSubtitle" column="questionnaireSubtitle"/>
+        <result property="questionnaireDescription" column="questionnaireDescription"/>
+		<result property="isDone" column="idDone"/>
+        <result property="sharedUser" column="sharedUser"/>
+        <result property="shareDate" jdbcType="TIMESTAMP" column="shareDate"/>
+    </resultMap>
+
+    <select id="listPublicTemplateInfo" resultMap="publicTemplateInfoMap">
+        SELECT
+			q.questionnaire_id AS questionnaireId,
+			q.questionnaire_title AS questionnairetitle,
+			q.questionnaire_subtitle AS questionnaireSubTitle,
+			q.questionnaire_description AS questionnaireDescription,
+			q.is_done AS idDone,
+			u.user_real_name AS sharedUser,
+			roq.operate_date AS shareDate
+		FROM
+			questionnaire AS q,
+			record_operate_questionnaire AS roq,
+			`user` AS u
+		WHERE
+			u.user_tel = roq.user_tel
+		AND roq.questionnaire_id = q.questionnaire_id
+		AND q.is_visible = TRUE
+		AND q.is_delete = FALSE
+		AND q.is_share = TRUE
+		AND q.is_template = TRUE
+		GROUP BY
+			q.questionnaire_id,
+			q.questionnaire_title,
+			q.questionnaire_subtitle,
+			q.questionnaire_description,
+			q.is_done,
+			u.user_tel
+    </select>
+</mapper>

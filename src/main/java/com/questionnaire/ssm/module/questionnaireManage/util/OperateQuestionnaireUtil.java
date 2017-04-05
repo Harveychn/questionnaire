@@ -59,16 +59,44 @@ public class OperateQuestionnaireUtil {
     }
 
     /**
-     * 共享问卷时，需要赋值一份新的问卷信息
+     * 共享问卷到公共模板时，需要赋值一份新的问卷信息
      *
      * @param questionnaire 要复制的问卷信息
      * @return
      * @throws Exception
      */
-    public static Questionnaire copyQesPaper(Questionnaire questionnaire) throws Exception {
+    public static Questionnaire copyQesPaper2Public(Questionnaire questionnaire) throws Exception {
         Questionnaire copiedQuestionnaire = new Questionnaire();
         /*公共问卷均为模板*/
         copiedQuestionnaire.setIsShare(true);
+        copiedQuestionnaire.setIsTemplate(true);
+
+        copiedQuestionnaire.setIsVisible(true);
+        copiedQuestionnaire.setIsDelete(false);
+        copiedQuestionnaire.setIsDone(true);
+
+        /*问卷标题不得为空*/
+        copiedQuestionnaire.setQuestionnaireTitle(questionnaire.getQuestionnaireTitle());
+        if (questionnaire.getQuestionnaireSubtitle() != null) {
+            copiedQuestionnaire.setQuestionnaireSubtitle(questionnaire.getQuestionnaireSubtitle());
+        }
+        if (questionnaire.getQuestionnaireDescription() != null) {
+            copiedQuestionnaire.setQuestionnaireDescription(questionnaire.getQuestionnaireDescription());
+        }
+        return copiedQuestionnaire;
+    }
+
+    /**
+     * 从添加公共模板到个人模板库时复制信息
+     *
+     * @param questionnaire
+     * @return
+     * @throws Exception
+     */
+    public static Questionnaire copyQesPaperFromPublic(Questionnaire questionnaire) throws Exception {
+        Questionnaire copiedQuestionnaire = new Questionnaire();
+        /*公共问卷均为模板*/
+        copiedQuestionnaire.setIsShare(false);
         copiedQuestionnaire.setIsTemplate(true);
 
         copiedQuestionnaire.setIsVisible(true);
@@ -95,8 +123,8 @@ public class OperateQuestionnaireUtil {
      */
     public static MappingQuestionnaireQuestion copyMapQesPaperQes(MappingQuestionnaireQuestion mappingQuestionnaireQuestion) throws Exception {
         MappingQuestionnaireQuestion copiedMap = new MappingQuestionnaireQuestion();
-
-        copiedMap.setQuestionnaireId(mappingQuestionnaireQuestion.getQuestionnaireId());
+        /*问卷id未设置*/
+//        copiedMap.setQuestionnaireId(mappingQuestionnaireQuestion.getQuestionnaireId());
         copiedMap.setQuestionId(mappingQuestionnaireQuestion.getQuestionId());
         copiedMap.setQuestionOrder(mappingQuestionnaireQuestion.getQuestionOrder());
 

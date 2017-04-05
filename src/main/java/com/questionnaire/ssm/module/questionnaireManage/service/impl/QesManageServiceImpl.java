@@ -7,6 +7,7 @@ import com.questionnaire.ssm.module.global.enums.CodeForVOEnum;
 import com.questionnaire.ssm.module.global.enums.UserActionEnum;
 import com.questionnaire.ssm.module.global.exception.OperateDBException;
 
+import com.questionnaire.ssm.module.global.service.Add2LibraryService;
 import com.questionnaire.ssm.module.global.util.UserValidationUtil;
 import com.questionnaire.ssm.module.questionnaireManage.mapper.QesManageMapper;
 import com.questionnaire.ssm.module.questionnaireManage.pojo.*;
@@ -284,49 +285,54 @@ public class QesManageServiceImpl implements QesManageService {
     /**
      * 分享问卷（复制问卷信息并且重新组织问卷-题目对应关系）
      *
-     * @param questionnaireId 要分享的问卷ID
+     * @param questionnaireId
      * @throws Exception
      */
+    @Transactional
     private void shareSingleQuestionnaire(Long questionnaireId) throws Exception {
-        Questionnaire sharingQesPaper = null;
-        try {
-            sharingQesPaper = questionnaireMapper.selectByPrimaryKey(questionnaireId);
-        } catch (Exception e) {
-            logger.error(e.getMessage());
-            throw new OperateDBException(CodeForVOEnum.DB_SELECT_NO_MESSAGE,
-                    DBTableEnum.QUESTIONNAIRE.getTableName());
-        }
-        /*未设置questionnaireId的待插入数据的实体*/
-        Questionnaire copyQesPaper = OperateQuestionnaireUtil.copyQesPaper(sharingQesPaper);
-
-        try {
-            questionnaireMapper.insertSelective(copyQesPaper);
-        } catch (Exception e) {
-            logger.error(e.getMessage());
-            throw new OperateDBException(CodeForVOEnum.DB_INSERT_FAIL,
-                    DBTableEnum.QUESTIONNAIRE.getTableName());
-        }
-        /*开始组织新的问卷-问题映射关系*/
-        MappingQuestionnaireQuestionExample mappingQuestionnaireQuestionExample = new MappingQuestionnaireQuestionExample();
-        mappingQuestionnaireQuestionExample.createCriteria().andQuestionnaireIdEqualTo(sharingQesPaper.getQuestionnaireId());
-
-        List<MappingQuestionnaireQuestion> mappingQuestionnaireQuestions
-                = mappingQuestionnaireQuestionMapper.selectByExample(mappingQuestionnaireQuestionExample);
-        MappingQuestionnaireQuestion newMap = null;
-        for (MappingQuestionnaireQuestion currentMap : mappingQuestionnaireQuestions) {
-            /*设置新获取的问卷ID*/
-            currentMap.setQuestionnaireId(copyQesPaper.getQuestionnaireId());
-            newMap = OperateQuestionnaireUtil.copyMapQesPaperQes(currentMap);
-            /*插入新的映射关系*/
-            try {
-                mappingQuestionnaireQuestionMapper.insertSelective(newMap);
-            } catch (Exception e) {
-                logger.error(e.getMessage());
-                throw new OperateDBException(CodeForVOEnum.DB_INSERT_FAIL,
-                        DBTableEnum.MAPPING_QUESTIONNAIRE_QUESTION.getTableName());
-            }
-        }
+        Questionnaire sharingQesPaper = add2LibraryService.getSharingQesPaperFromDB(questionnaireId);
+        Questionnaire copyQesPaper = OperateQuestionnaireUtil.copyQesPaper2Public(sharingQesPaper);
+        add2LibraryService.Add2PublicOrPrivateLibrary(questionnaireId, copyQesPaper);
     }
+//        Questionnaire sharingQesPaper = null;
+//        try {
+//            sharingQesPaper = questionnaireMapper.selectByPrimaryKey(questionnaireId);
+//        } catch (Exception e) {
+//            logger.error(e.getMessage());
+//            throw new OperateDBException(CodeForVOEnum.DB_SELECT_NO_MESSAGE,
+//                    DBTableEnum.QUESTIONNAIRE.getTableName());
+//        }
+//        /*未设置questionnaireId的待插入数据的实体*/
+//        Questionnaire copyQesPaper = OperateQuestionnaireUtil.copyQesPaper2Public(sharingQesPaper);
+//
+//        try {
+//            questionnaireMapper.insertSelective(copyQesPaper);
+//        } catch (Exception e) {
+//            logger.error(e.getMessage());
+//            throw new OperateDBException(CodeForVOEnum.DB_INSERT_FAIL,
+//                    DBTableEnum.QUESTIONNAIRE.getTableName());
+//        }
+//        /*开始组织新的问卷-问题映射关系*/
+//        MappingQuestionnaireQuestionExample mappingQuestionnaireQuestionExample = new MappingQuestionnaireQuestionExample();
+//        mappingQuestionnaireQuestionExample.createCriteria().andQuestionnaireIdEqualTo(sharingQesPaper.getQuestionnaireId());
+//
+//        List<MappingQuestionnaireQuestion> mappingQuestionnaireQuestions
+//                = mappingQuestionnaireQuestionMapper.selectByExample(mappingQuestionnaireQuestionExample);
+//        MappingQuestionnaireQuestion newMap = null;
+//        for (MappingQuestionnaireQuestion currentMap : mappingQuestionnaireQuestions) {
+//            /*设置新获取的问卷ID*/
+//            currentMap.setQuestionnaireId(copyQesPaper.getQuestionnaireId());
+//            newMap = OperateQuestionnaireUtil.copyMapQesPaperQes(currentMap);
+//            /*插入新的映射关系*/
+//            try {
+//                mappingQuestionnaireQuestionMapper.insertSelective(newMap);
+//            } catch (Exception e) {
+//                logger.error(e.getMessage());
+//                throw new OperateDBException(CodeForVOEnum.DB_INSERT_FAIL,
+//                        DBTableEnum.MAPPING_QUESTIONNAIRE_QUESTION.getTableName());
+//            }
+//        }
+
 
     private static final Logger logger = LoggerFactory.getLogger(QesManageServiceImpl.class);
     private QuestionnaireMapper questionnaireMapper;
@@ -336,6 +342,7 @@ public class QesManageServiceImpl implements QesManageService {
     private QesManageMapper qesManageMapper;
 
     private RecordActionService recordActionService;
+    private Add2LibraryService add2LibraryService;
 
     @Autowired
     public QesManageServiceImpl(QuestionnaireMapper questionnaireMapper,
@@ -343,12 +350,14 @@ public class QesManageServiceImpl implements QesManageService {
                                 QuestionOptionMapper questionOptionMapper,
                                 MappingQuestionnaireQuestionMapper mappingQuestionnaireQuestionMapper,
                                 QesManageMapper qesManageMapper,
-                                RecordActionService recordActionService) {
+                                RecordActionService recordActionService,
+                                Add2LibraryService add2LibraryService) {
         this.questionnaireMapper = questionnaireMapper;
         this.questionMapper = questionMapper;
         this.questionOptionMapper = questionOptionMapper;
         this.mappingQuestionnaireQuestionMapper = mappingQuestionnaireQuestionMapper;
         this.qesManageMapper = qesManageMapper;
         this.recordActionService = recordActionService;
+        this.add2LibraryService = add2LibraryService;
     }
 }
