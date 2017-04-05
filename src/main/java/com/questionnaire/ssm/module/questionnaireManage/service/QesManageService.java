@@ -5,6 +5,7 @@ import com.questionnaire.ssm.module.global.enums.UserActionEnum;
 import com.questionnaire.ssm.module.questionnaireManage.pojo.CreateQuestionnaireVO;
 import com.questionnaire.ssm.module.questionnaireManage.pojo.DisplayQuestionnaireVO;
 import com.questionnaire.ssm.module.questionnaireManage.pojo.ListQuestionnaireVO;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -20,6 +21,7 @@ public interface QesManageService {
      * @param questionnaireVO
      * @throws Exception 异常时会抛出 OperateDBException
      */
+    @Transactional
     void insertQuestionnaire(CreateQuestionnaireVO questionnaireVO) throws Exception;
 
     /**
@@ -49,6 +51,7 @@ public interface QesManageService {
      * @param userActionEnum  用户操作动作
      * @throws Exception
      */
+    @Transactional
     void delOrTemplateQesById(long questionnaireId, Questionnaire questionnaire, UserActionEnum userActionEnum) throws Exception;
 
     /**
@@ -58,6 +61,7 @@ public interface QesManageService {
      * @param userActionEnum  用户操作动作
      * @throws Exception
      */
+    @Transactional
     void shareQesPaperById(Long questionnaireId, UserActionEnum userActionEnum) throws Exception;
 
     /**
@@ -69,8 +73,16 @@ public interface QesManageService {
      * @param userActionEnum   用户操作动作
      * @throws Exception
      */
+    @Transactional
     void delOrTemplateQesByIds(List<Long> questionnaireIds, Questionnaire questionnaire, UserActionEnum userActionEnum) throws Exception;
 
-
+    /**
+     * 批量分享问卷
+     *
+     * @param questionnaireIds 批量操作的操作的问卷id
+     * @param userActionEnum   用户操作动作
+     * @throws Exception
+     */
+    @Transactional
     void shareQesPaperByIds(List<Long> questionnaireIds, UserActionEnum userActionEnum) throws Exception;
 }

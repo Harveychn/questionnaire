@@ -45,11 +45,11 @@
                     </label>
                     <label th:if="${questionnaireInfoVO.isShare()==false}">
                         <a th:href="@{/questionnaireManage/shareQuestionnaire/{id}(id=${questionnaireInfoVO.getQuestionnaireId()})}"
-                           class="btn btn-sm btn-link">分享</a>
+                           class="btn btn-sm btn-link">共享为模板</a>
                     </label>
                     <label th:if="${questionnaireInfoVO.isTemplate()==false}">
                         <a th:href="@{/questionnaireManage/templateQuestionnaire/{id}(id=${questionnaireInfoVO.getQuestionnaireId()})}"
-                           class="btn btn-sm btn-link">模板化</a>
+                           class="btn btn-sm btn-link">添加为模板</a>
                     </label>
                 </td>
             </tr>
@@ -59,7 +59,7 @@
     <div class="row" align="right">
         <div class="col-lg-8 col-sm-8"></div>
         <div class="col-lg-3 col-sm-3">
-            <div id="multiShareBtn" class="btn btn-primary">批量分享</div>
+            <div id="multiShareBtn" class="btn btn-primary">批量共享</div>
             <div id="multiDeleteBtn" class="btn btn-danger">批量删除</div>
             <div id="multiTemplateBtn" class="btn btn-info">批量模板化</div>
         </div>

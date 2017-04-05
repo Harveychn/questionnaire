@@ -26,6 +26,19 @@ public class CreateQuestionnaireVO {
     private List<QuestionVO> questions;
 
 
+    @Override
+    public String toString() {
+        return "CreateQuestionnaireVO{" +
+                "questionnaireId=" + questionnaireId +
+                ", questionnaireTitle='" + questionnaireTitle + '\'' +
+                ", questionnaireSubtitle='" + questionnaireSubtitle + '\'' +
+                ", isTemplate=" + isTemplate +
+                ", isDone=" + isDone +
+                ", questionnaireDescription='" + questionnaireDescription + '\'' +
+                ", questions=" + questions +
+                '}';
+    }
+
     public Long getQuestionnaireId() {
         return questionnaireId;
     }

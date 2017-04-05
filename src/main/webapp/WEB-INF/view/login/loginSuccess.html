@@ -2,30 +2,44 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://xmlns.jcp.org/jsf/passthrough">
 <head>
     <title>登陆成功</title>
-    <style>
-        .border {
-            top: 50px;
-            border-bottom: 2px dotted grey;
-        }
-    </style>
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="/WEB-INF/statics/css/bootstrap.min.css" rel="stylesheet"/>
 </head>
 <body>
 <h1 align="center">登陆成功页面</h1>
 <div align="center">
-    欢迎你 <label th:text="${#session.getAttribute('userTel')}"></label>
-    <label><a href="/user/logout">退出</a></label>
+    <div class="row">
+        欢迎你 <label th:text="${#session.getAttribute('userTel')}"></label>
+        <label><a href="/user/logout">退出</a></label>
+    </div>
+    <div class="row">
+        <div class="btn btn-lg btn-link">
+            <a href="/questionnaireManage/getCreateView">创建问卷页面</a>
+        </div>
+    </div>
 
-    <div class="border">
-        <a href="/questionnaireManage/getCreateView">创建问卷页面</a>
+    <div class="row">
+        <div class="btn btn-lg btn-link">
+            <a href="/questionnaireManage/listMyQuestionnaire">问卷管理页面</a>
+        </div>
     </div>
-    <div class="border">
-        <a href="/questionnaireManage/listMyQuestionnaire">问卷管理页面</a>
+
+    <div class="row">
+        <div class="btn btn-lg btn-link">
+            <a href="/user/newPasswordView">修改密码页面</a>
+        </div>
     </div>
-    <div class="border">
-        <a href="/user/newPasswordView">修改密码页面</a>
+
+    <div class="row">
+        <div class="btn btn-lg btn-link">
+            <a href="/qesTemplateManage/getQesTemplate">个人问卷模板管理页面</a>
+        </div>
     </div>
-    <div class="border">
-        <a href="/qesTemplateManage/getQesTemplateView">问卷模板管理页面</a>
+
+    <div class="row">
+        <div class="btn btn-lg btn-link">
+            <a href="/qesTemplateManage/getPublicTemplate">公共问卷管理页面</a>
+        </div>
     </div>
 </div>
 </body>

@@ -16,7 +16,7 @@ public enum UserActionEnum {
     DELETE_FOREVER_MULTI_QUESTIONNAIRE(7, "批量永久删除问卷"),//设置问卷delete = true
     SHARE_MULTI_QUESTIONNAIRE(8, "批量共享问卷"),
     MULTI_ADD_TO_MY_TEMPLATE(9, "批量添加问卷到我的模板"),
-    ;
+    ADD_PUBLIC_TEMPLATE_2_MY_TEMPLATE_LIBRARY(10, "添加公共模板到个人模板库"),;
 
     private int code;
     private String action;
