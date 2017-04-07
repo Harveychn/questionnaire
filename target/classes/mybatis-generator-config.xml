@@ -12,7 +12,7 @@
 
     <!--添加你本地的驱动jar-->
     <classPathEntry
-            location="P:\Maven-3.3.9\localRepository\mysql\mysql-connector-java\5.1.21\mysql-connector-java-5.1.21.jar"/>
+            location="C:\Users\95884\.m2\repository\mysql\mysql-connector-java\5.1.21\mysql-connector-java-5.1.21.jar"/>
 
     <context id="context" targetRuntime="MyBatis3">
 
@@ -25,8 +25,8 @@
         </commentGenerator>
 
         <!--添加你的 JDBC 连接信息-->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1:3306/questionnaire"
-                        userId="root" password="zxh980278090"/>
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://106.14.26.144:3306/questionnaire"
+                        userId="developer" password="dev2017"/>
 
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
@@ -85,6 +85,18 @@
         </table>
         <table tableName="mapping_questionnaire_question">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <table tableName="mapping_notice_unit">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <table tableName="mapping_notice_role">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <table tableName="notice">
+            <generatedKey column="notice_id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <table tableName="record_operate_notice">
+            <generatedKey column="record_id" sqlStatement="MySql" identity="true"/>
         </table>
 
 

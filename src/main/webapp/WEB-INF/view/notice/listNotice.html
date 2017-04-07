@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>展示问卷</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+    <style>
+        table, td {
+            border: 2px double grey;
+        }
+    </style>
+</head>
+<body>
+<h1 align="center">问卷信息</h1>
+<div align="center">
+    <table th:if="${noticeListVO.size()>0}"class="table table-bordered">
+        <thead>
+        <tr>
+            <td></td>
+            <td>序号</td>
+            <td>公告标题</td>
+            <td>公告内容</td>
+            <td>持续时间</td>
+            <td>操作</td>
+        </tr>
+        <tbody>
+            <tr th:each="notice:${noticeListVO}">
+                <td><input type="checkbox"></td>
+                <td th:text="${noticeStat.count}"></td>
+                <td th:text="${notice.noticeTitle}"></td>
+                <td th:text="${notice.noticeContext}"></td>
+                <td th:datetime="${notice.lastDate}"></td>
+                <td>
+                    <label>
+                        <a th:href="@{/notice/deleteNotice/{id}(id=${notice.getNoticeId()})}" class="btn btn-sm btn-link">删除</a>
+                    </label>
+                    <label>
+                        <a th:href="@{}"class="btn btn-sm btn-link">发放</a>
+                    </label>
+                </td>
+            </tr>
+        </tbody>
+        </thead>
+    </table>
+</div>
+</body>
+</html>

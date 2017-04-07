@@ -9,7 +9,7 @@
     <id column="record_id" jdbcType="BIGINT" property="recordId" />
     <result column="questionnaire_id" jdbcType="BIGINT" property="questionnaireId" />
     <result column="user_tel" jdbcType="VARCHAR" property="userTel" />
-    <result column="action" jdbcType="CHAR" property="action" />
+    <result column="action" jdbcType="VARCHAR" property="action" />
     <result column="operate_date" jdbcType="TIMESTAMP" property="operateDate" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -141,7 +141,7 @@
     </selectKey>
     insert into record_operate_questionnaire (questionnaire_id, user_tel, action, 
       operate_date)
-    values (#{questionnaireId,jdbcType=BIGINT}, #{userTel,jdbcType=VARCHAR}, #{action,jdbcType=CHAR}, 
+    values (#{questionnaireId,jdbcType=BIGINT}, #{userTel,jdbcType=VARCHAR}, #{action,jdbcType=VARCHAR}, 
       #{operateDate,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.questionnaire.ssm.module.generated.pojo.RecordOperateQuestionnaire">
@@ -175,7 +175,7 @@
         #{userTel,jdbcType=VARCHAR},
       </if>
       <if test="action != null">
-        #{action,jdbcType=CHAR},
+        #{action,jdbcType=VARCHAR},
       </if>
       <if test="operateDate != null">
         #{operateDate,jdbcType=TIMESTAMP},
@@ -209,7 +209,7 @@
         user_tel = #{record.userTel,jdbcType=VARCHAR},
       </if>
       <if test="record.action != null">
-        action = #{record.action,jdbcType=CHAR},
+        action = #{record.action,jdbcType=VARCHAR},
       </if>
       <if test="record.operateDate != null">
         operate_date = #{record.operateDate,jdbcType=TIMESTAMP},
@@ -228,7 +228,7 @@
     set record_id = #{record.recordId,jdbcType=BIGINT},
       questionnaire_id = #{record.questionnaireId,jdbcType=BIGINT},
       user_tel = #{record.userTel,jdbcType=VARCHAR},
-      action = #{record.action,jdbcType=CHAR},
+      action = #{record.action,jdbcType=VARCHAR},
       operate_date = #{record.operateDate,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -248,7 +248,7 @@
         user_tel = #{userTel,jdbcType=VARCHAR},
       </if>
       <if test="action != null">
-        action = #{action,jdbcType=CHAR},
+        action = #{action,jdbcType=VARCHAR},
       </if>
       <if test="operateDate != null">
         operate_date = #{operateDate,jdbcType=TIMESTAMP},
@@ -264,7 +264,7 @@
     update record_operate_questionnaire
     set questionnaire_id = #{questionnaireId,jdbcType=BIGINT},
       user_tel = #{userTel,jdbcType=VARCHAR},
-      action = #{action,jdbcType=CHAR},
+      action = #{action,jdbcType=VARCHAR},
       operate_date = #{operateDate,jdbcType=TIMESTAMP}
     where record_id = #{recordId,jdbcType=BIGINT}
   </update>
