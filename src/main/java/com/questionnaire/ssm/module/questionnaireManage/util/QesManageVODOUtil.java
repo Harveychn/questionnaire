@@ -31,9 +31,9 @@ public class QesManageVODOUtil {
         questionnaire.setIsDone(questionnaireVO.getDone());
         questionnaire.setIsTemplate(questionnaireVO.getTemplate());
 
-        questionnaire.setIsDelete(false);
         questionnaire.setIsShare(false);
         questionnaire.setIsVisible(true);
+        questionnaire.setIsDelete(false);
 
         return questionnaire;
     }

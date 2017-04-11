@@ -1,5 +1,6 @@
 package com.questionnaire.ssm.module.qesTemplateManage.mapper;
 
+import com.questionnaire.ssm.module.qesTemplateManage.pojo.ListPrivateTemplateInfoVO;
 import com.questionnaire.ssm.module.qesTemplateManage.pojo.ListPublicTemplateInfoVO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,6 +29,14 @@ public class QesTemplateManageMapperTest {
             System.out.println(publicInfo.toString());
         }
 
+    }
+
+    @Test
+    public void listPrivateTemplateInfo() throws Exception {
+        String userTel = "17764591959";
+        for (ListPrivateTemplateInfoVO privateTemplateInfoVO : qesTemplateManageMapper.listPrivateTemplateInfo(userTel)) {
+            System.out.println(privateTemplateInfoVO.toString());
+        }
     }
 
 }

@@ -32,7 +32,7 @@
             <td th:text="${publicQesTemplate.questionnaireSubtitle}"></td>
             <td th:text="${publicQesTemplate.questionnaireDescription}"></td>
             <td th:text="${publicQesTemplate.sharedUser}"></td>
-            <td th:text="${#calendars.format(publicQesTemplate.shareDate,'yyyy-MM-hh HH:mm')}"></td>
+            <td th:text="${#calendars.format(publicQesTemplate.shareDate,'yyyy-MM-dd HH:mm:ss')}"></td>
             <td>
                 <a class="btn btn-sm btn-link"
                    th:href="@{/questionnaireManage/displayQuestionnaire/{id}(id=${publicQesTemplate.questionnaireId})}">
@@ -52,9 +52,11 @@
     </div>
 </div>
 
-<script th:src="@{/js/jquery-3.2.0.min.js}" src="/WEB-INF/statics/js/jquery-3.2.0.min.js"
+<script th:src="@{/js/jquery.min.js}" src="/WEB-INF/statics/js/jquery.min.js"
         type="text/javascript"></script>
-<script th:src="@{/js/plugins/myJs/templateManage.js}" src="/WEB-INF/statics/js/plugins/myJs/templateManage.js"
+<script th:src="@{/js/myJs/unexpectedHandle.js}" src="/WEB-INF/statics/js/myJs/unexpectedHandle.js"
+        type="text/javascript"></script>
+<script th:src="@{/js/myJs/templateManage.js}" src="/WEB-INF/statics/js/myJs/templateManage.js"
         type="text/javascript"></script>
 </body>
 </html>

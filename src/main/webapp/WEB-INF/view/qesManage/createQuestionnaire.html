@@ -1,104 +1,261 @@
-<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
     <title>创建问卷</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="robots" content="noindex,nofollow">
+    <script type="text/javascript" src="/WEB-INF/js/CreateQesResources/script/jquery.min.js"
+            th:src="@{/js/CreateQesResources/script/jquery.min.js}"></script>
+    <script type="text/javascript" src="/WEB-INF/js/CreateQesResources/script/configBase.js"
+            th:src="@{/js/CreateQesResources/script/configBase.js}"></script>
+    <script type="text/javascript" src="/WEB-INF/js/CreateQesResources/script/exam/exam.js"
+            th:src="@{/js/CreateQesResources/script/exam/exam.js}"></script>
 </head>
+
 <body>
-<h1 align="center">创建问卷视图</h1>
-<div align="center">
-    <form th:action="@{/questionnaireManage/create}" method="post" th:object="${createQuestionnaireVO}">
-        <div>
-            <label>问卷标题:<input type="text" th:field="*{questionnaireTitle}"/></label>
+<!--主体框架开始-->
+<div class="pagebox" id="pageContentId">
+    <div class="home-desktop" id="desktop_scroll">
+        <div style="width:1025px; position: relative;">
+            <div class="title">
+                <div class="name left">创建问卷</div>
+                <div class="function left">
+                    <!--[&nbsp;<a href="javascript:;" onclick="definedLayer('/addTeacherData.html',{},'html');">添加</a>&nbsp;]-->
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="create-questions-content">
+                <div class="exam-nav">
+                    <div class="exam-item">
+                        <h4 class="exam-item-title">常用题型<i class="icon-expand"></i></h4>
+                        <ul class="exam-nav-list" id="ui_sortable_exam">
+                            <li data-uid="1" data-tempId="drag_choice">
+                                <a href="javascript:;" data-checkType="1" data-questionType="单选题">
+                                    <i class="icon-singleChoice"></i>单选题</a>
+                            </li>
+                            <li data-uid="2" data-tempId="drag_choice">
+                                <a href="javascript:;" data-checkType="2" data-questionType="多选题">
+                                    <i class="icon-multipleChoice"></i>多选题</a>
+                            </li>
+                            <li data-uid="3" data-tempId="drag_choice">
+                                <a href="javascript:;" data-checkType="1" data-questionType="图片单选题">
+                                    <i class="icon-picChoice"></i>图片单选</a>
+                            </li>
+                            <li data-uid="4" data-tempId="drag_choice">
+                                <a href="javascript:;" data-checkType="2" data-questionType="图片多选题">
+                                    <i class="icon-picsChoice"></i>图片多选</a>
+                            </li>
+                            <li data-uid="5" data-tempId="drag_completion">
+                                <a href="javascript:;" data-checkType="1" data-questionType="单项填空题">
+                                    <i class="icon-gapFilling"></i>单项填空题</a>
+                            </li>
+                            <li data-uid="6" data-tempId="drag_completion">
+                                <a href="javascript:;" data-checkType="2" data-questionType="多项填空题">
+                                    <i class="icon-multiRow"></i>多项填空题</a>
+                            </li>
+                            <li data-uid="7" data-tempId="drag_describe">
+                                <a href="javascript:;"><i class="icon-describe" data-questionType="描述说明"></i>描述说明</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--出题-->
+                <div class="create-questions">
+                    <div class="questions-head-title">
+                        <h4 class="h4-bg T_edit T-center" data-Tid="10001" id="questionnaireTitle">
+                            <span style="font-size:18px;">这里填写问卷标题</span>
+                        </h4>
+                    </div>
+                    <table class="questions-items-title">
+                        <tbody>
+                        <tr>
+                            <td class="module-menu">&nbsp;</td>
+                            <td>
+                                <div class="cq-title T_edit" data-Tid="10002" id="questionnaireSubtitle">
+                                    <span style="font-size:16px;">这里填写问卷副标题</span></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="module-menu"></td>
+                            <td>
+                                <div class="cq-title T_edit" data-Tid="10003" id="questionnaireDescription">
+                                    <span style="font-size:16px;">这里填写问卷描述</span></div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <ul class="ui-questions-content-list"></ul>
+                    <ul class="ui-foot-all-list"></ul>
+                </div>
+            </div>
+            <div style="height:40px; margin: 20px 0; text-align: right;">
+                <button type="button" class="cotrlBtn exam-save-btn btnBlue" id="saveAsQesBtn"
+                        style="height:40px;width: 140px; font-size:18px;">保存为问卷
+                </button>
+            </div>
         </div>
-        <div>
-            <label>问卷副标题:<input type="text" th:field="*{questionnaireSubtitle}"/></label>
-        </div>
-        <div>
-            <label>问卷描述:<input type="text" id="questionnaireDescription" name="questionnaireDescription"
-                               th:value="*{questionnaireDescription}"/></label>
-        </div>
-        <div>
-            <label>是否模板:<input type="checkbox" th:field="*{template}"/></label>
-        </div>
-        <div>
-            <label>是否创建完成:<input type="checkbox" th:field="*{done}"/> </label>
-        </div>
-        <div>
-            <label>问题1题目：<input type="text" th:field="*{questions[0].questionContext}"></label>
-        </div>
-        <div>
-            <label>问题1题目类型(输入‘单选题’/‘多选题’)：<input type="text" th:field="*{questions[0].questionType}"></label>
-        </div>
-        <div>
-            <label>问题1题目是否必做：<input type="checkbox" th:field="*{questions[0].must}"></label>
-        </div>
-        <div>
-            <label>问题1选项顺序：<input type="number" th:field="*{questions[0].options[0].optionOrder}"/> </label>
-            <label>问题1选项内容：<input type="text" th:field="*{questions[0].options[0].option}"/> </label>
-        </div>
-        <div>
-            <label>问题1选项顺序：<input type="number" th:field="*{questions[0].options[1].optionOrder}"/> </label>
-            <label>问题1选项内容：<input type="text" th:field="*{questions[0].options[1].option}"/> </label>
-        </div>
+    </div>
 
+    <!--选择题-->
+    <script type="text/html" id="drag_choice">
+        <li class="ui-module items-questions">
+            <div class="theme-type">
+                <div class="module-menu">
+                    <h4></h4>
+                    <div class="module-ctrl">
+                        <a href="javascript:void(0);" class="ui-up-btn" data-tisp="上移"><i class="icon-up"></i></a>
+                        <a href="javascript:void(0);" class="ui-down-btn" data-tisp="下移"><i class="icon-down"></i></a>
+                        <a href="javascript:void(0);" class="ui-clone-btn" data-tisp="复制"><i class="icon-clone"></i></a>
+                        <a href="javascript:void(0);" class="ui-del-btn" data-tisp="删除"><i class="icon-del"></i></a>
+                    </div>
+                </div>
+                <div class="ui-drag-area">
+                    <div class="cq-title T_edit T_plugins" data-Tid="{{itmetid}}" data-questionType="{{questionType}}">
+                        <span style="font-size:16px;">{{if type==1}}单选题目标题{{else if type==2}}多选题目标题{{/if}}</span>
+                    </div>
+                </div>
+                <div class="cq-items-content">
+                    <ul class="cq-unset-list" data-checkType="{{type}}" data-nameStr="{{name}}">
+                        {{each items as itemData i}}
+                        <li>
+                            <label class="input-check">
+                                <input type="{{if type==1}}radio{{else if type==2}}checkbox{{/if}}" name="{{name}}"
+                                       value="{{itemData.value}}">
+                            </label>
+                            <div class="cq-answer-content T_edit T_plugins" data-Tid="{{itemData.tid}}">选项{{i+1}}</div>
+                        </li>
+                        {{/each}}
+                    </ul>
+                    <div class="cq-items-ctrl">
+                        <a href="javascript:void(0);" class="ui-add-item-btn" data-tisp="添加"><i
+                                class="icon-add"></i></a>
+                        <a href="javascript:void(0);" class="ui-batch-item-btn" data-tisp="批量添加"><i
+                                class="icon-addList"></i></a>
+                        <a href="javascript:void(0);" class="ui-add-answer-btn" data-tisp="添加答案解析"><i
+                                class="icon-assignment"></i></a>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </script>
+    <!--填空题-->
+    <script type="text/html" id="drag_completion">
+        <li class="ui-module items-questions">
+            <div class="theme-type">
+                <div class="module-menu">
+                    <h4></h4>
+                    <div class="module-ctrl">
+                        <a href="javascript:void(0);" class="ui-up-btn" data-tisp="上移"><i class="icon-up"></i></a>
+                        <a href="javascript:void(0);" class="ui-down-btn" data-tisp="下移"><i class="icon-down"></i></a>
+                        <a href="javascript:void(0);" class="ui-clone-btn" data-tisp="复制"><i class="icon-clone"></i></a>
+                        <a href="javascript:void(0);" class="ui-del-btn" data-tisp="删除"><i class="icon-del"></i></a>
+                    </div>
+                </div>
+                <div class="ui-drag-area">
+                    <div class="cq-title T_edit T_plugins" data-Tid="{{itmetid}}" data-questionType="{{questionType}}">
+                        <span style="font-size:16px;">{{if type==1}}填空题目标题{{else if type==2}}完形填空题目标题{{/if}}</span>
+                    </div>
+                </div>
+                <div class="cq-items-content">
+                    <div class="describe-edit-content T_edit T_plugins" data-tid="{{items[0].tid}}"><span
+                            style="line-height: 1.6;font-size: 12px;">这里是{{if type==1}}填空题目标题{{else if type==2}}完形填空题目标题{{/if}}</span>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </script>
+    <!--描述题-->
+    <script type="text/html" id="drag_describe">
+        <li class="ui-module items-questions">
+            <div class="theme-type">
+                <div class="module-menu">
+                    <h4></h4>
+                    <div class="module-ctrl">
+                        <a href="javascript:void(0);" class="ui-up-btn" data-tisp="上移"><i class="icon-up"></i></a>
+                        <a href="javascript:void(0);" class="ui-down-btn" data-tisp="下移"><i class="icon-down"></i></a>
+                        <a href="javascript:void(0);" class="ui-clone-btn" data-tisp="复制"><i class="icon-clone"></i></a>
+                        <a href="javascript:void(0);" class="ui-del-btn" data-tisp="删除"><i class="icon-del"></i></a>
+                    </div>
+                </div>
+                <div class="ui-drag-area">
+                    <div class="cq-title T_edit T_plugins" data-Tid="{{itmetid}}"><span
+                            style="font-size:16px;">描述题目标题</span></div>
+                </div>
+                <div class="cq-items-content">
+                    <div class="describe-edit-content T_edit T_plugins" data-tid="{{items[0].tid}}"><span
+                            style="line-height: 1.6;font-size:12px;">这里是描述题内容</span></div>
+                </div>
+            </div>
+        </li>
+    </script>
+    <script type="text/html" id="drag_T_edit">
+        <div class="cq-into-edit">
+            <div class="add-edit cq-edit-title" contenteditable="true">{{title}}</div>
+        </div>
+    </script>
+    <script type="text/html" id="T_edit_plugins">
+        <div class="edit-plug-box">
+            <a href="javascript:void(0);"><i class="icon-picChoice"></i></a>
+            <a href="javascript:void(0);"><i class="icon-title"></i></a>
+        </div>
+    </script>
+    <script type="text/html" id="ui_additem_content">
+        {{each items as itemData i}}
+        <li><label class="input-check"><input type="{{if type==1}}radio{{else if type==2}}checkbox{{/if}}"
+                                              name="{{name}}" value="{{itemData.value}}"></label>
+            <div class="cq-answer-content T_edit T_plugins" data-Tid="{{itemData.tid}}">选项{{i+1+index}}</div>
+        </li>
+        {{/each}}
+    </script>
+    <script type="text/html" id="analysis_tmp">
+        <textarea class="exam-textarea analysis_contx" placeholder="请在此填写问题说明"></textarea>
+    </script>
 
-        <div>
-            <label>问题2题目：<input type="text" th:field="*{questions[1].questionContext}"></label>
-        </div>
-        <div>
-            <label>问题2题目类型(输入‘单选题’/‘多选题’)：<input type="text" th:field="*{questions[1].questionType}"></label>
-        </div>
-        <div>
-            <label>问题2题目是否必做：<input type="checkbox" th:field="*{questions[1].must}"></label>
-        </div>
-        <div>
-            <label>问题2选项顺序：<input type="number" th:field="*{questions[1].options[0].optionOrder}"/> </label>
-            <label>问题2选项内容：<input type="text" th:field="*{questions[1].options[0].option}"/> </label>
-        </div>
-        <div>
-            <label>问题2选项顺序：<input type="number" th:field="*{questions[1].options[1].optionOrder}"/> </label>
-            <label>问题2选项内容：<input type="text" th:field="*{questions[1].options[1].option}"/> </label>
-        </div>
-        <div>
-            <label>问题2选项顺序：<input type="number" th:field="*{questions[1].options[2].optionOrder}"/> </label>
-            <label>问题2选项内容：<input type="text" th:field="*{questions[1].options[2].option}"/> </label>
-        </div>
-        <div>
-            <label>问题2选项顺序：<input type="number" th:field="*{questions[1].options[3].optionOrder}"/> </label>
-            <label>问题2选项内容：<input type="text" th:field="*{questions[1].options[3].option}"/> </label>
-        </div>
+    <script src="/WEB-INF/js/myJs/createQes.js" type="text/javascript"
+            th:src="@{/js/myJs/createQes.js}"></script>
+    <script type="text/javascript">
+        $(function () {
+            exam.init();
+            $("select").dcselect();
+            $('#saveAsQesBtn').on('click', function () {
+                var dataBase = {}, questionItems = [];
+                dataBase.questionnaireTitle = $('#questionnaireTitle > span').html();
+                dataBase.questionnaireSubtitle = $('#questionnaireSubtitle > span').html();
+                dataBase.questionnaireDescription = $('#questionnaireDescription > span').html();
+                //封装所有题列表，遍历提取值analysis（答案）、题列表（数组对象）；
+                $('.ui-questions-content-list').children('li').each(function (questionIndex) {
+                    var questionData = {}, options = [];
+                    //问题题目
+                    questionData.questionContext = $(this).find('.cq-title > span').html();
+                    questionData.questionType = $(this).find('.cq-title').attr('data-questiontype');
+                    //封装单题，遍历提取值name、value、checkCurr（选中状态）；
+                    $(this).find('ul.cq-unset-list').children('li').each(function (optionIndex) {
+                        var listItems = {};
+                        /*选项顺序*/
+                        listItems.optionOrder = optionIndex;
+                        /*选项文本内容*/
+                        listItems.option = $(this).find('input').val();
+//                        listItems.value = $(this).find('input').val();
+//                        listItems.checkCurr = $(this).find('input').prop('checked');
+                        options.push(listItems)
+                    });
+                    questionData.questionDescription = $(this).find('.analysis_contx').val() || 0;
+                    questionData.options = options;
+                    questionItems.push(questionData);
+                });
+                dataBase.questions = questionItems;
+                console.log(JSON.stringify(dataBase));
 
-        <div>
-            <label>问题3题目：<input type="text" th:field="*{questions[2].questionContext}"></label>
-        </div>
-        <div>
-            <label>问题3题目类型(输入‘单选题’/‘多选题’)：<input type="text" th:field="*{questions[2].questionType}"></label>
-        </div>
-        <div>
-            <label>问题3题目是否必做：<input type="checkbox" th:field="*{questions[2].must}"></label>
-        </div>
-        <div>
-            <label>问题3选项顺序：<input type="number" th:field="*{questions[2].options[0].optionOrder}"/> </label>
-            <label>问题3选项内容：<input type="text" th:field="*{questions[2].options[0].option}"/> </label>
-        </div>
-        <div>
-            <label>问题3选项顺序：<input type="number" th:field="*{questions[2].options[1].optionOrder}"/> </label>
-            <label>问题3选项内容：<input type="text" th:field="*{questions[2].options[1].option}"/> </label>
-        </div>
-        <div>
-            <label>问题3选项顺序：<input type="number" th:field="*{questions[2].options[2].optionOrder}"/> </label>
-            <label>问题3选项内容：<input type="text" th:field="*{questions[2].options[2].option}"/> </label>
-        </div>
-        <div>
-            <label>问题3选项顺序：<input type="number" th:field="*{questions[2].options[3].optionOrder}"/> </label>
-            <label>问题3选项内容：<input type="text" th:field="*{questions[2].options[3].option}"/> </label>
-        </div>
-
-        <div>
-            <input type="submit" value="提交"/>
-        </div>
-    </form>
+                var url = '/questionnaireManage/create';
+                accessServerByJson(url,dataBase);
+            });
+        });
+    </script>
 </div>
+<!--主体框架结束-->
 </body>
+
 </html>

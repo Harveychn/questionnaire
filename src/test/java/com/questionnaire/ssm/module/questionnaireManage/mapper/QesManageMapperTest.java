@@ -23,7 +23,7 @@ public class QesManageMapperTest {
 
     @Test
     public void selectQuestionnaireInfoByUserTel() throws Exception {
-        List<ListQuestionnaireVO> listQuestionnaireVOList = qesManageMapper.selectQuestionnaireInfoByUserTel(null);
+        List<ListQuestionnaireVO> listQuestionnaireVOList = qesManageMapper.listQuestionnaireInfoByUserTel(null);
         for (ListQuestionnaireVO listQuestionnaireVO : listQuestionnaireVOList) {
             System.out.println(listQuestionnaireVO.getQuestionnaireId());
         }

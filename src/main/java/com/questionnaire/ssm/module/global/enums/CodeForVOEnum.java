@@ -32,7 +32,8 @@ public enum CodeForVOEnum {
 
     /*参数校验信息编码*/
     QUESTIONNAIRE_TITLE_NULL(-1000, "问卷标题不得为空!"),
-    QUESTIONNAIRE_IDS_NULL(-1010, "未选择要批量操作的问卷!");
+    QUESTIONNAIRE_IDS_NULL(-1010, "未选择要操作的问卷!"),
+    TEMPLATE_IDS_NULL(-1020, "未选择要操作的模板"),;
 
     /*错误代码*/
     private int code;

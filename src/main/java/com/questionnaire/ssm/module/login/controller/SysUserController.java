@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -29,12 +30,23 @@ public class SysUserController {
     private static final Logger logger = LoggerFactory.getLogger(SysUserController.class);
 
     @GetMapping(value = "/getLoginView")
-    public String getLoginView() throws Exception {
-        return "../../login";
+    public ModelAndView getLoginView() throws Exception {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("loginVO", new LoginVO());
+        modelAndView.addObject("errorMessage", null);
+        modelAndView.setViewName("login/login");
+        return modelAndView;
     }
 
     @PostMapping(value = "/login")
-    public String login(LoginVO loginVO, HttpServletRequest request, Model model) throws Exception {
+    public ModelAndView login(@Valid LoginVO loginVO, BindingResult bindingResult, HttpServletRequest request, Model model) throws Exception {
+        ModelAndView modelAndView = new ModelAndView();
+        System.out.println(loginVO.toString());
+        if (bindingResult.hasErrors()) {
+            modelAndView.setViewName("login/login");
+            return modelAndView;
+        }
+
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(loginVO.getUserTel(), loginVO.getPassword());
         if (null == loginVO.getRememberMe()) {
@@ -65,14 +77,15 @@ public class SysUserController {
         }
 
         if (null != errorMessage) {
-            model.addAttribute("errorMessage", errorMessage);
-            model.addAttribute("user", loginVO);
-            return "login/retryLogin";
-        } else {
-            subject.getSession().setAttribute("userTel", loginVO.getUserTel());
-            model.addAttribute("user", loginVO);
-            return "login/loginSuccess";
+            modelAndView.addObject("errorMessage", errorMessage);
+            modelAndView.addObject("user", loginVO);
+            modelAndView.setViewName("login/login");
+            return modelAndView;
         }
+        subject.getSession().setAttribute("userTel", loginVO.getUserTel());
+        modelAndView.addObject("user", loginVO);
+        modelAndView.setViewName("index");
+        return modelAndView;
     }
 
     @GetMapping(value = "/logout")
@@ -81,7 +94,7 @@ public class SysUserController {
         if (null != subject) {
             subject.logout();
         }
-        return "redirect:/";
+        return "redirect:/user/getLoginView";
     }
 
     @GetMapping(value = "/newPasswordView")
@@ -92,8 +105,8 @@ public class SysUserController {
 
     @PostMapping(value = "/changPassword")
     public String changPassword(@Valid NewPasswordVO newPasswordVO, BindingResult result) throws Exception {
-        if (result.hasErrors()){
-           return "login/newKey";
+        if (result.hasErrors()) {
+            return "login/newKey";
         }
         userService.updateUserPassword(newPasswordVO);
         return "login/newKeySuccess";

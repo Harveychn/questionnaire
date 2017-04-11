@@ -4,41 +4,72 @@
 
     <resultMap id="publicTemplateInfoMap"
                type="com.questionnaire.ssm.module.qesTemplateManage.pojo.ListPublicTemplateInfoVO">
-        <id property="questionnaireId" column="questionnaireId"/>
-        <result property="questionnaireTitle" column="questionnaireTitle"/>
-        <result property="questionnaireSubtitle" column="questionnaireSubtitle"/>
-        <result property="questionnaireDescription" column="questionnaireDescription"/>
-		<result property="isDone" column="idDone"/>
-        <result property="sharedUser" column="sharedUser"/>
-        <result property="shareDate" jdbcType="TIMESTAMP" column="shareDate"/>
+        <id property="questionnaireId" column="questionnaire_id"/>
+        <result property="questionnaireTitle" column="questionnaire_title"/>
+        <result property="questionnaireSubtitle" column="questionnaire_subtitle"/>
+        <result property="questionnaireDescription" column="questionnaire_description"/>
+        <result property="isDone" column="is_done"/>
+        <result property="sharedUser" column="shared_user"/>
+        <result property="shareDate" jdbcType="TIMESTAMP" column="share_date"/>
     </resultMap>
 
     <select id="listPublicTemplateInfo" resultMap="publicTemplateInfoMap">
+		SELECT
+            q.questionnaire_id AS questionnaire_id,
+            q.questionnaire_title AS questionnaire_title,
+            q.questionnaire_subtitle AS questionnaire_subtitle,
+            q.questionnaire_description AS questionnaire_description,
+            q.is_done AS is_done,
+            u.user_real_name AS shared_user,
+            roq.operate_date AS share_date
+        FROM
+            questionnaire AS q,
+            `user` AS u,
+            record_operate_questionnaire AS roq
+        WHERE
+            u.user_tel = roq.user_tel
+        AND roq.questionnaire_id = q.questionnaire_id
+        AND q.is_template = TRUE
+        AND q.is_share = TRUE
+        AND q.is_visible = TRUE
+        AND q.is_done = TRUE
+        AND q.is_delete = FALSE
+        AND roq.action = 7
+        ORDER BY roq.operate_date DESC
+    </select>
+
+    <resultMap id="privateTemplateInfoMap"
+               type="com.questionnaire.ssm.module.qesTemplateManage.pojo.ListPrivateTemplateInfoVO">
+        <id property="questionnaireId" column="questionnaire_id"/>
+        <result property="questionnaireTitle" column="questionnaire_title"/>
+        <result property="questionnaireSubtitle" column="questionnaire_subtitle"/>
+        <result property="questionnaireDescription" column="questionnaire_description"/>
+        <result property="operate_action" column="operate_action"/>
+        <result property="operate_date" column="operate_date"/>
+    </resultMap>
+    <select id="listPrivateTemplateInfo" parameterType="String" resultMap="privateTemplateInfoMap">
         SELECT
-			q.questionnaire_id AS questionnaireId,
-			q.questionnaire_title AS questionnairetitle,
-			q.questionnaire_subtitle AS questionnaireSubTitle,
-			q.questionnaire_description AS questionnaireDescription,
-			q.is_done AS idDone,
-			u.user_real_name AS sharedUser,
-			roq.operate_date AS shareDate
-		FROM
-			questionnaire AS q,
-			record_operate_questionnaire AS roq,
-			`user` AS u
-		WHERE
-			u.user_tel = roq.user_tel
-		AND roq.questionnaire_id = q.questionnaire_id
-		AND q.is_visible = TRUE
-		AND q.is_delete = FALSE
-		AND q.is_share = TRUE
-		AND q.is_template = TRUE
-		GROUP BY
-			q.questionnaire_id,
-			q.questionnaire_title,
-			q.questionnaire_subtitle,
-			q.questionnaire_description,
-			q.is_done,
-			u.user_tel
+        q.questionnaire_id AS questionnaire_id,
+        q.questionnaire_title AS questionnaire_title,
+        q.questionnaire_subtitle AS questionnaire_subtitle,
+        q.questionnaire_description AS questionnaire_description,
+        roq.action AS operate_action,
+        roq.operate_date AS operate_date
+        FROM
+        record_operate_questionnaire AS roq,
+        questionnaire AS q
+        <where>
+            <if test="userTel!=null and userTel!=''">
+                AND roq.user_tel = #{userTel}
+            </if>
+            AND roq.questionnaire_id = q.questionnaire_id
+            AND q.is_template = TRUE
+            AND q.is_share = FALSE
+            AND q.is_visible = TRUE
+            AND q.is_done = TRUE
+            AND q.is_delete = FALSE
+            AND roq.action IN (0, 5, 9)
+        </where>
+        ORDER BY roq.operate_date DESC
     </select>
 </mapper>

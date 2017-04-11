@@ -19,14 +19,6 @@ public interface QesManageMapper {
      * @return
      * @throws Exception
      */
-    List<ListQuestionnaireVO> selectQuestionnaireInfoByUserTel(@Param("userTel") String userTel) throws Exception;
-
-    /**
-     * 查询公共问卷信息
-     *
-     * @return
-     * @throws Exception
-     */
-    List<ListQuestionnaireVO> selectQuestionnaireInfoPublic() throws Exception;
+    List<ListQuestionnaireVO> listQuestionnaireInfoByUserTel(@Param("userTel") String userTel) throws Exception;
 
 }

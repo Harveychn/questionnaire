@@ -14,5 +14,5 @@ public interface Add2LibraryService {
     Questionnaire getSharingQesPaperFromDB(Long questionnaireId) throws Exception;
 
     @Transactional
-    void Add2PublicOrPrivateLibrary(Long questionnaireId, Questionnaire copyQesPaper) throws Exception;
+    Long Add2PublicOrPrivateLibrary(Long questionnaireId, Questionnaire copyQesPaper) throws Exception;
 }
