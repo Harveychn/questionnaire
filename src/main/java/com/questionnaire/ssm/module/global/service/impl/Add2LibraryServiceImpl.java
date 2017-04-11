@@ -49,21 +49,24 @@ public class Add2LibraryServiceImpl implements Add2LibraryService {
     /**
      * 分享问卷（复制问卷信息并且重新组织问卷-题目对应关系）
      *
-     * @param questionnaireId
-     * @param copyQesPaper
+     * @param questionnaireId 被操作问卷id
+     * @param copiedQesPaper  复制的问卷
+     * @return 新生成的问卷id
      * @throws Exception
      */
     @Override
     @Transactional
-    public void Add2PublicOrPrivateLibrary(Long questionnaireId, Questionnaire copyQesPaper) throws Exception {
+    public Long Add2PublicOrPrivateLibrary(Long questionnaireId, Questionnaire copiedQesPaper) throws Exception {
 
         try {
-            questionnaireMapper.insertSelective(copyQesPaper);
+            questionnaireMapper.insertSelective(copiedQesPaper);
         } catch (Exception e) {
             logger.error(e.getMessage());
             throw new OperateDBException(CodeForVOEnum.DB_INSERT_FAIL,
                     DBTableEnum.QUESTIONNAIRE.getTableName());
         }
+        /*新生成的问卷Id*/
+        Long copiedQuestionnaireId = copiedQesPaper.getQuestionnaireId();
         /*开始组织新的问卷-问题映射关系*/
         MappingQuestionnaireQuestionExample mappingQuestionnaireQuestionExample = new MappingQuestionnaireQuestionExample();
         mappingQuestionnaireQuestionExample.createCriteria().andQuestionnaireIdEqualTo(questionnaireId);
@@ -75,7 +78,7 @@ public class Add2LibraryServiceImpl implements Add2LibraryService {
 
             newMap = OperateQuestionnaireUtil.copyMapQesPaperQes(currentMap);
             /*设置新获取的问卷ID*/
-            newMap.setQuestionnaireId(copyQesPaper.getQuestionnaireId());
+            newMap.setQuestionnaireId(copiedQuestionnaireId);
             /*插入新的映射关系*/
             try {
                 mappingQuestionnaireQuestionMapper.insertSelective(newMap);
@@ -85,6 +88,8 @@ public class Add2LibraryServiceImpl implements Add2LibraryService {
                         DBTableEnum.MAPPING_QUESTIONNAIRE_QUESTION.getTableName());
             }
         }
+
+        return copiedQuestionnaireId;
     }
 
     private static final Logger logger = LoggerFactory.getLogger(Add2LibraryServiceImpl.class);

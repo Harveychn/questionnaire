@@ -28,8 +28,8 @@ public class UserMapperTest {
     @Test
     public void updateByPrimaryKeySelective() throws Exception {
         User user = new User();
-        user.setUserTel("11111111111");
-//        user.setUserTel("17764591959");
+//        user.setUserTel("17722223333");
+        user.setUserTel("17764591959");
         user.setUserRealName("admin");
 //        user.setId("111");
         user.setRoleId(2L);
@@ -38,7 +38,7 @@ public class UserMapperTest {
         user.setMailAddress("980278090@qq.com");
         user.setUserBirthday(new Date());
         user.setIsValid(true);
-        user.setUserSex(1);
+        user.setUserSex(0);
 
         //加密处理
         String algorithmName = "md5";

@@ -38,14 +38,10 @@ public class RecordActionServiceImpl implements RecordActionService {
         /*创建问卷动作*/
         recordOperateQuestionnaire.setAction(actionCode);
 
-        int result = 0;
         try {
-            result = recordOperateQuestionnaireMapper.insertSelective(recordOperateQuestionnaire);
+            recordOperateQuestionnaireMapper.insertSelective(recordOperateQuestionnaire);
         } catch (Exception e) {
             logger.error(e.getMessage());
-            throw new OperateDBException(CodeForVOEnum.UNKNOWN_ERROR, DBTableEnum.RECORD_OPERATE_QUESTIONNAIRE.getTableName());
-        }
-        if (result != 1) {
             throw new OperateDBException(CodeForVOEnum.DB_INSERT_FAIL, DBTableEnum.RECORD_OPERATE_QUESTIONNAIRE.getTableName());
         }
     }
@@ -64,17 +60,13 @@ public class RecordActionServiceImpl implements RecordActionService {
         /*创建问卷动作*/
         recordOperateQuestionnaire.setAction(actionCode);
 
-        int result = 0;
         for (Long questionnaireId : questionnaireIds) {
         /*操作问卷的id*/
             recordOperateQuestionnaire.setQuestionnaireId(questionnaireId);
             try {
-                result = recordOperateQuestionnaireMapper.insertSelective(recordOperateQuestionnaire);
+                recordOperateQuestionnaireMapper.insertSelective(recordOperateQuestionnaire);
             } catch (Exception e) {
                 logger.error(e.getMessage());
-                throw new OperateDBException(CodeForVOEnum.UNKNOWN_ERROR, DBTableEnum.RECORD_OPERATE_QUESTIONNAIRE.getTableName());
-            }
-            if (result != 1) {
                 throw new OperateDBException(CodeForVOEnum.DB_INSERT_FAIL, DBTableEnum.RECORD_OPERATE_QUESTIONNAIRE.getTableName());
             }
         }
