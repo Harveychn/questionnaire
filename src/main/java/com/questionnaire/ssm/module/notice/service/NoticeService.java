@@ -12,4 +12,6 @@ public interface NoticeService {
     void insertNotice(Notice notice) throws Exception;
 
     List<Notice> listNotice() throws Exception;
+
+    void deleteNotice(Long noticeId)throws Exception;
 }

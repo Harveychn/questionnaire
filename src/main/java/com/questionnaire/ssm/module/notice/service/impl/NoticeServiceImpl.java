@@ -85,4 +85,40 @@ public class NoticeServiceImpl implements NoticeService{
         }
         return notices;
     }
+
+    @Override
+    public void deleteNotice(Long noticeId) throws Exception {
+        UserValidationUtil.checkUserValid(logger);
+        Date currentDate=new Date();
+        String userTel=UserValidationUtil.getUserTel(logger);
+
+        int deleteResult=0;
+        try{
+           deleteResult=noticeMapper.deleteByPrimaryKey(noticeId);
+        }catch (Exception e){
+           logger.error(e.getMessage());
+           throw new OperateDBException(OperateDBEnum.UNKNOWN_ERROR, DBTableEnum.NOTICE.getTableName());
+        }
+        if(deleteResult!=1){
+            logger.error(OperateDBEnum.DELETE_FAIL.getMessage()+"\n"+DBTableEnum.NOTICE.getTableName());
+            throw new OperateDBException(OperateDBEnum.DELETE_FAIL, DBTableEnum.NOTICE.getTableName());
+        }
+         /*用户操作问卷记录保存*/
+        RecordOperateNotice recordOperateNotice=new RecordOperateNotice();
+        recordOperateNotice.setOperateDate(currentDate);
+        recordOperateNotice.setUserTel(userTel);
+        recordOperateNotice.setNoticeId(noticeId);
+        recordOperateNotice.setAction(String.valueOf(UserActionEnum.DELETE_ACTION.getCode()));
+
+        int result=0;
+        try {
+            result=recordOperateNoticeMapper.insertSelective(recordOperateNotice);
+        }catch (Exception e){
+            logger.error(e.getMessage());
+            throw new OperateDBException(OperateDBEnum.UNKNOWN_ERROR,DBTableEnum.RECORD_OPERATE_NOTICE.getTableName());
+        }
+        if (result!=1){
+            throw new OperateDBException(OperateDBEnum.DELETE_FAIL,DBTableEnum.RECORD_OPERATE_NOTICE.getTableName());
+        }
+    }
 }

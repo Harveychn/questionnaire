@@ -11,7 +11,7 @@
     </style>
 </head>
 <body>
-<h1 align="center">问卷信息</h1>
+<h1 align="center">公告信息</h1>
 <div align="center">
     <table th:if="${noticeListVO.size()>0}"class="table table-bordered">
         <thead>
@@ -29,13 +29,15 @@
                 <td th:text="${noticeStat.count}"></td>
                 <td th:text="${notice.noticeTitle}"></td>
                 <td th:text="${notice.noticeContext}"></td>
-                <td th:datetime="${notice.lastDate}"></td>
+                <td th:text="${notice.lastDate}"></td>
                 <td>
                     <label>
-                        <a th:href="@{/notice/deleteNotice/{id}(id=${notice.getNoticeId()})}" class="btn btn-sm btn-link">删除</a>
+                        <a th:href="@{/notice/test/{id}(id=${notice.getNoticeId()})}"
+                           class="btn btn-sm btn-link">删除</a>
                     </label>
                     <label>
-                        <a th:href="@{}"class="btn btn-sm btn-link">发放</a>
+                        <a th:href="@{/notice/test/{id}(id=${notice.getNoticeId()})}"
+                           class="btn btn-sm btn-link">发放</a>
                     </label>
                 </td>
             </tr>
