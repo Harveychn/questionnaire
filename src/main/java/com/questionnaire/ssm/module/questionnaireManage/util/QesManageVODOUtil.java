@@ -156,8 +156,11 @@ public class QesManageVODOUtil {
         if (QuestionTypeEnum.DROP_SELECTION.getCode().equals(typeCode)) {
             return QuestionTypeEnum.DROP_SELECTION.getQuestionType();
         }
-        if (QuestionTypeEnum.PICTURE_SELECTION.getCode().equals(typeCode)) {
-            return QuestionTypeEnum.PICTURE_SELECTION.getQuestionType();
+        if (QuestionTypeEnum.PICTURE_SINGLE_SELECTION.getCode().equals(typeCode)) {
+            return QuestionTypeEnum.PICTURE_SINGLE_SELECTION.getQuestionType();
+        }
+        if (QuestionTypeEnum.PICTURE_MULTIPLE_SELECTION.getCode().equals(typeCode)) {
+            return QuestionTypeEnum.PICTURE_MULTIPLE_SELECTION.getQuestionType();
         }
         return QuestionTypeEnum.UNKNOWN_TYPE.getQuestionType();
     }
@@ -186,8 +189,11 @@ public class QesManageVODOUtil {
         if (QuestionTypeEnum.DROP_SELECTION.getQuestionType().equals(typeString)) {
             return QuestionTypeEnum.DROP_SELECTION.getCode();
         }
-        if (QuestionTypeEnum.PICTURE_SELECTION.getQuestionType().equals(typeString)) {
-            return QuestionTypeEnum.PICTURE_SELECTION.getCode();
+        if (QuestionTypeEnum.PICTURE_SINGLE_SELECTION.getQuestionType().equals(typeString)) {
+            return QuestionTypeEnum.PICTURE_SINGLE_SELECTION.getCode();
+        }
+        if (QuestionTypeEnum.PICTURE_MULTIPLE_SELECTION.getQuestionType().equals(typeString)) {
+            return QuestionTypeEnum.PICTURE_MULTIPLE_SELECTION.getCode();
         }
         return QuestionTypeEnum.UNKNOWN_TYPE.getCode();
     }
@@ -212,7 +218,8 @@ public class QesManageVODOUtil {
                         || questionTypeCode.equals(QuestionTypeEnum.SINGLE_LINE_BLANK.getCode())
                         || questionTypeCode.equals(QuestionTypeEnum.MULTI_LINE_BLANK.getCode())
                         || questionTypeCode.equals(QuestionTypeEnum.DROP_SELECTION.getCode())
-                        || questionTypeCode.equals(QuestionTypeEnum.PICTURE_SELECTION.getCode())) {
+                        || questionTypeCode.equals(QuestionTypeEnum.PICTURE_SINGLE_SELECTION.getCode())
+                        || questionTypeCode.equals(QuestionTypeEnum.PICTURE_MULTIPLE_SELECTION.getCode())) {
                     optionStrBuilder.append(QuestionTypeEnum.SINGLE_CHOICE.getDivideStr());
                 }
             }
@@ -237,7 +244,8 @@ public class QesManageVODOUtil {
                 || questionTypeCode.equals(QuestionTypeEnum.SINGLE_LINE_BLANK.getCode())
                 || questionTypeCode.equals(QuestionTypeEnum.MULTI_LINE_BLANK.getCode())
                 || questionTypeCode.equals(QuestionTypeEnum.DROP_SELECTION.getCode())
-                || questionTypeCode.equals(QuestionTypeEnum.PICTURE_SELECTION.getCode())) {
+                || questionTypeCode.equals(QuestionTypeEnum.PICTURE_SINGLE_SELECTION.getCode())
+                || questionTypeCode.equals(QuestionTypeEnum.PICTURE_MULTIPLE_SELECTION.getCode())) {
             options = optionString.split("\\|\\|");
         }
         if (options == null) {

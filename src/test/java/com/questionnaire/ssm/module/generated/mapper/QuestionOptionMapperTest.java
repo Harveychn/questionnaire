@@ -38,11 +38,12 @@ public class QuestionOptionMapperTest {
                 || questionTypeCode.equals(QuestionTypeEnum.SINGLE_LINE_BLANK.getCode())
                 || questionTypeCode.equals(QuestionTypeEnum.MULTI_LINE_BLANK.getCode())
                 || questionTypeCode.equals(QuestionTypeEnum.DROP_SELECTION.getCode())
-                || questionTypeCode.equals(QuestionTypeEnum.PICTURE_SELECTION.getCode())) {
+                || questionTypeCode.equals(QuestionTypeEnum.PICTURE_SINGLE_SELECTION.getCode())
+                || questionTypeCode.equals(QuestionTypeEnum.PICTURE_MULTIPLE_SELECTION.getCode())) {
             options = optionsString.split("\\|\\|");
         }
 
-        assertNotEquals(options,null);
+        assertNotEquals(options, null);
 
 //        for (int order = 0; order < options.length; order++) {
 //            questionOptionVO = new QuestionOptionVO();

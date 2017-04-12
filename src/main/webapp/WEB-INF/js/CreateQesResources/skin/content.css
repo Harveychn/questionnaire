@@ -304,6 +304,8 @@ table.questions-items-title td .cq-title {
     font-size: 14px;
     overflow: hidden;
     text-align: center;
+    background: #ffffff;
+    color: #4a4a4a;
 }
 
 .ui-questions-content-list > li.ui-module .theme-type .module-menu .module-ctrl {
@@ -338,6 +340,8 @@ table.questions-items-title td .cq-title {
     line-height: 20px;
     padding: 5px;
     font-size: 16px;
+    color: #535353;
+    background: #FFFFFF;
 }
 
 .ui-questions-content-list > li.ui-module .cq-items-content,

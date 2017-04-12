@@ -3,6 +3,7 @@ package com.questionnaire.ssm.module.questionnaireManage.enums;
 /**
  * Created by 郑晓辉 on 2017/3/22.
  * Description:问卷类型枚举
+ * 与 createQuestionnaire 页面的 dataType 相关
  */
 public enum QuestionTypeEnum {
     UNKNOWN_TYPE("0", "未知题型", ""),
@@ -11,7 +12,8 @@ public enum QuestionTypeEnum {
     DROP_SELECTION("3", "下拉选择题", "||"),//下拉选择题
     SINGLE_LINE_BLANK("4", "单项填空题", "||"),//单项填空题
     MULTI_LINE_BLANK("5", "多项填空题", "||"),//多项填空题
-    PICTURE_SELECTION("6", "图片选择题", "||"),//图片选择题
+    PICTURE_SINGLE_SELECTION("6", "图片单选题", "||"),//图片单选题
+    PICTURE_MULTIPLE_SELECTION("7", "图片多选题", "||"),//图片多选题
     ;
 
     QuestionTypeEnum(String code, String questionType, String divideStr) {

@@ -159,6 +159,7 @@ function analyzeResponse(data, url, questionnaireIds) {
                 if (responsePkt.code === 200) {
                     successMsg = "成功添加 【" + questionnaireIds.length + "】 张问卷到个人模板库";
                     successResultLayer(successMsg);
+                    location.reload(true);
                 }
                 dealGlobalError(responsePkt);
                 break;
@@ -166,6 +167,7 @@ function analyzeResponse(data, url, questionnaireIds) {
                 if (responsePkt.code === 200) {
                     successMsg = "成功删除 【" + questionnaireIds.length + "】 张问卷,你可以在垃圾站中恢复这些问卷!";
                     successResultLayer(successMsg);
+                    location.reload(true);
                 }
                 dealGlobalError(responsePkt);
                 break;
@@ -174,6 +176,7 @@ function analyzeResponse(data, url, questionnaireIds) {
                     successMsg = "成功共享 【" + responsePkt.data.shareOK + "】 张问卷到公共模版库\n\n【" +
                         responsePkt.data.sharedFail + "】 张重复共享(您已共享过)";
                     successResultLayer(successMsg);
+                    location.reload(true);
                 }
                 dealGlobalError(responsePkt);
                 break;

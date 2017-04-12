@@ -100,13 +100,13 @@ public class SysUserController {
     @GetMapping(value = "/newPasswordView")
     public String newPasswordView(Model model) throws Exception {
         model.addAttribute("newPasswordVO", new NewPasswordVO());
-        return "login/newKey";
+        return "login/changePassword";
     }
 
     @PostMapping(value = "/changPassword")
     public String changPassword(@Valid NewPasswordVO newPasswordVO, BindingResult result) throws Exception {
         if (result.hasErrors()) {
-            return "login/newKey";
+            return "login/changePassword";
         }
         userService.updateUserPassword(newPasswordVO);
         return "login/newKeySuccess";
