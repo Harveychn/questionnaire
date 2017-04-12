@@ -31,8 +31,9 @@ public enum CodeForVOEnum {
     OLD_PASSWORD_ERROR(14, "旧密码错误!"),
 
     /*参数校验信息编码*/
-    QUESTIONNAIRE_TITLE_NULL(-1000, "问卷标题不得为空!"),
-    QUESTIONNAIRE_IDS_NULL(-1010, "未选择要批量操作的问卷!");
+    VALID_FAIL_CREATE_QUESTIONNAIRE(-1000, "创建问卷视图数据校验失败!"),
+    QUESTIONNAIRE_IDS_NULL(-1010, "未选择要操作的问卷!"),
+    TEMPLATE_IDS_NULL(-1020, "未选择要操作的模板"),;
 
     /*错误代码*/
     private int code;

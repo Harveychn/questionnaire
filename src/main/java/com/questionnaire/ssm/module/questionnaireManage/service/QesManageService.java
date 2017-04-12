@@ -5,6 +5,8 @@ import com.questionnaire.ssm.module.global.enums.UserActionEnum;
 import com.questionnaire.ssm.module.questionnaireManage.pojo.CreateQuestionnaireVO;
 import com.questionnaire.ssm.module.questionnaireManage.pojo.DisplayQuestionnaireVO;
 import com.questionnaire.ssm.module.questionnaireManage.pojo.ListQuestionnaireVO;
+import com.questionnaire.ssm.module.questionnaireManage.pojo.ShareResultVO;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -20,6 +22,7 @@ public interface QesManageService {
      * @param questionnaireVO
      * @throws Exception 异常时会抛出 OperateDBException
      */
+    @Transactional
     void insertQuestionnaire(CreateQuestionnaireVO questionnaireVO) throws Exception;
 
     /**
@@ -41,26 +44,6 @@ public interface QesManageService {
     DisplayQuestionnaireVO getQuestionnaireById(long questionnaireId) throws Exception;
 
     /**
-     * 操作单张问卷
-     * 删除、模板化
-     *
-     * @param questionnaireId 要操作问卷的id
-     * @param questionnaire   操作的问卷数据
-     * @param userActionEnum  用户操作动作
-     * @throws Exception
-     */
-    void delOrTemplateQesById(long questionnaireId, Questionnaire questionnaire, UserActionEnum userActionEnum) throws Exception;
-
-    /**
-     * 共享单张问卷
-     *
-     * @param questionnaireId 要分享问卷的id
-     * @param userActionEnum  用户操作动作
-     * @throws Exception
-     */
-    void shareQesPaperById(Long questionnaireId, UserActionEnum userActionEnum) throws Exception;
-
-    /**
      * 批量操作问卷
      * 删除、模板化
      *
@@ -69,8 +52,41 @@ public interface QesManageService {
      * @param userActionEnum   用户操作动作
      * @throws Exception
      */
+    @Transactional
     void delOrTemplateQesByIds(List<Long> questionnaireIds, Questionnaire questionnaire, UserActionEnum userActionEnum) throws Exception;
 
-
-    void shareQesPaperByIds(List<Long> questionnaireIds, UserActionEnum userActionEnum) throws Exception;
+    /**
+     * 批量分享问卷
+     *
+     * @param questionnaireIds 批量操作的操作的问卷id
+     * @param userActionEnum   用户操作动作
+     * @return 分享结果
+     * @throws Exception
+     */
+    @Transactional
+    ShareResultVO shareQesPaperByIds(List<Long> questionnaireIds, UserActionEnum userActionEnum) throws Exception;
 }
+
+
+//
+//    /**
+//     * 操作单张问卷
+//     * 删除、模板化
+//     *
+//     * @param questionnaireId 要操作问卷的id
+//     * @param questionnaire   操作的问卷数据
+//     * @param userActionEnum  用户操作动作
+//     * @throws Exception
+//     */
+//    @Transactional
+//    void delOrTemplateQesById(long questionnaireId, Questionnaire questionnaire, UserActionEnum userActionEnum) throws Exception;
+//
+//    /**
+//     * 共享单张问卷
+//     *
+//     * @param questionnaireId 要分享问卷的id
+//     * @param userActionEnum  用户操作动作
+//     * @throws Exception
+//     */
+//    @Transactional
+//    void shareQesPaperById(Long questionnaireId, UserActionEnum userActionEnum) throws Exception;

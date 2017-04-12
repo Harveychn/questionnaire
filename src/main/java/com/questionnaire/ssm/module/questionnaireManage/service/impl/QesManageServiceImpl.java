@@ -7,6 +7,9 @@ import com.questionnaire.ssm.module.global.enums.CodeForVOEnum;
 import com.questionnaire.ssm.module.global.enums.UserActionEnum;
 import com.questionnaire.ssm.module.global.exception.OperateDBException;
 
+import com.questionnaire.ssm.module.global.service.Add2LibraryService;
+import com.questionnaire.ssm.module.global.service.CheckDuplicateService;
+import com.questionnaire.ssm.module.global.util.ListArrayUtil;
 import com.questionnaire.ssm.module.global.util.UserValidationUtil;
 import com.questionnaire.ssm.module.questionnaireManage.mapper.QesManageMapper;
 import com.questionnaire.ssm.module.questionnaireManage.pojo.*;
@@ -20,6 +23,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -44,7 +48,7 @@ public class QesManageServiceImpl implements QesManageService {
         UserValidationUtil.checkUserValid(logger);
         /*用户开始业务操作时间*/
         Date currentDate = new Date();
-
+        /*获取前端视图数据中的问卷信息*/
         Questionnaire questionnaire = QesManageVODOUtil.toQuestionnaireDO(questionnaireVO);
 
         try {
@@ -53,11 +57,11 @@ public class QesManageServiceImpl implements QesManageService {
             logger.error(e.getMessage());
             throw new OperateDBException(CodeForVOEnum.DB_INSERT_FAIL, DBTableEnum.QUESTIONNAIRE.getTableName());
         }
-
+        /*获取视图数据中的问题以及问题选项信息*/
         QuestionDTO questionDTO = QesManageVODOUtil.toQuestionMultiDO(questionnaireVO.getQuestions());
         List<Question> questions = questionDTO.getQuestion();
         List<QuestionOption> options = questionDTO.getQuestionOption();
-
+        /*组织问卷问题对应信息*/
         MappingQuestionnaireQuestion mapping = new MappingQuestionnaireQuestion();
         mapping.setQuestionnaireId(questionnaire.getQuestionnaireId());
 
@@ -89,10 +93,11 @@ public class QesManageServiceImpl implements QesManageService {
                 throw new OperateDBException(CodeForVOEnum.DB_INSERT_FAIL, DBTableEnum.MAPPING_QUESTIONNAIRE_QUESTION.getTableName());
             }
         }
-
+        //判断是否创建为模板
         recordActionService.saveRecord(currentDate,
                 questionnaire.getQuestionnaireId(),
-                String.valueOf(UserActionEnum.CREATE_QUESTIONNAIRE.getCode()));
+                String.valueOf(questionnaire.getIsTemplate() ?
+                        UserActionEnum.CREATE_QUESTIONNAIRE_AS_TEMPLATE.getCode() : UserActionEnum.CREATE_QUESTIONNAIRE.getCode()));
     }
 
     /**
@@ -105,7 +110,7 @@ public class QesManageServiceImpl implements QesManageService {
     public List<ListQuestionnaireVO> listQuestionnaireInfoByUserTel(String userTel) throws Exception {
         List<ListQuestionnaireVO> questionnaireVOs = null;
         try {
-            questionnaireVOs = qesManageMapper.selectQuestionnaireInfoByUserTel(userTel);
+            questionnaireVOs = qesManageMapper.listQuestionnaireInfoByUserTel(userTel);
         } catch (Exception e) {
             logger.error(e.getMessage());
             throw new OperateDBException(CodeForVOEnum.UNKNOWN_ERROR, "获取用户问卷信息时出现异常!");
@@ -171,58 +176,6 @@ public class QesManageServiceImpl implements QesManageService {
     }
 
     /**
-     * 操作单张问卷
-     * 删除、模板化
-     *
-     * @param questionnaireId 要操作问卷的ID
-     * @throws Exception
-     */
-    @Override
-    @Transactional
-    public void delOrTemplateQesById(long questionnaireId, Questionnaire questionnaire, UserActionEnum userActionEnum) throws Exception {
-        Date currentDate = new Date();
-
-        QuestionnaireExample questionnaireExample = new QuestionnaireExample();
-        questionnaireExample.createCriteria().andQuestionnaireIdEqualTo(questionnaireId);
-        try {
-            questionnaireMapper.updateByExampleSelective(questionnaire, questionnaireExample);
-        } catch (Exception e) {
-            logger.error(e.getMessage());
-            throw new OperateDBException(CodeForVOEnum.DB_UPDATE_FAIL, DBTableEnum.QUESTIONNAIRE.getTableName());
-        }
-
-        recordActionService.saveRecord(currentDate, questionnaireId,
-                String.valueOf(userActionEnum.getCode()));
-    }
-
-    /**
-     * 用户分享单份问卷
-     *
-     * @param questionnaireId 要分享问卷的id
-     * @param userActionEnum  用户操作动作
-     * @throws Exception
-     */
-    @Override
-    @Transactional
-    public void shareQesPaperById(Long questionnaireId, UserActionEnum userActionEnum) throws Exception {
-        Date currentDate = new Date();
-        /*用户分享完问卷后，设置用户的问卷isShare为 true 防止重复分享*/
-        QuestionnaireExample questionnaireExample = new QuestionnaireExample();
-        questionnaireExample.createCriteria().andQuestionnaireIdEqualTo(questionnaireId);
-        try {
-            questionnaireMapper.updateByExampleSelective(OperateQuestionnaireUtil.shareAction(), questionnaireExample);
-        } catch (Exception e) {
-            logger.error(e.getMessage());
-            throw new OperateDBException(CodeForVOEnum.DB_UPDATE_FAIL, DBTableEnum.QUESTIONNAIRE.getTableName());
-        }
-        /*分享一份问卷*/
-        shareSingleQuestionnaire(questionnaireId);
-
-        recordActionService.saveRecord(currentDate, questionnaireId,
-                String.valueOf(userActionEnum.getCode()));
-    }
-
-    /**
      * 批量操作问卷
      * 删除、模板化
      *
@@ -246,24 +199,38 @@ public class QesManageServiceImpl implements QesManageService {
         }
 
         recordActionService.saveMultiRecords(currentDate,
-                (Long[]) questionnaireIds.toArray(), String.valueOf(userActionEnum.getCode()));
+                ListArrayUtil.list2Array(questionnaireIds), String.valueOf(userActionEnum.getCode()));
     }
 
     /**
-     * 批量分享问卷
+     * 批量分享问卷为公共模板
      *
      * @param questionnaireIds 批量操作的操作的问卷id
      * @param userActionEnum   用户操作动作
+     * @return 分享结果
      * @throws Exception
      */
     @Override
     @Transactional
-    public void shareQesPaperByIds(List<Long> questionnaireIds, UserActionEnum userActionEnum) throws Exception {
+    public ShareResultVO shareQesPaperByIds(List<Long> questionnaireIds, UserActionEnum userActionEnum) throws Exception {
         Date currentDate = new Date();
 
-        /*防止重复共享*/
+        List<Long> checkedQuestionnaireIds = new ArrayList<>();
+
+        /*检查当前问卷id是否分享过*/
+        for (Long checkingQesId : questionnaireIds) {
+            //查找未分享的问卷
+            if (!checkDuplicateService.isShared(checkingQesId)) {
+                checkedQuestionnaireIds.add(checkingQesId);
+            }
+        }
+        /*要操作的全部问卷均为分享过的*/
+        if (checkedQuestionnaireIds.size() <= 0) {
+            return new ShareResultVO(questionnaireIds.size(), 0);
+        }
+
         QuestionnaireExample questionnaireExample = new QuestionnaireExample();
-        questionnaireExample.createCriteria().andQuestionnaireIdIn(questionnaireIds);
+        questionnaireExample.createCriteria().andQuestionnaireIdIn(checkedQuestionnaireIds);
 
         try {
             questionnaireMapper.updateByExampleSelective(OperateQuestionnaireUtil.shareAction(), questionnaireExample);
@@ -272,61 +239,34 @@ public class QesManageServiceImpl implements QesManageService {
             throw new OperateDBException(CodeForVOEnum.DB_UPDATE_FAIL, DBTableEnum.QUESTIONNAIRE.getTableName());
         }
 
-        /*批量分享问卷*/
-        for (Long currentQuestionnaireId : questionnaireIds) {
-            shareSingleQuestionnaire(currentQuestionnaireId);
+        /*批量分享问卷，即复制被分享问卷信息到新的问卷信息中*/
+        for (Long currentQuestionnaireId : checkedQuestionnaireIds) {
+            Long newId = shareSingleQuestionnaire(currentQuestionnaireId);
+            /*保存公共问卷的分享记录，以便查找分享人*/
+            recordActionService.saveRecord(currentDate,
+                    newId, String.valueOf(UserActionEnum.SHARE_QUESTIONNAIRE_2_PUBLIC_TEMPLATE.getCode()));
         }
         /*操作记录的保存*/
         recordActionService.saveMultiRecords(currentDate,
-                (Long[]) questionnaireIds.toArray(), String.valueOf(userActionEnum.getCode()));
+                ListArrayUtil.list2Array(checkedQuestionnaireIds), String.valueOf(userActionEnum.getCode()));
+
+        return new ShareResultVO(questionnaireIds.size() - checkedQuestionnaireIds.size(),
+                checkedQuestionnaireIds.size());
     }
 
     /**
      * 分享问卷（复制问卷信息并且重新组织问卷-题目对应关系）
      *
-     * @param questionnaireId 要分享的问卷ID
+     * @param questionnaireId
      * @throws Exception
      */
-    private void shareSingleQuestionnaire(Long questionnaireId) throws Exception {
-        Questionnaire sharingQesPaper = null;
-        try {
-            sharingQesPaper = questionnaireMapper.selectByPrimaryKey(questionnaireId);
-        } catch (Exception e) {
-            logger.error(e.getMessage());
-            throw new OperateDBException(CodeForVOEnum.DB_SELECT_NO_MESSAGE,
-                    DBTableEnum.QUESTIONNAIRE.getTableName());
-        }
-        /*未设置questionnaireId的待插入数据的实体*/
-        Questionnaire copyQesPaper = OperateQuestionnaireUtil.copyQesPaper(sharingQesPaper);
-
-        try {
-            questionnaireMapper.insertSelective(copyQesPaper);
-        } catch (Exception e) {
-            logger.error(e.getMessage());
-            throw new OperateDBException(CodeForVOEnum.DB_INSERT_FAIL,
-                    DBTableEnum.QUESTIONNAIRE.getTableName());
-        }
-        /*开始组织新的问卷-问题映射关系*/
-        MappingQuestionnaireQuestionExample mappingQuestionnaireQuestionExample = new MappingQuestionnaireQuestionExample();
-        mappingQuestionnaireQuestionExample.createCriteria().andQuestionnaireIdEqualTo(sharingQesPaper.getQuestionnaireId());
-
-        List<MappingQuestionnaireQuestion> mappingQuestionnaireQuestions
-                = mappingQuestionnaireQuestionMapper.selectByExample(mappingQuestionnaireQuestionExample);
-        MappingQuestionnaireQuestion newMap = null;
-        for (MappingQuestionnaireQuestion currentMap : mappingQuestionnaireQuestions) {
-            /*设置新获取的问卷ID*/
-            currentMap.setQuestionnaireId(copyQesPaper.getQuestionnaireId());
-            newMap = OperateQuestionnaireUtil.copyMapQesPaperQes(currentMap);
-            /*插入新的映射关系*/
-            try {
-                mappingQuestionnaireQuestionMapper.insertSelective(newMap);
-            } catch (Exception e) {
-                logger.error(e.getMessage());
-                throw new OperateDBException(CodeForVOEnum.DB_INSERT_FAIL,
-                        DBTableEnum.MAPPING_QUESTIONNAIRE_QUESTION.getTableName());
-            }
-        }
+    @Transactional
+    private Long shareSingleQuestionnaire(Long questionnaireId) throws Exception {
+        Questionnaire sharingQesPaper = add2LibraryService.getSharingQesPaperFromDB(questionnaireId);
+        Questionnaire copyQesPaper = OperateQuestionnaireUtil.copyQesPaper2Public(sharingQesPaper);
+        return add2LibraryService.Add2PublicOrPrivateLibrary(questionnaireId, copyQesPaper);
     }
+
 
     private static final Logger logger = LoggerFactory.getLogger(QesManageServiceImpl.class);
     private QuestionnaireMapper questionnaireMapper;
@@ -336,6 +276,8 @@ public class QesManageServiceImpl implements QesManageService {
     private QesManageMapper qesManageMapper;
 
     private RecordActionService recordActionService;
+    private Add2LibraryService add2LibraryService;
+    private CheckDuplicateService checkDuplicateService;
 
     @Autowired
     public QesManageServiceImpl(QuestionnaireMapper questionnaireMapper,
@@ -343,12 +285,70 @@ public class QesManageServiceImpl implements QesManageService {
                                 QuestionOptionMapper questionOptionMapper,
                                 MappingQuestionnaireQuestionMapper mappingQuestionnaireQuestionMapper,
                                 QesManageMapper qesManageMapper,
-                                RecordActionService recordActionService) {
+                                RecordActionService recordActionService,
+                                Add2LibraryService add2LibraryService,
+                                CheckDuplicateService checkDuplicateService) {
         this.questionnaireMapper = questionnaireMapper;
         this.questionMapper = questionMapper;
         this.questionOptionMapper = questionOptionMapper;
         this.mappingQuestionnaireQuestionMapper = mappingQuestionnaireQuestionMapper;
         this.qesManageMapper = qesManageMapper;
         this.recordActionService = recordActionService;
+        this.add2LibraryService = add2LibraryService;
+        this.checkDuplicateService = checkDuplicateService;
     }
 }
+
+
+/*单份问卷操作*/
+//    /**
+//     * 操作单张问卷
+//     * 删除、模板化
+//     *
+//     * @param questionnaireId 要操作问卷的ID
+//     * @throws Exception
+//     */
+//    @Override
+//    @Transactional
+//    public void delOrTemplateQesById(long questionnaireId, Questionnaire questionnaire, UserActionEnum userActionEnum) throws Exception {
+//        Date currentDate = new Date();
+//
+//        QuestionnaireExample questionnaireExample = new QuestionnaireExample();
+//        questionnaireExample.createCriteria().andQuestionnaireIdEqualTo(questionnaireId);
+//        try {
+//            questionnaireMapper.updateByExampleSelective(questionnaire, questionnaireExample);
+//        } catch (Exception e) {
+//            logger.error(e.getMessage());
+//            throw new OperateDBException(CodeForVOEnum.DB_UPDATE_FAIL, DBTableEnum.QUESTIONNAIRE.getTableName());
+//        }
+//
+//        recordActionService.saveRecord(currentDate, questionnaireId,
+//                String.valueOf(userActionEnum.getCode()));
+//    }
+//
+//    /**
+//     * 用户分享单份问卷
+//     *
+//     * @param questionnaireId 要分享问卷的id
+//     * @param userActionEnum  用户操作动作
+//     * @throws Exception
+//     */
+//    @Override
+//    @Transactional
+//    public void shareQesPaperById(Long questionnaireId, UserActionEnum userActionEnum) throws Exception {
+//        Date currentDate = new Date();
+//        /*用户分享完问卷后，设置用户的问卷isShare为 true 防止重复分享*/
+//        QuestionnaireExample questionnaireExample = new QuestionnaireExample();
+//        questionnaireExample.createCriteria().andQuestionnaireIdEqualTo(questionnaireId);
+//        try {
+//            questionnaireMapper.updateByExampleSelective(OperateQuestionnaireUtil.shareAction(), questionnaireExample);
+//        } catch (Exception e) {
+//            logger.error(e.getMessage());
+//            throw new OperateDBException(CodeForVOEnum.DB_UPDATE_FAIL, DBTableEnum.QUESTIONNAIRE.getTableName());
+//        }
+//        /*分享一份问卷*/
+//        shareSingleQuestionnaire(questionnaireId);
+//
+//        recordActionService.saveRecord(currentDate, questionnaireId,
+//                String.valueOf(userActionEnum.getCode()));
+//    }

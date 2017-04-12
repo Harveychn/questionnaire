@@ -17,7 +17,16 @@ public class DisplayQuestionnaireVO {
     /*问卷题目信息*/
     private List<QuestionVO> questions;
 
-
+    @Override
+    public String toString() {
+        return "DisplayQuestionnaireVO{" +
+                "questionnaireId=" + questionnaireId +
+                ", questionnaireTitle='" + questionnaireTitle + '\'' +
+                ", questionnaireSubtitle='" + questionnaireSubtitle + '\'' +
+                ", questionnaireDescription='" + questionnaireDescription + '\'' +
+                ", questions=" + questions +
+                '}';
+    }
 
     public Long getQuestionnaireId() {
         return questionnaireId;

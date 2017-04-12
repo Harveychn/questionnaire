@@ -7,15 +7,14 @@ package com.questionnaire.ssm.module.global.enums;
 public enum UserActionEnum {
     /*问卷管理*/
     CREATE_QUESTIONNAIRE(1, "创建问卷"),
-    DELETE_TEMPORARY_QUESTIONNAIRE(2, "问卷放入回收站"),// 设置问卷visible = false
-    DELETE_FOREVER_QUESTIONNAIRE(3, "永久删除问卷"),//设置问卷delete = true
-    SHARE_QUESTIONNAIRE(4, "共享问卷"),
-    ADD_TO_MY_TEMPLATE(5, "添加问卷到我的模板"),
-
-    DELETE_TEMPORARY_MULTI_QUESTIONNAIRE(6, "批量问卷放入回收站"),
-    DELETE_FOREVER_MULTI_QUESTIONNAIRE(7, "批量永久删除问卷"),//设置问卷delete = true
-    SHARE_MULTI_QUESTIONNAIRE(8, "批量共享问卷"),
-    MULTI_ADD_TO_MY_TEMPLATE(9, "批量添加问卷到我的模板"),
+    CREATE_QUESTIONNAIRE_AS_TEMPLATE(0, "个人创建为模板"),
+    DELETE_TEMPORARY_QUESTIONNAIRE(2, "个人问卷放入回收站"),
+    DELETE_FOREVER_QUESTIONNAIRE(3, "永久删除问卷"),
+    ADD_2_PRIVATE_TEMPLATE(5, "添加到个人模板库"),
+    SHARE_QUESTIONNAIRE_2_PUBLIC_TEMPLATE(7, "分享问卷到公共模板库"),//关联新id（公共模板id）
+    ADD_2_PUBLIC_TEMPLATE(8, "添加个人问卷到公共模板库"),//关联原id（个人问卷id）
+    COPY_FROM_PUBLIC_TEMPLATE(9,"从公共模板库中复制模板"),//关联新id（个人模板id）
+    ADD_PUBLIC_TEMPLATE_2_MY_TEMPLATE_LIBRARY(10, "添加公共模板到个人模板库"),//关联原id（公共模板id）
     ;
 
     private int code;

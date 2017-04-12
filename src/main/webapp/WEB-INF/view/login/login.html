@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>问卷管理系统</title>
+    <link th:href="@{/img/logo.ico}"
+          href="/WEB-INF/img/logo.ico" rel="shortcut icon"/>
+    <link th:href="@{/css/myLogin/body.css}"
+          href="/WEB-INF/css/myLogin/body.css" rel="stylesheet"/>
+    <link th:href="@{/css/myLogin/login.css}"
+          href="/WEB-INF/css/myLogin/login.css" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/css/animate.css}"
+          href="/WEB-INF/css/animate.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div class="animated fadeInRight">
+    <form action="/user/login" th:action="@{/user/login}" method="post" th:object="${loginVO}">
+        <section class="background">
+            <section class="logo">
+                <img th:src="@{/css/myLogin/img.jpg}" height="45px"/>
+            </section>
+            <section class="huanyingdenglu">
+                <div class="huanyingdenglu-cn">
+                    <p class="denglu">欢迎登录</p>
+                </div>
+            </section>
+            <section class="login-error-info">
+                <ol th:if="${#fields.hasErrors('*')==true}">
+                    <li th:if="${#fields.hasErrors('userTel')}">
+                        <span th:errors="*{userTel}"></span>
+                    </li>
+                    <li th:if="${#fields.hasErrors('password')}">
+                        <span th:errors="*{password}"></span>
+                    </li>
+                </ol>
+                <ol th:if="${errorMessage!=null}">
+                    <li th:text="${errorMessage}"></li>
+                </ol>
+            </section>
+            <section class="yonghudenglu">
+                <div class="yonghudenglu-left"></div>
+                <div class="yonghudenglu-right">
+                    <input type="text" placeholder="用户登录" size="14px"
+                           th:field="*{userTel}" th:class="${#fields.hasErrors('userTel')}? fieldError"/>
+                </div>
+            </section>
+            <section class="mima">
+                <div class="mima-left"></div>
+                <div class="mima-right">
+                    <input type="password" placeholder="登录密码" size="14px"
+                           th:field="*{password}" th:class="${#fields.hasErrors('userTel')}? fieldError"/>
+                </div>
+            </section>
+            <section class="xiaci-and-wangjimima">
+                <div class="xiaci">
+                    <input type="checkbox" name="rememberMe" th:field="*{rememberMe}" value="true"/>
+                    <span>记住我</span>
+                </div>
+                <div class="wangjimima">
+                    <a href="#">忘记密码</a>
+                </div>
+            </section>
+
+            <section class="button">
+                <button class="denglu-button" type="submit">登录</button>
+            </section>
+
+        </section>
+
+    </form>
+</div>
+</body>
+</html>

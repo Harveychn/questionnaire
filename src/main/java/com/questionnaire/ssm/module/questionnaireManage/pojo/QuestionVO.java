@@ -21,6 +21,17 @@ public class QuestionVO {
      */
     private List<QuestionOptionVO> options;//题目选项信息
 
+    @Override
+    public String toString() {
+        return "QuestionVO{" +
+                "questionContext='" + questionContext + '\'' +
+                ", questionType='" + questionType + '\'' +
+                ", questionDescription='" + questionDescription + '\'' +
+                ", isMust=" + isMust +
+                ", options=" + options +
+                '}';
+    }
+
     public String getQuestionType() {
         return questionType;
     }

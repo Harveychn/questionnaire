@@ -34,10 +34,28 @@ public class QesManageAspect {
      * 获取创建问卷的视图之前，校验用户是否有相应的权限、角色
      */
     @Before("getCreateQuestionnaireViewPointcut()")
-    public void beforeCreateQuestionnaire() throws Exception {
+    public void beforeGetCreateQuestionnaireView() throws Exception {
         Set<String> needPermissions = new HashSet<>();
         needPermissions.add(PermissionEnum.CREATE_QUESTIONNAIRE.getPermission());
         String role = "疾控中心管理员";
         UserValidationUtil.checkUserValid(role, needPermissions, logger);
+    }
+
+    /**
+     * 创建问卷切入点
+     */
+    @Pointcut("execution(public * com.questionnaire.ssm.module.questionnaireManage.controller.QesManageController.create(..))")
+    public void createQuestionnairePointcut() {
+
+    }
+
+    /**
+     * 创建问卷卷之前，校验用户是否登录
+     *
+     * @throws Exception
+     */
+    @Before("createQuestionnairePointcut()")
+    public void beforeCreateQuestionnaire() throws Exception {
+        UserValidationUtil.checkUserValid(logger);
     }
 }
