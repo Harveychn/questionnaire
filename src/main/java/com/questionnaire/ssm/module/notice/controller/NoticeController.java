@@ -60,7 +60,11 @@ public class NoticeController {
         modelAndView.setViewName("notice/listNotice");
         return modelAndView;
     }
-
+    /***
+     * 删除公告
+     * @return
+     * @throws Exception
+     */
     @GetMapping(value = "/deleteNotice/{noticeId}")
     @ResponseBody
     public ModelAndView deleteNotice(@PathVariable("noticeId") long noticeId) throws Exception {
