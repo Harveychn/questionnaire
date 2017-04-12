@@ -14,12 +14,12 @@
           th:href="@{/img/logo.ico}"/>
     <link href="/WEB-INF/css/bootstrap.min.css" rel="stylesheet"
           th:href="@{/css/bootstrap.min.css}"/>
+    <link href="/WEB-INF/css/style.css" rel="stylesheet"
+          th:href="@{/css/style.css}"/>
     <link href="/WEB-INF/css/font-awesome.min.css" rel="stylesheet"
           th:href="@{/css/font-awesome.min.css}"/>
     <link href="/WEB-INF/css/animate.css" rel="stylesheet"
           th:href="@{/css/animate.css}"/>
-    <link href="/WEB-INF/css/style.css" rel="stylesheet"
-          th:href="@{/css/style.css}"/>
     <style type="text/css">
         .skin-1 .navbar-static-top {
             background: #2e62b8;
@@ -221,13 +221,14 @@
                 <small><i class="fa fa-tim"></i> 在此维护您的个人信息</small>
             </div>
             <div class="sidebar-title">
-                <a href="#">
+                <a href="#" class="J_menuItem" th:href="@{/user/newPasswordView}">
                     <h3><i class="fa fa-key"></i> 密码管理</h3>
                 </a>
                 <small><i class="fa fa-tim"></i> 在此进行密码的更改</small>
             </div>
             <div class="sidebar-title">
-                <a href="#" th:href="@{/user/logout}">
+                <!--<a href="#" th:href="@{/user/logout}">-->
+                <a class="J_menuTab" href="#" th:href="@{/user/logout}">
                     <h3><i class="fa fa-sign-out"></i> 安全退出</h3>
                 </a>
             </div>

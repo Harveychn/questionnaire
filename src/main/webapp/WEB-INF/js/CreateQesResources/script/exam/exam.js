@@ -14,10 +14,10 @@ var exam = {
         //题操作事件初始化
         this.listAllCtrlFn('.ui-questions-content-list', '.ui-up-btn', '.ui-down-btn', '.ui-clone-btn', '.ui-del-btn');
         //批量添加事件初始化
-        this.topicACtrlFn('.ui-questions-content-list', '.ui-add-item-btn', '.ui-batch-item-btn', '.ui-add-answer-btn');
+        this.topicACtrlFn('.ui-questions-content-list', '.ui-add-item-btn', '.ui-batch-item-btn', '.ui-add-answer-btn', '.ui-set-must-done');
         //
         this.moveTispFn('.ui-up-btn,.ui-down-btn,.ui-clone-btn,.ui-del-btn');
-        this.moveTispFn('.ui-add-item-btn,.ui-batch-item-btn,.ui-add-answer-btn');
+        this.moveTispFn('.ui-add-item-btn,.ui-batch-item-btn,.ui-add-answer-btn,.ui-set-must-done');
 
     },
     //拖拽
@@ -263,7 +263,7 @@ var exam = {
         });
     },
     //单题添加，批量添加
-    topicACtrlFn: function (parentObj, addObj, batchAddObj, addAnswerObj) {
+    topicACtrlFn: function (parentObj, addObj, batchAddObj, addAnswerObj, setMustObj) {
         //添加选项栏
         var $tid = 100 + parseInt(1000 * Math.random());
         $(document).on('click', parentObj + ' ' + addObj, function (e) {
@@ -292,6 +292,24 @@ var exam = {
                 $parentItems.after(template('analysis_tmp', {}));
             } else {
                 $(this).closest('li.ui-module').find('.analysis_contx').remove();
+            }
+        });
+        //设置问题为必做题
+        $(document).on('click', parentObj + ' ' + setMustObj, function (e) {
+            var $parentItems = $(this).closest('li.ui-module').find('.module-menu > h4');
+            var currentFontSize = $parentItems.css('font-size');
+            if (currentFontSize !== '14px') {
+                $parentItems.css({
+                    'background': '#FFFFFF',
+                    'color': '#6a6a6a',
+                    'font-size': '14px'
+                });
+            } else {
+                $parentItems.css({
+                    'background': '#7b7b7b',
+                    'color': '#FFFFFF',
+                    'font-size': '16px'
+                });
             }
         });
     }

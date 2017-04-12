@@ -1,7 +1,7 @@
 /**
  * questionnaire
  * Created by 郑晓辉 on 2017/4/3.
- * Contract : zxh980278090@gmail.com
+ * Contact : zxh980278090@gmail.com
  */
 $(document).ready(function () {
     $('#Add2MyLibBtn').click(function () {

@@ -8,12 +8,12 @@ import com.questionnaire.ssm.module.global.util.ResultUtil;
 import com.questionnaire.ssm.module.global.util.UserValidationUtil;
 import com.questionnaire.ssm.module.questionnaireManage.pojo.CreateQuestionnaireVO;
 import com.questionnaire.ssm.module.questionnaireManage.service.QesManageService;
-import com.questionnaire.ssm.module.questionnaireManage.util.CheckVOValidUtil;
 import com.questionnaire.ssm.module.questionnaireManage.util.OperateQuestionnaireUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -53,15 +53,13 @@ public class QesManageController {
      */
     @PostMapping(value = "/create")
     @ResponseBody
-    public ResponsePkt create(@Valid @RequestBody CreateQuestionnaireVO createQuestionnaireVO) throws Exception {
-        if (!CheckVOValidUtil.createQuestionnaireVOValid(createQuestionnaireVO)) {
-            return ResultUtil.error(CodeForVOEnum.QUESTIONNAIRE_TITLE_NULL.getCode(),
-                    CodeForVOEnum.QUESTIONNAIRE_TITLE_NULL.getMessage());
+    public ResponsePkt create(@Valid @RequestBody CreateQuestionnaireVO createQuestionnaireVO, BindingResult bindingResult) throws Exception {
+        if (bindingResult.hasErrors()) {
+            return ResultUtil.error(CodeForVOEnum.VALID_FAIL_CREATE_QUESTIONNAIRE.getCode(),
+                    bindingResult.getFieldError().getDefaultMessage());
         }
-        System.out.println(createQuestionnaireVO);
-        return ResultUtil.success(createQuestionnaireVO);
-//        qesManageService.insertQuestionnaire(createQuestionnaireVO);
-//        return ResultUtil.success();
+        qesManageService.insertQuestionnaire(createQuestionnaireVO);
+        return ResultUtil.success();
     }
 
     /***
@@ -98,6 +96,7 @@ public class QesManageController {
     /**
      * 批量暂时删除问卷
      *
+     * @param questionnaireIds
      * @return
      * @throws Exception
      */

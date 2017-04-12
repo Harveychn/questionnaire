@@ -2,6 +2,7 @@ package com.questionnaire.ssm.module.questionnaireManage.pojo;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.validation.constraints.Size;
 import java.util.List;
 
 /**
@@ -23,6 +24,7 @@ public class CreateQuestionnaireVO {
     /**
      * 问卷题目信息
      */
+    @Size(min = 1, message = "问题数目不能少于一个")
     private List<QuestionVO> questions;
 
 
