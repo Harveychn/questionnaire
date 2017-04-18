@@ -1,6 +1,5 @@
 package com.questionnaire.ssm.module.questionnaireManage.service;
 
-import com.questionnaire.ssm.module.generated.pojo.Questionnaire;
 import com.questionnaire.ssm.module.global.enums.UserActionEnum;
 import com.questionnaire.ssm.module.questionnaireManage.pojo.CreateQuestionnaireVO;
 import com.questionnaire.ssm.module.questionnaireManage.pojo.DisplayQuestionnaireVO;

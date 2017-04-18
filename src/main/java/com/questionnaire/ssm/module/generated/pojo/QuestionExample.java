@@ -254,66 +254,6 @@ public class QuestionExample {
             return (Criteria) this;
         }
 
-        public Criteria andOptionIdIsNull() {
-            addCriterion("option_id is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andOptionIdIsNotNull() {
-            addCriterion("option_id is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andOptionIdEqualTo(Long value) {
-            addCriterion("option_id =", value, "optionId");
-            return (Criteria) this;
-        }
-
-        public Criteria andOptionIdNotEqualTo(Long value) {
-            addCriterion("option_id <>", value, "optionId");
-            return (Criteria) this;
-        }
-
-        public Criteria andOptionIdGreaterThan(Long value) {
-            addCriterion("option_id >", value, "optionId");
-            return (Criteria) this;
-        }
-
-        public Criteria andOptionIdGreaterThanOrEqualTo(Long value) {
-            addCriterion("option_id >=", value, "optionId");
-            return (Criteria) this;
-        }
-
-        public Criteria andOptionIdLessThan(Long value) {
-            addCriterion("option_id <", value, "optionId");
-            return (Criteria) this;
-        }
-
-        public Criteria andOptionIdLessThanOrEqualTo(Long value) {
-            addCriterion("option_id <=", value, "optionId");
-            return (Criteria) this;
-        }
-
-        public Criteria andOptionIdIn(List<Long> values) {
-            addCriterion("option_id in", values, "optionId");
-            return (Criteria) this;
-        }
-
-        public Criteria andOptionIdNotIn(List<Long> values) {
-            addCriterion("option_id not in", values, "optionId");
-            return (Criteria) this;
-        }
-
-        public Criteria andOptionIdBetween(Long value1, Long value2) {
-            addCriterion("option_id between", value1, value2, "optionId");
-            return (Criteria) this;
-        }
-
-        public Criteria andOptionIdNotBetween(Long value1, Long value2) {
-            addCriterion("option_id not between", value1, value2, "optionId");
-            return (Criteria) this;
-        }
-
         public Criteria andQuestionTypeIsNull() {
             addCriterion("question_type is null");
             return (Criteria) this;

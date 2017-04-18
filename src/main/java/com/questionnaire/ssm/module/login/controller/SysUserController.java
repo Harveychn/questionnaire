@@ -112,6 +112,10 @@ public class SysUserController {
         return "login/newKeySuccess";
     }
 
+    public void changePersonnalInfo() throws Exception {
+
+    }
+
     private UserService userService;
 
     @Autowired

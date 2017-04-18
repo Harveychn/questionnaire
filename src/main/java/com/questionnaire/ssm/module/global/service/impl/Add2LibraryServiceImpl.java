@@ -1,10 +1,5 @@
 package com.questionnaire.ssm.module.global.service.impl;
 
-import com.questionnaire.ssm.module.generated.mapper.MappingQuestionnaireQuestionMapper;
-import com.questionnaire.ssm.module.generated.mapper.QuestionnaireMapper;
-import com.questionnaire.ssm.module.generated.pojo.MappingQuestionnaireQuestion;
-import com.questionnaire.ssm.module.generated.pojo.MappingQuestionnaireQuestionExample;
-import com.questionnaire.ssm.module.generated.pojo.Questionnaire;
 import com.questionnaire.ssm.module.global.enums.CodeForVOEnum;
 import com.questionnaire.ssm.module.global.enums.DBTableEnum;
 import com.questionnaire.ssm.module.global.exception.OperateDBException;

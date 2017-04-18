@@ -1,6 +1,5 @@
 package com.questionnaire.ssm.module.global.service;
 
-import com.questionnaire.ssm.module.generated.pojo.Questionnaire;
 import org.springframework.transaction.annotation.Transactional;
 
 /**

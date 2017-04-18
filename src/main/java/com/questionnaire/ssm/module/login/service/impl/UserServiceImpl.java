@@ -1,7 +1,5 @@
 package com.questionnaire.ssm.module.login.service.impl;
 
-import com.questionnaire.ssm.module.generated.mapper.UserMapper;
-import com.questionnaire.ssm.module.generated.pojo.User;
 import com.questionnaire.ssm.module.global.enums.CodeForVOEnum;
 import com.questionnaire.ssm.module.global.enums.DBTableEnum;
 import com.questionnaire.ssm.module.global.exception.OperateDBException;

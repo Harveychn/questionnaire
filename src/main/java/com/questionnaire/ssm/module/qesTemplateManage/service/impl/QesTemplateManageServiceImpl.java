@@ -1,6 +1,5 @@
 package com.questionnaire.ssm.module.qesTemplateManage.service.impl;
 
-import com.questionnaire.ssm.module.generated.pojo.Questionnaire;
 import com.questionnaire.ssm.module.global.enums.UserActionEnum;
 import com.questionnaire.ssm.module.global.service.Add2LibraryService;
 import com.questionnaire.ssm.module.global.service.CheckDuplicateService;

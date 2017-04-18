@@ -1,8 +1,5 @@
 package com.questionnaire.ssm.module.questionnaireManage.pojo;
 
-import com.questionnaire.ssm.module.generated.pojo.Question;
-import com.questionnaire.ssm.module.generated.pojo.QuestionOption;
-
 import java.util.List;
 
 /**

@@ -1,12 +1,15 @@
 package com.questionnaire.ssm.module.questionnaireManage.util;
 
-import com.questionnaire.ssm.module.generated.pojo.Question;
-import com.questionnaire.ssm.module.generated.pojo.QuestionOption;
-import com.questionnaire.ssm.module.generated.pojo.Questionnaire;
+import com.questionnaire.ssm.module.global.enums.CodeForVOEnum;
+import com.questionnaire.ssm.module.global.exception.UserValidaException;
+import com.questionnaire.ssm.module.global.util.UserValidationUtil;
 import com.questionnaire.ssm.module.questionnaireManage.enums.QuestionTypeEnum;
 import com.questionnaire.ssm.module.questionnaireManage.pojo.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -34,6 +37,17 @@ public class QesManageVODOUtil {
         questionnaire.setIsShare(false);
         questionnaire.setIsVisible(true);
         questionnaire.setIsDelete(false);
+
+        //创建问卷时间
+        questionnaire.setCreateTime(new Date());
+        try {
+            questionnaire.setCreateUser(UserValidationUtil.getUserTel(logger));
+        } catch (NullPointerException e) {
+            throw new UserValidaException(CodeForVOEnum.NOT_LOGIN);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            throw new UserValidaException(CodeForVOEnum.UNKNOWN_ERROR);
+        }
 
         return questionnaire;
     }
@@ -98,10 +112,10 @@ public class QesManageVODOUtil {
      */
     public static QuestionDTO toQuestionMultiDO(List<QuestionVO> questions) throws Exception {
         List<Question> questionList = new ArrayList<>();
-        List<QuestionOption> optionList = new ArrayList<>();
+//        List<QuestionOption> optionList = new ArrayList<>();
 
         Question question = null;
-        QuestionOption option = null;
+//        QuestionOption option = null;
 
         for (QuestionVO currentQuestion : questions) {
 
@@ -260,4 +274,7 @@ public class QesManageVODOUtil {
         }
         return questionOptionVOList;
     }
+
+
+    private final static Logger logger = LoggerFactory.getLogger(QesManageVODOUtil.class);
 }
