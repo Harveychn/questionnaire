@@ -1,60 +1,115 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>展示问卷</title>
-    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
-    <style>
-        table, td {
-            border: 2px double grey;
-        }
-    </style>
-</head>
-<body>
-<h1 align="center">问卷信息</h1>
-<div align="center">
-    <table th:if="${questionnaireInfoListVO.size()>0}" class="table table-bordered">
-        <thead>
-        <tr>
-            <td></td>
-            <td>序号</td>
-            <td>问卷标题</td>
-            <td>问卷描述</td>
-            <td>操作</td>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="questionnaireInfoVO : ${questionnaireInfoListVO}">
-            <td><input type="checkbox"/></td>
-            <td th:text="${questionnaireInfoVOStat.count}"></td>
-            <td th:text="${questionnaireInfoVO.questionnaireTitle}"></td>
-            <td th:text="${questionnaireInfoVO.questionnaireSubtitle}"></td>
-            <td>
-                <label th:if="${questionnaireInfoVO.isDone() == false}">
-                    <a th:href="@{/questionnaireManage/test/{id}(id=${questionnaireInfoVO.getQuestionnaireId()})}"
-                       class="btn btn-sm btn-link">继续</a>
-                </label>
-                <label th:if="${questionnaireInfoVO.isDone() == true}">
-                    <a th:href="@{/questionnaireManage/displayQuestionnaire/{id}(id=${questionnaireInfoVO.getQuestionnaireId()})}"
-                       class="btn btn-sm btn-link">查看</a>
-                </label>
-                <label>
-                    <a th:href="@{/questionnaireManage/test/{id}(id=${questionnaireInfoVO.getQuestionnaireId()})}"
-                       class="btn btn-sm btn-link">删除</a>
-                </label>
-                <label th:if="${questionnaireInfoVO.isShare()==false}">
-                    <a th:href="@{/questionnaireManage/test/{id}(id=${questionnaireInfoVO.getQuestionnaireId()})}"
-                       class="btn btn-sm btn-link">分享</a>
-                </label>
-                <label th:if="${questionnaireInfoVO.isTemplate()==false}">
-                    <a th:href="@{/questionnaireManage/test/{id}(id=${questionnaireInfoVO.getQuestionnaireId()})}"
-                       class="btn btn-sm btn-link">模板化</a>
-                </label>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <title>查看个人问卷</title>
+    <link rel="shortcut icon" href="/WEB-INF/img/logo.ico"
+          th:href="@{/img/logo.ico}"/>
+    <link href="/WEB-INF/css/bootstrap.min.css" rel="stylesheet"
+          th:href="@{/css/bootstrap.min.css}"/>
+    <link href="/WEB-INF/css/font-awesome.min.css" rel="stylesheet"
+          th:href="@{/css/font-awesome.min.css}"/>
+    <!--<link href="css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">-->
+    <link href="/WEB-INF/css/animate.css" rel="stylesheet"
+          th:href="@{/css/animate.css}"/>
+    <link href="/WEB-INF/css/style.css" rel="stylesheet"
+          th:href="@{/css/style.css}"/>
+</head>
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">查看个人问卷</div>
+                </div>
+                <div class="panel-body">
+                    <div class="example-wrap">
+                        <div class="example">
+                            <div class="btn-group hidden-xs" id="exampleTableEventsToolbar" role="group">
+                                <button id="multiTemplateBtn" type="button" class="btn btn-outline btn-default">
+                                    <i class="glyphicon glyphicon-briefcase" aria-hidden="true">批量模板</i>
+                                </button>
+                                <button id="multiDelBtn" type="button" class="btn btn-outline btn-default">
+                                    <i class="glyphicon glyphicon-trash" aria-hidden="true">批量删除</i>
+                                </button>
+                                <button id="multiShareBtn" type="button" class="btn btn-outline btn-default">
+                                    <i class="glyphicon glyphicon-share" aria-hidden="true">批量共享</i>
+                                </button>
+                            </div>
+
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                <tr th:if="${questionnaireInfoListVO.size()>0}">
+                                    <td></td>
+                                    <td>序号</td>
+                                    <td>问卷标题</td>
+                                    <td>问卷描述</td>
+                                    <td>问卷状态</td>
+                                    <td>操作</td>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="questionnaireInfoVO : ${questionnaireInfoListVO}">
+                                    <td><input name="questionnaireId"
+                                               type="checkbox" th:value="${questionnaireInfoVO.questionnaireId}"/>
+                                    </td>
+                                    <td th:text="${questionnaireInfoVOStat.count}"></td>
+                                    <td th:text="${questionnaireInfoVO.questionnaireTitle}"></td>
+                                    <td th:text="${questionnaireInfoVO.questionnaireSubtitle}"></td>
+                                    <td th:text="${questionnaireInfoVO.isDone()==true?'完成':'未完'}"></td>
+                                    <td>
+                                        <label th:if="${questionnaireInfoVO.isDone() == false}">
+                                            <a th:href="@{/questionnaireManage/test/{id}(id=${questionnaireInfoVO.getQuestionnaireId()})}"
+                                               class="btn btn-sm btn-link">编辑</a>
+                                        </label>
+                                        <label th:if="${questionnaireInfoVO.isDone() == true}">
+                                            <a th:href="@{/questionnaireManage/displayQuestionnaire/{id}(id=${questionnaireInfoVO.getQuestionnaireId()})}"
+                                            class="btn btn-sm btn-link">查看</a>
+                                            <!--<span th:onclick=""-->
+                                                  <!--class="btn btn-sm btn-link">查看</span>-->
+                                        </label>
+                                        <label>
+                                            <span th:onclick="'delQesPaper('+${questionnaireInfoVO.questionnaireId}+')'"
+                                                  class="btn btn-sm btn-link">删除</span>
+                                        </label>
+                                        <label th:if="${questionnaireInfoVO.isShare()==false}">
+                                            <span th:onclick="'shareQesPaper('+${questionnaireInfoVO.questionnaireId}+')'"
+                                                  class="btn btn-sm btn-link">共享</span>
+                                        </label>
+                                        <label th:if="${questionnaireInfoVO.isTemplate()==false}">
+                                            <span th:onclick="'add2TemplateLib('+${questionnaireInfoVO.questionnaireId}+')'"
+                                                  class="btn btn-sm btn-link">添加为模板</span>
+                                        </label>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div th:if="${questionnaireInfoListVO.size()<=0}" class="row">
+                                <div class="lead text-center">
+                                    <strong>没有</strong>问卷可以管理，请先 <a th:href="@{/questionnaireManage/getCreateView}"
+                                                                    href="/questionnaireManage/getCreateView">创建问卷</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<script th:src="@{/js/jquery.min.js}" src="/WEB-INF/js/jquery.min.js"
+        type="text/javascript"></script>
+<script th:src="@{/js/plugins/layer/layer.min.js}" src="/WEB-INF/js/plugins/layer/layer.min.js"
+        type="text/javascript"></script>
+<script th:src="@{/js/myJs/responseAnalyze.js}" src="/WEB-INF/js/myJs/responseAnalyze.js"
+        type="text/javascript"></script>
+<script th:src="@{/js/myJs/qesManage.js}" src="/WEB-INF/js/myJs/qesManage.js"
+        type="text/javascript"></script>
 </body>
 </html>

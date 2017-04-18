@@ -1,6 +1,6 @@
 package com.questionnaire.ssm.module.global.handle;
 
-import com.questionnaire.ssm.module.global.enums.RequestResultEnum;
+import com.questionnaire.ssm.module.global.enums.CodeForVOEnum;
 import com.questionnaire.ssm.module.global.pojo.ResponsePkt;
 import com.questionnaire.ssm.module.global.util.ResultUtil;
 import com.questionnaire.ssm.module.global.exception.OperateDBException;
@@ -29,6 +29,6 @@ public class GlobalExceptionHandler {
             UserValidaException userValidaException = (UserValidaException) e;
             return ResultUtil.error(userValidaException.getCode(), userValidaException.getMessage());
         }
-        return ResultUtil.error(RequestResultEnum.ERROR.getCode(), RequestResultEnum.ERROR.getMessage());
+        return ResultUtil.error(CodeForVOEnum.REQUEST_ERROR.getCode(), CodeForVOEnum.REQUEST_ERROR.getMessage());
     }
 }

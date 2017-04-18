@@ -7,7 +7,7 @@
     <display-name>questionnaire</display-name>
 
     <welcome-file-list>
-        <welcome-file>/login.html</welcome-file>
+        <welcome-file>/init.html</welcome-file>
     </welcome-file-list>
 
     <!-- Spring和mybatis的配置文件 -->
@@ -104,9 +104,6 @@
         <!-- 此处可以可以配置成 *.do ，对应struts的后缀习惯 -->
         <url-pattern>/</url-pattern>
     </servlet-mapping>
-    <welcome-file-list>
-        <welcome-file>/index.jsp</welcome-file>
-    </welcome-file-list>
 
 
     <!--展示Druid的统计信息-->

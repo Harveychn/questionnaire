@@ -1,7 +1,6 @@
 package com.questionnaire.ssm.module.global.util;
 
-
-import com.questionnaire.ssm.module.global.enums.UserValidaEnum;
+import com.questionnaire.ssm.module.global.enums.CodeForVOEnum;
 import com.questionnaire.ssm.module.global.exception.UserValidaException;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
@@ -9,13 +8,13 @@ import org.slf4j.Logger;
 
 import java.util.Set;
 
-
 /**
  * Created by 郑晓辉 on 2017/3/25.
  * Description:
  * 1、检查当前登录用户是否session过期
  * 2、检查当前用户角色是否符合要求
  * 3、检查当前用户权限是否符合要求
+ * 4、获取在线用户的用户名
  */
 public class UserValidationUtil {
 
@@ -32,10 +31,10 @@ public class UserValidationUtil {
             result = UserValidationUtil.isValid();
         } catch (Exception e) {
             logger.error(e.getMessage());
-            throw new UserValidaException(UserValidaEnum.UNKNOWN_ERROR);
+            throw new UserValidaException(CodeForVOEnum.UNKNOWN_ERROR);
         }
-        if (result == UserValidaEnum.NOT_LOGIN.getCode()) {
-            throw new UserValidaException(UserValidaEnum.NOT_LOGIN);
+        if (result == CodeForVOEnum.NOT_LOGIN.getCode()) {
+            throw new UserValidaException(CodeForVOEnum.NOT_LOGIN);
         }
     }
 
@@ -54,13 +53,13 @@ public class UserValidationUtil {
             result = UserValidationUtil.isValid(needPermissions);
         } catch (Exception e) {
             logger.error(e.getMessage());
-            throw new UserValidaException(UserValidaEnum.UNKNOWN_ERROR);
+            throw new UserValidaException(CodeForVOEnum.UNKNOWN_ERROR);
         }
-        if (result == UserValidaEnum.NOT_LOGIN.getCode()) {
-            throw new UserValidaException(UserValidaEnum.NOT_LOGIN);
+        if (result == CodeForVOEnum.NOT_LOGIN.getCode()) {
+            throw new UserValidaException(CodeForVOEnum.NOT_LOGIN);
         }
-        if (result == UserValidaEnum.NO_PERMISSION.getCode()) {
-            throw new UserValidaException(UserValidaEnum.NO_PERMISSION);
+        if (result == CodeForVOEnum.NO_PERMISSION.getCode()) {
+            throw new UserValidaException(CodeForVOEnum.NO_PERMISSION);
         }
     }
 
@@ -79,14 +78,14 @@ public class UserValidationUtil {
             result = UserValidationUtil.isValid(needRole);
         } catch (Exception e) {
             logger.error(e.getMessage());
-            throw new UserValidaException(UserValidaEnum.UNKNOWN_ERROR);
+            throw new UserValidaException(CodeForVOEnum.UNKNOWN_ERROR);
         }
 
-        if (result == UserValidaEnum.NOT_LOGIN.getCode()) {
-            throw new UserValidaException(UserValidaEnum.NOT_LOGIN);
+        if (result == CodeForVOEnum.NOT_LOGIN.getCode()) {
+            throw new UserValidaException(CodeForVOEnum.NOT_LOGIN);
         }
-        if (result == UserValidaEnum.NO_ROLE.getCode()) {
-            throw new UserValidaException(UserValidaEnum.NO_ROLE);
+        if (result == CodeForVOEnum.NO_ROLE.getCode()) {
+            throw new UserValidaException(CodeForVOEnum.NO_ROLE);
         }
     }
 
@@ -107,17 +106,17 @@ public class UserValidationUtil {
             result = UserValidationUtil.isValid(needRole, needPermissions);
         } catch (Exception e) {
             logger.error(e.getMessage());
-            throw new UserValidaException(UserValidaEnum.UNKNOWN_ERROR);
+            throw new UserValidaException(CodeForVOEnum.UNKNOWN_ERROR);
         }
 
-        if (result == UserValidaEnum.NOT_LOGIN.getCode()) {
-            throw new UserValidaException(UserValidaEnum.NOT_LOGIN);
+        if (result == CodeForVOEnum.NOT_LOGIN.getCode()) {
+            throw new UserValidaException(CodeForVOEnum.NOT_LOGIN);
         }
-        if (result == UserValidaEnum.NO_ROLE.getCode()) {
-            throw new UserValidaException(UserValidaEnum.NO_ROLE);
+        if (result == CodeForVOEnum.NO_ROLE.getCode()) {
+            throw new UserValidaException(CodeForVOEnum.NO_ROLE);
         }
-        if (result == UserValidaEnum.NO_PERMISSION.getCode()) {
-            throw new UserValidaException(UserValidaEnum.NO_PERMISSION);
+        if (result == CodeForVOEnum.NO_PERMISSION.getCode()) {
+            throw new UserValidaException(CodeForVOEnum.NO_PERMISSION);
         }
     }
 
@@ -142,9 +141,9 @@ public class UserValidationUtil {
     protected static int isValid() throws Exception {
         Subject subject = SecurityUtils.getSubject();
         if (subject != null) {
-            return UserValidaEnum.VALIDA_OK.getCode();
+            return CodeForVOEnum.VALIDA_OK.getCode();
         }
-        return UserValidaEnum.NOT_LOGIN.getCode();
+        return CodeForVOEnum.NOT_LOGIN.getCode();
     }
 
     /**
@@ -158,11 +157,11 @@ public class UserValidationUtil {
         Subject subject = SecurityUtils.getSubject();
         if (subject != null) {
             if (subject.hasRole(role)) {
-                return UserValidaEnum.VALIDA_OK.getCode();
+                return CodeForVOEnum.VALIDA_OK.getCode();
             }
-            return UserValidaEnum.NO_ROLE.getCode();
+            return CodeForVOEnum.NO_ROLE.getCode();
         }
-        return UserValidaEnum.NOT_LOGIN.getCode();
+        return CodeForVOEnum.NOT_LOGIN.getCode();
     }
 
     /**
@@ -176,13 +175,13 @@ public class UserValidationUtil {
         if (subject != null) {
             for (String permission : permissions) {
                 if (!subject.isPermitted(permission)) {
-                    return UserValidaEnum.NO_PERMISSION.getCode();
+                    return CodeForVOEnum.NO_PERMISSION.getCode();
                 }
             }
-            return UserValidaEnum.VALIDA_OK.getCode();
+            return CodeForVOEnum.VALIDA_OK.getCode();
 
         }
-        return UserValidaEnum.NOT_LOGIN.getCode();
+        return CodeForVOEnum.NOT_LOGIN.getCode();
     }
 
     /**
@@ -196,16 +195,16 @@ public class UserValidationUtil {
         Subject subject = SecurityUtils.getSubject();
         if (subject != null) {
             if (!subject.hasRole(role)) {
-                return UserValidaEnum.NO_ROLE.getCode();
+                return CodeForVOEnum.NO_ROLE.getCode();
             }
             for (String permission : permissions) {
                 if (!subject.isPermitted(permission)) {
-                    return UserValidaEnum.NO_PERMISSION.getCode();
+                    return CodeForVOEnum.NO_PERMISSION.getCode();
                 }
             }
-            return UserValidaEnum.VALIDA_OK.getCode();
+            return CodeForVOEnum.VALIDA_OK.getCode();
         }
-        return UserValidaEnum.NOT_LOGIN.getCode();
+        return CodeForVOEnum.NOT_LOGIN.getCode();
     }
 
 }
