@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>新建公告</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/WEB-INF/css/bootstrap.min.css" rel='stylesheet' th:href="@{/css/bootstrap.min.css}"/>
+    <link href="/WEB-INF/css/font-awesome.css" rel="stylesheet" th:href="@{/css/font-awesome.css}"/>
+
+    <link href="/WEB-INF/css/plugins/wenjian_notice/my-style.css" rel='stylesheet' th:href="@{/css/plugins/wenjian_notice/my-style.css}"/>
+    <link rel="stylesheet" href="/WEB-INF/css/plugins/wenjian_notice/bootstrap-select.css" th:href="@{/css/plugins/wenjian_notice/bootstrap-select.css}"/>
+    <link href="/WEB-INF/css/animate.css" rel="stylesheet" th:href="@{/css/animate.css}"/>
+    <link href="/WEB-INF/css/style.css" rel="stylesheet" th:href="@{/css/style.css}"/>
+
+    <style type="text/css">
+        .btn-default {
+            background-color: #fff;
+            border-color: #ccc;
+            color: #333;
+        }
+    </style>
+    <script src="/WEB-INF/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+    <script src="/WEB-INF/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+    <script type="text/javascript" src="/WEB-INF/js/plugins/wenjian_notice/bootstrap-select.js" th:src="@{/js/plugins/wenjian_notice/bootstrap-select.js}"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $("#ok").click(function () {
+                var title = $("#title").val();
+                var contend = $("#contend").val();
+                var objects = $("#id_select").val();
+
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(window).on('load', function () {
+            $('.selectpicker').selectpicker({
+                'selectedText': 'cat'
+            });
+//				 $('.selectpicker').selectpicker('hide');
+        });
+    </script>
+</head>
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content  animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h4 class="m-t">新建公告</h4>
+                </div>
+
+                <div class="ibox-content">
+                    <div class="container-fluid">
+                        <br/>
+                        <form th:action="@{/notice/createNotice}" method="post" th:object="${notice}">
+                            <div class="row">
+                                <div class="col-md-2 font1" style="text-align: center;">公告单位：</div>
+                                <div class="col-md-10">
+                                    <!--<label for="id_select"></label>-->
+                                    <select id="id_select" class="selectpicker bla bla bli" multiple
+                                            data-live-search="true">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <br/>
+
+                            <div class="row">
+
+                                <div class="col-md-2 font1" style="text-align: center;">公告标题：</div>
+                                <div class="col-md-10">
+                                    <input th:field="*{noticeTitle}" id="title" type="text" placeholder="请输入公告标题"
+                                           class="form-control">
+                                </div>
+                            </div>
+
+                            <br/>
+
+                            <div class="row">
+
+                                <div class="col-md-2 font1" style="text-align: center;">公告内容：</div>
+                                <div class="col-md-10 ">
+                                    <input th:field="*{noticeContext}" id="context" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-md-1 col-md-offset-6 ">
+                                    <input type="submit" id="ok" class="btn btn-primary btn-block"
+                                           role="button"value="发布"/>
+                                </div>
+                                &nbsp;
+                                <div class="col-md-1">
+                                    <a class="btn btn-default btn-block" href="viewNotice.html" role="button">取消</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

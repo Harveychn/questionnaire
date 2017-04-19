@@ -325,63 +325,253 @@ public class NoticeExample {
             return (Criteria) this;
         }
 
-        public Criteria andLastDateIsNull() {
-            addCriterion("last_date is null");
+        public Criteria andUserTelIsNull() {
+            addCriterion("user_tel is null");
             return (Criteria) this;
         }
 
-        public Criteria andLastDateIsNotNull() {
-            addCriterion("last_date is not null");
+        public Criteria andUserTelIsNotNull() {
+            addCriterion("user_tel is not null");
             return (Criteria) this;
         }
 
-        public Criteria andLastDateEqualTo(Date value) {
-            addCriterion("last_date =", value, "lastDate");
+        public Criteria andUserTelEqualTo(String value) {
+            addCriterion("user_tel =", value, "userTel");
             return (Criteria) this;
         }
 
-        public Criteria andLastDateNotEqualTo(Date value) {
-            addCriterion("last_date <>", value, "lastDate");
+        public Criteria andUserTelNotEqualTo(String value) {
+            addCriterion("user_tel <>", value, "userTel");
             return (Criteria) this;
         }
 
-        public Criteria andLastDateGreaterThan(Date value) {
-            addCriterion("last_date >", value, "lastDate");
+        public Criteria andUserTelGreaterThan(String value) {
+            addCriterion("user_tel >", value, "userTel");
             return (Criteria) this;
         }
 
-        public Criteria andLastDateGreaterThanOrEqualTo(Date value) {
-            addCriterion("last_date >=", value, "lastDate");
+        public Criteria andUserTelGreaterThanOrEqualTo(String value) {
+            addCriterion("user_tel >=", value, "userTel");
             return (Criteria) this;
         }
 
-        public Criteria andLastDateLessThan(Date value) {
-            addCriterion("last_date <", value, "lastDate");
+        public Criteria andUserTelLessThan(String value) {
+            addCriterion("user_tel <", value, "userTel");
             return (Criteria) this;
         }
 
-        public Criteria andLastDateLessThanOrEqualTo(Date value) {
-            addCriterion("last_date <=", value, "lastDate");
+        public Criteria andUserTelLessThanOrEqualTo(String value) {
+            addCriterion("user_tel <=", value, "userTel");
             return (Criteria) this;
         }
 
-        public Criteria andLastDateIn(List<Date> values) {
-            addCriterion("last_date in", values, "lastDate");
+        public Criteria andUserTelLike(String value) {
+            addCriterion("user_tel like", value, "userTel");
             return (Criteria) this;
         }
 
-        public Criteria andLastDateNotIn(List<Date> values) {
-            addCriterion("last_date not in", values, "lastDate");
+        public Criteria andUserTelNotLike(String value) {
+            addCriterion("user_tel not like", value, "userTel");
             return (Criteria) this;
         }
 
-        public Criteria andLastDateBetween(Date value1, Date value2) {
-            addCriterion("last_date between", value1, value2, "lastDate");
+        public Criteria andUserTelIn(List<String> values) {
+            addCriterion("user_tel in", values, "userTel");
             return (Criteria) this;
         }
 
-        public Criteria andLastDateNotBetween(Date value1, Date value2) {
-            addCriterion("last_date not between", value1, value2, "lastDate");
+        public Criteria andUserTelNotIn(List<String> values) {
+            addCriterion("user_tel not in", values, "userTel");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserTelBetween(String value1, String value2) {
+            addCriterion("user_tel between", value1, value2, "userTel");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserTelNotBetween(String value1, String value2) {
+            addCriterion("user_tel not between", value1, value2, "userTel");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoticeCreateTimeIsNull() {
+            addCriterion("notice_create_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoticeCreateTimeIsNotNull() {
+            addCriterion("notice_create_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoticeCreateTimeEqualTo(Date value) {
+            addCriterion("notice_create_time =", value, "noticeCreateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoticeCreateTimeNotEqualTo(Date value) {
+            addCriterion("notice_create_time <>", value, "noticeCreateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoticeCreateTimeGreaterThan(Date value) {
+            addCriterion("notice_create_time >", value, "noticeCreateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoticeCreateTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("notice_create_time >=", value, "noticeCreateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoticeCreateTimeLessThan(Date value) {
+            addCriterion("notice_create_time <", value, "noticeCreateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoticeCreateTimeLessThanOrEqualTo(Date value) {
+            addCriterion("notice_create_time <=", value, "noticeCreateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoticeCreateTimeIn(List<Date> values) {
+            addCriterion("notice_create_time in", values, "noticeCreateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoticeCreateTimeNotIn(List<Date> values) {
+            addCriterion("notice_create_time not in", values, "noticeCreateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoticeCreateTimeBetween(Date value1, Date value2) {
+            addCriterion("notice_create_time between", value1, value2, "noticeCreateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoticeCreateTimeNotBetween(Date value1, Date value2) {
+            addCriterion("notice_create_time not between", value1, value2, "noticeCreateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDoneIsNull() {
+            addCriterion("is_done is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDoneIsNotNull() {
+            addCriterion("is_done is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDoneEqualTo(Byte value) {
+            addCriterion("is_done =", value, "isDone");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDoneNotEqualTo(Byte value) {
+            addCriterion("is_done <>", value, "isDone");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDoneGreaterThan(Byte value) {
+            addCriterion("is_done >", value, "isDone");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDoneGreaterThanOrEqualTo(Byte value) {
+            addCriterion("is_done >=", value, "isDone");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDoneLessThan(Byte value) {
+            addCriterion("is_done <", value, "isDone");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDoneLessThanOrEqualTo(Byte value) {
+            addCriterion("is_done <=", value, "isDone");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDoneIn(List<Byte> values) {
+            addCriterion("is_done in", values, "isDone");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDoneNotIn(List<Byte> values) {
+            addCriterion("is_done not in", values, "isDone");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDoneBetween(Byte value1, Byte value2) {
+            addCriterion("is_done between", value1, value2, "isDone");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDoneNotBetween(Byte value1, Byte value2) {
+            addCriterion("is_done not between", value1, value2, "isDone");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoticeLaunchTimeIsNull() {
+            addCriterion("notice_launch_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoticeLaunchTimeIsNotNull() {
+            addCriterion("notice_launch_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoticeLaunchTimeEqualTo(Date value) {
+            addCriterion("notice_launch_time =", value, "noticeLaunchTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoticeLaunchTimeNotEqualTo(Date value) {
+            addCriterion("notice_launch_time <>", value, "noticeLaunchTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoticeLaunchTimeGreaterThan(Date value) {
+            addCriterion("notice_launch_time >", value, "noticeLaunchTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoticeLaunchTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("notice_launch_time >=", value, "noticeLaunchTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoticeLaunchTimeLessThan(Date value) {
+            addCriterion("notice_launch_time <", value, "noticeLaunchTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoticeLaunchTimeLessThanOrEqualTo(Date value) {
+            addCriterion("notice_launch_time <=", value, "noticeLaunchTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoticeLaunchTimeIn(List<Date> values) {
+            addCriterion("notice_launch_time in", values, "noticeLaunchTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoticeLaunchTimeNotIn(List<Date> values) {
+            addCriterion("notice_launch_time not in", values, "noticeLaunchTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoticeLaunchTimeBetween(Date value1, Date value2) {
+            addCriterion("notice_launch_time between", value1, value2, "noticeLaunchTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andNoticeLaunchTimeNotBetween(Date value1, Date value2) {
+            addCriterion("notice_launch_time not between", value1, value2, "noticeLaunchTime");
             return (Criteria) this;
         }
     }

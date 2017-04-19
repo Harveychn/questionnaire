@@ -13,37 +13,45 @@
 <body>
 <h1 align="center">公告信息</h1>
 <div align="center">
-    <table th:if="${noticeListVO.size()>0}"class="table table-bordered">
-        <thead>
-        <tr>
-            <td></td>
-            <td>序号</td>
-            <td>公告标题</td>
-            <td>公告内容</td>
-            <td>持续时间</td>
-            <td>操作</td>
-        </tr>
-        <tbody>
-            <tr th:each="notice:${noticeListVO}">
-                <td><input type="checkbox"></td>
-                <td th:text="${noticeStat.count}"></td>
-                <td th:text="${notice.noticeTitle}"></td>
-                <td th:text="${notice.noticeContext}"></td>
-                <td th:text="${notice.lastDate}"></td>
-                <td>
-                    <label>
-                        <a th:href="@{/notice/test/{id}(id=${notice.getNoticeId()})}"
-                           class="btn btn-sm btn-link">删除</a>
-                    </label>
-                    <label>
-                        <a th:href="@{/notice/test/{id}(id=${notice.getNoticeId()})}"
-                           class="btn btn-sm btn-link">发放</a>
-                    </label>
-                </td>
-            </tr>
-        </tbody>
-        </thead>
-    </table>
+    <!--<table th:if="${noticeListVO.size()>0}"class="table table-bordered">-->
+        <!--<thead>-->
+        <!--<tr>-->
+            <!--<td></td>-->
+            <!--<td>序号</td>-->
+            <!--<td>公告标题</td>-->
+            <!--<td>公告内容</td>-->
+            <!--<td>创建者</td>-->
+            <!--<td>创建时间</td>-->
+            <!--<td>是否完成</td>-->
+            <!--<td>发布时间</td>-->
+            <!--<td>公告对象</td>-->
+            <!--<td>操作</td>-->
+        <!--</tr>-->
+        <!--<tbody>-->
+            <!--<tr th:each="notice:${noticeListVO}">-->
+                <!--<td><input type="checkbox"></td>-->
+                <!--<td th:text="${noticeStat.count}"></td>-->
+                <!--<td th:text="${notice.noticeTitle}"></td>-->
+                <!--<td th:text="${notice.noticeContext}"></td>-->
+                <!--<td th:text="${notice.userTel}"></td>-->
+                <!--<td th:datetime="${notice.noticeCreateTime}"></td>-->
+                <!--<td th:text="${notice.isDone}"></td>-->
+                <!--<td th:datetime="${notice.noticeLaunchTime}"></td>-->
+                <!--<td th:text="${notice.noticeUnitText}"></td>-->
+                <!--<td>-->
+                    <!--<label>-->
+                        <!--<a th:href="@{/notice/test/{id}(id=${notice.getNoticeId()})}"-->
+                           <!--class="btn btn-sm btn-link">删除</a>-->
+                    <!--</label>-->
+                    <!--<label>-->
+                        <!--<a th:href="@{/notice/test/{id}(id=${notice.getNoticeId()})}"-->
+                           <!--class="btn btn-sm btn-link">发放</a>-->
+                    <!--</label>-->
+                <!--</td>-->
+            <!--</tr>-->
+        <!--</tbody>-->
+        <!--</thead>-->
+    <!--</table>-->
 </div>
 </body>
 </html>

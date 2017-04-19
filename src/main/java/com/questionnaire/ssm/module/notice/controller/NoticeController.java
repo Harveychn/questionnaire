@@ -1,11 +1,13 @@
 package com.questionnaire.ssm.module.notice.controller;
 
 
+import com.questionnaire.ssm.module.global.util.UserValidationUtil;
 import com.questionnaire.ssm.module.notice.pojo.Notice;
 import com.questionnaire.ssm.module.notice.service.NoticeService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -16,7 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("/notice")
 public class NoticeController {
-
+    private static final Logger logger= LoggerFactory.getLogger(NoticeController.class);
     private NoticeService noticeService;
 
     @Autowired
@@ -32,7 +34,7 @@ public class NoticeController {
     public ModelAndView getCreateNotice() throws Exception {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("notice", new Notice());
-        modelAndView.setViewName("notice/createNotice");
+        modelAndView.setViewName("notice/newNotice");
         return modelAndView;
     }
     /***
@@ -53,11 +55,12 @@ public class NoticeController {
      * @return
      * @throws Exception
      */
-    @GetMapping(value = "/listNotice")
+    @GetMapping(value = "/listMyNotice")
     public ModelAndView listNotice() throws Exception {
+        String userTel= UserValidationUtil.getUserTel(logger);
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("noticeListVO", noticeService.listNotice());
-        modelAndView.setViewName("notice/listNotice");
+        modelAndView.addObject("noticeListVO", noticeService.listNoticeByUserTel(userTel));
+        modelAndView.setViewName("notice/viewNotice");
         return modelAndView;
     }
     /***

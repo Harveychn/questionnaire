@@ -1,7 +1,6 @@
 package com.questionnaire.ssm.module.notice.service;
 
 import com.questionnaire.ssm.module.notice.pojo.Notice;
-import com.questionnaire.ssm.module.notice.pojo.RecordOperateNotice;
 
 import java.util.List;
 
@@ -11,7 +10,7 @@ import java.util.List;
 public interface NoticeService {
     void insertNotice(Notice notice) throws Exception;
 
-    List<Notice> listNotice() throws Exception;
+    List<Notice> listNoticeByUserTel(String userTel) throws Exception;
 
     void deleteNotice(Long noticeId)throws Exception;
 }

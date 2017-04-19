@@ -8,9 +8,17 @@ public class Notice {
 
     private String noticeTitle;
 
-    private  String lastDate;
-
     private String noticeContext;
+
+    private String userTel;
+
+    private Date noticeCreateTime;
+
+    private Boolean isDone;
+
+    private Date noticeLaunchTime;
+
+    private String noticeUnitText;
 
     public Long getNoticeId() {
         return noticeId;
@@ -28,15 +36,6 @@ public class Notice {
         this.noticeTitle = noticeTitle;
     }
 
-    public String getLastDate() {
-        return lastDate;
-    }
-
-    public void setLastDate(String lastDate) {
-        this.lastDate = lastDate;
-    }
-
-
     public String getNoticeContext() {
         return noticeContext;
     }
@@ -44,4 +43,45 @@ public class Notice {
     public void setNoticeContext(String noticeContext) {
         this.noticeContext = noticeContext;
     }
+
+    public String getUserTel() {
+        return userTel;
+    }
+
+    public void setUserTel(String userTel) {
+        this.userTel = userTel;
+    }
+
+    public Date getNoticeCreateTime() {
+        return noticeCreateTime;
+    }
+
+    public void setNoticeCreateTime(Date noticeCreateTime) {
+        this.noticeCreateTime = noticeCreateTime;
+    }
+
+    public Boolean getIsDone() {
+        return isDone;
+    }
+
+    public void setIsDone(Boolean isDone) {
+        this.isDone = isDone;
+    }
+
+    public Date getNoticeLaunchTime() {
+        return noticeLaunchTime;
+    }
+
+    public void setNoticeLaunchTime(Date noticeLaunchTime) {
+        this.noticeLaunchTime = noticeLaunchTime;
+    }
+
+    public String getNoticeUnitText() {
+        return noticeUnitText;
+    }
+
+    public void setNoticeUnitText(String noticeUnitText) {
+        this.noticeUnitText = noticeUnitText;
+    }
+
 }

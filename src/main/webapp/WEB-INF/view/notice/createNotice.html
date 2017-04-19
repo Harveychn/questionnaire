@@ -7,20 +7,17 @@
 <body>
 <h1 align="center">创建公告</h1>
 <div align="center">
-    <form th:action="@{/notice/createNotice}" method="post" th:object="${notice}">
-        <div>
-            <label>公告标题:<input type="text" th:field="*{noticeTitle}" /></label>
-        </div>
-        <div>
-            <label>公告内容:<input type="text" th:field="*{noticeContext}" /></label>
-        </div>
-        <div>
-            <label>持续时间:<input type="date" th:field="*{lastDate}" /></label>
-        </div>
-        <div>
-            <input type="submit" value="提交"/>
-        </div>
-    </form>
+    <!--<form th:action="@{/notice/createNotice}" method="post" th:object="${notice}">-->
+        <!--<div>-->
+            <!--<label>公告标题:<input type="text" th:field="*{noticeTitle}" /></label>-->
+        <!--</div>-->
+        <!--<div>-->
+            <!--<label>公告内容:<input type="text" th:field="*{noticeContext}" /></label>-->
+        <!--</div>-->
+        <!--<div>-->
+            <!--<input type="submit" value="提交"/>-->
+        <!--</div>-->
+    <!--</form>-->
 </div>
 </body>
 </html>

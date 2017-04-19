@@ -2,6 +2,7 @@ package com.questionnaire.ssm.module.notice.mapper;
 
 import com.questionnaire.ssm.module.notice.pojo.Notice;
 import com.questionnaire.ssm.module.generated.pojo.NoticeExample;
+
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -17,13 +18,13 @@ public interface NoticeMapper {
 
     int insertSelective(Notice record);
 
+    List<Notice> selectByUserTel(String userTel);
+
     List<Notice> selectByExampleWithBLOBs(NoticeExample example);
 
     List<Notice> selectByExample(NoticeExample example);
 
     Notice selectByPrimaryKey(Long noticeId);
-
-    List<Notice> selectAll();
 
     int updateByExampleSelective(@Param("record") Notice record, @Param("example") NoticeExample example);
 
