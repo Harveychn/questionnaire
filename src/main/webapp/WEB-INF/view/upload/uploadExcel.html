@@ -43,6 +43,32 @@
 <body class="gray-bg">
 <div class="wrapper wrapper-content animated fadeIn">
     <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        上传模板下载
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-md-10 col-sm-10">
+                                <select id="templateNameSelect" class="form-control">
+                                    <option>单位信息上传模板</option>
+                                    <option>用户信息上传模板</option>
+                                </select>
+                            </div>
+                            <div class="col-md-1 col-sm-1">
+                                <div id="downloadTemplateBtn" class="btn btn-success"> 下载模板</div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-sm-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-content">
@@ -83,7 +109,6 @@
 <script>
     $(document).ready(function () {
         Dropzone.options.myAwesomeDropzone = {
-
             autoProcessQueue: false,
             uploadMultiple: true,
             parallelUploads: 100,
@@ -127,8 +152,31 @@
             }
 
         }
-
     });
+
+    $('#downloadTemplateBtn').click(function () {
+        downloadTemplate();
+    });
+
+    function downloadTemplate() {
+        var selectedTemplate = $('#templateNameSelect').val();
+        layer.confirm('确定下载： ' + selectedTemplate + ' ?',
+            {
+                icon: 3,
+                title: '提示',
+                btn: ['确定', '取消']
+            },
+            function (index) {
+                layer.close(index);
+                window.location.href = "/userManage/downloadUploadTemplate?templateName=" + selectedTemplate;
+            }, function () {
+                layer.msg('取消下载模版成功!', {
+                    icon: 7
+                });
+            }
+        );
+
+    }
 </script>
 
 </body>
