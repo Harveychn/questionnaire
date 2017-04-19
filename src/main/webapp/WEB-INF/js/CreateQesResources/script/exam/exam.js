@@ -302,12 +302,14 @@ var exam = {
                 $parentItems.css({
                     'background': '#FFFFFF',
                     'color': '#6a6a6a',
-                    'font-size': '14px'
+                    'font-size': '14px',
+                    'border-color': '#FFFFFF'
                 });
             } else {
                 $parentItems.css({
-                    'background': '#7b7b7b',
-                    'color': '#FFFFFF',
+                    'border-style': 'dotted',
+                    'border-color': '#FFFFFF #7b7b7b #FFFFFF #7b7b7b',
+                    'color': '#6a6a6a',
                     'font-size': '16px'
                 });
             }

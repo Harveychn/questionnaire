@@ -1,12 +1,17 @@
 package com.questionnaire.ssm.module.questionnaireManage.util;
 
-import com.questionnaire.ssm.module.generated.pojo.Question;
-import com.questionnaire.ssm.module.generated.pojo.QuestionOption;
+import com.questionnaire.ssm.module.generated.pojo.QuestionWithBLOBs;
 import com.questionnaire.ssm.module.generated.pojo.Questionnaire;
+import com.questionnaire.ssm.module.global.enums.CodeForVOEnum;
+import com.questionnaire.ssm.module.global.exception.UserValidaException;
+import com.questionnaire.ssm.module.global.util.UserValidationUtil;
 import com.questionnaire.ssm.module.questionnaireManage.enums.QuestionTypeEnum;
 import com.questionnaire.ssm.module.questionnaireManage.pojo.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -34,6 +39,17 @@ public class QesManageVODOUtil {
         questionnaire.setIsShare(false);
         questionnaire.setIsVisible(true);
         questionnaire.setIsDelete(false);
+
+        //创建问卷时间
+        questionnaire.setCreateTime(new Date());
+        try {
+            questionnaire.setCreateUser(UserValidationUtil.getUserTel(logger));
+        } catch (NullPointerException e) {
+            throw new UserValidaException(CodeForVOEnum.NOT_LOGIN);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            throw new UserValidaException(CodeForVOEnum.UNKNOWN_ERROR);
+        }
 
         return questionnaire;
     }
@@ -70,8 +86,11 @@ public class QesManageVODOUtil {
      * @return
      * @throws Exception
      */
-    public static QuestionVO toQuestionVO(Question question, List<QuestionOptionVO> questionOptionVOList) throws Exception {
+    public static QuestionVO toQuestionVO(QuestionWithBLOBs question, List<QuestionOptionVO> questionOptionVOList) throws Exception {
         QuestionVO questionVO = new QuestionVO();
+
+        //用于上传答卷信息时保存数据使用
+        questionVO.setQuestionId(question.getQuestionId());
 
         if (question.getQuestionContext() != null) {
             questionVO.setQuestionContext(question.getQuestionContext());
@@ -89,47 +108,38 @@ public class QesManageVODOUtil {
     }
 
     /**
-     * 提取问卷中题目的题目信息以及题目的选项数据信息，question_id 以及 option_id 均未赋值
-     * 需要在将数据插入的数据库是赋值
+     * 提取问卷中题目的题目信息以及题目的选项数据信息
      *
-     * @param questions 问卷题目信息
+     * @param voQuestions 问卷题目信息
      * @return
      * @throws Exception
      */
-    public static QuestionDTO toQuestionMultiDO(List<QuestionVO> questions) throws Exception {
-        List<Question> questionList = new ArrayList<>();
-        List<QuestionOption> optionList = new ArrayList<>();
+    public static List<QuestionWithBLOBs> toQuestionMultiDO(List<QuestionVO> voQuestions) throws Exception {
+        List<QuestionWithBLOBs> questionWithBLOBsList = new ArrayList<>();
 
-        Question question = null;
-        QuestionOption option = null;
+        QuestionWithBLOBs questionWithBLOBs = null;
 
-        for (QuestionVO currentQuestion : questions) {
+        for (QuestionVO currentVOQuestion : voQuestions) {
 
-            question = new Question();
-            question.setQuestionContext(currentQuestion.getQuestionContext());
-            question.setQuestionDescription(currentQuestion.getQuestionDescription());
-            question.setIsMust(currentQuestion.getMust());
+            questionWithBLOBs = new QuestionWithBLOBs();
+            questionWithBLOBs.setQuestionContext(currentVOQuestion.getQuestionContext());
+            questionWithBLOBs.setQuestionDescription(currentVOQuestion.getQuestionDescription());
+            questionWithBLOBs.setIsMust(currentVOQuestion.getMust());
             /*需要将汉字问题类型装换为数据库中的类型编码*/
-            question.setQuestionType(parse2DOQuestionType(currentQuestion.getQuestionType()));
+            questionWithBLOBs.setQuestionType(parse2DOQuestionType(currentVOQuestion.getQuestionType()));
 
             /*需要进行数据库操作，有数据库返回的自增值或者已有值来完成赋值*/
-            //question.setOptionId();
             //question.setQuestionId();
 
-            List<QuestionOptionVO> options = currentQuestion.getOptions();
-            option = new QuestionOption();
+            List<QuestionOptionVO> options = currentVOQuestion.getOptions();
 
             //questionType已经转化为数据库中问题类型编码
-            option.setOptionString(toOptionsString(options, question.getQuestionType()));
+            questionWithBLOBs.setOptionString(toOptionsString(options, questionWithBLOBs.getQuestionType()));
 
-            /*需要进行数据库操作，有数据库返回的自增值或者已有值来完成赋值*/
-            //option.setOptionId();
-
-            questionList.add(question);
-            optionList.add(option);
+            questionWithBLOBsList.add(questionWithBLOBs);
         }
 
-        return new QuestionDTO(questionList, optionList);
+        return questionWithBLOBsList;
     }
 
     /**
@@ -260,4 +270,7 @@ public class QesManageVODOUtil {
         }
         return questionOptionVOList;
     }
+
+
+    private final static Logger logger = LoggerFactory.getLogger(QesManageVODOUtil.class);
 }

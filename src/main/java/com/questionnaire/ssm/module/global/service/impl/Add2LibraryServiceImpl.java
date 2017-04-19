@@ -20,7 +20,7 @@ import java.util.List;
 
 /**
  * Created by 郑晓辉 on 2017/4/3.
- * Description:
+ * Description: 添加到个人或者公共模板库
  */
 @Service
 public class Add2LibraryServiceImpl implements Add2LibraryService {

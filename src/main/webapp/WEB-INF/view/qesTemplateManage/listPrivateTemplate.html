@@ -30,7 +30,7 @@
             <td th:text="${privateQesTemplate.questionnaireTitle}"></td>
             <td th:text="${privateQesTemplate.questionnaireSubtitle}"></td>
             <td th:text="${privateQesTemplate.questionnaireDescription}"></td>
-            <td th:text="${#calendars.format(privateQesTemplate.operate_date,'yyyy-MM-dd HH:mm:ss')}"></td>
+            <td th:text="${#calendars.format(privateQesTemplate.addDate,'yyyy-MM-dd HH:mm:ss')}"></td>
             <td>
                 <a class="btn btn-sm btn-link"
                    th:href="@{/questionnaireManage/displayQuestionnaire/{id}(id=${privateQesTemplate.questionnaireId})}">

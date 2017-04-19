@@ -9,7 +9,7 @@
     <id column="unit_id" jdbcType="BIGINT" property="unitId" />
     <result column="unit_name" jdbcType="VARCHAR" property="unitName" />
     <result column="unit_code" jdbcType="VARCHAR" property="unitCode" />
-    <result column="unit_level" jdbcType="CHAR" property="unitLevel" />
+    <result column="unit_level" jdbcType="VARCHAR" property="unitLevel" />
     <result column="unit_province" jdbcType="VARCHAR" property="unitProvince" />
     <result column="unit_city" jdbcType="VARCHAR" property="unitCity" />
     <result column="address" jdbcType="VARCHAR" property="address" />
@@ -144,7 +144,7 @@
     insert into unit (unit_name, unit_code, unit_level, 
       unit_province, unit_city, address
       )
-    values (#{unitName,jdbcType=VARCHAR}, #{unitCode,jdbcType=VARCHAR}, #{unitLevel,jdbcType=CHAR}, 
+    values (#{unitName,jdbcType=VARCHAR}, #{unitCode,jdbcType=VARCHAR}, #{unitLevel,jdbcType=VARCHAR}, 
       #{unitProvince,jdbcType=VARCHAR}, #{unitCity,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}
       )
   </insert>
@@ -185,7 +185,7 @@
         #{unitCode,jdbcType=VARCHAR},
       </if>
       <if test="unitLevel != null">
-        #{unitLevel,jdbcType=CHAR},
+        #{unitLevel,jdbcType=VARCHAR},
       </if>
       <if test="unitProvince != null">
         #{unitProvince,jdbcType=VARCHAR},
@@ -225,7 +225,7 @@
         unit_code = #{record.unitCode,jdbcType=VARCHAR},
       </if>
       <if test="record.unitLevel != null">
-        unit_level = #{record.unitLevel,jdbcType=CHAR},
+        unit_level = #{record.unitLevel,jdbcType=VARCHAR},
       </if>
       <if test="record.unitProvince != null">
         unit_province = #{record.unitProvince,jdbcType=VARCHAR},
@@ -250,7 +250,7 @@
     set unit_id = #{record.unitId,jdbcType=BIGINT},
       unit_name = #{record.unitName,jdbcType=VARCHAR},
       unit_code = #{record.unitCode,jdbcType=VARCHAR},
-      unit_level = #{record.unitLevel,jdbcType=CHAR},
+      unit_level = #{record.unitLevel,jdbcType=VARCHAR},
       unit_province = #{record.unitProvince,jdbcType=VARCHAR},
       unit_city = #{record.unitCity,jdbcType=VARCHAR},
       address = #{record.address,jdbcType=VARCHAR}
@@ -272,7 +272,7 @@
         unit_code = #{unitCode,jdbcType=VARCHAR},
       </if>
       <if test="unitLevel != null">
-        unit_level = #{unitLevel,jdbcType=CHAR},
+        unit_level = #{unitLevel,jdbcType=VARCHAR},
       </if>
       <if test="unitProvince != null">
         unit_province = #{unitProvince,jdbcType=VARCHAR},
@@ -294,7 +294,7 @@
     update unit
     set unit_name = #{unitName,jdbcType=VARCHAR},
       unit_code = #{unitCode,jdbcType=VARCHAR},
-      unit_level = #{unitLevel,jdbcType=CHAR},
+      unit_level = #{unitLevel,jdbcType=VARCHAR},
       unit_province = #{unitProvince,jdbcType=VARCHAR},
       unit_city = #{unitCity,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR}

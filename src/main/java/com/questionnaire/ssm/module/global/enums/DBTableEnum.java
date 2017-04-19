@@ -5,30 +5,19 @@ package com.questionnaire.ssm.module.global.enums;
  * Description:数据库中有的数据表格枚举
  */
 public enum DBTableEnum {
-    ANSWER(1, "answer"),
+    ANSWER_DETAIL(1, "answer_detail"),
     ANSWER_PAPER(2, "answer_paper"),
-    MAPPING_ANSWER_PAPER_ANSWER(3, "mapping_answer_paper_answer"),
-    MAPPING_MISSION_QUESTIONNAIRE(4, "mapping_answer_mission_questionnaire"),
-    MAPPING_MISSION_ROLE(5, "mapping_mission_role"),
-    MAPPING_MISSION_UNIT(6, "mapping_mission_unit"),
-    MAPPING_NOTICE_ROLE(7, "mapping_notice_role"),
-    MAPPING_NOTICE_UNIT(8, "mapping_notice_unit"),
-    MAPPING_QUESTIONNAIRE_QUESTION(9, "mapping_questionnaire_question"),
-    MAPPING_ROLE_PERMISSION(10, "mapping_role_permission"),
-    NOTICE(11, "notice"),
-    PERMISSION(12, "permission"),
-    QUESTION(13, "question"),
-    QUESTION_OPTION(14, "question_option"),
-    QUESTIONNAIRE(15, "questionnaire"),
-    RECORD_LOGIN(16, "record_login"),
-    RECORD_OPERATE_ANSWER_PAPER(17, "record_operate_answer_paper"),
-    RECORD_OPERATE_MISSION(18, "record_operate_mission"),
-    RECORD_OPERATE_NOTICE(19, "record_operate_notice"),
-    RECORD_OPERATE_QUESTIONNAIRE(20, "record_operate_questionnaire"),
-    RESEARCH_MISSION(21, "research_mission"),
-    ROLE(22, "role"),
-    UNIT(23, "unit"),
-    USER(24, "user"),;
+    MAPPING_MISSION_QUESTIONNAIRE(3, "mapping_answer_mission_questionnaire"),
+    MAPPING_QUESTIONNAIRE_QUESTION(4, "mapping_questionnaire_question"),
+    MAPPING_ROLE_PERMISSION(5, "mapping_role_permission"),
+    MISSION(6,"mission"),
+    NOTICE(7, "notice"),
+    PERMISSION(8, "permission"),
+    QUESTION(9, "question"),
+    QUESTIONNAIRE(10, "questionnaire"),
+    ROLE(11, "role"),
+    UNIT(12, "unit"),
+    USER(13, "user"),;
     /*表格编号*/
     private int code;
     /*表格名称*/

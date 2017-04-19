@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>公告</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+		<link href="css/font-awesome.css" rel="stylesheet">
+		<link href="css/plugins/wenjian_notice/my-style.css" rel='stylesheet' type='text/css' />
+		<link rel="stylesheet" href="css/plugins/wenjian_notice/bootstrap-table.css">
+		<link href="css/plugins/wenjian_notice/sweetalert.css" rel="stylesheet">
+		<link href="css/animate.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+		<style type="text/css">
+			.btn-primary {
+				background-color: #337ab7;
+				border-color: #2e6da4;
+				color: #fff;
+			}
+			
+			.btn-default {
+				background-color: #337ab7;
+				border-color: #2e6da4;
+				color: #fff;
+			}
+		</style>
+
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/plugins/wenjian_notice/bootstrap-table.js"></script>
+		<script type="text/javascript">
+			//查看公告 
+			function showBg() {
+				$("#dialog").show();
+			}
+			//关闭查看的公告
+			function closeBg() {
+				$("#dialog").hide();
+			}
+			//删除公告
+			$(document).ready(function() {
+				$('.del').click(function() {
+					$(this).siblings().remove();
+					$(this).parentsUntil("tbody").remove();
+					$(this).remove();
+				});
+
+			});
+		</script>
+
+	</head>
+
+	<body class="gray-bg">
+		<div class="wrapper wrapper-content  animated fadeInRight">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="ibox">
+						<div class="ibox-title">
+							<h4 class="m-t">查看公告</h4>
+						</div>
+
+						<div class="ibox-content">
+							<div class="container-fluid">
+								<br />
+								<div class="row">
+									<div class="col-md-1 col-sm-1">
+										<a href="newAnnouncement.html">
+											<button type="button" class="btn btn-primary btn-block">
+					<span class="glyphicon glyphicon-plus"></span>
+					    新建公告
+				</button>
+										</a>
+									</div>
+									<div class="col-md-3 col-sm-3">
+										<div class="input-group">
+											<input type="text" class="form-control" placeholder="搜索公告标题">
+											<span class="input-group-btn">
+                        <button class="btn btn-default" type="button">
+                        	搜索</button>
+                    </span>
+										</div>
+
+									</div>
+
+								</div>
+								<br />
+								<div class="row">
+									<div class="col-md-12  col-sm-12 ">
+										<table id="tableAll" data-toggle="table"  data-height="246">
+											<thead>
+												<tr>
+													<th class="tbHead">序号</th>
+													<th class="tbHead">公告标题</th>
+													<th class="tbHead">公告时间</th>
+													<th class="tbHead">公告对象</th>
+													<th class="tbHead">操作</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>1</td>
+													<td>item</td>
+													<td>2017/4/2</td>
+													<td>杭州</td>
+													<td>
+														<a class="demo1">查看</a>
+														<a class="demo4" href="#">删除</a>
+													</td>
+													</td>
+												</tr>
+												<tr>
+													<td>2</td>
+													<td>item</td>
+													<td>2017/4/2</td>
+													<td>杭州</td>
+													<td>
+														<a class="demo1">查看</a>
+														<a class="demo4" href="#">删除</a>
+													</td>
+												</tr>
+												<tr>
+													<td>3</td>
+													<td>item</td>
+													<td>2017/4/2</td>
+													<td>杭州</td>
+													<td>
+														<a class="demo1">查看</a>
+														<a class="demo4" href="#">删除</a>
+													</td>
+													</td>
+												</tr>
+												<tr>
+													<td>4</td>
+													<td>item</td>
+													<td>2017/4/2</td>
+													<td>杭州</td>
+													<td>
+														<a class="demo1">查看</a>
+														<a class="demo4" href="#">删除</a>
+													</td>
+													</td>
+												</tr>
+												<tr>
+													<td>5</td>
+													<td>item</td>
+													<td>2017/4/2</td>
+													<td>杭州</td>
+													<td>
+														<a class="demo1">查看</a>
+														<a class="demo4" href="#">删除</a>
+													</td>
+													</td>
+												</tr>
+
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="js/plugins/wenjian_notice/sweetalert.min.js"></script>
+		<script>
+			$(document).ready(function() {
+
+				$('.demo1').click(function() {
+					swal({
+						title: "Item1",
+						text: "公告内容：XXXXXXX"
+
+					});
+				});
+
+				$('.demo4').click(function() {
+					swal({
+							title: "您确定要删除这条信息吗",
+							text: "删除后将无法恢复，请谨慎操作！",
+							type: "warning",
+							showCancelButton: true,
+							confirmButtonColor: "#DD6B55",
+							confirmButtonText: "是的，我要删除！",
+							cancelButtonText: "让我再考虑一下…",
+							closeOnConfirm: false,
+							closeOnCancel: false
+						},
+						function(isConfirm) {
+							if(isConfirm) {
+								swal("删除成功！", "您已经永久删除了这条信息。", "success");
+							} else {
+								swal("已取消", "您取消了删除操作！", "error");
+							}
+						});
+				});
+
+			});
+		</script>
+
+	</body>
+
+</html>
