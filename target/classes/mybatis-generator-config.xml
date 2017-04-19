@@ -25,10 +25,10 @@
         </commentGenerator>
 
         <!--添加你的 JDBC 连接信息-->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://106.14.26.144:3306/questionnaire"
-                        userId="developer" password="dev2017"/>
-        <!--<jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/questionnaire"-->
-                        <!--userId="root" password="root"/>-->
+        <!--<jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://106.14.26.144:3306/questionnaire"-->
+                        <!--userId="developer" password="dev2017"/>-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/questionnaire"
+                        userId="root" password="root"/>
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
@@ -80,9 +80,9 @@
         <!--<table tableName="questionnaire">-->
             <!--<generatedKey column="questionnaire_id" sqlStatement="MySql" identity="true"/>-->
         <!--</table>-->
-        <!--<table tableName="question">-->
-            <!--<generatedKey column="question_id" sqlStatement="MySql" identity="true"/>-->
-        <!--</table>-->
+        <table tableName="question">
+            <generatedKey column="question_id" sqlStatement="MySql" identity="true"/>
+        </table>
         <!--<table tableName="question_option">-->
             <!--<generatedKey column="option_id" sqlStatement="MySql" identity="true"/>-->
         <!--</table>-->
@@ -95,9 +95,9 @@
         <!--<table tableName="mapping_notice_role">-->
             <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
         <!--</table>-->
-        <table tableName="notice">
-            <generatedKey column="notice_id" sqlStatement="MySql" identity="true"/>
-        </table>
+        <!--<table tableName="notice">-->
+            <!--<generatedKey column="notice_id" sqlStatement="MySql" identity="true"/>-->
+        <!--</table>-->
         <!--<table tableName="record_operate_notice">-->
             <!--<generatedKey column="record_id" sqlStatement="MySql" identity="true"/>-->
         <!--</table>-->
