@@ -57,51 +57,32 @@
         <!--<table tableName="sys_user" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>-->
 
 
-        <!--<table tableName="record_login">-->
-            <!--<generatedKey column="record_id" sqlStatement="MySql" identity="true"/>-->
-        <!--</table>-->
-        <!--<table tableName="user"/>-->
-        <!--<table tableName="role">-->
-            <!--<generatedKey column="role_id" sqlStatement="MySql" identity="true"/>-->
-        <!--</table>-->
-        <!--<table tableName="permission">-->
-            <!--<generatedKey column="permission_id" sqlStatement="MySql" identity="true"/>-->
-        <!--</table>-->
-        <!--<table tableName="mapping_role_permission">-->
-            <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
-        <!--</table>-->
-        <!--<table tableName="unit">-->
-            <!--<generatedKey column="unit_id" sqlStatement="MySql" identity="true"/>-->
-        <!--</table>-->
+        <table tableName="user"/>
+        <table tableName="role">
+            <generatedKey column="role_id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <table tableName="permission">
+            <generatedKey column="permission_id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <table tableName="mapping_role_permission">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <table tableName="unit">
+            <generatedKey column="unit_id" sqlStatement="MySql" identity="true"/>
+        </table>
 
-        <!--<table tableName="record_operate_questionnaire">-->
-            <!--<generatedKey column="record_id" sqlStatement="MySql" identity="true"/>-->
-        <!--</table>-->
-        <!--<table tableName="questionnaire">-->
-            <!--<generatedKey column="questionnaire_id" sqlStatement="MySql" identity="true"/>-->
-        <!--</table>-->
+        <table tableName="mapping_questionnaire_question">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <table tableName="questionnaire">
+            <generatedKey column="questionnaire_id" sqlStatement="MySql" identity="true"/>
+        </table>
         <table tableName="question">
             <generatedKey column="question_id" sqlStatement="MySql" identity="true"/>
         </table>
-        <!--<table tableName="question_option">-->
-            <!--<generatedKey column="option_id" sqlStatement="MySql" identity="true"/>-->
-        <!--</table>-->
-        <!--<table tableName="mapping_questionnaire_question">-->
-            <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
-        <!--</table>-->
-        <!--<table tableName="mapping_notice_unit">-->
-            <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
-        <!--</table>-->
-        <!--<table tableName="mapping_notice_role">-->
-            <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
-        <!--</table>-->
-        <!--<table tableName="notice">-->
-            <!--<generatedKey column="notice_id" sqlStatement="MySql" identity="true"/>-->
-        <!--</table>-->
-        <!--<table tableName="record_operate_notice">-->
-            <!--<generatedKey column="record_id" sqlStatement="MySql" identity="true"/>-->
-        <!--</table>-->
-
+        <table tableName="notice">
+            <generatedKey column="notice_id" sqlStatement="MySql" identity="true"/>
+        </table>
 
     </context>
 </generatorConfiguration>
