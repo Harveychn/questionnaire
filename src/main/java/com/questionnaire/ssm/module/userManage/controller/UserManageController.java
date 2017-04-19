@@ -9,6 +9,7 @@ import com.questionnaire.ssm.module.userManage.pojo.UploadResultVO;
 import com.questionnaire.ssm.module.userManage.service.UploadFileService;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.output.ByteArrayOutputStream;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,58 +69,35 @@ public class UserManageController {
 
     @GetMapping("/downloadUploadTemplate")
     public void downloadUploadTemplate(String templateName, HttpServletResponse response) throws IOException {
-        response.setCharacterEncoding("utf-8");
-        response.setContentType("multipart/form-data");
-        response.setHeader("Content-Disposition", "attachment;fileName=download");
-//        DownloadParamVo downloadParamVo = this.downloadParamVo;
-//        HSSFWorkbook workbook = downloadDBDataService.downloadData(downloadParamVo);
-//        Date currentDate = new Date();
-//        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddhhmmss");
-//        String fileName = sdf.format(currentDate);
-//        if ("Disease".equals(downloadParamVo.getCategory().trim())) {
-//            fileName += "疟疾";
-//        } else if ("Weather".equals(downloadParamVo.getCategory().trim())) {
-//            fileName += "气候";
-//        } else if ("Station".equals(downloadParamVo.getCategory().trim())) {
-//            fileName += "观测站";
-//        }
-        String fileOriginName = templateName + ".xlsx";
-        String filePath = CONSTANT.getUploadFilePath() + "\\" + fileOriginName;
-        File file = new File(filePath);
-        
-        ByteArrayOutputStream os = new ByteArrayOutputStream();
-//        try {
-//            workbook.write(os);
-//        } catch (IOException io) {
-//            System.out.println("workbook.write(os)出现IOException 信息：" + io.getMessage());
-//        }
-
-        byte[] content = os.toByteArray();
-        InputStream is = new ByteArrayInputStream(content);
-        response.reset();
-        response.setContentType("application/vnd.ms-excel;charset=utf-8");
-        response.setHeader("Content-Disposition", "attachment;filename=" + new String((templateName + ".xls").getBytes(),
-                "iso-8859-1"));
-        ServletOutputStream out = response.getOutputStream();
-        BufferedInputStream bis = null;
-        BufferedOutputStream bos = null;
+        String fileOriginName = templateName + ".xls";
+        String path = CONSTANT.getDownloadFolderPath() + "\\" + fileOriginName;
         try {
-            bis = new BufferedInputStream(is);
-            bos = new BufferedOutputStream(out);
-            byte[] buff = new byte[2048];
-            int bytesRead;
-            while (-1 != (bytesRead = bis.read(buff, 0, buff.length))) {
-                bos.write(buff, 0, bytesRead);
-            }
-        } catch (final IOException e) {
-            throw e;
-        } finally {
-            if (bis != null)
-                bis.close();
-            if (bos != null)
-                bos.close();
+            // path是指欲下载的文件的路径。
+            File file = new File(path);
+            // 取得文件名。
+            String filename = file.getName();
+
+            // 以流的形式下载文件。
+            InputStream fis = new BufferedInputStream(new FileInputStream(path));
+            byte[] buffer = new byte[fis.available()];
+            fis.read(buffer);
+            fis.close();
+            // 清空response
+            response.reset();
+            // 设置response的Header
+
+            response.setCharacterEncoding("utf-8");
+            response.addHeader("Content-Length", "" + file.length());
+            OutputStream toClient = new BufferedOutputStream(response.getOutputStream());
+            response.setContentType("application/vnd.ms-excel;charset=utf-8");
+            response.setHeader("Content-Disposition", "attachment;filename="
+                    + new String((templateName + ".xls").getBytes(), "iso-8859-1"));
+            toClient.write(buffer);
+            toClient.flush();
+            toClient.close();
+        } catch (IOException ex) {
+            logger.error(ex.getMessage());
         }
-        return;
     }
 
 
