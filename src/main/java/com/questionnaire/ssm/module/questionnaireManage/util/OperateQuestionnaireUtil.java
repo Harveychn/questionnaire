@@ -1,5 +1,13 @@
 package com.questionnaire.ssm.module.questionnaireManage.util;
 
+import com.questionnaire.ssm.module.generated.pojo.MappingQuestionnaireQuestion;
+import com.questionnaire.ssm.module.generated.pojo.Questionnaire;
+import com.questionnaire.ssm.module.global.util.UserValidationUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.Date;
+
 /**
  * Created by 郑晓辉 on 2017/3/29.
  * Description: 操作问卷动作的工具包
@@ -14,11 +22,13 @@ public class OperateQuestionnaireUtil {
      */
     public static Questionnaire deleteQesPaperTemporaryAction() throws Exception {
         Questionnaire questionnaire = new Questionnaire();
+
         questionnaire.setIsTemplate(false);
         questionnaire.setIsShare(false);
         questionnaire.setIsVisible(false);
         questionnaire.setIsDone(true);
         questionnaire.setIsDelete(false);
+
         return questionnaire;
     }
 
@@ -30,11 +40,13 @@ public class OperateQuestionnaireUtil {
      */
     public static Questionnaire deleteQesPaperForeverAction() throws Exception {
         Questionnaire questionnaire = new Questionnaire();
+
         questionnaire.setIsTemplate(false);
         questionnaire.setIsShare(false);
         questionnaire.setIsVisible(false);
         questionnaire.setIsDone(true);
         questionnaire.setIsDelete(true);
+
         return questionnaire;
     }
 
@@ -44,9 +56,11 @@ public class OperateQuestionnaireUtil {
      * @return
      * @throws Exception
      */
-    public static Questionnaire shareAction() throws Exception {
+    public static Questionnaire makeShareAttrTrue() throws Exception {
         Questionnaire questionnaire = new Questionnaire();
+
         questionnaire.setIsShare(true);
+
         return questionnaire;
     }
 
@@ -76,11 +90,13 @@ public class OperateQuestionnaireUtil {
      */
     public static Questionnaire templateQesPaperAction() throws Exception {
         Questionnaire questionnaire = new Questionnaire();
+
         questionnaire.setIsTemplate(true);
         questionnaire.setIsShare(false);
         questionnaire.setIsVisible(true);
         questionnaire.setIsDone(true);
         questionnaire.setIsDelete(false);
+
         return questionnaire;
     }
 
@@ -101,6 +117,10 @@ public class OperateQuestionnaireUtil {
         if (questionnaire.getQuestionnaireDescription() != null) {
             copiedQuestionnaire.setQuestionnaireDescription(questionnaire.getQuestionnaireDescription());
         }
+        //问卷分享时间
+        copiedQuestionnaire.setCreateTime(new Date());
+        //分享用户
+        copiedQuestionnaire.setCreateUser(UserValidationUtil.getUserTel(logger));
         return copiedQuestionnaire;
     }
 
@@ -128,6 +148,11 @@ public class OperateQuestionnaireUtil {
         if (questionnaire.getQuestionnaireDescription() != null) {
             copiedQuestionnaire.setQuestionnaireDescription(questionnaire.getQuestionnaireDescription());
         }
+
+        //添加到个人模板库时间
+        copiedQuestionnaire.setCreateTime(new Date());
+        //分享用户
+        copiedQuestionnaire.setCreateUser(questionnaire.getCreateUser());
         return copiedQuestionnaire;
     }
 
@@ -141,7 +166,6 @@ public class OperateQuestionnaireUtil {
     public static MappingQuestionnaireQuestion copyMapQesPaperQes(MappingQuestionnaireQuestion mappingQuestionnaireQuestion) throws Exception {
         MappingQuestionnaireQuestion copiedMap = new MappingQuestionnaireQuestion();
         /*问卷id未设置*/
-//        copiedMap.setQuestionnaireId(mappingQuestionnaireQuestion.getQuestionnaireId());
         copiedMap.setQuestionId(mappingQuestionnaireQuestion.getQuestionId());
         copiedMap.setQuestionOrder(mappingQuestionnaireQuestion.getQuestionOrder());
 
@@ -149,4 +173,5 @@ public class OperateQuestionnaireUtil {
     }
 
 
+    private final static Logger logger = LoggerFactory.getLogger(OperateQuestionnaireUtil.class);
 }

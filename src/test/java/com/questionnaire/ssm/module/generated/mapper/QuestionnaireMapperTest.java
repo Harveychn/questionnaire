@@ -4,18 +4,15 @@ import com.questionnaire.ssm.module.generated.pojo.*;
 import com.questionnaire.ssm.module.questionnaireManage.enums.QuestionTypeEnum;
 import com.questionnaire.ssm.module.questionnaireManage.pojo.CreateQuestionnaireVO;
 import com.questionnaire.ssm.module.questionnaireManage.pojo.QuestionVO;
-import com.questionnaire.ssm.module.questionnaireManage.pojo.QuestionDTO;
 import com.questionnaire.ssm.module.questionnaireManage.pojo.QuestionOptionVO;
 import com.questionnaire.ssm.module.questionnaireManage.util.QesManageVODOUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -34,8 +31,6 @@ public class QuestionnaireMapperTest {
     private QuestionnaireMapper questionnaireMapper;
     @Resource
     private QuestionMapper questionMapper;
-    @Resource
-    private QuestionOptionMapper questionOptionMapper;
     @Resource
     private MappingQuestionnaireQuestionMapper mappingQuestionnaireQuestionMapper;
 
@@ -86,36 +81,36 @@ public class QuestionnaireMapperTest {
         assertEquals(insertResult, 1);
 
         insertResult = 0;
-
-        QuestionDTO questionDTO = QesManageVODOUtil.toQuestionMultiDO(questionnaireVO.getQuestions());
-        List<Question> questions = questionDTO.getQuestion();
-        List<QuestionOption> options = questionDTO.getQuestionOption();
-
-        MappingQuestionnaireQuestion mapping = new MappingQuestionnaireQuestion();
-        mapping.setQuestionnaireId(questionnaire.getQuestionnaireId());
-
-        int questionSize = questions.size();
-        for (int order = 0; order < questionSize; order++) {
-            insertResult = 0;
-            insertResult = questionOptionMapper.insertSelective(options.get(order));
-
-            assertEquals(insertResult, 1);
-            insertResult = 0;
-
-            questions.get(order).setOptionId(options.get(order).getOptionId());
-
-            insertResult = questionMapper.insertSelective(questions.get(order));
-            assertEquals(insertResult, 1);
-            insertResult = 0;
-
-            mapping.setQuestionId(questions.get(order).getQuestionId());
-            mapping.setQuestionOrder(order);
-
-
-            insertResult = mappingQuestionnaireQuestionMapper.insertSelective(mapping);
-            assertEquals(insertResult, 1);
-            insertResult = 0;
-        }
+//
+//        QuestionDTO questionDTO = QesManageVODOUtil.toQuestionMultiDO(questionnaireVO.getQuestions());
+//        List<Question> questions = questionDTO.getQuestion();
+//        List<QuestionOption> options = questionDTO.getQuestionOption();
+//
+//        MappingQuestionnaireQuestion mapping = new MappingQuestionnaireQuestion();
+//        mapping.setQuestionnaireId(questionnaire.getQuestionnaireId());
+//
+//        int questionSize = questions.size();
+//        for (int order = 0; order < questionSize; order++) {
+//            insertResult = 0;
+//            insertResult = questionOptionMapper.insertSelective(options.get(order));
+//
+//            assertEquals(insertResult, 1);
+//            insertResult = 0;
+//
+//            questions.get(order).setOptionId(options.get(order).getOptionId());
+//
+//            insertResult = questionMapper.insertSelective(questions.get(order));
+//            assertEquals(insertResult, 1);
+//            insertResult = 0;
+//
+//            mapping.setQuestionId(questions.get(order).getQuestionId());
+//            mapping.setQuestionOrder(order);
+//
+//
+//            insertResult = mappingQuestionnaireQuestionMapper.insertSelective(mapping);
+//            assertEquals(insertResult, 1);
+//            insertResult = 0;
+//        }
 
     }
 

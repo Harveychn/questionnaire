@@ -1,5 +1,6 @@
 package com.questionnaire.ssm.module.shiro.realm;
 
+import com.questionnaire.ssm.module.generated.pojo.User;
 import com.questionnaire.ssm.module.login.service.LoginService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;

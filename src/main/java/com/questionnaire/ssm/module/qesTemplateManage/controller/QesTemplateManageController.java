@@ -1,7 +1,6 @@
 package com.questionnaire.ssm.module.qesTemplateManage.controller;
 
 import com.questionnaire.ssm.module.global.enums.CodeForVOEnum;
-import com.questionnaire.ssm.module.global.enums.UserActionEnum;
 import com.questionnaire.ssm.module.global.pojo.ResponsePkt;
 import com.questionnaire.ssm.module.global.util.ResultUtil;
 import com.questionnaire.ssm.module.global.util.UserValidationUtil;
@@ -62,8 +61,8 @@ public class QesTemplateManageController {
         if (templateIds.length <= 0) {
             return ResultUtil.error(CodeForVOEnum.TEMPLATE_IDS_NULL.getCode(), CodeForVOEnum.TEMPLATE_IDS_NULL.getMessage());
         }
-        return ResultUtil.success(qesTemplateManageService.addToMyTemplateLibrary(templateIds,
-                UserActionEnum.ADD_PUBLIC_TEMPLATE_2_MY_TEMPLATE_LIBRARY));
+        qesTemplateManageService.addToMyTemplateLibrary(templateIds);
+        return ResultUtil.success();
     }
 
     private final static Logger logger = LoggerFactory.getLogger(QesTemplateManageController.class);

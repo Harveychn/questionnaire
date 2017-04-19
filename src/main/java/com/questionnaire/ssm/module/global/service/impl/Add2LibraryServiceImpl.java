@@ -1,5 +1,10 @@
 package com.questionnaire.ssm.module.global.service.impl;
 
+import com.questionnaire.ssm.module.generated.mapper.MappingQuestionnaireQuestionMapper;
+import com.questionnaire.ssm.module.generated.mapper.QuestionnaireMapper;
+import com.questionnaire.ssm.module.generated.pojo.MappingQuestionnaireQuestion;
+import com.questionnaire.ssm.module.generated.pojo.MappingQuestionnaireQuestionExample;
+import com.questionnaire.ssm.module.generated.pojo.Questionnaire;
 import com.questionnaire.ssm.module.global.enums.CodeForVOEnum;
 import com.questionnaire.ssm.module.global.enums.DBTableEnum;
 import com.questionnaire.ssm.module.global.exception.OperateDBException;
@@ -15,7 +20,7 @@ import java.util.List;
 
 /**
  * Created by 郑晓辉 on 2017/4/3.
- * Description:
+ * Description: 添加到个人或者公共模板库
  */
 @Service
 public class Add2LibraryServiceImpl implements Add2LibraryService {

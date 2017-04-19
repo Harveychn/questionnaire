@@ -25,8 +25,11 @@
         </commentGenerator>
 
         <!--添加你的 JDBC 连接信息-->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://106.14.26.144:3306/questionnaire"
-                        userId="developer" password="dev2017"/>
+        <!--<jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/questionnaire"-->
+        <!--userId="developer" password="dev2017"/>-->
+        <!--添加你的 JDBC 连接信息-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/questionnaire"
+                        userId="root" password="zxh980278090"/>
 
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
@@ -68,14 +71,14 @@
             <generatedKey column="unit_id" sqlStatement="MySql" identity="true"/>
         </table>
 
-        <table tableName="question">
-            <generatedKey column="question_id" sqlStatement="MySql" identity="true"/>
-        </table>
         <table tableName="mapping_questionnaire_question">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
         <table tableName="questionnaire">
             <generatedKey column="questionnaire_id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <table tableName="question">
+            <generatedKey column="question_id" sqlStatement="MySql" identity="true"/>
         </table>
 
 

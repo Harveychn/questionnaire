@@ -26,7 +26,7 @@
 
         <!--添加你的 JDBC 连接信息-->
         <!--<jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/questionnaire"-->
-                        <!--userId="developer" password="dev2017"/>-->
+        <!--userId="developer" password="dev2017"/>-->
         <!--添加你的 JDBC 连接信息-->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/questionnaire"
                         userId="root" password="zxh980278090"/>

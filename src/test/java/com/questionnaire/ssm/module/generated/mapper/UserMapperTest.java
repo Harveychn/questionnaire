@@ -1,5 +1,6 @@
 package com.questionnaire.ssm.module.generated.mapper;
 
+import com.questionnaire.ssm.module.generated.pojo.User;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.junit.Assert;
 import org.junit.Test;

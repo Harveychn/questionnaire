@@ -13,14 +13,6 @@ import java.util.List;
 public interface QesTemplateManageMapper {
 
     /**
-     * 获取公共模板信息
-     *
-     * @return
-     * @throws Exception
-     */
-    List<ListPublicTemplateInfoVO> listPublicTemplateInfo() throws Exception;
-
-    /**
      * 查询个人模板信息
      *
      * @param userTel 要查询的用户账户
@@ -28,4 +20,12 @@ public interface QesTemplateManageMapper {
      * @throws Exception
      */
     List<ListPrivateTemplateInfoVO> listPrivateTemplateInfo(@Param("userTel") String userTel) throws Exception;
+
+    /**
+     * 获取公共模板信息
+     *
+     * @return
+     * @throws Exception
+     */
+    List<ListPublicTemplateInfoVO> listPublicTemplateInfo() throws Exception;
 }

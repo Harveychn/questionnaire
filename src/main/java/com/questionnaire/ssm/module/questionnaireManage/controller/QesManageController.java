@@ -1,7 +1,7 @@
 package com.questionnaire.ssm.module.questionnaireManage.controller;
 
+import com.questionnaire.ssm.module.generated.pojo.Questionnaire;
 import com.questionnaire.ssm.module.global.enums.CodeForVOEnum;
-import com.questionnaire.ssm.module.global.enums.UserActionEnum;
 import com.questionnaire.ssm.module.global.pojo.ResponsePkt;
 import com.questionnaire.ssm.module.global.util.ResultUtil;
 import com.questionnaire.ssm.module.global.util.UserValidationUtil;
@@ -107,8 +107,7 @@ public class QesManageController {
                     CodeForVOEnum.QUESTIONNAIRE_IDS_NULL.getMessage());
         }
         Questionnaire questionnaire = OperateQuestionnaireUtil.deleteQesPaperTemporaryAction();
-        qesManageService.delOrTemplateQesByIds(Arrays.asList(questionnaireIds)
-                , questionnaire, UserActionEnum.DELETE_TEMPORARY_QUESTIONNAIRE);
+        qesManageService.delOrTemplateQesByIds(Arrays.asList(questionnaireIds), questionnaire);
         return ResultUtil.success();
     }
 
@@ -128,7 +127,7 @@ public class QesManageController {
         }
         Questionnaire questionnaire = OperateQuestionnaireUtil.deleteQesPaperForeverAction();
         qesManageService.delOrTemplateQesByIds(Arrays.asList(questionnaireIds)
-                , questionnaire, UserActionEnum.DELETE_FOREVER_QUESTIONNAIRE);
+                , questionnaire);
         return ResultUtil.success();
     }
 
@@ -148,7 +147,7 @@ public class QesManageController {
         }
         Questionnaire questionnaire = OperateQuestionnaireUtil.templateQesPaperAction();
         qesManageService.delOrTemplateQesByIds(Arrays.asList(questionnaireIds)
-                , questionnaire, UserActionEnum.ADD_2_PRIVATE_TEMPLATE);
+                , questionnaire);
         return ResultUtil.success();
     }
 
@@ -167,8 +166,8 @@ public class QesManageController {
             return ResultUtil.error(CodeForVOEnum.QUESTIONNAIRE_IDS_NULL.getCode(),
                     CodeForVOEnum.QUESTIONNAIRE_IDS_NULL.getMessage());
         }
-        return ResultUtil.success(qesManageService.shareQesPaperByIds(Arrays.asList(questionnaireIds),
-                UserActionEnum.ADD_2_PUBLIC_TEMPLATE));
+        qesManageService.shareQesPaperByIds(Arrays.asList(questionnaireIds));
+        return ResultUtil.success();
     }
 
     private static final Logger logger = LoggerFactory.getLogger(QesManageController.class);
@@ -179,64 +178,3 @@ public class QesManageController {
         this.qesManageService = qesManageService;
     }
 }
-
-
-//
-//    /**
-//     * 单张问卷根据问卷Id暂时删除问卷(visible = false)
-//     *
-//     * @param questionnaireId 要删除的问卷id
-//     * @return
-//     * @throws Exception
-//     */
-//    @GetMapping(value = "/delTemporaryQuestionnaire/{questionnaireId}")
-//    @ResponseBody
-//    public ResponsePkt delTemporaryQuestionnaire(@PathVariable("questionnaireId") long questionnaireId) throws Exception {
-//        Questionnaire questionnaire = OperateQuestionnaireUtil.deleteTemporaryAction();
-//        qesManageService.delOrTemplateQesById(questionnaireId, questionnaire, UserActionEnum.DELETE_TEMPORARY_QUESTIONNAIRE);
-//        return ResultUtil.success();
-//    }
-//
-//    /**
-//     * 单张问卷永久删除(delete = true)
-//     *
-//     * @param questionnaireId 要删除问卷的id
-//     * @return
-//     * @throws Exception
-//     */
-//    @GetMapping(value = "/delForeverQuestionnaire/{questionnaireId}")
-//    @ResponseBody
-//    public ResponsePkt delForeverQuestionnaire(@PathVariable("questionnaireId") long questionnaireId) throws Exception {
-//        Questionnaire questionnaire = OperateQuestionnaireUtil.deleteForeverAction();
-//        qesManageService.delOrTemplateQesById(questionnaireId, questionnaire, UserActionEnum.DELETE_FOREVER_QUESTIONNAIRE);
-//        return ResultUtil.success();
-//    }
-//
-//    /**
-//     * 单张问卷根据问卷Id分享问卷
-//     *
-//     * @param questionnaireId 要分享的问卷id
-//     * @return
-//     * @throws Exception
-//     */
-//    @GetMapping(value = "/shareQuestionnaire/{questionnaireId}")
-//    @ResponseBody
-//    public ResponsePkt shareQuestionnaire(@PathVariable("questionnaireId") long questionnaireId) throws Exception {
-//        qesManageService.shareQesPaperById(questionnaireId, UserActionEnum.ADD_2_PUBLIC_TEMPLATE);
-//        return ResultUtil.success();
-//    }
-//
-//    /**
-//     * 单张问卷模板化
-//     *
-//     * @param questionnaireId 要模板化问卷的id
-//     * @return
-//     * @throws Exception
-//     */
-//    @GetMapping(value = "/templateQuestionnaire/{questionnaireId}")
-//    @ResponseBody
-//    public ResponsePkt templateQuestionnaire(@PathVariable("questionnaireId") long questionnaireId) throws Exception {
-//        Questionnaire questionnaire = OperateQuestionnaireUtil.templateAction();
-//        qesManageService.delOrTemplateQesById(questionnaireId, questionnaire, UserActionEnum.ADD_2_PRIVATE_TEMPLATE);
-//        return ResultUtil.success();
-//    }

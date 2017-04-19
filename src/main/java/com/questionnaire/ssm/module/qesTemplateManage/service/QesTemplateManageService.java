@@ -1,7 +1,5 @@
 package com.questionnaire.ssm.module.qesTemplateManage.service;
 
-import com.questionnaire.ssm.module.global.enums.UserActionEnum;
-import com.questionnaire.ssm.module.qesTemplateManage.pojo.Add2MyTemplateResultVO;
 import com.questionnaire.ssm.module.qesTemplateManage.pojo.ListPrivateTemplateInfoVO;
 import com.questionnaire.ssm.module.qesTemplateManage.pojo.ListPublicTemplateInfoVO;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +13,15 @@ import java.util.List;
 public interface QesTemplateManageService {
 
     /**
+     * 获取个人问卷信息
+     *
+     * @param userTel 个人账号
+     * @return
+     * @throws Exception
+     */
+    List<ListPrivateTemplateInfoVO> listPrivateTemplate(String userTel) throws Exception;
+
+    /**
      * 获取公共模板
      *
      * @return
@@ -26,19 +33,9 @@ public interface QesTemplateManageService {
      * 添加问卷模板到我的问卷模板库
      *
      * @param qesTemplateIds 要添加的模板id
-     * @param userActionEnum 用户添加动作枚举
      * @return 添加到我的模板库结果
      * @throws Exception
      */
     @Transactional
-    Add2MyTemplateResultVO addToMyTemplateLibrary(Long[] qesTemplateIds, UserActionEnum userActionEnum) throws Exception;
-
-    /**
-     * 获取个人问卷信息
-     *
-     * @param userTel 个人账号
-     * @return
-     * @throws Exception
-     */
-    List<ListPrivateTemplateInfoVO> listPrivateTemplate(String userTel) throws Exception;
+    void addToMyTemplateLibrary(Long[] qesTemplateIds) throws Exception;
 }

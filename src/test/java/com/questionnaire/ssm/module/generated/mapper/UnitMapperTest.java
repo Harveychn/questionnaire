@@ -1,11 +1,14 @@
 package com.questionnaire.ssm.module.generated.mapper;
 
+import com.questionnaire.ssm.module.generated.pojo.Unit;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by 郑晓辉 on 2017/4/17.

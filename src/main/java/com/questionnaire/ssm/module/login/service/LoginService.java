@@ -1,5 +1,7 @@
 package com.questionnaire.ssm.module.login.service;
 
+import com.questionnaire.ssm.module.generated.pojo.User;
+
 import java.util.Set;
 
 /**
