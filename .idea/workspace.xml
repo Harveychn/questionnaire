@@ -2,26 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1b71ccd9-b479-4e1c-80a4-7d2729296279" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/NoticeExample.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/5f39e492-3803-436a-a02d-9297150a5811.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/5f39e492-3803-436a-a02d-9297150a5811.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/notice/service/impl/NoticeServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/notice/service/impl/NoticeServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/QuestionMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/QuestionMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/QuestionnaireMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/QuestionnaireMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/UnitMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/UnitMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/UserMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/UserMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mybatis-generator-config.xml" afterPath="$PROJECT_DIR$/src/main/resources/mybatis-generator-config.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ssm.iml" afterPath="$PROJECT_DIR$/ssm.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/module/generated/mapper/QuestionMapper.xml" afterPath="$PROJECT_DIR$/target/classes/module/generated/mapper/QuestionMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/module/generated/mapper/QuestionnaireMapper.xml" afterPath="$PROJECT_DIR$/target/classes/module/generated/mapper/QuestionnaireMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/module/generated/mapper/UnitMapper.xml" afterPath="$PROJECT_DIR$/target/classes/module/generated/mapper/UnitMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/module/generated/mapper/UserMapper.xml" afterPath="$PROJECT_DIR$/target/classes/module/generated/mapper/UserMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mybatis-generator-config.xml" afterPath="$PROJECT_DIR$/target/classes/mybatis-generator-config.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/properties/config.properties" afterPath="$PROJECT_DIR$/target/classes/properties/config.properties" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/notice/mapper/NoticeMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/notice/mapper/NoticeManageMapper.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/module/notice/mapper/NoticeMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/module/notice/mapper/NoticeManageMapper.xml" />
     </list>
     <ignored path="logFiles/" />
     <ignored path="target/" />
@@ -1888,7 +1869,14 @@
       <option name="project" value="LOCAL" />
       <updated>1492581111081</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="公告整合">
+      <created>1492583437738</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1492583437738</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1924,7 +1912,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="583698000" />
+    <option name="totallyTimeSpent" value="583804000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
