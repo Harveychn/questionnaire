@@ -1,12 +1,12 @@
 package com.questionnaire.ssm.module.notice.mapper;
 
-import com.questionnaire.ssm.module.notice.pojo.Notice;
 import com.questionnaire.ssm.module.generated.pojo.NoticeExample;
+import com.questionnaire.ssm.module.notice.pojo.Notice;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
-public interface NoticeMapper {
+public interface NoticeManageMapper {
 
     int countByExample(NoticeExample example);
 

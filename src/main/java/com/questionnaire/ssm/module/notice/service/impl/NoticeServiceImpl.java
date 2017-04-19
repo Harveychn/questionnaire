@@ -4,7 +4,7 @@ import com.questionnaire.ssm.module.global.enums.CodeForVOEnum;
 import com.questionnaire.ssm.module.global.enums.DBTableEnum;
 import com.questionnaire.ssm.module.global.exception.OperateDBException;
 import com.questionnaire.ssm.module.global.util.UserValidationUtil;
-import com.questionnaire.ssm.module.notice.mapper.NoticeMapper;
+import com.questionnaire.ssm.module.notice.mapper.NoticeManageMapper;
 import com.questionnaire.ssm.module.notice.pojo.Notice;
 import com.questionnaire.ssm.module.notice.service.NoticeService;
 import org.slf4j.Logger;
@@ -22,12 +22,12 @@ import java.util.List;
 @Service
 public class NoticeServiceImpl implements NoticeService{
 
-    private NoticeMapper noticeMapper;
+    private NoticeManageMapper noticeManageMapper;
     private static final Logger logger = LoggerFactory.getLogger(NoticeServiceImpl.class);
 
     @Autowired
-    public NoticeServiceImpl(NoticeMapper noticeMapper){
-        this.noticeMapper=noticeMapper;
+    public NoticeServiceImpl(NoticeManageMapper noticeManageMapper){
+        this.noticeManageMapper = noticeManageMapper;
 
     }
     @Override
@@ -44,7 +44,7 @@ public class NoticeServiceImpl implements NoticeService{
             notice.setIsDone(true);
             notice.setNoticeLaunchTime(currentDate);
             notice.setNoticeUnitText("111");
-            insertResult=noticeMapper.insertSelective(notice);
+            insertResult= noticeManageMapper.insertSelective(notice);
         }catch (Exception e){
             logger.error(e.getMessage());
             throw new OperateDBException(CodeForVOEnum.UNKNOWN_ERROR, DBTableEnum.NOTICE.getTableName());
@@ -59,7 +59,7 @@ public class NoticeServiceImpl implements NoticeService{
     public List<Notice> listNoticeByUserTel(String userTel) throws Exception {
         List<Notice> notices=null;
         try{
-            notices=noticeMapper.selectByUserTel(userTel);
+            notices= noticeManageMapper.selectByUserTel(userTel);
         }catch (Exception e){
             logger.error(e.getMessage());
             throw new OperateDBException(CodeForVOEnum.UNKNOWN_ERROR,"获取公告信息出现异常!");
@@ -73,7 +73,7 @@ public class NoticeServiceImpl implements NoticeService{
 
         int deleteResult=0;
         try{
-           deleteResult=noticeMapper.deleteByPrimaryKey(noticeId);
+           deleteResult= noticeManageMapper.deleteByPrimaryKey(noticeId);
         }catch (Exception e){
            logger.error(e.getMessage());
            throw new OperateDBException(CodeForVOEnum.UNKNOWN_ERROR, DBTableEnum.NOTICE.getTableName());
