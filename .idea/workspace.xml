@@ -1,22 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1b71ccd9-b479-4e1c-80a4-7d2729296279" name="Default" comment="公告整合">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/.bowerrc" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/dataSources/5f39e492-3803-436a-a02d-9297150a5811.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/noticeManage/newAnnouncement.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/noticeManage/viewAnnouncement.html" afterPath="" />
+    <list default="true" id="1b71ccd9-b479-4e1c-80a4-7d2729296279" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/userManage/controller/UserManageController.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/userManage/controller/UserManageController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/userManage/service/impl/UploadFileServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/userManage/service/impl/UploadFileServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/logback.xml" afterPath="$PROJECT_DIR$/src/main/resources/logback.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/rebel.xml" afterPath="$PROJECT_DIR$/src/main/resources/rebel.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/CreateQesResources/script/exam/exam.js" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/CreateQesResources/script/exam/exam.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/index.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/upload/uploadResult.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/upload/uploadResult.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/logback.xml" afterPath="$PROJECT_DIR$/target/classes/logback.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/rebel.xml" afterPath="$PROJECT_DIR$/target/classes/rebel.xml" />
     </list>
     <ignored path="logFiles/" />
     <ignored path="target/" />
@@ -315,7 +302,6 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/myJs/qesManage.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/controller/QesManageController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/upload/uploadExcel.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/properties/config.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/notice/service/impl/NoticeServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/notice/service/NoticeService.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mybatis-generator-config.xml" />
@@ -330,6 +316,7 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/CreateQesResources/script/exam/exam.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/index.html" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/main/resources/properties/config.properties" />
       </list>
     </option>
   </component>
@@ -635,6 +622,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="questionnaire" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="questionnaire" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="properties" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1520,7 +1533,7 @@
       <workItem from="1492587675731" duration="6313000" />
       <workItem from="1492596955256" duration="2721000" />
       <workItem from="1492603922656" duration="133000" />
-      <workItem from="1492654970376" duration="1703000" />
+      <workItem from="1492654970376" duration="2018000" />
     </task>
     <task id="LOCAL-00001" summary="configure changed-no DB">
       <created>1489288376258</created>
@@ -1781,7 +1794,14 @@
       <option name="project" value="LOCAL" />
       <updated>1492583836182</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="ignore文件配置">
+      <created>1492657083671</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1492657083671</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1817,7 +1837,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="595776000" />
+    <option name="totallyTimeSpent" value="596091000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1969,7 +1989,8 @@
     <MESSAGE value="创建问卷页面ok" />
     <MESSAGE value="数据库变动" />
     <MESSAGE value="公告整合" />
-    <option name="LAST_COMMIT_MESSAGE" value="公告整合" />
+    <MESSAGE value="ignore文件配置" />
+    <option name="LAST_COMMIT_MESSAGE" value="ignore文件配置" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2102,13 +2123,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1820">
           <caret line="91" column="0" lean-forward="false" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/properties/config.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" column="33" lean-forward="true" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -2307,8 +2321,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="9" column="10" lean-forward="true" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
+        <state relative-caret-position="161">
+          <caret line="18" column="1" lean-forward="false" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/properties/config.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="1" column="38" lean-forward="false" selection-start-line="1" selection-start-column="38" selection-end-line="1" selection-end-column="38" />
           <folding />
         </state>
       </provider>
