@@ -1,0 +1,25 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+.gitignore
+# logback配置文件
+src/main/resources/logback.xml
+src/main/resources/log4j.properties.back
+# 忽略log文件
+*.log
+# 生成的文件
+target
+# 数据库连接配置文件
+src/main/resources/properties
+# rebel插件配置文件
+src/main/resources/rebel.xml
+# mybatis生成插件配置文件
+src/main/resources/mybatis-generator-config.xml
+# 测试文件忽略
+src/test
