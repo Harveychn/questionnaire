@@ -67,6 +67,13 @@ public class UserManageController {
         return modelAndView;
     }
 
+    /**
+     * 下载 上传模板
+     *
+     * @param templateName 要下载的模板名
+     * @param response
+     * @throws IOException
+     */
     @GetMapping("/downloadUploadTemplate")
     public void downloadUploadTemplate(String templateName, HttpServletResponse response) throws IOException {
         String fileOriginName = templateName + ".xls";
@@ -85,7 +92,6 @@ public class UserManageController {
             // 清空response
             response.reset();
             // 设置response的Header
-
             response.setCharacterEncoding("utf-8");
             response.addHeader("Content-Length", "" + file.length());
             OutputStream toClient = new BufferedOutputStream(response.getOutputStream());

@@ -307,8 +307,9 @@ var exam = {
                 });
             } else {
                 $parentItems.css({
-                    'border-style': 'dotted',
-                    'border-color': '#FFFFFF #7b7b7b #FFFFFF #7b7b7b',
+                    // 'border-style': 'dotted',
+                    // 'border-color': '#FFFFFF #7b7b7b #FFFFFF #7b7b7b',
+                    'background':'#ED9E2C',
                     'color': '#6a6a6a',
                     'font-size': '16px'
                 });

@@ -1,0 +1,10 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea
+*.log
+target
+src/main/resources/properties
+src/main/resources/logback.xml
+src/main/resources/rebel.xml
+src/main/resources/mybatis-generator-config.xml
+src/main/resources/log4j.properties.back
+src/test

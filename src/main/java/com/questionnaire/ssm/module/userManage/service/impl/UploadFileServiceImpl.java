@@ -131,7 +131,9 @@ public class UploadFileServiceImpl implements UploadFileService {
                     logger.error(e.getMessage());
                 }
                 uploadResultVOList.add(uploadResultVO);
-            } else if (UploadTemplateCaseEnum.UNKNOWN_TEMPLATE == templateCase(fieldNameMap)) {     //文件模板格式错误
+            } else if (UploadTemplateCaseEnum.USER_INFO_TEMPLATE == templateCase(fieldNameMap)) { //用户信息上传模板
+
+            } else if (UploadTemplateCaseEnum.UNKNOWN_TEMPLATE == templateCase(fieldNameMap)){     //文件模板格式错误
                 UploadResultVO uploadResultVO = UploadResultUtil.templateErrorVO(currentOriginFileName);
                 uploadResultVOList.add(uploadResultVO);
                 continue;
@@ -158,6 +160,16 @@ public class UploadFileServiceImpl implements UploadFileService {
                     && fieldNameMap.containsValue("单位所在市")
                     && fieldNameMap.containsValue("单位详细地址")) {
                 return UploadTemplateCaseEnum.UNIT_TEMPLATE;
+            }
+        } else if (fieldNameMap.size() == 7) {
+            if (fieldNameMap.containsValue("用户手机号码(账户)")
+                    && fieldNameMap.containsValue("用户角色")
+                    && fieldNameMap.containsValue("用户初始密码")
+                    && fieldNameMap.containsValue("用户真实密码")
+                    && fieldNameMap.containsValue("是否激活账户")
+                    && fieldNameMap.containsValue("用户所在单位名")
+                    && fieldNameMap.containsValue("用户所在单位编号")) {
+                return UploadTemplateCaseEnum.USER_INFO_TEMPLATE;
             }
         }
         return UploadTemplateCaseEnum.UNKNOWN_TEMPLATE;
