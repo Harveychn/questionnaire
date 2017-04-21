@@ -2,31 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1b71ccd9-b479-4e1c-80a4-7d2729296279" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
-    <ignored path="logFiles/" />
-    <ignored path="target/" />
-    <ignored path="src/main/resources/properties/config.properties" />
-    <ignored path="src/main/resources/logback.xml" />
-    <ignored path=".idea/workspace.xml" />
-    <ignored path="$PROJECT_DIR$/target/classes/" />
-    <ignored path="$PROJECT_DIR$/target/maven-archiver/" />
-    <ignored path="$PROJECT_DIR$/target/maven-status/" />
-    <ignored path="$PROJECT_DIR$/target/questionnaire/" />
-    <ignored path="$PROJECT_DIR$/target/ssm/" />
-    <ignored path="$PROJECT_DIR$/target/surefire-reports/" />
-    <ignored path="$PROJECT_DIR$/target/test-classes/" />
-    <ignored path="$PROJECT_DIR$/target/apache-tomcat-maven-plugin/" />
-    <ignored path="$PROJECT_DIR$/target/tomcat/" />
-    <ignored path="src/main/resources/rebel.xml" />
-    <ignored path="src/main/resources/mybatis-generator-config.xml" />
     <manually-removed-from-ignored>
       <directory path="src/main/java/com/questionnaire/ssm/module/generated/" />
       <directory path="src/test/" />
       <directory path="src/main/resources/module/generated/" />
-      <directory path="$PROJECT_DIR$/target/" />
+      <directory path="$PROJECT_DIR$/target/ssm/" />
+      <directory path="$PROJECT_DIR$/target/maven-archiver/" />
+      <directory path="logFiles/" />
+      <directory path="$PROJECT_DIR$/target/surefire-reports/" />
       <directory path="/" />
+      <directory path="target/" />
+      <directory path="$PROJECT_DIR$/target/tomcat/" />
+      <directory path="$PROJECT_DIR$/target/maven-status/" />
+      <directory path="$PROJECT_DIR$/target/classes/" />
+      <directory path="$PROJECT_DIR$/target/apache-tomcat-maven-plugin/" />
+      <directory path="$PROJECT_DIR$/target/" />
+      <directory path="$PROJECT_DIR$/target/questionnaire/" />
+      <directory path="$PROJECT_DIR$/target/test-classes/" />
     </manually-removed-from-ignored>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -184,7 +178,18 @@
     <favorites_list name="questionnaire" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="100">
+              <caret line="5" column="30" lean-forward="true" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -643,32 +648,6 @@
               <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="properties" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="questionnaire" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="questionnaire" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
@@ -677,7 +656,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Ignored.Files" />
     <property name="js.eslint.eslintPackage" value="" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
@@ -1527,7 +1506,7 @@
       <workItem from="1492603922656" duration="133000" />
       <workItem from="1492654970376" duration="2245000" />
       <workItem from="1492696198851" duration="646000" />
-      <workItem from="1492740515805" duration="1519000" />
+      <workItem from="1492740515805" duration="1602000" />
     </task>
     <task id="LOCAL-00001" summary="configure changed-no DB">
       <created>1489288376258</created>
@@ -1816,7 +1795,14 @@
       <option name="project" value="LOCAL" />
       <updated>1492696521627</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="ignore文件配置">
+      <created>1492742059814</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1492742059814</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1852,7 +1838,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="598483000" />
+    <option name="totallyTimeSpent" value="598566000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -2343,8 +2329,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="9" column="8" lean-forward="true" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
+        <state relative-caret-position="100">
+          <caret line="5" column="30" lean-forward="true" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
           <folding />
         </state>
       </provider>
