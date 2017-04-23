@@ -36,4 +36,20 @@ public class UserUtil {
                 user.getUserTel() + user.getUserRealName(), hashIterations);
         return hash.toHex();
     }
+
+    /**
+     * 获取设置的新密码
+     *
+     * @param password     未加密密码
+     * @param userTel      用户账户（电话号码）
+     * @param userRealName 用户真实姓名
+     * @return 加密后的密码
+     */
+    public static String encodePassword(String password, String userTel, String userRealName) {
+        String algorithmName = "md5";
+        int hashIterations = 3;
+        SimpleHash hash = new SimpleHash(algorithmName, password,
+                userTel + userRealName, hashIterations);
+        return hash.toHex();
+    }
 }

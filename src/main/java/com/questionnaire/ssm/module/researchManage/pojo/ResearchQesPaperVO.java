@@ -1,43 +1,37 @@
-package com.questionnaire.ssm.module.questionnaireManage.pojo;
+package com.questionnaire.ssm.module.researchManage.pojo;
 
 /**
- * Created by 郑晓辉 on 2017/3/27.
- * Description: 用户创建的问卷信息视图实体
+ * Created by 郑晓辉 on 2017/4/23.
+ * Description: 调查任务问卷信息
  */
-public class ListQuestionnaireVO {
-    /*问卷id*/
-    private long questionnaireId;
-    /*问卷标题*/
+public class ResearchQesPaperVO {
+    //问卷id
+    private Long questionnaireId;
+    //问卷标题
     private String questionnaireTitle;
-    /*问卷副标题*/
+    //问卷副标题
     private String questionnaireSubtitle;
-    /*问卷描述*/
+    //问卷描述
     private String questionnaireDescription;
-    /*问卷是否模板*/
-    private boolean isTemplate;
-    /*问卷已经共享*/
-    private boolean isShare;
-    /*问卷是否已经完成*/
-    private boolean isDone;
+    //最少提交量
+    private Long minSubmit;
 
     @Override
     public String toString() {
-        return "ListQuestionnaireVO{" +
+        return "ResearchQesPaperVO{" +
                 "questionnaireId=" + questionnaireId +
                 ", questionnaireTitle='" + questionnaireTitle + '\'' +
                 ", questionnaireSubtitle='" + questionnaireSubtitle + '\'' +
                 ", questionnaireDescription='" + questionnaireDescription + '\'' +
-                ", isTemplate=" + isTemplate +
-                ", isShare=" + isShare +
-                ", isDone=" + isDone +
+                ", minSubmit=" + minSubmit +
                 '}';
     }
 
-    public long getQuestionnaireId() {
+    public Long getQuestionnaireId() {
         return questionnaireId;
     }
 
-    public void setQuestionnaireId(long questionnaireId) {
+    public void setQuestionnaireId(Long questionnaireId) {
         this.questionnaireId = questionnaireId;
     }
 
@@ -65,27 +59,11 @@ public class ListQuestionnaireVO {
         this.questionnaireDescription = questionnaireDescription;
     }
 
-    public boolean isTemplate() {
-        return isTemplate;
+    public Long getMinSubmit() {
+        return minSubmit;
     }
 
-    public void setTemplate(boolean template) {
-        isTemplate = template;
-    }
-
-    public boolean isShare() {
-        return isShare;
-    }
-
-    public void setShare(boolean share) {
-        isShare = share;
-    }
-
-    public boolean isDone() {
-        return isDone;
-    }
-
-    public void setDone(boolean done) {
-        isDone = done;
+    public void setMinSubmit(Long minSubmit) {
+        this.minSubmit = minSubmit;
     }
 }

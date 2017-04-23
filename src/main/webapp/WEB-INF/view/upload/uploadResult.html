@@ -5,7 +5,6 @@
     <title>上传结果</title>
     <link rel="shortcut icon" href="/WEB-INF/img/favicon.ico"
           th:href="@{/img/favicon.ico}"/>
-    <!--<link rel="stylesheet" href=""-->
     <link rel="stylesheet" href="../../css/bootstrap.min.css"
           th:href="@{/css/bootstrap.min.css}"/>
 </head>
@@ -25,12 +24,17 @@
                 <tr>
                     <th>文件名</th>
                     <th>操作成功记录数</th>
+                    <th>错误记录信息</th>
                 </tr>
                 </thead>
                 <tbody th:each="uploadResult : ${uploadResultVOList}">
                 <tr>
                     <td th:text="${uploadResult.getFileName()}">文件名</td>
                     <td th:text="${uploadResult.getSuccessRecordCount()}">0</td>
+                    <td th:each="errorRecord: ${uploadResult.errorRecord}">
+                        <select>
+                        </select>
+                    </td>
                 </tr>
                 </tbody>
             </table>
