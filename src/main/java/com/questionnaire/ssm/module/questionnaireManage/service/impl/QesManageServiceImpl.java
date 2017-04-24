@@ -7,6 +7,7 @@ import com.questionnaire.ssm.module.global.enums.CodeForVOEnum;
 import com.questionnaire.ssm.module.global.exception.OperateDBException;
 
 import com.questionnaire.ssm.module.global.service.Add2LibraryService;
+import com.questionnaire.ssm.module.global.util.UserValidationUtil;
 import com.questionnaire.ssm.module.questionnaireManage.mapper.QesManageMapper;
 import com.questionnaire.ssm.module.questionnaireManage.pojo.*;
 import com.questionnaire.ssm.module.questionnaireManage.service.QesManageService;
@@ -195,6 +196,18 @@ public class QesManageServiceImpl implements QesManageService {
             shareSingleQuestionnaire(currentQesId);
         }
     }
+
+    /**
+     * 查询回收站问卷
+     *
+     * @return
+     * @throws Exception
+     */
+    @Override
+    public List<ListTempDelQesPaperVO> listTempDelQesPaperByUserTel(String userTel) throws Exception {
+        return qesManageMapper.listTempDelQesPaperByUserTel(userTel);
+    }
+
 
     /**
      * 分享问卷（复制问卷信息并且重新组织问卷-题目对应关系）

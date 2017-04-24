@@ -4,6 +4,7 @@ import com.questionnaire.ssm.module.generated.pojo.Questionnaire;
 import com.questionnaire.ssm.module.questionnaireManage.pojo.CreateQuestionnaireVO;
 import com.questionnaire.ssm.module.questionnaireManage.pojo.DisplayQuestionnaireVO;
 import com.questionnaire.ssm.module.questionnaireManage.pojo.ListQuestionnaireVO;
+import com.questionnaire.ssm.module.questionnaireManage.pojo.ListTempDelQesPaperVO;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -61,4 +62,6 @@ public interface QesManageService {
      */
     @Transactional
     void shareQesPaperByIds(List<Long> questionnaireIds) throws Exception;
+
+    List<ListTempDelQesPaperVO> listTempDelQesPaperByUserTel(String userTel) throws Exception;
 }

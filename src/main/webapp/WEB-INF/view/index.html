@@ -105,7 +105,8 @@
                         <li><a class="J_menuItem" href="/questionnaireManage/listMyQuestionnaire"
                                th:href="@{/questionnaireManage/listMyQuestionnaire}">查看问卷</a>
                         </li>
-                        <li><a class="J_menuItem" href="删除问卷.html">删除问卷</a>
+                        <li><a class="J_menuItem" href="/questionnaireManage/temporaryDeleteQesPaperView"
+                               th:href="@{/questionnaireManage/temporaryDeleteQesPaperView}">删除问卷</a>
                         </li>
                         <li><a class="J_menuItem" href="模板管理.html">模板管理</a>
                         </li>
@@ -137,11 +138,20 @@
                         </li>
 
                     </ul>
-
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-search"></i>
-                        <span class="nav-label">调查管理</span></a>
+                    <a href="#">
+                        <i class="fa fa-search"></i>
+                        <span class="nav-label">调查管理</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a class="J_menuItem" href="/researchManage/createResearchView">
+                                创建调查
+                            </a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>

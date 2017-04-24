@@ -8,7 +8,7 @@
         <result property="questionnaireTitle" column="questionnaireTitle"/>
         <result property="questionnaireSubtitle" column="questionnaireSubtitle"/>
         <result property="questionnaireDescription" column="questionnaireDescription"/>
-        <result property="operate_date" column="templateDate"/>
+        <result property="addDate" column="templateDate"/>
     </resultMap>
     <select id="listPrivateTemplateInfo" parameterType="String" resultMap="privateTemplateInfoMap">
         SELECT
