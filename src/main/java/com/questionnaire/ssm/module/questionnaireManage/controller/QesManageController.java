@@ -6,6 +6,7 @@ import com.questionnaire.ssm.module.global.pojo.ResponsePkt;
 import com.questionnaire.ssm.module.global.util.ResultUtil;
 import com.questionnaire.ssm.module.global.util.UserValidationUtil;
 import com.questionnaire.ssm.module.questionnaireManage.pojo.CreateQuestionnaireVO;
+import com.questionnaire.ssm.module.questionnaireManage.pojo.ListTempDelQesPaperVO;
 import com.questionnaire.ssm.module.questionnaireManage.service.QesManageService;
 import com.questionnaire.ssm.module.questionnaireManage.util.OperateQuestionnaireUtil;
 import org.slf4j.Logger;
@@ -18,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by 郑晓辉 on 2017/3/22.
@@ -168,6 +170,20 @@ public class QesManageController {
         }
         qesManageService.shareQesPaperByIds(Arrays.asList(questionnaireIds));
         return ResultUtil.success();
+    }
+
+    @GetMapping(value = "/temporaryDeleteQesPaperView")
+    public ModelAndView temporaryDeleteQesPaperView() throws Exception {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("qesManage/recycleBinQuestionnaire");
+        return modelAndView;
+    }
+
+    @PostMapping(value = "/listTemporaryDeleteQesPaper")
+    @ResponseBody
+    public List<ListTempDelQesPaperVO> listTemporaryDeleteQesPaper() throws Exception {
+        String userTel = UserValidationUtil.getUserTel(logger);
+        return qesManageService.listTempDelQesPaperByUserTel(userTel);
     }
 
     private static final Logger logger = LoggerFactory.getLogger(QesManageController.class);

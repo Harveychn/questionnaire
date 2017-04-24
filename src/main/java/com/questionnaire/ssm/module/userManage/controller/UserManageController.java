@@ -35,7 +35,7 @@ import java.util.List;
 
 /**
  * Created by 郑晓辉 on 2017/4/16.
- * Description:
+ * Description: 用户管理，包括用户信息数据上传、单位信息上传
  */
 @Controller
 @RequestMapping("/userManage")
@@ -81,9 +81,6 @@ public class UserManageController {
         try {
             // path是指欲下载的文件的路径。
             File file = new File(path);
-            // 取得文件名。
-            String filename = file.getName();
-
             // 以流的形式下载文件。
             InputStream fis = new BufferedInputStream(new FileInputStream(path));
             byte[] buffer = new byte[fis.available()];

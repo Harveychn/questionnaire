@@ -1,15 +1,21 @@
 package com.questionnaire.ssm.module.userManage.service.impl;
 
+import com.questionnaire.ssm.module.generated.mapper.RoleMapper;
 import com.questionnaire.ssm.module.generated.mapper.UnitMapper;
-import com.questionnaire.ssm.module.generated.pojo.Unit;
+import com.questionnaire.ssm.module.generated.mapper.UserMapper;
+import com.questionnaire.ssm.module.generated.pojo.*;
 import com.questionnaire.ssm.module.global.enums.UploadTemplateCaseEnum;
 import com.questionnaire.ssm.module.global.util.CheckUploadFileUtil;
 import com.questionnaire.ssm.module.global.util.GetExcelDataUtil;
+import com.questionnaire.ssm.module.login.utils.UserUtil;
+import com.questionnaire.ssm.module.userManage.enums.Save2DOResultEnum;
 import com.questionnaire.ssm.module.userManage.pojo.CheckUploadFileDTO;
 import com.questionnaire.ssm.module.userManage.pojo.ExcelDataDTO;
 import com.questionnaire.ssm.module.userManage.pojo.UploadResultVO;
+import com.questionnaire.ssm.module.userManage.pojo.UserExcelDTO;
 import com.questionnaire.ssm.module.userManage.service.UploadFileService;
 import com.questionnaire.ssm.module.userManage.util.UploadResultUtil;
+import com.questionnaire.ssm.module.userManage.util.ValidateExcelDataUtil;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.slf4j.Logger;
@@ -37,7 +43,7 @@ public class UploadFileServiceImpl implements UploadFileService {
     public List<UploadResultVO> uploadFile(HttpServletRequest request, HttpServletResponse response) throws Exception {
         /*检查文件类型，返回初步处理的服务器文件地址*/
         List<CheckUploadFileDTO> checkUploadFileDTOList = CheckUploadFileUtil.checkUploadFiles(request, response);
-
+        //保存上传文件的操作结果
         List<UploadResultVO> uploadResultVOList = new ArrayList<>();
 
         String filePath = null;
@@ -68,6 +74,7 @@ public class UploadFileServiceImpl implements UploadFileService {
             if (filePath.endsWith(".xls")) {
                 //创建工作簿
                 HSSFWorkbook hssfWorkbook = new HSSFWorkbook(fileStream);
+                //获取excel文件数据
                 excelDataDTO = GetExcelDataUtil.getValue(hssfWorkbook);
             } else if (filePath.endsWith(".xlsx")) {
                 XSSFWorkbook xssfWorkbook = new XSSFWorkbook(fileStream);
@@ -82,62 +89,9 @@ public class UploadFileServiceImpl implements UploadFileService {
             Map<Integer, String> fieldNameMap = excelDataDTO.getFieldNameMap();
             List<Map<String, String>> valueMapList = excelDataDTO.getValueMapList();
 
-            if (UploadTemplateCaseEnum.UNIT_TEMPLATE == templateCase(fieldNameMap)) {   //单位信息表
-                List<Unit> unitList = new ArrayList<>();
-                Unit unit = null;
+            /*保存数据到数据库，并返回操作结果*/
+            uploadResultVOList.add(saveData(currentOriginFileName, fieldNameMap, valueMapList));
 
-                for (Map<String, String> currentValue : valueMapList) {
-                    unit = new Unit();
-                    for (Integer index : fieldNameMap.keySet()) {
-                        String fieldName = fieldNameMap.get(index);
-                        switch (fieldName) {
-                            case "单位名":
-                                unit.setUnitName(currentValue.get(fieldName));
-                                break;
-                            case "单位编号":
-                                unit.setUnitCode(currentValue.get(fieldName));
-                                break;
-                            case "单位级别":
-                                unit.setUnitLevel(currentValue.get(fieldName));
-                                break;
-                            case "单位所在省":
-                                unit.setUnitProvince(currentValue.get(fieldName));
-                                break;
-                            case "单位所在市":
-                                unit.setUnitCity(currentValue.get(fieldName));
-                                break;
-                            case "单位详细地址":
-                                unit.setAddress(currentValue.get(fieldName));
-                                break;
-                            default:
-                        }
-                    }
-                    unitList.add(unit);
-                }
-                //开始保存数据到数据库中
-                UploadResultVO<Unit> uploadResultVO = new UploadResultVO<>();
-                List<Unit> duplicatedUnitInfo = saveData2UnitDB(unitList);
-                try {
-                    uploadResultVO.setFileError(false);
-                    uploadResultVO.setFileTypeError(false);
-                    uploadResultVO.setFileFormatError(false);
-                    //插入数据库失败数据
-                    if (duplicatedUnitInfo.size() > 0) {
-                        uploadResultVO.setErrorRecord(duplicatedUnitInfo);
-                    }
-                    uploadResultVO.setSuccessRecordCount(unitList.size() - duplicatedUnitInfo.size());
-                    uploadResultVO.setFileName(currentOriginFileName);
-                } catch (Exception e) {
-                    logger.error(e.getMessage());
-                }
-                uploadResultVOList.add(uploadResultVO);
-            } else if (UploadTemplateCaseEnum.USER_INFO_TEMPLATE == templateCase(fieldNameMap)) { //用户信息上传模板
-
-            } else if (UploadTemplateCaseEnum.UNKNOWN_TEMPLATE == templateCase(fieldNameMap)){     //文件模板格式错误
-                UploadResultVO uploadResultVO = UploadResultUtil.templateErrorVO(currentOriginFileName);
-                uploadResultVOList.add(uploadResultVO);
-                continue;
-            }
             CheckUploadFileUtil.deleteTempFile(checkUploadFileDTO.getTempFilePath());
         }
 
@@ -151,7 +105,7 @@ public class UploadFileServiceImpl implements UploadFileService {
      * @return
      * @throws Exception
      */
-    private UploadTemplateCaseEnum templateCase(Map<Integer, String> fieldNameMap) throws Exception {
+    private UploadTemplateCaseEnum judgeTemplateCase(Map<Integer, String> fieldNameMap) throws Exception {
         if (fieldNameMap.size() == 6) {
             if (fieldNameMap.containsValue("单位名")
                     && fieldNameMap.containsValue("单位编号")
@@ -165,7 +119,7 @@ public class UploadFileServiceImpl implements UploadFileService {
             if (fieldNameMap.containsValue("用户手机号码(账户)")
                     && fieldNameMap.containsValue("用户角色")
                     && fieldNameMap.containsValue("用户初始密码")
-                    && fieldNameMap.containsValue("用户真实密码")
+                    && fieldNameMap.containsValue("用户姓名")
                     && fieldNameMap.containsValue("是否激活账户")
                     && fieldNameMap.containsValue("用户所在单位名")
                     && fieldNameMap.containsValue("用户所在单位编号")) {
@@ -175,33 +129,287 @@ public class UploadFileServiceImpl implements UploadFileService {
         return UploadTemplateCaseEnum.UNKNOWN_TEMPLATE;
     }
 
+    private UploadResultVO saveData(String currentOriginFileName,
+                                    Map<Integer, String> fieldNameMap,
+                                    List<Map<String, String>> valueMapList) throws Exception {
+
+        switch (judgeTemplateCase(fieldNameMap)) {
+            case UNIT_TEMPLATE:
+                return caseUnitTemplate(currentOriginFileName, fieldNameMap, valueMapList);
+            case USER_INFO_TEMPLATE:
+                return caseUserTemplate(currentOriginFileName, fieldNameMap, valueMapList);
+            case UNKNOWN_TEMPLATE:
+                return UploadResultUtil.templateErrorVO(currentOriginFileName);
+        }
+        return null;
+    }
+
     /**
-     * 保存数据到数据库unit表格
+     * 上传文件为单位信息模板
      *
-     * @param unitList
+     * @param currentOriginFileName 当前操作文件上传时文件名
+     * @param fieldNameMap          首行字段
+     * @param valueMapList          数值行
+     * @return
+     * @throws Exception
+     */
+    private UploadResultVO<Unit> caseUnitTemplate(String currentOriginFileName,
+                                                  Map<Integer, String> fieldNameMap,
+                                                  List<Map<String, String>> valueMapList) throws Exception {
+        Unit unit = null;
+        String errorMsg = null;
+        int successRecords = valueMapList.size();
+        List<Unit> errorUnitExcelInfoList = new ArrayList<>();
+
+        for (Map<String, String> currentValue : valueMapList) {
+            unit = new Unit();
+            for (Integer index : fieldNameMap.keySet()) {
+                String fieldName = fieldNameMap.get(index);
+                switch (fieldName) {
+                    case "单位名":
+                        unit.setUnitName(currentValue.get(fieldName));
+                        break;
+                    case "单位编号":
+                        unit.setUnitCode(currentValue.get(fieldName));
+                        break;
+                    case "单位级别":
+                        unit.setUnitLevel(currentValue.get(fieldName));
+                        break;
+                    case "单位所在省":
+                        unit.setUnitProvince(currentValue.get(fieldName));
+                        break;
+                    case "单位所在市":
+                        unit.setUnitCity(currentValue.get(fieldName));
+                        break;
+                    case "单位详细地址":
+                        unit.setAddress(currentValue.get(fieldName));
+                        break;
+                    default:
+                }
+            }
+            //当前记录重复
+            successRecords--;
+            switch (saveData2UnitDO(unit)) {
+                case SUCCESS:
+                    successRecords++;
+                    errorMsg = Save2DOResultEnum.SUCCESS.getMessage();
+                    break;
+                case DUPLICATED_UNIT_RECORD:
+                    errorUnitExcelInfoList.add(unit);
+                    errorMsg = Save2DOResultEnum.DUPLICATED_UNIT_RECORD.getMessage();
+                    break;
+                case UNIT_FORMAT_ERROR:
+                    errorUnitExcelInfoList.add(unit);
+                    errorMsg = Save2DOResultEnum.UNIT_FORMAT_ERROR.getMessage();
+                    break;
+                case UNKNOWN_ERROR:
+                    errorUnitExcelInfoList.add(unit);
+                    errorMsg = Save2DOResultEnum.UNKNOWN_ERROR.getMessage();
+                    break;
+            }
+        }
+        UploadResultVO<Unit> uploadResultVO = new UploadResultVO<>();
+
+        uploadResultVO.setFileError(false);
+        uploadResultVO.setFileTypeError(false);
+        uploadResultVO.setFileFormatError(false);
+        uploadResultVO.setFileName(currentOriginFileName);
+        uploadResultVO.setErrorRecord(errorUnitExcelInfoList);
+        uploadResultVO.setErrorMsg(errorMsg);
+        uploadResultVO.setSuccessRecordCount(successRecords);
+
+        return uploadResultVO;
+    }
+
+    /**
+     * 保存数据到数据库unit表格，
+     *
+     * @param savingUnitRecord unit信息
+     * @return 插入数据时候是否重复
+     * @throws Exception
+     */
+    @Transactional
+    private Save2DOResultEnum saveData2UnitDO(Unit savingUnitRecord) throws Exception {
+        if (Save2DOResultEnum.FORMAT_SUCCESS != ValidateExcelDataUtil.checkUnitExcelDTO(savingUnitRecord)) {
+            return ValidateExcelDataUtil.checkUnitExcelDTO(savingUnitRecord);
+        }
+        try {
+            unitMapper.insertSelective(savingUnitRecord);
+        } catch (DuplicateKeyException e) {
+            return Save2DOResultEnum.DUPLICATED_UNIT_RECORD;
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            return Save2DOResultEnum.UNKNOWN_ERROR;
+        }
+        return Save2DOResultEnum.SUCCESS;
+    }
+
+    /**
+     * 上传文件为用户信息模板文件
+     *
+     * @param currentOriginFileName
+     * @param fieldNameMap
+     * @param valueMapList
+     * @return
+     * @throws Exception
+     */
+    private UploadResultVO<UserExcelDTO> caseUserTemplate(String currentOriginFileName,
+                                                          Map<Integer, String> fieldNameMap,
+                                                          List<Map<String, String>> valueMapList) throws Exception {
+        UserExcelDTO userExcelDTO = null;
+        List<UserExcelDTO> errorUserExcelInfoList = new ArrayList<>();
+        String resultMessage = null;
+        //假定所有记录都是可以成功插入的记录
+        int successRecords = valueMapList.size();
+        //取数据并保存
+        for (Map<String, String> currentValue : valueMapList) {
+            userExcelDTO = new UserExcelDTO();
+            for (Integer index : fieldNameMap.keySet()) {
+                String fieldName = fieldNameMap.get(index);
+                switch (fieldName) {
+                    case "用户手机号码(账户)":
+                        userExcelDTO.setUserTel(currentValue.get(fieldName));
+                        break;
+                    case "用户角色":
+                        userExcelDTO.setUserRole(currentValue.get(fieldName));
+                        break;
+                    case "用户初始密码":
+                        userExcelDTO.setUserPassword(currentValue.get(fieldName));
+                        break;
+                    case "用户姓名":
+                        userExcelDTO.setUserRealName(currentValue.get(fieldName));
+                        break;
+                    case "是否激活账户":
+                        userExcelDTO.setIsValid(currentValue.get(fieldName));
+                        break;
+                    case "用户所在单位名":
+                        userExcelDTO.setUnitName(currentValue.get(fieldName));
+                        break;
+                    case "用户所在单位编号":
+                        userExcelDTO.setUnitCode(currentValue.get(fieldName));
+                        break;
+                    default:
+                        break;
+                }
+            }
+            //转换前台数据到后台数据实体、保存数据到数据库
+            successRecords--;
+            switch (saveData2UserInfoDO(userExcelDTO)) {
+                case SUCCESS:
+                    resultMessage = Save2DOResultEnum.SUCCESS.getMessage();
+                    successRecords++;
+                    break;
+                case NO_SUCH_ROLE:
+                    resultMessage = Save2DOResultEnum.NO_SUCH_ROLE.getMessage();
+                    errorUserExcelInfoList.add(userExcelDTO);
+                    break;
+                case NO_SUCH_UNIT:
+                    resultMessage = Save2DOResultEnum.NO_SUCH_UNIT.getMessage();
+                    errorUserExcelInfoList.add(userExcelDTO);
+                    break;
+                case DUPLICATED_USER_RECORD:
+                    resultMessage = Save2DOResultEnum.DUPLICATED_USER_RECORD.getMessage();
+                    errorUserExcelInfoList.add(userExcelDTO);
+                    break;
+                case UNKNOWN_ERROR:
+                    resultMessage = Save2DOResultEnum.UNKNOWN_ERROR.getMessage();
+                    errorUserExcelInfoList.add(userExcelDTO);
+                    break;
+                case USER_FORMAT_ERROR:
+                    resultMessage = Save2DOResultEnum.USER_FORMAT_ERROR.getMessage();
+                    errorUserExcelInfoList.add(userExcelDTO);
+                    break;
+            }
+        }
+        UploadResultVO<UserExcelDTO> uploadResultVO = new UploadResultVO<>();
+
+        uploadResultVO.setFileError(false);
+        uploadResultVO.setFileTypeError(false);
+        uploadResultVO.setFileFormatError(false);
+        uploadResultVO.setFileName(currentOriginFileName);
+        uploadResultVO.setErrorMsg(resultMessage);
+        uploadResultVO.setErrorRecord(errorUserExcelInfoList);
+        uploadResultVO.setSuccessRecordCount(successRecords);
+
+        return uploadResultVO;
+    }
+
+    /**
+     * 保存数据到user表
+     *
+     * @param savingUserInfo userExcelInfo
      * @return
      * @throws Exception
      */
     @Transactional
-    private List<Unit> saveData2UnitDB(List<Unit> unitList) throws Exception {
-        List<Unit> duplicateUnit = new ArrayList<>();
-        for (Unit savingUnitRecord : unitList) {
-            try {
-                unitMapper.insertSelective(savingUnitRecord);
-            } catch (DuplicateKeyException e) {
-                duplicateUnit.add(savingUnitRecord);
-            } catch (Exception e) {
-                logger.error(e.getMessage());
-            }
+    private Save2DOResultEnum saveData2UserInfoDO(UserExcelDTO savingUserInfo) throws Exception {
+        /*校验数据格式*/
+        if (Save2DOResultEnum.FORMAT_SUCCESS != ValidateExcelDataUtil.checkUserExcelDTO(savingUserInfo)) {
+            return ValidateExcelDataUtil.checkUserExcelDTO(savingUserInfo);
         }
-        return duplicateUnit;
+
+        RoleExample roleExample = new RoleExample();
+        roleExample.createCriteria().andRoleLike(savingUserInfo.getUserRole());
+
+        long roleId = 0;
+        try {
+            roleId = roleMapper.selectByExample(roleExample).get(0).getRoleId();
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
+
+        if (0 == roleId) {
+            return Save2DOResultEnum.NO_SUCH_ROLE;
+        }
+
+        UnitExample unitExample = new UnitExample();
+        unitExample.createCriteria()
+                .andUnitNameEqualTo(savingUserInfo.getUnitName())
+                .andUnitCodeEqualTo(savingUserInfo.getUnitCode());
+
+        long unitId = 0;
+        try {
+            unitId = unitMapper.selectByExample(unitExample).get(0).getUnitId();
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
+        if (unitId == 0) {
+            return Save2DOResultEnum.NO_SUCH_UNIT;
+        }
+        User user = new User();
+        user.setRoleId(roleId);
+        user.setUnitId(unitId);
+        user.setIsValid(savingUserInfo.getIsValid().trim().equals("是") ? Boolean.TRUE : Boolean.FALSE);
+        user.setUserTel(savingUserInfo.getUserTel());
+        user.setUserRealName(savingUserInfo.getUserRealName());
+        user.setPassword(UserUtil.encodePassword(savingUserInfo.getUserPassword(),
+                user.getUserTel(),
+                user.getUserRealName())
+        );
+
+        try {
+            userMapper.insertSelective(user);
+        } catch (DuplicateKeyException e) {
+            return Save2DOResultEnum.DUPLICATED_USER_RECORD;
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            return Save2DOResultEnum.UNKNOWN_ERROR;
+        }
+
+        return Save2DOResultEnum.SUCCESS;
     }
 
+    private UserMapper userMapper;
     private UnitMapper unitMapper;
+    private RoleMapper roleMapper;
     private final static Logger logger = LoggerFactory.getLogger(UploadFileServiceImpl.class);
 
     @Autowired
-    public UploadFileServiceImpl(UnitMapper unitMapper) {
+    public UploadFileServiceImpl(UnitMapper unitMapper,
+                                 RoleMapper roleMapper,
+                                 UserMapper userMapper) {
         this.unitMapper = unitMapper;
+        this.roleMapper = roleMapper;
+        this.userMapper = userMapper;
     }
 }

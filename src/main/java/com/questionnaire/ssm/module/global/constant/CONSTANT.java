@@ -10,11 +10,18 @@ public class CONSTANT {
     /*服务器文件路径*/
     private final static String DOWNLOAD_FOLDER_PATH = "E:\\创新实践\\uploadFiles\\uploadFile-template";
 
+    //数据库中单位id文本切割符
+    private final static String DIVIDE_SYMBOL = "||";
+
     public static String getUploadFilePath() {
         return UPLOAD_FILE_PATH;
     }
 
     public static String getDownloadFolderPath() {
         return DOWNLOAD_FOLDER_PATH;
+    }
+
+    public static String getDivideSymbol() {
+        return DIVIDE_SYMBOL;
     }
 }

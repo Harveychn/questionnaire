@@ -1,6 +1,7 @@
 package com.questionnaire.ssm.module.questionnaireManage.mapper;
 
 import com.questionnaire.ssm.module.questionnaireManage.pojo.ListQuestionnaireVO;
+import com.questionnaire.ssm.module.questionnaireManage.pojo.ListTempDelQesPaperVO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -28,6 +29,14 @@ public class QesManageMapperTest {
             System.out.println(listQuestionnaireVO.getQuestionnaireId());
         }
 
+    }
+
+    @Test
+    public void listTempDelQesPaperByUserTel() throws Exception {
+        List<ListTempDelQesPaperVO> listTempDelQesPaperVOS = qesManageMapper.listTempDelQesPaperByUserTel("17764591959");
+        for (ListTempDelQesPaperVO l : listTempDelQesPaperVOS) {
+            System.out.println(l.toString());
+        }
     }
 
 }

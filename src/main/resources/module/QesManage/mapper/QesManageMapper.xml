@@ -35,4 +35,22 @@
         </where>
     </select>
 
+
+    <select id="listTempDelQesPaperByUserTel" parameterType="String"
+            resultType="com.questionnaire.ssm.module.questionnaireManage.pojo.ListTempDelQesPaperVO">
+        SELECT
+            q.questionnaire_id AS questionnaireId,
+            q.questionnaire_title AS questionnaireTitle,
+            q.questionnaire_subtitle AS questionnaireSubtitle,
+            q.questionnaire_description AS questionnaireDescription
+        FROM
+            questionnaire AS q
+        WHERE
+            q.create_user = #{userTel}
+        AND q.is_template = FALSE
+        AND q.is_share = FALSE
+        AND q.is_visible = FALSE
+        AND q.is_done =TRUE
+        AND q.is_delete = FALSE
+    </select>
 </mapper>

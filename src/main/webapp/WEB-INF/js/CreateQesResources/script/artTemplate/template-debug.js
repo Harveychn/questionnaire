@@ -320,7 +320,7 @@ var KEYWORDS =
     + ',throw,true,try,typeof,var,void,while,with'
 
     // 保留字
-    + ',abstract,boolean,byte,char,class,const,double,enum,export,extends'
+    + ',abstract,boolean,byte,char,class,const,double,enums,export,extends'
     + ',final,float,goto,implements,import,int,interface,long,native'
     + ',package,private,protected,public,short,static,super,synchronized'
     + ',throws,transient,volatile'
