@@ -24,6 +24,7 @@ public enum CodeForVOEnum {
 
 
     /*用户信息校验编码*/
+    VALIDA_FAIL(9, "校验失败"),
     VALIDA_OK(10, "校验成功!"),
     NOT_LOGIN(11, "用户未登录!"),
     NO_ROLE(12, "用户不具备角色!"),
