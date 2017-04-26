@@ -1,0 +1,12 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+/logFiles/
+/target/
+/src/main/resources/properties/config.properties
+/src/main/resources/logback.xml
+/.idea/workspace.xml
+/src/main/resources/rebel.xml
+/src/main/resources/mybatis-generator-config.xml

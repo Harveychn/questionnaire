@@ -9,7 +9,7 @@
     <link href="/WEB-INF/css/bootstrap.min.css" rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
     <link href="/WEB-INF/css/font-awesome.css" rel="stylesheet" th:href="@{/css/font-awesome.css}"/>
     <link href="/WEB-INF/css/plugins/wenjian_notice/my-style.css" rel="stylesheet" th:href="@{/css/plugins/wenjian_notice/my-style.css}"/>
-    <link href="/WEB-INF/css/plugins/wenjian_notice/bootstrap-table.css" rel="stylesheet" th:href="@{/css/plugins/wenjian_notice/bootstrap-table.css}"/>
+    <link href="/WEB-INF/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet" th:href="@{/css/plugins/wenjian_notice/bootstrap-table.css}"/>
     <link href="/WEB-INF/css/plugins/wenjian_notice/sweetalert.css" rel="stylesheet" th:href="@{/css/plugins/wenjian_notice/sweetalert.css}"/>
     <link href="/WEB-INF/css/animate.css" rel="stylesheet" th:href="@{/css/animate.css}"/>
     <link href="/WEB-INF/css/style.css" rel="stylesheet" th:href="@{/css/style.css}"/>
@@ -28,8 +28,8 @@
     </style>
 
     <script type="text/javascript" src="/WEB-INF/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
-    <script src="/WEB-INF/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
-    <script type="text/javascript" src="/WEB-INF/js/plugins/wenjian_notice/bootstrap-table.js" th:src="@{/js/plugins/wenjian_notice/bootstrap-table.js}"></script>
+    <script src="/WEB-INF/js/bootstrap.min.js" type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+    <script type="text/javascript" src="/WEB-INF/js/plugins/wenjian_notice/bootstrap-table.min.js" th:src="@{/js/plugins/wenjian_notice/bootstrap-table.js}"></script>
     <script type="text/javascript">
         //查看公告
         function showBg() {
@@ -69,7 +69,7 @@
                                 <a href="/notice/getCreateNotice">
                                     <button type="button" class="btn btn-primary btn-block">
                                         <span class="glyphicon glyphicon-plus"></span>
-                                        新建公告
+                                        新建
                                     </button>
                                 </a>
                             </div>
@@ -106,9 +106,9 @@
                                         <td th:text="${notice.noticeTitle}"></td>
                                         <td th:text="${notice.noticeContext}"></td>
                                         <td th:text="${notice.userTel}"></td>
-                                        <td th:text="${notice.noticeCreateTime}"></td>
-                                        <td th:text="${notice.isDone}"></td>
-                                        <td th:text="${notice.noticeLaunchTime}"></td>
+                                        <td th:text="${#calendars.format(notice.noticeCreateTime,'yyyy-MM-dd HH:mm:ss')}"></td>
+                                        <td th:text="${notice.isDone==true?'完成':'未完'}"></td>
+                                        <td th:text="${#calendars.format(notice.noticeLaunchTime,'yyyy-MM-dd HH:mm:ss')}"></td>
                                         <td th:text="${notice.noticeUnitText}"></td>
                                         <td>
                                             <label>
