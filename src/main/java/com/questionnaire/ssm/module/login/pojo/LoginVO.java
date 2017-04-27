@@ -16,7 +16,7 @@ public class LoginVO {
     private String userTel;
     /*用户密码*/
     @NotEmpty(message = "密码不能为空!")
-    @Size(min = 4,max = 30,message = "密码最少4位、最多30位!")
+    @Size(min = 6,max = 30,message = "密码最少6位、最多30位!")
     private String password;
     /*是否记住我*/
     private Boolean rememberMe;

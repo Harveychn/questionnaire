@@ -3,8 +3,190 @@
 <head>
     <meta charset="UTF-8">
     <title>创建调查</title>
+    <link rel="shortcut icon" href="/WEB-INF/img/favicon.ico"
+          th:href="@{/img/favicon.ico}"/>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css"
+          th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" href="../../js/plugins/bootstrap-select/css/bootstrap-select.min.css"
+          th:href="@{/js/plugins/bootstrap-select/css/bootstrap-select.min.css}">
+    <link rel="stylesheet" href="/WEB-INF/js/plugins/layui/css/layui.css"
+          th:href="@{/js/plugins/layui/css/layui.css}">
 </head>
 <body>
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="panel-title">
+                创建调查
+            </div>
+        </div>
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        调查单位
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="form-inline">
+                        <div class="col-md-offset-1 col-md-10">
+                            <label class="control-label col-md-2">执行单位：</label>
+                            <div class="col-md-10">
+                                <select id='researchUnit' class="form-control" multiple> </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        调查时间
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="form-inline">
+                        <div class="col-md-offset-1 col-md-5">
+                            <label class="control-label col-md-4">开始时间：</label>
+                            <div class="col-md-8">
+                                <input id="begindate" class="form-control" placeholder="调查开始的时间"/>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <label class="control-label col-md-4">结束时间：</label>
+                            <div class="col-md-8">
+                                <input id="enddate" class="form-control" placeholder="调查结束的时间"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        调查详情
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-8 col-md-8">
+                            <div class="form-group">
+                                <select class="selectpicker form-control" title="选择发布的问卷"></select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-md-4">
+                            <div class="form-inline">
+                                <div class="form-group">
+                                    <label> 最低提交量：</label>
+                                </div>
+                                <input type="number" class="form-control" placeholder="当前问卷最低提交量">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="col-md-offset-4 col-md-4 btn btn-info glyphicon glyphicon-plus"></div>
+                </div>
+            </div>
+
+            <div class="panel-body">
+                <div class="col-md-offset-5">
+                    <button class="btn btn-lg btn-warning">重置</button>
+                    <button class="btn btn-lg btn-success">发布</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/WEB-INF/js/jquery.min.js"
+        th:src="@{/js/jquery.min.js}"></script>
+<script src="/WEB-INF/js/bootstrap.min.js"
+        th:src="@{/js/bootstrap.min.js}"></script>
+<script src="/WEB-INF/js/plugins/bootstrap-select/js/bootstrap-select.min.js"
+        th:src="@{/js/plugins/bootstrap-select/js/bootstrap-select.min.js}"></script>
+<script src="/WEB-INF/js/plugins/bootstrap-select/js/i18n/defaults-zh_CN.min.js"
+        th:src="@{/js/i18n/defaults-zh_CN.min.js}"></script>
+
+<script src="/WEB-INF/js/plugins/layui/layui.js"
+        th:src="@{/js/plugins/layui/layui.js}"></script>
+
+
+<script>
+    $(function () {
+        var options = '';
+        for (var index = 0; index < 60; index++) {
+            options += '<option value="' + index + '">' + 'option:' + index + '</option>';
+        }
+        var $researchUnit = $('#researchUnit');
+
+        $($researchUnit).append(options);
+
+        $($researchUnit).selectpicker({
+                multipleSeparator: ' || ',
+                actionsBox: true,
+                liveSearch: true,
+                noneSelectedText: '未选择单位信息',
+                selectAllText: '全部单位',
+                liveSearchPlaceholder: '查询单位',
+                deselectAllText: '重新选择',
+                selectedTextFormat: 'count > 15',
+                countSelectedText: function () {
+                    return '选中了  {0}   个单位   (单位总数 {1})';
+                }
+            },
+            'refresh', 'render'
+        )
+        ;
+
+
+        layui.use(['laydate', 'jquery'], function () {
+            var laydate = layui.laydate;
+
+            var start = {
+                format: 'YYYY-MM-DD hh:mm:ss',
+                min: laydate.now(),
+                max: '2099-06-16 23:59:59',
+                istime: true,
+                isclear: true, //是否显示清空
+                istoday: true, //是否显示今天
+                issure: true, //是否显示确认
+                festival: true, //是否显示节日
+                fixed: false, //是否固定在可视区域
+                zIndex: 99999999, //css z-index
+                choose: function (datas) {
+                    end.min = datas; //开始日选好后，重置结束日的最小日期
+                    end.start = datas //将结束日的初始值设定为开始日
+                }
+            };
+
+            var end = {
+                format: 'YYYY-MM-DD hh:mm:ss',
+                max: '2099-06-16 23:59:59',
+                istime: true,
+                isclear: true, //是否显示清空
+                istoday: true, //是否显示今天
+                issure: true, //是否显示确认
+                festival: true, //是否显示节日
+                fixed: false, //是否固定在可视区域
+                zIndex: 99999999, //css z-index
+                choose: function (datas) {
+                    start.max = datas; //结束日选好后，重置开始日的最大日期
+                }
+            };
+            document.getElementById('begindate').onclick = function () {
+                start.elem = this;
+                laydate(start);
+            };
+            document.getElementById('enddate').onclick = function () {
+                end.elem = this;
+                laydate(end);
+            };
+        });
+    });
+</script>
 </body>
 </html>
