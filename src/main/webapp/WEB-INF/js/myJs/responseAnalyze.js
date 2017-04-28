@@ -95,6 +95,7 @@ function layerErrorMessage(responsePkt) {
     layer.msg(responsePkt.message, {
         icon: 5,
         shade: 0.5,
-        btn: ['知道了']
+        btn: ['知道了'],
+        time : 0
     });
 }

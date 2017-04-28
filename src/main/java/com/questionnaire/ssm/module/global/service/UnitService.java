@@ -1,6 +1,9 @@
 package com.questionnaire.ssm.module.global.service;
 
 import com.questionnaire.ssm.module.generated.pojo.Unit;
+import com.questionnaire.ssm.module.global.pojo.UnitInfoVO;
+
+import java.util.List;
 
 /**
  * Created by 郑晓辉 on 2017/4/27.
@@ -17,4 +20,5 @@ public interface UnitService {
     Unit getUnitInfoByUnitId(Long unitId) throws Exception;
 
 
+    List<UnitInfoVO> listUnitInfo() throws Exception;
 }

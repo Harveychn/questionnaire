@@ -1,6 +1,7 @@
 package com.questionnaire.ssm.module.researchManage.service;
 
 import com.questionnaire.ssm.module.researchManage.pojo.CreateResearchMissionVO;
+import com.questionnaire.ssm.module.researchManage.pojo.QuestionnaireInfoVO;
 import com.questionnaire.ssm.module.researchManage.pojo.ResearchListVO;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,6 +12,8 @@ import java.util.List;
  * Description: 调查管理service
  */
 public interface ResearchService {
+    List<QuestionnaireInfoVO> listQesInfoByUserTel(String userTel) throws Exception;
+
     /**
      * 创建任务
      *

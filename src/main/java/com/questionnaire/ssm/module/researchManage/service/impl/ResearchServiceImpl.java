@@ -7,10 +7,8 @@ import com.questionnaire.ssm.module.generated.pojo.*;
 import com.questionnaire.ssm.module.global.enums.CodeForVOEnum;
 import com.questionnaire.ssm.module.global.enums.DBTableEnum;
 import com.questionnaire.ssm.module.global.exception.OperateDBException;
-import com.questionnaire.ssm.module.researchManage.pojo.CreateResearchMissionVO;
-import com.questionnaire.ssm.module.researchManage.pojo.MissionQesPaperVO;
-import com.questionnaire.ssm.module.researchManage.pojo.ResearchListVO;
-import com.questionnaire.ssm.module.researchManage.pojo.ResearchQesPaperVO;
+import com.questionnaire.ssm.module.researchManage.mapper.ResearchMissionMapper;
+import com.questionnaire.ssm.module.researchManage.pojo.*;
 import com.questionnaire.ssm.module.researchManage.service.MapMissionQesPaperService;
 import com.questionnaire.ssm.module.researchManage.service.ResearchService;
 import com.questionnaire.ssm.module.researchManage.util.ResearchVODOUtil;
@@ -30,6 +28,19 @@ import java.util.List;
  */
 @Service
 public class ResearchServiceImpl implements ResearchService {
+
+    /**
+     * 通过用户查询可发布问卷信息
+     *
+     * @param userTel
+     * @return
+     * @throws Exception
+     */
+    @Override
+    public List<QuestionnaireInfoVO> listQesInfoByUserTel(String userTel) throws Exception {
+        return researchMissionMapper.listReadyLaunchQesInfoByUserTel(userTel);
+    }
+
 
     @Override
     @Transactional
@@ -115,16 +126,19 @@ public class ResearchServiceImpl implements ResearchService {
     private MissionMapper missionMapper;
     private MappingMissionQuestionnaireMapper mappingMissionQuestionnaireMapper;
     private MapMissionQesPaperService mapMissionQesPaperService;
+    private ResearchMissionMapper researchMissionMapper;
 
     @Autowired
     public ResearchServiceImpl(MissionMapper missionMapper,
                                MappingMissionQuestionnaireMapper mappingMissionQuestionnaireMapper,
                                UserMapper userMapper,
-                               MapMissionQesPaperService mapMissionQesPaperService) {
+                               MapMissionQesPaperService mapMissionQesPaperService,
+                               ResearchMissionMapper researchMissionMapper) {
         this.missionMapper = missionMapper;
         this.mappingMissionQuestionnaireMapper = mappingMissionQuestionnaireMapper;
         this.userMapper = userMapper;
         this.mapMissionQesPaperService = mapMissionQesPaperService;
+        this.researchMissionMapper = researchMissionMapper;
     }
 
     private final static Logger logger = LoggerFactory.getLogger(ResearchServiceImpl.class);

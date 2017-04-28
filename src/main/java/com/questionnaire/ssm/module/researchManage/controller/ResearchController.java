@@ -4,6 +4,7 @@ import com.questionnaire.ssm.module.global.pojo.ResponsePkt;
 import com.questionnaire.ssm.module.global.util.ResultUtil;
 import com.questionnaire.ssm.module.global.util.UserValidationUtil;
 import com.questionnaire.ssm.module.researchManage.pojo.CreateResearchMissionVO;
+import com.questionnaire.ssm.module.researchManage.pojo.QuestionnaireInfoVO;
 import com.questionnaire.ssm.module.researchManage.pojo.ResearchListVO;
 import com.questionnaire.ssm.module.researchManage.service.ResearchService;
 import org.slf4j.Logger;
@@ -29,9 +30,16 @@ public class ResearchController {
         return modelAndView;
     }
 
+    @PostMapping(value = "/listQuestionnaireInfo")
+    @ResponseBody
+    public List<QuestionnaireInfoVO> listQuestionnaireInfo() throws Exception {
+        String userTel = UserValidationUtil.getUserTel(logger);
+        return researchService.listQesInfoByUserTel(userTel);
+    }
+
     @PostMapping(value = "/createResearchMission")
     @ResponseBody
-    public ResponsePkt createResearchMission(CreateResearchMissionVO createResearchMissionVO) throws Exception {
+    public ResponsePkt createResearchMission(@RequestBody CreateResearchMissionVO createResearchMissionVO) throws Exception {
         //判断用户是否登录
         String userTel = UserValidationUtil.getUserTel(logger);
         //保存创建的调查任务信息
@@ -39,6 +47,12 @@ public class ResearchController {
         return ResultUtil.success();
     }
 
+    /**
+     * 查询当前用户可以查看的任务信息
+     *
+     * @return
+     * @throws Exception
+     */
     @GetMapping(value = "/listResearchMission")
     @ResponseBody
     public List<ResearchListVO> listResearchMission() throws Exception {

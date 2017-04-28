@@ -24,15 +24,50 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="panel-title">
+                        调查名称
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-offset-1 col-md-12">
+                                <div class="row">
+                                    <div class="col-sm-10">
+                                        <div class="row">
+                                            <div class="control-label col-xs-2">调查描述：</div>
+                                            <div class="col-xs-10">
+                                                <input id='missionDescription' class="form-control"
+                                                       placeholder="该次调查的描述信息"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">
                         调查单位
                     </div>
                 </div>
                 <div class="panel-body">
-                    <div class="form-inline">
-                        <div class="col-md-offset-1 col-md-10">
-                            <label class="control-label col-md-2">执行单位：</label>
-                            <div class="col-md-10">
-                                <select id='researchUnit' class="form-control" multiple> </select>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-offset-1 col-md-12">
+                                <div class="row">
+                                    <div class="col-sm-10">
+                                        <div class="row">
+                                            <div class="control-label col-xs-2">执行单位：</div>
+                                            <div class="col-xs-10">
+                                                <select id='researchUnit' class="form-control" multiple> </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -46,17 +81,27 @@
                     </div>
                 </div>
                 <div class="panel-body">
-                    <div class="form-inline">
-                        <div class="col-md-offset-1 col-md-5">
-                            <label class="control-label col-md-4">开始时间：</label>
-                            <div class="col-md-8">
-                                <input id="begindate" class="form-control" placeholder="调查开始的时间"/>
-                            </div>
-                        </div>
-                        <div class="col-md-5">
-                            <label class="control-label col-md-4">结束时间：</label>
-                            <div class="col-md-8">
-                                <input id="enddate" class="form-control" placeholder="调查结束的时间"/>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-offset-1 col-md-12">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="row">
+                                            <div class="control-label col-xs-3">开始时间：</div>
+                                            <div class="col-xs-5">
+                                                <input id="begindate" class="form-control" placeholder="调查开始的时间"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="row">
+                                            <div class="control-label col-xs-3">结束时间：</div>
+                                            <div class="col-xs-5">
+                                                <input id="enddate" class="form-control" placeholder="调查结束的时间"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -71,31 +116,43 @@
                     </div>
                 </div>
                 <div class="panel-body">
-                    <div class="row">
-                        <div class="col-sm-8 col-md-8">
-                            <div class="form-group">
-                                <select class="selectpicker form-control" title="选择发布的问卷"></select>
-                            </div>
-                        </div>
-                        <div class="col-sm-4 col-md-4">
-                            <div class="form-inline">
-                                <div class="form-group">
-                                    <label> 最低提交量：</label>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-offset-1 col-md-12">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="row">
+                                            <div class="control-label col-xs-3">调查问卷：</div>
+                                            <div class="col-xs-8">
+                                                <select name="questionnaireSelect" class="form-control selectpicker"
+                                                        title="选择发布的问卷"> </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="row">
+                                            <div class="control-label col-xs-3">最低提交：</div>
+                                            <div class="col-xs-5">
+                                                <input name="minSubmit" type="number" class="form-control"
+                                                       placeholder="当前问卷最低提交量">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <input type="number" class="form-control" placeholder="当前问卷最低提交量">
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="panel-body">
-                    <div class="col-md-offset-4 col-md-4 btn btn-info glyphicon glyphicon-plus"></div>
-                </div>
+                <!--添加新问卷-->
+                <!--<div class="panel-body">-->
+                <!--<div class="btn btn-default btn-block glyphicon glyphicon-plus"></div>-->
+                <!--</div>-->
             </div>
 
             <div class="panel-body">
                 <div class="col-md-offset-5">
-                    <button class="btn btn-lg btn-warning">重置</button>
-                    <button class="btn btn-lg btn-success">发布</button>
+                    <button id="resetBtn" class="btn btn-lg btn-warning">重置</button>
+                    <button id="launchMissionBtn" class="btn btn-lg btn-success">发布</button>
                 </div>
             </div>
         </div>
@@ -109,41 +166,80 @@
 <script src="/WEB-INF/js/plugins/bootstrap-select/js/bootstrap-select.min.js"
         th:src="@{/js/plugins/bootstrap-select/js/bootstrap-select.min.js}"></script>
 <script src="/WEB-INF/js/plugins/bootstrap-select/js/i18n/defaults-zh_CN.min.js"
-        th:src="@{/js/i18n/defaults-zh_CN.min.js}"></script>
+        th:src="@{/js/plugins/bootstrap-select/js/i18n/defaults-zh_CN.min.js}"></script>
 
 <script src="/WEB-INF/js/plugins/layui/layui.js"
         th:src="@{/js/plugins/layui/layui.js}"></script>
+<script src="../../js/myJs/responseAnalyze.js"
+        th:src="@{/js/myJs/responseAnalyze.js}"></script>
 
 
 <script>
     $(function () {
-        var options = '';
-        for (var index = 0; index < 60; index++) {
-            options += '<option value="' + index + '">' + 'option:' + index + '</option>';
-        }
+        var unitOptions = '';
         var $researchUnit = $('#researchUnit');
-
-        $($researchUnit).append(options);
-
-        $($researchUnit).selectpicker({
-                multipleSeparator: ' || ',
-                actionsBox: true,
-                liveSearch: true,
-                noneSelectedText: '未选择单位信息',
-                selectAllText: '全部单位',
-                liveSearchPlaceholder: '查询单位',
-                deselectAllText: '重新选择',
-                selectedTextFormat: 'count > 15',
-                countSelectedText: function () {
-                    return '选中了  {0}   个单位   (单位总数 {1})';
+        $.ajax({
+            url: '/unit/listUnitInfo',
+            type: 'post',
+            dataType: 'json',
+            traditional: true,
+            success: function (data) {
+                for (var index = 0; index < data.length; index++) {
+                    unitOptions += '<option title="' + data[index].unitName + '" ' +
+                        'value="' + data[index].unitId + '">' + data[index].unitName +
+                        '·························'
+                        + data[index].unitProvince + ' - ' + data[index].unitCity + '</option>';
                 }
+                $($researchUnit).append(unitOptions);
+                $($researchUnit).selectpicker({
+                        multipleSeparator: ' || ',
+                        actionsBox: true,
+                        liveSearch: true,
+                        noneSelectedText: '未选择单位信息',
+                        selectAllText: '全部单位',
+                        liveSearchPlaceholder: '查询单位',
+                        deselectAllText: '重新选择',
+                        selectedTextFormat: 'count > 15',
+                        countSelectedText: function () {
+                            return '选中了  {0}   个单位   (单位总数 {1})';
+                        }
+                    },
+                    'refresh', 'render'
+                );
             },
-            'refresh', 'render'
-        )
-        ;
+            error: function (data) {
+                console.log(data);
+            }
+        });
+        var qesItemOptions = '';
+        var $questionnaireItem = $('select[name="questionnaireSelect"]');
+        $.ajax({
+            url: '/researchManage/listQuestionnaireInfo',
+            type: 'post',
+            dataType: 'json',
+            traditional: true,
+            success: function (data) {
+                for (var index = 0; index < data.length; index++) {
+                    qesItemOptions += '<option title="' + data[index].qesTitle + '" value="' + data[index].qesId + '">'
+                        + data[index].qesTitle + '························' + data[index].createDate
+                        + '[' + data[index].isTemplate + ']</option>';
+                }
+                $questionnaireItem.append(qesItemOptions);
 
+                $($questionnaireItem).selectpicker({
+                        liveSearch: true,
+                        noneSelectedText: '未选择发布问卷',
+                        liveSearchPlaceholder: '查询问卷'
+                    },
+                    'refresh', 'render'
+                );
+            },
+            error: function () {
 
-        layui.use(['laydate', 'jquery'], function () {
+            }
+        });
+
+        layui.use(['laydate'], function () {
             var laydate = layui.laydate;
 
             var start = {
@@ -186,6 +282,100 @@
                 laydate(end);
             };
         });
+
+    });
+    /*提交数据*/
+    $('#launchMissionBtn').on('click', function () {
+        var createResearchMissionVO = {};
+        //获取选中的单位ID
+        var unitIds = [];
+        $('#researchUnit').find('option:selected').each(function () {
+            unitIds.push($(this).val());
+        });
+
+        var missionDescription = $('#missionDescription').val();
+        var startDate = $('#begindate').val();
+        var endDate = $('#enddate').val();
+        //获取选中的问卷ID
+        var qesItemInfoArray = [];
+        var qesItem = {};
+        $('select[name="questionnaireSelect"]').find('option:selected').each(function () {
+            qesItem.questionnaireId = ($(this).val());
+            qesItem.minSubmit = ($(this).closest('div[class="col-md-offset-1 col-md-12"]').find('input[name="minSubmit"]').val());
+            qesItemInfoArray.push(qesItem);
+        });
+
+        layui.use('layer', function () {
+            var layer = layui.layer;
+            //校验调查单位数量不能少于一个
+            if (unitIds.length <= 0) {
+                layer.msg('调查单位还未选择！', function () {
+                });
+                return;
+            }
+            //开始时间、结束时间校验
+            if (startDate.match(/^\s*$/)) {
+                layer.msg('开始时间未设置！', function () {
+                });
+                return;
+            }
+            if (endDate.match(/^\s*$/)) {
+                layer.msg('结束时间未设置！', function () {
+                });
+                return;
+            }
+            //调查问卷选择校验
+            if (qesItemInfoArray.length <= 0) {
+                layer.msg('还未选择问卷！', function () {
+                    return;
+                })
+            }
+        });
+
+        if (missionDescription.match(/^\s*$/)) {
+            createResearchMissionVO.missionDescription = '无描述';
+        } else {
+            createResearchMissionVO.missionDescription = missionDescription;
+        }
+
+        createResearchMissionVO.missionStartDate = new Date(startDate);
+        createResearchMissionVO.missionDeadLine = new Date(endDate);
+        createResearchMissionVO.missionObjectUnitId = unitIds;
+        createResearchMissionVO.missionQuestionnaireInfo = qesItemInfoArray;
+
+        layui.use('layer', function () {
+            var layer = layui.layer;
+            var url = '/researchManage/createResearchMission';
+            var jsonData = createResearchMissionVO;
+            accessServerByJson(url, jsonData);
+        });
+    });
+
+    /*重置按钮*/
+    $('#resetBtn').on('click', function () {
+        layui.use('layer', function () {
+            var layer = layui.layer;
+
+            layer.confirm('确认重置？', {
+                    icon: 3,
+                    btn: ['确定', '取消']
+                },
+                function (index) {
+                    $('#missionDescription').val(null);
+                    $('#researchUnit').selectpicker('deselectAll');
+                    $('#begindate').val(null);
+                    $('#enddate').val(null);
+                    $('select[name="questionnaireSelect"]').selectpicker('val', null);
+                    $('input[name="minSubmit"]').val(null);
+                    layer.close(index);
+                },
+                function () {
+                    layer.msg('取消成功！');
+                }
+            )
+        });
+
+
     });
 </script>
 </body>
