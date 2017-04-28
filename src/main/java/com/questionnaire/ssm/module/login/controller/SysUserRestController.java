@@ -1,5 +1,6 @@
 package com.questionnaire.ssm.module.login.controller;
 
+import com.questionnaire.ssm.module.generated.mapper.UserMapper;
 import com.questionnaire.ssm.module.global.enums.CodeForVOEnum;
 import com.questionnaire.ssm.module.global.pojo.ResponsePkt;
 import com.questionnaire.ssm.module.global.util.ResultUtil;

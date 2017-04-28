@@ -13,14 +13,14 @@ public enum CodeForVOEnum {
 
     /*操作数据库信息编码*/
     DB_SELECT_NO_MESSAGE(-5, "没有查询到您想要的信息"),
-    DB_DELETE_FAIL(-4, "删除失败!"),
-    DB_SELECT_FAIL(-3, "查询失败!"),
-    DB_INSERT_FAIL(-2, "插入失败!"),
-    DB_UPDATE_FAIL(-1, "更新失败!"),
-    DB_UPDATE_SUCCESS(1, "更新成功!"),
-    DB_INSERT_SUCCESS(2, "插入成功!"),
-    DB_SELECT_SUCCESS(3, "查询成功!"),
-    DB_DELETE_SUCCESS(4, "删除成功!"),
+    DB_DELETE_FAIL(-4, "删除数据失败!"),
+    DB_SELECT_FAIL(-3, "查询数据失败!"),
+    DB_INSERT_FAIL(-2, "插入数据失败!"),
+    DB_UPDATE_FAIL(-1, "更新数据失败!"),
+    DB_UPDATE_SUCCESS(1, "更新数据成功!"),
+    DB_INSERT_SUCCESS(2, "插入数据成功!"),
+    DB_SELECT_SUCCESS(3, "查询数据成功!"),
+    DB_DELETE_SUCCESS(4, "删除数据成功!"),
 
 
     /*用户信息校验编码*/

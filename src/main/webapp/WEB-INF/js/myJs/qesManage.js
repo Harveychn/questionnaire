@@ -61,10 +61,6 @@ $(function () {
     });
 });
 
-function viewQuestionnaire(questionnaireId) {
-
-}
-
 /**
  * 删除单张问卷
  * @param questionnaireId
