@@ -16,10 +16,8 @@ public class ListPrivateTemplateInfoVO {
     private String questionnaireSubtitle;
     /*问卷描述*/
     private String questionnaireDescription;
-    /*模板加入方式*/
-    private String operate_action;
     /*模板添加日期*/
-    private Date operate_date;
+    private Date addDate;
 
     @Override
     public String toString() {
@@ -28,8 +26,7 @@ public class ListPrivateTemplateInfoVO {
                 ", questionnaireTitle='" + questionnaireTitle + '\'' +
                 ", questionnaireSubtitle='" + questionnaireSubtitle + '\'' +
                 ", questionnaireDescription='" + questionnaireDescription + '\'' +
-                ", operate_action='" + operate_action + '\'' +
-                ", operate_date=" + operate_date +
+                ", addDate=" + addDate +
                 '}';
     }
 
@@ -65,19 +62,11 @@ public class ListPrivateTemplateInfoVO {
         this.questionnaireDescription = questionnaireDescription;
     }
 
-    public String getOperate_action() {
-        return operate_action;
+    public Date getAddDate() {
+        return addDate;
     }
 
-    public void setOperate_action(String operate_action) {
-        this.operate_action = operate_action;
-    }
-
-    public Date getOperate_date() {
-        return operate_date;
-    }
-
-    public void setOperate_date(Date operate_date) {
-        this.operate_date = operate_date;
+    public void setAddDate(Date addDate) {
+        this.addDate = addDate;
     }
 }

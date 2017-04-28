@@ -4,11 +4,9 @@ import com.questionnaire.ssm.module.generated.mapper.UserMapper;
 import com.questionnaire.ssm.module.generated.pojo.User;
 import com.questionnaire.ssm.module.login.mapper.SysUserMapper;
 import com.questionnaire.ssm.module.login.service.LoginService;
-import com.sun.tracing.dtrace.ModuleAttributes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.Set;
 
 /**

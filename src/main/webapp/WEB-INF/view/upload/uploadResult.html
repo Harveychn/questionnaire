@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>上传结果</title>
+    <link rel="shortcut icon" href="/WEB-INF/img/favicon.ico"
+          th:href="@{/img/favicon.ico}"/>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css"
+          th:href="@{/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    批量上传结果
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" th:if="${uploadResultVOList != null}">
+            <table class="table table-responsive table-bordered" th:if="${uploadResultVOList.size()>0}">
+                <thead>
+                <tr>
+                    <th>文件名</th>
+                    <th>操作成功记录数</th>
+                    <th>错误记录信息</th>
+                </tr>
+                </thead>
+                <tbody th:each="uploadResult : ${uploadResultVOList}">
+                <tr>
+                    <td th:text="${uploadResult.getFileName()}">文件名</td>
+                    <td th:text="${uploadResult.getSuccessRecordCount()}">0</td>
+                    <td th:each="errorRecord: ${uploadResult.errorRecord}">
+                        <select>
+                        </select>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div th:if="${uploadResultVOList.size()<=0}">
+                <h1>上传的文件中似乎没有数据</h1>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

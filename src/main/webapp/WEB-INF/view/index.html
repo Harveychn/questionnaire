@@ -10,8 +10,8 @@
     <meta name="keywords" content="后台管理界面-业务管理员">
     <meta name="description" content="问卷调查系统后台管理界面-业务管理员">
 
-    <link rel="shortcut icon" href="/WEB-INF/img/logo.ico"
-          th:href="@{/img/logo.ico}"/>
+    <link rel="shortcut icon" href="/WEB-INF/img/favicon.ico"
+          th:href="@{/img/favicon.ico}"/>
     <link href="/WEB-INF/css/bootstrap.min.css" rel="stylesheet"
           th:href="@{/css/bootstrap.min.css}"/>
     <link href="/WEB-INF/css/style.css" rel="stylesheet"
@@ -88,7 +88,8 @@
                             <a class="J_menuItem" href="#">人员查询</a>
                         </li>
                         <li>
-                            <a class="J_menuItem" href="#">上传数据</a>
+                            <a class="J_menuItem" href="/userManage/getUploadView"
+                               th:href="@{/userManage/getUploadView}">上传数据</a>
                         </li>
 
                     </ul>
@@ -104,7 +105,8 @@
                         <li><a class="J_menuItem" href="/questionnaireManage/listMyQuestionnaire"
                                th:href="@{/questionnaireManage/listMyQuestionnaire}">查看问卷</a>
                         </li>
-                        <li><a class="J_menuItem" href="删除问卷.html">删除问卷</a>
+                        <li><a class="J_menuItem" href="/questionnaireManage/temporaryDeleteQesPaperView"
+                               th:href="@{/questionnaireManage/temporaryDeleteQesPaperView}">删除问卷</a>
                         </li>
                         <li><a class="J_menuItem" href="模板管理.html">模板管理</a>
                         </li>
@@ -129,18 +131,27 @@
                     </a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a class="J_menuItem" href="查看公告.html">查看公告</a>
+                            <a class="J_menuItem" href="/notice/listMyNotice">查看公告</a>
                         </li>
                         <li>
-                            <a class="J_menuItem" href="新建公告.html">创建公告</a>
+                            <a class="J_menuItem" href="/notice/getCreateNotice">创建公告</a>
                         </li>
 
                     </ul>
-
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-search"></i>
-                        <span class="nav-label">调查管理</span></a>
+                    <a href="#">
+                        <i class="fa fa-search"></i>
+                        <span class="nav-label">调查管理</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a class="J_menuItem" href="/researchManage/createResearchView">
+                                创建调查
+                            </a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>
@@ -201,7 +212,7 @@
                     data-id="home.html" seamless></iframe>
         </div>
         <div class="footer">
-            <div class="pull-right">&copy;2017<a href="#" target="_blank">寄生虫病预防控制所</a>
+            <div class="pull-right">&copy;2017<a href="http://ipd.org.cn/" target="_blank">中国疾病预防控制中心-寄生虫病预防控制所</a>
             </div>
         </div>
     </div>

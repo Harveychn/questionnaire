@@ -16,57 +16,41 @@
     <select id="listQuestionnaireInfoByUserTel" parameterType="String"
             resultMap="listQuestionnaireVOMap">
         SELECT
-        DISTINCT
-        q.questionnaire_id AS questionnaire_id,
-        q.questionnaire_title AS questionnaire_title,
-        q.questionnaire_subtitle AS questionnaire_subtitle,
-        q.questionnaire_description AS questionnaire_description,
-        q.is_template AS is_template,
-        q.is_share AS is_share,
-        /*是否完成状态*/
-        q.is_done AS is_done
-        -- roq.operate_date AS operate_date//可以添加创建修改时间？
+        q.questionnaire_id AS questionnaireId,
+        q.questionnaire_title AS questionnaireTitle,
+        q.questionnaire_subtitle AS questionnaireSubtitle,
+        q.questionnaire_description AS questionnaireDescription,
+        q.is_template AS isTemplate,
+        q.is_share AS isShare,
+        q.is_done AS isDone
         FROM
-        record_operate_questionnaire AS roq
-        JOIN questionnaire AS q
+        questionnaire AS q
         <where>
             <if test="userTel!=null and userTel!=''">
-                AND roq.user_tel = #{userTel}
+                AND q.create_user = #{userTel}
             </if>
-            AND q.questionnaire_id = roq.questionnaire_id
             AND q.is_template = FALSE
-            -- AND q.is_share = FALSE
             AND q.is_visible = TRUE
             AND q.is_delete = FALSE
         </where>
     </select>
 
-</mapper>
 
-        <!--SELECT-->
-        <!--q.questionnaire_id AS questionnaire_id,-->
-        <!--q.questionnaire_title AS questionnaire_title,-->
-        <!--q.questionnaire_subtitle AS questionnaire_subtitle,-->
-        <!--q.questionnaire_description AS questionnaire_description,-->
-        <!--q.is_template AS is_template,-->
-        <!--q.is_share AS is_share,-->
-        <!--q.is_done AS is_done-->
-        <!--FROM `user` u ,record_operate_questionnaire roq,questionnaire q-->
-        <!--<where>-->
-        <!--<if test="userTel!=null and userTel!=''">-->
-        <!--AND u.user_tel = #{userTel}-->
-        <!--</if>-->
-        <!--AND u.user_tel = roq.user_tel-->
-        <!--AND roq.questionnaire_id = q.questionnaire_id-->
-        <!--AND q.is_visible = TRUE-->
-        <!--AND q.is_delete = FALSE-->
-        <!--</where>-->
-        <!--GROUP BY-->
-        <!--u.user_tel,-->
-        <!--q.questionnaire_id,-->
-        <!--q.questionnaire_title,-->
-        <!--q.questionnaire_subtitle,-->
-        <!--q.questionnaire_description,-->
-        <!--q.is_template,-->
-        <!--q.is_share,-->
-        <!--q.is_done-->
+    <select id="listTempDelQesPaperByUserTel" parameterType="String"
+            resultType="com.questionnaire.ssm.module.questionnaireManage.pojo.ListTempDelQesPaperVO">
+        SELECT
+            q.questionnaire_id AS questionnaireId,
+            q.questionnaire_title AS questionnaireTitle,
+            q.questionnaire_subtitle AS questionnaireSubtitle,
+            q.questionnaire_description AS questionnaireDescription
+        FROM
+            questionnaire AS q
+        WHERE
+            q.create_user = #{userTel}
+        AND q.is_template = FALSE
+        AND q.is_share = FALSE
+        AND q.is_visible = FALSE
+        AND q.is_done =TRUE
+        AND q.is_delete = FALSE
+    </select>
+</mapper>

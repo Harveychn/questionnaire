@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.questionnaire.ssm.module.researchManage.mapper.ResearchMissionMapper">
+    <select id="listReadyLaunchQesInfoByUserTel" parameterType="String"
+            resultType="com.questionnaire.ssm.module.researchManage.pojo.QuestionnaireInfoVO">
+        SELECT
+			questionnaire_id AS qesId,
+			questionnaire_title AS qesTitle,
+			create_time AS createDate,
+			CASE is_template
+				WHEN TRUE THEN
+					'模板'
+				WHEN FALSE THEN
+					'问卷'
+				END  AS isTemplate
+		FROM
+			questionnaire
+		WHERE
+			create_user = #{userTel}
+		AND is_done = TRUE
+		AND is_visible = TRUE
+		AND is_delete = FALSE
+</select>
+</mapper>

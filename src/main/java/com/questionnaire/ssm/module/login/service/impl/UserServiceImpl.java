@@ -2,12 +2,15 @@ package com.questionnaire.ssm.module.login.service.impl;
 
 import com.questionnaire.ssm.module.generated.mapper.UserMapper;
 import com.questionnaire.ssm.module.generated.pojo.User;
+import com.questionnaire.ssm.module.global.constant.CONSTANT;
 import com.questionnaire.ssm.module.global.enums.CodeForVOEnum;
 import com.questionnaire.ssm.module.global.enums.DBTableEnum;
 import com.questionnaire.ssm.module.global.exception.OperateDBException;
 import com.questionnaire.ssm.module.global.exception.UserValidaException;
+import com.questionnaire.ssm.module.global.service.UnitService;
 import com.questionnaire.ssm.module.global.util.UserValidationUtil;
 import com.questionnaire.ssm.module.login.pojo.NewPasswordVO;
+import com.questionnaire.ssm.module.login.pojo.UserInfoVO;
 import com.questionnaire.ssm.module.login.service.UserService;
 import com.questionnaire.ssm.module.login.utils.UserUtil;
 import org.slf4j.Logger;
@@ -22,6 +25,42 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService {
 
+    /**
+     * 获取用户信息
+     *
+     * @param userTel 用户名
+     * @return
+     * @throws Exception
+     */
+    @Override
+    public UserInfoVO getUserInfoByUserTel(String userTel) throws Exception {
+        UserInfoVO userInfoVO = new UserInfoVO();
+        User user = userMapper.selectByPrimaryKey(userTel);
+        if (user == null) {
+            return null;
+        }
+        //用户账户
+        userInfoVO.setUserTel(userTel);
+        //用户真实姓名
+        userInfoVO.setUserRealName(user.getUserRealName());
+        //用户单位信息--单位名
+        userInfoVO.setUserUnit(unitService.getUnitInfoByUnitId(user.getUnitId()).getUnitName());
+        //用户头像名
+        if (user.getUserPicUrl() == null) {
+            //若未上传图片,使用默认图片
+            userInfoVO.setPicAddress(CONSTANT.getUserDefaultPicture());
+        } else {
+            userInfoVO.setPicAddress(user.getUserPicUrl());
+        }
+        return userInfoVO;
+    }
+
+    /**
+     * 更新用户密码
+     *
+     * @param newPasswordVO 新密码实体
+     * @throws Exception
+     */
     @Override
     public void updateUserPassword(NewPasswordVO newPasswordVO) throws Exception {
 
@@ -59,12 +98,14 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-
     private final static Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
     private UserMapper userMapper;
+    private UnitService unitService;
 
     @Autowired
-    public UserServiceImpl(UserMapper userMapper) {
+    public UserServiceImpl(UserMapper userMapper,
+                           UnitService unitService) {
         this.userMapper = userMapper;
+        this.unitService = unitService;
     }
 }

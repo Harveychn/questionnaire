@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="questionnaire@106.14.26.144" uuid="3ed7f881-5087-4d2a-93f7-107b188d5c11">
+    <data-source source="LOCAL" name="@106.14.26.144" uuid="972b0224-93a8-4dcc-b3fd-16639890a5f0">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://106.14.26.144:3306/questionnaire</jdbc-url>
+      <jdbc-url>jdbc:mysql://106.14.26.144:3306</jdbc-url>
       <driver-properties>
         <property name="autoReconnect" value="true" />
         <property name="zeroDateTimeBehavior" value="convertToNull" />
@@ -15,7 +15,7 @@
         <property name="yearIsDateType" value="false" />
       </driver-properties>
     </data-source>
-    <data-source source="LOCAL" name="questionnaire@localhost" uuid="763c5db8-35ed-40c8-a728-2e48b8c0106a">
+    <data-source source="LOCAL" name="questionnaire@localhost" uuid="cdc5ab09-f2c6-4142-b1cc-a14d3be05a8d">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>

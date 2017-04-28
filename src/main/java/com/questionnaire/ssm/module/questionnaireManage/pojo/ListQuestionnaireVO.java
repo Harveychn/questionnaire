@@ -5,7 +5,6 @@ package com.questionnaire.ssm.module.questionnaireManage.pojo;
  * Description: 用户创建的问卷信息视图实体
  */
 public class ListQuestionnaireVO {
-
     /*问卷id*/
     private long questionnaireId;
     /*问卷标题*/
@@ -20,6 +19,19 @@ public class ListQuestionnaireVO {
     private boolean isShare;
     /*问卷是否已经完成*/
     private boolean isDone;
+
+    @Override
+    public String toString() {
+        return "ListQuestionnaireVO{" +
+                "questionnaireId=" + questionnaireId +
+                ", questionnaireTitle='" + questionnaireTitle + '\'' +
+                ", questionnaireSubtitle='" + questionnaireSubtitle + '\'' +
+                ", questionnaireDescription='" + questionnaireDescription + '\'' +
+                ", isTemplate=" + isTemplate +
+                ", isShare=" + isShare +
+                ", isDone=" + isDone +
+                '}';
+    }
 
     public long getQuestionnaireId() {
         return questionnaireId;

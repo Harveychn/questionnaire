@@ -3,6 +3,7 @@ package com.questionnaire.ssm.module.login.controller;
 import com.questionnaire.ssm.module.login.pojo.LoginVO;
 import com.questionnaire.ssm.module.login.pojo.NewPasswordVO;
 import com.questionnaire.ssm.module.login.service.UserService;
+import com.questionnaire.ssm.module.login.utils.UserUtil;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.UnauthorizedException;
@@ -39,42 +40,15 @@ public class SysUserController {
     }
 
     @PostMapping(value = "/login")
-    public ModelAndView login(@Valid LoginVO loginVO, BindingResult bindingResult, HttpServletRequest request, Model model) throws Exception {
+    public ModelAndView login(@Valid LoginVO loginVO, BindingResult bindingResult, HttpServletRequest request) throws Exception {
         ModelAndView modelAndView = new ModelAndView();
-        System.out.println(loginVO.toString());
         if (bindingResult.hasErrors()) {
             modelAndView.setViewName("login/login");
             return modelAndView;
         }
 
         Subject subject = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken(loginVO.getUserTel(), loginVO.getPassword());
-        if (null == loginVO.getRememberMe()) {
-            token.setRememberMe(false);
-            subject.isRemembered();
-        } else {
-            token.setRememberMe(true);
-        }
-
-        String errorMessage = null;
-        try {
-            subject.login(token);
-        } catch (IncorrectCredentialsException e) {
-            request.getSession().setAttribute("user", loginVO);
-            errorMessage = "用户名/密码错误！";
-        } catch (ExcessiveAttemptsException e) {
-            request.getSession().setAttribute("user", loginVO);
-            errorMessage = "错误次数超过限制，请您于10分钟后再试！";
-        } catch (UnauthorizedException e) {
-            request.getSession().setAttribute("user", loginVO);
-            errorMessage = "您没有得到相应的授权！";
-        } catch (UnknownAccountException e) {
-            errorMessage = "账号信息不存在！";
-        } catch (LockedAccountException e) {
-            errorMessage = "您的账户信息被锁定，请联系系统管理员！";
-        } catch (Exception e) {
-            logger.error(e.getMessage());
-        }
+        String errorMessage = UserUtil.subjectLogin(subject, loginVO, request);
 
         if (null != errorMessage) {
             modelAndView.addObject("errorMessage", errorMessage);
@@ -110,6 +84,10 @@ public class SysUserController {
         }
         userService.updateUserPassword(newPasswordVO);
         return "login/newKeySuccess";
+    }
+
+    public void changePersonnalInfo() throws Exception {
+
     }
 
     private UserService userService;

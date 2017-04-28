@@ -10,6 +10,7 @@ public class QuestionVO {
     /**
      * 题目信息
      */
+    private Long questionId;//问题id
     private String questionContext;//题目
     private String questionType;//题目类型
     private String questionDescription;//题目描述
@@ -24,12 +25,29 @@ public class QuestionVO {
     @Override
     public String toString() {
         return "QuestionVO{" +
-                "questionContext='" + questionContext + '\'' +
+                "questionId=" + questionId +
+                ", questionContext='" + questionContext + '\'' +
                 ", questionType='" + questionType + '\'' +
                 ", questionDescription='" + questionDescription + '\'' +
                 ", isMust=" + isMust +
                 ", options=" + options +
                 '}';
+    }
+
+    public Long getQuestionId() {
+        return questionId;
+    }
+
+    public void setQuestionId(Long questionId) {
+        this.questionId = questionId;
+    }
+
+    public String getQuestionContext() {
+        return questionContext;
+    }
+
+    public void setQuestionContext(String questionContext) {
+        this.questionContext = questionContext;
     }
 
     public String getQuestionType() {
@@ -54,14 +72,6 @@ public class QuestionVO {
 
     public void setMust(Boolean must) {
         isMust = must;
-    }
-
-    public String getQuestionContext() {
-        return questionContext;
-    }
-
-    public void setQuestionContext(String questionContext) {
-        this.questionContext = questionContext;
     }
 
     public List<QuestionOptionVO> getOptions() {

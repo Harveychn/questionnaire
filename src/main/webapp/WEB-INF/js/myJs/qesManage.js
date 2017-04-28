@@ -61,10 +61,6 @@ $(function () {
     });
 });
 
-function viewQuestionnaire(questionnaireId){
-
-}
-
 /**
  * 删除单张问卷
  * @param questionnaireId
@@ -120,7 +116,7 @@ function chooseNonLayer() {
     layer.alert('你还没有选择', {icon: 5});
 }
 
-function accessServerById(questionnaire,url){
+function accessServerById(questionnaire, url) {
 
 }
 /**
@@ -173,8 +169,7 @@ function analyzeResponse(data, url, questionnaireIds) {
                 break;
             case shareUrl: //分享问卷
                 if (responsePkt.code === 200) {
-                    successMsg = "成功共享 【" + responsePkt.data.shareOK + "】 张问卷到公共模版库\n\n【" +
-                        responsePkt.data.sharedFail + "】 张重复共享(您已共享过)";
+                    successMsg = "成功共享 【" + questionnaireIds.length + "】 张问卷到公共模版库";
                     successResultLayer(successMsg);
                     location.reload(true);
                 }

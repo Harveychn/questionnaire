@@ -20,7 +20,23 @@ import java.util.Set;
 @Component
 public class QesManageAspect {
 
-    private static final Logger logger = LoggerFactory.getLogger(QesManageAspect.class);
+    /**
+     * 问卷管理切入点
+     */
+    @Pointcut("execution(public * com.questionnaire.ssm.module.questionnaireManage.controller.QesManageController.*(..))")
+    public void createQuestionnairePointcut() {
+
+    }
+
+    /**
+     * 创建问卷卷之前，校验用户是否登录
+     *
+     * @throws Exception
+     */
+    @Before("createQuestionnairePointcut()")
+    public void beforeCreateQuestionnaire() throws Exception {
+        UserValidationUtil.checkUserValid(logger);
+    }
 
     /**
      * 获取创建问卷视图切入点
@@ -41,21 +57,5 @@ public class QesManageAspect {
         UserValidationUtil.checkUserValid(role, needPermissions, logger);
     }
 
-    /**
-     * 创建问卷切入点
-     */
-    @Pointcut("execution(public * com.questionnaire.ssm.module.questionnaireManage.controller.QesManageController.create(..))")
-    public void createQuestionnairePointcut() {
-
-    }
-
-    /**
-     * 创建问卷卷之前，校验用户是否登录
-     *
-     * @throws Exception
-     */
-    @Before("createQuestionnairePointcut()")
-    public void beforeCreateQuestionnaire() throws Exception {
-        UserValidationUtil.checkUserValid(logger);
-    }
+    private static final Logger logger = LoggerFactory.getLogger(QesManageAspect.class);
 }
