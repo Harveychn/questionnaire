@@ -33,6 +33,23 @@ public class OperateQuestionnaireUtil {
     }
 
     /**
+     * 恢复回收站问卷到个人问卷
+     *
+     * @return
+     * @throws Exception
+     */
+    public static Questionnaire restoreQesPaperAction() throws Exception {
+        Questionnaire questionnaire = new Questionnaire();
+
+        questionnaire.setIsTemplate(false);
+        questionnaire.setIsShare(false);
+        questionnaire.setIsVisible(true);
+        questionnaire.setIsDone(true);
+        questionnaire.setIsDelete(false);
+        return questionnaire;
+    }
+
+    /**
      * 删除问卷永久
      *
      * @return

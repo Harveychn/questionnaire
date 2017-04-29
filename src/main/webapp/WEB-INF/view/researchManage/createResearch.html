@@ -286,7 +286,6 @@
     });
     /*提交数据*/
     $('#launchMissionBtn').on('click', function () {
-        var createResearchMissionVO = {};
         //获取选中的单位ID
         var unitIds = [];
         $('#researchUnit').find('option:selected').each(function () {
@@ -327,29 +326,45 @@
             //调查问卷选择校验
             if (qesItemInfoArray.length <= 0) {
                 layer.msg('还未选择问卷！', function () {
+                });
+                return;
+            }
+            for (var i = 0; i < qesItemInfoArray.length; i++) {
+                if (qesItemInfoArray[i].minSubmit.match(/^\s*$/)) {
+//                    layer.msg('未设置第' + (i + 1) + '份问卷的最少提交量', function () {
+//                    });
+                    layer.msg('未设置问卷的最少提交量', function () {
+                    });
                     return;
-                })
+                }
+            }
+
+            if (missionDescription.match(/^\s*$/)) {
+                layer.confirm('不填写调查描述可以吗，默认将设置为“无描述”', {
+                    icon: 3,
+                    btn: ['确认发布', '返回修改']
+                }, function (index) {
+                    layer.close(index);
+                    submitJsonData('无描述', unitIds, qesItemInfoArray);
+                }, function (index) {
+                    layer.close(index);
+                });
+            } else {
+                submitJsonData(missionDescription, unitIds, qesItemInfoArray);
             }
         });
+    });
 
-        if (missionDescription.match(/^\s*$/)) {
-            createResearchMissionVO.missionDescription = '无描述';
-        } else {
-            createResearchMissionVO.missionDescription = missionDescription;
-        }
-
-        createResearchMissionVO.missionStartDate = new Date(startDate);
-        createResearchMissionVO.missionDeadLine = new Date(endDate);
+    function submitJsonData(missionDescription, unitIds, qesItemInfoArray) {
+        var createResearchMissionVO = {};
+        createResearchMissionVO.missionDescription = missionDescription;
+        createResearchMissionVO.missionStartDate = new Date($('#begindate').val());
+        createResearchMissionVO.missionDeadLine = new Date($('#enddate').val());
         createResearchMissionVO.missionObjectUnitId = unitIds;
         createResearchMissionVO.missionQuestionnaireInfo = qesItemInfoArray;
-
-        layui.use('layer', function () {
-            var layer = layui.layer;
-            var url = '/researchManage/createResearchMission';
-            var jsonData = createResearchMissionVO;
-            accessServerByJson(url, jsonData);
-        });
-    });
+        var url = '/researchManage/createResearchMission';
+        accessServerByJson(url, createResearchMissionVO);
+    }
 
     /*重置按钮*/
     $('#resetBtn').on('click', function () {

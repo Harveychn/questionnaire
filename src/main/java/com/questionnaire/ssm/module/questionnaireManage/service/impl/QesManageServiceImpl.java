@@ -152,7 +152,7 @@ public class QesManageServiceImpl implements QesManageService {
 
     /**
      * 批量操作问卷
-     * 删除、模板化
+     * 删除（恢复）、模板化
      *
      * @param questionnaireIds 批量操作问卷的id信息
      * @param questionnaire    批量操作的动作

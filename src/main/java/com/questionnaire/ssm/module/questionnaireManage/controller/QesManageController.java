@@ -114,6 +114,25 @@ public class QesManageController {
     }
 
     /**
+     * 恢复回收站问卷到个人问卷中
+     *
+     * @param questionnaireIds
+     * @return
+     * @throws Exception
+     */
+    @PostMapping(value = "/restoreMultiQuestionnaire")
+    @ResponseBody
+    public ResponsePkt restoreMultiQuestionnaire(@RequestParam("questionnaireIds") Long[] questionnaireIds) throws Exception {
+        if (questionnaireIds.length <= 0) {
+            return ResultUtil.error(CodeForVOEnum.QUESTIONNAIRE_IDS_NULL.getCode(),
+                    CodeForVOEnum.QUESTIONNAIRE_IDS_NULL.getMessage());
+        }
+        Questionnaire questionnaire = OperateQuestionnaireUtil.restoreQesPaperAction();
+        qesManageService.delOrTemplateQesByIds(Arrays.asList(questionnaireIds), questionnaire);
+        return ResultUtil.success();
+    }
+
+    /**
      * 批量永久删除问卷
      *
      * @param questionnaireIds
