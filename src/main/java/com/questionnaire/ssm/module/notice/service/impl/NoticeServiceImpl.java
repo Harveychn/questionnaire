@@ -1,11 +1,18 @@
 package com.questionnaire.ssm.module.notice.service.impl;
 
+import com.questionnaire.ssm.module.generated.mapper.NoticeMapper;
+import com.questionnaire.ssm.module.generated.pojo.NoticeWithBLOBs;
+import com.questionnaire.ssm.module.generated.pojo.Unit;
+import com.questionnaire.ssm.module.global.constant.CONSTANT;
 import com.questionnaire.ssm.module.global.enums.CodeForVOEnum;
 import com.questionnaire.ssm.module.global.enums.DBTableEnum;
 import com.questionnaire.ssm.module.global.exception.OperateDBException;
+import com.questionnaire.ssm.module.global.service.UnitService;
 import com.questionnaire.ssm.module.global.util.UserValidationUtil;
 import com.questionnaire.ssm.module.notice.mapper.NoticeManageMapper;
 import com.questionnaire.ssm.module.notice.pojo.CreateNoticeVO;
+import com.questionnaire.ssm.module.notice.pojo.ListNoticeDTO;
+import com.questionnaire.ssm.module.notice.pojo.ListNoticeInfoVO;
 import com.questionnaire.ssm.module.notice.pojo.Notice;
 import com.questionnaire.ssm.module.notice.service.NoticeService;
 import com.questionnaire.ssm.module.notice.util.NoticeVODOUtil;
@@ -15,6 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -27,15 +35,15 @@ public class NoticeServiceImpl implements NoticeService {
     @Override
     @Transactional
     public void insertNotice(String userTel, CreateNoticeVO createNoticeVO) throws Exception {
-        Notice notice = NoticeVODOUtil.toNoticeDO(createNoticeVO);
+        NoticeWithBLOBs noticeWithBLOBs = NoticeVODOUtil.toNoticeDO(createNoticeVO);
         //创建用户
-        notice.setUserTel(userTel);
+        noticeWithBLOBs.setUserTel(userTel);
         //创建时间
-        notice.setNoticeCreateTime(new Date());
+        noticeWithBLOBs.setNoticeCreateTime(new Date());
         //是否创建完成
-        notice.setIsDone(true);
+        noticeWithBLOBs.setIsDone((byte) 1);
         try {
-            noticeManageMapper.insertSelective(notice);
+            noticeMapper.insertSelective(noticeWithBLOBs);
         } catch (Exception e) {
             logger.error(e.getMessage());
             throw new OperateDBException(CodeForVOEnum.DB_INSERT_FAIL, DBTableEnum.NOTICE.getTableName());
@@ -43,40 +51,96 @@ public class NoticeServiceImpl implements NoticeService {
     }
 
     @Override
-    public List<Notice> listNoticeByUserTel(String userTel) throws Exception {
-        List<Notice> notices = null;
+    public List<ListNoticeInfoVO> listNoticeByUserTel(String userTel) throws Exception {
+        List<ListNoticeInfoVO> noticeInfoVOList = new ArrayList<>();
+        List<ListNoticeDTO> noticeDTOList = null;
         try {
-            notices = noticeManageMapper.selectByUserTel(userTel);
+            noticeDTOList = noticeManageMapper.listNoticeByUserTel(userTel);
         } catch (Exception e) {
             logger.error(e.getMessage());
             throw new OperateDBException(CodeForVOEnum.UNKNOWN_ERROR, "获取公告信息出现异常!");
         }
-        return notices;
+        //查询单位名
+        String[] unitIdArray = null;
+        ListNoticeInfoVO listNoticeInfoVO = null;
+        List<String> noticeUnitNameList = null;
+        for (ListNoticeDTO listNoticeDTO : noticeDTOList) {
+            unitIdArray = listNoticeDTO.getNoticeUnitText().split("\\|\\|");
+            //拷贝公告视图中数据信息
+            listNoticeInfoVO = NoticeInfoDTO2VO(listNoticeDTO);
+            noticeUnitNameList = new ArrayList<>();
+            Unit unit = null;
+            for (String unitIdString : unitIdArray) {
+                unit = unitService.getUnitInfoByUnitId(Long.valueOf(unitIdString));
+                if (unit == null) {
+                    noticeUnitNameList.add(CONSTANT.getNoSuchUnitTip());
+                    continue;
+                }
+                noticeUnitNameList.add(unit.getUnitName());
+            }
+            listNoticeInfoVO.setNoticeUnitName(noticeUnitNameList);
+            try {
+                noticeInfoVOList.add(listNoticeInfoVO);
+            } catch (Exception e) {
+                logger.error(e.getMessage());
+            }
+        }
+        return noticeInfoVOList;
     }
 
-    @Override
-    public void deleteNotice(Long noticeId) throws Exception {
-        UserValidationUtil.checkUserValid(logger);
 
-        int deleteResult = 0;
+    @Override
+    @Transactional
+    public void deleteNotice(Long noticeId) throws Exception {
         try {
-            deleteResult = noticeManageMapper.deleteByPrimaryKey(noticeId);
+            noticeMapper.deleteByPrimaryKey(noticeId);
         } catch (Exception e) {
             logger.error(e.getMessage());
             throw new OperateDBException(CodeForVOEnum.UNKNOWN_ERROR, DBTableEnum.NOTICE.getTableName());
         }
-        if (deleteResult != 1) {
-            logger.error(CodeForVOEnum.DB_DELETE_FAIL.getMessage() + "\n" + DBTableEnum.NOTICE.getTableName());
-            throw new OperateDBException(CodeForVOEnum.DB_DELETE_FAIL, DBTableEnum.NOTICE.getTableName());
+    }
+
+    /**
+     * 组织视图数据
+     *
+     * @param listNoticeDTO
+     * @return
+     * @throws Exception
+     */
+    private ListNoticeInfoVO NoticeInfoDTO2VO(ListNoticeDTO listNoticeDTO) throws Exception {
+        ListNoticeInfoVO listNoticeInfoVO = new ListNoticeInfoVO();
+        //设置公告id
+        listNoticeInfoVO.setNoticeId(listNoticeDTO.getNoticeId());
+        //设置公告标题
+        if (listNoticeDTO.getNoticeTitle() != null) {
+            listNoticeInfoVO.setNoticeTitle(listNoticeDTO.getNoticeTitle());
         }
+        //设置公告内容
+        if (listNoticeDTO.getNoticeContext() != null) {
+            listNoticeInfoVO.setNoticeContext(listNoticeDTO.getNoticeContext());
+        }
+        //设置公告创建时间
+        if (listNoticeDTO.getNoticeCreateTime() != null) {
+            listNoticeInfoVO.setNoticeCreateTime(listNoticeDTO.getNoticeCreateTime());
+        }
+        //设置公告的发布日期
+        if (listNoticeDTO.getNoticeLaunchDate() != null) {
+            listNoticeInfoVO.setNoticeLaunchDate(listNoticeDTO.getNoticeLaunchDate());
+        }
+        return listNoticeInfoVO;
     }
 
     private NoticeManageMapper noticeManageMapper;
+    private NoticeMapper noticeMapper;
+    private UnitService unitService;
     private static final Logger logger = LoggerFactory.getLogger(NoticeServiceImpl.class);
 
     @Autowired
-    public NoticeServiceImpl(NoticeManageMapper noticeManageMapper) {
+    public NoticeServiceImpl(NoticeManageMapper noticeManageMapper,
+                             NoticeMapper noticeMapper,
+                             UnitService unitService) {
         this.noticeManageMapper = noticeManageMapper;
-
+        this.noticeMapper = noticeMapper;
+        this.unitService = unitService;
     }
 }

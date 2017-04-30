@@ -15,6 +15,8 @@ public class CONSTANT {
     private final static String USER_PICTURE_PATH = "E:\\创新实践\\uploadFiles\\user-pictures";
     /*默认头像*/
     private final static String USER_DEFAULT_PICTURE = "default.jpg";
+    /*单位变动文本提示信息*/
+    private final static String NO_SUCH_UNIT_TIP = "单位信息不存在！";
 
     public static String getUploadFilePath() {
         return UPLOAD_FILE_PATH;
@@ -34,5 +36,9 @@ public class CONSTANT {
 
     public static String getUserDefaultPicture() {
         return USER_DEFAULT_PICTURE;
+    }
+
+    public static String getNoSuchUnitTip() {
+        return NO_SUCH_UNIT_TIP;
     }
 }

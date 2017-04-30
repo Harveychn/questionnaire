@@ -1,5 +1,6 @@
 package com.questionnaire.ssm.module.notice.util;
 
+import com.questionnaire.ssm.module.generated.pojo.NoticeWithBLOBs;
 import com.questionnaire.ssm.module.global.constant.CONSTANT;
 import com.questionnaire.ssm.module.notice.pojo.CreateNoticeVO;
 import com.questionnaire.ssm.module.notice.pojo.Notice;
@@ -18,18 +19,18 @@ public class NoticeVODOUtil {
      * @return
      * @throws Exception
      */
-    public static Notice toNoticeDO(CreateNoticeVO createNoticeVO) throws Exception {
-        Notice notice = new Notice();
+    public static NoticeWithBLOBs toNoticeDO(CreateNoticeVO createNoticeVO) throws Exception {
+        NoticeWithBLOBs noticeWithBLOBs = new NoticeWithBLOBs();
         //公告标题
-        notice.setNoticeTitle(createNoticeVO.getNoticeTitle());
+        noticeWithBLOBs.setNoticeTitle(createNoticeVO.getNoticeTitle());
         //公告内容
-        notice.setNoticeContext(createNoticeVO.getNoticeContent());
+        noticeWithBLOBs.setNoticeContext(createNoticeVO.getNoticeContent());
         //公告预计发布时间
-        notice.setNoticeLaunchTime(createNoticeVO.getLaunchDate());
+        noticeWithBLOBs.setNoticeLaunchTime(createNoticeVO.getLaunchDate());
 
         List<Long> unitIdList = createNoticeVO.getUnitObjectIds();
         if (unitIdList.size() <= 0) {
-            return notice;
+            return noticeWithBLOBs;
         }
         StringBuilder unitIdString = new StringBuilder();
         for (int index = 0; index < unitIdList.size();
@@ -40,7 +41,7 @@ public class NoticeVODOUtil {
             }
         }
         //公告单位id文本
-        notice.setNoticeUnitText(unitIdString.toString());
-        return notice;
+        noticeWithBLOBs.setNoticeUnitText(unitIdString.toString());
+        return noticeWithBLOBs;
     }
 }
