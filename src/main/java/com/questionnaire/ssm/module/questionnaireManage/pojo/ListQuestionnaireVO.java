@@ -5,7 +5,6 @@ package com.questionnaire.ssm.module.questionnaireManage.pojo;
  * Description: 用户创建的问卷信息视图实体
  */
 public class ListQuestionnaireVO {
-
     /*问卷id*/
     private long questionnaireId;
     /*问卷标题*/

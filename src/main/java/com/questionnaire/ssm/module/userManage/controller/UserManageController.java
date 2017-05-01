@@ -2,40 +2,27 @@ package com.questionnaire.ssm.module.userManage.controller;
 
 import com.questionnaire.ssm.module.global.constant.CONSTANT;
 import com.questionnaire.ssm.module.global.pojo.ResponsePkt;
-import com.questionnaire.ssm.module.global.util.CheckUploadFileUtil;
 import com.questionnaire.ssm.module.global.util.ResultUtil;
-import com.questionnaire.ssm.module.userManage.pojo.CheckUploadFileDTO;
 import com.questionnaire.ssm.module.userManage.pojo.UploadResultVO;
 import com.questionnaire.ssm.module.userManage.service.UploadFileService;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.output.ByteArrayOutputStream;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 /**
  * Created by 郑晓辉 on 2017/4/16.
- * Description:
+ * Description: 用户管理，包括用户信息数据上传、单位信息上传
  */
 @Controller
 @RequestMapping("/userManage")
@@ -67,6 +54,13 @@ public class UserManageController {
         return modelAndView;
     }
 
+    /**
+     * 下载 上传模板
+     *
+     * @param templateName 要下载的模板名
+     * @param response
+     * @throws IOException
+     */
     @GetMapping("/downloadUploadTemplate")
     public void downloadUploadTemplate(String templateName, HttpServletResponse response) throws IOException {
         String fileOriginName = templateName + ".xls";
@@ -74,9 +68,6 @@ public class UserManageController {
         try {
             // path是指欲下载的文件的路径。
             File file = new File(path);
-            // 取得文件名。
-            String filename = file.getName();
-
             // 以流的形式下载文件。
             InputStream fis = new BufferedInputStream(new FileInputStream(path));
             byte[] buffer = new byte[fis.available()];
@@ -85,7 +76,6 @@ public class UserManageController {
             // 清空response
             response.reset();
             // 设置response的Header
-
             response.setCharacterEncoding("utf-8");
             response.addHeader("Content-Length", "" + file.length());
             OutputStream toClient = new BufferedOutputStream(response.getOutputStream());

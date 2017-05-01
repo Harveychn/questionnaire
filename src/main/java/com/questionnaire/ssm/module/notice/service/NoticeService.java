@@ -1,6 +1,9 @@
 package com.questionnaire.ssm.module.notice.service;
 
+import com.questionnaire.ssm.module.notice.pojo.CreateNoticeVO;
+import com.questionnaire.ssm.module.notice.pojo.ListNoticeInfoVO;
 import com.questionnaire.ssm.module.notice.pojo.Notice;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -8,9 +11,31 @@ import java.util.List;
  * Created by 95884 on 2017/4/1.
  */
 public interface NoticeService {
-    void insertNotice(Notice notice) throws Exception;
 
-    List<Notice> listNoticeByUserTel(String userTel) throws Exception;
+    /**
+     * 创建公告
+     *
+     * @param userTel
+     * @param createNoticeVO
+     * @throws Exception
+     */
+    void insertNotice(String userTel, CreateNoticeVO createNoticeVO) throws Exception;
 
-    void deleteNotice(Long noticeId)throws Exception;
+    /**
+     * 获取用户创建的公告信息
+     *
+     * @param userTel
+     * @return
+     * @throws Exception
+     */
+    List<ListNoticeInfoVO> listNoticeByUserTel(String userTel) throws Exception;
+
+    /**
+     * 根据公告ID删除公告
+     *
+     * @param noticeId
+     * @throws Exception
+     */
+    @Transactional
+    void deleteNotice(Long noticeId) throws Exception;
 }

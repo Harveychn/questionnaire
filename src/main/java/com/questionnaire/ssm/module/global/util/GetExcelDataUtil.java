@@ -1,8 +1,6 @@
 package com.questionnaire.ssm.module.global.util;
 
-import com.microsoft.schemas.office.visio.x2012.main.CellType;
 import com.questionnaire.ssm.module.userManage.pojo.ExcelDataDTO;
-import org.apache.poi.ss.util.CellReference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.apache.poi.ss.usermodel.*;
@@ -26,70 +24,77 @@ public class GetExcelDataUtil {
      * @throws Exception
      */
     public static ExcelDataDTO getValue(Workbook workbook) throws Exception {
-        DataFormatter formatter = new DataFormatter();
         Sheet currentSheet = null;
-
         Map<Integer, String> fieldNameMap = new HashMap<>();
-
-        List<Map<String, String>> valueMapList = new ArrayList<>();
         Map<String, String> valuesMap = null;
+        List<Map<String, String>> valueMapList = new ArrayList<>();
 
         for (int sheetIndex = 0; sheetIndex < workbook.getNumberOfSheets(); sheetIndex++) {
             currentSheet = workbook.getSheetAt(sheetIndex);
+            if (currentSheet == null) {
+                continue;
+            }
             for (Row row : currentSheet) {
-
+                //行数据为空
+                if (row == null) {
+                    continue;
+                }
                 valuesMap = new HashMap<>();
                 for (Cell cell : row) {
-                    CellReference cellRef = new CellReference(row.getRowNum(), cell.getColumnIndex());
-
-                    /*第一行数据 字段名 处理*/
-                    if (cellRef.getRow() == 0) {
+                    //第一行数据 字段名 处理
+                    if (row.getRowNum() == 0) {
                         fieldNameMap.put(cell.getColumnIndex(), cell.getRichStringCellValue().getString());
                         continue;
                     }
-
-                    switch (cell.getCellType()) {
-                        case CELL_TYPE_STRING:
-                            System.out.println(cell.getRichStringCellValue().getString());
-                            valuesMap.put(fieldNameMap.get(cell.getColumnIndex()), cell.getRichStringCellValue().getString());
-                            break;
-                        case CELL_TYPE_NUMERIC:
-                            if (DateUtil.isCellDateFormatted(cell)) {
-                                Date date = cell.getDateCellValue();
-                                System.out.println(date);
-                                valuesMap.put(fieldNameMap.get(cell.getColumnIndex()), date.toString());
-                            } else {
-                                System.out.println(cell.getNumericCellValue());
-                                valuesMap.put(fieldNameMap.get(cell.getColumnIndex()), String.valueOf(cell.getNumericCellValue()));
-                            }
-                            break;
-                        case CELL_TYPE_BOOLEAN:
-                            System.out.println(cell.getBooleanCellValue());
-                            valuesMap.put(fieldNameMap.get(cell.getColumnIndex()), String.valueOf(cell.getBooleanCellValue()));
-                            break;
-                        case CELL_TYPE_FORMULA:
-                            System.out.println(cell.getCellFormula());
-                            valuesMap.put(fieldNameMap.get(cell.getColumnIndex()), cell.getCellFormula());
-                            break;
-                        case CELL_TYPE_BLANK:
-                            System.out.println();
-                            valuesMap.put(fieldNameMap.get(cell.getColumnIndex()), ".");
-                            break;
-                        default:
-                            System.out.println();
-                            valuesMap.put(fieldNameMap.get(cell.getColumnIndex()), ".");
-                    }
-
-                    if (valuesMap.keySet().size() == fieldNameMap.size()) {
-                        valueMapList.add(valuesMap);
-                    }
+                    //单元格数据提取
+                    valuesMap.put(fieldNameMap.get(cell.getColumnIndex()), getCellValue(cell));
+                }
+                //一行单元格中的数据
+                if (row.getRowNum() != 0) {
+                    valueMapList.add(valuesMap);
                 }
             }
         }
+
         ExcelDataDTO excelDataDTO = new ExcelDataDTO();
         excelDataDTO.setFieldNameMap(fieldNameMap);
         excelDataDTO.setValueMapList(valueMapList);
         return excelDataDTO;
+    }
+
+    /**
+     * 获取单元格数值
+     *
+     * @param cell
+     * @return
+     */
+    private static String getCellValue(Cell cell) {
+        String cellValue = null;
+        switch (cell.getCellType()) {
+            case CELL_TYPE_STRING:
+                cellValue = cell.getRichStringCellValue().getString();
+                break;
+            case CELL_TYPE_NUMERIC:
+                if (DateUtil.isCellDateFormatted(cell)) {
+                    Date date = cell.getDateCellValue();
+                    cellValue = date.toString();
+                } else {
+                    cellValue = String.valueOf(cell.getNumericCellValue());
+                }
+                break;
+            case CELL_TYPE_BOOLEAN:
+                cellValue = String.valueOf(cell.getBooleanCellValue());
+                break;
+            case CELL_TYPE_FORMULA:
+                cellValue = cell.getCellFormula();
+                break;
+            case CELL_TYPE_BLANK:
+                cellValue = ".";
+                break;
+            default:
+                cellValue = ".";
+        }
+        return cellValue;
     }
 
     private final static Logger logger = LoggerFactory.getLogger(GetExcelDataUtil.class);

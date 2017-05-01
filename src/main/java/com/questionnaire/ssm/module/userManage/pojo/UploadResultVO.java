@@ -19,6 +19,8 @@ public class UploadResultVO<T> {
     private boolean isFileFormatError;
     /*是否文件本身错误*/
     private boolean isFileError;
+    /*错误信息*/
+    private String errorMsg;
 
     @Override
     public String toString() {
@@ -29,6 +31,7 @@ public class UploadResultVO<T> {
                 ", isFileTypeError=" + isFileTypeError +
                 ", isFileFormatError=" + isFileFormatError +
                 ", isFileError=" + isFileError +
+                ", errorMsg='" + errorMsg + '\'' +
                 '}';
     }
 
@@ -78,5 +81,13 @@ public class UploadResultVO<T> {
 
     public void setFileError(boolean fileError) {
         isFileError = fileError;
+    }
+
+    public String getErrorMsg() {
+        return errorMsg;
+    }
+
+    public void setErrorMsg(String errorMsg) {
+        this.errorMsg = errorMsg;
     }
 }

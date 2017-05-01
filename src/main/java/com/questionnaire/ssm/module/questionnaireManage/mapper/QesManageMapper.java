@@ -1,6 +1,7 @@
 package com.questionnaire.ssm.module.questionnaireManage.mapper;
 
 import com.questionnaire.ssm.module.questionnaireManage.pojo.ListQuestionnaireVO;
+import com.questionnaire.ssm.module.questionnaireManage.pojo.ListTempDelQesPaperVO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -21,4 +22,12 @@ public interface QesManageMapper {
      */
     List<ListQuestionnaireVO> listQuestionnaireInfoByUserTel(@Param("userTel") String userTel) throws Exception;
 
+    /**
+     * 查询回收站问卷
+     *
+     * @param userTel 用户账号
+     * @return
+     * @throws Exception
+     */
+    List<ListTempDelQesPaperVO> listTempDelQesPaperByUserTel(@Param("userTel") String userTel) throws Exception;
 }

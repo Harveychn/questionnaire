@@ -4,6 +4,7 @@ import com.questionnaire.ssm.module.generated.pojo.Questionnaire;
 import com.questionnaire.ssm.module.questionnaireManage.pojo.CreateQuestionnaireVO;
 import com.questionnaire.ssm.module.questionnaireManage.pojo.DisplayQuestionnaireVO;
 import com.questionnaire.ssm.module.questionnaireManage.pojo.ListQuestionnaireVO;
+import com.questionnaire.ssm.module.questionnaireManage.pojo.ListTempDelQesPaperVO;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -43,7 +44,7 @@ public interface QesManageService {
 
     /**
      * 批量操作问卷
-     * 删除、模板化
+     * 删除（恢复）、模板化
      *
      * @param questionnaireIds 批量操作问卷的id信息
      * @param questionnaire    批量操作的问卷数据
@@ -51,6 +52,8 @@ public interface QesManageService {
      */
     @Transactional
     void delOrTemplateQesByIds(List<Long> questionnaireIds, Questionnaire questionnaire) throws Exception;
+
+
 
     /**
      * 批量分享问卷
@@ -61,4 +64,13 @@ public interface QesManageService {
      */
     @Transactional
     void shareQesPaperByIds(List<Long> questionnaireIds) throws Exception;
+
+    /**
+     * 通过用户名获取回收站问卷
+     *
+     * @param userTel
+     * @return
+     * @throws Exception
+     */
+    List<ListTempDelQesPaperVO> listTempDelQesPaperByUserTel(String userTel) throws Exception;
 }
