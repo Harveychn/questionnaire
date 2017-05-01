@@ -13,6 +13,8 @@ public class ListQuestionnaireVO {
     private String questionnaireSubtitle;
     /*问卷描述*/
     private String questionnaireDescription;
+    /*问卷创建时间*/
+    private String questionnaireCreateDate;
     /*问卷是否模板*/
     private boolean isTemplate;
     /*问卷已经共享*/
@@ -27,6 +29,7 @@ public class ListQuestionnaireVO {
                 ", questionnaireTitle='" + questionnaireTitle + '\'' +
                 ", questionnaireSubtitle='" + questionnaireSubtitle + '\'' +
                 ", questionnaireDescription='" + questionnaireDescription + '\'' +
+                ", questionnaireCreateDate='" + questionnaireCreateDate + '\'' +
                 ", isTemplate=" + isTemplate +
                 ", isShare=" + isShare +
                 ", isDone=" + isDone +
@@ -63,6 +66,14 @@ public class ListQuestionnaireVO {
 
     public void setQuestionnaireDescription(String questionnaireDescription) {
         this.questionnaireDescription = questionnaireDescription;
+    }
+
+    public String getQuestionnaireCreateDate() {
+        return questionnaireCreateDate;
+    }
+
+    public void setQuestionnaireCreateDate(String questionnaireCreateDate) {
+        this.questionnaireCreateDate = questionnaireCreateDate;
     }
 
     public boolean isTemplate() {
