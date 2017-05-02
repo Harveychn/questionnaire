@@ -3,7 +3,7 @@
 <mapper namespace="com.questionnaire.ssm.module.qesTemplateManage.mapper.QesTemplateManageMapper">
 
     <resultMap id="privateTemplateInfoMap"
-               type="com.questionnaire.ssm.module.qesTemplateManage.pojo.ListPrivateTemplateInfoVO">
+               type="com.questionnaire.ssm.module.qesTemplateManage.pojo.PrivateTemplateInfoVO">
         <id property="questionnaireId" column="questionnaireId"/>
         <result property="questionnaireTitle" column="questionnaireTitle"/>
         <result property="questionnaireSubtitle" column="questionnaireSubtitle"/>
@@ -33,7 +33,7 @@
     </select>
 
     <resultMap id="publicTemplateInfoMap"
-               type="com.questionnaire.ssm.module.qesTemplateManage.pojo.ListPublicTemplateInfoVO">
+               type="com.questionnaire.ssm.module.qesTemplateManage.pojo.PublicTemplateInfoVO">
         <id property="questionnaireId" column="questionnaireId"/>
         <result property="questionnaireTitle" column="questionnaireTitle"/>
         <result property="questionnaireSubtitle" column="questionnaireSubtitle"/>

@@ -115,7 +115,7 @@ function operateFormatter(value, row, index) {
     var htmlElement = [];
     htmlElement.push('<a class="scanPaper btn btn-sm btn-link" href="javascript:void(0)" ' +
         'data-toggle="tooltip" title="查看问卷">',
-        '<i class="glyphicon glyphicon-eye-open"></i> 查看');
+        '<i class="glyphicon glyphicon-folder-open"></i> 查看');
     htmlElement.push('<a class="remove btn btn-sm btn-link" href="javascript:void(0)" ' +
         'data-toggle="tooltip" title="移除问卷">',
         '<i class="glyphicon glyphicon-remove"></i> 移除',

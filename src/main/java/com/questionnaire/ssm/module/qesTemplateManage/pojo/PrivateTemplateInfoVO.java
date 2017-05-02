@@ -7,7 +7,7 @@ import java.util.Date;
  * Created by 郑晓辉 on 2017/4/6.
  * Description: 个人模板信息
  */
-public class ListPrivateTemplateInfoVO {
+public class PrivateTemplateInfoVO {
     /*问卷ID*/
     private Long questionnaireId;
     /*问卷标题*/
@@ -21,7 +21,7 @@ public class ListPrivateTemplateInfoVO {
 
     @Override
     public String toString() {
-        return "ListPrivateTemplateInfoVO{" +
+        return "PrivateTemplateInfoVO{" +
                 "questionnaireId=" + questionnaireId +
                 ", questionnaireTitle='" + questionnaireTitle + '\'' +
                 ", questionnaireSubtitle='" + questionnaireSubtitle + '\'' +

@@ -2,61 +2,283 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>公共模板信息</title>
-    <link th:href="@{/css/bootstrap.min.css}"
-          href="/WEB-INF/statics/css/bootstrap.min.css" rel="stylesheet"/>
+    <title>公共模板管理</title>
+    <link rel="shortcut icon" href="/WEB-INF/img/favicon.ico"
+          th:href="@{/img/favicon.ico}"/>
+    <link rel="stylesheet" href="/WEB-INF/css/bootstrap.min.css"
+          th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="/WEB-INF/css/plugins/bootstrap-table/bootstrap-table.min.css"
+          th:href="@{/css/plugins/bootstrap-table/bootstrap-table.min.css}">
 </head>
 <body>
-<h1 align="center">公共模板信息</h1>
-<div align="center" th:if="${publicQesTemplateInfoVO.size()>0}">
-    <table class="table table-bordered table-responsive table-hover table-striped">
-        <thead>
-        <tr>
-            <td></td>
-            <td>序号</td>
-            <td>问卷标题</td>
-            <td>问卷副标题</td>
-            <td>问卷描述</td>
-            <td>分享人</td>
-            <td>分享时间</td>
-            <td>操作</td>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="publicQesTemplate : ${publicQesTemplateInfoVO}">
-            <td>
-                <input type="checkbox" name="templateId" th:value="${publicQesTemplate.questionnaireId}"/>
-            </td>
-            <td th:text="${publicQesTemplateStat.count}"></td>
-            <td th:text="${publicQesTemplate.questionnaireTitle}"></td>
-            <td th:text="${publicQesTemplate.questionnaireSubtitle}"></td>
-            <td th:text="${publicQesTemplate.questionnaireDescription}"></td>
-            <td th:text="${publicQesTemplate.sharedUser}"></td>
-            <td th:text="${#calendars.format(publicQesTemplate.shareDate,'yyyy-MM-dd HH:mm:ss')}"></td>
-            <td>
-                <a class="btn btn-sm btn-link"
-                   th:href="@{/questionnaireManage/displayQuestionnaire/{id}(id=${publicQesTemplate.questionnaireId})}">
-                    查看
-                </a>
-                <span th:onclick="'addOne2MyLib('+${publicQesTemplate.questionnaireId}+')'"
-                      class="btn btn-sm btn-link">添加到我的模板库</span>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-    <div id="Add2MyLibBtn" class="btn btn-info">批量添加到我的模板库</div>
-</div>
-<div align="center" th:if="${publicQesTemplateInfoVO.size()<=0}">
-    <div class="lead text-center">
-        <strong>没有</strong>公共问卷，请先共享问卷
+<div class="container">
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    公共模板
+                </div>
+            </div>
+            <div class="panel-body">
+                <!--toolbar-->
+                <div id="tableToolbar" class="btn-group hidden-xs" role="group">
+                    <button id="multiDelBtn" type="button" class="btn btn-outline btn-default">
+                        <i class="glyphicon glyphicon-floppy-remove" aria-hidden="true"> 批量删除</i>
+                    </button>
+                    <button id="multiTemplateBtn" type="button" class="btn btn-outline btn-default">
+                        <i class="glyphicon glyphicon-duplicate" aria-hidden="true">批量添加个人模板</i>
+                    </button>
+                </div>
+                <table id="recycleQesPaperTable"></table>
+            </div>
+        </div>
     </div>
 </div>
+<script src="/WEB-INF/js/jquery.min.js"
+        th:src="@{/js/jquery.min.js}"></script>
+<script src="/WEB-INF/js/bootstrap.min.js"
+        th:src="@{/js/bootstrap.min.js}"></script>
+<script src="/WEB-INF/js/plugins/bootstrap-table/bootstrap-table.min.js"
+        th:src="@{/js/plugins/bootstrap-table/bootstrap-table.min.js}"></script>
+<script src="/WEB-INF/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"
+        th:src="@{/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js}"></script>
+<script src="../../js/plugins/layer/layer.min.js"
+        th:src="@{/js/plugins/layer/layer.min.js}"></script>
+<script src="../../js/myJs/responseAnalyze.js"
+        th:src="@{/js/myJs/responseAnalyze.js}"></script>
 
-<script th:src="@{/js/jquery.min.js}" src="/WEB-INF/js/jquery.min.js"
-        type="text/javascript"></script>
-<script th:src="@{/js/myJs/responseAnalyze.js}" src="/WEB-INF/js/myJs/responseAnalyze.js"
-        type="text/javascript"></script>
-<script th:src="@{/js/myJs/templateManage.js}" src="/WEB-INF/js/myJs/templateManage.js"
-        type="text/javascript"></script>
+<script>
+    var $table = $('#recycleQesPaperTable');
+    //批量永久删除按钮
+    var $multiDelBtn = $('#multiDelBtn');
+    //批量还原
+    var $multiRestoreBtn = $('#multiRestoreBtn');
+    $(function () {
+        $table.bootstrapTable({
+            url: 'testJsonData/data_demo_1.json',
+            method: 'post',
+            dataType: 'json',
+            cache: false,
+
+            striped: true,
+//            clickToSelect: true,
+            undefinedText: '--',
+            sortName: ['questionnaireTitle', 'questionnaireSubtitle'],
+            sortOrder: 'desc',
+            height: getHeight(),
+
+            pagination: true,
+            paginationLoop: true,
+            pageList: [10, 20, 30],
+            paginationPreText: '上一页',
+            paginationNextText: '下一页',
+            sidePagination: 'client',
+
+            search: true,
+            searchAlign: 'right',
+            searchOnEnterKey: true,
+
+            toolbar: '#tableToolbar',
+
+            showColumns: true,
+            showRefresh: true,
+            showToggle: true,
+            showPaginationSwitch: true,
+
+            minimumCountColumns: 3,
+            detailView: true,
+            detailFormatter: detailFormatter,
+            columns: [{
+                checkbox: true,
+                clickToSelect: true
+            }, {
+                field: 'questionnaireId',
+                title: '问卷ID',
+                sortable: true
+            }, {
+                field: 'questionnaireTitle',
+                title: '问卷标题',
+                sortable: true
+            }, {
+                field: 'questionnaireSubtitle',
+                title: '问卷副标题',
+                sortable: true
+            }, {
+                title: '操作',
+                align: 'center',
+                events: operateEvents,
+                formatter: operateFormatter
+            }]
+        });
+    });
+
+    var restoreUrl = '/questionnaireManage/restoreMultiQuestionnaire';
+    var deleteForeverUrl = '/questionnaireManage/delForeverMultiQuestionnaire';
+    //单份处理
+    window.operateEvents = {
+        //永久删除
+        'click .remove': function (e, value, row, index) {
+            layerConfirm('确认永久删除问卷吗?', row, deleteForeverUrl);
+        },
+        //恢复问卷
+        'click .restore': function (e, value, row, index) {
+            layerConfirm("确认恢复到个人问卷库中吗?", row, restoreUrl);
+        }
+    };
+
+    //批量永久删除处理
+    $multiDelBtn.on('click', function () {
+        var ids = getIdSelections();
+        if (!checkIsSelectedOne(ids)) {
+            return;
+        }
+        layerMsg("确认永久删除问卷吗?", ids, deleteForeverUrl);
+    });
+
+    //批量恢复处理
+    $multiRestoreBtn.on('click', function () {
+        var ids = getIdSelections();
+        if (!checkIsSelectedOne(ids)) {
+            return;
+        }
+        layerMsg("确认恢复到个人问卷库中吗?", ids, restoreUrl);
+    });
+
+    /*检查是否选中一种问卷*/
+    function checkIsSelectedOne(ids) {
+        if (0 === ids.length) {
+            layer.msg('还未选择操作的问卷', {icon: 5});
+            return false;
+        }
+        return true;
+    }
+
+    /*弹窗层*/
+    function layerMsg(confirmText, ids, url) {
+        layer.confirm(confirmText, {
+                icon: 3,
+                btn: ['确定', '取消']
+            },
+            function (index) {
+                accessServer(ids, url);
+                layer.close(index);
+            },
+            function () {
+                layer.msg('取消成功！');
+            }
+        )
+    }
+
+    function layerConfirm(confirmText, row, url) {
+        layer.confirm(confirmText, {
+                icon: 3,
+                btn: ['确定', '取消']
+            },
+            function (index) {
+                var ids = [];
+                ids.push(row.questionnaireId);
+                accessServer(ids, url);
+                layer.close(index);
+            },
+            function () {
+                layer.msg('取消成功！');
+            }
+        )
+    }
+
+    /**
+     * 异步加载服务器
+     * @param questionnaireIds
+     * @param url
+     */
+    function accessServer(questionnaireIds, url) {
+        $.ajax({
+            url: url,
+            type: 'post',
+            data: {questionnaireIds: questionnaireIds},
+            dataType: 'text',
+            traditional: true,
+            success: function (data) {
+                analyzeResponse(data, url, questionnaireIds);
+            },
+            error: function () {
+                layer.msg('操作失败，出现点问题，刷新看看？', {icon: 2});
+            }
+        });
+        return true;
+    }
+
+    /**
+     * 解析回复数据包
+     * @param data
+     * @param url
+     * @param questionnaireIds
+     */
+    function analyzeResponse(data, url, questionnaireIds) {
+        var responsePkt = JSON.parse(data);
+        if (responsePkt.code === 200) {
+            switch (url) {
+                case restoreUrl: //恢复回收站问卷
+                    if (responsePkt.code === 200) {
+                        $table.bootstrapTable('remove', {
+                            field: 'questionnaireId',
+                            values: questionnaireIds
+                        });
+                        layer.msg('问卷已经恢复到问卷库中！', {icon: 1});
+                    }
+                    dealGlobalError(responsePkt);
+                    break;
+                case deleteForeverUrl://永久删除问卷
+                    if (responsePkt.code === 200) {
+                        $table.bootstrapTable('remove', {
+                            field: 'questionnaireId',
+                            values: questionnaireIds
+                        });
+                        layer.msg('问卷已经永久删除！', {icon: 1});
+                    }
+                    dealGlobalError(responsePkt);
+                    break;
+                default:
+                    return;
+            }
+        }
+    }
+
+    //获取批量选中的id
+    function getIdSelections() {
+        return $.map($table.bootstrapTable('getSelections'), function (row) {
+            return row.questionnaireId;
+        });
+    }
+
+    //操作按钮格式设置
+    function operateFormatter(value, row, index) {
+        return [
+            '<a class="scanPaper btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="查看问卷">',
+            '<i class="glyphicon glyphicon-level-up"></i> 查看',
+            '<a class="remove btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="删除问卷">',
+            '<i class="glyphicon glyphicon-remove"></i> 删除',
+            '</a>',
+            '<a class="usePaper btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="分享问卷">',
+            '<i class="glyphicon glyphicon-export"></i> 引用',
+            '</a>',
+            '<a class="add2MyLib btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="模板化问卷">',
+            '<i class="glyphicon glyphicon-log-in"></i> 添加个人模板',
+            '</a>'
+        ].join('');
+    }
+
+    //详细信息格式
+    function detailFormatter(index, row) {
+        var html = [];
+        html.push('<p><i>问卷描述:</i> ' + row.questionnaireDescription + '</p>');
+        return html.join('');
+    }
+
+    //获取屏幕高度
+    function getHeight() {
+        return $(window).height() - $('.panel-body').outerHeight(true);
+    }
+</script>
 </body>
 </html>

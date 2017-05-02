@@ -3,8 +3,8 @@ package com.questionnaire.ssm.module.qesTemplateManage.service.impl;
 import com.questionnaire.ssm.module.generated.pojo.Questionnaire;
 import com.questionnaire.ssm.module.global.service.Add2LibraryService;
 import com.questionnaire.ssm.module.qesTemplateManage.mapper.QesTemplateManageMapper;
-import com.questionnaire.ssm.module.qesTemplateManage.pojo.ListPrivateTemplateInfoVO;
-import com.questionnaire.ssm.module.qesTemplateManage.pojo.ListPublicTemplateInfoVO;
+import com.questionnaire.ssm.module.qesTemplateManage.pojo.PrivateTemplateInfoVO;
+import com.questionnaire.ssm.module.qesTemplateManage.pojo.PublicTemplateInfoVO;
 import com.questionnaire.ssm.module.qesTemplateManage.service.QesTemplateManageService;
 import com.questionnaire.ssm.module.questionnaireManage.util.OperateQuestionnaireUtil;
 import org.slf4j.Logger;
@@ -30,7 +30,7 @@ public class QesTemplateManageServiceImpl implements QesTemplateManageService {
      * @throws Exception
      */
     @Override
-    public List<ListPrivateTemplateInfoVO> listPrivateTemplate(String userTel) throws Exception {
+    public List<PrivateTemplateInfoVO> listPrivateTemplate(String userTel) throws Exception {
         return qesTemplateManageMapper.listPrivateTemplateInfo(userTel);
     }
 
@@ -41,7 +41,7 @@ public class QesTemplateManageServiceImpl implements QesTemplateManageService {
      * @throws Exception
      */
     @Override
-    public List<ListPublicTemplateInfoVO> listPublicTemplate() throws Exception {
+    public List<PublicTemplateInfoVO> listPublicTemplate() throws Exception {
         return qesTemplateManageMapper.listPublicTemplateInfo();
     }
 

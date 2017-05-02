@@ -87,8 +87,8 @@ window.operateEvents = {
         //查看公告处理
         // layer.msg('未开放功能！', {icon: 4});
         var unitString = '';
-        for (var index = 0; index < row.noticeUnitName.length; index++) {
-            unitString += '[' + row.noticeUnitName + ']';
+        for (var i = 0; i < row.noticeUnitName.length; i++) {
+            unitString += '[' + row.noticeUnitName[i] + ']';
         }
         layer.open({
             type: 1,

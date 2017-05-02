@@ -6,7 +6,7 @@ import java.util.Date;
  * Created by 郑晓辉 on 2017/4/2.
  * Description: 展示公共模板信息的视图实体类
  */
-public class ListPublicTemplateInfoVO {
+public class PublicTemplateInfoVO {
     /*问卷ID*/
     private Long questionnaireId;
     /*问卷标题*/
@@ -24,7 +24,7 @@ public class ListPublicTemplateInfoVO {
 
     @Override
     public String toString() {
-        return "ListPublicTemplateInfoVO{" +
+        return "PublicTemplateInfoVO{" +
                 "questionnaireId=" + questionnaireId +
                 ", questionnaireTitle='" + questionnaireTitle + '\'' +
                 ", questionnaireSubtitle='" + questionnaireSubtitle + '\'' +

@@ -29,9 +29,12 @@ public class QesTemplateManageController {
     public ModelAndView getQesTemplateView() throws Exception {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("qesTemplateManage/listPrivateTemplate");
-        modelAndView.addObject("privateQesTemplateInfoVO",
-                qesTemplateManageService.listPrivateTemplate(UserValidationUtil.getUserTel(logger)));
         return modelAndView;
+    }
+
+    @GetMapping(value = "/getMyTemplateInfo")
+    public void getMyTemplateInfo()throws Exception{
+        qesTemplateManageService.listPrivateTemplate(UserValidationUtil.getUserTel(logger));
     }
 
     /**
@@ -44,9 +47,12 @@ public class QesTemplateManageController {
     public ModelAndView getPublicTemplateView() throws Exception {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("qesTemplateManage/listPublicTemplate");
-        modelAndView.addObject("publicQesTemplateInfoVO",
-                qesTemplateManageService.listPublicTemplate());
         return modelAndView;
+    }
+
+    @GetMapping(value = "/getPublicTemplateInfo")
+    public void getPublicTemplateInfo() throws Exception {
+        qesTemplateManageService.listPublicTemplate();
     }
 
     /**
