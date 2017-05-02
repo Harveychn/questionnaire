@@ -12,8 +12,8 @@
     <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->
     <!--Windows 可以使用类似：D:/log-->
     <!--Linux 可以使用类似：/opt/tomcat/logs-->
-    <!--<property name="LOG_HOME" value="E:\\创新实践\\uploadFiles\\serverLog"/>-->
-    <property name="LOG_HOME" value="C:\\Program Files\\Apache Software Foundation\\logFiles"/>
+    <property name="LOG_HOME" value="E:\\创新实践\\uploadFiles\\serverLog"/>
+    <!--<property name="LOG_HOME" value="C:\\Program Files\\Apache Software Foundation\\logFiles"/>-->
     <!--======================================================-->
 
 
