@@ -23,6 +23,12 @@ import java.util.List;
 @RequestMapping(value = "/researchManage")
 public class ResearchController {
 
+    /**
+     * 获取创建调查视图
+     *
+     * @return
+     * @throws Exception
+     */
     @GetMapping(value = "/createResearchView")
     public ModelAndView createResearchView() throws Exception {
         ModelAndView modelAndView = new ModelAndView();
@@ -30,6 +36,12 @@ public class ResearchController {
         return modelAndView;
     }
 
+    /**
+     * 获取可发布的问卷信息
+     *
+     * @return
+     * @throws Exception
+     */
     @PostMapping(value = "/listQuestionnaireInfo")
     @ResponseBody
     public List<QuestionnaireInfoVO> listQuestionnaireInfo() throws Exception {
@@ -37,6 +49,13 @@ public class ResearchController {
         return researchService.listQesInfoByUserTel(userTel);
     }
 
+    /**
+     * 创建调查任务
+     *
+     * @param createResearchMissionVO
+     * @return
+     * @throws Exception
+     */
     @PostMapping(value = "/createResearchMission")
     @ResponseBody
     public ResponsePkt createResearchMission(@RequestBody CreateResearchMissionVO createResearchMissionVO) throws Exception {

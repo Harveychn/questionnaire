@@ -8,12 +8,8 @@ import com.questionnaire.ssm.module.global.enums.CodeForVOEnum;
 import com.questionnaire.ssm.module.global.enums.DBTableEnum;
 import com.questionnaire.ssm.module.global.exception.OperateDBException;
 import com.questionnaire.ssm.module.global.service.UnitService;
-import com.questionnaire.ssm.module.global.util.UserValidationUtil;
 import com.questionnaire.ssm.module.notice.mapper.NoticeManageMapper;
-import com.questionnaire.ssm.module.notice.pojo.CreateNoticeVO;
-import com.questionnaire.ssm.module.notice.pojo.ListNoticeDTO;
-import com.questionnaire.ssm.module.notice.pojo.ListNoticeInfoVO;
-import com.questionnaire.ssm.module.notice.pojo.Notice;
+import com.questionnaire.ssm.module.notice.pojo.*;
 import com.questionnaire.ssm.module.notice.service.NoticeService;
 import com.questionnaire.ssm.module.notice.util.NoticeVODOUtil;
 import org.slf4j.Logger;
@@ -51,9 +47,9 @@ public class NoticeServiceImpl implements NoticeService {
     }
 
     @Override
-    public List<ListNoticeInfoVO> listNoticeByUserTel(String userTel) throws Exception {
-        List<ListNoticeInfoVO> noticeInfoVOList = new ArrayList<>();
-        List<ListNoticeDTO> noticeDTOList = null;
+    public List<ListMyNoticeInfoVO> listNoticeByUserTel(String userTel) throws Exception {
+        List<ListMyNoticeInfoVO> noticeInfoVOList = new ArrayList<>();
+        List<ListMyNoticeDTO> noticeDTOList = null;
         try {
             noticeDTOList = noticeManageMapper.listNoticeByUserTel(userTel);
         } catch (Exception e) {
@@ -62,12 +58,12 @@ public class NoticeServiceImpl implements NoticeService {
         }
         //查询单位名
         String[] unitIdArray = null;
-        ListNoticeInfoVO listNoticeInfoVO = null;
+        ListMyNoticeInfoVO listMyNoticeInfoVO = null;
         List<String> noticeUnitNameList = null;
-        for (ListNoticeDTO listNoticeDTO : noticeDTOList) {
-            unitIdArray = listNoticeDTO.getNoticeUnitText().split("\\|\\|");
+        for (ListMyNoticeDTO listMyNoticeDTO : noticeDTOList) {
+            unitIdArray = listMyNoticeDTO.getNoticeUnitText().split("\\|\\|");
             //拷贝公告视图中数据信息
-            listNoticeInfoVO = NoticeInfoDTO2VO(listNoticeDTO);
+            listMyNoticeInfoVO = NoticeInfoDTO2VO(listMyNoticeDTO);
             noticeUnitNameList = new ArrayList<>();
             Unit unit = null;
             for (String unitIdString : unitIdArray) {
@@ -78,14 +74,55 @@ public class NoticeServiceImpl implements NoticeService {
                 }
                 noticeUnitNameList.add(unit.getUnitName());
             }
-            listNoticeInfoVO.setNoticeUnitName(noticeUnitNameList);
+            listMyNoticeInfoVO.setNoticeUnitName(noticeUnitNameList);
             try {
-                noticeInfoVOList.add(listNoticeInfoVO);
+                noticeInfoVOList.add(listMyNoticeInfoVO);
             } catch (Exception e) {
                 logger.error(e.getMessage());
             }
         }
         return noticeInfoVOList;
+    }
+
+
+    /**
+     * 获取用户可见公告信息
+     *
+     * @param userTel
+     * @return
+     * @throws Exception
+     */
+    @Override
+    public List<NoticeForSurveyorVO> listNoticeInfoForSurveyor(String userTel) throws Exception {
+        //全部发布中公告信息
+        List<NoticeForSurveyorDTO> noticeForSurveyorDTOList = noticeManageMapper.listNoticeInfoForSurveyor();
+        if(noticeForSurveyorDTOList.size()<=0){
+            return null;
+        }
+        //用户所在单位ID
+        Long userUnitId = unitService.getUnitIdByUserTel(userTel);
+        List<NoticeForSurveyorVO> noticeForSurveyorVOList = new ArrayList<>();
+        String[] noticeObjUnitIds = null;
+        NoticeForSurveyorVO noticeForSurveyorVO = null;
+        //筛选用户可见公告信息
+        for (NoticeForSurveyorDTO noticeForSurveyorDTO : noticeForSurveyorDTOList) {
+            noticeObjUnitIds = noticeForSurveyorDTO.getObjectUnitText().split("\\|\\|");
+            for (String noticeObj : noticeObjUnitIds) {
+                if (Long.valueOf(noticeObj).equals(userUnitId)) {
+                    noticeForSurveyorVO = new NoticeForSurveyorVO();
+
+                    noticeForSurveyorVO.setNoticeId(noticeForSurveyorDTO.getNoticeId());
+                    noticeForSurveyorVO.setNoticeTitle(noticeForSurveyorDTO.getNoticeTitle());
+                    noticeForSurveyorVO.setNoticeContent(noticeForSurveyorDTO.getNoticeContent());
+                    noticeForSurveyorVO.setNoticeLaunchDate(noticeForSurveyorDTO.getNoticeLaunchDate());
+                    noticeForSurveyorVO.setCreateUnit(noticeForSurveyorDTO.getCreateUnit());
+
+                    noticeForSurveyorVOList.add(noticeForSurveyorVO);
+                    break;
+                }
+            }
+        }
+        return noticeForSurveyorVOList;
     }
 
 
@@ -103,31 +140,31 @@ public class NoticeServiceImpl implements NoticeService {
     /**
      * 组织视图数据
      *
-     * @param listNoticeDTO
+     * @param listMyNoticeDTO
      * @return
      * @throws Exception
      */
-    private ListNoticeInfoVO NoticeInfoDTO2VO(ListNoticeDTO listNoticeDTO) throws Exception {
-        ListNoticeInfoVO listNoticeInfoVO = new ListNoticeInfoVO();
+    private ListMyNoticeInfoVO NoticeInfoDTO2VO(ListMyNoticeDTO listMyNoticeDTO) throws Exception {
+        ListMyNoticeInfoVO listMyNoticeInfoVO = new ListMyNoticeInfoVO();
         //设置公告id
-        listNoticeInfoVO.setNoticeId(listNoticeDTO.getNoticeId());
+        listMyNoticeInfoVO.setNoticeId(listMyNoticeDTO.getNoticeId());
         //设置公告标题
-        if (listNoticeDTO.getNoticeTitle() != null) {
-            listNoticeInfoVO.setNoticeTitle(listNoticeDTO.getNoticeTitle());
+        if (listMyNoticeDTO.getNoticeTitle() != null) {
+            listMyNoticeInfoVO.setNoticeTitle(listMyNoticeDTO.getNoticeTitle());
         }
         //设置公告内容
-        if (listNoticeDTO.getNoticeContext() != null) {
-            listNoticeInfoVO.setNoticeContext(listNoticeDTO.getNoticeContext());
+        if (listMyNoticeDTO.getNoticeContext() != null) {
+            listMyNoticeInfoVO.setNoticeContext(listMyNoticeDTO.getNoticeContext());
         }
         //设置公告创建时间
-        if (listNoticeDTO.getNoticeCreateTime() != null) {
-            listNoticeInfoVO.setNoticeCreateTime(listNoticeDTO.getNoticeCreateTime());
+        if (listMyNoticeDTO.getNoticeCreateTime() != null) {
+            listMyNoticeInfoVO.setNoticeCreateTime(listMyNoticeDTO.getNoticeCreateTime());
         }
         //设置公告的发布日期
-        if (listNoticeDTO.getNoticeLaunchDate() != null) {
-            listNoticeInfoVO.setNoticeLaunchDate(listNoticeDTO.getNoticeLaunchDate());
+        if (listMyNoticeDTO.getNoticeLaunchDate() != null) {
+            listMyNoticeInfoVO.setNoticeLaunchDate(listMyNoticeDTO.getNoticeLaunchDate());
         }
-        return listNoticeInfoVO;
+        return listMyNoticeInfoVO;
     }
 
     private NoticeManageMapper noticeManageMapper;

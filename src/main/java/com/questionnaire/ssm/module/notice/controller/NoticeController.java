@@ -5,8 +5,7 @@ import com.questionnaire.ssm.module.global.pojo.ResponsePkt;
 import com.questionnaire.ssm.module.global.util.ResultUtil;
 import com.questionnaire.ssm.module.global.util.UserValidationUtil;
 import com.questionnaire.ssm.module.notice.pojo.CreateNoticeVO;
-import com.questionnaire.ssm.module.notice.pojo.ListNoticeInfoVO;
-import com.questionnaire.ssm.module.notice.pojo.Notice;
+import com.questionnaire.ssm.module.notice.pojo.ListMyNoticeInfoVO;
 import com.questionnaire.ssm.module.notice.service.NoticeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,7 +32,6 @@ public class NoticeController {
     @GetMapping(value = "/getCreateNotice")
     public ModelAndView getCreateNotice() throws Exception {
         ModelAndView modelAndView = new ModelAndView();
-//        modelAndView.addObject("notice", new Notice());
         modelAndView.setViewName("notice/createNotice");
         return modelAndView;
     }
@@ -73,7 +71,7 @@ public class NoticeController {
      */
     @PostMapping(value = "/listMyNotice")
     @ResponseBody
-    public List<ListNoticeInfoVO> listNotice() throws Exception {
+    public List<ListMyNoticeInfoVO> listNotice() throws Exception {
         String userTel = UserValidationUtil.getUserTel(logger);
         return noticeService.listNoticeByUserTel(userTel);
     }
