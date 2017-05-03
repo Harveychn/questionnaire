@@ -16,7 +16,7 @@
         q.questionnaire_title AS questionnaireTitle,
         q.questionnaire_subtitle AS questionnaireSubtitle,
         q.questionnaire_description AS questionnaireDescription,
-        q.create_time AS templateDate
+        DATE_FORMAT(q.create_time,'%Y-%m-%d %H:%i:%s') AS templateDate
         FROM
         questionnaire AS q
         <where>
@@ -51,7 +51,7 @@
             q.questionnaire_description AS questionnaireDescription,
             q.is_done AS isDone,
             q.create_user AS sharedUser,
-            q.create_time AS shareDate
+            DATE_FORMAT(q.create_time,'%Y-%m-%d %H:%i:%s') AS shareDate
         FROM
             questionnaire AS q
         WHERE

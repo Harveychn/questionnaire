@@ -22,14 +22,18 @@
             <div class="panel-body">
                 <!--toolbar-->
                 <div id="tableToolbar" class="btn-group hidden-xs" role="group">
-                    <button id="multiDelBtn" type="button" class="btn btn-outline btn-default">
+                    <button id="multiDelBtn" type="button" class="btn btn-outline btn-default"
+                            data-toggle="tooltip"
+                            title="批量删除模板">
                         <i class="glyphicon glyphicon-floppy-remove" aria-hidden="true"> 批量删除</i>
                     </button>
-                    <button id="multiTemplateBtn" type="button" class="btn btn-outline btn-default">
+                    <button id="multiAdd2PrivateLibBtn" type="button" class="btn btn-outline btn-default"
+                            data-toggle="tooltip"
+                            title="批量添加模板到个人模板库">
                         <i class="glyphicon glyphicon-duplicate" aria-hidden="true">批量添加个人模板</i>
                     </button>
                 </div>
-                <table id="recycleQesPaperTable"></table>
+                <table id="publicTemplateInfoTable"></table>
             </div>
         </div>
     </div>
@@ -48,22 +52,30 @@
         th:src="@{/js/myJs/responseAnalyze.js}"></script>
 
 <script>
-    var $table = $('#recycleQesPaperTable');
     //批量永久删除按钮
     var $multiDelBtn = $('#multiDelBtn');
-    //批量还原
-    var $multiRestoreBtn = $('#multiRestoreBtn');
+    //批量添加到公共模板
+    var $multiAdd2PrivateLibBtn = $('#multiAdd2PrivateLibBtn');
+
+    var $table = $('#publicTemplateInfoTable');
+    //表格数据获取地址
+    var tableDataUrl = '/qesTemplateManage/getPublicTemplateInfo';
+    var getDataMethod = 'get';
+
+    var restoreUrl = '/qesTemplateManage/restoreMultiQuestionnaire';
+    var deleteForeverUrl = '/questionnaireManage/delForeverMultiQuestionnaire';
+
     $(function () {
         $table.bootstrapTable({
-            url: 'testJsonData/data_demo_1.json',
-            method: 'post',
+            url: tableDataUrl,
+            method: getDataMethod,
             dataType: 'json',
             cache: false,
 
             striped: true,
 //            clickToSelect: true,
             undefinedText: '--',
-            sortName: ['questionnaireTitle', 'questionnaireSubtitle'],
+            sortName: ['questionnaireTitle', 'questionnaireSubtitle', 'sharedUser', 'shareDate'],
             sortOrder: 'desc',
             height: getHeight(),
 
@@ -85,7 +97,7 @@
             showToggle: true,
             showPaginationSwitch: true,
 
-            minimumCountColumns: 3,
+            minimumCountColumns: 2,
             detailView: true,
             detailFormatter: detailFormatter,
             columns: [{
@@ -93,15 +105,24 @@
                 clickToSelect: true
             }, {
                 field: 'questionnaireId',
-                title: '问卷ID',
+                title: '模板编号',
                 sortable: true
             }, {
                 field: 'questionnaireTitle',
-                title: '问卷标题',
+                title: '模板标题',
+                sortable: true
+            }, {
+                field: 'sharedUser',
+                title: '共享人',
+                sortable: true
+            }, {
+                field: 'shareDate',
+                title: '分享日期',
                 sortable: true
             }, {
                 field: 'questionnaireSubtitle',
-                title: '问卷副标题',
+                title: '模板副标题',
+                visible: false,
                 sortable: true
             }, {
                 title: '操作',
@@ -112,19 +133,44 @@
         });
     });
 
-    var restoreUrl = '/questionnaireManage/restoreMultiQuestionnaire';
-    var deleteForeverUrl = '/questionnaireManage/delForeverMultiQuestionnaire';
     //单份处理
     window.operateEvents = {
-        //永久删除
-        'click .remove': function (e, value, row, index) {
-            layerConfirm('确认永久删除问卷吗?', row, deleteForeverUrl);
+        //查看模板
+        'click .scanPaper': function (e, value, row, index) {
+            layer.msg('模块未发布', {icon: 4});
         },
-        //恢复问卷
-        'click .restore': function (e, value, row, index) {
-            layerConfirm("确认恢复到个人问卷库中吗?", row, restoreUrl);
+        //删除模板
+        'click .remove': function (e, value, row, index) {
+            layer.msg('模块未发布', {icon: 4});
+//            layerConfirmSingle('确认移除模板吗?', row, delTemporaryUrl);
+        },
+        //引用模板
+        'click .usePaper': function (e, value, row, index) {
+            layer.msg('模块未发布', {icon: 4});
+        },
+        //添加公共模板
+        'click .add2PrivateLib': function (e, value, row, index) {
+            layer.msg('模块未发布', {icon: 4});
+//            layerConfirmSingle('确认共享个人模板到公共模板库？', row, shareUrl);
         }
     };
+
+    //操作按钮格式设置
+    function operateFormatter(value, row, index) {
+        return [
+            '<a class="scanPaper btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="查看模板">',
+            '<i class="glyphicon glyphicon-level-up"></i> 查看',
+            '<a class="remove btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="删除模板">',
+            '<i class="glyphicon glyphicon-remove"></i> 删除',
+            '</a>',
+            '<a class="usePaper btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="引用模板">',
+            '<i class="glyphicon glyphicon-export"></i> 引用',
+            '</a>',
+            '<a class="add2PrivateLib btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="添加到个人模板库">',
+            '<i class="glyphicon glyphicon-log-in"></i> 添加个人模板',
+            '</a>'
+        ].join('');
+    }
 
     //批量永久删除处理
     $multiDelBtn.on('click', function () {
@@ -132,22 +178,23 @@
         if (!checkIsSelectedOne(ids)) {
             return;
         }
-        layerMsg("确认永久删除问卷吗?", ids, deleteForeverUrl);
+        layer.msg('模块未发布', {icon: 4});
+//        layerMsg("确认永久删除模板吗?", ids, deleteForeverUrl);
     });
 
-    //批量恢复处理
-    $multiRestoreBtn.on('click', function () {
+    //批量添加到个人模板库
+    $multiAdd2PrivateLibBtn.on('click', function () {
         var ids = getIdSelections();
         if (!checkIsSelectedOne(ids)) {
             return;
         }
-        layerMsg("确认恢复到个人问卷库中吗?", ids, restoreUrl);
+        layer.msg('模块未发布', {icon: 4});
     });
 
-    /*检查是否选中一种问卷*/
+    /*检查是否选中一种模板*/
     function checkIsSelectedOne(ids) {
         if (0 === ids.length) {
-            layer.msg('还未选择操作的问卷', {icon: 5});
+            layer.msg('还未选择操作的模板', {icon: 5});
             return false;
         }
         return true;
@@ -218,23 +265,23 @@
         var responsePkt = JSON.parse(data);
         if (responsePkt.code === 200) {
             switch (url) {
-                case restoreUrl: //恢复回收站问卷
+                case restoreUrl: //恢复回收站模板
                     if (responsePkt.code === 200) {
                         $table.bootstrapTable('remove', {
                             field: 'questionnaireId',
                             values: questionnaireIds
                         });
-                        layer.msg('问卷已经恢复到问卷库中！', {icon: 1});
+                        layer.msg('模板已经恢复到模板库中！', {icon: 1});
                     }
                     dealGlobalError(responsePkt);
                     break;
-                case deleteForeverUrl://永久删除问卷
+                case deleteForeverUrl://永久删除模板
                     if (responsePkt.code === 200) {
                         $table.bootstrapTable('remove', {
                             field: 'questionnaireId',
                             values: questionnaireIds
                         });
-                        layer.msg('问卷已经永久删除！', {icon: 1});
+                        layer.msg('模板已经永久删除！', {icon: 1});
                     }
                     dealGlobalError(responsePkt);
                     break;
@@ -251,27 +298,12 @@
         });
     }
 
-    //操作按钮格式设置
-    function operateFormatter(value, row, index) {
-        return [
-            '<a class="scanPaper btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="查看问卷">',
-            '<i class="glyphicon glyphicon-level-up"></i> 查看',
-            '<a class="remove btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="删除问卷">',
-            '<i class="glyphicon glyphicon-remove"></i> 删除',
-            '</a>',
-            '<a class="usePaper btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="分享问卷">',
-            '<i class="glyphicon glyphicon-export"></i> 引用',
-            '</a>',
-            '<a class="add2MyLib btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="模板化问卷">',
-            '<i class="glyphicon glyphicon-log-in"></i> 添加个人模板',
-            '</a>'
-        ].join('');
-    }
-
     //详细信息格式
     function detailFormatter(index, row) {
         var html = [];
-        html.push('<p><i>问卷描述:</i> ' + row.questionnaireDescription + '</p>');
+        html.push('<p><i>模板编号:</i> ' + row.questionnaireId + '</p>');
+        html.push('<p><i>模板标题:</i> ' + row.questionnaireTitle + '</p>');
+        html.push('<p><i>模板描述:</i> ' + row.questionnaireDescription + '</p>');
         return html.join('');
     }
 
