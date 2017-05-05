@@ -1,5 +1,6 @@
 package com.questionnaire.ssm.module.questionnaireManage.util;
 
+import com.questionnaire.ssm.module.generated.pojo.AnswerDetail;
 import com.questionnaire.ssm.module.generated.pojo.QuestionWithBLOBs;
 import com.questionnaire.ssm.module.generated.pojo.Questionnaire;
 import com.questionnaire.ssm.module.global.enums.CodeForVOEnum;
@@ -7,6 +8,7 @@ import com.questionnaire.ssm.module.global.exception.UserValidaException;
 import com.questionnaire.ssm.module.global.util.UserValidationUtil;
 import com.questionnaire.ssm.module.questionnaireManage.enums.QuestionTypeEnum;
 import com.questionnaire.ssm.module.questionnaireManage.pojo.*;
+import com.questionnaire.ssm.module.researchManage.pojo.AnswerDetailVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -143,13 +145,31 @@ public class QesManageVODOUtil {
     }
 
     /**
+     * 获取答案详细数据库实体类
+     *
+     * @param answerDetailVO 视图中答案详细实体
+     * @return
+     * @throws Exception
+     */
+    public static AnswerDetail toAnswerDetailDO(AnswerDetailVO answerDetailVO) throws Exception {
+        AnswerDetail answerDetail = new AnswerDetail();
+        answerDetail.setQuestionId(answerDetailVO.getQuestionId());
+        //获取汉字形式文本的数据库表示值
+        String questionCode = parse2DOQuestionType(answerDetailVO.getQuestionType());
+        if (answerDetailVO.getAnswer().size() > 0) {
+            answerDetail.setAnswerString(toAnswerString(answerDetailVO.getAnswer(), questionCode));
+        }
+        return answerDetail;
+    }
+
+    /**
      * 将数据库中的问题类型代码转化为 汉字表达形式
      *
      * @param typeCode
      * @return
      * @throws Exception
      */
-    protected static String parse2VOQuestionType(String typeCode) throws Exception {
+    private static String parse2VOQuestionType(String typeCode) throws Exception {
         typeCode = typeCode.trim();
         if (QuestionTypeEnum.SINGLE_LINE_BLANK.getCode().equals(typeCode)) {
             return QuestionTypeEnum.SINGLE_LINE_BLANK.getQuestionType();
@@ -182,7 +202,7 @@ public class QesManageVODOUtil {
      * @return
      * @throws Exception
      */
-    protected static String parse2DOQuestionType(String typeString) throws Exception {
+    private static String parse2DOQuestionType(String typeString) throws Exception {
         typeString = typeString.trim();
         if (QuestionTypeEnum.SINGLE_LINE_BLANK.getQuestionType().equals(typeString)) {
             return QuestionTypeEnum.SINGLE_LINE_BLANK.getCode();
@@ -216,11 +236,40 @@ public class QesManageVODOUtil {
      * @return
      * @throws Exception
      */
-    protected static String toOptionsString(List<QuestionOptionVO> optionVOList, String questionTypeCode) throws Exception {
+    private static String toOptionsString(List<QuestionOptionVO> optionVOList, String questionTypeCode) throws Exception {
         int optionSize = optionVOList.size();
         StringBuilder optionStrBuilder = new StringBuilder();
         for (int optionOrder = 0; optionOrder < optionSize; optionOrder++) {
             optionStrBuilder.append(optionVOList.get(optionOrder).getOption());
+            if (optionSize != optionOrder + 1) {
+                //需要根据题目类型采用不同的切割符号
+                if (questionTypeCode.equals(QuestionTypeEnum.SINGLE_CHOICE.getCode())
+                        || questionTypeCode.equals(QuestionTypeEnum.MULTIPLE_CHOICE.getCode())
+                        || questionTypeCode.equals(QuestionTypeEnum.SINGLE_LINE_BLANK.getCode())
+                        || questionTypeCode.equals(QuestionTypeEnum.MULTI_LINE_BLANK.getCode())
+                        || questionTypeCode.equals(QuestionTypeEnum.DROP_SELECTION.getCode())
+                        || questionTypeCode.equals(QuestionTypeEnum.PICTURE_SINGLE_SELECTION.getCode())
+                        || questionTypeCode.equals(QuestionTypeEnum.PICTURE_MULTIPLE_SELECTION.getCode())) {
+                    optionStrBuilder.append(QuestionTypeEnum.SINGLE_CHOICE.getDivideStr());
+                }
+            }
+        }
+        return optionStrBuilder.toString();
+    }
+
+    /**
+     * 将答卷中的答案装为 答案String类型
+     *
+     * @param answerVOStringList "视图"中答卷答案文本
+     * @param questionTypeCode   数据库中问题类型编码
+     * @return
+     * @throws Exception
+     */
+    private static String toAnswerString(List<String> answerVOStringList, String questionTypeCode) throws Exception {
+        int optionSize = answerVOStringList.size();
+        StringBuilder optionStrBuilder = new StringBuilder();
+        for (int optionOrder = 0; optionOrder < optionSize; optionOrder++) {
+            optionStrBuilder.append(answerVOStringList.get(optionOrder));
             if (optionSize != optionOrder + 1) {
                 //需要根据题目类型采用不同的切割符号
                 if (questionTypeCode.equals(QuestionTypeEnum.SINGLE_CHOICE.getCode())
