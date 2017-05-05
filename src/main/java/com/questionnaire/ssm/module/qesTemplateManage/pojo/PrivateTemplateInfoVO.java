@@ -17,7 +17,7 @@ public class PrivateTemplateInfoVO {
     /*问卷描述*/
     private String questionnaireDescription;
     /*模板添加日期*/
-    private Date addDate;
+    private String addDate;
 
     @Override
     public String toString() {
@@ -62,11 +62,11 @@ public class PrivateTemplateInfoVO {
         this.questionnaireDescription = questionnaireDescription;
     }
 
-    public Date getAddDate() {
+    public String getAddDate() {
         return addDate;
     }
 
-    public void setAddDate(Date addDate) {
+    public void setAddDate(String addDate) {
         this.addDate = addDate;
     }
 }

@@ -1,7 +1,5 @@
 package com.questionnaire.ssm.module.qesTemplateManage.pojo;
 
-import java.util.Date;
-
 /**
  * Created by 郑晓辉 on 2017/4/2.
  * Description: 展示公共模板信息的视图实体类
@@ -20,7 +18,7 @@ public class PublicTemplateInfoVO {
     /*分享用户真实姓名*/
     private String sharedUser;
     /*分享日期*/
-    private Date shareDate;
+    private String shareDate;
 
     @Override
     public String toString() {
@@ -83,11 +81,11 @@ public class PublicTemplateInfoVO {
         this.sharedUser = sharedUser;
     }
 
-    public Date getShareDate() {
+    public String getShareDate() {
         return shareDate;
     }
 
-    public void setShareDate(Date shareDate) {
+    public void setShareDate(String shareDate) {
         this.shareDate = shareDate;
     }
 }
