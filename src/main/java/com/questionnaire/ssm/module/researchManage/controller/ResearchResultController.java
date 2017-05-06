@@ -5,14 +5,13 @@ import com.questionnaire.ssm.module.global.util.ResultUtil;
 import com.questionnaire.ssm.module.global.util.UserValidationUtil;
 import com.questionnaire.ssm.module.researchManage.pojo.AnswerPaperVO;
 import com.questionnaire.ssm.module.researchManage.service.ResearchResultService;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 

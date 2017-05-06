@@ -61,8 +61,8 @@ public class ResearchResultServiceImpl implements ResearchResultService {
                 for (AnswerDetailVO currentAnswerDetailVO : currentAnswerDetailVOList) {
                     //答卷id未设置
                     answerDetail = QesManageVODOUtil.toAnswerDetailDO(currentAnswerDetailVO);
+                    answerDetailDOList.add(answerDetail);
                 }
-                answerDetailDOList.add(answerDetail);
             }
         }
 
