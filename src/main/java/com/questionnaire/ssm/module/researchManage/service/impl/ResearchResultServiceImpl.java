@@ -16,9 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by 郑晓辉 on 2017/5/3.
@@ -31,12 +29,15 @@ public class ResearchResultServiceImpl implements ResearchResultService {
     @Transactional
     public int multiSubmitAnswerPaper(String userTel, List<AnswerPaperVO> answerPaperVOList) throws Exception {
         List<AnswerPaper> answerPaperDOList = new ArrayList<>();
-        List<AnswerDetail> answerDetailDOList = new ArrayList<>();
+        List<AnswerDetail> curPaperDetailDOList = new ArrayList<>();
+        Map<Integer, List<AnswerDetail>> answerDetailDOMap = new HashMap<>();
         AnswerPaper answerPaper = null;
         AnswerDetail answerDetail = null;
 
         List<AnswerDetailVO> currentAnswerDetailVOList = null;
-        for (AnswerPaperVO currentAnswerPaperVO : answerPaperVOList) {
+        AnswerPaperVO currentAnswerPaperVO = null;
+        for (int i = 0; i < answerPaperVOList.size(); i++) {
+            currentAnswerPaperVO = answerPaperVOList.get(i);
             answerPaper = new AnswerPaper();
             //转移VO数据到DO类
             //设置提交时间
@@ -61,14 +62,16 @@ public class ResearchResultServiceImpl implements ResearchResultService {
                 for (AnswerDetailVO currentAnswerDetailVO : currentAnswerDetailVOList) {
                     //答卷id未设置
                     answerDetail = QesManageVODOUtil.toAnswerDetailDO(currentAnswerDetailVO);
-                    answerDetailDOList.add(answerDetail);
+                    curPaperDetailDOList.add(answerDetail);
                 }
+                answerDetailDOMap.put(i, curPaperDetailDOList);
             }
         }
 
         //批量插入数据到answerPaper
+        int operateSuccessCount = 0;
         try {
-            researchResultMapper.insert2AnswerPaperBatch(answerPaperDOList);
+            operateSuccessCount = researchResultMapper.insert2AnswerPaperBatch(answerPaperDOList);
         } catch (Exception e) {
             logger.error(e.getMessage());
             throw new OperateDBException(CodeForVOEnum.DB_INSERT_FAIL, "上传答卷失败!（插入信息到答卷表失败）");
@@ -76,22 +79,23 @@ public class ResearchResultServiceImpl implements ResearchResultService {
 
         //批量插入数据到answerPaperDetail
         AnswerPaper answerPaperWithId = null;
-        AnswerDetail answerDetailWithoutId = null;
+        List<AnswerDetail> answerDetailsWithoutAnswerPaperId = null;
         for (int i = 0; i < answerPaperDOList.size(); i++) {
             answerPaperWithId = answerPaperDOList.get(i);
-            answerDetailWithoutId = answerDetailDOList.get(i);
-            //设置答卷id到答卷详细信息
-            answerDetailWithoutId.setAnswerPaperId(answerPaperWithId.getAnswerPaperId());
+            answerDetailsWithoutAnswerPaperId = answerDetailDOMap.get(i);
+            for (AnswerDetail currentDetail : answerDetailsWithoutAnswerPaperId) {
+                currentDetail.setAnswerPaperId(answerPaperWithId.getAnswerPaperId());
+            }
         }
 
-        int operateSuccessCount = 0;
-        try {
-            operateSuccessCount = researchResultMapper.insert2AnswerDetailBatch(answerDetailDOList);
-        } catch (Exception e) {
-            logger.error(e.getMessage());
-            throw new OperateDBException(CodeForVOEnum.DB_INSERT_FAIL, "上传答卷失败!（插入信息到答卷详细信息表失败）");
+        for (Integer index : answerDetailDOMap.keySet()) {
+            try {
+                researchResultMapper.insert2AnswerDetailBatch(answerDetailDOMap.get(index));
+            } catch (Exception e) {
+                logger.error(e.getMessage());
+                throw new OperateDBException(CodeForVOEnum.DB_INSERT_FAIL, "上传答卷失败!（插入信息到答卷详细信息表失败）");
+            }
         }
-
         return operateSuccessCount;
     }
 
