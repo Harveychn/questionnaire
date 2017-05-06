@@ -129,7 +129,9 @@ public class UserValidationUtil {
      */
     public static String getUserTel(Logger logger) throws Exception {
         checkUserValid(logger);
-        return (String) SecurityUtils.getSubject().getSession().getAttribute("userTel");
+        Subject subject = SecurityUtils.getSubject();
+        return (String) subject.getPrincipal();
+//        return (String) SecurityUtils.getSubject().getSession().getAttribute("userTel");
     }
 
     /**
