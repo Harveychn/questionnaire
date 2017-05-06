@@ -1,6 +1,7 @@
 package com.questionnaire.ssm.module.global.service.impl;
 
 import com.questionnaire.ssm.module.generated.mapper.UnitMapper;
+import com.questionnaire.ssm.module.generated.mapper.UserMapper;
 import com.questionnaire.ssm.module.generated.pojo.Unit;
 import com.questionnaire.ssm.module.global.mapper.UnitInfoMapper;
 import com.questionnaire.ssm.module.global.pojo.UnitInfoVO;
@@ -31,6 +32,7 @@ public class UnitServiceImpl implements UnitService {
         return unitMapper.selectByPrimaryKey(unitId);
     }
 
+
     /**
      * 获取unitInfo List
      *
@@ -42,13 +44,29 @@ public class UnitServiceImpl implements UnitService {
         return unitInfoMapper.listUnitInfo();
     }
 
+    /**
+     * 根据用户账户获取用户单位id
+     *
+     * @param userTel
+     * @return
+     * @throws Exception
+     */
+    @Override
+    public Long getUnitIdByUserTel(String userTel) throws Exception {
+        return userMapper.selectByPrimaryKey(userTel).getUnitId();
+    }
+
     private final static Logger logger = LoggerFactory.getLogger(UnitServiceImpl.class);
     private UnitMapper unitMapper;
     private UnitInfoMapper unitInfoMapper;
+    private UserMapper userMapper;
 
     @Autowired
-    public UnitServiceImpl(UnitMapper unitMapper, UnitInfoMapper unitInfoMapper) {
+    public UnitServiceImpl(UnitMapper unitMapper,
+                           UnitInfoMapper unitInfoMapper,
+                           UserMapper userMapper) {
         this.unitMapper = unitMapper;
         this.unitInfoMapper = unitInfoMapper;
+        this.userMapper = userMapper;
     }
 }

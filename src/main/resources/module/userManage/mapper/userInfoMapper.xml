@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.questionnaire.ssm.module.userManage.mapper.UserInfoMapper">
+    <select id="selectUserInfoByUserTel" parameterType="String"
+            resultType="com.questionnaire.ssm.module.userManage.pojo.MyInfoVO">
+		SELECT
+			u.user_real_name AS userRealName,
+			r.role AS userRole,
+			ut.unit_name AS workingUnit,
+			u.user_tel AS userTel,
+			u.user_sex AS userSex,
+			u.user_birthday AS userBirthday,
+			u.ID AS userID,
+			u.mail_address AS mailAddress
+		FROM
+			`user` AS u,
+			role AS r,
+			unit AS ut
+		WHERE
+			u.user_tel = #{userTel}
+		AND u.role_id = r.role_id
+		AND ut.unit_id = u.unit_id
+    </select>
+
+	<resultMap id="selectSurveyorInfoByUserTelMap" type="com.questionnaire.ssm.module.userManage.pojo.SurveyorInfoVO">
+		<id property="userTel" column="userTel"/>
+		<result property="userRealName" column="userRealName"/>
+		<result property="userUnit" column="userUnit"/>
+		<result property="picAddress" column="picAddress"/>
+	</resultMap>
+
+    <select id="selectSurveyorInfoByUserTel" parameterType="String"
+            resultMap="selectSurveyorInfoByUserTelMap">
+		SELECT
+			u.user_tel AS userTel,
+			u.user_real_name AS userRealName,
+			ut.unit_name AS userUnit,
+			u.user_pic_url AS picAddress
+		FROM
+			`user` AS u,
+			unit AS ut
+		WHERE
+			u.user_tel = #{userTel}
+		AND ut.unit_id = u.unit_id
+    </select>
+</mapper>

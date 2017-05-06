@@ -1,12 +1,13 @@
 package com.questionnaire.ssm.module.qesTemplateManage.pojo;
 
+
 import java.util.Date;
 
 /**
- * Created by 郑晓辉 on 2017/4/2.
- * Description: 展示公共模板信息的视图实体类
+ * Created by 郑晓辉 on 2017/4/6.
+ * Description: 个人模板信息
  */
-public class ListPublicTemplateInfoVO {
+public class PrivateTemplateInfoVO {
     /*问卷ID*/
     private Long questionnaireId;
     /*问卷标题*/
@@ -15,23 +16,17 @@ public class ListPublicTemplateInfoVO {
     private String questionnaireSubtitle;
     /*问卷描述*/
     private String questionnaireDescription;
-    /*是否已经完成*/
-    private boolean isDone;
-    /*分享用户真实姓名*/
-    private String sharedUser;
-    /*分享日期*/
-    private Date shareDate;
+    /*模板添加日期*/
+    private String addDate;
 
     @Override
     public String toString() {
-        return "ListPublicTemplateInfoVO{" +
+        return "PrivateTemplateInfoVO{" +
                 "questionnaireId=" + questionnaireId +
                 ", questionnaireTitle='" + questionnaireTitle + '\'' +
                 ", questionnaireSubtitle='" + questionnaireSubtitle + '\'' +
                 ", questionnaireDescription='" + questionnaireDescription + '\'' +
-                ", isDone=" + isDone +
-                ", sharedUser='" + sharedUser + '\'' +
-                ", shareDate=" + shareDate +
+                ", addDate=" + addDate +
                 '}';
     }
 
@@ -59,14 +54,6 @@ public class ListPublicTemplateInfoVO {
         this.questionnaireSubtitle = questionnaireSubtitle;
     }
 
-    public boolean isDone() {
-        return isDone;
-    }
-
-    public void setDone(boolean done) {
-        isDone = done;
-    }
-
     public String getQuestionnaireDescription() {
         return questionnaireDescription;
     }
@@ -75,19 +62,11 @@ public class ListPublicTemplateInfoVO {
         this.questionnaireDescription = questionnaireDescription;
     }
 
-    public String getSharedUser() {
-        return sharedUser;
+    public String getAddDate() {
+        return addDate;
     }
 
-    public void setSharedUser(String sharedUser) {
-        this.sharedUser = sharedUser;
-    }
-
-    public Date getShareDate() {
-        return shareDate;
-    }
-
-    public void setShareDate(Date shareDate) {
-        this.shareDate = shareDate;
+    public void setAddDate(String addDate) {
+        this.addDate = addDate;
     }
 }

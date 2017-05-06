@@ -121,5 +121,13 @@
 
     <!-- ############################################ servlet end  ############################################ -->
 
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/error-page/404.jsp</location>
+    </error-page>
 
+    <error-page>
+        <error-code>500</error-code>
+        <location>/WEB-INF/error-page/500.jsp</location>
+    </error-page>
 </web-app>

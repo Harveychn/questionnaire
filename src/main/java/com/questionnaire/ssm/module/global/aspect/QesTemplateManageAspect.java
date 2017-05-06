@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class QesTemplateManageAspect {
 
-    @Pointcut("execution(public * com.questionnaire.ssm.module.qesTemplateManage.controller.QesTemplateManageController.*(..))")
+    @Pointcut("execution(public * com.questionnaire.ssm.module.qesTemplateManage.controller.QesTemplateRestController.*(..))")
     public void qesTemplateManagePointcut() {
 
     }

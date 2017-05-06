@@ -3,7 +3,6 @@ package com.questionnaire.ssm.module.notice.util;
 import com.questionnaire.ssm.module.generated.pojo.NoticeWithBLOBs;
 import com.questionnaire.ssm.module.global.constant.CONSTANT;
 import com.questionnaire.ssm.module.notice.pojo.CreateNoticeVO;
-import com.questionnaire.ssm.module.notice.pojo.Notice;
 
 import java.util.List;
 

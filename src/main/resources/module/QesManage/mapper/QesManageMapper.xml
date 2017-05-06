@@ -2,24 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.questionnaire.ssm.module.questionnaireManage.mapper.QesManageMapper">
 
-    <resultMap id="listQuestionnaireVOMap"
-               type="com.questionnaire.ssm.module.questionnaireManage.pojo.ListQuestionnaireVO">
-        <id column="questionnaire_id" property="questionnaireId"/>
-        <result column="questionnaire_title" property="questionnaireTitle"/>
-        <result column="questionnaire_subtitle" property="questionnaireSubtitle"/>
-        <result column="questionnaire_description" property="questionnaireDescription"/>
-        <result column="is_template" property="isTemplate"/>
-        <result column="is_share" property="isShare"/>
-        <result column="is_done" property="isDone"/>
-    </resultMap>
-
     <select id="listQuestionnaireInfoByUserTel" parameterType="String"
-            resultMap="listQuestionnaireVOMap">
+            resultType="com.questionnaire.ssm.module.questionnaireManage.pojo.ListQuestionnaireVO">
         SELECT
         q.questionnaire_id AS questionnaireId,
         q.questionnaire_title AS questionnaireTitle,
         q.questionnaire_subtitle AS questionnaireSubtitle,
         q.questionnaire_description AS questionnaireDescription,
+        DATE_FORMAT(q.create_time,'%Y-%m-%d %H:%i:%s') AS questionnaireCreateDate,
         q.is_template AS isTemplate,
         q.is_share AS isShare,
         q.is_done AS isDone

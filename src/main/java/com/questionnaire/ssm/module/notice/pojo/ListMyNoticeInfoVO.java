@@ -1,10 +1,12 @@
 package com.questionnaire.ssm.module.notice.pojo;
 
+import java.util.List;
+
 /**
  * Created by 郑晓辉 on 2017/4/30.
- * Description:
+ * Description: 展示用户创建的公告信息视图实体类
  */
-public class ListNoticeDTO {
+public class ListMyNoticeInfoVO {
     //公告ID
     private Long noticeId;
     //公告标题
@@ -13,20 +15,20 @@ public class ListNoticeDTO {
     private String noticeContext;
     //公告创建时间
     private String noticeCreateTime;
-    //公告发布状态
+    //公告发布日期
     private String noticeLaunchDate;
     //公告对象单位名
-    private String noticeUnitText;
+    private List<String> noticeUnitName;
 
     @Override
     public String toString() {
-        return "ListNoticeDTO{" +
+        return "ListMyNoticeInfoVO{" +
                 "noticeId=" + noticeId +
                 ", noticeTitle='" + noticeTitle + '\'' +
                 ", noticeContext='" + noticeContext + '\'' +
                 ", noticeCreateTime='" + noticeCreateTime + '\'' +
                 ", noticeLaunchDate='" + noticeLaunchDate + '\'' +
-                ", noticeUnitText='" + noticeUnitText + '\'' +
+                ", noticeUnitName=" + noticeUnitName +
                 '}';
     }
 
@@ -70,11 +72,11 @@ public class ListNoticeDTO {
         this.noticeLaunchDate = noticeLaunchDate;
     }
 
-    public String getNoticeUnitText() {
-        return noticeUnitText;
+    public List<String> getNoticeUnitName() {
+        return noticeUnitName;
     }
 
-    public void setNoticeUnitText(String noticeUnitText) {
-        this.noticeUnitText = noticeUnitText;
+    public void setNoticeUnitName(List<String> noticeUnitName) {
+        this.noticeUnitName = noticeUnitName;
     }
 }

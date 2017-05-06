@@ -1,7 +1,7 @@
 package com.questionnaire.ssm.module.qesTemplateManage.service;
 
-import com.questionnaire.ssm.module.qesTemplateManage.pojo.ListPrivateTemplateInfoVO;
-import com.questionnaire.ssm.module.qesTemplateManage.pojo.ListPublicTemplateInfoVO;
+import com.questionnaire.ssm.module.qesTemplateManage.pojo.PrivateTemplateInfoVO;
+import com.questionnaire.ssm.module.qesTemplateManage.pojo.PublicTemplateInfoVO;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -19,7 +19,7 @@ public interface QesTemplateManageService {
      * @return
      * @throws Exception
      */
-    List<ListPrivateTemplateInfoVO> listPrivateTemplate(String userTel) throws Exception;
+    List<PrivateTemplateInfoVO> listPrivateTemplate(String userTel) throws Exception;
 
     /**
      * 获取公共模板
@@ -27,7 +27,7 @@ public interface QesTemplateManageService {
      * @return
      * @throws Exception
      */
-    List<ListPublicTemplateInfoVO> listPublicTemplate() throws Exception;
+    List<PublicTemplateInfoVO> listPublicTemplate() throws Exception;
 
     /**
      * 添加问卷模板到我的问卷模板库

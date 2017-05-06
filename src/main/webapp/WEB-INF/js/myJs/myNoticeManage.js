@@ -85,7 +85,30 @@ window.operateEvents = {
     //查看公告
     'click .scanNotice': function (e, value, row, index) {
         //查看公告处理
-        layer.msg('未开放功能！', {icon: 4});
+        // layer.msg('未开放功能！', {icon: 4});
+        var unitString = '';
+        for (var i = 0; i < row.noticeUnitName.length; i++) {
+            unitString += '[' + row.noticeUnitName[i] + ']';
+        }
+        layer.open({
+            type: 1,
+            title: false, //不显示标题栏
+            closeBtn: false,
+            area: 'auto',
+            shade: 0.8,
+            id: 'noticeItemLayer', //设定一个id，防止重复弹出
+            resize: false,
+            btn: ['知道了'],
+            btnAlign: 'c',
+            moveType: 1, //拖拽模式，0或者1
+            content: '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;">' +
+            '<i>公告标题：</i>' + row.noticeTitle +
+            '<br><i>公告内容：</i>' + row.noticeContext +
+            '<br><i>预计发布时间：</i>' + row.noticeLaunchDate +
+            '<br><i>发布对象单位：</i>' + unitString +
+            '</div>'
+        });
+
     }
 };
 

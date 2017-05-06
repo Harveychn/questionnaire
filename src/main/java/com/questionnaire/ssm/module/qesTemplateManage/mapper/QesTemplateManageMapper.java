@@ -1,7 +1,7 @@
 package com.questionnaire.ssm.module.qesTemplateManage.mapper;
 
-import com.questionnaire.ssm.module.qesTemplateManage.pojo.ListPrivateTemplateInfoVO;
-import com.questionnaire.ssm.module.qesTemplateManage.pojo.ListPublicTemplateInfoVO;
+import com.questionnaire.ssm.module.qesTemplateManage.pojo.PrivateTemplateInfoVO;
+import com.questionnaire.ssm.module.qesTemplateManage.pojo.PublicTemplateInfoVO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -19,7 +19,7 @@ public interface QesTemplateManageMapper {
      * @return
      * @throws Exception
      */
-    List<ListPrivateTemplateInfoVO> listPrivateTemplateInfo(@Param("userTel") String userTel) throws Exception;
+    List<PrivateTemplateInfoVO> listPrivateTemplateInfo(@Param("userTel") String userTel) throws Exception;
 
     /**
      * 获取公共模板信息
@@ -27,5 +27,5 @@ public interface QesTemplateManageMapper {
      * @return
      * @throws Exception
      */
-    List<ListPublicTemplateInfoVO> listPublicTemplateInfo() throws Exception;
+    List<PublicTemplateInfoVO> listPublicTemplateInfo() throws Exception;
 }
