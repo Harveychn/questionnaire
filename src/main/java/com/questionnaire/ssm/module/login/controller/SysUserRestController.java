@@ -46,6 +46,7 @@ public class SysUserRestController {
             return ResultUtil.error(CodeForVOEnum.VALIDA_FAIL.getCode(), CodeForVOEnum.VALIDA_FAIL.getMessage());
         }
         subject.getSession().setAttribute("userTel", loginVO.getUserTel());
+        request.getSession().setAttribute("userTel", loginVO.getUserTel());
         return ResultUtil.success();
     }
 

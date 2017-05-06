@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.questionnaire.ssm.module.researchManage.mapper.ResearchResultMapper">
+    <insert id="insert2AnswerPaperBatch" useGeneratedKeys="true" keyProperty="answerPaperId">
+        INSERT INTO answer_paper (
+        questionnaire_id,
+        submit_user_tel,
+        mission_id,
+        longitude,
+        latitude,
+        fill_answer_time,
+        submit_time,
+        is_submit
+        )
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+            (
+            #{item.questionnaireId},
+            #{item.submitUserTel},
+            #{item.missionId},
+            #{item.longitude},
+            #{item.latitude},
+            #{item.fillAnswerTime},
+            #{item.submitTime},
+            #{item.isSubmit}
+            )
+        </foreach>
+    </insert>
+
+    <insert id="insert2AnswerDetailBatch" useGeneratedKeys="true" keyProperty="recordId">
+        INSERT INTO answer_detail (
+        question_id,
+        answer_paper_id,
+        answer_string
+        )
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+            (
+            #{item.questionId},
+            #{item.answerPaperId},
+            #{item.answerString}
+            )
+        </foreach>
+    </insert>
+</mapper>

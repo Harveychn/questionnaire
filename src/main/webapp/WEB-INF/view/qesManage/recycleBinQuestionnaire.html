@@ -9,7 +9,6 @@
           th:href="@{/css/bootstrap.min.css}">
     <link rel="stylesheet" href="/WEB-INF/css/plugins/bootstrap-table/bootstrap-table.min.css"
           th:href="@{/css/plugins/bootstrap-table/bootstrap-table.min.css}">
-
 </head>
 <body>
 <div class="container">
@@ -23,14 +22,11 @@
             <div class="panel-body">
                 <!--toolbar-->
                 <div id="tableToolbar" class="btn-group hidden-xs" role="group">
-                    <button id="multiTemplateBtn" type="button" class="btn btn-outline btn-default">
-                        <i class="glyphicon glyphicon-briefcase" aria-hidden="true">批量模板</i>
-                    </button>
                     <button id="multiDelBtn" type="button" class="btn btn-outline btn-default">
-                        <i class="glyphicon glyphicon-trash" aria-hidden="true">批量删除</i>
+                        <i class="glyphicon glyphicon-floppy-remove" aria-hidden="true"> 批量删除</i>
                     </button>
-                    <button id="multiShareBtn" type="button" class="btn btn-outline btn-default">
-                        <i class="glyphicon glyphicon-share" aria-hidden="true">批量共享</i>
+                    <button id="multiRestoreBtn" type="button" class="btn btn-default">
+                        <i class="glyphicon glyphicon-retweet" aria-hidden="true"> 批量恢复</i>
                     </button>
                 </div>
                 <table id="recycleQesPaperTable"></table>
@@ -38,7 +34,6 @@
         </div>
     </div>
 </div>
-
 <script src="/WEB-INF/js/jquery.min.js"
         th:src="@{/js/jquery.min.js}"></script>
 <script src="/WEB-INF/js/bootstrap.min.js"
@@ -47,64 +42,11 @@
         th:src="@{/js/plugins/bootstrap-table/bootstrap-table.min.js}"></script>
 <script src="/WEB-INF/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"
         th:src="@{/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js}"></script>
-
-<script>
-    $(function () {
-//        $.ajax({
-//            url: '/questionnaireManage/listTemporaryDeleteQesPaper',
-//            type: 'post',
-//            dataType: 'JSON',
-//            success: function (data) {
-//                console.log(data);
-//            }
-//        });
-    });
-    $('#recycleQesPaperTable').bootstrapTable({
-        url: '/questionnaireManage/listTemporaryDeleteQesPaper',
-        method: 'post',
-        dataType: 'json',
-        cache: false,
-
-        striped: true,
-        clickToSelect: true,
-        undefinedText: '--',
-
-        sortOrder: 'desc',
-        pagination: true,
-        paginationLoop: true,
-        pageList: [10, 20, 30],
-        paginationPreText: '上一页',
-        paginationNextText: '下一页',
-
-        sidePagination: 'client',
-        search: true,
-        searchAlign: 'right',
-        searchOnEnterKey: true,
-
-        toolbar: '#tableToolbar',
-        showColumns: true,
-        showRefresh: true,
-        showToggle: true,
-        minimumCountColumns: 3,
-        detailView: true,
-        columns: [{
-            checkbox: true,
-            clickToSelect: true
-        }, {
-            field: 'questionnaireId',
-            title: '问卷ID'
-        }, {
-            field: 'questionnaireTitle',
-            title: '问卷标题',
-            sortable: true
-        }, {
-            field: 'questionnaireSubtitle',
-            title: '问卷副标题'
-        }, {
-            field: 'questionnaireDescription',
-            title: '问卷描述'
-        }]
-    });
-</script>
+<script src="../../js/plugins/layer/layer.min.js"
+        th:src="@{/js/plugins/layer/layer.min.js}"></script>
+<script src="../../js/myJs/responseAnalyze.js"
+        th:src="@{/js/myJs/responseAnalyze.js}"></script>
+<script src="../../js/myJs/recycleQesManage.js"
+        th:src="@{/js/myJs/recycleQesManage.js}"></script>
 </body>
 </html>

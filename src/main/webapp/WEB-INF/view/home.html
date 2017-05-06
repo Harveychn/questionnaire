@@ -1,11 +1,240 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>首页</title>
+    <meta name="keywords" content="后台管理">
+    <meta name="description" content="后台管理">
+
+    <link rel="shortcut icon" href="/WEB-INF/img/favicon.ico"
+          th:href="@{/img/favicon.ico}"/>
+    <link href="/WEB-INF/css/bootstrap.min.css" rel="stylesheet"
+          th:href="@{/css/bootstrap.min.css}">
+    <link href="/WEB-INF/css/font-awesome.min.css" rel="stylesheet"
+          th:href="@{/css/font-awesome.min.css}">
+    <link rel="stylesheet" href="/WEB-INF/js/plugins/layui/css/layui.css"
+          th:href="@{/js/plugins/layui/css/layui.css}">
+    <link href="/WEB-INF/css/animate.css" rel="stylesheet"
+          th:href="@{/css/animate.css}">
+    <link href="/WEB-INF/css/style.css" rel="stylesheet"
+          th:href="@{/css/style.css}">
+
+    <style>
+        .agile-detail {
+            margin-top: 5px;
+            font-size: 20px;
+        }
+    </style>
 </head>
 <body>
-<h1 align="center">首页</h1>
-<a href="/researchManage/listResearchMission">listResearchMission测试</a>
+<div class="wrapper wrapper-content">
+    <div class="row">
+
+        <div class="panel-body  col-sm-4" style="padding-bottom: 0px">
+            <div class="panel panel-success">
+                <div class="panel-heading">最新公告
+
+                </div>
+                <div class="panel-body">
+                    <ul class="sortable-list connectList agile-list">
+
+                        <li class="info-element">
+                            <div class="agile-detail">
+                                <a href="#" class="pull-right btn btn-success">点击查看详情</a>
+
+                                <div class="panel-title">2015.09.10</div>
+                            </div>
+                            <div class="panel-info">公告内容简介</div>
+
+
+                        </li>
+                        <li class="danger-element">
+                            <div class="agile-detail">
+                                <a href="#" class="pull-right btn btn-success">点击查看详情</a>
+                                <div class="panel-title">2015.09.10</div>
+                            </div>
+                            <div class="panel-info">公告内容简介</div>
+
+                        </li>
+                        <li class="info-element">
+                            <div class="agile-detail">
+                                <a href="#" class="pull-right btn btn-success">点击查看详情</a>
+                                <div class="panel-title">2015.09.10</div>
+                            </div>
+                            <div class="panel-info">公告内容简介</div>
+
+                        </li>
+                        <li class="danger-element">
+                            <div class="agile-detail">
+                                <a href="#" class="pull-right btn btn-success">点击查看详情</a>
+                                <div class="panel-title">2015.09.10</div>
+                            </div>
+                            <div class="panel-info">公告内容简介</div>
+                        </li>
+
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="panel-body  col-sm-4" style="padding-bottom: 0px">
+            <div class="panel panel-primary">
+                <div class="panel-heading">问卷进度（指创建的问卷）
+
+                </div>
+                <div class="panel-body timeline">
+                    <div class="timeline-item">
+                        <div class="row">
+                            <div class="col-xs-3 date">
+                                <i class="fa fa-file-text"></i> 6:00
+                                <br>
+                                <small class="text-navy">2017/04/30</small>
+                            </div>
+                            <div class="col-xs-7 content no-top-border">
+                                <p class="m-b-xs"><strong>疟疾调查</strong>
+                                    <small class="m-r-n-xl"><a class="pull-right" href="#"> 查看所有数据</a></small>
+                                </p>
+
+                                <p>创建中</p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="row">
+                            <div class="col-xs-3 date">
+                                <i class="fa fa-file-text"></i> 7:00
+                                <br>
+                                <small class="text-navy">2017/04/30</small>
+                            </div>
+                            <div class="col-xs-7 content">
+                                <p class="m-b-xs"><strong>寄生虫问卷</strong>
+                                    <small class="m-r-n-xl"><a class="pull-right" href="#"> 查看所有数据</a></small>
+                                </p>
+                                <p>创建中</p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="row">
+                            <div class="col-xs-3 date">
+                                <i class="fa fa-file-text"></i> 8:00
+                                <br>
+                                <small class="text-navy">2017/04/30</small>
+                            </div>
+                            <div class="col-xs-7 content">
+                                <p class="m-b-xs"><strong>其他疾病</strong>
+                                    <small class="m-r-n-xl"><a class="pull-right" href="#"> 查看所有数据</a></small>
+                                </p>
+                                <p>
+                                    创建中
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="row">
+                            <div class="col-xs-3 date">
+                                <i class="fa fa-file-text"></i> 11:00
+                                <br>
+                                <small class="text-navy">2017/04/30</small>
+                            </div>
+                            <div class="col-xs-7 content">
+                                <p class="m-b-xs"><strong>xxx疾病</strong>
+                                    <small class="m-r-n-xl"><a class="pull-right" href="#"> 查看所有数据</a></small>
+                                </p>
+                                <p>
+                                    创建中
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="panel-body  col-sm-4" style="padding-bottom: 0px">
+            <div class="panel panel-success">
+                <div class="panel-heading">数据报告
+
+                </div>
+                <div class="panel-body">
+
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <div class="panel-title">问卷名</div>
+                            <br>
+
+                            <!--问卷收集进度条-->
+                            <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                                <div class="layui-progress-bar layui-bg-blue" lay-percent="50%"></div>
+                            </div>
+                            <br>
+
+                            <small class="m-r"><a class="pull-right btn btn-success" href="#"> 查看所有数据</a></small>
+                            <small class="block text-muted"><i class="fa fa-clock-o"></i>时间</small>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="panel-title">问卷名</div>
+                            <br>
+
+                            <!--问卷收集进度条-->
+                            <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                                <div class="layui-progress-bar layui-bg-blue" lay-percent="10%"></div>
+                            </div>
+                            <br>
+
+                            <small class="m-r"><a class="pull-right btn btn-success" href="#"> 查看所有数据</a></small>
+                            <small class="block text-muted"><i class="fa fa-clock-o"></i>时间</small>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="panel-title">问卷名</div>
+                            <br>
+
+                            <!--问卷收集进度条-->
+                            <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                                <div class="layui-progress-bar layui-bg-blue" lay-percent="30%"></div>
+                            </div>
+                            <br>
+
+                            <small class="m-r"><a class="pull-right btn btn-success" href="#"> 查看所有数据</a></small>
+                            <small class="block text-muted"><i class="fa fa-clock-o"></i>时间</small>
+                        </li>
+
+
+                    </ul>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+<script src="/WEB-INF/js/jquery.min.js"
+        th:src="@{/js/jquery.min.js}"></script>
+<script src="/WEB-INF/js/bootstrap.min.js"
+        th:src="@{/js/bootstrap.min.js}"></script>
+<script src="/WEB-INF/js/plugins/layui/layui.js"
+        th:src="@{/js/plugins/layui/layui.js}"></script>
+<script>
+    //注意进度条依赖 element 模块，否则无法进行正常渲染和功能性操作
+    layui.use('element', function () {
+        var element = layui.element();
+    });
+</script>
 </body>
 </html>

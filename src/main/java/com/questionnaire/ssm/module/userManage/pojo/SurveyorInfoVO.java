@@ -1,10 +1,10 @@
-package com.questionnaire.ssm.module.login.pojo;
+package com.questionnaire.ssm.module.userManage.pojo;
 
 /**
  * Created by 郑晓辉 on 2017/4/26.
- * Description: 用户信息vo实体类
+ * Description: 调查员信息vo实体类
  */
-public class UserInfoVO {
+public class SurveyorInfoVO {
     //用户名
     private String userTel;
     //用户真实姓名
@@ -16,7 +16,7 @@ public class UserInfoVO {
 
     @Override
     public String toString() {
-        return "UserInfoVO{" +
+        return "SurveyorInfoVO{" +
                 "userTel='" + userTel + '\'' +
                 ", userRealName='" + userRealName + '\'' +
                 ", userUnit='" + userUnit + '\'' +

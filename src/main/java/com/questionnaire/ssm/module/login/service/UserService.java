@@ -1,7 +1,6 @@
 package com.questionnaire.ssm.module.login.service;
 
 import com.questionnaire.ssm.module.login.pojo.NewPasswordVO;
-import com.questionnaire.ssm.module.login.pojo.UserInfoVO;
 
 /**
  * Created by 郑晓辉 on 2017/3/20.
@@ -15,13 +14,4 @@ public interface UserService {
      * @throws Exception
      */
     void updateUserPassword(NewPasswordVO newPasswordVO) throws Exception;
-
-    /**
-     * 根据用户名获取用户信息
-     *
-     * @param userTel
-     * @return
-     * @throws Exception
-     */
-    UserInfoVO getUserInfoByUserTel(String userTel) throws Exception;
 }

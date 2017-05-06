@@ -102,13 +102,21 @@
                         <li><a class="J_menuItem" href="/questionnaireManage/getCreateView"
                                th:href="@{/questionnaireManage/getCreateView}">创建问卷</a>
                         </li>
-                        <li><a class="J_menuItem" href="/questionnaireManage/listMyQuestionnaire"
-                               th:href="@{/questionnaireManage/listMyQuestionnaire}">查看问卷</a>
+                        <li><a class="J_menuItem" href="/questionnaireManage/getListMyQesPaperView"
+                               th:href="@{/questionnaireManage/getListMyQesPaperView}">查看问卷</a>
                         </li>
                         <li><a class="J_menuItem" href="/questionnaireManage/temporaryDeleteQesPaperView"
                                th:href="@{/questionnaireManage/temporaryDeleteQesPaperView}">删除问卷</a>
                         </li>
-                        <li><a class="J_menuItem" href="模板管理.html">模板管理</a>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="glyphicon glyphicon-inbox"></i>
+                        <span class="nav-label">模板管理</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li><a class="J_menuItem" href="/qesTemplateManage/getQesTemplateView">个人模板</a>
+                        </li>
+                        <li><a class="J_menuItem" href="/qesTemplateManage/getPublicTemplateView">公共模板</a>
                         </li>
                     </ul>
                 </li>
@@ -131,7 +139,7 @@
                     </a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a class="J_menuItem" href="/notice/listMyNotice">查看公告</a>
+                            <a class="J_menuItem" href="/notice/getMyNoticeView">查看公告</a>
                         </li>
                         <li>
                             <a class="J_menuItem" href="/notice/getCreateNotice">创建公告</a>
@@ -226,7 +234,7 @@
                 </h3>
             </div>
             <div class="sidebar-title">
-                <a href="#">
+                <a href="#" class="J_menuItem" th:href="@{/userInfoManage/getChangeInfoView}">
                     <h3><i class="fa fa-file"></i> 信息维护</h3>
                 </a>
                 <small><i class="fa fa-tim"></i> 在此维护您的个人信息</small>

@@ -6,6 +6,7 @@ import com.questionnaire.ssm.module.global.pojo.ResponsePkt;
 import com.questionnaire.ssm.module.global.util.ResultUtil;
 import com.questionnaire.ssm.module.global.util.UserValidationUtil;
 import com.questionnaire.ssm.module.questionnaireManage.pojo.CreateQuestionnaireVO;
+import com.questionnaire.ssm.module.questionnaireManage.pojo.ListQuestionnaireVO;
 import com.questionnaire.ssm.module.questionnaireManage.pojo.ListTempDelQesPaperVO;
 import com.questionnaire.ssm.module.questionnaireManage.service.QesManageService;
 import com.questionnaire.ssm.module.questionnaireManage.util.OperateQuestionnaireUtil;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import javax.xml.transform.Result;
 import java.util.Arrays;
 import java.util.List;
 
@@ -63,19 +65,28 @@ public class QesManageController {
         return ResultUtil.success();
     }
 
-    /***
-     * 获取用户的问卷
+    /**
+     * 获取用户个人问卷视图
+     *
      * @return
      * @throws Exception
      */
-    @GetMapping(value = "/listMyQuestionnaire")
-    public ModelAndView listMyQuestionnaire() throws Exception {
+    @GetMapping("/getListMyQesPaperView")
+    public String getListMyQesPaperView() throws Exception {
+        return "qesManage/listQuestionnaire";
+    }
+
+    /**
+     * 获取用户的问卷信息
+     *
+     * @return
+     * @throws Exception
+     */
+    @PostMapping(value = "/listMyQuestionnaire")
+    @ResponseBody
+    public List<ListQuestionnaireVO> listMyQuestionnaire() throws Exception {
         String userTel = UserValidationUtil.getUserTel(logger);
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("questionnaireInfoListVO",
-                qesManageService.listQuestionnaireInfoByUserTel(userTel));
-        modelAndView.setViewName("qesManage/listQuestionnaire");
-        return modelAndView;
+        return qesManageService.listQuestionnaireInfoByUserTel(userTel);
     }
 
     /**
@@ -109,6 +120,25 @@ public class QesManageController {
                     CodeForVOEnum.QUESTIONNAIRE_IDS_NULL.getMessage());
         }
         Questionnaire questionnaire = OperateQuestionnaireUtil.deleteQesPaperTemporaryAction();
+        qesManageService.delOrTemplateQesByIds(Arrays.asList(questionnaireIds), questionnaire);
+        return ResultUtil.success();
+    }
+
+    /**
+     * 恢复回收站问卷到个人问卷中
+     *
+     * @param questionnaireIds
+     * @return
+     * @throws Exception
+     */
+    @PostMapping(value = "/restoreMultiQuestionnaire")
+    @ResponseBody
+    public ResponsePkt restoreMultiQuestionnaire(@RequestParam("questionnaireIds") Long[] questionnaireIds) throws Exception {
+        if (questionnaireIds.length <= 0) {
+            return ResultUtil.error(CodeForVOEnum.QUESTIONNAIRE_IDS_NULL.getCode(),
+                    CodeForVOEnum.QUESTIONNAIRE_IDS_NULL.getMessage());
+        }
+        Questionnaire questionnaire = OperateQuestionnaireUtil.restoreQesPaperAction();
         qesManageService.delOrTemplateQesByIds(Arrays.asList(questionnaireIds), questionnaire);
         return ResultUtil.success();
     }

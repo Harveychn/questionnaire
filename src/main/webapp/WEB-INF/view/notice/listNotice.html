@@ -2,56 +2,50 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>展示问卷</title>
-    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
-    <style>
-        table, td {
-            border: 2px double grey;
-        }
-    </style>
+    <title>查看公告</title>
+    <link rel="shortcut icon" href="/WEB-INF/img/favicon.ico"
+          th:href="@{/img/favicon.ico}"/>
+    <link rel="stylesheet" href="/WEB-INF/css/bootstrap.min.css"
+          th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="/WEB-INF/css/plugins/bootstrap-table/bootstrap-table.min.css"
+          th:href="@{/css/plugins/bootstrap-table/bootstrap-table.min.css}">
 </head>
 <body>
-<h1 align="center">公告信息</h1>
-<div align="center">
-    <!--<table th:if="${noticeListVO.size()>0}"class="table table-bordered">-->
-        <!--<thead>-->
-        <!--<tr>-->
-            <!--<td></td>-->
-            <!--<td>序号</td>-->
-            <!--<td>公告标题</td>-->
-            <!--<td>公告内容</td>-->
-            <!--<td>创建者</td>-->
-            <!--<td>创建时间</td>-->
-            <!--<td>是否完成</td>-->
-            <!--<td>发布时间</td>-->
-            <!--<td>公告对象</td>-->
-            <!--<td>操作</td>-->
-        <!--</tr>-->
-        <!--<tbody>-->
-            <!--<tr th:each="notice:${noticeListVO}">-->
-                <!--<td><input type="checkbox"></td>-->
-                <!--<td th:text="${noticeStat.count}"></td>-->
-                <!--<td th:text="${notice.noticeTitle}"></td>-->
-                <!--<td th:text="${notice.noticeContext}"></td>-->
-                <!--<td th:text="${notice.userTel}"></td>-->
-                <!--<td th:datetime="${notice.noticeCreateTime}"></td>-->
-                <!--<td th:text="${notice.isDone}"></td>-->
-                <!--<td th:datetime="${notice.noticeLaunchTime}"></td>-->
-                <!--<td th:text="${notice.noticeUnitText}"></td>-->
-                <!--<td>-->
-                    <!--<label>-->
-                        <!--<a th:href="@{/notice/test/{id}(id=${notice.getNoticeId()})}"-->
-                           <!--class="btn btn-sm btn-link">删除</a>-->
-                    <!--</label>-->
-                    <!--<label>-->
-                        <!--<a th:href="@{/notice/test/{id}(id=${notice.getNoticeId()})}"-->
-                           <!--class="btn btn-sm btn-link">发放</a>-->
-                    <!--</label>-->
-                <!--</td>-->
-            <!--</tr>-->
-        <!--</tbody>-->
-        <!--</thead>-->
-    <!--</table>-->
+<div class="container">
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    公告信息
+                </div>
+            </div>
+            <div class="panel-body">
+                <!--toolbar-->
+                <div id="tableToolbar" class="btn-group hidden-xs" role="group">
+                    <button id="newNotice" type="button" class="btn btn-primary">
+                        <i class="glyphicon glyphicon-plus" aria-hidden="true"> 新建公告</i>
+                    </button>
+                </div>
+                <table id="noticeInfoTable"></table>
+            </div>
+        </div>
+    </div>
 </div>
+<script src="/WEB-INF/js/jquery.min.js"
+        th:src="@{/js/jquery.min.js}"></script>
+<script src="/WEB-INF/js/bootstrap.min.js"
+        th:src="@{/js/bootstrap.min.js}"></script>
+<script src="/WEB-INF/js/plugins/bootstrap-table/bootstrap-table.min.js"
+        th:src="@{/js/plugins/bootstrap-table/bootstrap-table.min.js}"></script>
+<script src="/WEB-INF/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"
+        th:src="@{/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js}"></script>
+<script src="../../js/plugins/layer/layer.min.js"
+        th:src="@{/js/plugins/layer/layer.min.js}"></script>
+<script src="../../js/myJs/responseAnalyze.js"
+        th:src="@{/js/myJs/responseAnalyze.js}"></script>
+<script src="../../js/myJs/myNoticeManage.js"
+        th:src="@{/js/myJs/myNoticeManage.js}"></script>
+
+
 </body>
 </html>

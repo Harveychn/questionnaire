@@ -21,4 +21,6 @@ public interface UnitService {
 
 
     List<UnitInfoVO> listUnitInfo() throws Exception;
+
+    Long getUnitIdByUserTel(String userTel) throws Exception;
 }

@@ -4,6 +4,8 @@ import com.questionnaire.ssm.module.global.enums.CodeForVOEnum;
 import com.questionnaire.ssm.module.global.pojo.ResponsePkt;
 import com.questionnaire.ssm.module.global.util.ResultUtil;
 import com.questionnaire.ssm.module.global.util.UserValidationUtil;
+import com.questionnaire.ssm.module.qesTemplateManage.pojo.PrivateTemplateInfoVO;
+import com.questionnaire.ssm.module.qesTemplateManage.pojo.PublicTemplateInfoVO;
 import com.questionnaire.ssm.module.qesTemplateManage.service.QesTemplateManageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,13 +13,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 /**
  * Created by 郑晓辉 on 2017/3/30.
  * Description: 问卷模板管理控制器
  */
 @RestController
 @RequestMapping(value = "/qesTemplateManage")
-public class QesTemplateManageController {
+public class QesTemplateRestController {
 
     /**
      * 获取个人模板信息
@@ -29,9 +33,13 @@ public class QesTemplateManageController {
     public ModelAndView getQesTemplateView() throws Exception {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("qesTemplateManage/listPrivateTemplate");
-        modelAndView.addObject("privateQesTemplateInfoVO",
-                qesTemplateManageService.listPrivateTemplate(UserValidationUtil.getUserTel(logger)));
         return modelAndView;
+    }
+
+    @GetMapping(value = "/getMyTemplateInfo")
+    public List<PrivateTemplateInfoVO> getMyTemplateInfo() throws Exception {
+        String userTel = UserValidationUtil.getUserTel(logger);
+        return qesTemplateManageService.listPrivateTemplate(userTel);
     }
 
     /**
@@ -44,9 +52,12 @@ public class QesTemplateManageController {
     public ModelAndView getPublicTemplateView() throws Exception {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("qesTemplateManage/listPublicTemplate");
-        modelAndView.addObject("publicQesTemplateInfoVO",
-                qesTemplateManageService.listPublicTemplate());
         return modelAndView;
+    }
+
+    @GetMapping(value = "/getPublicTemplateInfo")
+    public List<PublicTemplateInfoVO> getPublicTemplateInfo() throws Exception {
+        return qesTemplateManageService.listPublicTemplate();
     }
 
     /**
@@ -65,11 +76,11 @@ public class QesTemplateManageController {
         return ResultUtil.success();
     }
 
-    private final static Logger logger = LoggerFactory.getLogger(QesTemplateManageController.class);
+    private final static Logger logger = LoggerFactory.getLogger(QesTemplateRestController.class);
     private QesTemplateManageService qesTemplateManageService;
 
     @Autowired
-    public QesTemplateManageController(QesTemplateManageService qesTemplateManageService) {
+    public QesTemplateRestController(QesTemplateManageService qesTemplateManageService) {
         this.qesTemplateManageService = qesTemplateManageService;
     }
 }

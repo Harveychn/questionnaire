@@ -6,6 +6,7 @@ var templateUrl = '/questionnaireManage/templateMultiQuestionnaire';
 var delTemporaryUrl = '/questionnaireManage/delTemporaryMultiQuestionnaire';
 var shareUrl = '/questionnaireManage/shareMultiQuestionnaire';
 
+
 $(function () {
     $('#multiShareBtn').click(function () {
         var questionnaireIds = getMultiQuestionnaireIds();
