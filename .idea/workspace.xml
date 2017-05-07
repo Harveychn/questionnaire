@@ -4,12 +4,19 @@
     <bookmark url="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/login/service/impl/UserServiceImpl.java" line="48" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b71ccd9-b479-4e1c-80a4-7d2729296279" name="Default" comment="回收站问卷完成">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/notice/pojo/DisplayNoticeVO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/notice/pojo/NoticeUnitVO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/notice/until/NoticeManageUtil.java" afterPath="" />
+    <list default="true" id="1b71ccd9-b479-4e1c-80a4-7d2729296279" name="Default" comment="原始数据读取完成">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/controller/ResultAnalysisController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/mapper/ResultAnalysisMapper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/pojo/ListAnswerPaperVO.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/pojo/ListPrimaryDataInfoVO.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/service/PrimaryDataService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/service/impl/PrimaryDataServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/module/resultAnalysis/mapper/ResultAnalysisMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ssm.iml" afterPath="$PROJECT_DIR$/ssm.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/myJs/primaryData.js" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/myJs/primaryData.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/index.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/resultAnalysis/primaryData.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/resultAnalysis/primaryData.html" />
     </list>
     <manually-removed-from-ignored>
       <directory path="src/main/java/com/questionnaire/ssm/module/generated/" />
@@ -57,13 +64,162 @@
         <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
       </PATH_ELEMENT>
     </PATH>
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="@106.14.26.144" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="@106.14.26.144" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="questionnaire" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="@106.14.26.144" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="questionnaire" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="questionnaire" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="questionnaire" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="ListPrimaryDataInfoVO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/pojo/ListPrimaryDataInfoVO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1404">
+              <caret line="68" column="37" lean-forward="false" selection-start-line="68" selection-start-column="37" selection-end-line="68" selection-end-column="37" />
+              <folding>
+                <element signature="e#1886#1887#0" expanded="true" />
+                <element signature="e#1946#1947#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ListAnswerPaperVO.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/pojo/ListAnswerPaperVO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="513">
+              <caret line="43" column="5" lean-forward="false" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
+              <folding>
+                <element signature="e#699#700#0" expanded="true" />
+                <element signature="e#735#736#0" expanded="true" />
+                <element signature="e#791#792#0" expanded="true" />
+                <element signature="e#841#842#0" expanded="true" />
+                <element signature="e#881#882#0" expanded="true" />
+                <element signature="e#917#918#0" expanded="true" />
+                <element signature="e#975#976#0" expanded="true" />
+                <element signature="e#1025#1026#0" expanded="true" />
+                <element signature="e#1066#1067#0" expanded="true" />
+                <element signature="e#1103#1104#0" expanded="true" />
+                <element signature="e#1163#1164#0" expanded="true" />
+                <element signature="e#1215#1216#0" expanded="true" />
+                <element signature="e#1252#1253#0" expanded="true" />
+                <element signature="e#1285#1286#0" expanded="true" />
+                <element signature="e#1337#1338#0" expanded="true" />
+                <element signature="e#1381#1382#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PrimaryDataService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/service/PrimaryDataService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="10" column="66" lean-forward="false" selection-start-line="10" selection-start-column="66" selection-end-line="10" selection-end-column="66" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ResultAnalysisMapper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/mapper/ResultAnalysisMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="351">
+              <caret line="16" column="75" lean-forward="false" selection-start-line="16" selection-start-column="75" selection-end-line="16" selection-end-column="75" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="resultAnalysisMapperTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/questionnaire/ssm/module/resultAnalysis/mapper/resultAnalysisMapperTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="521">
+              <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ResultAnalysisMapper.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/module/resultAnalysis/mapper/ResultAnalysisMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="387">
+              <caret line="27" column="68" lean-forward="false" selection-start-line="27" selection-start-column="68" selection-end-line="27" selection-end-column="68" />
+              <folding>
+                <marker date="1494149017650" expanded="true" signature="344:625" ph="SELECT q.que... " />
+                <marker date="1494149017650" expanded="true" signature="344:725" ph="SELECT m.mis... questionnaire" />
+                <marker date="1494149017650" expanded="true" signature="344:755" ph="SELECT m.mis... questionnaire" />
+                <marker date="1494149017650" expanded="true" signature="924:1104" ph="SELECT COUNT... " />
+                <marker date="1494149017650" expanded="true" signature="1341:1629" ph="SELECT answe... answer_paper" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AnswerPaper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/AnswerPaper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="60" column="31" lean-forward="false" selection-start-line="60" selection-start-column="17" selection-end-line="60" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ListMyNoticeInfoVO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/notice/pojo/ListMyNoticeInfoVO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -76,11 +232,12 @@
         <option value="HTML File" />
         <option value="Enum" />
         <option value="Thymeleaf HTML" />
-        <option value="JUnit4 Test Class" />
-        <option value="Interface" />
         <option value="mybatis-Mapper" />
-        <option value="Class" />
         <option value="JavaScript File" />
+        <option value="FxmlFile" />
+        <option value="Interface" />
+        <option value="JUnit4 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -137,7 +294,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="webapp" />
       </map>
     </option>
   </component>
@@ -149,21 +306,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/researchManage/service/ResearchService.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/home.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/login/utils/UserUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/login/controller/SysUserController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/login/controller/SysUserRestController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/login/pojo/LoginVO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/login/pojo/UserInfoVO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/userManage/service/impl/UnitServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/login/utils/UserInfoVOUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/login/service/UserService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/login/service/impl/UserServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/service/UnitService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/userManage/controller/UserManageController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/pojo/UnitInfoVO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/mapper/UnitInfoMapper.java" />
         <option value="$PROJECT_DIR$/src/main/resources/module/global/mapper/UnitInfoMapper.xml" />
         <option value="$PROJECT_DIR$/src/test/java/com/questionnaire/ssm/module/global/mapper/UnitInfoMapperTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/service/impl/UnitServiceImpl.java" />
@@ -192,14 +334,29 @@
         <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/notice/util/NoticeVODOUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/notice/pojo/ListNoticeInfoVO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/constant/CONSTANT.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/index.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/notice/service/impl/NoticeServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/notice/service/NoticeService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/notice/controller/NoticeController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/myJs/myNoticeManage.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/notice/listNotice.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/notice/until/NoticeManageUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/notice/pojo/DisplayNoticeVO.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/resultAnalysis/primaryData.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/index.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/controller/resultAnalysisController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/module/resultAnalysis/mapper/resultAnalysisMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/mapper/resultAnalysisMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/pojo/ListPrimaryDataInfoVO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/service/impl/PrimaryServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/notice/service/impl/NoticeServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/questionnaire/ssm/module/resultAnalysis/service/impl/PrimaryDataServiceImplTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/service/impl/PrimaryDataServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/myJs/myNoticeManage.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/controller/ResultAnalysisController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/myJs/primaryData.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/pojo/ListAnserPaperVO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/service/PrimaryDataService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/mapper/ResultAnalysisMapper.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/questionnaire/ssm/module/resultAnalysis/mapper/resultAnalysisMapperTest.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/module/resultAnalysis/mapper/ResultAnalysisMapper.xml" />
       </list>
     </option>
   </component>
@@ -244,20 +401,6 @@
         <PATH_ELEMENT>
           <option name="myItemId" value="questionnaire" />
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="questionnaire" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Run Configurations" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RunConfigurationsNode" />
         </PATH_ELEMENT>
       </PATH>
       <PATH>
@@ -396,11 +539,11 @@
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
-      <flattenPackages />
+      <flattenPackages ProjectPane="false" />
       <showMembers />
       <showModules />
       <showLibraryContents />
-      <hideEmptyPackages />
+      <hideEmptyPackages ProjectPane="false" />
       <abbreviatePackageNames />
       <autoscrollToSource />
       <autoscrollFromSource />
@@ -411,6 +554,7 @@
     <panes>
       <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -436,26 +580,8 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="questionnaire" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="questionnaire" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
+              <option name="myItemId" value="test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -473,45 +599,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
+              <option name="myItemId" value="test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
+              <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="questionnaire" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="questionnaire" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="view" />
+              <option name="myItemId" value="com" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -529,23 +625,35 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
+              <option name="myItemId" value="test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
+              <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemId" value="com" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="view" />
+              <option name="myItemId" value="questionnaire" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="qesManage" />
+              <option name="myItemId" value="ssm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="module" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resultAnalysis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mapper" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -563,23 +671,27 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
+              <option name="myItemId" value="test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
+              <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemId" value="com" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="view" />
+              <option name="myItemId" value="questionnaire" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="notice" />
+              <option name="myItemId" value="ssm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="module" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -598,52 +710,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="questionnaire" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="questionnaire" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myJs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -687,7 +753,121 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="module" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="questionnaire" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="questionnaire" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="module" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resultAnalysis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="questionnaire" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="questionnaire" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="questionnaire" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ssm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="module" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="userManage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="questionnaire" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="questionnaire" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="questionnaire" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ssm" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -717,15 +897,27 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="questionnaire" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ssm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="module" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="questionnaireManage" />
+              <option name="myItemId" value="resultAnalysis" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="util" />
+              <option name="myItemId" value="service" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -751,11 +943,31 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="questionnaire" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ssm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="module" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="questionnaireManage" />
+              <option name="myItemId" value="resultAnalysis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="impl" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -778,6 +990,198 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="questionnaire" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ssm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="module" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resultAnalysis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pojo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="questionnaire" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="questionnaire" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="questionnaire" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ssm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="module" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resultAnalysis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="questionnaire" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="questionnaire" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="questionnaire" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ssm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="module" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resultAnalysis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="questionnaire" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="questionnaire" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="questionnaire" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ssm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="module" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="notice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="questionnaire" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="questionnaire" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="questionnaire" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ssm" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -789,7 +1193,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="util" />
+              <option name="myItemId" value="service" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -812,6 +1216,18 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="questionnaire" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ssm" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -822,6 +1238,14 @@
               <option name="myItemId" value="notice" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="impl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -842,6 +1266,18 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="questionnaire" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ssm" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -879,6 +1315,18 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="questionnaire" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ssm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="module" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -893,7 +1341,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -905,7 +1352,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.36006975" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
-    <property name="SearchEverywhereHistoryKey" value="ListNotice&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/notice/pojo/ListNoticeInfoVO.java&#10;Cons&#9;PSI&#9;JAVA://com.questionnaire.ssm.module.global.constant.CONSTANT&#10;UnitSEr&#9;PSI&#9;JAVA://com.questionnaire.ssm.module.global.service.impl.UnitServiceImpl&#10;Unit&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/generated/pojo/Unit.java&#10;res&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/js/myJs/responseAnalyze.js&#10;code&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/enums/CodeForVOEnum.java&#10;qes&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/questionnaireManage/controller/QesManageController.java&#10;mission&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/researchManage/pojo/CreateResearchMissionVO.java&#10;unit&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/test/java/com/questionnaire/ssm/module/global/mapper/UnitInfoMapperTest.java&#10;unti&#9;RUN_CONFIGURATION&#9;UnitInfoMapperTest.listUnitInfo&#10;UnitSer&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/service/UnitService.java&#10;UnitInfo&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/mapper/UnitInfoMapper.java&#10;Consta&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/constant/CONSTANT.java&#10;index&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/index.html&#10;resea&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/researchManage/controller/ResearchController.java&#10;LoginVO&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/login/pojo/LoginVO.java&#10;login&#9;PSI&#9;JAVA://com.questionnaire.ssm.module.login.service.LoginService&#10;H&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/home.html&#10;qesManage&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/questionnaireManage/util/QesManageVODOUtil.java&#10;Qes&#9;PSI&#9;JAVA://com.questionnaire.ssm.module.questionnaireManage.controller.QesManageController&#10;Notice&#9;PSI&#9;JAVA://com.questionnaire.ssm.module.generated.pojo.Notice&#10;upload&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/userManage/service/impl/UploadFileServiceImpl.java&#10;QuestionOp&#9;PSI&#9;JAVA://com.questionnaire.ssm.module.generated.mapper.QuestionOptionMapperTest&#10;QesMa&#9;PSI&#9;JAVA://com.questionnaire.ssm.module.questionnaireManage.controller.QesManageController&#10;questionw&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/generated/pojo/QuestionWithBLOBs.java&#10;ques&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/generated/pojo/Question.java&#10;User&#9;PSI&#9;JAVA://com.questionnaire.ssm.module.generated.pojo.User&#10;Ques&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/generated/pojo/Question.java&#10;Question&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/generated/pojo/Question.java&#10;cons&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/constant/CONSTANT.java&#10;pk&#9;PSI&#9;JAVA://com.questionnaire.ssm.module.global.pojo.ResponsePkt&#10;chec&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/util/CheckUploadFileTypeUtil.java&#10;userA&#9;PSI&#9;JAVA://com.questionnaire.ssm.module.global.enums.UserActionEnum&#10;crea&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/qesManage/createQuestionnaire.html&#10;template.js&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/js/CreateQesResources/script/artTemplate/template.js&#10;QuestionType&#9;PSI&#9;JAVA://com.questionnaire.ssm.module.questionnaireManage.enums.QuestionTypeEnum&#10;UserVa&#9;PSI&#9;JAVA://com.questionnaire.ssm.module.global.util.UserValidationUtil&#10;CheckVOValidUtil&#9;PSI&#9;JAVA://com.questionnaire.ssm.module.questionnaireManage.util.CheckVOValidUtil&#10;Response&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/pojo/ResponsePkt.java&#10;user&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/enums/UserActionEnum.java&#10;USerAc&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/enums/UserActionEnum.java&#10;Code&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/enums/CodeForVOEnum.java&#10;response&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/statics/js/myJs/responsePkt.js&#10;UNK&#9;PSI&#9;JAVA://com.questionnaire.ssm.module.global.enums.RequestResultEnum#UNKNOWN_ERROR&#10;MySQLIntegrityConstraintViolationException&#9;PSI&#9;JAVA://com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException&#10;org.springframework.ui.Model&#9;PSI&#9;JAVA://org.springframework.ui.ModelMap&#10;Model&#9;PSI&#9;JAVA://javax.enterprise.inject.Model&#10;ehcache.xml&#9;FILE&#9;jar://P:/Maven-3.3.9/localRepository/org/apache/shiro/shiro-ehcache/1.3.2/shiro-ehcache-1.3.2.jar!/org/apache/shiro/cache/ehcache/ehcache.xml" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://H:/questionnaire/src/main/java/com/questionnaire/ssm/module/resultAnalysis/pojo/ListAnserPaperVO.java&#10;;&#9;null&#9;null&#10;ListNotice&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/notice/pojo/ListNoticeInfoVO.java&#10;Cons&#9;PSI&#9;JAVA://com.questionnaire.ssm.module.global.constant.CONSTANT&#10;UnitSEr&#9;PSI&#9;JAVA://com.questionnaire.ssm.module.global.service.impl.UnitServiceImpl&#10;Unit&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/generated/pojo/Unit.java&#10;res&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/js/myJs/responseAnalyze.js&#10;code&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/enums/CodeForVOEnum.java&#10;qes&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/questionnaireManage/controller/QesManageController.java&#10;mission&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/researchManage/pojo/CreateResearchMissionVO.java&#10;unit&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/test/java/com/questionnaire/ssm/module/global/mapper/UnitInfoMapperTest.java&#10;unti&#9;RUN_CONFIGURATION&#9;UnitInfoMapperTest.listUnitInfo&#10;UnitSer&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/service/UnitService.java&#10;UnitInfo&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/mapper/UnitInfoMapper.java&#10;Consta&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/constant/CONSTANT.java&#10;index&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/index.html&#10;resea&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/researchManage/controller/ResearchController.java&#10;LoginVO&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/login/pojo/LoginVO.java&#10;login&#9;PSI&#9;JAVA://com.questionnaire.ssm.module.login.service.LoginService&#10;H&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/home.html&#10;qesManage&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/questionnaireManage/util/QesManageVODOUtil.java&#10;Qes&#9;PSI&#9;JAVA://com.questionnaire.ssm.module.questionnaireManage.controller.QesManageController&#10;Notice&#9;PSI&#9;JAVA://com.questionnaire.ssm.module.generated.pojo.Notice&#10;upload&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/userManage/service/impl/UploadFileServiceImpl.java&#10;QuestionOp&#9;PSI&#9;JAVA://com.questionnaire.ssm.module.generated.mapper.QuestionOptionMapperTest&#10;QesMa&#9;PSI&#9;JAVA://com.questionnaire.ssm.module.questionnaireManage.controller.QesManageController&#10;questionw&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/generated/pojo/QuestionWithBLOBs.java&#10;ques&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/generated/pojo/Question.java&#10;User&#9;PSI&#9;JAVA://com.questionnaire.ssm.module.generated.pojo.User&#10;Ques&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/generated/pojo/Question.java&#10;Question&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/generated/pojo/Question.java&#10;cons&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/constant/CONSTANT.java&#10;pk&#9;PSI&#9;JAVA://com.questionnaire.ssm.module.global.pojo.ResponsePkt&#10;chec&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/util/CheckUploadFileTypeUtil.java&#10;userA&#9;PSI&#9;JAVA://com.questionnaire.ssm.module.global.enums.UserActionEnum&#10;crea&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/qesManage/createQuestionnaire.html&#10;template.js&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/js/CreateQesResources/script/artTemplate/template.js&#10;QuestionType&#9;PSI&#9;JAVA://com.questionnaire.ssm.module.questionnaireManage.enums.QuestionTypeEnum&#10;UserVa&#9;PSI&#9;JAVA://com.questionnaire.ssm.module.global.util.UserValidationUtil&#10;CheckVOValidUtil&#9;PSI&#9;JAVA://com.questionnaire.ssm.module.questionnaireManage.util.CheckVOValidUtil&#10;Response&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/pojo/ResponsePkt.java&#10;user&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/enums/UserActionEnum.java&#10;USerAc&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/enums/UserActionEnum.java&#10;Code&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/enums/CodeForVOEnum.java&#10;response&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/statics/js/myJs/responsePkt.js&#10;UNK&#9;PSI&#9;JAVA://com.questionnaire.ssm.module.global.enums.RequestResultEnum#UNKNOWN_ERROR&#10;MySQLIntegrityConstraintViolationException&#9;PSI&#9;JAVA://com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException&#10;org.springframework.ui.Model&#9;PSI&#9;JAVA://org.springframework.ui.ModelMap&#10;Model&#9;PSI&#9;JAVA://javax.enterprise.inject.Model&#10;ehcache.xml&#9;FILE&#9;jar://P:/Maven-3.3.9/localRepository/org/apache/shiro/shiro-ehcache/1.3.2/shiro-ehcache-1.3.2.jar!/org/apache/shiro/cache/ehcache/ehcache.xml" />
     <property name="full.screen.before.presentation.mode" value="false" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
@@ -922,11 +1369,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.questionnaire.ssm.module.resultAnalysis.service.impl" />
+      <recent name="com.questionnaire.ssm.module.resultAnalysis.mapper" />
       <recent name="com.questionnaire.ssm.module.global.mapper" />
       <recent name="com.questionnaire.ssm.module.generated.mapper" />
       <recent name="com.questionnaire.ssm.module.qesTemplateManage.mapper" />
-      <recent name="com.questionnaire.ssm.module.questionnaireManage.mapper" />
-      <recent name="com.questionnaire.ssm.module.login.controller" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\Project\questionnaire\questionnaire\src\main\webapp\WEB-INF\img" />
@@ -958,20 +1405,20 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Tomcat Server.questionnaire">
-    <configuration default="false" name="RecordOperateQuestionnaireMapperTest.selectByExample" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.resultAnalysisMapperTest.listAnswerPaper">
+    <configuration default="false" name="resultAnalysisMapperTest.listPrimaryDataInfo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="com.questionnaire.ssm.module.generated.mapper.*" />
+          <option name="PATTERN" value="com.questionnaire.ssm.module.resultAnalysis.mapper.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <module name="ssm" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.questionnaire.ssm.module.generated.mapper" />
-      <option name="MAIN_CLASS_NAME" value="com.questionnaire.ssm.module.generated.mapper.RecordOperateQuestionnaireMapperTest" />
-      <option name="METHOD_NAME" value="selectByExample" />
+      <option name="PACKAGE_NAME" value="com.questionnaire.ssm.module.resultAnalysis.mapper" />
+      <option name="MAIN_CLASS_NAME" value="com.questionnaire.ssm.module.resultAnalysis.mapper.resultAnalysisMapperTest" />
+      <option name="METHOD_NAME" value="listPrimaryDataInfo" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
       <option name="PARAMETERS" />
@@ -985,19 +1432,19 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="QesTemplateManageMapperTest.listPrivateTemplateInfo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="resultAnalysisMapperTest.listCount" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="com.questionnaire.ssm.module.qesTemplateManage.mapper.*" />
+          <option name="PATTERN" value="com.questionnaire.ssm.module.resultAnalysis.mapper.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <module name="ssm" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.questionnaire.ssm.module.qesTemplateManage.mapper" />
-      <option name="MAIN_CLASS_NAME" value="com.questionnaire.ssm.module.qesTemplateManage.mapper.QesTemplateManageMapperTest" />
-      <option name="METHOD_NAME" value="listPrivateTemplateInfo" />
+      <option name="PACKAGE_NAME" value="com.questionnaire.ssm.module.resultAnalysis.mapper" />
+      <option name="MAIN_CLASS_NAME" value="com.questionnaire.ssm.module.resultAnalysis.mapper.resultAnalysisMapperTest" />
+      <option name="METHOD_NAME" value="listCount" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
       <option name="PARAMETERS" />
@@ -1011,19 +1458,19 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="UnitMapperTest.insertSelective" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="resultAnalysisMapperTest.get" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="com.questionnaire.ssm.module.generated.mapper.*" />
+          <option name="PATTERN" value="com.questionnaire.ssm.module.resultAnalysis.mapper.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <module name="ssm" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.questionnaire.ssm.module.generated.mapper" />
-      <option name="MAIN_CLASS_NAME" value="com.questionnaire.ssm.module.generated.mapper.UnitMapperTest" />
-      <option name="METHOD_NAME" value="insertSelective" />
+      <option name="PACKAGE_NAME" value="com.questionnaire.ssm.module.resultAnalysis.mapper" />
+      <option name="MAIN_CLASS_NAME" value="com.questionnaire.ssm.module.resultAnalysis.mapper.resultAnalysisMapperTest" />
+      <option name="METHOD_NAME" value="get" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
       <option name="PARAMETERS" />
@@ -1037,19 +1484,19 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="QesManageMapperTest.listTempDelQesPaperByUserTel" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="PrimaryDataServiceImplTest.get" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="com.questionnaire.ssm.module.questionnaireManage.mapper.*" />
+          <option name="PATTERN" value="com.questionnaire.ssm.module.resultAnalysis.service.impl.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <module name="ssm" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.questionnaire.ssm.module.questionnaireManage.mapper" />
-      <option name="MAIN_CLASS_NAME" value="com.questionnaire.ssm.module.questionnaireManage.mapper.QesManageMapperTest" />
-      <option name="METHOD_NAME" value="listTempDelQesPaperByUserTel" />
+      <option name="PACKAGE_NAME" value="com.questionnaire.ssm.module.resultAnalysis.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="com.questionnaire.ssm.module.resultAnalysis.service.impl.PrimaryDataServiceImplTest" />
+      <option name="METHOD_NAME" value="get" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
       <option name="PARAMETERS" />
@@ -1063,19 +1510,19 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="UnitInfoMapperTest.listUnitInfo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="resultAnalysisMapperTest.listAnswerPaper" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="com.questionnaire.ssm.module.global.mapper.*" />
+          <option name="PATTERN" value="com.questionnaire.ssm.module.resultAnalysis.mapper.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <module name="ssm" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.questionnaire.ssm.module.global.mapper" />
-      <option name="MAIN_CLASS_NAME" value="com.questionnaire.ssm.module.global.mapper.UnitInfoMapperTest" />
-      <option name="METHOD_NAME" value="listUnitInfo" />
+      <option name="PACKAGE_NAME" value="com.questionnaire.ssm.module.resultAnalysis.mapper" />
+      <option name="MAIN_CLASS_NAME" value="com.questionnaire.ssm.module.resultAnalysis.mapper.resultAnalysisMapperTest" />
+      <option name="METHOD_NAME" value="listAnswerPaper" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
       <option name="PARAMETERS" />
@@ -1592,19 +2039,19 @@
     </configuration>
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Tomcat Server.questionnaire" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.RecordOperateQuestionnaireMapperTest.selectByExample" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.QesTemplateManageMapperTest.listPrivateTemplateInfo" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.UnitMapperTest.insertSelective" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.QesManageMapperTest.listTempDelQesPaperByUserTel" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.UnitInfoMapperTest.listUnitInfo" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.resultAnalysisMapperTest.listPrimaryDataInfo" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.resultAnalysisMapperTest.listCount" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.resultAnalysisMapperTest.get" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.PrimaryDataServiceImplTest.get" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.resultAnalysisMapperTest.listAnswerPaper" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.UnitInfoMapperTest.listUnitInfo" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.QesManageMapperTest.listTempDelQesPaperByUserTel" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.UnitMapperTest.insertSelective" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.QesTemplateManageMapperTest.listPrivateTemplateInfo" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.RecordOperateQuestionnaireMapperTest.selectByExample" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.resultAnalysisMapperTest.listAnswerPaper" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.PrimaryDataServiceImplTest.get" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.resultAnalysisMapperTest.get" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.resultAnalysisMapperTest.listCount" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.resultAnalysisMapperTest.listPrimaryDataInfo" />
       </list>
     </recent_temporary>
   </component>
@@ -1780,6 +2227,12 @@
       <workItem from="1493550675297" duration="5053000" />
       <workItem from="1493560699195" duration="6051000" />
       <workItem from="1493628582666" duration="363000" />
+      <workItem from="1494075779883" duration="46000" />
+      <workItem from="1494075933869" duration="6014000" />
+      <workItem from="1494086362522" duration="3135000" />
+      <workItem from="1494089809916" duration="3068000" />
+      <workItem from="1494125661452" duration="7916000" />
+      <workItem from="1494139032093" duration="3496000" />
     </task>
     <task id="LOCAL-00003" summary="密码加密实现完成">
       <created>1490002044071</created>
@@ -2128,39 +2581,39 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="UnitInfoMapperTest_listUnitInfo - 2017.04.27 at 10h 47m 33s.xml">
-      <configuration name="UnitInfoMapperTest.listUnitInfo" configurationId="JUnit" />
+    <history-entry file="resultAnalysisMapperTest_listAnswerPaper - 2017.05.07 at 17h 21m 36s.xml">
+      <configuration name="resultAnalysisMapperTest.listAnswerPaper" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UnitInfoMapperTest_listUnitInfo - 2017.04.27 at 10h 48m 08s.xml">
-      <configuration name="UnitInfoMapperTest.listUnitInfo" configurationId="JUnit" />
+    <history-entry file="resultAnalysisMapperTest_listAnswerPaper - 2017.05.07 at 17h 22m 56s.xml">
+      <configuration name="resultAnalysisMapperTest.listAnswerPaper" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UnitInfoMapperTest_listUnitInfo - 2017.04.27 at 10h 53m 45s.xml">
-      <configuration name="UnitInfoMapperTest.listUnitInfo" configurationId="JUnit" />
+    <history-entry file="resultAnalysisMapperTest_listAnswerPaper - 2017.05.07 at 17h 23m 48s.xml">
+      <configuration name="resultAnalysisMapperTest.listAnswerPaper" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UnitInfoMapperTest_listUnitInfo - 2017.04.27 at 10h 54m 05s.xml">
-      <configuration name="UnitInfoMapperTest.listUnitInfo" configurationId="JUnit" />
+    <history-entry file="resultAnalysisMapperTest_listCount - 2017.05.07 at 11h 35m 38s.xml">
+      <configuration name="resultAnalysisMapperTest.listCount" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UnitInfoMapperTest_listUnitInfo - 2017.04.27 at 10h 54m 06s.xml">
-      <configuration name="UnitInfoMapperTest.listUnitInfo" configurationId="JUnit" />
+    <history-entry file="resultAnalysisMapperTest_listCount - 2017.05.07 at 11h 35m 51s.xml">
+      <configuration name="resultAnalysisMapperTest.listCount" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UnitInfoMapperTest_listUnitInfo - 2017.04.27 at 10h 55m 06s.xml">
-      <configuration name="UnitInfoMapperTest.listUnitInfo" configurationId="JUnit" />
+    <history-entry file="resultAnalysisMapperTest_listCount - 2017.05.07 at 13h 42m 00s.xml">
+      <configuration name="resultAnalysisMapperTest.listCount" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UnitMapperTest_insertSelective - 2017.04.17 at 16h 50m 01s.xml">
-      <configuration name="UnitMapperTest.insertSelective" configurationId="JUnit" />
+    <history-entry file="resultAnalysisMapperTest_listCount - 2017.05.07 at 13h 42m 12s.xml">
+      <configuration name="resultAnalysisMapperTest.listCount" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UnitMapperTest_insertSelective - 2017.04.17 at 16h 51m 17s.xml">
-      <configuration name="UnitMapperTest.insertSelective" configurationId="JUnit" />
+    <history-entry file="resultAnalysisMapperTest_listPrimaryDataInfo - 2017.05.07 at 11h 36m 06s.xml">
+      <configuration name="resultAnalysisMapperTest.listPrimaryDataInfo" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UserMapperTest_updateByPrimaryKeySelective - 2017.04.05 at 19h 16m 49s.xml">
-      <configuration name="UserMapperTest.updateByPrimaryKeySelective" configurationId="JUnit" />
+    <history-entry file="resultAnalysisMapperTest_listPrimaryDataInfo - 2017.05.07 at 11h 37m 24s.xml">
+      <configuration name="resultAnalysisMapperTest.listPrimaryDataInfo" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UserMapperTest_updateByPrimaryKeySelective - 2017.04.05 at 19h 17m 28s.xml">
-      <configuration name="UserMapperTest.updateByPrimaryKeySelective" configurationId="JUnit" />
+    <history-entry file="resultAnalysisMapperTest_listPrimaryDataInfo - 2017.05.07 at 11h 38m 25s.xml">
+      <configuration name="resultAnalysisMapperTest.listPrimaryDataInfo" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="729318000" />
+    <option name="totallyTimeSpent" value="754479000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -2173,35 +2626,37 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1874" height="1096" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.55573773" sideWeight="0.5075643" order="16" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296582" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18136714" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16490166" sideWeight="0.52459013" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32980332" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296582" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.71147543" sideWeight="0.4924357" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42459893" sideWeight="0.4924357" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4973262" sideWeight="0.48789713" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32786885" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2919786" sideWeight="0.48789713" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40163934" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2590959" sideWeight="0.46557376" order="5" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30209482" sideWeight="0.46557376" order="5" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16490166" sideWeight="0.52459013" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.284492" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22314675" sideWeight="0.53114754" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -2214,7 +2669,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="JRebel remote servers log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.5060514" order="15" side_tool="true" content_ui="tabs" />
       <window_info id="JRebel" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2624811" sideWeight="0.5344262" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2852459" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -2250,7 +2704,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="configure changed-no DB" />
     <MESSAGE value="密码加密实现完成" />
     <MESSAGE value="使用thymeleaf视图解析器&#10;问卷管理模块-创建问卷未完&#10;" />
     <MESSAGE value="使用thymeleaf视图解析器&#10;问卷管理模块-创建问卷Service OK&#10;" />
@@ -2275,14 +2728,15 @@
     <MESSAGE value="创建调查页面" />
     <MESSAGE value="创建公告完成" />
     <MESSAGE value="回收站问卷完成" />
-    <option name="LAST_COMMIT_MESSAGE" value="回收站问卷完成" />
+    <MESSAGE value="原始数据读取完成" />
+    <option name="LAST_COMMIT_MESSAGE" value="原始数据读取完成" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="190" />
+      <option name="time" value="194" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
@@ -2301,402 +2755,446 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/researchManage/service/ResearchService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/controller/QesManageRestController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="24" column="9" lean-forward="false" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/enums/CodeForVOEnum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="22" column="30" lean-forward="false" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/researchManage/pojo/QuestionnaireInfoVO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="17" column="29" lean-forward="false" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/researchManage/util/ResearchVODOUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-39">
-          <caret line="26" column="35" lean-forward="false" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/researchManage/service/impl/ResearchServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="46" column="121" lean-forward="false" selection-start-line="46" selection-start-column="121" selection-end-line="46" selection-end-column="121" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/researchManage/pojo/CreateResearchMissionVO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="11" column="37" lean-forward="false" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/researchManage/controller/ResearchController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/researchManage/createResearch.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="13" column="7" lean-forward="true" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/notice/viewNotice.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/controller/RecycleQesManageController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="22" column="7" lean-forward="false" selection-start-line="14" selection-start-column="6" selection-end-line="22" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/service/QesManageService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="46" column="12" lean-forward="false" selection-start-line="46" selection-start-column="12" selection-end-line="46" selection-end-column="12" />
-          <folding>
-            <element signature="docComment;method#insertQuestionnaire#0;class#QesManageService#0" expanded="false" />
-            <element signature="docComment;method#listQuestionnaireInfoByUserTel#0;class#QesManageService#0" expanded="false" />
-            <element signature="docComment;method#getQuestionnaireById#0;class#QesManageService#0" expanded="false" />
-            <element signature="docComment;method#shareQesPaperByIds#0;class#QesManageService#0" expanded="false" />
-            <element signature="docComment;method#listTempDelQesPaperByUserTel#0;class#QesManageService#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/service/impl/QesManageServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="154" column="12" lean-forward="false" selection-start-line="154" selection-start-column="12" selection-end-line="154" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/js/myJs/qesManage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3100">
-          <caret line="155" column="47" lean-forward="true" selection-start-line="155" selection-start-column="47" selection-end-line="155" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/js/myJs/responseDeal.js" />
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/qesManage/createQuestionnaire.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="237" column="34" lean-forward="false" selection-start-line="237" selection-start-column="34" selection-end-line="237" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/qesTemplateManage/listPublicTemplate.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1068">
-          <caret line="56" column="70" lean-forward="false" selection-start-line="56" selection-start-column="70" selection-end-line="56" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/controller/QesManageController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1927">
-          <caret line="144" column="0" lean-forward="false" selection-start-line="144" selection-start-column="0" selection-end-line="144" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;method#getCreateView#0;class#QesManageController#0" expanded="false" />
-            <element signature="method#getCreateView#0;class#QesManageController#0" expanded="false" />
-            <element signature="e#5994#6045#0" expanded="false" />
-            <element signature="method#templateMultiQuestionnaire#0;class#QesManageController#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/upload/uploadExcel.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-335">
-          <caret line="101" column="39" lean-forward="false" selection-start-line="101" selection-start-column="39" selection-end-line="101" selection-end-column="39" />
+        <state relative-caret-position="270">
+          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/js/myJs/responseAnalyze.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="44" lean-forward="true" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
+        <state relative-caret-position="432">
+          <caret line="16" column="36" lean-forward="true" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/js/myJs/templateManage.js">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/resultAnalysis/primaryData_two.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="-243">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/qesManage/listQuestionnaire.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-60">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/notice/createNotice.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4644">
-          <caret line="279" column="34" lean-forward="true" selection-start-line="279" selection-start-column="34" selection-end-line="279" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/Unit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="880">
-          <caret line="44" column="33" lean-forward="false" selection-start-line="44" selection-start-column="33" selection-end-line="44" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/module/researchManage/mapper/researchMissionMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" column="24" lean-forward="true" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/NoticeWithBLOBs.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="41" lean-forward="false" selection-start-line="2" selection-start-column="41" selection-end-line="2" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/Notice.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="43" column="20" lean-forward="true" selection-start-line="43" selection-start-column="20" selection-end-line="43" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/util/OperateQuestionnaireUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="57" column="32" lean-forward="false" selection-start-line="57" selection-start-column="32" selection-end-line="57" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_72/src.zip!/java/lang/String.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/service/impl/UnitServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="31" column="5" lean-forward="true" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/notice/mapper/NoticeManageMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/alibaba/druid/1.0.4/druid-1.0.4-sources.jar!/com/alibaba/druid/support/spring/stat/DruidStatInterceptor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="76" column="0" lean-forward="false" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-core/4.3.7.RELEASE/spring-core-4.3.7.RELEASE.jar!/org/springframework/cglib/proxy/MethodProxy.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="105" column="0" lean-forward="false" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/notice/util/NoticeVODOUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="18" column="14" lean-forward="true" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/constant/CONSTANT.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="18" column="48" lean-forward="false" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="48" />
-          <folding>
-            <element signature="e#1200#1201#0" expanded="true" />
-            <element signature="e#1239#1240#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="133" column="79" lean-forward="false" selection-start-line="133" selection-start-column="79" selection-end-line="133" selection-end-column="79" />
+        <state relative-caret-position="405">
+          <caret line="126" column="90" lean-forward="false" selection-start-line="126" selection-start-column="90" selection-end-line="126" selection-end-column="90" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/qesManage/recycleBinQuestionnaire.html">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/controller/QesManageController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-20">
-          <caret line="23" column="16" lean-forward="false" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
+        <state relative-caret-position="2889">
+          <caret line="144" column="0" lean-forward="false" selection-start-line="144" selection-start-column="0" selection-end-line="144" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/module/notice/mapper/NoticeManageMapper.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/notice/pojo/NoticeForSurveyorVO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="14" column="20" lean-forward="true" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+        <state relative-caret-position="162">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/MappingMissionQuestionnaireExample.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/researchManage/pojo/CreateResearchMissionVO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/researchManage/pojo/QuestionnaireInfoVO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/researchManage/pojo/ResearchQesPaperVO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/notice/pojo/NoticeForSurveyorDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="4" column="1" lean-forward="false" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/MappingMissionQuestionnaire.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="33" column="4" lean-forward="true" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/pojo/ListQuestionnaireVO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="18" column="31" lean-forward="false" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/module/researchManage/mapper/researchMissionMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#607#611#0" expanded="false" />
+            <marker date="1493628529798" expanded="true" signature="418:751" ph="SELECT quest... questionnaire" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/util/QesManageVODOUtil.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/module/researchManage/mapper/ResearchResultMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+        <state relative-caret-position="-477">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/module/QesManage/mapper/QesManageMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-486">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1494060608269" expanded="true" signature="1329:1829" ph="SELECT q.que... questionnaire" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/bbd1fc39/972b0224-93a8-4dcc-b3fd-16639890a5f0/questionnaire.mapping_questionnaire_question">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/bbd1fc39/972b0224-93a8-4dcc-b3fd-16639890a5f0/questionnaire.mapping_mission_questionnaire">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/module/TemplateManage/mapper/TemplateManageMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="45" column="4" lean-forward="false" selection-start-line="45" selection-start-column="4" selection-end-line="45" selection-end-column="4" />
+          <folding>
+            <marker date="1494060608269" expanded="true" signature="885:1591" ph="SELECT q.que... questionnaire" />
+            <marker date="1494060608269" expanded="true" signature="2323:2974" ph="SELECT q.que... questionnaire" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/questionnaire/ssm/module/qesTemplateManage/mapper/QesTemplateManageMapperTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="24" column="80" lean-forward="true" selection-start-line="24" selection-start-column="80" selection-end-line="24" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/module/generated/mapper/NoticeMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-513">
+          <caret line="116" column="35" lean-forward="false" selection-start-line="116" selection-start-column="35" selection-end-line="116" selection-end-column="35" />
+          <folding>
+            <marker date="1493628529767" expanded="true" signature="5863:6024" ph="select , fro... " />
+            <marker date="1493628529767" expanded="true" signature="6238:6306" ph="delete from " />
+            <marker date="1493628529767" expanded="true" signature="6560:6578" ph="delete from " />
+            <marker date="1493628529767" expanded="true" signature="9482:9509" ph="select count... notice" />
+            <marker date="1493628529767" expanded="true" signature="11149:11671" ph="update notic... " />
+            <marker date="1493628529767" expanded="true" signature="11974:12355" ph="update notic... " />
+            <marker date="1493628529767" expanded="true" signature="12726:13593" ph="update notic... " />
+            <marker date="1493628529767" expanded="true" signature="13861:14330" ph="update notic... " />
+            <marker date="1493628529767" expanded="true" signature="14580:14922" ph="update notic... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/questionnaire/ssm/module/questionnaireManage/mapper/QesManageMapperTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="369">
+          <caret line="27" column="75" lean-forward="false" selection-start-line="27" selection-start-column="75" selection-end-line="27" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/researchManage/mapper/ResearchMissionMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="11" column="17" lean-forward="false" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/researchManage/mapper/ResearchResultMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="17" lean-forward="false" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/researchManage/controller/ResearchController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/mapper/QesManageMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="11" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/qesTemplateManage/mapper/QesTemplateManageMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="29" column="31" lean-forward="false" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/notice/mapper/NoticeManageMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/notice/controller/NoticeRestController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="35" column="46" lean-forward="true" selection-start-line="35" selection-start-column="46" selection-end-line="35" selection-end-column="46" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/notice/service/NoticeService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="38" column="18" lean-forward="false" selection-start-line="38" selection-start-column="18" selection-end-line="38" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="docComment;method#insertNotice#0;class#NoticeService#0" expanded="false" />
-            <element signature="docComment;method#listNoticeByUserTel#0;class#NoticeService#0" expanded="false" />
-            <element signature="docComment;method#deleteNotice#0;class#NoticeService#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="189">
+          <caret line="12" column="17" lean-forward="false" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/questionnaire/ssm/module/resultAnalysis/service/impl/PrimaryDataServiceImplTest.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/notice/service/impl/NoticeServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1863">
-          <caret line="93" column="42" lean-forward="false" selection-start-line="93" selection-start-column="34" selection-end-line="93" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+        <state relative-caret-position="918">
+          <caret line="54" column="31" lean-forward="true" selection-start-line="54" selection-start-column="31" selection-end-line="54" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/js/myJs/recycleQesManage.js">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/module/notice/mapper/NoticeManageMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1094">
-          <caret line="126" column="9" lean-forward="false" selection-start-line="126" selection-start-column="9" selection-end-line="126" selection-end-column="9" />
+        <state relative-caret-position="621">
+          <caret line="23" column="11" lean-forward="false" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
+          <folding>
+            <marker date="1494060608269" expanded="true" signature="343:1002" ph="SELECT n.not... notice" />
+            <marker date="1494060608269" expanded="true" signature="1640:2121" ph="SELECT n.not... notice" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/notice/controller/NoticeController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1755">
-          <caret line="88" column="56" lean-forward="false" selection-start-line="88" selection-start-column="43" selection-end-line="88" selection-end-column="56" />
+          <caret line="78" column="7" lean-forward="false" selection-start-line="78" selection-start-column="7" selection-end-line="78" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="false" />
-            <element signature="docComment;method#getMyNoticeView#0;class#NoticeController#0" expanded="false" />
-            <element signature="method#getMyNoticeView#0;class#NoticeController#0" expanded="false" />
-            <element signature="e#3012#3013#0" expanded="false" />
-            <element signature="e#3062#3063#0" expanded="false" />
+            <element signature="e#2902#2903#0" expanded="false" />
+            <element signature="e#2952#2953#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/js/myJs/myNoticeManage.js">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/service/impl/PrimaryDataServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4968">
-          <caret line="190" column="1" lean-forward="false" selection-start-line="190" selection-start-column="1" selection-end-line="190" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#92#0" expanded="false" />
-            <element signature="e#222#279#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="621">
+          <caret line="35" column="34" lean-forward="false" selection-start-line="35" selection-start-column="34" selection-end-line="35" selection-end-column="34" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/notice/listNotice.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="13" column="23" lean-forward="false" selection-start-line="13" selection-start-column="23" selection-end-line="13" selection-end-column="23" />
+        <state relative-caret-position="1215">
+          <caret line="45" column="32" lean-forward="false" selection-start-line="45" selection-start-column="32" selection-end-line="45" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/notice/pojo/Notice.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/js/myJs/myNoticeManage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="405">
+          <caret line="15" column="28" lean-forward="false" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
+          <folding>
+            <marker date="1494137452473" expanded="true" signature="2746:2837" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/notice/pojo/ListNoticeDTO.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/resultAnalysis/primaryData.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1">
-          <caret line="4" column="15" lean-forward="false" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
+        <state relative-caret-position="891">
+          <caret line="33" column="42" lean-forward="false" selection-start-line="33" selection-start-column="42" selection-end-line="33" selection-end-column="42" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/notice/pojo/ListNoticeInfoVO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="10" column="25" lean-forward="false" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/notice/pojo/NoticeUnitVO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="5" column="16" lean-forward="false" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/notice/until/NoticeManageUtil.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/js/myJs/primaryData.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="513">
-          <caret line="19" column="41" lean-forward="true" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
+          <caret line="81" column="42" lean-forward="true" selection-start-line="81" selection-start-column="42" selection-end-line="81" selection-end-column="42" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/notice/pojo/DisplayNoticeVO.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/controller/ResultAnalysisController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="46" column="17" lean-forward="false" selection-start-line="46" selection-start-column="17" selection-end-line="46" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/pojo/ListPrimaryDataInfoVO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1404">
+          <caret line="68" column="37" lean-forward="false" selection-start-line="68" selection-start-column="37" selection-end-line="68" selection-end-column="37" />
+          <folding>
+            <element signature="e#1886#1887#0" expanded="true" />
+            <element signature="e#1946#1947#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/notice/pojo/ListMyNoticeDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/notice/pojo/ListMyNoticeInfoVO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/notice/pojo/CreateNoticeVO.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/AnswerPaper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-99">
-          <caret line="15" column="28" lean-forward="true" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
+        <state relative-caret-position="378">
+          <caret line="60" column="31" lean-forward="false" selection-start-line="60" selection-start-column="17" selection-end-line="60" selection-end-column="31" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/service/PrimaryDataService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="10" column="66" lean-forward="false" selection-start-line="10" selection-start-column="66" selection-end-line="10" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/questionnaire/ssm/module/resultAnalysis/mapper/resultAnalysisMapperTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="521">
+          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/module/resultAnalysis/mapper/ResultAnalysisMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="27" column="68" lean-forward="false" selection-start-line="27" selection-start-column="68" selection-end-line="27" selection-end-column="68" />
+          <folding>
+            <marker date="1494149017650" expanded="true" signature="344:625" ph="SELECT q.que... " />
+            <marker date="1494149017650" expanded="true" signature="344:725" ph="SELECT m.mis... questionnaire" />
+            <marker date="1494149017650" expanded="true" signature="344:755" ph="SELECT m.mis... questionnaire" />
+            <marker date="1494149017650" expanded="true" signature="924:1104" ph="SELECT COUNT... " />
+            <marker date="1494149017650" expanded="true" signature="1341:1629" ph="SELECT answe... answer_paper" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/mapper/ResultAnalysisMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="16" column="75" lean-forward="false" selection-start-line="16" selection-start-column="75" selection-end-line="16" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shiro-activeSessionCache.index">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shiro-activeSessionCache.data">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/pojo/ListAnswerPaperVO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="43" column="5" lean-forward="false" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
+          <folding>
+            <element signature="e#699#700#0" expanded="true" />
+            <element signature="e#735#736#0" expanded="true" />
+            <element signature="e#791#792#0" expanded="true" />
+            <element signature="e#841#842#0" expanded="true" />
+            <element signature="e#881#882#0" expanded="true" />
+            <element signature="e#917#918#0" expanded="true" />
+            <element signature="e#975#976#0" expanded="true" />
+            <element signature="e#1025#1026#0" expanded="true" />
+            <element signature="e#1066#1067#0" expanded="true" />
+            <element signature="e#1103#1104#0" expanded="true" />
+            <element signature="e#1163#1164#0" expanded="true" />
+            <element signature="e#1215#1216#0" expanded="true" />
+            <element signature="e#1252#1253#0" expanded="true" />
+            <element signature="e#1285#1286#0" expanded="true" />
+            <element signature="e#1337#1338#0" expanded="true" />
+            <element signature="e#1381#1382#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

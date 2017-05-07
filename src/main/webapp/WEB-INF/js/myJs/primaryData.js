@@ -5,16 +5,16 @@ var $table = $('#primaryDataTable');
 
 $(function () {
     $table.bootstrapTable({
-        //url: './test.json',
-        method: 'get',
-        //dataType: 'json',
+        url: '/resultAnalysis/listPrimaryData',
+        method: 'post',
+        dataType: 'json',
         cache: false,
-        data: data,
 
         striped: true,
 //            clickToSelect: true,
         undefinedText: '--',
-
+        sortName:['missionId','questionnaireId','questionnaireTitle','questionnaireSubtitle','questionnaireCount','min_submit_count'],
+        sortOrder:'desc',
         height: getHeight(),
 
         pagination: true,
@@ -28,16 +28,22 @@ $(function () {
         searchAlign: 'right',
         searchOnEnterKey: true,
 
-        showColumns: false,
-        showRefresh: false,
-        showToggle: false,
-        showPaginationSwitch: false,
+        toolbar: '#tableToolbar',
+
+        showColumns: true,
+        showRefresh: true,
+        showToggle: true,
+        showPaginationSwitch: true,
 
         minimumCountColumns: 3,
 
         columns: [{
             checkbox: true,
             clickToSelect: true
+        }, {
+            field: 'missionId',
+            title: '任务ID',
+            sortable: true
         }, {
             field: 'questionnaireId',
             title: '问卷ID',
@@ -51,6 +57,14 @@ $(function () {
             title: '问卷副标题',
             sortable: true
         }, {
+            field:'questionnaireCount',
+            title:'问卷完成量',
+            sortable: true
+        },{
+            field:'minSubmitCount',
+            title:'最低提交量',
+            sortable: true
+        },{
             title: '操作',
             align: 'center',
             events: operateEvents,
@@ -58,28 +72,7 @@ $(function () {
         }]
     });
 });
-var data = [
-    {
-	"questionnaireId":"1",
-	"questionnaireTitle":"11",
-	"questionnaireSubtitle":"111"
 
-
-},{
-	"questionnaireId":"2",
-	"questionnaireTitle":"22",
-	"questionnaireSubtitle":"222"
-
-
-},
-{
-	"questionnaireId":"3",
-	"questionnaireTitle":"33",
-	"questionnaireSubtitle":"333"
-
-
-}
-];
 
 var checkDataUrl = '';
 //单份处理
