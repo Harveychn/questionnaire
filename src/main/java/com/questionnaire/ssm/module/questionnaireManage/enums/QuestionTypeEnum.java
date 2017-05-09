@@ -14,7 +14,7 @@ public enum QuestionTypeEnum {
     MULTI_LINE_BLANK("5", "多项填空题", "||"),//多项填空题
     PICTURE_SINGLE_SELECTION("6", "图片单选题", "||"),//图片单选题
     PICTURE_MULTIPLE_SELECTION("7", "图片多选题", "||"),//图片多选题
-    ;
+    SHORT_ANSWER("8", "简答题", "||"),;
 
     QuestionTypeEnum(String code, String questionType, String divideStr) {
         this.code = code;

@@ -192,6 +192,9 @@ public class QesManageVODOUtil {
         if (QuestionTypeEnum.PICTURE_MULTIPLE_SELECTION.getCode().equals(typeCode)) {
             return QuestionTypeEnum.PICTURE_MULTIPLE_SELECTION.getQuestionType();
         }
+        if (QuestionTypeEnum.SHORT_ANSWER.getCode().equals(typeCode)) {
+            return QuestionTypeEnum.SHORT_ANSWER.getQuestionType();
+        }
         return QuestionTypeEnum.UNKNOWN_TYPE.getQuestionType();
     }
 
@@ -224,6 +227,9 @@ public class QesManageVODOUtil {
         }
         if (QuestionTypeEnum.PICTURE_MULTIPLE_SELECTION.getQuestionType().equals(typeString)) {
             return QuestionTypeEnum.PICTURE_MULTIPLE_SELECTION.getCode();
+        }
+        if (QuestionTypeEnum.SHORT_ANSWER.getQuestionType().equals(typeString)) {
+            return QuestionTypeEnum.SHORT_ANSWER.getCode();
         }
         return QuestionTypeEnum.UNKNOWN_TYPE.getCode();
     }
@@ -304,7 +310,8 @@ public class QesManageVODOUtil {
                 || questionTypeCode.equals(QuestionTypeEnum.MULTI_LINE_BLANK.getCode())
                 || questionTypeCode.equals(QuestionTypeEnum.DROP_SELECTION.getCode())
                 || questionTypeCode.equals(QuestionTypeEnum.PICTURE_SINGLE_SELECTION.getCode())
-                || questionTypeCode.equals(QuestionTypeEnum.PICTURE_MULTIPLE_SELECTION.getCode())) {
+                || questionTypeCode.equals(QuestionTypeEnum.PICTURE_MULTIPLE_SELECTION.getCode())
+                || questionTypeCode.equals(QuestionTypeEnum.SHORT_ANSWER.getCode())) {
             options = optionString.split("\\|\\|");
         }
         if (options == null) {
