@@ -1,4 +1,8 @@
 ﻿var vars = {
+    // jsPath: 'CreateQesResources/script/',
+    // jsTmp: 'CreateQesResources/script/artTemplate/',
+    // cssPath: 'CreateQesResources/skin/',
+    // isLayer: 'CreateQesResources/script/layer/'
     jsPath: '../js/CreateQesResources/script/',
     jsTmp: '../js/CreateQesResources/script/artTemplate/',
     cssPath: '../js/CreateQesResources/skin/',
@@ -7,8 +11,8 @@
 
 //扩展
 var fnExtend = {
-    includFile: function (g, c) {
-        for (var f = "string" == typeof c ? [c] : c, d = 0; d < f.length; d++) {
+    includeFile: function (g, c) {
+        for (var f = "string" === typeof c ? [c] : c, d = 0; d < f.length; d++) {
             var b = f[d].replace(/^\s|\s$/g, ""),
                 a = b.split("."),
                 e = "css" == a[a.length - 1].toLowerCase(),
@@ -21,13 +25,8 @@ var fnExtend = {
 };
 
 //插入css文件
-fnExtend.includFile(vars.cssPath, ['base.css', 'content.css', 'blue.css']);
+fnExtend.includeFile(vars.cssPath, ['base.css', 'content.css', 'blue.css', 'bootstrap.min.css']);
 //插入js文件
-fnExtend.includFile(vars.jsPath, ['jquery-ui.min.js', 'dcselect.js']);
-fnExtend.includFile(vars.isLayer, ['layer.js']);
-fnExtend.includFile(vars.jsTmp, ['template.js']);
-
-//    jsPath: 'resources/script/',
-// jsTmp: 'resources/script/artTemplate/',
-// cssPath: 'resources/skin/',
-// isLayer: 'resources/script/layer/'
+fnExtend.includeFile(vars.jsPath, ['jquery-ui.min.js', 'dcselect.js']);
+fnExtend.includeFile(vars.isLayer, ['layer.js']);
+fnExtend.includeFile(vars.jsTmp, ['template.js']);

@@ -89,6 +89,10 @@ a.cotrlBtn.active {
     margin-right: 20px;
 }
 
+.title {
+    width: 1025px;
+}
+
 .condition-box .condition-items .condition-title {
     width: auto;
     display: inline-block;
@@ -221,7 +225,7 @@ a.cotrlBtn.active {
 }
 
 .questions-head-title {
-    width: auto;
+    width: 900px;
     min-height: 50px;
     padding-left: 55px;
     background: #fff;
@@ -239,7 +243,7 @@ a.cotrlBtn.active {
 }
 
 table.questions-items-title {
-    width: 100%;
+    width: 900px;
     height: 50px;
     background: #fff;
     border-collapse: collapse;
@@ -249,7 +253,7 @@ table.questions-items-title {
 }
 
 table.questions-items-title td.module-menu {
-    width: 40px;
+    width: 50px;
     height: 40px;
     border-right: 1px solid #eee;
 }
@@ -484,11 +488,12 @@ table.questions-items-title td .cq-title {
 
 textarea.exam-textarea, .exam-textarea {
     width: 96%;
-    min-height: 120px;
+    min-height: 40px;
+    max-height: 100px;
     padding: 3px;
     line-height: 1.5;
     color: #666;
-    border: 1px solid #ddd;
+    border: 1px dotted #ddd;
     word-break: break-all;
     font-size: 14px;
     resize: none;

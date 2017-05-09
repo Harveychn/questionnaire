@@ -18,13 +18,12 @@ var exam = {
         //
         this.moveTispFn('.ui-up-btn,.ui-down-btn,.ui-clone-btn,.ui-del-btn');
         this.moveTispFn('.ui-add-item-btn,.ui-batch-item-btn,.ui-add-answer-btn,.ui-set-must-done');
-
     },
     //拖拽
     dragFn: function () {
         var _this = this;
         var data = {}, addname = 0;
-        $("#ui_sortable_exam li").draggable({
+        $("#ui_sortable_exam").find("li").draggable({
             /* containment:'#pageContentId',*/
             connectToSortable: '.ui-questions-content-list',
             cursorAt: {top: 18, left: 20},
@@ -45,7 +44,7 @@ var exam = {
                         //生成1000以内的随机数
                         tid: addname + parseInt(1000 * Math.random())
                     }]
-                }
+                };
                 return template($(this).attr('data-tempId'), data);
             },
             revert: 'invalid',
@@ -58,11 +57,10 @@ var exam = {
             stop: function (event) {
                 _this.orderFn($('.ui-questions-content-list'));
             }
-
         }).on('click', function (e) {
             addname++;
             data = {
-                type: $(this).children('a').attr('data-checkType'),//1为单选，2为多选
+                type: $(this).children('a').attr('data-checkType'),//1为单项选择题，2为多项选择题,3为单项填空题,4为多项填空题,5为图片单选题，6为图片多选题
                 questionType: $(this).children('a').attr('data-questionType'),
                 //name命名规则，q代表前缀+父级li的题型id
                 name: 'q' + $(this).attr('data-uid') + '_' + addname,
@@ -77,7 +75,7 @@ var exam = {
                     //生成1000以内的随机数
                     tid: addname + parseInt(1000 * Math.random())
                 }]
-            }
+            };
             $('.ui-questions-content-list').append(template($(this).attr('data-tempId'), data));
             _this.orderFn($('.ui-questions-content-list'));
             _this.sortFn();
@@ -144,14 +142,15 @@ var exam = {
             $('.cq-into-edit').remove();
             var data = {
                 title: ''
-            }
+            };
             if (!$('.cq-into-edit').size()) {
                 $('body').append(template('drag_T_edit', data));
                 $('.cq-into-edit').attr('data-gettid', $(this).attr('data-tid'));
             }
-            if ($(this).hasClass('T_plugins')) {
-                $('.cq-into-edit').append(template('T_edit_plugins', {}));
-            }
+            //标题编辑工具
+            // if ($(this).hasClass('T_plugins')) {
+            //     $('.cq-into-edit').append(template('T_edit_plugins', {}));
+            // }
             $('.cq-into-edit').css({
                 'top': ($(this).offset().top - 1) + 'px',
                 'left': ($(this).offset().left) + 'px',
@@ -189,11 +188,39 @@ var exam = {
             });
             event.stopPropagation();
         });
+
         $(document).on('blur', '.cq-into-edit .cq-edit-title', function () {
             $('.T_edit[data-tid=' + $('.cq-into-edit').attr('data-gettid') + ']').html($('.cq-into-edit .cq-edit-title').html());
-            var $itemInput = $('.T_edit[data-tid=' + $('.cq-into-edit').attr('data-gettid') + ']').closest('li').find('.input-check').find('input');
-            if ($itemInput.size()) {
-                $itemInput.val($('.cq-into-edit .cq-edit-title').html());
+            // var $itemInput = $('.T_edit[data-tid=' + $('.cq-into-edit').attr('data-gettid') + ']').closest('li').find('.input-check').find('input');
+            // if ($itemInput.size()) {
+            //     $itemInput.val($('.cq-into-edit .cq-edit-title').html());
+            // }
+            var questionnaireTitle;
+            var $qesPaperTitle = $('#questionnaireTitle');
+            try {
+                questionnaireTitle = $qesPaperTitle.find('span').html().toString();
+            } catch (error) {
+                layer.msg('请正确编辑问卷标题!', function () {
+                });
+                $qesPaperTitle.html('<span style="font-size:18px;">这里填写问卷标题</span>');
+                $qesPaperTitle.addClass('bg-danger');
+                $(this).focus();
+                return;
+            }
+            if (questionnaireTitle.match(/^\s*$/)) {
+                layer.msg('问卷标题不能为空串', function () {
+                });
+                $qesPaperTitle.addClass('bg-danger');
+                $(this).focus();
+            }
+            if (questionnaireTitle === '这里填写问卷标题') {
+                layer.msg('问卷标题必须编辑！', function () {
+                });
+                $qesPaperTitle.addClass('bg-danger');
+                $(this).focus();
+            }
+            if ($qesPaperTitle.hasClass('bg-danger')) {
+                $qesPaperTitle.removeClass('bg-danger');
             }
         });
     },
@@ -203,7 +230,6 @@ var exam = {
             $('.T_edit[data-tid=' + $('.cq-into-edit').attr('data-gettid') + ']').html($('.cq-into-edit .cq-edit-title').html());
             $('.cq-into-edit').hide();
         }
-
     },
     //鼠标移动上显示
     moveTispFn: function (obj) {
@@ -267,17 +293,18 @@ var exam = {
         //添加选项栏
         var $tid = 100 + parseInt(1000 * Math.random());
         $(document).on('click', parentObj + ' ' + addObj, function (e) {
-            var $parentItems = $(this).closest('li.ui-module').find('.cq-unset-list');
+            // var $parentItems = $(this).closest('li.ui-module').find('.cq-unset-list');
+            var $parentItems = $(this).closest('li.ui-module').find('.form-horizontal');
             var $name = $.trim($parentItems.attr('data-nameStr'));
             $tid++;
             var data = {
                 type: parseInt($parentItems.attr('data-checktype')),
                 name: $name,
-                index: $parentItems.children('li:last').index() + 1,
+                // index: $parentItems.children('li:last').index() + 1,
+                index: $parentItems.children('.form-group:last').index() + 1,
                 items: [{value: '0', tid: $tid}]
-            }
+            };
             $parentItems.append(template('ui_additem_content', data));
-
         });
         //批量添加选项栏
         $(document).on('click', parentObj + ' ' + batchAddObj, function (e) {
@@ -287,7 +314,8 @@ var exam = {
         //添加答案解析
         $(document).on('click', parentObj + ' ' + addAnswerObj, function (e) {
             $(this).closest('li').css({'height': 'auto'});
-            var $parentItems = $(this).closest('li.ui-module').find('.cq-unset-list');
+            // var $parentItems = $(this).closest('li.ui-module').find('.cq-unset-list');
+            var $parentItems = $(this).closest('li.ui-module').find('.form-horizontal');
             if (!$(this).closest('li.ui-module').find('.analysis_contx').size()) {
                 $parentItems.after(template('analysis_tmp', {}));
             } else {
@@ -307,13 +335,11 @@ var exam = {
                 });
             } else {
                 $parentItems.css({
-                    // 'border-style': 'dotted',
-                    // 'border-color': '#FFFFFF #7b7b7b #FFFFFF #7b7b7b',
-                    'background':'#ED9E2C',
+                    'background': '#ED9E2C',
                     'color': '#6a6a6a',
                     'font-size': '16px'
                 });
             }
         });
     }
-}
+};
