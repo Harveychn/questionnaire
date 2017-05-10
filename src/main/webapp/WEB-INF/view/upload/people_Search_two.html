@@ -66,8 +66,8 @@
 					<div class="panel-body">
                     	<div class="layui-form-item col-md-offset-1">
 						    <div class="layui-input-block">
-						    	<button id="resetBtn" class="btn btn-lg btn-warning">重置</button>
-								<button id="launchMissionBtn" class="btn btn-lg btn-success">发布</button>
+						    	<button id="launchMissionBtn" class="btn btn-lg btn-success">确认</button>
+								<button id="resetBtn" class="btn btn-lg btn-warning">取消</button>
 						      
 						    </div>
 					  	</div>
@@ -151,7 +151,7 @@
 					var layer = layui.layer;
 					//校验调查单位数量不能少于一个
 					if(unitIds.length <= 0) {
-						layer.msg('调查单位还未选择！', function() {});
+						layer.msg('角色还未选择！', function() {});
 						return;
 					}
 					
@@ -159,39 +159,12 @@
 				});
 			});
 
-			function submitJsonData(missionDescription, unitIds, qesItemInfoArray) {
-				var createResearchMissionVO = {};
-				createResearchMissionVO.missionDescription = missionDescription;
-				createResearchMissionVO.missionStartDate = new Date($('#begindate').val());
-				createResearchMissionVO.missionDeadLine = new Date($('#enddate').val());
-				createResearchMissionVO.missionObjectUnitId = unitIds;
-				createResearchMissionVO.missionQuestionnaireInfo = qesItemInfoArray;
-				var url = '/researchManage/createResearchMission';
-				accessServerByJson(url, createResearchMissionVO);
-			}
-
-			/*重置按钮*/
+			/*取消按钮*/
 			$('#resetBtn').on('click', function() {
 				layui.use('layer', function() {
 					var layer = layui.layer;
-
-					layer.confirm('确认重置？', {
-							icon: 3,
-							btn: ['确定', '取消']
-						},
-						function(index) {
-							$('#missionDescription').val(null);
-							$('#researchUnit').selectpicker('deselectAll');
-							$('#begindate').val(null);
-							$('#enddate').val(null);
-							$('select[name="questionnaireSelect"]').selectpicker('val', null);
-							$('input[name="minSubmit"]').val(null);
-							layer.close(index);
-						},
-						function() {
-							layer.msg('取消成功！');
-						}
-					)
+					var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+					parent.layer.close(index); //再执行关闭   
 				});
 
 			});
