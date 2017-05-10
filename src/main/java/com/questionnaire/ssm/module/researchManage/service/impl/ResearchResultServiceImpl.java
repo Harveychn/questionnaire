@@ -93,10 +93,9 @@ public class ResearchResultServiceImpl implements ResearchResultService {
                 researchResultMapper.insert2AnswerDetailBatch(answerDetailDOMap.get(index));
             } catch (Exception e) {
                 logger.error(e.getMessage());
-                throw new OperateDBException(CodeForVOEnum.DB_INSERT_FAIL, "上传答卷失败（插入信息到答卷详细信息表失败）!");
+                throw new OperateDBException(CodeForVOEnum.DB_INSERT_FAIL, "上传答卷失败!（插入信息到答卷详细信息表失败）");
             }
         }
-
         return operateSuccessCount;
     }
 
