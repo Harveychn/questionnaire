@@ -1,0 +1,40 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.questionnaire.ssm.module.resultAnalysis.mapper.ResultAnalysisMapper">
+    <select id="listPrimaryDataInfo"
+            resultType="com.questionnaire.ssm.module.resultAnalysis.pojo.ListPrimaryDataInfoVO">
+        SELECT
+        m.mission_id AS missionId,
+        m.questionnaire_id AS questionnaireId,
+        q.questionnaire_title AS questionnaireTitle,
+        q.questionnaire_subtitle AS questionnaireSubtitle,
+        m.min_submit_count AS minSubmitCount
+        FROM
+        questionnaire AS q,
+        mapping_mission_questionnaire AS m
+        WHERE q.questionnaire_id=m.questionnaire_id
+        ORDER BY m.mission_id
+    </select>
+
+    <select id="listCount" parameterType="com.questionnaire.ssm.module.resultAnalysis.pojo.ListPrimaryDataInfoVO"
+            resultType="Long">
+        SELECT
+        COUNT(questionnaire_id) AS questionnaireCount
+        FROM
+        answer_paper
+        WHERE questionnaire_id=#{questionnaireId}
+        AND mission_id=#{missionId}
+    </select>
+
+    <select id="listAnswerPaper" parameterType="com.questionnaire.ssm.module.resultAnalysis.pojo.ListPrimaryDataInfoVO"
+            resultType="com.questionnaire.ssm.module.resultAnalysis.pojo.ListAnswerPaperVO">
+        SELECT
+        answer_paper_id AS answerPaperId,
+        submit_user_tel AS submitUserTel,
+        fill_answer_time AS fillAnswerTime,
+        submit_time AS submitTime
+        FROM
+        answer_paper
+        WHERE questionnaire_id=#{questionnaireId}
+        AND mission_id=#{missionId}
+    </select>
+</mapper>
