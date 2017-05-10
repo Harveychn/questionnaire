@@ -1,11 +1,12 @@
 # Created by .ignore support plugin (hsz.mobi)
+.idea
 target
-src/test
 src/main/resources/properties
 src/main/resources/logback.xml
-src/main/resources/mybatis-generator-config.xml
 src/main/resources/rebel.xml
-logFiles
+src/main/resources/mybatis-generator-config.xml
+src/main/resources/log4j.properties.back
+src/test
 ### Java template
 # Compiled class file
 *.class
