@@ -3,6 +3,7 @@ package com.questionnaire.ssm.module.questionnaireManage.util;
 import com.questionnaire.ssm.module.generated.pojo.AnswerDetail;
 import com.questionnaire.ssm.module.generated.pojo.QuestionWithBLOBs;
 import com.questionnaire.ssm.module.generated.pojo.Questionnaire;
+import com.questionnaire.ssm.module.global.constant.CONSTANT;
 import com.questionnaire.ssm.module.global.enums.CodeForVOEnum;
 import com.questionnaire.ssm.module.global.exception.UserValidaException;
 import com.questionnaire.ssm.module.global.util.UserValidationUtil;
@@ -158,6 +159,9 @@ public class QesManageVODOUtil {
         String questionCode = parse2DOQuestionType(answerDetailVO.getQuestionType());
         if (answerDetailVO.getAnswer().size() > 0) {
             answerDetail.setAnswerString(toAnswerString(answerDetailVO.getAnswer(), questionCode));
+        } else {
+            //该题用户未作答，默认设置为‘未回答’
+            answerDetail.setAnswerString(CONSTANT.getNullAnswerString());
         }
         return answerDetail;
     }
