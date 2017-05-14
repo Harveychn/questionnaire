@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>查看原始数据</title>
+		<link rel="shortcut icon" href="../../img/favicon.ico" />
+		<link rel="stylesheet" href="../../css/bootstrap.min.css">
+		<link rel="stylesheet" href="../../js/plugins/layui/css/layui.css">
+
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="panel-title">
+							答卷数据
+						</div>
+					</div>
+					<div class="panel-body">
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<script src="../../js/jquery.min.js"></script>
+		<script src="../../js/bootstrap.min.js"></script>
+		<!--<script src="../../js/plugins/layer/layer.min.js"></script>-->
+		<script src="../../js/plugins/layui/layui.js"></script>
+
+		<script type="text/javascript">
+			$(function() {
+				$.ajax({
+					url: 'primaryData.json',
+					type: 'GET',
+					dataType: 'json',
+					timeout: 1000,
+					cache: false,
+					beforeSend: LoadFunction, //加载执行方法    
+					error: erryFunction, //错误执行方法    
+					success: succFunction //成功执行方法    
+				})
+
+				function LoadFunction() {
+					$(".panel-body").html('加载中...');
+				}
+
+				function erryFunction() {
+					alert("错误，请刷新。");
+				}
+
+				function succFunction(tt) {
+					$(".panel-body").html('');
+
+					var json = eval(tt); //数组         
+					$.each(json, function(index, item) {
+						//循环获取数据    
+						var id = json[index].id;
+						var title = json[index].title;
+						var ans = json[index].ans;
+						$(".panel-body").html($(".panel-body").html() + "<div class='col-md-12 ' style='font-size: 20px; line-height: 1.428;'>" + "<div class='col-md-1 '>" + id + "</div>" + "<div class='col-md-11'>" + title + "</div>" + "</div>" + "<br/>" + "<div class='col-md-12 ' style='font-size: 20px; line-height: 1.428;'>" + "<div class='col-md-1'></div>" + "<div class='col-md-10'>" + ans + "</div>" + "</div>" + "<br/>");
+					});
+				}
+			});
+		</script>
+
+	</body>
+
+</html>

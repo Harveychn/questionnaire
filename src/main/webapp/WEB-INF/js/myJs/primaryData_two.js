@@ -108,7 +108,7 @@ window.operateEvents = {
 //操作按钮格式设置
 function operateFormatter(value, row, index) {
 	return [
-		'<a class="check btn btn-sm btn-link" href="http://www.baidu.com " target="_Blank" data-toggle="tooltip" title="查看">',
+		'<a class="check btn btn-sm btn-link" href="../../view/resultAnalysis/primaryData_dataShow.html " target="_Blank" data-toggle="tooltip" title="查看">',
 		'<i class="glyphicon glyphicon-check"></i> 查看',
 		'</a>'
 	].join('');
