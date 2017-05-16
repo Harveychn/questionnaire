@@ -102,6 +102,7 @@ public class QesManageController {
         modelAndView.addObject("displayQuestionnaireVO",
                 qesManageService.getQuestionnaireById(questionnaireId));
         modelAndView.setViewName("qesManage/displayQuestionnaire");
+//        modelAndView.setViewName("qesManage/browseQesPaper");
         return modelAndView;
     }
 
