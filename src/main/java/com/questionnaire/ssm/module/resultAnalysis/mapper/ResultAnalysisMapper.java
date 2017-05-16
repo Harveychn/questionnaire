@@ -1,7 +1,6 @@
 package com.questionnaire.ssm.module.resultAnalysis.mapper;
 
-import com.questionnaire.ssm.module.resultAnalysis.pojo.ListAnswerPaperVO;
-import com.questionnaire.ssm.module.resultAnalysis.pojo.ListPrimaryDataInfoVO;
+import com.questionnaire.ssm.module.resultAnalysis.pojo.*;
 
 import java.util.List;
 
@@ -14,5 +13,6 @@ public interface ResultAnalysisMapper {
 
     List<ListPrimaryDataInfoVO> listPrimaryDataInfo()throws Exception;
     Long listCount(ListPrimaryDataInfoVO listPrimaryDataInfoVO)throws Exception;
-    List<ListAnswerPaperVO> listAnswerPaper(ListPrimaryDataInfoVO listPrimaryDataInfoVO)throws Exception;
+    List<ListAnswerPaperVO> listAnswerPaper(MissionQuestionnaireVO missionQuestionnaireVO)throws Exception;
+    String selectAnswerDetail(QuestionAnswerPaperVO questionAnswerPaperVO)throws Exception;
 }

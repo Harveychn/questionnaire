@@ -1,16 +1,25 @@
 package com.questionnaire.ssm.module.resultAnalysis.service.impl;
 
+import com.questionnaire.ssm.module.generated.mapper.AnswerDetailMapper;
+import com.questionnaire.ssm.module.generated.mapper.AnswerPaperMapper;
+import com.questionnaire.ssm.module.generated.mapper.MappingQuestionnaireQuestionMapper;
+import com.questionnaire.ssm.module.generated.mapper.QuestionMapper;
+import com.questionnaire.ssm.module.generated.pojo.*;
 import com.questionnaire.ssm.module.global.enums.CodeForVOEnum;
+import com.questionnaire.ssm.module.global.enums.DBTableEnum;
 import com.questionnaire.ssm.module.global.exception.OperateDBException;
-import com.questionnaire.ssm.module.resultAnalysis.controller.ResultAnalysisController;
+import com.questionnaire.ssm.module.questionnaireManage.util.QesManageVODOUtil;
 import com.questionnaire.ssm.module.resultAnalysis.mapper.ResultAnalysisMapper;
-import com.questionnaire.ssm.module.resultAnalysis.pojo.ListPrimaryDataInfoVO;
+import com.questionnaire.ssm.module.resultAnalysis.pojo.*;
 import com.questionnaire.ssm.module.resultAnalysis.service.PrimaryDataService;
+import com.questionnaire.ssm.module.resultAnalysis.util.AnswerPaperVODOUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.TransactionScoped;
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,35 +28,126 @@ import java.util.List;
  */
 @Service
 public class PrimaryDataServiceImpl implements PrimaryDataService {
-   public List<ListPrimaryDataInfoVO> listPrimaryData()throws Exception{
-        List<ListPrimaryDataInfoVO> listPrimaryDataInfoVOList=new ArrayList<>();
-        List<ListPrimaryDataInfoVO> listPrimaryDataInfoVOS=new ArrayList<>();
-        try{
-            listPrimaryDataInfoVOList=resultAnalysisMapper.listPrimaryDataInfo();
-        }
-        catch (Exception e){
+    /**
+     * 获取问卷信息
+     *
+     * @return
+     * @throws Exception
+     */
+    @Override
+    public List<ListPrimaryDataInfoVO> listPrimaryData() throws Exception {
+        List<ListPrimaryDataInfoVO> listPrimaryDataInfoVOList = new ArrayList<>();
+        List<ListPrimaryDataInfoVO> listPrimaryDataInfoVOS = new ArrayList<>();
+        try {
+            listPrimaryDataInfoVOList = resultAnalysisMapper.listPrimaryDataInfo();
+        } catch (Exception e) {
             logger.error(e.getMessage());
-            throw new OperateDBException(CodeForVOEnum.UNKNOWN_ERROR,"获取原始数据失败");
+            throw new OperateDBException(CodeForVOEnum.UNKNOWN_ERROR, "获取问卷失败");
         }
         //获取问卷完成数量
-        Long count=null;
-        for(ListPrimaryDataInfoVO listPrimaryDataInfoVO:listPrimaryDataInfoVOList){
-            count=resultAnalysisMapper.listCount(listPrimaryDataInfoVO);
+        Long count = null;
+        for (ListPrimaryDataInfoVO listPrimaryDataInfoVO : listPrimaryDataInfoVOList) {
+            count = resultAnalysisMapper.listCount(listPrimaryDataInfoVO);
             listPrimaryDataInfoVO.setQuestionnaireCount(count);
-            try{
+            try {
                 listPrimaryDataInfoVOS.add(listPrimaryDataInfoVO);
-            }catch (Exception e){
+            } catch (Exception e) {
                 logger.error(e.getMessage());
             }
         }
         return listPrimaryDataInfoVOS;
     }
 
+    /**
+     * 获取问卷对应答卷信息
+     *
+     * @param missionQuestionnaireVO
+     * @return
+     * @throws Exception
+     */
+    @Override
+    public List<ListAnswerPaperVO> listAnswerPaper(MissionQuestionnaireVO missionQuestionnaireVO) throws Exception {
+        List<ListAnswerPaperVO> listAnswerPaperVOList = new ArrayList<>();
+        try {
+            listAnswerPaperVOList = resultAnalysisMapper.listAnswerPaper(missionQuestionnaireVO);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            throw new OperateDBException(CodeForVOEnum.UNKNOWN_ERROR, "获取答卷失败");
+        }
+        return listAnswerPaperVOList;
+    }
+
+    /**
+     * 根据答卷ID查询展示问卷
+     *
+     * @param answerPaperId 问卷ID
+     * @return
+     * @throws Exception
+     */
+    @Override
+    @Transactional
+    public DisplayAnswerPaperVO getAnswerPaper(Long answerPaperId) throws Exception {
+        AnswerPaper answerPaperDO = new AnswerPaper();
+        try {
+            answerPaperDO = answerPaperMapper.selectByPrimaryKey(answerPaperId);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
+        if (answerPaperDO == null) {
+            throw new OperateDBException(CodeForVOEnum.DB_SELECT_FAIL, DBTableEnum.ANSWER_PAPER.getTableName());
+        }
+        DisplayAnswerPaperVO displayAnswerPaperVO = AnswerPaperVODOUtil.toDisplayQuestionnaireVO(answerPaperDO);
+
+        long questionnaireId = displayAnswerPaperVO.getQuestionnaireId();
+        /*根据查询出来的问卷ID查询问题*/
+        List<MappingQuestionnaireQuestion> mapDOList = null;
+        MappingQuestionnaireQuestionExample mapDOExample = new MappingQuestionnaireQuestionExample();
+        mapDOExample.createCriteria().andQuestionnaireIdEqualTo(questionnaireId);
+        try {
+            mapDOList = mappingQuestionnaireQuestionMapper.selectByExample(mapDOExample);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            throw new OperateDBException(CodeForVOEnum.UNKNOWN_ERROR, DBTableEnum.MAPPING_QUESTIONNAIRE_QUESTION.getTableName());
+        }
+
+        Long currentQuestionId = null;
+        List<AnswerQuestionVO> answerQuestionVOList = new ArrayList<>();
+        QuestionWithBLOBs questionWithBLOBs = null;
+        String answerDetail=null;
+        for (int order = 0; order < mapDOList.size(); order++) {
+            currentQuestionId = mapDOList.get(order).getQuestionId();//获取当前问题id
+            questionWithBLOBs = questionMapper.selectByPrimaryKey(currentQuestionId);//获取当前问题标题内容
+
+            QuestionAnswerPaperVO questionAnswerPaperVO = new QuestionAnswerPaperVO();
+            questionAnswerPaperVO.setAnswerPaperId(answerPaperId);
+            questionAnswerPaperVO.setQuestionId(currentQuestionId);
+
+            answerDetail = resultAnalysisMapper.selectAnswerDetail(questionAnswerPaperVO);//获取答案
+//            answerDetailString= QesManageVODOUtil.toAnswerString(currentAnswerDetail,questionWithBLOBs.getQuestionType());
+
+            answerQuestionVOList.add(order, AnswerPaperVODOUtil.toAnswerQuestionVO(questionWithBLOBs, answerDetail));
+        }
+        displayAnswerPaperVO.setAnswerQuestions(answerQuestionVOList);
+        return displayAnswerPaperVO;
+    }
 
     private ResultAnalysisMapper resultAnalysisMapper;
-    private static final Logger logger= LoggerFactory.getLogger(PrimaryDataServiceImpl.class);
+    private AnswerPaperMapper answerPaperMapper;
+    private QuestionMapper questionMapper;
+    private MappingQuestionnaireQuestionMapper mappingQuestionnaireQuestionMapper;
+    private AnswerDetailMapper answerDetailMapper;
+    private static final Logger logger = LoggerFactory.getLogger(PrimaryDataServiceImpl.class);
+
     @Autowired
-    public PrimaryDataServiceImpl(ResultAnalysisMapper resultAnalysisMapper){
-        this.resultAnalysisMapper=resultAnalysisMapper;
+    public PrimaryDataServiceImpl(ResultAnalysisMapper resultAnalysisMapper,
+                                  AnswerPaperMapper answerPaperMapper,
+                                  QuestionMapper questionMapper,
+                                  MappingQuestionnaireQuestionMapper mappingQuestionnaireQuestionMapper,
+                                  AnswerDetailMapper answerDetailMapper) {
+        this.resultAnalysisMapper = resultAnalysisMapper;
+        this.answerPaperMapper = answerPaperMapper;
+        this.questionMapper = questionMapper;
+        this.mappingQuestionnaireQuestionMapper = mappingQuestionnaireQuestionMapper;
+        this.answerDetailMapper = answerDetailMapper;
     }
 }
