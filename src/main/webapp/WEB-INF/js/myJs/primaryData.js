@@ -13,8 +13,8 @@ $(function () {
         striped: true,
 //            clickToSelect: true,
         undefinedText: '--',
-        sortName:['missionId','questionnaireId','questionnaireTitle','questionnaireSubtitle','questionnaireCount','min_submit_count'],
-        sortOrder:'desc',
+        sortName: ['missionId', 'questionnaireId', 'questionnaireTitle', 'questionnaireSubtitle', 'questionnaireCount', 'min_submit_count'],
+        sortOrder: 'desc',
         height: getHeight(),
 
         pagination: true,
@@ -22,11 +22,9 @@ $(function () {
         pageList: [10, 20, 30],
         paginationPreText: '上一页',
         paginationNextText: '下一页',
-          sidePagination: 'client',
+        sidePagination: 'client',
 
         search: true,
-        searchAlign: 'right',
-        searchOnEnterKey: true,
 
         toolbar: '#tableToolbar',
 
@@ -57,14 +55,14 @@ $(function () {
             title: '问卷副标题',
             sortable: true
         }, {
-            field:'questionnaireCount',
-            title:'问卷完成量',
+            field: 'questionnaireCount',
+            title: '问卷完成量',
             sortable: true
-        },{
-            field:'minSubmitCount',
-            title:'最低提交量',
+        }, {
+            field: 'minSubmitCount',
+            title: '最低提交量',
             sortable: true
-        },{
+        }, {
             title: '操作',
             align: 'center',
             events: operateEvents,
@@ -79,19 +77,21 @@ var checkDataUrl = '';
 window.operateEvents = {
     //查看
     'click .check': function (e, value, row, index) {
+        // layer.alert(row.missionId + "||" + row.questionnaireId);
+        checkDataUrl = '/resultAnalysis/getPrimaryDataTwo?missionId=' + row.missionId + '&qesId=' + row.questionnaireId;
         layerMsg('查看', row, checkDataUrl);
     }
 };
 /*弹窗层*/
 function layerMsg(confirmText, ids, url) {
     layer.open({
-		  type: 2, 
-		  title :'详细内容',
-		  maxmin: true,
-		  content: 'primaryData_two.html', //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
-		  area: ['800px', '600px'],
-		  resize:true
-		});
+        type: 2,
+        title: '详细内容',
+        maxmin: true,
+        content: url, //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+        area: ['800px', '600px'],
+        resize: true
+    });
 }
 
 function layerConfirm(confirmText, row, url) {

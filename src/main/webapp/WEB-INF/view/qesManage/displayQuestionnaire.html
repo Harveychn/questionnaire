@@ -3,33 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <title>展示问卷视图</title>
-    <link th:href="@{/css/bootstap.min.css}" rel="stylesheet"/>
+    <link rel="shortcut icon" href="../../img/favicon.ico"/>
+    <link href="../../css/bootstrap.min.css" rel="stylesheet"/>
 </head>
 <body>
-<h1 align="center">问卷详细信息</h1>
-<div align="center">
-    <div th:if="${displayQuestionnaireVO!=null}"
-         class="table table-bordered">
-        <div><label th:text="${displayQuestionnaireVO.questionnaireId}"></label></div>
-        <div><label th:text="${displayQuestionnaireVO.questionnaireTitle}"></label></div>
-        <div><label th:text="${displayQuestionnaireVO.questionnaireSubtitle}"></label></div>
-        <div><label th:text="${displayQuestionnaireVO.questionnaireDescription}"></label></div>
-        <div th:if="${displayQuestionnaireVO.questions.size()>0}">
-            <div th:each="question : ${displayQuestionnaireVO.questions}">
-                <label th:text="${questionStat.count}"></label>
-                <label th:text="${question.questionContext}"></label><br/>
-                <label th:text="${question.questionDescription}"></label><br/>
-                <label th:text="${question.must}"></label><br/>
-                <label th:text="${question.questionType}"></label><br/>
-                <div th:if="${question.options.size()>0}">
-                    <div th:each=" option : ${question.options}">
-                        <lable th:text="${option.optionOrder}"></lable>
-                        <label th:text="${option.option}"></label>
+<div class="container">
+    <!--标题信息-->
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="panel-title">
+                问卷信息
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="center-block">
+                    <div class="page-header">
+                        <h1 th:text="${displayQuestionnaireVO.questionnaireTitle}" align="center">标题</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <blockquote class="blockquote-reverse">
+                    <p th:if="${not #strings.isEmpty(displayQuestionnaireVO.questionnaireSubtitle)}"
+                       th:text="${displayQuestionnaireVO.questionnaireSubtitle}">副标题</p><br/>
+                    <p th:if="${not #strings.isEmpty(displayQuestionnaireVO.questionnaireDescription)}"
+                       th:text="${displayQuestionnaireVO.questionnaireDescription}">描述信息</p>
+                    <!--<footer>创建人 创建于 <cite title="Source Title">创建时间</cite></footer>-->
+                </blockquote>
+            </div>
+            <!--问卷中详细问题信息开始-->
+
+            <!--遍历问卷题目信息-->
+            <div class="panel-group" th:if="${#lists.size(displayQuestionnaireVO.questions)>0}"
+                 th:each="curQes,iterStat: ${displayQuestionnaireVO.questions}"
+                 th:switch="${curQes.questionType}">
+                <!--单选题模板-->
+                <div class="panel-default" th:case="'单选题'">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            第 <span th:text="${iterStat.count}">[题号]</span> 题：
+                            <span th:text="${curQes.questionContext}"></span>
+                            (
+                            <span th:text="${curQes.questionType}">题型</span>
+                            <span th:if="${#bools.isTrue(curQes.must)}" style="color: red;">*</span>
+                            )
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-inline">
+                            <div class="form-group" th:if="${#lists.size(curQes.options)>0}"
+                                 th:each="curQesOption: ${curQes.options}">
+                                <input class="form-control" type="radio" th:name="${iterStat.index}"/>
+                                <label th:text="${curQesOption.option}">选项</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--多选题模板-->
+                <div class="panel-default" th:case="'多选题'">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            第 <span th:text="${iterStat.count}">[题号]</span> 题：
+                            <span th:text="${curQes.questionContext}"></span>
+                            (
+                            <span th:text="${curQes.questionType}">题型</span>
+                            <span th:if="${#bools.isTrue(curQes.must)}" style="color: red;">*</span>
+                            )
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-inline">
+                            <div class="form-group" th:if="${#lists.size(curQes.options)>0}"
+                                 th:each="curQesOption: ${curQes.options}">
+                                <input class="form-control" type="checkbox" th:name="${iterStat.index}"/>
+                                <label th:text="${curQesOption.option}">选项</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--单项填空题模板-->
+                <div class="panel-default" th:case="'单项填空题'">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            第 <span th:text="${iterStat.count}">[题号]</span> 题：
+                            <span th:text="${curQes.questionContext}"></span>
+                            (
+                            <span th:text="${curQes.questionType}">题型</span>
+                            <span th:if="${#bools.isTrue(curQes.must)}" style="color: red;">*</span>
+                            )
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <input class="form-control" disabled/>
+                        </div>
+                    </div>
+                </div>
+                <!--多项填空题模板-->
+                <div class="panel-default" th:case="'多项填空题'">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            第 <span th:text="${iterStat.count}">[题号]</span> 题：
+                            <span th:text="${curQes.questionContext}"></span>
+                            (
+                            <span th:text="${curQes.questionType}">题型</span>
+                            <span th:if="${#bools.isTrue(curQes.must)}" style="color: red;">*</span>
+                            )
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-inline">
+                            <div class="form-group" th:if="${#lists.size(curQes.options)>0}"
+                                 th:each="curQesOption: ${curQes.options}">
+                                <div style="size: auto"
+                                     th:if="${curQesOption.option!=null && not #strings.isEmpty(curQesOption.option)}">
+                                    <label>_______</label>
+                                    <label th:text="${curQesOption.option}">问题</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--简答题模板-->
+                <div class="panel-default" th:case="'简答题'">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            第 <span th:text="${iterStat.count}">[题号]</span> 题：
+                            <span th:text="${curQes.questionContext}"></span>
+                            (
+                            <span th:text="${curQes.questionType}">题型</span>
+                            <span th:if="${#bools.isTrue(curQes.must)}" style="color: red;">*</span>
+                            )
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <textarea class="form-control" disabled></textarea>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <!--打印按钮-->
+    <div class="row hidden-print">
+        <div class="btn-group pull-right">
+            <button id="printQesBtn" class="btn btn-lg btn-success">打印</button>
+        </div>
+    </div>
 </div>
+
+<script src="../../js/jquery.min.js"></script>
+<script>
+    $(function () {
+        $('#printQesBtn').on('click', function () {
+            window.print();
+        });
+    });
+</script>
+
 </body>
 </html>

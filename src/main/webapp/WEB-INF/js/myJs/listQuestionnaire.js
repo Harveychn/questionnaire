@@ -86,7 +86,10 @@ $(function () {
 window.operateEvents = {
     //查看问卷
     'click .scanPaper': function (e, value, row, index) {
-        layer.msg('模块未发布', {icon: 4});
+        //查看问卷
+        var browseQesUrl = '/questionnaireManage/displayQuestionnaire';
+        browseQesUrl += '/' + row.questionnaireId;
+        browseQesPaper(browseQesUrl);
     },
     //删除问卷
     'click .remove': function (e, value, row, index) {
@@ -165,7 +168,6 @@ $multiShareBtn.on('click', function () {
     }
     layerConfirmMulti('确实批量共享问卷？', ids, shareUrl);
 });
-
 //批量删除（回收）处理
 $multiDelBtn.on('click', function () {
     var ids = getIdSelections();
@@ -174,7 +176,6 @@ $multiDelBtn.on('click', function () {
     }
     layerConfirmMulti('确认批量移除问卷吗（可以在垃圾问卷中恢复这些问卷）', ids, delTemporaryUrl);
 });
-
 /**
  * 批量处理结束
  */
@@ -240,6 +241,19 @@ function accessServer(questionnaireIds, url) {
         }
     });
     return true;
+}
+/**
+ * 查看问卷
+ * @param urlWithId 查看问卷带有问卷ID的url
+ */
+function browseQesPaper(urlWithId) {
+    layer.full(layer.open({
+        type: 2,
+        content: urlWithId,
+        area: ['80%', '80%'],
+        maxmin: true,
+        closeBtn: 1
+    }));
 }
 
 /**
