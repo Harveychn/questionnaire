@@ -275,7 +275,7 @@ public class QesManageVODOUtil {
      * @return
      * @throws Exception
      */
-    private static String toAnswerString(List<String> answerVOStringList, String questionTypeCode) throws Exception {
+    public static String toAnswerString(List<String> answerVOStringList, String questionTypeCode) throws Exception {
         int optionSize = answerVOStringList.size();
         StringBuilder optionStrBuilder = new StringBuilder();
         for (int optionOrder = 0; optionOrder < optionSize; optionOrder++) {

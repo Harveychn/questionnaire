@@ -25,7 +25,7 @@
         AND mission_id=#{missionId}
     </select>
 
-    <select id="listAnswerPaper" parameterType="com.questionnaire.ssm.module.resultAnalysis.pojo.ListPrimaryDataInfoVO"
+    <select id="listAnswerPaper" parameterType="com.questionnaire.ssm.module.resultAnalysis.pojo.MissionQuestionnaireVO"
             resultType="com.questionnaire.ssm.module.resultAnalysis.pojo.ListAnswerPaperVO">
         SELECT
         answer_paper_id AS answerPaperId,
@@ -36,5 +36,15 @@
         answer_paper
         WHERE questionnaire_id=#{questionnaireId}
         AND mission_id=#{missionId}
+    </select>
+    <select id="selectAnswerDetail"
+            parameterType="com.questionnaire.ssm.module.resultAnalysis.pojo.QuestionAnswerPaperVO"
+            resultType="String">
+        SELECT
+        answer_string AS answerString
+        FROM
+        answer_detail
+        WHERE question_id=#{questionId}
+        AND answer_paper_id=#{answerPaperId}
     </select>
 </mapper>
