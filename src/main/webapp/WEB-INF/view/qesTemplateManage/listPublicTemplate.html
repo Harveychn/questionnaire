@@ -137,7 +137,10 @@
     window.operateEvents = {
         //查看模板
         'click .scanPaper': function (e, value, row, index) {
-            layer.msg('模块未发布', {icon: 4});
+            //查看问卷
+            var browseQesUrl = '/questionnaireManage/displayQuestionnaire';
+            browseQesUrl += '/' + row.questionnaireId;
+            browseQesPaper(browseQesUrl);
         },
         //删除模板
         'click .remove': function (e, value, row, index) {
@@ -231,6 +234,20 @@
                 layer.msg('取消成功！');
             }
         )
+    }
+
+    /**
+     * 查看问卷
+     * @param urlWithId 查看问卷带有问卷ID的url
+     */
+    function browseQesPaper(urlWithId) {
+        layer.full(layer.open({
+            type: 2,
+            content: urlWithId,
+            area: ['80%', '80%'],
+            maxmin: true,
+            closeBtn: 1
+        }));
     }
 
     /**

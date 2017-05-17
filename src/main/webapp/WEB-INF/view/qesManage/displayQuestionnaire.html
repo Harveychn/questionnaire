@@ -25,14 +25,14 @@
             </div>
             <div class="row">
                 <blockquote class="blockquote-reverse">
-                    <p th:text="${displayQuestionnaireVO.questionnaireSubtitle}">副标题</p><br/>
+                    <p th:if="${not #strings.isEmpty(displayQuestionnaireVO.questionnaireSubtitle)}"
+                       th:text="${displayQuestionnaireVO.questionnaireSubtitle}">副标题</p><br/>
                     <p th:if="${not #strings.isEmpty(displayQuestionnaireVO.questionnaireDescription)}"
                        th:text="${displayQuestionnaireVO.questionnaireDescription}">描述信息</p>
                     <!--<footer>创建人 创建于 <cite title="Source Title">创建时间</cite></footer>-->
                 </blockquote>
             </div>
-
-            <!--问卷中详细问题信息-->
+            <!--问卷中详细问题信息开始-->
 
             <!--遍历问卷题目信息-->
             <div class="panel-group" th:if="${#lists.size(displayQuestionnaireVO.questions)>0}"
@@ -96,7 +96,7 @@
                     </div>
                     <div class="panel-body">
                         <div class="form-group">
-                            <textarea class="form-control"></textarea>
+                            <input class="form-control" disabled/>
                         </div>
                     </div>
                 </div>
@@ -118,8 +118,8 @@
                                  th:each="curQesOption: ${curQes.options}">
                                 <div style="size: auto"
                                      th:if="${curQesOption.option!=null && not #strings.isEmpty(curQesOption.option)}">
-                                    <label th:text="${curQesOption.option}">问题</label>
                                     <label>_______</label>
+                                    <label th:text="${curQesOption.option}">问题</label>
                                 </div>
                             </div>
                         </div>
@@ -139,13 +139,30 @@
                     </div>
                     <div class="panel-body">
                         <div class="form-group">
-                            <textarea class="form-control"></textarea>
+                            <textarea class="form-control" disabled></textarea>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <!--打印按钮-->
+    <div class="row hidden-print">
+        <div class="btn-group pull-right">
+            <button id="printQesBtn" class="btn btn-lg btn-success">打印</button>
+        </div>
+    </div>
 </div>
+
+<script src="../../js/jquery.min.js"></script>
+<script>
+    $(function () {
+        $('#printQesBtn').on('click', function () {
+            window.print();
+        });
+    });
+</script>
+
 </body>
 </html>
