@@ -248,6 +248,7 @@ function accessServer(questionnaireIds, url) {
  */
 function browseQesPaper(urlWithId) {
     layer.full(layer.open({
+        title: '   ',
         type: 2,
         content: urlWithId,
         area: ['80%', '80%'],
