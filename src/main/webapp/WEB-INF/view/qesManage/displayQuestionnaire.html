@@ -5,6 +5,14 @@
     <title>展示问卷视图</title>
     <link rel="shortcut icon" href="../../img/favicon.ico"/>
     <link href="../../css/bootstrap.min.css" rel="stylesheet"/>
+    <style>
+        .print-btn {
+            position: fixed;
+            top: 30%;
+            right: 2%;
+            z-index: 100;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
@@ -148,9 +156,9 @@
     </div>
 
     <!--打印按钮-->
-    <div class="row hidden-print">
+    <div class="row hidden-print print-btn">
         <div class="btn-group pull-right">
-            <button id="printQesBtn" class="btn btn-lg btn-success">打印</button>
+            <button id="printQesBtn" class="btn btn-lg btn-link">打印</button>
         </div>
     </div>
 </div>

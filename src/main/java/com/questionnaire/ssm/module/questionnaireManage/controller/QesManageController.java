@@ -5,9 +5,9 @@ import com.questionnaire.ssm.module.global.enums.CodeForVOEnum;
 import com.questionnaire.ssm.module.global.pojo.ResponsePkt;
 import com.questionnaire.ssm.module.global.util.ResultUtil;
 import com.questionnaire.ssm.module.global.util.UserValidationUtil;
-import com.questionnaire.ssm.module.questionnaireManage.pojo.CreateQuestionnaireVO;
-import com.questionnaire.ssm.module.questionnaireManage.pojo.ListQuestionnaireVO;
-import com.questionnaire.ssm.module.questionnaireManage.pojo.ListTempDelQesPaperVO;
+import com.questionnaire.ssm.module.questionnaireManage.pojo.CreateQesVO;
+import com.questionnaire.ssm.module.questionnaireManage.pojo.MyQesVO;
+import com.questionnaire.ssm.module.questionnaireManage.pojo.TempDelQesPaperVO;
 import com.questionnaire.ssm.module.questionnaireManage.service.QesManageService;
 import com.questionnaire.ssm.module.questionnaireManage.util.OperateQuestionnaireUtil;
 import org.slf4j.Logger;
@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import javax.xml.transform.Result;
 import java.util.Arrays;
 import java.util.List;
 
@@ -41,7 +40,7 @@ public class QesManageController {
     @GetMapping(value = "/getCreateView")
     public ModelAndView getCreateView() throws Exception {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("createQuestionnaireVO", new CreateQuestionnaireVO());
+        modelAndView.addObject("createQuestionnaireVO", new CreateQesVO());
         modelAndView.setViewName("qesManage/createQuestionnaire");
         return modelAndView;
     }
@@ -50,18 +49,18 @@ public class QesManageController {
      * 校验前台参数，失败直接返回失败原因
      * 否则创建问卷 创建正常则返回正常代码，错误会抛出InsertException
      *
-     * @param createQuestionnaireVO
+     * @param createQesVO
      * @return
      * @throws Exception
      */
     @PostMapping(value = "/create")
     @ResponseBody
-    public ResponsePkt create(@Valid @RequestBody CreateQuestionnaireVO createQuestionnaireVO, BindingResult bindingResult) throws Exception {
+    public ResponsePkt create(@Valid @RequestBody CreateQesVO createQesVO, BindingResult bindingResult) throws Exception {
         if (bindingResult.hasErrors()) {
             return ResultUtil.error(CodeForVOEnum.VALID_FAIL_CREATE_QUESTIONNAIRE.getCode(),
                     bindingResult.getFieldError().getDefaultMessage());
         }
-        qesManageService.insertQuestionnaire(createQuestionnaireVO);
+        qesManageService.insertQuestionnaire(createQesVO);
         return ResultUtil.success();
     }
 
@@ -84,7 +83,7 @@ public class QesManageController {
      */
     @PostMapping(value = "/listMyQuestionnaire")
     @ResponseBody
-    public List<ListQuestionnaireVO> listMyQuestionnaire() throws Exception {
+    public List<MyQesVO> listMyQuestionnaire() throws Exception {
         String userTel = UserValidationUtil.getUserTel(logger);
         return qesManageService.listQuestionnaireInfoByUserTel(userTel);
     }
@@ -125,7 +124,7 @@ public class QesManageController {
     }
 
     /**
-     * 恢复回收站问卷到个人问卷中
+     * 恢复回收站问卷到原来位置
      *
      * @param questionnaireIds
      * @return
@@ -157,9 +156,10 @@ public class QesManageController {
             return ResultUtil.error(CodeForVOEnum.QUESTIONNAIRE_IDS_NULL.getCode(),
                     CodeForVOEnum.QUESTIONNAIRE_IDS_NULL.getMessage());
         }
-        Questionnaire questionnaire = OperateQuestionnaireUtil.deleteQesPaperForeverAction();
-        qesManageService.delOrTemplateQesByIds(Arrays.asList(questionnaireIds)
-                , questionnaire);
+        qesManageService.delDataForeverQesByIds(Arrays.asList(questionnaireIds));
+//        Questionnaire questionnaire = OperateQuestionnaireUtil.deleteQesPaperForeverAction();
+//        qesManageService.delOrTemplateQesByIds(Arrays.asList(questionnaireIds),
+//                questionnaire);
         return ResultUtil.success();
     }
 
@@ -211,7 +211,7 @@ public class QesManageController {
 
     @PostMapping(value = "/listTemporaryDeleteQesPaper")
     @ResponseBody
-    public List<ListTempDelQesPaperVO> listTemporaryDeleteQesPaper() throws Exception {
+    public List<TempDelQesPaperVO> listTemporaryDeleteQesPaper() throws Exception {
         String userTel = UserValidationUtil.getUserTel(logger);
         return qesManageService.listTempDelQesPaperByUserTel(userTel);
     }

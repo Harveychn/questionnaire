@@ -30,7 +30,7 @@ public class QesManageVODOUtil {
      * @return
      * @throws Exception
      */
-    public static Questionnaire toQuestionnaireDO(CreateQuestionnaireVO questionnaireVO) throws Exception {
+    public static Questionnaire toQuestionnaireDO(CreateQesVO questionnaireVO) throws Exception {
         Questionnaire questionnaire = new Questionnaire();
 
         questionnaire.setQuestionnaireTitle(questionnaireVO.getQuestionnaireTitle());
@@ -64,22 +64,22 @@ public class QesManageVODOUtil {
      * @return
      * @throws Exception
      */
-    public static DisplayQuestionnaireVO toDisplayQuestionnaireVO(Questionnaire questionnaireDO)
+    public static DisplayQesVO toDisplayQuestionnaireVO(Questionnaire questionnaireDO)
             throws Exception {
-        DisplayQuestionnaireVO displayQuestionnaireVO = new DisplayQuestionnaireVO();
+        DisplayQesVO displayQesVO = new DisplayQesVO();
 
-        displayQuestionnaireVO.setQuestionnaireId(questionnaireDO.getQuestionnaireId());
+        displayQesVO.setQuestionnaireId(questionnaireDO.getQuestionnaireId());
 
         if (questionnaireDO.getQuestionnaireTitle() != null) {
-            displayQuestionnaireVO.setQuestionnaireTitle(questionnaireDO.getQuestionnaireTitle());
+            displayQesVO.setQuestionnaireTitle(questionnaireDO.getQuestionnaireTitle());
         }
         if (questionnaireDO.getQuestionnaireSubtitle() != null) {
-            displayQuestionnaireVO.setQuestionnaireSubtitle(questionnaireDO.getQuestionnaireSubtitle());
+            displayQesVO.setQuestionnaireSubtitle(questionnaireDO.getQuestionnaireSubtitle());
         }
         if (questionnaireDO.getQuestionnaireDescription() != null) {
-            displayQuestionnaireVO.setQuestionnaireDescription(questionnaireDO.getQuestionnaireDescription());
+            displayQesVO.setQuestionnaireDescription(questionnaireDO.getQuestionnaireDescription());
         }
-        return displayQuestionnaireVO;
+        return displayQesVO;
     }
 
     /**

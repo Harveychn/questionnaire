@@ -1,10 +1,10 @@
 package com.questionnaire.ssm.module.questionnaireManage.service;
 
 import com.questionnaire.ssm.module.generated.pojo.Questionnaire;
-import com.questionnaire.ssm.module.questionnaireManage.pojo.CreateQuestionnaireVO;
-import com.questionnaire.ssm.module.questionnaireManage.pojo.DisplayQuestionnaireVO;
-import com.questionnaire.ssm.module.questionnaireManage.pojo.ListQuestionnaireVO;
-import com.questionnaire.ssm.module.questionnaireManage.pojo.ListTempDelQesPaperVO;
+import com.questionnaire.ssm.module.questionnaireManage.pojo.CreateQesVO;
+import com.questionnaire.ssm.module.questionnaireManage.pojo.DisplayQesVO;
+import com.questionnaire.ssm.module.questionnaireManage.pojo.MyQesVO;
+import com.questionnaire.ssm.module.questionnaireManage.pojo.TempDelQesPaperVO;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -22,7 +22,7 @@ public interface QesManageService {
      * @throws Exception 异常时会抛出 OperateDBException
      */
     @Transactional
-    void insertQuestionnaire(CreateQuestionnaireVO questionnaireVO) throws Exception;
+    void insertQuestionnaire(CreateQesVO questionnaireVO) throws Exception;
 
     /**
      * 获取单个用户/全部用户（userTel 为 null 或者 ‘’是）的问卷信息
@@ -31,7 +31,7 @@ public interface QesManageService {
      * @return
      * @throws Exception
      */
-    List<ListQuestionnaireVO> listQuestionnaireInfoByUserTel(String userTel) throws Exception;
+    List<MyQesVO> listQuestionnaireInfoByUserTel(String userTel) throws Exception;
 
     /**
      * 展示问卷
@@ -40,20 +40,27 @@ public interface QesManageService {
      * @return
      * @throws Exception
      */
-    DisplayQuestionnaireVO getQuestionnaireById(long questionnaireId) throws Exception;
+    DisplayQesVO getQuestionnaireById(long questionnaireId) throws Exception;
 
     /**
      * 批量操作问卷
-     * 删除（恢复）、模板化
+     * 暂时删除（恢复）、模板化
      *
      * @param questionnaireIds 批量操作问卷的id信息
-     * @param questionnaire    批量操作的问卷数据
+     * @param questionnaire    批量操作的动作
      * @throws Exception
      */
     @Transactional
     void delOrTemplateQesByIds(List<Long> questionnaireIds, Questionnaire questionnaire) throws Exception;
 
-
+    /**
+     * 永久删除问卷，删除数据库中问卷相关数据
+     *
+     * @param questionnaireIds 待删除问卷ID
+     * @throws Exception
+     */
+    @Transactional
+    void delDataForeverQesByIds(List<Long> questionnaireIds) throws Exception;
 
     /**
      * 批量分享问卷
@@ -72,5 +79,5 @@ public interface QesManageService {
      * @return
      * @throws Exception
      */
-    List<ListTempDelQesPaperVO> listTempDelQesPaperByUserTel(String userTel) throws Exception;
+    List<TempDelQesPaperVO> listTempDelQesPaperByUserTel(String userTel) throws Exception;
 }

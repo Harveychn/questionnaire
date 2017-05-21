@@ -7,7 +7,7 @@ import java.util.List;
  * Created by 郑晓辉 on 2017/3/27.
  * Description: 查看问卷视图实体
  */
-public class DisplayQuestionnaireVO {
+public class DisplayQesVO {
     /*问卷信息*/
     private Long questionnaireId;//问卷id 创建时默认为0
     private String questionnaireTitle;//问卷标题 (必填字段，不得为空)
@@ -19,7 +19,7 @@ public class DisplayQuestionnaireVO {
 
     @Override
     public String toString() {
-        return "DisplayQuestionnaireVO{" +
+        return "DisplayQesVO{" +
                 "questionnaireId=" + questionnaireId +
                 ", questionnaireTitle='" + questionnaireTitle + '\'' +
                 ", questionnaireSubtitle='" + questionnaireSubtitle + '\'' +

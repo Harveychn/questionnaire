@@ -4,7 +4,7 @@ package com.questionnaire.ssm.module.questionnaireManage.pojo;
  * Created by 郑晓辉 on 2017/4/24.
  * Description: 回收站问卷视图
  */
-public class ListTempDelQesPaperVO {
+public class TempDelQesPaperVO {
     //问卷ID
     private Long questionnaireId;
     //问卷标题
@@ -13,15 +13,17 @@ public class ListTempDelQesPaperVO {
     private String questionnaireSubtitle;
     //问卷描述
     private String questionnaireDescription;
-
+    //不可见问卷来源
+    private String originSource;
 
     @Override
     public String toString() {
-        return "ListTempDelQesPaperVO{" +
+        return "TempDelQesPaperVO{" +
                 "questionnaireId=" + questionnaireId +
                 ", questionnaireTitle='" + questionnaireTitle + '\'' +
                 ", questionnaireSubtitle='" + questionnaireSubtitle + '\'' +
                 ", questionnaireDescription='" + questionnaireDescription + '\'' +
+                ", originSource='" + originSource + '\'' +
                 '}';
     }
 
@@ -55,5 +57,13 @@ public class ListTempDelQesPaperVO {
 
     public void setQuestionnaireDescription(String questionnaireDescription) {
         this.questionnaireDescription = questionnaireDescription;
+    }
+
+    public String getOriginSource() {
+        return originSource;
+    }
+
+    public void setOriginSource(String originSource) {
+        this.originSource = originSource;
     }
 }

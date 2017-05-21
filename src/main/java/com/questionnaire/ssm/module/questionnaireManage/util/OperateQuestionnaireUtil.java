@@ -22,12 +22,14 @@ public class OperateQuestionnaireUtil {
      */
     public static Questionnaire deleteQesPaperTemporaryAction() throws Exception {
         Questionnaire questionnaire = new Questionnaire();
+/*2017-5-21 移除问卷操作只变动is_visible =false*/
+//        questionnaire.setIsTemplate(false);
+//        questionnaire.setIsShare(false);
+//        questionnaire.setIsVisible(false);
+//        questionnaire.setIsDone(true);
+//        questionnaire.setIsDelete(false);
 
-        questionnaire.setIsTemplate(false);
-        questionnaire.setIsShare(false);
         questionnaire.setIsVisible(false);
-        questionnaire.setIsDone(true);
-        questionnaire.setIsDelete(false);
 
         return questionnaire;
     }
@@ -41,11 +43,13 @@ public class OperateQuestionnaireUtil {
     public static Questionnaire restoreQesPaperAction() throws Exception {
         Questionnaire questionnaire = new Questionnaire();
 
-        questionnaire.setIsTemplate(false);
-        questionnaire.setIsShare(false);
+        /*2017-5-21恢复问卷到移除时位置*/
+//        questionnaire.setIsTemplate(false);
+//        questionnaire.setIsShare(false);
+//        questionnaire.setIsVisible(true);
+//        questionnaire.setIsDone(true);
+//        questionnaire.setIsDelete(false);
         questionnaire.setIsVisible(true);
-        questionnaire.setIsDone(true);
-        questionnaire.setIsDelete(false);
         return questionnaire;
     }
 

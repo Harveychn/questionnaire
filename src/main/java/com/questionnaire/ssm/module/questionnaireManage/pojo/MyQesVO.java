@@ -4,7 +4,7 @@ package com.questionnaire.ssm.module.questionnaireManage.pojo;
  * Created by 郑晓辉 on 2017/3/27.
  * Description: 用户创建的问卷信息视图实体
  */
-public class ListQuestionnaireVO {
+public class MyQesVO {
     /*问卷id*/
     private long questionnaireId;
     /*问卷标题*/
@@ -24,7 +24,7 @@ public class ListQuestionnaireVO {
 
     @Override
     public String toString() {
-        return "ListQuestionnaireVO{" +
+        return "MyQesVO{" +
                 "questionnaireId=" + questionnaireId +
                 ", questionnaireTitle='" + questionnaireTitle + '\'' +
                 ", questionnaireSubtitle='" + questionnaireSubtitle + '\'' +

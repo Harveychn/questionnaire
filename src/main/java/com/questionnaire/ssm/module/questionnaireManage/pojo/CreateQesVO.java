@@ -9,7 +9,7 @@ import java.util.List;
  * Created by 郑晓辉 on 2017/3/21.
  * Description:用户创建问卷实体时问卷具体信息
  */
-public class CreateQuestionnaireVO {
+public class CreateQesVO {
     /**
      * 问卷基本信息
      */
@@ -30,7 +30,7 @@ public class CreateQuestionnaireVO {
 
     @Override
     public String toString() {
-        return "CreateQuestionnaireVO{" +
+        return "CreateQesVO{" +
                 "questionnaireId=" + questionnaireId +
                 ", questionnaireTitle='" + questionnaireTitle + '\'' +
                 ", questionnaireSubtitle='" + questionnaireSubtitle + '\'' +
