@@ -1,5 +1,6 @@
 package com.questionnaire.ssm.module.qesTemplateManage.service;
 
+import com.questionnaire.ssm.module.generated.pojo.Questionnaire;
 import com.questionnaire.ssm.module.qesTemplateManage.pojo.PrivateTemplateInfoVO;
 import com.questionnaire.ssm.module.qesTemplateManage.pojo.PublicTemplateInfoVO;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,12 +31,30 @@ public interface QesTemplateManageService {
     List<PublicTemplateInfoVO> listPublicTemplate() throws Exception;
 
     /**
-     * 添加问卷模板到我的问卷模板库
+     * 删除模板
+     *
+     * @param qesTemplateIds
+     * @throws Exception
+     */
+    @Transactional
+    void delTemplateByIds(List<Long> qesTemplateIds, Questionnaire qesAction) throws Exception;
+
+    /**
+     * 添加个人模板到公共模板库
+     *
+     * @param qesTemplateIds
+     * @throws Exception
+     */
+    @Transactional
+    void add2PublicTemplateLib(List<Long> qesTemplateIds) throws Exception;
+
+    /**
+     * 添加公共模板到个人模板库
      *
      * @param qesTemplateIds 要添加的模板id
      * @return 添加到我的模板库结果
      * @throws Exception
      */
     @Transactional
-    void addToMyTemplateLibrary(Long[] qesTemplateIds) throws Exception;
+    void addToMyTemplateLibrary(List<Long> qesTemplateIds) throws Exception;
 }

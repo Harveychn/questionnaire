@@ -119,7 +119,7 @@ public class QesManageController {
                     CodeForVOEnum.QUESTIONNAIRE_IDS_NULL.getMessage());
         }
         Questionnaire questionnaire = OperateQuestionnaireUtil.deleteQesPaperTemporaryAction();
-        qesManageService.delOrTemplateQesByIds(Arrays.asList(questionnaireIds), questionnaire);
+        qesManageService.delQesByIds(Arrays.asList(questionnaireIds), questionnaire);
         return ResultUtil.success();
     }
 
@@ -138,7 +138,7 @@ public class QesManageController {
                     CodeForVOEnum.QUESTIONNAIRE_IDS_NULL.getMessage());
         }
         Questionnaire questionnaire = OperateQuestionnaireUtil.restoreQesPaperAction();
-        qesManageService.delOrTemplateQesByIds(Arrays.asList(questionnaireIds), questionnaire);
+        qesManageService.delQesByIds(Arrays.asList(questionnaireIds), questionnaire);
         return ResultUtil.success();
     }
 
@@ -164,6 +164,32 @@ public class QesManageController {
     }
 
     /**
+     * 获取暂时删除的问卷视图
+     *
+     * @return
+     * @throws Exception
+     */
+    @GetMapping(value = "/temporaryDeleteQesPaperView")
+    public ModelAndView temporaryDeleteQesPaperView() throws Exception {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("qesManage/recycleBinQuestionnaire");
+        return modelAndView;
+    }
+
+    /**
+     * 获取暂时删除的问卷信息
+     *
+     * @return
+     * @throws Exception
+     */
+    @PostMapping(value = "/listTemporaryDeleteQesPaper")
+    @ResponseBody
+    public List<TempDelQesPaperVO> listTemporaryDeleteQesPaper() throws Exception {
+        String userTel = UserValidationUtil.getUserTel(logger);
+        return qesManageService.listTempDelQesPaperByUserTel(userTel);
+    }
+
+    /**
      * 批量模板化问卷
      *
      * @param questionnaireIds
@@ -177,12 +203,9 @@ public class QesManageController {
             return ResultUtil.error(CodeForVOEnum.QUESTIONNAIRE_IDS_NULL.getCode(),
                     CodeForVOEnum.QUESTIONNAIRE_IDS_NULL.getMessage());
         }
-        Questionnaire questionnaire = OperateQuestionnaireUtil.templateQesPaperAction();
-        qesManageService.delOrTemplateQesByIds(Arrays.asList(questionnaireIds)
-                , questionnaire);
+        qesManageService.templateQesPaperByIds(Arrays.asList(questionnaireIds));
         return ResultUtil.success();
     }
-
 
     /**
      * 批量共享问卷
@@ -200,20 +223,6 @@ public class QesManageController {
         }
         qesManageService.shareQesPaperByIds(Arrays.asList(questionnaireIds));
         return ResultUtil.success();
-    }
-
-    @GetMapping(value = "/temporaryDeleteQesPaperView")
-    public ModelAndView temporaryDeleteQesPaperView() throws Exception {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("qesManage/recycleBinQuestionnaire");
-        return modelAndView;
-    }
-
-    @PostMapping(value = "/listTemporaryDeleteQesPaper")
-    @ResponseBody
-    public List<TempDelQesPaperVO> listTemporaryDeleteQesPaper() throws Exception {
-        String userTel = UserValidationUtil.getUserTel(logger);
-        return qesManageService.listTempDelQesPaperByUserTel(userTel);
     }
 
     private static final Logger logger = LoggerFactory.getLogger(QesManageController.class);

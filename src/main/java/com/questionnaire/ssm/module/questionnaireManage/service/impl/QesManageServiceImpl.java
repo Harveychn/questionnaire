@@ -152,7 +152,7 @@ public class QesManageServiceImpl implements QesManageService {
 
     /**
      * 批量操作问卷
-     * 暂时删除（恢复）、模板化
+     * 暂时删除（恢复）
      *
      * @param questionnaireIds 批量操作问卷的id信息
      * @param questionnaire    批量操作的动作
@@ -160,7 +160,7 @@ public class QesManageServiceImpl implements QesManageService {
      */
     @Override
     @Transactional
-    public void delOrTemplateQesByIds(List<Long> questionnaireIds, Questionnaire questionnaire) throws Exception {
+    public void delQesByIds(List<Long> questionnaireIds, Questionnaire questionnaire) throws Exception {
         QuestionnaireExample questionnaireExample = new QuestionnaireExample();
         questionnaireExample.createCriteria().andQuestionnaireIdIn(questionnaireIds);
 
@@ -227,6 +227,21 @@ public class QesManageServiceImpl implements QesManageService {
     }
 
     /**
+     * 批量模板化问卷
+     *
+     * @param questionnaireIds 批量操作的操作的问卷id
+     * @return 分享结果
+     * @throws Exception
+     */
+    @Override
+    @Transactional
+    public void templateQesPaperByIds(List<Long> questionnaireIds) throws Exception {
+        for (Long currentQesId : questionnaireIds) {
+            templateSingleQuestionnaire(currentQesId);
+        }
+    }
+
+    /**
      * 批量分享问卷为公共模板
      *
      * @param questionnaireIds 批量操作的操作的问卷id
@@ -236,15 +251,15 @@ public class QesManageServiceImpl implements QesManageService {
     @Override
     @Transactional
     public void shareQesPaperByIds(List<Long> questionnaireIds) throws Exception {
-        QuestionnaireExample questionnaireExample = new QuestionnaireExample();
-        questionnaireExample.createCriteria().andQuestionnaireIdIn(questionnaireIds);
-        //原问卷share设置为true
-        try {
-            questionnaireMapper.updateByExampleSelective(OperateQuestionnaireUtil.makeShareAttrTrue(), questionnaireExample);
-        } catch (Exception e) {
-            logger.error(e.getMessage());
-            throw new OperateDBException(CodeForVOEnum.DB_UPDATE_FAIL, DBTableEnum.QUESTIONNAIRE.getTableName());
-        }
+//        QuestionnaireExample questionnaireExample = new QuestionnaireExample();
+//        questionnaireExample.createCriteria().andQuestionnaireIdIn(questionnaireIds);
+//        //原问卷share设置为true
+//        try {
+//            questionnaireMapper.updateByExampleSelective(OperateQuestionnaireUtil.makeShareAttrTrue(), questionnaireExample);
+//        } catch (Exception e) {
+//            logger.error(e.getMessage());
+//            throw new OperateDBException(CodeForVOEnum.DB_UPDATE_FAIL, DBTableEnum.QUESTIONNAIRE.getTableName());
+//        }
         //复制一份新问卷
         for (Long currentQesId : questionnaireIds) {
             shareSingleQuestionnaire(currentQesId);
@@ -262,6 +277,20 @@ public class QesManageServiceImpl implements QesManageService {
         return qesManageMapper.listTempDelQesPaperByUserTel(userTel);
     }
 
+    /**
+     * 模板化问卷（复制问卷信息并且重新组织问卷-题目对应关系）
+     *
+     * @param questionnaireId
+     * @throws Exception
+     */
+    @Transactional
+    private Long templateSingleQuestionnaire(Long questionnaireId) throws Exception {
+        //获取模板化的问卷信息
+        Questionnaire templatingQesPaper = add2LibraryService.getSharingQesPaperFromDB(questionnaireId);
+        //模板化问卷动作;复制问卷实体信息到新的问卷实体（问卷ID未赋值）
+        Questionnaire templateQes = OperateQuestionnaireUtil.templateQesPaper(templatingQesPaper);
+        return add2LibraryService.copiedQesPaperId(questionnaireId, templateQes);
+    }
 
     /**
      * 分享问卷（复制问卷信息并且重新组织问卷-题目对应关系）
@@ -271,9 +300,11 @@ public class QesManageServiceImpl implements QesManageService {
      */
     @Transactional
     private Long shareSingleQuestionnaire(Long questionnaireId) throws Exception {
+        //获取分享中的问卷信息
         Questionnaire sharingQesPaper = add2LibraryService.getSharingQesPaperFromDB(questionnaireId);
+        //分享问卷信息到公共模板动作;复制问卷实体信息到新的问卷实体（问卷ID未赋值）
         Questionnaire copyQesPaper = OperateQuestionnaireUtil.copyQesPaper2Public(sharingQesPaper);
-        return add2LibraryService.Add2PublicOrPrivateLibrary(questionnaireId, copyQesPaper);
+        return add2LibraryService.copiedQesPaperId(questionnaireId, copyQesPaper);
     }
 
 

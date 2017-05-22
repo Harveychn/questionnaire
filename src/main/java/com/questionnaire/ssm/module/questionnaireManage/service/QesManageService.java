@@ -44,14 +44,14 @@ public interface QesManageService {
 
     /**
      * 批量操作问卷
-     * 暂时删除（恢复）、模板化
+     * 暂时删除（恢复）
      *
      * @param questionnaireIds 批量操作问卷的id信息
      * @param questionnaire    批量操作的动作
      * @throws Exception
      */
     @Transactional
-    void delOrTemplateQesByIds(List<Long> questionnaireIds, Questionnaire questionnaire) throws Exception;
+    void delQesByIds(List<Long> questionnaireIds, Questionnaire questionnaire) throws Exception;
 
     /**
      * 永久删除问卷，删除数据库中问卷相关数据
@@ -61,6 +61,16 @@ public interface QesManageService {
      */
     @Transactional
     void delDataForeverQesByIds(List<Long> questionnaireIds) throws Exception;
+
+    /**
+     * 批量模板化问卷
+     *
+     * @param questionnaireIds 批量操作的操作的问卷id
+     * @return 分享结果
+     * @throws Exception
+     */
+    @Transactional
+    void templateQesPaperByIds(List<Long> questionnaireIds) throws Exception;
 
     /**
      * 批量分享问卷

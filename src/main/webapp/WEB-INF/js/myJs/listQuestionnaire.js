@@ -269,10 +269,10 @@ function analyzeResponse(data, url, questionnaireIds) {
         switch (url) {
             case templateUrl://模板化问卷
                 if (responsePkt.code === 200) {
-                    $table.bootstrapTable('remove', {
-                        field: 'questionnaireId',
-                        values: questionnaireIds
-                    });
+                    // $table.bootstrapTable('remove', {
+                    //     field: 'questionnaireId',
+                    //     values: questionnaireIds
+                    // });
                     layer.msg('问卷已经成功添加到个人模板库！', {icon: 1});
                 }
                 dealGlobalError(responsePkt);
@@ -289,10 +289,10 @@ function analyzeResponse(data, url, questionnaireIds) {
                 break;
             case shareUrl://共享问卷
                 if (responsePkt.code === 200) {
-                    $table.bootstrapTable('remove', {
-                        field: 'questionnaireId',
-                        values: questionnaireIds
-                    });
+                    // $table.bootstrapTable('remove', {
+                    //     field: 'questionnaireId',
+                    //     values: questionnaireIds
+                    // });
                     layer.msg('问卷成功共享！', {icon: 1});
                 }
                 dealGlobalError(responsePkt);
