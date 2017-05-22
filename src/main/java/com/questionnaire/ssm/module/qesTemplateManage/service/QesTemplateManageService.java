@@ -56,5 +56,5 @@ public interface QesTemplateManageService {
      * @throws Exception
      */
     @Transactional
-    void addToMyTemplateLibrary(List<Long> qesTemplateIds) throws Exception;
+    void add2MyTemplateLibrary(List<Long> qesTemplateIds) throws Exception;
 }

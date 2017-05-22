@@ -108,7 +108,7 @@ public class QesTemplateManageServiceImpl implements QesTemplateManageService {
      */
     @Override
     @Transactional
-    public void addToMyTemplateLibrary(List<Long> qesTemplateIds) throws Exception {
+    public void add2MyTemplateLibrary(List<Long> qesTemplateIds) throws Exception {
         for (Long currentTemplateId : qesTemplateIds) {
             addSingleTemplate2Private(currentTemplateId);
         }

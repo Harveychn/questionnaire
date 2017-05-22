@@ -126,7 +126,7 @@ public class QesTemplateRestController {
             return ResultUtil.error(CodeForVOEnum.TEMPLATE_IDS_NULL.getCode(),
                     CodeForVOEnum.TEMPLATE_IDS_NULL.getMessage());
         }
-        qesTemplateManageService.addToMyTemplateLibrary(Arrays.asList(templateIds));
+        qesTemplateManageService.add2MyTemplateLibrary(Arrays.asList(templateIds));
         return ResultUtil.success();
     }
 
