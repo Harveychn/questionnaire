@@ -4,8 +4,10 @@ import com.questionnaire.ssm.module.global.pojo.ResponsePkt;
 import com.questionnaire.ssm.module.global.util.ResultUtil;
 import com.questionnaire.ssm.module.global.util.UserValidationUtil;
 import com.questionnaire.ssm.module.researchManage.pojo.CreateResearchMissionVO;
+import com.questionnaire.ssm.module.researchManage.pojo.ListMissionVO;
 import com.questionnaire.ssm.module.researchManage.pojo.QuestionnaireInfoVO;
 import com.questionnaire.ssm.module.researchManage.pojo.ResearchListVO;
+import com.questionnaire.ssm.module.researchManage.service.MissionManageService;
 import com.questionnaire.ssm.module.researchManage.service.ResearchService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,6 +36,29 @@ public class ResearchController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("researchManage/createResearch");
         return modelAndView;
+    }
+
+    /**
+     * 获取任务管理视图
+     *
+     * @return
+     * @throws Exception
+     */
+    @GetMapping(value = "/getMissionManageView")
+    public ModelAndView  getMissionManage()throws Exception{
+        ModelAndView modelAndView=new ModelAndView();
+        modelAndView.setViewName("researchManage/missionManage");
+        return modelAndView;
+    }
+    /**
+     * 获取任务列表
+     *
+     * @return
+     * @throws Exception
+     */
+    @PostMapping(value = "/listMission")
+    public List<ListMissionVO> listMission()throws Exception{
+        return missionManageService.listMission();
     }
 
     /**
@@ -80,10 +105,13 @@ public class ResearchController {
     }
 
     private ResearchService researchService;
+    private MissionManageService missionManageService;
     private final static Logger logger = LoggerFactory.getLogger(ResearchController.class);
 
     @Autowired
-    public ResearchController(ResearchService researchService) {
+    public ResearchController(ResearchService researchService,
+                              MissionManageService missionManageService) {
         this.researchService = researchService;
+        this.missionManageService=missionManageService;
     }
 }

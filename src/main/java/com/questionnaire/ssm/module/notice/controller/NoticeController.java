@@ -35,6 +35,18 @@ public class NoticeController {
         modelAndView.setViewName("notice/createNotice");
         return modelAndView;
     }
+    /**
+     * 获取提醒公告的视图
+     *
+     * @return
+     * @throws Exception
+     */
+    @GetMapping(value = "/getCreateNoticeForMission")
+    public ModelAndView getCreateNoticeForMission() throws Exception {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("notice/createNoticeForMission");
+        return modelAndView;
+    }
 
     /**
      * 创建公告

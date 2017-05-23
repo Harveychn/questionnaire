@@ -1,5 +1,6 @@
 package com.questionnaire.ssm.module.researchManage.mapper;
 
+import com.questionnaire.ssm.module.researchManage.pojo.ListMissionVO;
 import com.questionnaire.ssm.module.researchManage.pojo.QuestionnaireInfoVO;
 import org.apache.ibatis.annotations.Param;
 
@@ -12,4 +13,6 @@ import java.util.List;
 public interface ResearchMissionMapper {
 
     List<QuestionnaireInfoVO> listReadyLaunchQesInfoByUserTel(@Param("userTel") String userTel)throws Exception;
+
+    List<ListMissionVO> listMission()throws Exception;
 }
