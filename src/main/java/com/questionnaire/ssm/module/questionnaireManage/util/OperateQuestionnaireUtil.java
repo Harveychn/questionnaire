@@ -98,7 +98,7 @@ public class OperateQuestionnaireUtil {
         resultQes.setIsShare(false);
         resultQes.setIsVisible(true);
         resultQes.setIsDone(true);
-        resultQes.setIsDelete(false);
+        resultQes.setIsRelease(false);
 
         /*问卷标题不得为空*/
         resultQes.setQuestionnaireTitle(templatingQes.getQuestionnaireTitle());
@@ -133,7 +133,7 @@ public class OperateQuestionnaireUtil {
         copiedQuestionnaire.setIsShare(true);
         copiedQuestionnaire.setIsVisible(true);
         copiedQuestionnaire.setIsDone(true);
-        copiedQuestionnaire.setIsDelete(false);
+        copiedQuestionnaire.setIsRelease(false);
 
         /*标题不得为空*/
         copiedQuestionnaire.setQuestionnaireTitle(questionnaire.getQuestionnaireTitle());
@@ -164,7 +164,7 @@ public class OperateQuestionnaireUtil {
         copiedQuestionnaire.setIsShare(false);
         copiedQuestionnaire.setIsVisible(true);
         copiedQuestionnaire.setIsDone(true);
-        copiedQuestionnaire.setIsDelete(false);
+        copiedQuestionnaire.setIsRelease(false);
 
         /*问卷标题不得为空*/
         copiedQuestionnaire.setQuestionnaireTitle(questionnaire.getQuestionnaireTitle());

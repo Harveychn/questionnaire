@@ -21,7 +21,7 @@
             </if>
             AND q.is_template = FALSE
             AND q.is_visible = TRUE
-            AND q.is_delete = FALSE
+            AND q.is_release = FALSE
         </where>
         ORDER BY q.create_time DESC
     </select>
@@ -56,7 +56,7 @@
         WHERE
             q.create_user = #{userTel}
           AND q.is_visible = FALSE
-          AND q.is_delete = FALSE
+          AND q.is_release = FALSE
 --           2017-5-21 回收站问卷信息查看问卷来源
 --         AND q.is_template = FALSE
 --         AND q.is_share = FALSE

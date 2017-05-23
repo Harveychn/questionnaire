@@ -2,6 +2,7 @@ package com.questionnaire.ssm.module.researchManage.service.impl;
 
 import com.questionnaire.ssm.module.generated.mapper.MappingMissionQuestionnaireMapper;
 import com.questionnaire.ssm.module.generated.mapper.MissionMapper;
+import com.questionnaire.ssm.module.generated.mapper.QuestionnaireMapper;
 import com.questionnaire.ssm.module.generated.mapper.UserMapper;
 import com.questionnaire.ssm.module.generated.pojo.*;
 import com.questionnaire.ssm.module.global.enums.CodeForVOEnum;
@@ -41,7 +42,13 @@ public class ResearchServiceImpl implements ResearchService {
         return researchMissionMapper.listReadyLaunchQesInfoByUserTel(userTel);
     }
 
-
+    /**
+     * 创建问卷
+     *
+     * @param userTel                 创建人
+     * @param createResearchMissionVO 创建视图数据
+     * @throws Exception
+     */
     @Override
     @Transactional
     public void createMissionByUserTel(String userTel, CreateResearchMissionVO createResearchMissionVO) throws Exception {
@@ -59,8 +66,26 @@ public class ResearchServiceImpl implements ResearchService {
         List<MissionQesPaperVO> missionQesPaperVOList = createResearchMissionVO.getMissionQuestionnaireInfo();
         //保存map关系数据
         MappingMissionQuestionnaire mappingMissionQuestionnaire = null;
+        Questionnaire copiedQes = null;
         for (MissionQesPaperVO missionQesPaperVO : missionQesPaperVOList) {
-            mappingMissionQuestionnaire = ResearchVODOUtil.getMappingMissionQuestionnaireDO(missionId, missionQesPaperVO);
+            //根据用户选择的问卷信息、复制一份发布问卷，将新的发布问卷信息保存下来
+            Questionnaire qesForCopyDO = questionnaireMapper.selectByPrimaryKey(missionQesPaperVO.getQuestionnaireId());
+            if (qesForCopyDO == null) {
+                continue;
+            }
+            copiedQes = ResearchVODOUtil.copyQesForPublish(qesForCopyDO);
+            //保存发布的问卷信息
+            try {
+                questionnaireMapper.insertSelective(copiedQes);
+            } catch (Exception e) {
+                logger.error(e.getMessage());
+                throw new OperateDBException(CodeForVOEnum.DB_INSERT_FAIL,
+                        DBTableEnum.QUESTIONNAIRE.getTableName());
+            }
+
+            //组织映射关系
+            mappingMissionQuestionnaire = ResearchVODOUtil.getMappingMissionQuestionnaireDO(missionId,
+                    copiedQes.getQuestionnaireId(), missionQesPaperVO.getMinSubmit());
             try {
                 mappingMissionQuestionnaireMapper.insertSelective(mappingMissionQuestionnaire);
             } catch (Exception e) {
@@ -127,18 +152,21 @@ public class ResearchServiceImpl implements ResearchService {
     private MappingMissionQuestionnaireMapper mappingMissionQuestionnaireMapper;
     private MapMissionQesPaperService mapMissionQesPaperService;
     private ResearchMissionMapper researchMissionMapper;
+    private QuestionnaireMapper questionnaireMapper;
 
     @Autowired
     public ResearchServiceImpl(MissionMapper missionMapper,
                                MappingMissionQuestionnaireMapper mappingMissionQuestionnaireMapper,
                                UserMapper userMapper,
                                MapMissionQesPaperService mapMissionQesPaperService,
-                               ResearchMissionMapper researchMissionMapper) {
+                               ResearchMissionMapper researchMissionMapper,
+                               QuestionnaireMapper questionnaireMapper) {
         this.missionMapper = missionMapper;
         this.mappingMissionQuestionnaireMapper = mappingMissionQuestionnaireMapper;
         this.userMapper = userMapper;
         this.mapMissionQesPaperService = mapMissionQesPaperService;
         this.researchMissionMapper = researchMissionMapper;
+        this.questionnaireMapper = questionnaireMapper;
     }
 
     private final static Logger logger = LoggerFactory.getLogger(ResearchServiceImpl.class);

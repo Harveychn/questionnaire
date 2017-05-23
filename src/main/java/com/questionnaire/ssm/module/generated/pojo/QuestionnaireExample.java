@@ -635,63 +635,63 @@ public class QuestionnaireExample {
             return (Criteria) this;
         }
 
-        public Criteria andIsDeleteIsNull() {
-            addCriterion("is_delete is null");
+        public Criteria andIsReleaseIsNull() {
+            addCriterion("is_release is null");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeleteIsNotNull() {
-            addCriterion("is_delete is not null");
+        public Criteria andIsReleaseIsNotNull() {
+            addCriterion("is_release is not null");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeleteEqualTo(Boolean value) {
-            addCriterion("is_delete =", value, "isDelete");
+        public Criteria andIsReleaseEqualTo(Boolean value) {
+            addCriterion("is_release =", value, "isRelease");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeleteNotEqualTo(Boolean value) {
-            addCriterion("is_delete <>", value, "isDelete");
+        public Criteria andIsReleaseNotEqualTo(Boolean value) {
+            addCriterion("is_release <>", value, "isRelease");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeleteGreaterThan(Boolean value) {
-            addCriterion("is_delete >", value, "isDelete");
+        public Criteria andIsReleaseGreaterThan(Boolean value) {
+            addCriterion("is_release >", value, "isRelease");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeleteGreaterThanOrEqualTo(Boolean value) {
-            addCriterion("is_delete >=", value, "isDelete");
+        public Criteria andIsReleaseGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("is_release >=", value, "isRelease");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeleteLessThan(Boolean value) {
-            addCriterion("is_delete <", value, "isDelete");
+        public Criteria andIsReleaseLessThan(Boolean value) {
+            addCriterion("is_release <", value, "isRelease");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeleteLessThanOrEqualTo(Boolean value) {
-            addCriterion("is_delete <=", value, "isDelete");
+        public Criteria andIsReleaseLessThanOrEqualTo(Boolean value) {
+            addCriterion("is_release <=", value, "isRelease");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeleteIn(List<Boolean> values) {
-            addCriterion("is_delete in", values, "isDelete");
+        public Criteria andIsReleaseIn(List<Boolean> values) {
+            addCriterion("is_release in", values, "isRelease");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeleteNotIn(List<Boolean> values) {
-            addCriterion("is_delete not in", values, "isDelete");
+        public Criteria andIsReleaseNotIn(List<Boolean> values) {
+            addCriterion("is_release not in", values, "isRelease");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeleteBetween(Boolean value1, Boolean value2) {
-            addCriterion("is_delete between", value1, value2, "isDelete");
+        public Criteria andIsReleaseBetween(Boolean value1, Boolean value2) {
+            addCriterion("is_release between", value1, value2, "isRelease");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeleteNotBetween(Boolean value1, Boolean value2) {
-            addCriterion("is_delete not between", value1, value2, "isDelete");
+        public Criteria andIsReleaseNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("is_release not between", value1, value2, "isRelease");
             return (Criteria) this;
         }
 

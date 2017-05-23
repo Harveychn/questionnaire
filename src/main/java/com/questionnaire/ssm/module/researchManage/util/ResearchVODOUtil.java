@@ -2,6 +2,7 @@ package com.questionnaire.ssm.module.researchManage.util;
 
 import com.questionnaire.ssm.module.generated.pojo.MappingMissionQuestionnaire;
 import com.questionnaire.ssm.module.generated.pojo.MissionWithBLOBs;
+import com.questionnaire.ssm.module.generated.pojo.Questionnaire;
 import com.questionnaire.ssm.module.global.constant.CONSTANT;
 import com.questionnaire.ssm.module.researchManage.pojo.CreateResearchMissionVO;
 import com.questionnaire.ssm.module.researchManage.pojo.MissionQesPaperVO;
@@ -61,19 +62,20 @@ public class ResearchVODOUtil {
     /**
      * 提取数据库MappingMissionQuestionnaire 数据
      *
-     * @param missionId         任务ID
-     * @param missionQesPaperVO 创建任务视图问卷信息
+     * @param missionId 任务id
+     * @param qesId     发布的问卷ID
+     * @param minSubmit 最小提交量
      * @return
      * @throws Exception
      */
-    public static MappingMissionQuestionnaire getMappingMissionQuestionnaireDO(Long missionId, MissionQesPaperVO missionQesPaperVO) throws Exception {
+    public static MappingMissionQuestionnaire getMappingMissionQuestionnaireDO(Long missionId, Long qesId, Long minSubmit) throws Exception {
         MappingMissionQuestionnaire map = new MappingMissionQuestionnaire();
         //设置任务ID
         map.setMissionId(missionId);
         //设置问卷ID
-        map.setQuestionnaireId(missionQesPaperVO.getQuestionnaireId());
+        map.setQuestionnaireId(qesId);
         //设置问卷最低完成量
-        map.setMinSubmitCount(missionQesPaperVO.getMinSubmit());
+        map.setMinSubmitCount(minSubmit);
         return map;
     }
 
@@ -100,4 +102,33 @@ public class ResearchVODOUtil {
         return filterMissions;
     }
 
+    /**
+     * 复制用户已经选择好的问卷信息到发布问卷
+     *
+     * @param forCopyQes 用户选择要发布的数据库中问卷信息数据
+     * @return 除问卷ID以外复制完成的问卷信息
+     * @throws Exception
+     */
+    public static Questionnaire copyQesForPublish(Questionnaire forCopyQes) throws Exception {
+        Questionnaire readyLaunchQes = new Questionnaire();
+        readyLaunchQes.setQuestionnaireTitle(forCopyQes.getQuestionnaireTitle());
+
+        if (forCopyQes.getQuestionnaireSubtitle() != null) {
+            readyLaunchQes.setQuestionnaireSubtitle(forCopyQes.getQuestionnaireSubtitle());
+        }
+        if (forCopyQes.getQuestionnaireDescription() != null) {
+            readyLaunchQes.setQuestionnaireDescription(forCopyQes.getQuestionnaireDescription());
+        }
+        readyLaunchQes.setCreateUser(forCopyQes.getCreateUser());
+        readyLaunchQes.setCreateTime(forCopyQes.getCreateTime());
+
+        readyLaunchQes.setIsTemplate(forCopyQes.getIsTemplate());
+        readyLaunchQes.setIsShare(forCopyQes.getIsShare());
+        readyLaunchQes.setIsVisible(true);
+        readyLaunchQes.setIsDone(true);
+        //设置是否发布问卷为true
+        readyLaunchQes.setIsRelease(true);
+
+        return readyLaunchQes;
+    }
 }

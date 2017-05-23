@@ -41,7 +41,7 @@ public class QesManageVODOUtil {
 
         questionnaire.setIsShare(false);
         questionnaire.setIsVisible(true);
-        questionnaire.setIsDelete(false);
+        questionnaire.setIsRelease(false);
 
         //创建问卷时间
         questionnaire.setCreateTime(new Date());

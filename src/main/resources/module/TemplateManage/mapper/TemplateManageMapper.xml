@@ -27,7 +27,7 @@
             AND q.is_share = FALSE
             AND q.is_visible = TRUE
             AND q.is_done = TRUE
-            AND q.is_delete = FALSE
+            AND q.is_release = FALSE
         </where>
         ORDER BY q.create_time DESC
     </select>
@@ -59,7 +59,7 @@
         AND q.is_share = TRUE
         AND q.is_visible = TRUE
         AND q.is_done = TRUE
-        AND q.is_delete = FALSE
+        AND q.is_release = FALSE
         ORDER BY
             q.create_time DESC
     </select>

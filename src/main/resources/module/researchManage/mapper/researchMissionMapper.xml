@@ -19,6 +19,6 @@
 			create_user = #{userTel}
 		AND is_done = TRUE
 		AND is_visible = TRUE
-		AND is_delete = FALSE
+		AND is_release = FALSE
 </select>
 </mapper>
