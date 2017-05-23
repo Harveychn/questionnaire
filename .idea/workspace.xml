@@ -9,71 +9,10 @@
     <bookmark url="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/researchManage/service/impl/ResearchResultServiceImpl.java" line="63" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fe54f503-f484-4c95-9b43-cda9857c44c4" name="Default" comment="shujuku1">
+    <list default="true" id="fe54f503-f484-4c95-9b43-cda9857c44c4" name="Default" comment="is_delete chang to is_release">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/mapper/AnswerDetailMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/mapper/AnswerDetailMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/mapper/AnswerPaperMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/mapper/AnswerPaperMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/mapper/MappingMissionQuestionnaireMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/mapper/MappingMissionQuestionnaireMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/mapper/MappingQuestionnaireQuestionMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/mapper/MappingQuestionnaireQuestionMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/mapper/MappingRolePermissionMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/mapper/MappingRolePermissionMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/mapper/MissionMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/mapper/MissionMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/mapper/NoticeMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/mapper/NoticeMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/mapper/PermissionMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/mapper/PermissionMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/mapper/QuestionMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/mapper/QuestionMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/mapper/QuestionnaireMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/mapper/QuestionnaireMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/mapper/RoleMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/mapper/RoleMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/mapper/UnitMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/mapper/UnitMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/mapper/UserMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/mapper/UserMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/AnswerDetail.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/AnswerDetail.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/AnswerDetailExample.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/AnswerDetailExample.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/AnswerPaper.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/AnswerPaper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/AnswerPaperExample.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/AnswerPaperExample.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/MappingMissionQuestionnaire.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/MappingMissionQuestionnaire.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/MappingMissionQuestionnaireExample.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/MappingMissionQuestionnaireExample.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/MappingQuestionnaireQuestion.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/MappingQuestionnaireQuestion.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/MappingQuestionnaireQuestionExample.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/MappingQuestionnaireQuestionExample.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/MappingRolePermission.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/MappingRolePermission.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/MappingRolePermissionExample.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/MappingRolePermissionExample.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/Mission.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/Mission.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/MissionExample.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/MissionExample.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/MissionWithBLOBs.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/MissionWithBLOBs.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/Notice.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/Notice.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/NoticeExample.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/NoticeExample.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/NoticeWithBLOBs.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/NoticeWithBLOBs.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/Permission.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/Permission.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/PermissionExample.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/PermissionExample.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/Question.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/Question.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/QuestionExample.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/QuestionExample.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/QuestionWithBLOBs.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/QuestionWithBLOBs.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/Questionnaire.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/Questionnaire.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/QuestionnaireExample.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/QuestionnaireExample.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/Role.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/Role.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/RoleExample.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/RoleExample.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/Unit.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/Unit.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/UnitExample.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/UnitExample.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/User.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/User.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/UserExample.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/generated/pojo/UserExample.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/util/OperateQuestionnaireUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/util/OperateQuestionnaireUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/util/QesManageVODOUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/util/QesManageVODOUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/researchManage/service/impl/ResearchServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/researchManage/service/impl/ResearchServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/researchManage/util/ResearchVODOUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/researchManage/util/ResearchVODOUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/module/QesManage/mapper/QesManageMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/module/QesManage/mapper/QesManageMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/module/TemplateManage/mapper/TemplateManageMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/module/TemplateManage/mapper/TemplateManageMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/AnswerDetailMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/AnswerDetailMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/AnswerPaperMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/AnswerPaperMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/MappingMissionQuestionnaireMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/MappingMissionQuestionnaireMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/MappingQuestionnaireQuestionMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/MappingQuestionnaireQuestionMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/MappingRolePermissionMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/MappingRolePermissionMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/MissionMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/MissionMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/NoticeMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/NoticeMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/PermissionMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/PermissionMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/QuestionMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/QuestionMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/QuestionnaireMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/QuestionnaireMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/RoleMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/RoleMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/UnitMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/UnitMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/UserMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/module/generated/mapper/UserMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/module/researchManage/mapper/researchMissionMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/module/researchManage/mapper/researchMissionMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/researchManage/createResearch.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/researchManage/createResearch.html" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -93,53 +32,20 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/researchManage/controller/ResearchController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="40">
-              <caret line="27" column="6" lean-forward="true" selection-start-line="27" selection-start-column="6" selection-end-line="27" selection-end-column="6" />
+              <caret line="27" column="6" lean-forward="false" selection-start-line="27" selection-start-column="6" selection-end-line="27" selection-end-column="6" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="QesManageController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="QesManageController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/controller/QesManageController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="86" column="48" lean-forward="false" selection-start-line="86" selection-start-column="48" selection-end-line="86" selection-end-column="48" />
+            <state relative-caret-position="80">
+              <caret line="24" column="3" lean-forward="true" selection-start-line="24" selection-start-column="3" selection-end-line="24" selection-end-column="3" />
               <folding>
-                <element signature="docComment;method#getCreateView#0;class#QesManageController#0" expanded="false" />
-                <element signature="docComment;method#create#0;class#QesManageController#0" expanded="false" />
-                <element signature="method#create#0;class#QesManageController#0" expanded="false" />
-                <element signature="docComment;method#getListMyQesPaperView#0;class#QesManageController#0" expanded="false" />
-                <element signature="method#getListMyQesPaperView#0;class#QesManageController#0" expanded="false" />
-                <element signature="docComment;method#listMyQuestionnaire#0;class#QesManageController#0" expanded="false" />
-                <element signature="docComment;method#displayQuestionnaire#0;class#QesManageController#0" expanded="false" />
-                <element signature="method#displayQuestionnaire#0;class#QesManageController#0" expanded="false" />
-                <element signature="docComment;method#delTemporaryMultiQuestionnaire#0;class#QesManageController#0" expanded="false" />
-                <element signature="docComment;method#restoreMultiQuestionnaire#0;class#QesManageController#0" expanded="false" />
-                <element signature="method#restoreMultiQuestionnaire#0;class#QesManageController#0" expanded="false" />
-                <element signature="docComment;method#delForeverMultiQuestionnaire#0;class#QesManageController#0" expanded="false" />
-                <element signature="method#delForeverMultiQuestionnaire#0;class#QesManageController#0" expanded="false" />
-                <element signature="docComment;method#temporaryDeleteQesPaperView#0;class#QesManageController#0" expanded="false" />
-                <element signature="method#temporaryDeleteQesPaperView#0;class#QesManageController#0" expanded="false" />
-                <element signature="docComment;method#listTemporaryDeleteQesPaper#0;class#QesManageController#0" expanded="false" />
-                <element signature="method#listTemporaryDeleteQesPaper#0;class#QesManageController#0" expanded="false" />
-                <element signature="docComment;method#templateMultiQuestionnaire#0;class#QesManageController#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="createResearch.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/researchManage/createResearch.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="56">
-              <caret line="226" column="72" lean-forward="false" selection-start-line="226" selection-start-column="33" selection-end-line="226" selection-end-column="72" />
-              <folding>
-                <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="e#8471#9885#0" expanded="false" />
-                <element signature="e#11239#12748#0" expanded="false" />
-                <element signature="e#12824#15601#0" expanded="false" />
-                <element signature="e#15680#16224#0" expanded="false" />
-                <element signature="e#16282#17064#0" expanded="false" />
+                <marker date="1495528278205" expanded="false" signature="8277:8288" ph=" { " />
+                <marker date="1495528278205" expanded="false" signature="8329:8335" ph=" }" />
               </folding>
             </state>
           </provider>
@@ -222,7 +128,6 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/myJs/qesManage.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/service/Add2LibraryService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/service/impl/Add2LibraryServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/controller/QesManageController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/service/QesManageService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/service/impl/QesManageServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/myJs/listQuestionnaire.js" />
@@ -243,6 +148,7 @@
         <option value="$PROJECT_DIR$/src/main/resources/properties/config.properties" />
         <option value="$PROJECT_DIR$/src/main/resources/logback.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/researchManage/createResearch.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/controller/QesManageController.java" />
       </list>
     </option>
   </component>
@@ -1221,7 +1127,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85440000" />
+    <option name="totallyTimeSpent" value="85494000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1259,6 +1165,40 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38134205" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3797054" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.4969743" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19742814" sideWeight="0.28968903" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="JRebel" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23146747" sideWeight="0.70652175" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26172465" sideWeight="0.71031094" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5045386" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="JRebel Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37315875" sideWeight="0.5030257" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="JRebel Executor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.63993454" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32980332" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18683812" sideWeight="0.7855974" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32980332" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32569557" sideWeight="0.4969743" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3797054" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1267,9 +1207,9 @@
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="JRebel" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23146747" sideWeight="0.70652175" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.49546143" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26172465" sideWeight="0.71031094" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.49546143" order="0" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1403,7 +1343,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="56">
           <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1510,10 +1449,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="29" column="30" lean-forward="false" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
-          <folding>
-            <element signature="e#775#776#0" expanded="false" />
-            <element signature="e#811#812#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1521,7 +1456,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
           <caret line="24" column="9" lean-forward="false" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1560,9 +1494,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
           <caret line="21" column="30" lean-forward="true" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
-          <folding>
-            <marker date="1495441054040" expanded="true" signature="418:752" ph="SELECT quest... questionnaire" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1591,10 +1523,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="392">
           <caret line="62" column="16" lean-forward="true" selection-start-line="62" selection-start-column="16" selection-end-line="62" selection-end-column="16" />
-          <folding>
-            <marker date="1495441053862" expanded="true" signature="885:1592" ph="SELECT q.que... questionnaire" />
-            <marker date="1495441053862" expanded="true" signature="2324:2976" ph="SELECT q.que... questionnaire" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1605,14 +1534,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis-generator-config.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1352">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis-generator-config.xml" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/service/impl/Add2LibraryServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-225">
@@ -1665,7 +1587,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="11" column="32" lean-forward="true" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1673,7 +1594,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1697,7 +1617,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="128">
           <caret line="22" column="18" lean-forward="false" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1705,11 +1624,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="5" column="82" lean-forward="false" selection-start-line="5" selection-start-column="82" selection-end-line="5" selection-end-column="82" />
-          <folding>
-            <marker date="1495441054148" expanded="true" signature="410:1158" ph="SELECT q.que... questionnaire" />
-            <marker date="1495441054148" expanded="true" signature="1350:2203" ph="SELECT q.que... questionnaire" />
-            <marker date="1495441054148" expanded="true" signature="2634:2789" ph="SELECT map.q... mapping_questionnaire_question" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1717,7 +1632,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-480">
           <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1744,7 +1658,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1752,7 +1665,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="290">
           <caret line="16" column="41" lean-forward="false" selection-start-line="16" selection-start-column="41" selection-end-line="16" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1760,41 +1672,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="9" column="23" lean-forward="true" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/researchManage/controller/ResearchController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
-          <caret line="27" column="6" lean-forward="true" selection-start-line="27" selection-start-column="6" selection-end-line="27" selection-end-column="6" />
+          <caret line="27" column="6" lean-forward="false" selection-start-line="27" selection-start-column="6" selection-end-line="27" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/controller/QesManageController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="86" column="48" lean-forward="false" selection-start-line="86" selection-start-column="48" selection-end-line="86" selection-end-column="48" />
+        <state relative-caret-position="80">
+          <caret line="24" column="3" lean-forward="true" selection-start-line="24" selection-start-column="3" selection-end-line="24" selection-end-column="3" />
           <folding>
-            <element signature="docComment;method#getCreateView#0;class#QesManageController#0" expanded="false" />
-            <element signature="docComment;method#create#0;class#QesManageController#0" expanded="false" />
-            <element signature="method#create#0;class#QesManageController#0" expanded="false" />
-            <element signature="docComment;method#getListMyQesPaperView#0;class#QesManageController#0" expanded="false" />
-            <element signature="method#getListMyQesPaperView#0;class#QesManageController#0" expanded="false" />
-            <element signature="docComment;method#listMyQuestionnaire#0;class#QesManageController#0" expanded="false" />
-            <element signature="docComment;method#displayQuestionnaire#0;class#QesManageController#0" expanded="false" />
-            <element signature="method#displayQuestionnaire#0;class#QesManageController#0" expanded="false" />
-            <element signature="docComment;method#delTemporaryMultiQuestionnaire#0;class#QesManageController#0" expanded="false" />
-            <element signature="docComment;method#restoreMultiQuestionnaire#0;class#QesManageController#0" expanded="false" />
-            <element signature="method#restoreMultiQuestionnaire#0;class#QesManageController#0" expanded="false" />
-            <element signature="docComment;method#delForeverMultiQuestionnaire#0;class#QesManageController#0" expanded="false" />
-            <element signature="method#delForeverMultiQuestionnaire#0;class#QesManageController#0" expanded="false" />
-            <element signature="docComment;method#temporaryDeleteQesPaperView#0;class#QesManageController#0" expanded="false" />
-            <element signature="method#temporaryDeleteQesPaperView#0;class#QesManageController#0" expanded="false" />
-            <element signature="docComment;method#listTemporaryDeleteQesPaper#0;class#QesManageController#0" expanded="false" />
-            <element signature="method#listTemporaryDeleteQesPaper#0;class#QesManageController#0" expanded="false" />
-            <element signature="docComment;method#templateMultiQuestionnaire#0;class#QesManageController#0" expanded="false" />
+            <marker date="1495528278205" expanded="false" signature="8277:8288" ph=" { " />
+            <marker date="1495528278205" expanded="false" signature="8329:8335" ph=" }" />
           </folding>
         </state>
       </provider>
