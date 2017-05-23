@@ -1,10 +1,10 @@
 /**
  * Created by Administrator on 2017/5/3.
  */
-var $table = $('#primaryData_twoTable');
+var $table = $('#primaryDataTwoTable');
 
 $(function () {
-    console.log("primaryData_twoTable");
+    console.log("primaryDataTwoTable");
     $table.bootstrapTable({
         url: '/resultAnalysis/listAnswerPaper',
         method: 'post',

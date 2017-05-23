@@ -21,4 +21,20 @@
 		AND is_visible = TRUE
 		AND is_release = FALSE
 </select>
+	<select id="listMission" resultType="com.questionnaire.ssm.module.researchManage.pojo.ListMissionVO">
+		SELECT
+		ma.mission_id AS missionId,
+		q.questionnaire_id AS questionnaireId,
+		q.questionnaire_title AS questionnaireTitle,
+		ma.min_submit_count AS minSubmitCount,
+		m.mission_start_date AS missionStartDate,
+		m.mission_final_date AS missionFinalDate,
+		m.create_user AS createUser
+        FROM
+        questionnaire AS q,
+        mapping_mission_questionnaire AS ma,
+        mission AS m
+        WHERE q.questionnaire_id=ma.questionnaire_id AND m.mission_id=ma.mission_id
+        ORDER BY ma.mission_id
+	</select>
 </mapper>
