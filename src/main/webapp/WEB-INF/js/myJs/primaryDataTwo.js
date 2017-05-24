@@ -64,7 +64,6 @@ $(function () {
     });
 });
 
-
 var checkDataUrl = '';
 //单份处理
 window.operateEvents = {

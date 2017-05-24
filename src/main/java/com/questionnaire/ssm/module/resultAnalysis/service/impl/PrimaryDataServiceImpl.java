@@ -1,9 +1,6 @@
 package com.questionnaire.ssm.module.resultAnalysis.service.impl;
 
-import com.questionnaire.ssm.module.generated.mapper.AnswerDetailMapper;
-import com.questionnaire.ssm.module.generated.mapper.AnswerPaperMapper;
-import com.questionnaire.ssm.module.generated.mapper.MappingQuestionnaireQuestionMapper;
-import com.questionnaire.ssm.module.generated.mapper.QuestionMapper;
+import com.questionnaire.ssm.module.generated.mapper.*;
 import com.questionnaire.ssm.module.generated.pojo.*;
 import com.questionnaire.ssm.module.global.enums.CodeForVOEnum;
 import com.questionnaire.ssm.module.global.enums.DBTableEnum;
@@ -96,9 +93,14 @@ public class PrimaryDataServiceImpl implements PrimaryDataService {
         if (answerPaperDO == null) {
             throw new OperateDBException(CodeForVOEnum.DB_SELECT_FAIL, DBTableEnum.ANSWER_PAPER.getTableName());
         }
-        DisplayAnswerPaperVO displayAnswerPaperVO = AnswerPaperVODOUtil.toDisplayQuestionnaireVO(answerPaperDO);
+        DisplayAnswerPaperVO displayAnswerPaperVO = AnswerPaperVODOUtil.toDisplayAnswerPaperVO(answerPaperDO);
 
+        Questionnaire questionnaire=new Questionnaire();
         long questionnaireId = displayAnswerPaperVO.getQuestionnaireId();
+        questionnaire=questionnaireMapper.selectByPrimaryKey(questionnaireId);
+        displayAnswerPaperVO.setQuestionnaireTitle(questionnaire.getQuestionnaireTitle());
+        displayAnswerPaperVO.setQuestionnaireSubtitle(questionnaire.getQuestionnaireSubtitle());
+        displayAnswerPaperVO.setQuestionnaireDescription(questionnaire.getQuestionnaireDescription());
         /*根据查询出来的问卷ID查询问题*/
         List<MappingQuestionnaireQuestion> mapDOList = null;
         MappingQuestionnaireQuestionExample mapDOExample = new MappingQuestionnaireQuestionExample();
@@ -135,7 +137,7 @@ public class PrimaryDataServiceImpl implements PrimaryDataService {
     private AnswerPaperMapper answerPaperMapper;
     private QuestionMapper questionMapper;
     private MappingQuestionnaireQuestionMapper mappingQuestionnaireQuestionMapper;
-    private AnswerDetailMapper answerDetailMapper;
+    private QuestionnaireMapper questionnaireMapper;
     private static final Logger logger = LoggerFactory.getLogger(PrimaryDataServiceImpl.class);
 
     @Autowired
@@ -143,11 +145,11 @@ public class PrimaryDataServiceImpl implements PrimaryDataService {
                                   AnswerPaperMapper answerPaperMapper,
                                   QuestionMapper questionMapper,
                                   MappingQuestionnaireQuestionMapper mappingQuestionnaireQuestionMapper,
-                                  AnswerDetailMapper answerDetailMapper) {
+                                  QuestionnaireMapper questionnaireMapper) {
         this.resultAnalysisMapper = resultAnalysisMapper;
         this.answerPaperMapper = answerPaperMapper;
         this.questionMapper = questionMapper;
         this.mappingQuestionnaireQuestionMapper = mappingQuestionnaireQuestionMapper;
-        this.answerDetailMapper = answerDetailMapper;
+        this.questionnaireMapper=questionnaireMapper;
     }
 }

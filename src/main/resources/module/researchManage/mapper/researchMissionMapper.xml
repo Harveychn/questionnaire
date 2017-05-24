@@ -21,14 +21,20 @@
 		AND is_visible = TRUE
 		AND is_release = FALSE
 </select>
-	<select id="listMission" resultType="com.questionnaire.ssm.module.researchManage.pojo.ListMissionVO">
+    <select id="listMission" resultType="com.questionnaire.ssm.module.researchManage.pojo.ListMissionVO">
 		SELECT
 		ma.mission_id AS missionId,
 		q.questionnaire_id AS questionnaireId,
 		q.questionnaire_title AS questionnaireTitle,
 		ma.min_submit_count AS minSubmitCount,
-		m.mission_start_date AS missionStartDate,
-		m.mission_final_date AS missionFinalDate,
+		DATE_FORMAT(
+        m.mission_start_date,
+        '%Y-%m-%d %H:%i:%s'
+        ) AS missionStartDate,
+        DATE_FORMAT(
+        m.mission_final_date,
+        '%Y-%m-%d %H:%i:%s'
+        ) AS missionFinalDate,
 		m.create_user AS createUser
         FROM
         questionnaire AS q,

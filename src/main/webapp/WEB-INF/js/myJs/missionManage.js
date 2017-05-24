@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2017/5/3.
  */
-var $table = $('#primaryDataTable');
+var $table = $('#missionManageTable');
 
 $(function () {
     $table.bootstrapTable({
@@ -35,10 +35,7 @@ $(function () {
 
         minimumCountColumns: 3,
 
-        columns: [{
-            checkbox: true,
-            clickToSelect: true
-        }, {
+        columns: [ {
             field: 'missionId',
             title: '任务ID',
             align: 'center',
@@ -46,26 +43,31 @@ $(function () {
         }, {
             field: 'questionnaireTitle',
             title: '问卷标题',
+            align: 'center',
             sortable: true
         }, {
             field: 'minSubmitCount',
-            title: '问卷最低提交量',
+            title: '最低提交量',
+            align: 'center',
             sortable: true
         }, {
             field: 'missionStartDate',
-            title: '任务开始时间',
+            title: '开始时间',
+            align: 'center',
             sortable: true
         }, {
             field: 'missionFinalDate',
-            title: '任务结束时间',
+            title: '结束时间',
+            align: 'center',
             sortable: true
         }, {
             field: 'createUser',
-            title: '任务创建人',
+            title: '发布者',
+            align: 'center',
             sortable: true
         }, {
             title: '操作',
-            width: 200,
+            width: 100,
             align: 'center',
             events: operateEvents,
             formatter: operateFormatter
