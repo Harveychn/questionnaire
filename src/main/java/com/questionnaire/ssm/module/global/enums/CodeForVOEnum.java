@@ -30,15 +30,16 @@ public enum CodeForVOEnum {
     NO_ROLE(12, "用户不具备角色!"),
     NO_PERMISSION(13, "用户无相应权限!"),
     OLD_PASSWORD_ERROR(14, "旧密码错误!"),
+    NEW_USER_AUTHORITY_VO_DATA_ERROR(15, "用户权限信息数据错误!"),
 
     /*参数校验信息编码*/
     VALID_FAIL_CREATE_QUESTIONNAIRE(-1000, "创建问卷视图数据校验失败!"),
     QUESTIONNAIRE_IDS_NULL(-1010, "未选择要操作的问卷!"),
     TEMPLATE_IDS_NULL(-1020, "未选择要操作的模板"),;
 
-    /*错误代码*/
+    /*代码*/
     private int code;
-    /*错误代码代表信息*/
+    /*代码代表信息*/
     private String message;
 
     CodeForVOEnum(int code, String message) {

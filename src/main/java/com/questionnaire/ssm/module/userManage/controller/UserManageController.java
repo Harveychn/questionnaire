@@ -1,10 +1,14 @@
 package com.questionnaire.ssm.module.userManage.controller;
 
+import com.questionnaire.ssm.module.generated.pojo.Role;
 import com.questionnaire.ssm.module.global.constant.CONSTANT;
+import com.questionnaire.ssm.module.global.enums.CodeForVOEnum;
 import com.questionnaire.ssm.module.global.pojo.ResponsePkt;
 import com.questionnaire.ssm.module.global.util.ResultUtil;
 import com.questionnaire.ssm.module.global.util.UserValidationUtil;
 import com.questionnaire.ssm.module.userManage.enums.UserActionEnum;
+import com.questionnaire.ssm.module.userManage.pojo.AllRoleInfoVO;
+import com.questionnaire.ssm.module.userManage.pojo.NewUserAuthorityInfo;
 import com.questionnaire.ssm.module.userManage.pojo.RoleAuthorityVO;
 import com.questionnaire.ssm.module.userManage.pojo.UploadResultVO;
 import com.questionnaire.ssm.module.userManage.service.UploadFileService;
@@ -130,8 +134,16 @@ public class UserManageController {
      * @throws Exception
      */
     @GetMapping(value = "/getRoleAuthorityManageView")
-    public String getRoleAuthorityManageView() throws Exception {
-        return "roleAuthority/roleAuthority_manage";
+    public ModelAndView getRoleAuthorityManageView(@RequestParam("userAccount") String userAccount,
+                                                   @RequestParam("accountOwner") String accountOwner,
+                                                   @RequestParam("userRole") String userRole) throws Exception {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("userAccount", userAccount);
+        modelAndView.addObject("accountOwner", accountOwner);
+        modelAndView.addObject("userRole", userRole);
+        modelAndView.setViewName("roleAuthority/roleAuthority_manage");
+        System.out.println(userAccount + "||" + accountOwner + "||" + userRole);
+        return modelAndView;
     }
 
     /**
@@ -195,6 +207,38 @@ public class UserManageController {
             return ResultUtil.success();
         }
         userInfoService.operateUserAccount(Arrays.asList(userAccountArray), UserActionEnum.DISABLE_USER_ACCOUNT);
+        return ResultUtil.success();
+    }
+
+    /**
+     * 获取所有角色信息
+     *
+     * @return
+     * @throws Exception
+     */
+    @GetMapping(value = "/getAllRole")
+    @ResponseBody
+    public List<AllRoleInfoVO> getAllRole() throws Exception {
+        return userInfoService.listAllRole();
+    }
+
+    /**
+     * 更新用户权限相关信息
+     *
+     * @return
+     * @throws Exception
+     */
+    @PostMapping(value = "/updateUserAuthorityInfo")
+    @ResponseBody
+    public ResponsePkt updateUserAuthorityInfo(@RequestBody NewUserAuthorityInfo newUserAuthorityInfo) throws Exception {
+        //用户参数校验
+        if (newUserAuthorityInfo.getUserAccount().isEmpty()
+                || newUserAuthorityInfo.getUserAccount() == null) {
+            return ResultUtil.error(CodeForVOEnum.NEW_USER_AUTHORITY_VO_DATA_ERROR.getCode(),
+                    CodeForVOEnum.NEW_USER_AUTHORITY_VO_DATA_ERROR.getMessage());
+        }
+        System.out.println(newUserAuthorityInfo.toString());
+        userInfoService.updateUserAuthorityInfo(newUserAuthorityInfo);
         return ResultUtil.success();
     }
 

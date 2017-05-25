@@ -1,5 +1,7 @@
 package com.questionnaire.ssm.module.userManage.mapper;
 
+import com.questionnaire.ssm.module.generated.pojo.Role;
+import com.questionnaire.ssm.module.userManage.pojo.AllRoleInfoVO;
 import com.questionnaire.ssm.module.userManage.pojo.MyInfoVO;
 import com.questionnaire.ssm.module.userManage.pojo.RoleAuthorityVO;
 import com.questionnaire.ssm.module.userManage.pojo.SurveyorInfoVO;
@@ -40,4 +42,6 @@ public interface UserInfoMapper {
      */
     List<RoleAuthorityVO> listUserAuthorityByUserTelAndRole(@Param("userTel") String userTel,
                                                             @Param("userRole") String userRole) throws Exception;
+
+    List<AllRoleInfoVO> listAllRole() throws Exception;
 }

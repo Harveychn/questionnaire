@@ -1,6 +1,7 @@
 package com.questionnaire.ssm.module.userManage.service.impl;
 
 import com.questionnaire.ssm.module.generated.mapper.UserMapper;
+import com.questionnaire.ssm.module.generated.pojo.Role;
 import com.questionnaire.ssm.module.generated.pojo.User;
 import com.questionnaire.ssm.module.generated.pojo.UserExample;
 import com.questionnaire.ssm.module.global.constant.CONSTANT;
@@ -10,10 +11,7 @@ import com.questionnaire.ssm.module.global.exception.OperateDBException;
 import com.questionnaire.ssm.module.login.mapper.SysUserMapper;
 import com.questionnaire.ssm.module.userManage.enums.UserActionEnum;
 import com.questionnaire.ssm.module.userManage.mapper.UserInfoMapper;
-import com.questionnaire.ssm.module.userManage.pojo.MyInfoVO;
-import com.questionnaire.ssm.module.userManage.pojo.NewUserInfo;
-import com.questionnaire.ssm.module.userManage.pojo.RoleAuthorityVO;
-import com.questionnaire.ssm.module.userManage.pojo.SurveyorInfoVO;
+import com.questionnaire.ssm.module.userManage.pojo.*;
 import com.questionnaire.ssm.module.userManage.service.UserInfoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -139,6 +137,43 @@ public class UserInfoServiceImpl implements UserInfoService {
                 break;
         }
         return failOperateAccount;
+    }
+
+    @Override
+    public List<AllRoleInfoVO> listAllRole() throws Exception {
+        return userInfoMapper.listAllRole();
+    }
+
+    /**
+     * 更新用户权限信息
+     *
+     * @param newUserAuthorityInfo
+     * @throws Exception
+     */
+    @Override
+    @Transactional
+    public void updateUserAuthorityInfo(NewUserAuthorityInfo newUserAuthorityInfo) throws Exception {
+        User userForUpdate = new User();
+        //设置更新的用户名
+        if (newUserAuthorityInfo.getUserAccount() == null || newUserAuthorityInfo.getUserAccount().isEmpty()) {
+            throw new OperateDBException(CodeForVOEnum.NEW_USER_AUTHORITY_VO_DATA_ERROR, "更新用户表格时");
+        }
+        userForUpdate.setUserTel(newUserAuthorityInfo.getUserAccount());
+        //设置用户新的角色
+        if (newUserAuthorityInfo.getUserRoleId() != 0L) {
+            userForUpdate.setRoleId(newUserAuthorityInfo.getUserRoleId());
+        }
+        //设置用户新的姓名
+        if (newUserAuthorityInfo.getUserRealName() == null || newUserAuthorityInfo.getUserRealName().isEmpty()) {
+            throw new OperateDBException(CodeForVOEnum.NEW_USER_AUTHORITY_VO_DATA_ERROR, "更新用户表格时");
+        }
+        userForUpdate.setUserRealName(newUserAuthorityInfo.getUserRealName());
+        try {
+            userMapper.updateByPrimaryKeySelective(userForUpdate);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            throw new OperateDBException(CodeForVOEnum.DB_UPDATE_FAIL, DBTableEnum.USER.getTableName());
+        }
     }
 
     private SysUserMapper sysUserMapper;

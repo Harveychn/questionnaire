@@ -1,10 +1,8 @@
 package com.questionnaire.ssm.module.userManage.service;
 
+import com.questionnaire.ssm.module.generated.pojo.Role;
 import com.questionnaire.ssm.module.userManage.enums.UserActionEnum;
-import com.questionnaire.ssm.module.userManage.pojo.MyInfoVO;
-import com.questionnaire.ssm.module.userManage.pojo.NewUserInfo;
-import com.questionnaire.ssm.module.userManage.pojo.RoleAuthorityVO;
-import com.questionnaire.ssm.module.userManage.pojo.SurveyorInfoVO;
+import com.questionnaire.ssm.module.userManage.pojo.*;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -61,4 +59,14 @@ public interface UserInfoService {
      * @throws Exception
      */
     List<String> operateUserAccount(List<String> userAccounts, UserActionEnum userActionEnum) throws Exception;
+
+    /**
+     * 查询所有角色信息
+     *
+     * @return
+     * @throws Exception
+     */
+    List<AllRoleInfoVO> listAllRole() throws Exception;
+
+    void updateUserAuthorityInfo(NewUserAuthorityInfo newUserAuthorityInfo) throws Exception;
 }

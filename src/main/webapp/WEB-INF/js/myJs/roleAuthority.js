@@ -82,14 +82,17 @@ window.operateEvents = {
     'click .remove': function (e, value, row, index) {
         layerConfirmSingle('确认永久删除账户吗?', row, deleteUserAccountUrl);
     },
-    //查看
+    //编辑用户角色
     'click .check': function (e, value, row, index) {
         layer.open({
             type: 2,
             title: '编辑内容',
             maxmin: true,
-            content: '/userManage/getRoleAuthorityManageView', //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
-            area: ['80%', '60%'],
+            content: '/userManage/getRoleAuthorityManageView' +
+            '?userAccount=' + row.account
+            + '&accountOwner=' + row.realName
+            + '&userRole=' + row.userRole, //传递用户账户以及真实姓名
+            area: ['80%', '80%'],
             resize: true
         });
     },
@@ -103,13 +106,17 @@ window.operateEvents = {
     }
 };
 
+function refreshTable() {
+    $table.bootstrapTable('refresh', {});
+}
+
 //操作按钮格式设置
 function operateFormatter(value, row, index) {
     var htmlElement = [];
-    htmlElement.push('<a class="check btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="编辑">',
-        '<i class="glyphicon glyphicon-check"></i> 编辑',
-        '</a>');
     if (row.isAccountValid === '有效') {
+        htmlElement.push('<a class="check btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="编辑">',
+            '<i class="glyphicon glyphicon-check"></i> 编辑',
+            '</a>');
         htmlElement.push('<a class="disableAccount btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="永久删除问卷">',
             '<i class="glyphicon glyphicon-ban-circle"></i> 禁用',
             '</a>');
