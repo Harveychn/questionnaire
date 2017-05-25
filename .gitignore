@@ -3,7 +3,7 @@ target
 src/test
 logFiles
 rebel.xml
-mybatis-generator-config.xml
+src/main/resources/mybatis-generator-config.xml
 ### Java template
 # Compiled class file
 *.class

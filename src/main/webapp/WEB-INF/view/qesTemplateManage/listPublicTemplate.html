@@ -88,7 +88,7 @@
 
             search: true,
             searchAlign: 'right',
-            searchOnEnterKey: true,
+            searchOnEnterKey: false,
 
             toolbar: '#tableToolbar',
 
@@ -168,7 +168,7 @@
             '<i class="glyphicon glyphicon-export"></i> 引用',
             '</a>',
             '<a class="add2PrivateLib btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="添加到个人模板库">',
-            '<i class="glyphicon glyphicon-log-in"></i> 添加个人模板',
+            '<i class="glyphicon glyphicon-log-in"></i> 添加到个人模板',
             '</a>'
         ].join('');
     }
@@ -237,13 +237,14 @@
      * @param urlWithId 查看问卷带有问卷ID的url
      */
     function browseQesPaper(urlWithId) {
-        layer.full(layer.open({
-            type: 2,
-            content: urlWithId,
-            area: ['80%', '80%'],
-            maxmin: true,
-            closeBtn: 1
-        }));
+        window.open(urlWithId);
+//        layer.full(layer.open({
+//            type: 2,
+//            content: urlWithId,
+//            area: ['80%', '80%'],
+//            maxmin: true,
+//            closeBtn: 1
+//        }));
     }
 
     /**
@@ -288,8 +289,8 @@
                     }
                     break;
                 case add2PrivateLibUrl://添加个人模板
-                    if (responsePkt.code===200){
-                        layer.msg('成功添加到个人模板！',{icon:1});
+                    if (responsePkt.code === 200) {
+                        layer.msg('成功添加到个人模板！', {icon: 1});
                     }
                 default:
                     return;

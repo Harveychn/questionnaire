@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>创建公告</title>
+    <link rel="shortcut icon" href="/WEB-INF/img/favicon.ico"
+          th:href="@{/img/favicon.ico}"/>
     <link rel="stylesheet" href="/WEB-INF/css/bootstrap.min.css"
           th:href="@{/css/bootstrap.min.css}"/>
     <link rel="stylesheet" href="/WEB-INF/js/plugins/bootstrap-select/css/bootstrap-select.min.css"
@@ -128,7 +130,7 @@
             </div>
 
             <div class="panel-body">
-                <div class="col-md-offset-5">
+                <div class="col-md-offset-5" id="btnGroup">
                     <button id="resetBtn" class="btn btn-lg btn-warning">重置</button>
                     <button id="launchBtn" class="btn btn-lg btn-success">发布</button>
                 </div>
@@ -154,6 +156,12 @@
 
 <script>
     $(function () {
+        console.log(window.location.search);
+        if (window.location.search === '?newNotice') {
+            var $buttonGroup = $('#btnGroup');
+            $buttonGroup.attr('class', 'col-md-offset-4');
+            $buttonGroup.prepend('<button class="btn btn-lg btn-link" onclick="window.history.back();">返回上一级</button>');
+        }
         var unitOptions = '';
         var $noticeUnit = $('#noticeUnit');
         $.ajax({

@@ -31,7 +31,7 @@
 <div class="container">
     <div class="panel panel-primary">
         <div class="panel-heading">
-            <div class="panel-title">
+            <div class="panel-title" id="pageName">
                 创建调查
             </div>
         </div>
@@ -165,7 +165,7 @@
             </div>
 
             <div class="panel-body">
-                <div class="col-md-offset-5">
+                <div class="col-md-offset-5" id="buttonGroup">
                     <button id="resetBtn" class="btn btn-lg btn-warning">重置</button>
                     <button id="launchMissionBtn" class="btn btn-lg btn-success">发布</button>
                 </div>
@@ -220,7 +220,7 @@
                 );
             },
             error: function (data) {
-                console.log(data);
+                console.error(data);
             }
         });
         var qesItemOptions = '';
@@ -250,11 +250,6 @@
 
             }
         });
-
-        var selectedQesId = window.location.search.split('=').pop();
-        if ('' !== selectedQesId) {
-            console.info($questionnaireItem.find('option[value="+selectedQesId+"]'));
-        }
 
         layui.use(['laydate'], function () {
             var laydate = layui.laydate;
@@ -299,8 +294,23 @@
                 laydate(end);
             };
         });
-
+        if ('' !== window.location.search) {
+            $('#pageName').html('发布问卷');
+        }
     });
+
+    //发布问卷时设置选中问卷
+    window.onload = function () {
+        var $questionnaireItem = $('select[name="questionnaireSelect"]');
+        var selectedQesId = window.location.search.split('=').pop();
+        if ('' !== selectedQesId) {
+            $questionnaireItem.find('option[value=' + selectedQesId + ']').attr("selected", true);
+            $questionnaireItem.selectpicker('render');
+        }
+        var $buttonGroup = $('#buttonGroup');
+        $buttonGroup.attr('class', 'col-md-offset-4');
+        $buttonGroup.prepend('<button class="btn btn-lg btn-link" onclick="window.history.back();">返回上一级</button>');
+    };
     /*提交数据*/
     $('#launchMissionBtn').on('click', function () {
         //获取选中的单位ID
@@ -347,14 +357,14 @@
                 return;
             }
             for (var i = 0; i < qesItemInfoArray.length; i++) {
-                console.log(qesItemInfoArray[i].questionnaireId);
-                console.log(typeof qesItemInfoArray[i].questionnaireId);
                 if (qesItemInfoArray[i].questionnaireId === undefined || qesItemInfoArray[i].questionnaireId.match(/^\s*$/)) {
                     layer.msg('未选择要发布的问卷', function () {
                     });
                     return;
                 }
-                if (qesItemInfoArray[i].minSubmit === undefined || qesItemInfoArray[i].minSubmit === 0) {
+                if (qesItemInfoArray[i].minSubmit === undefined
+                    || qesItemInfoArray[i].minSubmit === 0
+                    || qesItemInfoArray[i].minSubmit.match(/^\s*$/)) {
                     layer.msg('未设置问卷的最少提交量', function () {
                     });
                     return;

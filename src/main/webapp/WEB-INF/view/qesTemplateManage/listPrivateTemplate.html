@@ -88,7 +88,7 @@
 
             search: true,
             searchAlign: 'right',
-            searchOnEnterKey: true,
+            searchOnEnterKey: false,
 
             toolbar: '#tableToolbar',
 
@@ -164,7 +164,7 @@
             '<i class="glyphicon glyphicon-export"></i> 引用',
             '</a>',
             '<a class="add2PublicLib btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="添加到公共模板库">',
-            '<i class="glyphicon glyphicon-log-in"></i> 添加公共模板',
+            '<i class="glyphicon glyphicon-log-in"></i> 共享为公共模板',
             '</a>'
         ].join('');
     }
@@ -233,13 +233,14 @@
      * @param urlWithId 查看问卷带有问卷ID的url
      */
     function browseQesPaper(urlWithId) {
-        layer.full(layer.open({
-            type: 2,
-            content: urlWithId,
-            area: ['80%', '80%'],
-            maxmin: true,
-            closeBtn: 1
-        }));
+        window.open(urlWithId);
+//        layer.full(layer.open({
+//            type: 2,
+//            content: urlWithId,
+//            area: ['80%', '80%'],
+//            maxmin: true,
+//            closeBtn: 1
+//        }));
     }
 
     /**
@@ -281,7 +282,7 @@
                     break;
                 case deleteTemporaryUrl://移除模板
                     if (responsePkt.code === 200) {
-                        $table.bootstrapTable('remove',{
+                        $table.bootstrapTable('remove', {
                             field: 'questionnaireId',
                             values: templateIds
                         });

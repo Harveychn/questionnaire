@@ -2,14 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>展示问卷视图</title>
+    <title>问卷信息</title>
     <link rel="shortcut icon" href="../../img/favicon.ico"/>
     <link href="../../css/bootstrap.min.css" rel="stylesheet"/>
     <style>
         .print-btn {
             position: fixed;
             top: 30%;
-            right: 2%;
+            right: 3%;
             z-index: 100;
         }
     </style>
@@ -152,13 +152,19 @@
                     </div>
                 </div>
             </div>
+            <!--<div class="row hidden-print">-->
+            <!--<div class="col-md-offset-5 btn-group-lg">-->
+            <!--<button id="prePaperBtn" class="btn btn-link">上一份</button>-->
+            <!--<button id="nextPaperBtn" class="btn btn-link">下一份</button>-->
+            <!--</div>-->
+            <!--</div>-->
         </div>
     </div>
 
     <!--打印按钮-->
     <div class="row hidden-print print-btn">
-        <div class="btn-group pull-right">
-            <button id="printQesBtn" class="btn btn-lg btn-link">打印</button>
+        <div class="btn-group-lg pull-right">
+            <button id="printQesBtn" class="btn btn-success">打印</button>
         </div>
     </div>
 </div>
@@ -169,6 +175,7 @@
         $('#printQesBtn').on('click', function () {
             window.print();
         });
+        console.log(window.location.search);
     });
 </script>
 

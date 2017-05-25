@@ -8,7 +8,7 @@ var $table = $('#noticeInfoTable');
 var $newNoticeBtn = $('#newNotice');
 //新建公告跳转
 $newNoticeBtn.on('click', function () {
-    window.location.href = "/notice/getCreateNotice";
+    window.location.href = "/notice/getCreateNotice?newNotice";
 });
 
 $(function () {

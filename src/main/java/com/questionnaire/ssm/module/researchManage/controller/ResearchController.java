@@ -4,6 +4,7 @@ import com.questionnaire.ssm.module.global.pojo.ResponsePkt;
 import com.questionnaire.ssm.module.global.util.ResultUtil;
 import com.questionnaire.ssm.module.global.util.UserValidationUtil;
 import com.questionnaire.ssm.module.researchManage.pojo.CreateResearchMissionVO;
+import com.questionnaire.ssm.module.researchManage.pojo.MissionInfoVO;
 import com.questionnaire.ssm.module.researchManage.pojo.QuestionnaireInfoVO;
 import com.questionnaire.ssm.module.researchManage.pojo.ResearchListVO;
 import com.questionnaire.ssm.module.researchManage.service.ResearchService;
@@ -79,8 +80,20 @@ public class ResearchController {
         return researchService.listResearchMission(userTel);
     }
 
-    private ResearchService researchService;
+    /**
+     * 查询所有调查任务
+     *
+     * @return
+     * @throws Exception
+     */
+    @GetMapping(value = "/listAllMissionInfo")
+    @ResponseBody
+    public List<MissionInfoVO> listAllMissionInfo() throws Exception {
+        return researchService.listMissionInfo("");
+    }
+
     private final static Logger logger = LoggerFactory.getLogger(ResearchController.class);
+    private ResearchService researchService;
 
     @Autowired
     public ResearchController(ResearchService researchService) {

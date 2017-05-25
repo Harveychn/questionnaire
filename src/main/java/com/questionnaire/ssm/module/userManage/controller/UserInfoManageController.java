@@ -1,6 +1,5 @@
 package com.questionnaire.ssm.module.userManage.controller;
 
-import com.questionnaire.ssm.module.generated.pojo.User;
 import com.questionnaire.ssm.module.global.util.UserValidationUtil;
 import com.questionnaire.ssm.module.userManage.pojo.MyInfoVO;
 import com.questionnaire.ssm.module.userManage.pojo.NewUserInfo;
@@ -30,6 +29,12 @@ public class UserInfoManageController {
         return "userManage/changeMyInfo";
     }
 
+    /**
+     * 获取用户个人信息
+     *
+     * @return
+     * @throws Exception
+     */
     @PostMapping(value = "/getMyInfo")
     @ResponseBody
     public MyInfoVO getMyInfo() throws Exception {
@@ -37,12 +42,21 @@ public class UserInfoManageController {
         return userInfoService.getMyInfo(userTel);
     }
 
+    /**
+     * 修改个人信息
+     *
+     * @param newUserInfo
+     * @return
+     * @throws Exception
+     */
     @PostMapping(value = "/changeMyInfo")
     public String changeMyInfo(NewUserInfo newUserInfo) throws Exception {
         String userTel = UserValidationUtil.getUserTel(logger);
-        userInfoService.changeMyInfo(userTel,newUserInfo);
+        userInfoService.changeMyInfo(userTel, newUserInfo);
         return "userManage/changeMyInfoOK";
     }
+
+
 
     private UserInfoService userInfoService;
     private final static Logger logger = LoggerFactory.getLogger(UserInfoManageController.class);

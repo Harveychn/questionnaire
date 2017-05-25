@@ -1,9 +1,13 @@
 package com.questionnaire.ssm.module.userManage.service;
 
+import com.questionnaire.ssm.module.userManage.enums.UserActionEnum;
 import com.questionnaire.ssm.module.userManage.pojo.MyInfoVO;
 import com.questionnaire.ssm.module.userManage.pojo.NewUserInfo;
+import com.questionnaire.ssm.module.userManage.pojo.RoleAuthorityVO;
 import com.questionnaire.ssm.module.userManage.pojo.SurveyorInfoVO;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * Created by 郑晓辉 on 2017/5/1.
@@ -11,10 +15,50 @@ import org.springframework.transaction.annotation.Transactional;
  */
 public interface UserInfoService {
 
+    /**
+     * 获取个人信息
+     *
+     * @param userTel
+     * @return
+     * @throws Exception
+     */
     MyInfoVO getMyInfo(String userTel) throws Exception;
 
+    /**
+     * 获取调查员信息
+     *
+     * @param userTel
+     * @return
+     * @throws Exception
+     */
     SurveyorInfoVO getSurveyorInfo(String userTel) throws Exception;
 
+    /**
+     * 个人信息修改
+     *
+     * @param userTel
+     * @param newUserInfo
+     * @throws Exception
+     */
     @Transactional
-    void changeMyInfo(String userTel,NewUserInfo newUserInfo) throws Exception;
+    void changeMyInfo(String userTel, NewUserInfo newUserInfo) throws Exception;
+
+    /**
+     * 获取当前用户身份可以管理的人员权限信息
+     *
+     * @param userTel
+     * @return
+     * @throws Exception
+     */
+    List<RoleAuthorityVO> listUserRoleAuthorityInfo(String userTel) throws Exception;
+
+    /**
+     * 操作用户权限信息
+     *
+     * @param userAccounts   要操作的用户账户
+     * @param userActionEnum 操作的动作枚举
+     * @return 操作失败的账户信息
+     * @throws Exception
+     */
+    List<String> operateUserAccount(List<String> userAccounts, UserActionEnum userActionEnum) throws Exception;
 }

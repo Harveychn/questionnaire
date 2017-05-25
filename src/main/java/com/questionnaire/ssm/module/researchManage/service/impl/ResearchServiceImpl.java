@@ -1,13 +1,11 @@
 package com.questionnaire.ssm.module.researchManage.service.impl;
 
-import com.questionnaire.ssm.module.generated.mapper.MappingMissionQuestionnaireMapper;
-import com.questionnaire.ssm.module.generated.mapper.MissionMapper;
-import com.questionnaire.ssm.module.generated.mapper.QuestionnaireMapper;
-import com.questionnaire.ssm.module.generated.mapper.UserMapper;
+import com.questionnaire.ssm.module.generated.mapper.*;
 import com.questionnaire.ssm.module.generated.pojo.*;
 import com.questionnaire.ssm.module.global.enums.CodeForVOEnum;
 import com.questionnaire.ssm.module.global.enums.DBTableEnum;
 import com.questionnaire.ssm.module.global.exception.OperateDBException;
+import com.questionnaire.ssm.module.global.mapper.UnitInfoMapper;
 import com.questionnaire.ssm.module.researchManage.mapper.ResearchMissionMapper;
 import com.questionnaire.ssm.module.researchManage.pojo.*;
 import com.questionnaire.ssm.module.researchManage.service.MapMissionQesPaperService;
@@ -20,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -147,6 +146,45 @@ public class ResearchServiceImpl implements ResearchService {
         return researchListVOList;
     }
 
+    /**
+     * 查询任务信息
+     * userTel为null或者‘’则查询全部信息
+     *
+     * @param userTel
+     * @return
+     * @throws Exception
+     */
+    @Override
+    public List<MissionInfoVO> listMissionInfo(String userTel) throws Exception {
+        List<MissionInfoVO> missionInfoVOList = researchMissionMapper.listMissionInfo(userTel);
+        if (missionInfoVOList.size() <= 0) {
+            return null;
+        }
+        List<String> unitNameList = null;
+        List<MissionPaperDTO> missionPaperDTOList = null;
+        for (MissionInfoVO missionInfoVO : missionInfoVOList) {
+            String executeUnitIdStr = missionInfoVO.getUnitIdStr();
+            String[] executeUnitIds = executeUnitIdStr.split("\\|\\|");
+            unitNameList = unitInfoMapper.listUnitNameByUnitIDs(Arrays.asList(executeUnitIds));
+            //设置执行单位
+            if (unitNameList.size() > 0) {
+                missionInfoVO.setExecuteUnitList(unitNameList);
+            }
+            unitNameList = null;
+
+            //设置任务相关问卷信息
+            missionPaperDTOList = researchMissionMapper.listMissionPaperByMissionId(missionInfoVO.getMissionId());
+            if (missionPaperDTOList.size() > 0) {
+                missionInfoVO.setMissionPaperDTOList(missionPaperDTOList);
+            }
+            missionPaperDTOList = null;
+        }
+
+        return missionInfoVOList;
+    }
+
+
+    private UnitInfoMapper unitInfoMapper;
     private UserMapper userMapper;
     private MissionMapper missionMapper;
     private MappingMissionQuestionnaireMapper mappingMissionQuestionnaireMapper;
@@ -155,12 +193,14 @@ public class ResearchServiceImpl implements ResearchService {
     private QuestionnaireMapper questionnaireMapper;
 
     @Autowired
-    public ResearchServiceImpl(MissionMapper missionMapper,
+    public ResearchServiceImpl(UnitInfoMapper unitInfoMapper,
+                               MissionMapper missionMapper,
                                MappingMissionQuestionnaireMapper mappingMissionQuestionnaireMapper,
                                UserMapper userMapper,
                                MapMissionQesPaperService mapMissionQesPaperService,
                                ResearchMissionMapper researchMissionMapper,
                                QuestionnaireMapper questionnaireMapper) {
+        this.unitInfoMapper = unitInfoMapper;
         this.missionMapper = missionMapper;
         this.mappingMissionQuestionnaireMapper = mappingMissionQuestionnaireMapper;
         this.userMapper = userMapper;

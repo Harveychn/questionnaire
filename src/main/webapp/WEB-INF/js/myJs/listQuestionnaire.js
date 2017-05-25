@@ -43,7 +43,7 @@ $(function () {
 
         search: true,
         searchAlign: 'right',
-        searchOnEnterKey: true,
+        searchOnEnterKey: false,
         toolbar: '#tableToolbar',
         showColumns: true,
         showRefresh: true,
@@ -97,7 +97,7 @@ window.operateEvents = {
     },
     //发布问卷
     'click .launchPaper': function (e, value, row, index) {
-        layer.msg('模块未发布', {icon: 4});
+        window.location.href = '/researchManage/createResearchView?questionnaireSelect=' + row.questionnaireId;
     },
     //继续编辑问卷
     'click .continueEdit': function (e, value, row, index) {
@@ -247,14 +247,15 @@ function accessServer(questionnaireIds, url) {
  * @param urlWithId 查看问卷带有问卷ID的url
  */
 function browseQesPaper(urlWithId) {
-    layer.full(layer.open({
-        title: '   ',
-        type: 2,
-        content: urlWithId,
-        area: ['80%', '80%'],
-        maxmin: true,
-        closeBtn: 1
-    }));
+    window.open(urlWithId);
+    // layer.full(layer.open({
+    //     title: '   ',
+    //     type: 2,
+    //     content: urlWithId,
+    //     area: ['80%', '80%'],
+    //     maxmin: true,
+    //     closeBtn: 1
+    // }));
 }
 
 /**
