@@ -1,11 +1,11 @@
 /**
  * Created by Administrator on 2017/5/3.
  */
-var $table = $('#primaryDataTable');
+var $table = $('#missionManageTable');
 
 $(function () {
     $table.bootstrapTable({
-        url: '/resultAnalysis/listPrimaryData',
+        url: '/researchManage/listMission',
         method: 'post',
         dataType: 'json',
         cache: false,
@@ -13,7 +13,7 @@ $(function () {
         striped: true,
 //            clickToSelect: true,
         undefinedText: '--',
-        sortName: ['missionId', 'questionnaireTitle', 'questionnaireCount'],
+        sortName: ['missionId', 'questionnaireTitle', 'minSubmitCount','missionStartDate','missionFinalDate','createUser'],
         sortOrder: 'desc',
         height: getHeight(),
 
@@ -35,28 +35,39 @@ $(function () {
 
         minimumCountColumns: 3,
 
-        columns: [{
-            checkbox: true,
-            clickToSelect: true
-        }, {
+        columns: [ {
             field: 'missionId',
             title: '任务ID',
             align: 'center',
-            width: 100,
             sortable: true
         }, {
             field: 'questionnaireTitle',
             title: '问卷标题',
+            align: 'center',
             sortable: true
         }, {
-            field: 'questionnaireCount',
-            title: '问卷完成量',
+            field: 'minSubmitCount',
+            title: '最低提交量',
             align: 'center',
-            width: 200,
+            sortable: true
+        }, {
+            field: 'missionStartDate',
+            title: '开始时间',
+            align: 'center',
+            sortable: true
+        }, {
+            field: 'missionFinalDate',
+            title: '结束时间',
+            align: 'center',
+            sortable: true
+        }, {
+            field: 'createUser',
+            title: '发布者',
+            align: 'center',
             sortable: true
         }, {
             title: '操作',
-            width: 200,
+            width: 100,
             align: 'center',
             events: operateEvents,
             formatter: operateFormatter
@@ -68,18 +79,18 @@ $(function () {
 var checkDataUrl = '';
 //单份处理
 window.operateEvents = {
-    //查看
+    //提醒
     'click .check': function (e, value, row, index) {
         // layer.alert(row.missionId + "||" + row.questionnaireId);
-        checkDataUrl = '/resultAnalysis/getPrimaryDataTwo?missionId=' + row.missionId + '&qesId=' + row.questionnaireId;
-        layerMsg('查看', row, checkDataUrl);
+        checkDataUrl = '/notice/getCreateNoticeForMission?missionId=' + row.missionId + '&qesId=' + row.questionnaireId;
+        layerMsg('提醒', row, checkDataUrl);
     }
 };
 /*弹窗层*/
 function layerMsg(confirmText, ids, url) {
     layer.open({
         type: 2,
-        title: '详细内容',
+        title: '任务提醒',
         maxmin: true,
         content: url, //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
         area: ['80%', '90%'],
@@ -120,8 +131,8 @@ function getIdSelections() {
 //操作按钮格式设置
 function operateFormatter(value, row, index) {
     return [
-        '<a class="check btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="查看">',
-        '<i class="glyphicon glyphicon-check"></i> 查看',
+        '<a class="check btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="提醒">',
+        '<i class="glyphicon glyphicon-check"></i> 提醒',
         '</a>'
     ].join('');
 }

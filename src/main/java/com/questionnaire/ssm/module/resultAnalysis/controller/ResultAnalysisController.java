@@ -56,8 +56,8 @@ public class ResultAnalysisController {
     @GetMapping(value = "/getAnswerPaperInfo")
     public ModelAndView getAnswerPaperInfo(Long answerPaperId)throws Exception{
         ModelAndView modelAndView=new ModelAndView();
-        modelAndView.addObject("DisplayAnswerPaperVO",primaryDataService.getAnswerPaper(answerPaperId));
-        modelAndView.setViewName("resultAnalysis/displayPrimaryData");
+        modelAndView.addObject("displayAnswerPaperVO",primaryDataService.getAnswerPaper(answerPaperId));
+        modelAndView.setViewName("resultAnalysis/displayAnswerPaper");
         return modelAndView;
     }
 

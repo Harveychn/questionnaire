@@ -173,7 +173,7 @@ public class QesManageVODOUtil {
      * @return
      * @throws Exception
      */
-    private static String parse2VOQuestionType(String typeCode) throws Exception {
+    public static String parse2VOQuestionType(String typeCode) throws Exception {
         typeCode = typeCode.trim();
         if (QuestionTypeEnum.SINGLE_LINE_BLANK.getCode().equals(typeCode)) {
             return QuestionTypeEnum.SINGLE_LINE_BLANK.getQuestionType();

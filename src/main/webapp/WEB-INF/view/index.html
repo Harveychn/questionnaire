@@ -71,67 +71,76 @@
             <ul class="nav" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element">
-                        <span><img alt="image" class="img-circle" src="/WEB-INF/img/NIPD Logo Chn.jpg"
-                                   th:src="@{/img/NIPD Logo Chn.jpg}"></span>
+								<span><img alt="image" class="img-circle" src="/WEB-INF/img/NIPD Logo Chn.jpg"
+                                           th:src="@{/img/NIPD Logo Chn.jpg}"></span>
                     </div>
                     <div class="logo-element">CDC
                     </div>
                 </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-user-plus"></i>
-                        <span class="nav-label">人员管理</span>
-                        <span class="fa arrow"></span>
-                    </a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                            <a class="J_menuItem" href="#"
-                                th:href="@{/userManage/getRoleAuthorityView}">人员查询</a>
-                        </li>
-                        <li>
-                            <a class="J_menuItem" href="/userManage/getUploadView"
-                               th:href="@{/userManage/getUploadView}">上传数据</a>
-                        </li>
-
-                    </ul>
-
-                </li>
+                <!--问卷管理-->
                 <li>
                     <a href="#"><i class="fa fa-edit"></i>
                         <span class="nav-label">问卷管理</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-                        <li><a class="J_menuItem" href="/questionnaireManage/getCreateView"
-                               th:href="@{/questionnaireManage/getCreateView}">创建问卷</a>
+                        <li>
+                            <a class="J_menuItem" href="/questionnaireManage/getCreateView" th:href="@{/questionnaireManage/getCreateView}">创建问卷</a>
                         </li>
-                        <li><a class="J_menuItem" href="/questionnaireManage/getListMyQesPaperView"
-                               th:href="@{/questionnaireManage/getListMyQesPaperView}">查看问卷</a>
+                        <li>
+                            <a class="J_menuItem" href="/questionnaireManage/getListMyQesPaperView" th:href="@{/questionnaireManage/getListMyQesPaperView}">查看问卷</a>
                         </li>
-                        <li><a class="J_menuItem" href="/questionnaireManage/temporaryDeleteQesPaperView"
-                               th:href="@{/questionnaireManage/temporaryDeleteQesPaperView}">删除问卷</a>
+                        <li>
+                            <a class="J_menuItem" href="/questionnaireManage/temporaryDeleteQesPaperView" th:href="@{/questionnaireManage/temporaryDeleteQesPaperView}">删除问卷</a>
                         </li>
                     </ul>
                 </li>
+                <!--调查管理-->
                 <li>
-                    <a href="#"><i class="glyphicon glyphicon-inbox"></i>
-                        <span class="nav-label">模板管理</span><span class="fa arrow"></span></a>
+                    <a href="#">
+                        <i class="fa fa-search"></i>
+                        <span class="nav-label">调查管理</span>
+                        <span class="fa arrow"></span>
+                    </a>
                     <ul class="nav nav-second-level">
-                        <li><a class="J_menuItem" href="/qesTemplateManage/getQesTemplateView">个人模板</a>
+                        <li>
+                            <a class="J_menuItem" href="/researchManage/createResearchView">
+                                创建调查
+                            </a>
                         </li>
-                        <li><a class="J_menuItem" href="/qesTemplateManage/getPublicTemplateView">公共模板</a>
+                        <li>
+                            <a class="J_menuItem" href="/researchManage/getMissionManageView">
+                                任务管理
+                            </a>
                         </li>
                     </ul>
                 </li>
+                <!--结果分析-->
                 <li>
                     <a href="#"><i class="fa fa-bar-chart"></i>
                         <span class="nav-label">结果分析</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-                        <li><a class="J_menuItem" href="/resultAnalysis/getPrimaryDataView">原始数据</a>
+                        <li>
+                            <a class="J_menuItem" href="/resultAnalysis/getPrimaryDataView">原始数据</a>
                         </li>
-                        <li><a class="J_menuItem" href="/resultAnalysis/getPrimaryData_two">结果可视化分析</a>
+                        <li>
+                            <a class="J_menuItem" href="/resultAnalysis/getPrimaryData_two">结果可视化分析</a>
                         </li>
 
                     </ul>
                 </li>
+                <!--模板管理-->
+                <li>
+                    <a href="#"><i class="glyphicon glyphicon-inbox"></i>
+                        <span class="nav-label">模板管理</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a class="J_menuItem" href="/qesTemplateManage/getQesTemplateView">个人模板</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="/qesTemplateManage/getPublicTemplateView">公共模板</a>
+                        </li>
+                    </ul>
+                </li>
+                <!--公告管理-->
                 <li>
                     <a href="#">
                         <i class="fa fa-bullhorn"></i>
@@ -148,19 +157,23 @@
 
                     </ul>
                 </li>
+                <!--人员管理-->
                 <li>
                     <a href="#">
-                        <i class="fa fa-search"></i>
-                        <span class="nav-label">调查管理</span>
+                        <i class="fa fa-user-plus"></i>
+                        <span class="nav-label">人员管理</span>
                         <span class="fa arrow"></span>
                     </a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a class="J_menuItem" href="/researchManage/createResearchView">
-                                创建调查
-                            </a>
+                            <a class="J_menuItem" href="#">人员查询</a>
                         </li>
+                        <li>
+                            <a class="J_menuItem" href="/userManage/getUploadView" th:href="@{/userManage/getUploadView}">上传数据</a>
+                        </li>
+
                     </ul>
+
                 </li>
             </ul>
         </div>
@@ -205,9 +218,11 @@
 
                 </button>
                 <ul role="menu" class="dropdown-menu dropdown-menu-right">
-                    <li class="J_tabCloseAll"><a>关闭全部选项卡</a>
+                    <li class="J_tabCloseAll">
+                        <a>关闭全部选项卡</a>
                     </li>
-                    <li class="J_tabCloseOther"><a>关闭其他选项卡</a>
+                    <li class="J_tabCloseOther">
+                        <a>关闭其他选项卡</a>
                     </li>
                 </ul>
             </div>
@@ -216,9 +231,7 @@
             </a>
         </div>
         <div class="row J_mainContent" id="content-main">
-            <iframe class="J_iframe" name="iframe0" width="100%" height="100%" th:src="@{/home}" src="home.html"
-                    frameborder="0"
-                    data-id="home.html" seamless></iframe>
+            <iframe class="J_iframe" name="iframe0" width="100%" height="100%" th:src="@{/home}" src="home.html" frameborder="0" data-id="home.html" seamless></iframe>
         </div>
         <div class="footer">
             <div class="pull-right">&copy;2017<a href="http://ipd.org.cn/" target="_blank">中国疾病预防控制中心-寄生虫病预防控制所</a>

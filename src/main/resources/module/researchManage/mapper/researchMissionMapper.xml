@@ -20,6 +20,28 @@
 		AND is_done = TRUE
 		AND is_visible = TRUE
 		AND is_release = FALSE
+</select>
+    <select id="listMission" resultType="com.questionnaire.ssm.module.researchManage.pojo.ListMissionVO">
+		SELECT
+		ma.mission_id AS missionId,
+		q.questionnaire_id AS questionnaireId,
+		q.questionnaire_title AS questionnaireTitle,
+		ma.min_submit_count AS minSubmitCount,
+		DATE_FORMAT(
+        m.mission_start_date,
+        '%Y-%m-%d %H:%i:%s'
+        ) AS missionStartDate,
+        DATE_FORMAT(
+        m.mission_final_date,
+        '%Y-%m-%d %H:%i:%s'
+        ) AS missionFinalDate,
+		m.create_user AS createUser
+        FROM
+        questionnaire AS q,
+        mapping_mission_questionnaire AS ma,
+        mission AS m
+        WHERE q.questionnaire_id=ma.questionnaire_id AND m.mission_id=ma.mission_id
+        ORDER BY ma.mission_id
 	</select>
 
     <!--<resultMap id="listMissionInfoMap" type="com.questionnaire.ssm.module.researchManage.pojo.MissionInfoVO">-->
@@ -58,47 +80,47 @@
 
     <select id="listMissionPaperByMissionId" parameterType="Long"
             resultType="com.questionnaire.ssm.module.researchManage.pojo.MissionPaperDTO">
-		SELECT
-			qesPaperInfo.*, IFNULL(submit_info.submitNow,0) AS submitNow
-		FROM
-			(
-				SELECT
-					mmq.questionnaire_id AS questionnaireId,
-					q.questionnaire_title AS questionnaireTitle,
-					q.questionnaire_description AS questionnaireDescription,
-					mmq.min_submit_count AS minSubmit
-				FROM
-					mapping_mission_questionnaire AS mmq,
-					questionnaire AS q
-				WHERE
-					mmq.mission_id = #{missionId}
-				AND q.questionnaire_id = mmq.questionnaire_id
-			) AS qesPaperInfo
-		LEFT JOIN (
-			SELECT
-				qesResult.questionnaire_id AS questionnaireId,
-				COUNT(DISTINCT a.answer_paper_id) AS submitNow
-			FROM
-				answer_paper AS a,
-				(
-					SELECT
-						questionnaire_id
-					FROM
-						mapping_mission_questionnaire
-					WHERE
-						mission_id = #{missionId}
-				) AS qesResult
-			WHERE
-				a.mission_id = #{missionId}
-			AND a.questionnaire_id IN (
-				SELECT
-					questionnaire_id
-				FROM
-					mapping_mission_questionnaire
-				WHERE
-					mission_id = #{missionId}
-			)
-			AND qesResult.questionnaire_id = a.questionnaire_id
-		) AS submit_info ON qesPaperInfo.questionnaireId = submit_info.questionnaireId
+        SELECT
+        qesPaperInfo.*, IFNULL(submit_info.submitNow,0) AS submitNow
+        FROM
+        (
+        SELECT
+        mmq.questionnaire_id AS questionnaireId,
+        q.questionnaire_title AS questionnaireTitle,
+        q.questionnaire_description AS questionnaireDescription,
+        mmq.min_submit_count AS minSubmit
+        FROM
+        mapping_mission_questionnaire AS mmq,
+        questionnaire AS q
+        WHERE
+        mmq.mission_id = #{missionId}
+        AND q.questionnaire_id = mmq.questionnaire_id
+        ) AS qesPaperInfo
+        LEFT JOIN (
+        SELECT
+        qesResult.questionnaire_id AS questionnaireId,
+        COUNT(DISTINCT a.answer_paper_id) AS submitNow
+        FROM
+        answer_paper AS a,
+        (
+        SELECT
+        questionnaire_id
+        FROM
+        mapping_mission_questionnaire
+        WHERE
+        mission_id = #{missionId}
+        ) AS qesResult
+        WHERE
+        a.mission_id = #{missionId}
+        AND a.questionnaire_id IN (
+        SELECT
+        questionnaire_id
+        FROM
+        mapping_mission_questionnaire
+        WHERE
+        mission_id = #{missionId}
+        )
+        AND qesResult.questionnaire_id = a.questionnaire_id
+        ) AS submit_info ON qesPaperInfo.questionnaireId = submit_info.questionnaireId
     </select>
 </mapper>

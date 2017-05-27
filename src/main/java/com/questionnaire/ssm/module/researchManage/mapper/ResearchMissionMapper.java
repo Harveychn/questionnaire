@@ -1,7 +1,9 @@
 package com.questionnaire.ssm.module.researchManage.mapper;
 
+
 import com.questionnaire.ssm.module.researchManage.pojo.MissionInfoVO;
 import com.questionnaire.ssm.module.researchManage.pojo.MissionPaperDTO;
+import com.questionnaire.ssm.module.researchManage.pojo.ListMissionVO;
 import com.questionnaire.ssm.module.researchManage.pojo.QuestionnaireInfoVO;
 import org.apache.ibatis.annotations.Param;
 
@@ -12,6 +14,8 @@ import java.util.List;
  * Description: 调查任务管理mapper
  */
 public interface ResearchMissionMapper {
+
+    List<ListMissionVO> listMission()throws Exception;
 
     /**
      * 查询可发布的问卷信息
