@@ -237,7 +237,6 @@ public class UserManageController {
             return ResultUtil.error(CodeForVOEnum.NEW_USER_AUTHORITY_VO_DATA_ERROR.getCode(),
                     CodeForVOEnum.NEW_USER_AUTHORITY_VO_DATA_ERROR.getMessage());
         }
-        System.out.println(newUserAuthorityInfo.toString());
         userInfoService.updateUserAuthorityInfo(newUserAuthorityInfo);
         return ResultUtil.success();
     }

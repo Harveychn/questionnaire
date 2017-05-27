@@ -68,5 +68,11 @@ public interface UserInfoService {
      */
     List<AllRoleInfoVO> listAllRole() throws Exception;
 
+    /**
+     * 更新用户权限信息
+     *
+     * @param newUserAuthorityInfo
+     * @throws Exception
+     */
     void updateUserAuthorityInfo(NewUserAuthorityInfo newUserAuthorityInfo) throws Exception;
 }
