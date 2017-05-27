@@ -46,11 +46,12 @@ public class ResearchController {
      * @throws Exception
      */
     @GetMapping(value = "/getMissionManageView")
-    public ModelAndView  getMissionManage()throws Exception{
-        ModelAndView modelAndView=new ModelAndView();
+    public ModelAndView getMissionManage() throws Exception {
+        ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("researchManage/missionManage");
         return modelAndView;
     }
+
     /**
      * 获取任务列表
      *
@@ -58,7 +59,7 @@ public class ResearchController {
      * @throws Exception
      */
     @PostMapping(value = "/listMission")
-    public List<ListMissionVO> listMission()throws Exception{
+    public List<ListMissionVO> listMission() throws Exception {
         return missionManageService.listMission();
     }
 
@@ -117,17 +118,6 @@ public class ResearchController {
         return researchService.listMissionInfo("");
     }
 
-    /**
-     * 查询所有调查任务
-     *
-     * @return
-     * @throws Exception
-     */
-    @GetMapping(value = "/listAllMissionInfo")
-    @ResponseBody
-    public List<MissionInfoVO> listAllMissionInfo() throws Exception {
-        return researchService.listMissionInfo("");
-    }
     private final static Logger logger = LoggerFactory.getLogger(ResearchController.class);
     private ResearchService researchService;
     private MissionManageService missionManageService;
@@ -137,6 +127,6 @@ public class ResearchController {
     public ResearchController(ResearchService researchService,
                               MissionManageService missionManageService) {
         this.researchService = researchService;
-        this.missionManageService=missionManageService;
+        this.missionManageService = missionManageService;
     }
 }
