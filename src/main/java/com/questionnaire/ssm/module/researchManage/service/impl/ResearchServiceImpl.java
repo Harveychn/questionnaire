@@ -6,6 +6,7 @@ import com.questionnaire.ssm.module.global.enums.CodeForVOEnum;
 import com.questionnaire.ssm.module.global.enums.DBTableEnum;
 import com.questionnaire.ssm.module.global.exception.OperateDBException;
 import com.questionnaire.ssm.module.global.mapper.UnitInfoMapper;
+import com.questionnaire.ssm.module.researchManage.enums.MissionStatusEnum;
 import com.questionnaire.ssm.module.researchManage.mapper.ResearchMissionMapper;
 import com.questionnaire.ssm.module.researchManage.pojo.*;
 import com.questionnaire.ssm.module.researchManage.service.MapMissionQesPaperService;
@@ -147,19 +148,41 @@ public class ResearchServiceImpl implements ResearchService {
     }
 
     /**
-     * 查询任务信息
+     * * 查询任务信息
      * userTel为null或者‘’则查询全部信息
      *
      * @param userTel
+     * @param missionStatusEnum 要查询任务的状态
      * @return
      * @throws Exception
      */
     @Override
-    public List<MissionInfoVO> listMissionInfo(String userTel) throws Exception {
-        List<MissionInfoVO> missionInfoVOList = researchMissionMapper.listMissionInfo(userTel);
-        if (missionInfoVOList.size() <= 0) {
+    public List<MissionInfoVO> listMissionInfo(String userTel, MissionStatusEnum missionStatusEnum) throws Exception {
+        List<MissionInfoVO> missionInfoVOList = null;
+
+        switch (missionStatusEnum) {
+            case RELEASED_STATUS://发布中任务信息
+                missionInfoVOList = researchMissionMapper.listGoingMissionInfo(userTel);
+                break;
+            case UNRELEASED_STATUS://未发布的任务信息
+                missionInfoVOList = researchMissionMapper.listUnreleasedMissions(userTel);
+                break;
+            case FINISH_STATUS://已截止的任务信息
+                missionInfoVOList = researchMissionMapper.listFinishMissions(userTel);
+                break;
+            case UNFINISHED_STATUS://未截止的任务信息
+                missionInfoVOList = researchMissionMapper.listUnfinishMissions(userTel);
+                break;
+            case GOING_STATUS://进行中的任务信息
+                missionInfoVOList = researchMissionMapper.listGoingMissionInfo(userTel);
+                break;
+            default:
+                break;
+        }
+        if (missionInfoVOList == null || missionInfoVOList.size() <= 0) {
             return null;
         }
+
         List<String> unitNameList = null;
         List<MissionPaperDTO> missionPaperDTOList = null;
         for (MissionInfoVO missionInfoVO : missionInfoVOList) {

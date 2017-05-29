@@ -141,7 +141,6 @@ public class UserManageController {
         modelAndView.addObject("accountOwner", accountOwner);
         modelAndView.addObject("userRole", userRole);
         modelAndView.setViewName("roleAuthority/roleAuthority_manage");
-        System.out.println(userAccount + "||" + accountOwner + "||" + userRole);
         return modelAndView;
     }
 

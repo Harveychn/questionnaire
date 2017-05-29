@@ -3,6 +3,7 @@ package com.questionnaire.ssm.module.researchManage.controller;
 import com.questionnaire.ssm.module.global.pojo.ResponsePkt;
 import com.questionnaire.ssm.module.global.util.ResultUtil;
 import com.questionnaire.ssm.module.global.util.UserValidationUtil;
+import com.questionnaire.ssm.module.researchManage.enums.MissionStatusEnum;
 import com.questionnaire.ssm.module.researchManage.pojo.CreateResearchMissionVO;
 import com.questionnaire.ssm.module.researchManage.pojo.ListMissionVO;
 import com.questionnaire.ssm.module.researchManage.pojo.MissionInfoVO;
@@ -16,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.ws.rs.GET;
 import java.util.List;
 
 /**
@@ -107,16 +109,31 @@ public class ResearchController {
     }
 
     /**
-     * 查询所有调查任务
+     * 获取展示全部已发布调查任务视图页面
      *
      * @return
      * @throws Exception
      */
-    @GetMapping(value = "/listAllMissionInfo")
-    @ResponseBody
-    public List<MissionInfoVO> listAllMissionInfo() throws Exception {
-        return researchService.listMissionInfo("");
+    @GetMapping(value = "/getListAllMissionView")
+    public ModelAndView getListAllMissionView() throws Exception {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("resultAnalysis/listAllMissions");
+        return modelAndView;
     }
+
+    /**
+     * 查询已发布调查任务
+     *
+     * @return
+     * @throws Exception
+     */
+    @GetMapping(value = "/getReleasedMissions")
+    @ResponseBody
+    public List<MissionInfoVO> getReleasedMissions() throws Exception {
+        String userTel = UserValidationUtil.getUserTel(logger);
+        return researchService.listMissionInfo(userTel, MissionStatusEnum.RELEASED_STATUS);
+    }
+
 
     private final static Logger logger = LoggerFactory.getLogger(ResearchController.class);
     private ResearchService researchService;
