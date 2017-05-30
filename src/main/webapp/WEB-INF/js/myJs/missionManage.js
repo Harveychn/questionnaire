@@ -102,7 +102,7 @@ window.operateEvents = {
     },
     //删除问卷
     'click .remove': function (e, value, row, index) {
-        delMissionMagaUrl = '/researchManage/deleteMission',
+        delMissionMagaUrl = '/researchManage/deleteMission?missionId'+row.missionId+'&questionnaireId='+row.questionnaireId,
             layerConfirmSingle('确认删除吗?', row, delMissionMagaUrl);
     }
 
@@ -126,9 +126,11 @@ function layerConfirmSingle(confirmText, row, url) {
             btn: ['确定', '取消']
         },
         function (index) {
-            var missionId=row.missionId;
-            var questionnaireId=row.questionnaireId;
-            accessServer(missionId,questionnaireId, url);
+            var missionIds=[];
+            var questionnaireIds=[];
+            missionIds.push(row.missionId);
+            questionnaireIds.push(row.questionnaireId);
+            accessServer(missionIds,questionnaireIds, url);
             layer.close(index);
         },
         function () {
@@ -141,15 +143,15 @@ function layerConfirmSingle(confirmText, row, url) {
  * @param questionnaireIds
  * @param url
  */
-function accessServer(missionId,questionnaireId, url) {
+function accessServer(missionIds,questionnaireIds, url) {
     $.ajax({
         url: url,
         type: 'post',
-        data: {missionId: missionId,questionnaireId:questionnaireId},
+        data: {missionId: missionIds,questionnaireId:questionnaireIds},
         dataType: 'text',
         traditional: true,
         success: function (data) {
-            analyzeResponse(data, url, missionId,questionnaireId);
+            analyzeResponse(data, url, missionIds,questionnaireIds);
         },
         error: function () {
             layer.msg('操作失败，出现点问题，刷新看看？', {icon: 2});
@@ -164,16 +166,18 @@ function accessServer(missionId,questionnaireId, url) {
  * @param url
  * @param missionId
  */
-function analyzeResponse(data, url, missionId,questionnaireId) {
+function analyzeResponse(data, url, missionIds,questionnaireIds) {
     var responsePkt = JSON.parse(data);
     if (responsePkt.code === 200) {
         switch (url) {
-
-            case deleteForeverUrl://永久删除问卷
+            case delMissionMagaUrl://永久删除问卷
                 if (responsePkt.code === 200) {
                     $table.bootstrapTable('remove', {
-                        field: 'missionId',
-                        values: missionId
+                        field: 'missionIds',
+                        values: missionIds
+                    },{
+                        field: 'questionnaireIds',
+                        values: questionnaireIds
                     });
                     layer.msg('已经永久删除！', {icon: 1});
                 }

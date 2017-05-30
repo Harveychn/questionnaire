@@ -139,12 +139,20 @@
 	</update>
 
 	<select id="findMission" parameterType="com.questionnaire.ssm.module.researchManage.pojo.ListMissionVO"
-			resultType="Long">
-		SELECT
-		id
-		FROM
-		mapping_mission_questionnaire
-		WHERE questionnaire_id=#{questionnaireId}
-		AND mission_id=#{missionId}
-	</select>
+                         resultType="Long">
+    SELECT
+    id
+    FROM
+    mapping_mission_questionnaire
+    WHERE questionnaire_id=#{questionnaireId}
+    AND mission_id=#{missionId}
+</select>
+    <select id="findMissionByMissionId" parameterType="Long"
+            resultType="Long">
+        SELECT
+        mission_id AS missionId
+        FROM
+        mapping_mission_questionnaire
+        WHERE  mission_id=#{missionId}
+    </select>
 </mapper>

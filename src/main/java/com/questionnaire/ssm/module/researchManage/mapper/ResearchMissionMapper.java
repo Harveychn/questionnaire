@@ -54,4 +54,6 @@ public interface ResearchMissionMapper {
     void changeFinalTime(Mission mission)throws Exception;
 
     Long findMission(ListMissionVO listMissionVO)throws Exception;
+
+    Long findMissionByMissionId(Long missionId)throws Exception;
 }
