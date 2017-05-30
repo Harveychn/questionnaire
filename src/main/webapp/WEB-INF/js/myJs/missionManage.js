@@ -164,7 +164,8 @@ function accessServer(missionIds,questionnaireIds, url) {
  * 解析回复数据包
  * @param data
  * @param url
- * @param missionId
+ * @param missionIds
+ * @param questionnaireIds
  */
 function analyzeResponse(data, url, missionIds,questionnaireIds) {
     var responsePkt = JSON.parse(data);

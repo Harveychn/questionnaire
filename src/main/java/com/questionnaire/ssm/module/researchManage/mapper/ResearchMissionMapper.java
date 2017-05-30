@@ -1,6 +1,7 @@
 package com.questionnaire.ssm.module.researchManage.mapper;
 
 
+import com.questionnaire.ssm.module.generated.pojo.MissionWithBLOBs;
 import com.questionnaire.ssm.module.researchManage.pojo.MissionInfoVO;
 import com.questionnaire.ssm.module.researchManage.pojo.MissionPaperDTO;
 import com.questionnaire.ssm.module.generated.pojo.MappingMissionQuestionnaire;
@@ -48,10 +49,7 @@ public interface ResearchMissionMapper {
      */
     List<MissionPaperDTO> listMissionPaperByMissionId(@Param("missionId") Long missionId) throws Exception;
 
-
     Long listCount(ListMissionVO listMissionVO)throws Exception;
-
-    void changeFinalTime(Mission mission)throws Exception;
 
     Long findMission(ListMissionVO listMissionVO)throws Exception;
 

@@ -40,26 +40,6 @@
 
 <script>
     $(function () {
-//        var missionOptions = '';
-//        var $launchDate = $('#launchDate');
-//				$.ajax({
-//					url: '',
-//					type: 'get',
-//					dataType: 'json',
-//					traditional: true,
-//					success: function(data) {
-//						for(var index = 0; index < data.length; index++) {
-//							missionOptions += '<option title="' + data[index].unitName + '" ' +
-//								'value="' + data[index].unitId + '">' + data[index].unitName +
-//								'·························' +
-//								data[index].unitProvince + ' - ' + data[index].unitCity + '</option>';
-//						};
-//						console.log(data);
-//					},
-//					error: function(data) {
-//						console.log(data.message);
-//					}
-//				});
         layui.use(['laydate'], function () {
             var laydate = layui.laydate;
 
@@ -82,38 +62,75 @@
             };
         });
     });
-    /*确认修改时间*/
-    $('#launchBtn').on('click', function () {
-        layui.use(['layer', 'laydate'], function () {
-            var layer = layui.layer;
-            var laydate = layui.laydate;
 
-            var launchDate = $('#launchDate').val();
-            if (launchDate.match(/^\s*$/)) {
-                layer.confirm('未设置时间，是否修改时间为现在时刻？', {
-                    icon: 3,
-                    btn: ['确定', '返回']
-                }, function (index) {
-                    console.log(launchDate);
-                    submitJsonData(laydate.now());
-                    layer.close(index);
-                }, function (index) {
-                    layer.close(index);
-                });
-            } else {
-                console.log(launchDate);
-                submitJsonData(launchDate);
-            }
+    /*确认修改时间*/
+//    $('#launchBtn').on('click', function () {
+//        layui.use(['layer', 'laydate'], function () {
+//            var layer = layui.layer;
+//            var laydate = layui.laydate;
+//
+//            var launchDate = $('#launchDate').val();
+//            if (launchDate.match(/^\s*$/)) {
+//                layer.confirm('未设置时间，是否修改时间为现在时刻？', {
+//                    icon: 3,
+//                    btn: ['确定', '返回']
+//                }, function (index) {
+//                    console.log(launchDate);
+//                    submitJsonData(laydate.now());
+//                    layer.close(index);
+//                }, function (index) {
+//                    layer.close(index);
+//                });
+//            } else {
+//                console.log(launchDate);
+//                submitJsonData(launchDate);
+//            }
+//        });
+//    });
+//
+//    function submitJsonData(launchDate) {
+//        var missionVO = {};
+//        missionVO.missionFinalDate = launchDate;
+//        var url = '/researchManage/changeFinalTime';
+//        accessServerByJson(url, missionVO);
+//    }
+
+//    /*确认修改*/
+    $('#launchBtn').on('click', function () {
+        var missionVO = {};
+        //获取修改的时间
+        var launchDate = $('#launchDate').val();
+        missionVO.missionFinalDate = launchDate;
+
+        var updateFinalTime = '/researchManage/changeFinalTime';
+        layui.use('layer', function () {
+            var layer = layui.layer;
+            $.ajax({
+                url: updateFinalTime,
+                contentType: "application/json;charset=utf-8",
+                type: 'post',
+                dataType: 'json',
+                data: JSON.stringify(missionVO),
+                success: function (data) {
+                    if (200 === data.code) {
+                        layer.msg('操作成功，1秒后关闭窗口...', {
+                            icon: 1,
+                            time: 1000 //1秒关闭（如果不配置，默认是3秒）
+                        }, function () {
+                            //修改数据成功后、刷新父页面中table数据
+//                            parent.refreshTable();
+                            closeLayer();
+                        });
+                    }
+                    dealGlobalError(data);
+                },
+                error: function (data) {
+                    layer.msg('出现错误了，刷新试试！');
+                    console.error(data);
+                }
+            });
         });
     });
-
-    function submitJsonData(launchDate) {
-        var missionVO = {};
-//        missionInfo.launchDate = new Date(launchDate);
-        missionVO.missionFinalDate = launchDate;
-        var url = '/researchManage/changeFinalTime';
-        accessServerByJson(url, missionVO);
-    }
     /*取消按钮*/
     $('#resetBtn').on('click', function () {
         layui.use('layer', function () {
@@ -123,6 +140,13 @@
         });
 
     });
+    /**
+     * 关闭 layer 层
+     */
+    function closeLayer() {
+        var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+        parent.layer.close(index); //再执行关闭
+    }
 </script>
 </body>
 

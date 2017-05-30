@@ -133,11 +133,6 @@
 		AND mission_id=#{missionId}
 	</select>
 
-	<update id="changeFinalTime" parameterType="com.questionnaire.ssm.module.generated.pojo.Mission">
-		UPDATE mission SET mission_final_date=#{missionFinalDate}
-		WHERE mission_id=#{missionId}
-	</update>
-
 	<select id="findMission" parameterType="com.questionnaire.ssm.module.researchManage.pojo.ListMissionVO"
                          resultType="Long">
     SELECT
