@@ -34,8 +34,7 @@
         DATE_FORMAT(
         m.mission_final_date,
         '%Y-%m-%d %H:%i:%s'
-        ) AS missionFinalDate,
-		m.create_user AS createUser
+        ) AS missionFinalDate
         FROM
         questionnaire AS q,
         mapping_mission_questionnaire AS ma,
@@ -123,4 +122,29 @@
         AND qesResult.questionnaire_id = a.questionnaire_id
         ) AS submit_info ON qesPaperInfo.questionnaireId = submit_info.questionnaireId
     </select>
+
+	<select id="listCount" parameterType="com.questionnaire.ssm.module.researchManage.pojo.ListMissionVO"
+			resultType="Long">
+		SELECT
+		COUNT(questionnaire_id) AS questionnaireCount
+		FROM
+		answer_paper
+		WHERE questionnaire_id=#{questionnaireId}
+		AND mission_id=#{missionId}
+	</select>
+
+	<update id="changeFinalTime" parameterType="com.questionnaire.ssm.module.generated.pojo.Mission">
+		UPDATE mission SET mission_final_date=#{missionFinalDate}
+		WHERE mission_id=#{missionId}
+	</update>
+
+	<select id="findMission" parameterType="com.questionnaire.ssm.module.researchManage.pojo.ListMissionVO"
+			resultType="Long">
+		SELECT
+		id
+		FROM
+		mapping_mission_questionnaire
+		WHERE questionnaire_id=#{questionnaireId}
+		AND mission_id=#{missionId}
+	</select>
 </mapper>

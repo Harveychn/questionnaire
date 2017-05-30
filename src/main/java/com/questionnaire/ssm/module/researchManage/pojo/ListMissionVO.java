@@ -10,14 +10,16 @@ public class ListMissionVO {
     private Long questionnaireId;
     /*问卷标题*/
     private String questionnaireTitle;
+    /*问卷完成量*/
+    private Long questionnaireCount;
     /*问卷最低提交量*/
     private Long minSubmitCount;
     /*任务开始时间*/
     private String missionStartDate;
     /*任务结束时间*/
     private String missionFinalDate;
-    /*任务创建者 */
-    private String createUser;
+    /*任务完成状态*/
+    private String missionStatus;
 
     @Override
     public String toString() {
@@ -25,10 +27,11 @@ public class ListMissionVO {
                 "missionId=" + missionId +
                 ", questionnaireId=" + questionnaireId +
                 ", questionnaireTitle='" + questionnaireTitle + '\'' +
+                ", questionnaireCount=" + questionnaireCount +
                 ", minSubmitCount=" + minSubmitCount +
                 ", missionStartDate='" + missionStartDate + '\'' +
                 ", missionFinalDate='" + missionFinalDate + '\'' +
-                ", createUser='" + createUser + '\'' +
+                ", missionStatus='" + missionStatus + '\'' +
                 '}';
     }
 
@@ -56,6 +59,14 @@ public class ListMissionVO {
         this.questionnaireTitle = questionnaireTitle;
     }
 
+    public Long getQuestionnaireCount() {
+        return questionnaireCount;
+    }
+
+    public void setQuestionnaireCount(Long questionnaireCount) {
+        this.questionnaireCount = questionnaireCount;
+    }
+
     public Long getMinSubmitCount() {
         return minSubmitCount;
     }
@@ -80,11 +91,11 @@ public class ListMissionVO {
         this.missionFinalDate = missionFinalDate;
     }
 
-    public String getCreateUser() {
-        return createUser;
+    public String getMissionStatus() {
+        return missionStatus;
     }
 
-    public void setCreateUser(String createUser) {
-        this.createUser = createUser;
+    public void setMissionStatus(String missionStatus) {
+        this.missionStatus = missionStatus;
     }
 }

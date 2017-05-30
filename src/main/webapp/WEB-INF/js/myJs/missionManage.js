@@ -13,7 +13,7 @@ $(function () {
         striped: true,
 //            clickToSelect: true,
         undefinedText: '--',
-        sortName: ['missionId', 'questionnaireTitle', 'minSubmitCount','missionStartDate','missionFinalDate','createUser'],
+        sortName: ['missionId', 'questionnaireTitle', 'questionnaireCount', 'minSubmitCount', 'missionStartDate', 'missionFinalDate', 'missionStatus'],
         sortOrder: 'desc',
         height: getHeight(),
 
@@ -34,8 +34,7 @@ $(function () {
         showPaginationSwitch: true,
 
         minimumCountColumns: 3,
-
-        columns: [ {
+        columns: [{
             field: 'missionId',
             title: '任务ID',
             align: 'center',
@@ -43,6 +42,11 @@ $(function () {
         }, {
             field: 'questionnaireTitle',
             title: '问卷标题',
+            align: 'center',
+            sortable: true
+        }, {
+            field: 'questionnaireCount',
+            title: '完成量',
             align: 'center',
             sortable: true
         }, {
@@ -61,13 +65,13 @@ $(function () {
             align: 'center',
             sortable: true
         }, {
-            field: 'createUser',
-            title: '发布者',
+            field: 'missionStatus',
+            title: '完成状态',
             align: 'center',
             sortable: true
         }, {
             title: '操作',
-            width: 100,
+            width: 200,
             align: 'center',
             events: operateEvents,
             formatter: operateFormatter
@@ -75,8 +79,9 @@ $(function () {
     });
 });
 
-
 var checkDataUrl = '';
+//删除url
+var delMissionMagaUrl = '';
 //单份处理
 window.operateEvents = {
     //提醒
@@ -84,7 +89,23 @@ window.operateEvents = {
         // layer.alert(row.missionId + "||" + row.questionnaireId);
         checkDataUrl = '/notice/getCreateNoticeForMission?missionId=' + row.missionId + '&qesId=' + row.questionnaireId;
         layerMsg('提醒', row, checkDataUrl);
+    },
+    'click .pencil': function (e, value, row, index) {
+        layer.open({
+            type: 2,
+            title: '结束时间修改',
+            maxmin: true,
+            content: '/researchManage/getMissionManageEditView?missionId=' + row.missionId,
+            area: ['40%', '50%'],
+            resize: true
+        });
+    },
+    //删除问卷
+    'click .remove': function (e, value, row, index) {
+        delMissionMagaUrl = '/researchManage/deleteMission',
+            layerConfirmSingle('确认删除吗?', row, delMissionMagaUrl);
     }
+
 };
 /*弹窗层*/
 function layerMsg(confirmText, ids, url) {
@@ -98,15 +119,16 @@ function layerMsg(confirmText, ids, url) {
     });
 }
 
-function layerConfirm(confirmText, row, url) {
+//删除
+function layerConfirmSingle(confirmText, row, url) {
     layer.confirm(confirmText, {
             icon: 3,
             btn: ['确定', '取消']
         },
         function (index) {
-            var ids = [];
-            ids.push(row.questionnaireId);
-            accessServer(ids, url);
+            var missionId=row.missionId;
+            var questionnaireId=row.questionnaireId;
+            accessServer(missionId,questionnaireId, url);
             layer.close(index);
         },
         function () {
@@ -114,6 +136,56 @@ function layerConfirm(confirmText, row, url) {
         }
     )
 }
+/**
+ * 异步加载服务器
+ * @param questionnaireIds
+ * @param url
+ */
+function accessServer(missionId,questionnaireId, url) {
+    $.ajax({
+        url: url,
+        type: 'post',
+        data: {missionId: missionId,questionnaireId:questionnaireId},
+        dataType: 'text',
+        traditional: true,
+        success: function (data) {
+            analyzeResponse(data, url, missionId,questionnaireId);
+        },
+        error: function () {
+            layer.msg('操作失败，出现点问题，刷新看看？', {icon: 2});
+        }
+    });
+    return true;
+}
+
+/**
+ * 解析回复数据包
+ * @param data
+ * @param url
+ * @param missionId
+ */
+function analyzeResponse(data, url, missionId,questionnaireId) {
+    var responsePkt = JSON.parse(data);
+    if (responsePkt.code === 200) {
+        switch (url) {
+
+            case deleteForeverUrl://永久删除问卷
+                if (responsePkt.code === 200) {
+                    $table.bootstrapTable('remove', {
+                        field: 'missionId',
+                        values: missionId
+                    });
+                    layer.msg('已经永久删除！', {icon: 1});
+                }
+                dealGlobalError(responsePkt);
+                break;
+            default:
+                return;
+        }
+    }
+}
+
+
 /*检查是否选中一种问卷*/
 function checkIsSelectedOne(ids) {
     if (0 === ids.length) {
@@ -122,19 +194,25 @@ function checkIsSelectedOne(ids) {
     }
     return true;
 }
-//获取批量选中的id
-function getIdSelections() {
-    return $.map($table.bootstrapTable('getSelections'), function (row) {
-        return row.questionnaireId;
-    });
-}
+
 //操作按钮格式设置
 function operateFormatter(value, row, index) {
-    return [
-        '<a class="check btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="提醒">',
+    var htmlElement = [];
+    htmlElement.push('<a class="check btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="提醒">',
         '<i class="glyphicon glyphicon-check"></i> 提醒',
-        '</a>'
-    ].join('');
+        '</a>');
+    if (row.missionStatus === "已截止") {
+        htmlElement.push('<a class="pencil btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="修改">',
+            '<i class="glyphicon glyphicon-pencil"></i> 修改',
+            '</a>');
+    }
+    if (row.missionStatus === "未开始") {
+        htmlElement.push('<a class="remove btn btn-sm btn-link" href="javascript:void(0)" ' +
+            'data-toggle="tooltip" title="删除">',
+            '<i class="glyphicon glyphicon-remove"></i> 删除',
+            '</a>');
+    }
+    return htmlElement.join('');
 }
 //获取屏幕高度
 function getHeight() {

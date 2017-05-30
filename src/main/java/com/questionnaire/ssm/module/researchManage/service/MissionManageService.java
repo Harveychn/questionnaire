@@ -1,6 +1,8 @@
 package com.questionnaire.ssm.module.researchManage.service;
 
+import com.questionnaire.ssm.module.generated.pojo.Mission;
 import com.questionnaire.ssm.module.researchManage.pojo.ListMissionVO;
+import com.questionnaire.ssm.module.researchManage.pojo.MissionVO;
 
 import java.util.List;
 
@@ -9,4 +11,6 @@ import java.util.List;
  */
 public interface MissionManageService {
     List<ListMissionVO> listMission()throws Exception;
+    void changeFinalTime(Long missionId,MissionVO missionVO)throws Exception;
+    void deleteMission(Long missionId,Long questionnaireId)throws Exception;
 }

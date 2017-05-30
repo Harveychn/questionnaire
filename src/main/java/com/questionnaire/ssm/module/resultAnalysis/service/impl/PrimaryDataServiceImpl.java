@@ -95,9 +95,9 @@ public class PrimaryDataServiceImpl implements PrimaryDataService {
         }
         DisplayAnswerPaperVO displayAnswerPaperVO = AnswerPaperVODOUtil.toDisplayAnswerPaperVO(answerPaperDO);
 
-        Questionnaire questionnaire=new Questionnaire();
+        Questionnaire questionnaire = new Questionnaire();
         long questionnaireId = displayAnswerPaperVO.getQuestionnaireId();
-        questionnaire=questionnaireMapper.selectByPrimaryKey(questionnaireId);
+        questionnaire = questionnaireMapper.selectByPrimaryKey(questionnaireId);
         displayAnswerPaperVO.setQuestionnaireTitle(questionnaire.getQuestionnaireTitle());
         displayAnswerPaperVO.setQuestionnaireSubtitle(questionnaire.getQuestionnaireSubtitle());
         displayAnswerPaperVO.setQuestionnaireDescription(questionnaire.getQuestionnaireDescription());
@@ -115,7 +115,7 @@ public class PrimaryDataServiceImpl implements PrimaryDataService {
         Long currentQuestionId = null;
         List<AnswerQuestionVO> answerQuestionVOList = new ArrayList<>();
         QuestionWithBLOBs questionWithBLOBs = null;
-        String answerDetail=null;
+        String answerDetail = null;
         for (int order = 0; order < mapDOList.size(); order++) {
             currentQuestionId = mapDOList.get(order).getQuestionId();//获取当前问题id
             questionWithBLOBs = questionMapper.selectByPrimaryKey(currentQuestionId);//获取当前问题标题内容
@@ -150,6 +150,6 @@ public class PrimaryDataServiceImpl implements PrimaryDataService {
         this.answerPaperMapper = answerPaperMapper;
         this.questionMapper = questionMapper;
         this.mappingQuestionnaireQuestionMapper = mappingQuestionnaireQuestionMapper;
-        this.questionnaireMapper=questionnaireMapper;
+        this.questionnaireMapper = questionnaireMapper;
     }
 }
