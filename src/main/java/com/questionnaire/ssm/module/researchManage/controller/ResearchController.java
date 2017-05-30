@@ -1,12 +1,10 @@
 package com.questionnaire.ssm.module.researchManage.controller;
 
+import com.questionnaire.ssm.module.generated.pojo.Mission;
 import com.questionnaire.ssm.module.global.pojo.ResponsePkt;
 import com.questionnaire.ssm.module.global.util.ResultUtil;
 import com.questionnaire.ssm.module.global.util.UserValidationUtil;
-import com.questionnaire.ssm.module.researchManage.pojo.CreateResearchMissionVO;
-import com.questionnaire.ssm.module.researchManage.pojo.ListMissionVO;
-import com.questionnaire.ssm.module.researchManage.pojo.QuestionnaireInfoVO;
-import com.questionnaire.ssm.module.researchManage.pojo.ResearchListVO;
+import com.questionnaire.ssm.module.researchManage.pojo.*;
 import com.questionnaire.ssm.module.researchManage.service.MissionManageService;
 import com.questionnaire.ssm.module.researchManage.service.ResearchService;
 import org.slf4j.Logger;
@@ -45,11 +43,50 @@ public class ResearchController {
      * @throws Exception
      */
     @GetMapping(value = "/getMissionManageView")
-    public ModelAndView  getMissionManage()throws Exception{
-        ModelAndView modelAndView=new ModelAndView();
+    public ModelAndView getMissionManage() throws Exception {
+        ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("researchManage/missionManage");
         return modelAndView;
     }
+
+    /**
+     * 获取修改截止日期视图
+     *
+     * @return
+     * @throws Exception
+     */
+    @GetMapping(value = "/getMissionManageEditView")
+    public ModelAndView getMissionManageEdit(Long missionId) throws Exception {
+        ModelAndView modelAndView = new ModelAndView();
+        this.missionId = missionId;
+        modelAndView.setViewName("researchManage/missionManageEdit");
+        return modelAndView;
+    }
+
+    /**
+     * 修改任务截止日期
+     *
+     * @return
+     * @throws Exception
+     */
+    @PostMapping(value = "/changeFinalTime")
+    @ResponseBody
+    public ResponsePkt changeFinalTime(@RequestBody MissionVO missionVO) throws Exception {
+        missionManageService.changeFinalTime(this.missionId, missionVO);
+        return ResultUtil.success();
+    }
+    /**
+     * 删除任务
+     *
+     * @return
+     * @throws Exception
+     */
+    @PostMapping(value = "/deleteMission")
+    @ResponseBody
+    public void deleteMission(@RequestParam("missionId")Long missionId,@RequestParam("questionnaireId")Long questionnaireId)throws Exception{
+        missionManageService.deleteMission(missionId,questionnaireId);
+    }
+
     /**
      * 获取任务列表
      *
@@ -57,7 +94,7 @@ public class ResearchController {
      * @throws Exception
      */
     @PostMapping(value = "/listMission")
-    public List<ListMissionVO> listMission()throws Exception{
+    public List<ListMissionVO> listMission() throws Exception {
         return missionManageService.listMission();
     }
 
@@ -104,6 +141,7 @@ public class ResearchController {
         return researchService.listResearchMission(userTel);
     }
 
+    private Long missionId;
     private ResearchService researchService;
     private MissionManageService missionManageService;
     private final static Logger logger = LoggerFactory.getLogger(ResearchController.class);
@@ -112,6 +150,6 @@ public class ResearchController {
     public ResearchController(ResearchService researchService,
                               MissionManageService missionManageService) {
         this.researchService = researchService;
-        this.missionManageService=missionManageService;
+        this.missionManageService = missionManageService;
     }
 }
