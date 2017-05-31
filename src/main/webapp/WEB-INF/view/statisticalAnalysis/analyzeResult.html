@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>结果分析</title>
-    <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <link rel="shortcut icon" href="../../img/favicon.ico"/>
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
 </head>
 <body>
@@ -11,34 +11,19 @@
     <div class="row">
         <!--左侧题目-->
         <div class="col-xs-3 col-sm-3 col-md-3">
-            <ul class="nav nav-pills nav-stacked list-group affix">
-                <li class="list-group-item">
-                    第一题 单选题
-                </li>
-                <li class="list-group-item">
-                    第二题 单选题
-                </li>
-                <li class="list-group-item">
-                    第三题 单选题
-                </li>
-                <li class="list-group-item">
-                    第四题 单选题
-                </li>
-                <li class="list-group-item">
-                    第五题 单选题
-                </li>
+            <ul id="questionList" class="nav nav-pills nav-stacked list-group affix">
             </ul>
         </div>
         <!--右侧展示-->
         <div class="col-xs-8 col-sm-8 col-md-8 table-bordered">
             <div class="panel panel-default">
-                <div class="panel-heading">
-                    第 1 题 结果分析
+                <div class="panel-heading" id="curQuestionContent">
+                    第 [题目序号] 题 [题目内容]
                 </div>
                 <div class="panel-body">
                     <!--数据展示-->
                     <div class="row">
-                        <table class="table table-bordered table-condensed">
+                        <table id="questionTableData" class="table table-bordered table-condensed">
                             <thead>
                             <tr>
                                 <th>选项</th>
@@ -46,87 +31,30 @@
                                 <th>比例</th>
                             </tr>
                             </thead>
-                            <tbody>
-                            <tr>
-                                <td>A、篮球</td>
-                                <td>23</td>
-                                <td>12%</td>
-                            </tr>
-                            <tr>
-                                <td>A、篮球</td>
-                                <td>23</td>
-                                <td>12%</td>
-                            </tr>
-                            <tr>
-                                <td>A、篮球</td>
-                                <td>23</td>
-                                <td>12%</td>
-                            </tr>
-                            <tr>
-                                <td>A、篮球</td>
-                                <td>23</td>
-                                <td>12%</td>
-                            </tr>
-                            <tr>
-                                <td>A、篮球</td>
-                                <td>23</td>
-                                <td>12%</td>
-                            </tr>
-                            <tr>
-                                <td>A、篮球</td>
-                                <td>23</td>
-                                <td>12%</td>
-                            </tr>
-                            <tr>
-                                <td>A、篮球</td>
-                                <td>23</td>
-                                <td>12%</td>
-                            </tr>
-                            <tr>
-                                <td>A、篮球</td>
-                                <td>23</td>
-                                <td>12%</td>
-                            </tr>
-                            <tr>
-                                <td>A、篮球</td>
-                                <td>23</td>
-                                <td>12%</td>
-                            </tr>
-                            <tr>
-                                <td>A、篮球</td>
-                                <td>23</td>
-                                <td>12%</td>
-                            </tr>
-                            <tr>
-                                <td>A、篮球</td>
-                                <td>23</td>
-                                <td>12%</td>
-                            </tr>
-                            <tr>
-                                <td>A、篮球</td>
-                                <td>23</td>
-                                <td>12%</td>
-                            </tr>
-                            <tr>
-                                <td>A、篮球</td>
-                                <td>23</td>
-                                <td>12%</td>
-                            </tr>
-                            </tbody>
+                            <tbody id="tableBody"></tbody>
                         </table>
                     </div>
                     <!--按钮组-->
                     <div class="row">
                         <div class="btn-group pull-right" align="right">
-                            <div id="histogramBtn" class="btn btn-default">柱状图</div>
-                            <div id="barGraphBtn" class="btn btn-default">条形图</div>
-                            <div id="pieChartBtn" class="btn btn-default">饼状图</div>
+                            <div id="tableBtn" class="btn btn-default"
+                                 data-toggle="tooltip" title="点击隐藏/展示表格数据">表格
+                            </div>
+                            <div id="histogramBtn" class="btn btn-default"
+                                 data-toggle="tooltip" title="点击展示柱状图数据">柱状图
+                            </div>
+                            <div id="barGraphBtn" class="btn btn-default"
+                                 data-toggle="tooltip" title="点击展示条形图数据">条形图
+                            </div>
+                            <div id="pieChartBtn" class="btn btn-default"
+                                 data-toggle="tooltip" title="点击展示饼状图数据">饼状图
+                            </div>
                         </div>
                     </div>
                     <!--Echarts表格-->
                     <div class="row">
                         <div class="col-xs-12 col-sm-12">
-                            <div id="echartsArea" style="width: 500px;height:400px;"></div>
+                            <div id="echartsArea" style="width: 700px;height:550px;"></div>
                         </div>
                     </div>
                 </div>
