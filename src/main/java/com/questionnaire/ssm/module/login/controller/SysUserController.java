@@ -5,8 +5,6 @@ import com.questionnaire.ssm.module.login.pojo.NewPasswordVO;
 import com.questionnaire.ssm.module.login.service.UserService;
 import com.questionnaire.ssm.module.login.utils.UserUtil;
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.*;
-import org.apache.shiro.authz.UnauthorizedException;
 import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

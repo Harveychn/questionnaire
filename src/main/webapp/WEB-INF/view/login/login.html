@@ -5,69 +5,95 @@
     <title>问卷管理系统</title>
     <link th:href="@{/img/favicon.ico}"
           href="/WEB-INF/img/favicon.ico" rel="shortcut icon"/>
-    <link th:href="@{/css/myLogin/body.css}"
-          href="/WEB-INF/css/myLogin/body.css" rel="stylesheet"/>
-    <link th:href="@{/css/myLogin/login.css}"
-          href="/WEB-INF/css/myLogin/login.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link th:href="@{/css/login/body.css}"
+          href="/WEB-INF/css/login/body.css" rel="stylesheet"/>
+    <link th:href="@{/css/login/main.css}"
+          href="/WEB-INF/css/login/main.css" rel="stylesheet" type="text/css"/>
     <link th:href="@{/css/animate.css}"
           href="/WEB-INF/css/animate.css" rel="stylesheet" type="text/css"/>
+
+
 </head>
 <body>
-<div class="animated fadeInRight">
-    <form action="/user/login" th:action="@{/user/login}" method="post" th:object="${loginVO}">
-        <section class="background">
-            <section class="logo">
-                <img th:src="@{/css/myLogin/img.jpg}" height="45px"/>
-            </section>
-            <section class="huanyingdenglu">
-                <div class="huanyingdenglu-cn">
-                    <p class="denglu">欢迎登录</p>
-                </div>
-            </section>
-            <section class="login-error-info">
-                <ol th:if="${#fields.hasErrors('*')==true}">
-                    <li th:if="${#fields.hasErrors('userTel')}">
-                        <span th:errors="*{userTel}"></span>
-                    </li>
-                    <li th:if="${#fields.hasErrors('password')}">
-                        <span th:errors="*{password}"></span>
-                    </li>
-                </ol>
-                <ol th:if="${errorMessage!=null}">
-                    <li th:text="${errorMessage}"></li>
-                </ol>
-            </section>
-            <section class="yonghudenglu">
-                <div class="yonghudenglu-left"></div>
-                <div class="yonghudenglu-right">
-                    <input type="text" placeholder="用户登录" size="14px"
-                           th:field="*{userTel}" th:class="${#fields.hasErrors('userTel')}? fieldError"/>
-                </div>
-            </section>
-            <section class="mima">
-                <div class="mima-left"></div>
-                <div class="mima-right">
-                    <input type="password" placeholder="登录密码" size="14px"
-                           th:field="*{password}" th:class="${#fields.hasErrors('userTel')}? fieldError"/>
-                </div>
-            </section>
-            <section class="xiaci-and-wangjimima">
-                <div class="xiaci">
-                    <input type="checkbox" name="rememberMe" th:field="*{rememberMe}" value="true"/>
-                    <span>记住我</span>
-                </div>
-                <div class="wangjimima">
-                    <a href="#">忘记密码</a>
-                </div>
-            </section>
+<section class="container animated fadeInRight">
+    <section class="row">
+        <section class="form-group">
+            <label class="col-md-4" style="margin-top: 5px; margin-left: 10px;">
+                <img class="img-responsive" src="../../css/login/img.jpg"/>
+            </label>
+        </section>
+    </section>
 
-            <section class="button">
-                <button class="denglu-button" type="submit">登录</button>
-            </section>
+    <section class="row">
+        <section class="form-group">
+            <label class="col-md-10 col-md-offset-1" style="text-align: center;">
+                <h1>欢迎登陆</h1>
+            </label>
+        </section>
+    </section>
 
+    <form id="test" method="post" action="/user/login" th:action="@{/user/login}" th:object="${loginVO}">
+        <legend></legend>
+        <section class="row">
+            <section class="form-group">
+                <div class="col-md-10 col-md-offset-1">
+                    <input id="username" type="text" placeholder="用户登录" size="14px"
+                           th:field="*{userTel}" class="form-control userimg"/>
+                    <span class="help-block m-b-none usercheck1" th:if="${#fields.hasErrors('userTel')}"
+                          th:errors="*{userTel}">
+					</span>
+                    <div class="userblock" style="margin-bottom: 20px;"></div>
+                </div>
+            </section>
         </section>
 
+        <section class="row">
+            <section class="form-group">
+                <div class="col-md-10 col-md-offset-1">
+                    <input type="password" placeholder="登录密码" size="14px"
+                           th:field="*{password}" class="form-control password-img"/>
+                    <span class="help-block m-b-none passwordcheck1" th:if="${#fields.hasErrors('password')}"
+                          th:errors="*{password}">
+						</span>
+                    <span class="help-block m-b-none passwordcheck2" th:if="${errorMessage!=null}"
+                          th:text="${errorMessage}">
+                    </span>
+                    <div class="passwordblock" style="margin-bottom: 20px;"></div>
+                </div>
+            </section>
+        </section>
+
+        <section class="row">
+            <section class="form-group">
+                <div class="col-md-6 col-md-offset-1">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="rememberMe" th:field="*{rememberMe}" value="true"/>记住我
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-4 col-md-offset-1">
+                    <label>
+                        <a class="forget" href="#">忘记密码</a>
+                    </label>
+                </div>
+            </section>
+        </section>
+
+        <section class="row">
+            <section class="form-group">
+                <div class="col-md-10 col-md-offset-1">
+                    <button class="btn btn-primary btn-block buttonsubmite" type="submit">登录</button>
+                </div>
+            </section>
+        </section>
     </form>
-</div>
+
+
+</section>
+
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
 </body>
 </html>
