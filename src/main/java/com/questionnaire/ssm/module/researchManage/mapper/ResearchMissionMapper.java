@@ -15,7 +15,7 @@ import java.util.List;
  */
 public interface ResearchMissionMapper {
 
-    List<ListMissionVO> listMission() throws Exception;
+    List<ListMissionVO> listMission()throws Exception;
 
     /**
      * 查询可发布的问卷信息
@@ -82,5 +82,9 @@ public interface ResearchMissionMapper {
      */
     List<MissionPaperDTO> listMissionPaperByMissionId(@Param("missionId") Long missionId) throws Exception;
 
+    Long listCount(ListMissionVO listMissionVO)throws Exception;
 
+    Long findMission(ListMissionVO listMissionVO)throws Exception;
+
+    Long findMissionByMissionId(Long missionId)throws Exception;
 }

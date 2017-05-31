@@ -17,7 +17,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.ws.rs.GET;
 import java.util.List;
 
 /**
@@ -53,6 +52,45 @@ public class ResearchController {
         modelAndView.setViewName("researchManage/missionManage");
         return modelAndView;
     }
+
+    /**
+     * 获取修改截止日期视图
+     *
+     * @return
+     * @throws Exception
+     */
+    @GetMapping(value = "/getMissionManageEditView")
+    public ModelAndView getMissionManageEdit(Long missionId) throws Exception {
+        ModelAndView modelAndView = new ModelAndView();
+        this.missionId = missionId;
+        modelAndView.setViewName("researchManage/missionManageEdit");
+        return modelAndView;
+    }
+
+    /**
+     * 修改任务截止日期
+     *
+     * @return
+     * @throws Exception
+     */
+    @PostMapping(value = "/changeFinalTime")
+    @ResponseBody
+    public ResponsePkt changeFinalTime(@RequestBody MissionVO missionVO) throws Exception {
+        missionManageService.changeFinalTime(this.missionId, missionVO);
+        return ResultUtil.success();
+    }
+    /**
+     * 删除任务
+     *
+     * @return
+     * @throws Exception
+     */
+    @PostMapping(value = "/deleteMission")
+    @ResponseBody
+    public void deleteMission(@RequestParam("missionId")Long missionId,@RequestParam("questionnaireId")Long questionnaireId)throws Exception{
+        missionManageService.deleteMission(missionId,questionnaireId);
+    }
+
 
     /**
      * 获取任务列表
@@ -136,6 +174,7 @@ public class ResearchController {
 
 
     private final static Logger logger = LoggerFactory.getLogger(ResearchController.class);
+    private Long missionId;
     private ResearchService researchService;
     private MissionManageService missionManageService;
 
