@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.questionnaire.ssm.module.resultAnalysis.mapper.StatisticalAnalysisMapper">
+    <select id="listQuestionAnalyzeDOByQesPaperId" parameterType="String"
+            resultType="com.questionnaire.ssm.module.resultAnalysis.pojo.QuestionAnalyzeDO">
+        SELECT
+			q.question_id AS questionId,
+			mqq.question_order AS questionOrder,
+			q.question_context AS questionContent,
+			q.option_string AS optionStr,
+			q.question_type AS questionTypeCode
+		FROM
+			mapping_questionnaire_question AS mqq,
+			question AS q
+		WHERE
+			q.question_id = mqq.question_id
+		AND q.question_type IN (#{singleChoiceDBCode}, #{multiChoiceDBCode})-- 单项选择题或者多项选择题
+		AND mqq.questionnaire_id = #{qesId}
+    </select>
+
+    <select id="listAnswerInfoDOByQesPaperIdMissionId" parameterType="String"
+            resultType="com.questionnaire.ssm.module.resultAnalysis.pojo.AnswerInfoDO">
+		SELECT
+			ad.question_id AS questionId,
+			ad.answer_string AS answerStr
+		FROM
+			answer_paper AS ap,
+			answer_detail AS ad,
+			question AS q
+		WHERE
+			ap.mission_id = #{missionId}
+		AND ap.questionnaire_id = #{qesId}
+		AND ap.answer_paper_id = ad.answer_paper_id
+		AND q.question_id = ad.question_id
+		AND q.question_type IN (#{singleChoiceDBCode}, #{multiChoiceDBCode})
+	</select>
+</mapper>

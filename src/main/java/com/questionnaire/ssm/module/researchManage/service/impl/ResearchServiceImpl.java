@@ -162,7 +162,7 @@ public class ResearchServiceImpl implements ResearchService {
 
         switch (missionStatusEnum) {
             case RELEASED_STATUS://发布中任务信息
-                missionInfoVOList = researchMissionMapper.listGoingMissionInfo(userTel);
+                missionInfoVOList = researchMissionMapper.listReleasedMissions(userTel);
                 break;
             case UNRELEASED_STATUS://未发布的任务信息
                 missionInfoVOList = researchMissionMapper.listUnreleasedMissions(userTel);

@@ -1,0 +1,57 @@
+@media only screen and (min-width: 992px) 
+{
+	.control-lable
+	{
+		padding-top: 7px;
+		margin-bottom: 0px;
+		text-align: right;
+	}
+	.m-b-none
+	{
+		margin-bottom: 0px;
+	}
+	.help-block
+	{
+		display: block;
+		margin-top: 5px;
+		margin-bottom: 10px;
+		color: red;
+	}
+	.checkbox
+	{
+    	margin-top: 0;
+   		margin-bottom: 0;
+   		margin-left: 5px;
+   		position: relative;
+    	display: block;
+	}
+	.btn
+	{
+		margin-top: 5px;
+		margin-bottom: 20px;
+	}
+	.forget
+	{
+		margin-left: 60px;
+	}
+}
+.userimg
+{
+	background: url(denglu-img-new.png) no-repeat;
+	background-size: 25px;
+	background-position: 9px 4px;
+}
+#username
+{
+	padding-left: 42px;
+}
+.password-img
+{
+	background: url(mima-img.png) no-repeat;
+	background-size: 25px;
+	background-position: 9px 3px;
+}
+#password
+{
+	padding-left: 42px;
+}

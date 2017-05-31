@@ -6,7 +6,7 @@
 var $table = $('#allMissionTable');
 
 var tableDataUrl = '/researchManage/getReleasedMissions';
-
+var analyzeResultUrl = '/statisticalAnalysis/getAnalyzeResultView';
 $(function () {
     $table.bootstrapTable({
         url: tableDataUrl,
@@ -16,7 +16,6 @@ $(function () {
 
         striped: true,
         undefinedText: '--',
-        sortName: ['missionId', 'beginDate', 'endDate'],
         sortOrder: 'desc',
         height: getHeight(),
 
@@ -77,7 +76,8 @@ $(function () {
 window.operateEvents = {
     //统计分析
     'click .analyze': function (e, value, row, index) {
-        console.log('统计分析');
+        console.log(analyzeResultUrl + '?missionId=' + row.missionId + '&missionPaperId=' + row.missionPaperDTOList[0].questionnaireId);
+        window.open(analyzeResultUrl + '?missionId=' + row.missionId + '&missionPaperId=' + row.missionPaperDTOList[0].questionnaireId);
     }
 };
 //时间格式设置
