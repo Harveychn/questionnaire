@@ -57,23 +57,23 @@
                                         <i class="icon-multiRow"></i>多项填空题</a>
                                 </li>
                                 <!--<li data-uid="60" data-tempId="pic_single_choice_template">-->
-                                    <!--<a href="javascript:;" data-checkType="60" data-questionType="图片单选题">-->
-                                        <!--<i class="icon-picChoice"></i>图片单选题</a>-->
+                                <!--<a href="javascript:;" data-checkType="60" data-questionType="图片单选题">-->
+                                <!--<i class="icon-picChoice"></i>图片单选题</a>-->
                                 <!--</li>-->
                                 <!--<li data-uid="70" data-tempId="pic_multi_choice_template">-->
-                                    <!--<a href="javascript:;" data-checkType="70" data-questionType="图片多选题">-->
-                                        <!--<i class="icon-picsChoice"></i>图片多选题</a>-->
+                                <!--<a href="javascript:;" data-checkType="70" data-questionType="图片多选题">-->
+                                <!--<i class="icon-picsChoice"></i>图片多选题</a>-->
                                 <!--</li>-->
                             </ul>
                         </div>
                         <!--<div class="exam-item">-->
-                            <!--<h4 class="exam-item-title">常用题型<i class="icon-expand"></i></h4>-->
-                            <!--<ul class="exam-nav-list" id="ui_common_exam">-->
-                                <!--<li data-uid="200" data-tempId="choice_template">-->
-                                    <!--<a href="javascript:;" data-checkType="200" data-questionType="单选题">-->
-                                        <!--<i class="icon-singleChoice"></i>个人信息</a>-->
-                                <!--</li>-->
-                            <!--</ul>-->
+                        <!--<h4 class="exam-item-title">常用题型<i class="icon-expand"></i></h4>-->
+                        <!--<ul class="exam-nav-list" id="ui_common_exam">-->
+                        <!--<li data-uid="200" data-tempId="choice_template">-->
+                        <!--<a href="javascript:;" data-checkType="200" data-questionType="单选题">-->
+                        <!--<i class="icon-singleChoice"></i>个人信息</a>-->
+                        <!--</li>-->
+                        <!--</ul>-->
                         <!--</div>-->
                     </div>
                     <!--出题-->
@@ -172,15 +172,22 @@
                     {{/each}}
                 </div>
                 <div class="cq-items-ctrl">
-                    <a href="javascript:void(0);" class="ui-add-item-btn" data-tisp="添加"><i
-                            class="icon-add"></i></a>
-                    <a href="javascript:void(0);" class="ui-batch-item-btn" data-tisp="批量添加"><i
-                            class="icon-addList"></i></a>
-                    <a href="javascript:void(0);" class="ui-add-answer-btn" data-tisp="添加问题说明"><i
-                            class="icon-assignment"></i></a>
+                    <a href="javascript:void(0);" class="ui-add-item-btn" data-tisp="添加选项">
+                        <i class="icon-plus"></i>
+                    </a>
+                    <a href="javascript:void(0);" class="ui-remove-item-btn" data-tisp="移除选项">
+                        <i class="icon-jian"></i>
+                    </a>
+                    <!--<a href="javascript:void(0);" class="ui-batch-item-btn" data-tisp="批量添加">-->
+                        <!--<i class="icon-addList"></i>-->
+                    <!--</a>-->
+                    <a href="javascript:void(0);" class="ui-add-answer-btn" data-tisp="添加问题说明">
+                        <i class="icon-assignment"></i>
+                    </a>
                     <!--/*添加必做题按钮*/-->
                     <a href="javascript:void(0);" class="ui-set-must-done" data-tisp="设为必做题">
-                        <i class="icon-enshrine"></i></a>
+                        <i class="icon-enshrine"></i>
+                    </a>
                 </div>
             </div>
         </div>

@@ -14,10 +14,12 @@ var exam = {
         //题操作事件初始化
         this.listAllCtrlFn('.ui-questions-content-list', '.ui-up-btn', '.ui-down-btn', '.ui-clone-btn', '.ui-del-btn');
         //批量添加事件初始化
-        this.topicACtrlFn('.ui-questions-content-list', '.ui-add-item-btn', '.ui-batch-item-btn', '.ui-add-answer-btn', '.ui-set-must-done');
+        this.topicACtrlFn('.ui-questions-content-list', '.ui-add-item-btn',
+            '.ui-batch-item-btn', '.ui-add-answer-btn',
+            '.ui-set-must-done', '.ui-remove-item-btn');
         //
         this.moveTispFn('.ui-up-btn,.ui-down-btn,.ui-clone-btn,.ui-del-btn');
-        this.moveTispFn('.ui-add-item-btn,.ui-batch-item-btn,.ui-add-answer-btn,.ui-set-must-done');
+        this.moveTispFn('.ui-add-item-btn,.ui-batch-item-btn,.ui-add-answer-btn,.ui-set-must-done,.ui-remove-item-btn');
     },
     //拖拽
     dragFn: function () {
@@ -289,7 +291,7 @@ var exam = {
         });
     },
     //单题添加，批量添加
-    topicACtrlFn: function (parentObj, addObj, batchAddObj, addAnswerObj, setMustObj) {
+    topicACtrlFn: function (parentObj, addObj, batchAddObj, addAnswerObj, setMustObj, removeObj) {
         //添加选项栏
         var $tid = 100 + parseInt(1000 * Math.random());
         $(document).on('click', parentObj + ' ' + addObj, function (e) {
@@ -305,6 +307,12 @@ var exam = {
                 items: [{value: '0', tid: $tid}]
             };
             $parentItems.append(template('ui_additem_content', data));
+        });
+        //移除选项
+        $(document).on('click', parentObj + ' ' + removeObj, function (e) {
+            var $parentItems = $(this).closest('li.ui-module').find('.form-horizontal');
+            var $lastOptionItem = $parentItems.find('.form-group').last();
+            $lastOptionItem.remove();
         });
         //批量添加选项栏
         $(document).on('click', parentObj + ' ' + batchAddObj, function (e) {
