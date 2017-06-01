@@ -2,6 +2,7 @@ package com.questionnaire.ssm.module.login.utils;
 
 import com.questionnaire.ssm.module.generated.pojo.User;
 import com.questionnaire.ssm.module.login.pojo.LoginVO;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.UnauthorizedException;
@@ -90,6 +91,25 @@ public class UserUtil {
         SimpleHash hash = new SimpleHash(algorithmName, password,
                 userTel + userRealName, hashIterations);
         return hash.toHex();
+    }
+
+    public static String getClientIp(HttpServletRequest request)throws Exception{
+        String ip = request.getHeader("X-Real-IP");
+        if (!StringUtils.isBlank(ip) && !"unknown".equalsIgnoreCase(ip)) {
+            return ip;
+        }
+        ip = request.getHeader("X-Forwarded-For");
+        if (!StringUtils.isBlank(ip) && !"unknown".equalsIgnoreCase(ip)) {
+            // 多次反向代理后会有多个IP值，第一个为真实IP。
+            int index = ip.indexOf(',');
+            if (index != -1) {
+                return ip.substring(0, index);
+            } else {
+                return ip;
+            }
+        } else {
+            return request.getRemoteAddr();
+        }
     }
 
     private final static Logger logger = LoggerFactory.getLogger(UserUtil.class);

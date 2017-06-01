@@ -2,9 +2,9 @@ package com.questionnaire.ssm.module.notice.pojo;
 
 /**
  * Created by 郑晓辉 on 2017/5/2.
- * Description: 展示公告公告单位人员实体类
+ * Description: 展示公告公告单位人员数据库查询信息实体
  */
-public class NoticeForSurveyorVO {
+public class NoticeForCurUserDTO {
     //公告编号
     private Long noticeId;
     //公告标题
@@ -15,15 +15,18 @@ public class NoticeForSurveyorVO {
     private String noticeLaunchDate;
     //公告创建单位
     private String createUnit;
+    //公告对象单位
+    private String objectUnitText;
 
     @Override
     public String toString() {
-        return "NoticeForSurveyorVO{" +
+        return "NoticeForCurUserDTO{" +
                 "noticeId=" + noticeId +
                 ", noticeTitle='" + noticeTitle + '\'' +
                 ", noticeContent='" + noticeContent + '\'' +
                 ", noticeLaunchDate='" + noticeLaunchDate + '\'' +
                 ", createUnit='" + createUnit + '\'' +
+                ", objectUnitText='" + objectUnitText + '\'' +
                 '}';
     }
 
@@ -65,5 +68,13 @@ public class NoticeForSurveyorVO {
 
     public void setCreateUnit(String createUnit) {
         this.createUnit = createUnit;
+    }
+
+    public String getObjectUnitText() {
+        return objectUnitText;
+    }
+
+    public void setObjectUnitText(String objectUnitText) {
+        this.objectUnitText = objectUnitText;
     }
 }

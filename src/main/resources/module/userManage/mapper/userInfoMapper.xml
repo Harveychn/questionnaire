@@ -22,6 +22,25 @@
 		AND ut.unit_id = u.unit_id
     </select>
 
+    <select id="selectHomePageUserInfo" parameterType="String"
+            resultType="com.questionnaire.ssm.module.userManage.pojo.UserInfoHomeVO">
+        SELECT
+        u.user_real_name AS userRealName,
+        r.role AS userRole,
+        ut.unit_name AS workingUnit,
+        u.user_tel AS userAccount,
+        u.last_login_date AS lastLoginDate,
+        u.last_login_ip AS lastLoginIp
+        FROM
+            `user` AS u,
+            role AS r,
+            unit AS ut
+        WHERE
+            u.user_tel =#{userTel}
+        AND u.role_id = r.role_id
+        AND ut.unit_id = u.unit_id
+    </select>
+
     <resultMap id="selectSurveyorInfoByUserTelMap" type="com.questionnaire.ssm.module.userManage.pojo.SurveyorInfoVO">
         <id property="userTel" column="userTel"/>
         <result property="userRealName" column="userRealName"/>

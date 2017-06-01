@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.questionnaire.ssm.module.notice.mapper.Notice2MeMapper">
+
+    <sql id="notice_for_current_userDTO_columns">
+        n.notice_id AS noticeId,
+        n.notice_title AS noticeTitle,
+        n.notice_context AS noticeContent,
+        DATE_FORMAT(n.notice_launch_time,'%Y-%m-%d %H:%i:%s') AS noticeLaunchDate,
+        result.unit_name AS createUnit,
+        n.notice_unit_text AS objectUnitText
+    </sql>
+    <select id="listAllNoticeForUserReleased" parameterType="String"
+            resultType="com.questionnaire.ssm.module.notice.pojo.NoticeForCurUserDTO">
+        SELECT
+        <include refid="notice_for_current_userDTO_columns"/>
+        FROM
+        notice AS n,
+        (
+        SELECT
+        u.user_tel,
+        t.unit_name
+        FROM
+        `user` AS u,
+        unit AS t
+        WHERE
+        u.unit_id = t.unit_id
+        AND u.user_tel IN (
+        SELECT DISTINCT
+        n.user_tel
+        FROM
+        notice AS n
+        WHERE
+        n.notice_create_time &lt; NOW()
+        )
+        ) AS result -- 查询已经发布的公告信息的创建人单位
+        WHERE
+        n.notice_launch_time &lt; NOW() -- 查询已经发布的公告信息
+        AND result.user_tel = n.user_tel
+        ORDER BY n.notice_launch_time DESC
+    </select>
+</mapper>

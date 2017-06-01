@@ -29,7 +29,7 @@
         n.user_tel = #{userTel}
     </select>
 
-    <resultMap id="listNoticeInfoForSurveyorMap" type="com.questionnaire.ssm.module.notice.pojo.NoticeForSurveyorDTO">
+    <resultMap id="listNoticeInfoForSurveyorMap" type="com.questionnaire.ssm.module.notice.pojo.NoticeForCurUserDTO">
         <id column="noticeId" property="noticeId"/>
         <result column="noticeTitle" property="noticeTitle"/>
         <result column="noticeContent" property="noticeContent"/>

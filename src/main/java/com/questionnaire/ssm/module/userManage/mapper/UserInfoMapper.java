@@ -1,10 +1,6 @@
 package com.questionnaire.ssm.module.userManage.mapper;
 
-import com.questionnaire.ssm.module.generated.pojo.Role;
-import com.questionnaire.ssm.module.userManage.pojo.AllRoleInfoVO;
-import com.questionnaire.ssm.module.userManage.pojo.MyInfoVO;
-import com.questionnaire.ssm.module.userManage.pojo.RoleAuthorityVO;
-import com.questionnaire.ssm.module.userManage.pojo.SurveyorInfoVO;
+import com.questionnaire.ssm.module.userManage.pojo.*;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -22,6 +18,15 @@ public interface UserInfoMapper {
      * @throws Exception
      */
     MyInfoVO selectUserInfoByUserTel(@Param("userTel") String userTel) throws Exception;
+
+    /**
+     * 查询用户首页信息
+     *
+     * @param userTel
+     * @return
+     * @throws Exception
+     */
+    UserInfoHomeVO selectHomePageUserInfo(@Param("userTel") String userTel) throws Exception;
 
     /**
      * 根据用户名查询调查员信息
@@ -44,4 +49,6 @@ public interface UserInfoMapper {
                                                             @Param("userRole") String userRole) throws Exception;
 
     List<AllRoleInfoVO> listAllRole() throws Exception;
+
+
 }

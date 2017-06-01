@@ -1,5 +1,6 @@
 package com.questionnaire.ssm.module.login.controller;
 
+import com.questionnaire.ssm.module.generated.pojo.User;
 import com.questionnaire.ssm.module.login.pojo.LoginVO;
 import com.questionnaire.ssm.module.login.pojo.NewPasswordVO;
 import com.questionnaire.ssm.module.login.service.UserService;
@@ -17,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.Date;
 
 /**
  * 用户登录管理，登陆成功后
@@ -54,6 +56,13 @@ public class SysUserController {
             modelAndView.setViewName("login/login");
             return modelAndView;
         }
+        //用户登录系统记录信息保存
+        User userLoginRecord = new User();
+        userLoginRecord.setUserTel(loginVO.getUserTel());
+        userLoginRecord.setLastLoginIp(UserUtil.getClientIp(request));
+        userLoginRecord.setLastLoginDate(new Date());
+        userService.updateUserLoginRecord(userLoginRecord);
+
         subject.getSession().setAttribute("userTel", loginVO.getUserTel());
         modelAndView.addObject("user", loginVO);
         modelAndView.setViewName("index");
@@ -84,9 +93,6 @@ public class SysUserController {
         return "login/newKeySuccess";
     }
 
-    public void changePersonnalInfo() throws Exception {
-
-    }
 
     private UserService userService;
 

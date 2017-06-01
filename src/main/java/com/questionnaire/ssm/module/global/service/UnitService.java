@@ -22,5 +22,12 @@ public interface UnitService {
 
     List<UnitInfoVO> listUnitInfo() throws Exception;
 
+    /**
+     * 根据用户账户查询用户所在单位Id
+     *
+     * @param userTel
+     * @return
+     * @throws Exception
+     */
     Long getUnitIdByUserTel(String userTel) throws Exception;
 }

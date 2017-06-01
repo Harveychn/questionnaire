@@ -67,6 +67,17 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    /**
+     * 用户登录系统记录信息
+     *
+     * @param userLoginRecord 用户登录系统数据
+     * @throws Exception
+     */
+    @Override
+    public void updateUserLoginRecord(User userLoginRecord) throws Exception {
+        userMapper.updateByPrimaryKeySelective(userLoginRecord);
+    }
+
     private final static Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
     private UserMapper userMapper;
     private UnitService unitService;

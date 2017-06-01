@@ -1,6 +1,5 @@
 package com.questionnaire.ssm.module.userManage.service;
 
-import com.questionnaire.ssm.module.generated.pojo.Role;
 import com.questionnaire.ssm.module.userManage.enums.UserActionEnum;
 import com.questionnaire.ssm.module.userManage.pojo.*;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +20,15 @@ public interface UserInfoService {
      * @throws Exception
      */
     MyInfoVO getMyInfo(String userTel) throws Exception;
+
+    /**
+     * 获取用户首页个人信息
+     *
+     * @param userTel
+     * @return
+     * @throws Exception
+     */
+    UserInfoHomeVO getUserInfoHomeVO(String userTel) throws Exception;
 
     /**
      * 获取调查员信息

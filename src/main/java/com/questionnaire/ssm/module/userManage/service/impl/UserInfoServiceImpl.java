@@ -38,6 +38,11 @@ public class UserInfoServiceImpl implements UserInfoService {
     }
 
     @Override
+    public UserInfoHomeVO getUserInfoHomeVO(String userTel) throws Exception {
+        return userInfoMapper.selectHomePageUserInfo(userTel);
+    }
+
+    @Override
     public SurveyorInfoVO getSurveyorInfo(String userTel) throws Exception {
         SurveyorInfoVO surveyorInfoVO = userInfoMapper.selectSurveyorInfoByUserTel(userTel);
         //用户头像不存在,使用默认头像
