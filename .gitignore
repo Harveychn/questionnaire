@@ -4,6 +4,7 @@ src/test
 logFiles
 rebel.xml
 src/main/resources/mybatis-generator-config.xml
+.idea/workspace.xml
 ### Java template
 # Compiled class file
 *.class
