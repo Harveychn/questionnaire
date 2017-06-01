@@ -36,9 +36,11 @@ public class Notice2MeServiceImpl implements Notice2MeService {
                 break;
             case GET_TOP_5_RELEASED_NOTICE://获取最新的5条
                 if (allNoticeInfoReleased.size() > 5) {
-                    resultList = getNotice2CurUserByRecordNum(curUserUnitId, allNoticeInfoReleased, 5);
+                    resultList = getNotice2CurUserByRecordNum(curUserUnitId,
+                            allNoticeInfoReleased, 5);
                 } else {
-                    resultList = getNotice2CurUserByRecordNum(curUserUnitId, allNoticeInfoReleased, allNoticeInfoReleased.size());
+                    resultList = getNotice2CurUserByRecordNum(curUserUnitId,
+                            allNoticeInfoReleased, allNoticeInfoReleased.size());
                 }
                 break;
             default:

@@ -76,7 +76,6 @@ $(function () {
 window.operateEvents = {
     //统计分析
     'click .analyze': function (e, value, row, index) {
-        console.log(analyzeResultUrl + '?missionId=' + row.missionId + '&missionPaperId=' + row.missionPaperDTOList[0].questionnaireId);
         window.open(analyzeResultUrl + '?missionId=' + row.missionId + '&missionPaperId=' + row.missionPaperDTOList[0].questionnaireId);
     }
 };
@@ -237,13 +236,13 @@ function detailFormatter(index, row) {
     }
     html.push('</ol>');
 
-    html.push('<i>调查问卷信息:<br/></i><table class="table">' +
-        '<tr class="gray-bg">' +
+    html.push('<i>调查问卷信息:<br/></i><table class="table table-bordered table-hover">' +
+        '<thead><tr class="gray-bg">' +
         '<td>调查问卷标题</td>' +
         '<td>调查问卷描述</td>' +
         '<td>最少提交量</td>' +
         '<td>当前提交量</td>' +
-        '</tr>');
+        '</tr></thead><tbody>');
     var qesPapers = row.missionPaperDTOList;
     if (qesPapers && 'object' === typeof qesPapers) {
         for (var i = 0; i < qesPapers.length; i++) {
@@ -257,7 +256,7 @@ function detailFormatter(index, row) {
     } else {
         html.push('<span>--</span>');
     }
-    html.push('</table>');
+    html.push('</tbody></table>');
     return html.join('');
 }
 //日期格式处理

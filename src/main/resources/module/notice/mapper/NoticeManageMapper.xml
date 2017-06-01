@@ -29,31 +29,31 @@
         n.user_tel = #{userTel}
     </select>
 
-    <resultMap id="listNoticeInfoForSurveyorMap" type="com.questionnaire.ssm.module.notice.pojo.NoticeForCurUserDTO">
-        <id column="noticeId" property="noticeId"/>
-        <result column="noticeTitle" property="noticeTitle"/>
-        <result column="noticeContent" property="noticeContent"/>
-        <result column="noticeLaunchTime" property="noticeLaunchDate"/>
-        <result column="createUnit" property="createUnit"/>
-        <result column="objectUnitText" property="objectUnitText"/>
-    </resultMap>
+    <!--<resultMap id="listNoticeInfoForSurveyorMap" type="com.questionnaire.ssm.module.notice.pojo.NoticeForCurUserDTO">-->
+        <!--<id column="noticeId" property="noticeId"/>-->
+        <!--<result column="noticeTitle" property="noticeTitle"/>-->
+        <!--<result column="noticeContent" property="noticeContent"/>-->
+        <!--<result column="noticeLaunchTime" property="noticeLaunchDate"/>-->
+        <!--<result column="createUnit" property="createUnit"/>-->
+        <!--<result column="objectUnitText" property="objectUnitText"/>-->
+    <!--</resultMap>-->
 
-    <select id="listNoticeInfoForSurveyor"
-            resultMap="listNoticeInfoForSurveyorMap">
-        SELECT
-        n.notice_id AS noticeId,
-        n.notice_title AS noticeTitle,
-        n.notice_context AS noticeContent,
-        DATE_FORMAT(n.notice_launch_time,'%Y-%m-%d %H:%i:%s') AS noticeLaunchTime,
-        ut.unit_name AS createUnit,
-	    n.notice_unit_text AS objectUnitText
-        FROM
-        notice AS n,
-        `user` AS u,
-        unit AS ut
-        WHERE
-        n.notice_launch_time &lt; NOW()
-        AND n.user_tel = u.user_tel
-        AND u.unit_id = ut.unit_id
-    </select>
+    <!--<select id="listNoticeInfoForSurveyor"-->
+            <!--resultMap="listNoticeInfoForSurveyorMap">-->
+        <!--SELECT-->
+        <!--n.notice_id AS noticeId,-->
+        <!--n.notice_title AS noticeTitle,-->
+        <!--n.notice_context AS noticeContent,-->
+        <!--DATE_FORMAT(n.notice_launch_time,'%Y-%m-%d %H:%i:%s') AS noticeLaunchTime,-->
+        <!--ut.unit_name AS createUnit,-->
+	    <!--n.notice_unit_text AS objectUnitText-->
+        <!--FROM-->
+        <!--notice AS n,-->
+        <!--`user` AS u,-->
+        <!--unit AS ut-->
+        <!--WHERE-->
+        <!--n.notice_launch_time &lt; NOW()-->
+        <!--AND n.user_tel = u.user_tel-->
+        <!--AND u.unit_id = ut.unit_id-->
+    <!--</select>-->
 </mapper>

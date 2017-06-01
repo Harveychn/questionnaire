@@ -34,20 +34,20 @@
                 <h2>当前用户名(账户名):<label th:if="${myInfo.userRealName != null}"
                                       th:text="${myInfo.userRealName}">真实姓名</label>(<label
                         th:if="${myInfo.userAccount != null}" th:text="${myInfo.userAccount}">账户名</label>)</h2><br>
-                用户角色:<span style="font-size:16px" th:if="${myInfo.userRole!=null}" th:text="${myInfo.userRole}"></span>
-                <br>
-                用户所属单位:<span style="font-size:16px" th:if="${myInfo.workingUnit!=null}"
-                             th:text="${myInfo.workingUnit}"></span><br>
                 本次登录时间:<label th:if="${myInfo.lastLoginDate!=null}"
                               th:text="${#dates.format(myInfo.lastLoginDate,'yyyy-MM-dd HH:mm:ss')}"></label>
+                <br>
             </blockquote>
             <hr>
         </div>
         <div class="col-sm-6">
-            <blockquote>
-                <h3 class="text-success">我已经创建的公告数:</h3><br>
-                <h3 class="text-danger">我已经创建的问卷数:</h3><br>
-                <h3 class="text-warning">我已经创建的调查数:</h3><br>
+            <blockquote class="text-primary" style="font-size:16px">
+                <h2>用户所属单位:<label style="font-size:16px" th:if="${myInfo.workingUnit!=null}"
+                                 th:text="${myInfo.workingUnit}"></label><br>
+                </h2>
+                <h2> 用户角色:<label style="font-size:16px" th:if="${myInfo.userRole!=null}"
+                                th:text="${myInfo.userRole}"></label>
+                </h2>
             </blockquote>
         </div>
     </div>
@@ -75,57 +75,11 @@
                     调查任务信息
                 </div>
                 <div class="panel-body">
-                    <h1>调查任务信息</h1>
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                            <div class="panel-title">问卷名</div>
-                            <br>
-                            <!--问卷收集进度条-->
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="80"
-                                     aria-valuemin="0"
-                                     aria-valuemax="100" style="width: 60%;">
-                                    60%
-                                </div>
-                            </div>
-                            <br>
-                            <small class="m-r"><a class="pull-right btn btn-success" href="#"> 查看所有数据</a></small>
-                            <small class="block text-muted"><i class="fa fa-clock-o"></i>时间</small>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="panel-title">问卷名</div>
-                            <br>
-                            <!--问卷收集进度条-->
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="80"
-                                     aria-valuemin="0"
-                                     aria-valuemax="100" style="width: 60%;">
-                                    60%
-                                </div>
-                            </div>
-                            <br>
-                            <small class="m-r"><a class="pull-right btn btn-success" href="#"> 查看所有数据</a></small>
-                            <small class="block text-muted"><i class="fa fa-clock-o"></i>时间</small>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="panel-title">问卷名</div>
-                            <br>
-                            <!--问卷收集进度条-->
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80"
-                                     aria-valuemin="0"
-                                     aria-valuemax="100" style="width: 60%;">
-                                    60%
-                                </div>
-                            </div>
-                            <br>
-                            <small class="m-r"><a class="pull-right btn btn-success" href="#"> 查看所有数据</a></small>
-                            <small class="block text-muted"><i class="fa fa-clock-o"></i>时间</small>
-                        </li>
+                    <ul id="missionList" class="list-group">
                     </ul>
-                    <div class="btn btn-success btn-block">
-                        全部调查
-                    </div>
+                    <!--<div class="btn btn-success btn-block">-->
+                    <!--全部调查-->
+                    <!--</div>-->
                 </div>
             </div>
         </div>
@@ -135,11 +89,13 @@
 <script src="../js/plugins/layer/layer.min.js"></script>
 <script>
     var $noticeList = $('#noticeList');
-    var noticeDataList;
+    var $missionList = $('#missionList');
+    var _noticeDataList;
     $(function () {
         $.ajaxSettings.async = false;//强制同步
+        //获取公告信息
         $.getJSON('/homeData/getTop5NoticeForMe', function (noticeList) {
-            noticeDataList = noticeList;
+            _noticeDataList = noticeList;
             for (var i = 0; i < noticeList.length; i++) {
                 var htmlElement = '';
                 switch (i % 5) {
@@ -172,11 +128,62 @@
                 $noticeList.append(htmlElement);
             }
         });
-        console.log(noticeDataList);
+        //获取进行中的调查信息
+        $.getJSON('/researchManage/getReleasedMissions', function (releasedMissionList) {
+            var circleTime = 0;
+            if (releasedMissionList.length < 6) {
+                circleTime = releasedMissionList.length;
+            } else {
+                circleTime = 6;
+            }
+            for (var i = 0; i < circleTime; i++) {
+                var htmlElement = '<li class="list-group-item">' +
+                    '<div class="panel-title">' + releasedMissionList[i].description + ' <br>'
+                    + releasedMissionList[i].missionPaperDTOList[0].questionnaireTitle + '</div> <br>' +
+                    '<div class= "progress">';
+                switch (i % 4) {
+                    case 0:
+                        htmlElement += '<div class = "progress-bar progress-bar-info" role = "progressbar"';
+                        break;
+                    case 1:
+                        htmlElement += '<div class = "progress-bar progress-bar-warning" role = "progressbar"';
+                        break;
+                    case 2:
+                        htmlElement += '<div class = "progress-bar progress-bar-danger" role = "progressbar"';
+                        break;
+                    case 3:
+                        htmlElement += '<div class = "progress-bar progress-bar-success" role = "progressbar"';
+                        break;
+                    default:
+                        break;
+                }
+                var submitNow = releasedMissionList[i].missionPaperDTOList[0].submitNow;
+                var minSubmit = releasedMissionList[i].missionPaperDTOList[0].minSubmit;
+                var percent = (submitNow / minSubmit) * 100;
+                htmlElement +=
+                    'aria-valuenow = "' + submitNow + '" aria-valuemin = "0"' +
+                    'aria-valuemax = "' + minSubmit + '" ' +
+                    'style = "width: ' + percent + '%;" >' +
+                    '' + percent + ' %' +
+                    '</div>' +
+                    '</div><br>' +
+                    '<small class= "block text-muted" >' +
+                    '<i class = "fa fa-clock-o" ></i> ' + formatDate(new Date(releasedMissionList[i].beginDate))
+                    + '     ~~~     ' + formatDate(new Date(releasedMissionList[i].endDate)) + ' </small >' +
+                    '</li> ';
+
+                $missionList.append(htmlElement);
+            }
+            if (circleTime >= 6) {
+                $missionList.append('<li class="list-group-item">' +
+                    '<h2 class="text-primary text-center">更多信息请查看<i>结果分析</i></h2>' +
+                    '</li>');
+            }
+        })
     });
     function clickNoticeElement(noticeId) {
-        for (var i = 0; i < noticeDataList.length; i++) {
-            if (noticeId === noticeDataList[i].noticeId) {
+        for (var i = 0; i < _noticeDataList.length; i++) {
+            if (noticeId === _noticeDataList[i].noticeId) {
                 layer.open({
                     type: 1,
                     title: false, //不显示标题栏
@@ -189,14 +196,30 @@
                     btnAlign: 'c',
                     moveType: 1, //拖拽模式，0或者1
                     content: '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;">' +
-                    '<strong><i>公告标题：</i></strong>' + noticeDataList[i].noticeTitle +
-                    '<br><strong><i>公告内容：</i></strong>' + noticeDataList[i].noticeContent +
-                    '<br><strong><i>公告发布时间：</i></strong>' + noticeDataList[i].noticeLaunchDate +
-                    '<br><strong><i>公告创建单位：</i></strong>' + noticeDataList[i].createUnit +
+                    '<strong><i>公告标题：</i></strong>' + _noticeDataList[i].noticeTitle +
+                    '<br><strong><i>公告内容：</i></strong>' + _noticeDataList[i].noticeContent +
+                    '<br><strong><i>公告发布时间：</i></strong>' + _noticeDataList[i].noticeLaunchDate +
+                    '<br><strong><i>公告创建单位：</i></strong>' + _noticeDataList[i].createUnit +
                     '</div>'
                 });
             }
         }
+    }
+
+    //日期格式处理
+    function formatDate(date) {
+        var y = date.getFullYear();
+        var m = date.getMonth() + 1;
+        m = m < 10 ? ('0' + m) : m;
+        var d = date.getDate();
+        d = d < 10 ? ('0' + d) : d;
+        var h = date.getHours();
+        var minute = date.getMinutes();
+        var second = date.getSeconds();
+        h = h < 10 ? ('0' + h) : h;
+        minute = minute < 10 ? ('0' + minute) : minute;
+        second = second < 10 ? ('0' + second) : second;
+        return y + '-' + m + '-' + d + ' ' + h + ':' + minute + ':' + second;
     }
 </script>
 </body>
