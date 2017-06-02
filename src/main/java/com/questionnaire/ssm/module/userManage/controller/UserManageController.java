@@ -57,9 +57,20 @@ public class UserManageController {
     @PostMapping(value = "/uploadData")
     @ResponseBody
     public ResponsePkt uploadData(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        List<UploadResultVO> resultVOList = uploadFileService.uploadFile(request, response);
-        this.uploadResultVOList = resultVOList;
-        return ResultUtil.success(resultVOList);
+        this.uploadResultVOList = uploadFileService.uploadFile(request, response);
+        return ResultUtil.success();
+    }
+
+    /**
+     * 获取上传结果
+     *
+     * @return
+     * @throws Exception
+     */
+    @GetMapping(value = "/getUploadResultVOList")
+    @ResponseBody
+    public List<UploadResultVO> getUploadResultVOList() throws Exception {
+        return this.uploadResultVOList;
     }
 
     /**

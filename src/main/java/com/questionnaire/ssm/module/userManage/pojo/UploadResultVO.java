@@ -11,6 +11,8 @@ public class UploadResultVO<T> {
     private String fileName;
     /*成功操作的记录数*/
     private int successRecordCount;
+    //当前错误信息所属模板名
+    private String templateName;
     /*错误记录信息*/
     private List<T> errorRecord;
     /*是否文件类型错误*/
@@ -27,6 +29,7 @@ public class UploadResultVO<T> {
         return "UploadResultVO{" +
                 "fileName='" + fileName + '\'' +
                 ", successRecordCount=" + successRecordCount +
+                ", templateName='" + templateName + '\'' +
                 ", errorRecord=" + errorRecord +
                 ", isFileTypeError=" + isFileTypeError +
                 ", isFileFormatError=" + isFileFormatError +
@@ -49,6 +52,14 @@ public class UploadResultVO<T> {
 
     public void setSuccessRecordCount(int successRecordCount) {
         this.successRecordCount = successRecordCount;
+    }
+
+    public String getTemplateName() {
+        return templateName;
+    }
+
+    public void setTemplateName(String templateName) {
+        this.templateName = templateName;
     }
 
     public List<T> getErrorRecord() {

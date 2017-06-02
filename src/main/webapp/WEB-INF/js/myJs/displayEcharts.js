@@ -10,6 +10,7 @@ var $curQuestionContent = $('#curQuestionContent');
 var $questionList = $('#questionList');
 var $tableBody = $('#tableBody');
 var $questionTableData = $('#questionTableData');
+var $echartArea = $('#echartsArea');
 
 //当前问卷结果分析数据
 var analyzeResultData;
@@ -205,9 +206,9 @@ function dynamicDataChange(dynamicDataChange) {
 
 //点击表格按钮后样式
 $('#tableBtn').on('click', function () {
-    if($questionTableData.attr('hidden')===undefined){
-        $questionTableData.attr('hidden','hidden');
-    }else {
+    if ($questionTableData.attr('hidden') === undefined) {
+        $questionTableData.attr('hidden', 'hidden');
+    } else {
         $questionTableData.removeAttr('hidden');
     }
 });
