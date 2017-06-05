@@ -13,7 +13,7 @@ $(function () {
         striped: true,
 //            clickToSelect: true,
         undefinedText: '--',
-        sortName: ['missionId', 'questionnaireTitle', 'questionnaireCount', 'minSubmitCount', 'missionStartDate', 'missionFinalDate', 'missionStatus'],
+        sortName: ['missionId','missionDescription', 'questionnaireTitle', 'questionnaireCount', 'minSubmitCount', 'missionStartDate', 'missionFinalDate', 'missionStatus'],
         sortOrder: 'desc',
         height: getHeight(),
 
@@ -25,6 +25,8 @@ $(function () {
         sidePagination: 'client',
 
         search: true,
+        searchAlign: 'right',
+        searchOnEnterKey: false,
 
         toolbar: '#tableToolbar',
 
@@ -35,8 +37,8 @@ $(function () {
 
         minimumCountColumns: 3,
         columns: [{
-            field: 'missionId',
-            title: '任务ID',
+            field: 'missionDescription',
+            title: '任务描述',
             align: 'center',
             sortable: true
         }, {
@@ -71,7 +73,7 @@ $(function () {
             sortable: true
         }, {
             title: '操作',
-            width: 200,
+            width: 150,
             align: 'center',
             events: operateEvents,
             formatter: operateFormatter

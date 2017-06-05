@@ -21,7 +21,7 @@ $(function () {
         striped: true,
 //            clickToSelect: true,
         undefinedText: '--',
-        sortName: ['noticeTitle', 'noticeContext', 'noticeCreateTime', 'noticeLaunchDate'],
+        sortName: ['noticeTitle', 'noticeCreateTime', 'noticeLaunchDate'],
         sortOrder: 'desc',
         height: getHeight(),
 
@@ -53,10 +53,6 @@ $(function () {
         }, {
             field: 'noticeTitle',
             title: '公告标题',
-            sortable: true
-        }, {
-            field: 'noticeContext',
-            title: '公告内容',
             sortable: true
         }, {
             field: 'noticeCreateTime',
@@ -94,20 +90,21 @@ window.operateEvents = {
             type: 1,
             title: false, //不显示标题栏
             closeBtn: false,
-            area: 'auto',
+            area: ['75%', '60%'],
             shade: 0.8,
             id: 'noticeItemLayer', //设定一个id，防止重复弹出
             resize: false,
             btn: ['知道了'],
             btnAlign: 'c',
             moveType: 1, //拖拽模式，0或者1
-            content: '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;">' +
-            '<i>公告标题：</i>' + row.noticeTitle +
-            '<br><i>公告内容：</i>' + row.noticeContext +
-            '<br><i>预计发布时间：</i>' + row.noticeLaunchDate +
-            '<br><i>发布对象单位：</i>' + unitString +
+            content: '<div style="padding: 50px; line-height: 22px; background-color: #fff; color: #000; font-weight: 300; font-size:18px">' +
+            '<div style="font-size:24px; text-align:center;">' + row.noticeTitle + '</div>' + '<br>' +
+            '<div class="row"><label class="col-sm-2 col-md-2">预计发布时间：</label>' + '<div class="col-sm-10 col-md-10">' + row.noticeLaunchDate + '</div>'+ '</div>'+'<br>'+
+            '<div class="row"><label class="col-sm-2 col-md-2">发布对象单位：</label>' + '<div class="col-sm-10 col-md-10">' + unitString + '</div>'+ '</div>'+'<br>'+
+            '<div class="row"><label class="col-sm-2 col-md-2">公告内容：</label>' + '<div class="col-sm-10 col-md-10">' + '<div style="text-indent:2em;">' + row.noticeContext + '</div>' + '</div>'+ '</div>'+'<br>'+
             '</div>'
         });
+
 
     }
 };

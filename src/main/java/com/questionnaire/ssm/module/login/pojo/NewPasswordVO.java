@@ -18,6 +18,8 @@ public class NewPasswordVO {
     @Size(min = 6, max = 30, message = "新密码长度不少于6、不大于30个字符")
     private String newPassword;
 
+    @NotEmpty(message = "验证码不为空")
+
 
     public String getOldPassword() {
         return oldPassword;

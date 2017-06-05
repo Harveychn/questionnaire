@@ -19,13 +19,14 @@
                     <input id="launchDate" class="form-control" placeholder="调查时间修改"/>
                 </div>
             </div>
-        </div>
-        <div class="panel-body">
-            <div class="col-md-offset-4">
-                <button id="resetBtn" class="btn btn-lg btn-warning">取消</button>
-                <button id="launchBtn" class="btn btn-lg btn-success">确认</button>
+            <div class="panel-body">
+                <div class="col-md-offset-4">
+                    <button id="resetBtn" class="btn btn-lg btn-warning">取消</button>
+                    <button id="launchBtn" class="btn btn-lg btn-success">确认</button>
+                </div>
             </div>
         </div>
+
     </div>
 </div>
 
@@ -35,6 +36,8 @@
         th:src="@{/js/plugins/bootstrap-select/js/bootstrap-select.min.js}"></script>
 <script src="../../js/plugins/bootstrap-select/js/i18n/defaults-zh_CN.min.js"
         th:src="@{/js/plugins/bootstrap-select/js/i18n/defaults-zh_CN.min.js}"></script>
+<script src="../../js/plugins/layer/layer.min.js"
+        th:src="@{/js/plugins/layer/layer.min.js}"></script>
 <script src="../../js/plugins/layui/layui.js" th:src="@{/js/plugins/layui/layui.js}"></script>
 <script src="../../js/myJs/responseAnalyze.js" th:src="@{/js/myJs/responseAnalyze.js}"></script>
 
@@ -134,7 +137,6 @@
     /*取消按钮*/
     $('#resetBtn').on('click', function () {
         layui.use('layer', function () {
-            var layer = layui.layer;
             var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
             parent.layer.close(index); //再执行关闭
         });

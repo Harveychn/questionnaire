@@ -6,6 +6,8 @@ package com.questionnaire.ssm.module.researchManage.pojo;
 public class ListMissionVO {
     /*调查任务id*/
     private Long missionId;
+    /*任务描述*/
+    private String missionDescription;
     /*问卷id*/
     private Long questionnaireId;
     /*问卷标题*/
@@ -25,6 +27,7 @@ public class ListMissionVO {
     public String toString() {
         return "ListMissionVO{" +
                 "missionId=" + missionId +
+                ", missiondescription='" + missionDescription + '\'' +
                 ", questionnaireId=" + questionnaireId +
                 ", questionnaireTitle='" + questionnaireTitle + '\'' +
                 ", questionnaireCount=" + questionnaireCount +
@@ -41,6 +44,14 @@ public class ListMissionVO {
 
     public void setMissionId(Long missionId) {
         this.missionId = missionId;
+    }
+
+    public String getMissionDescription() {
+        return missionDescription;
+    }
+
+    public void setMissionDescription(String missionDescription) {
+        this.missionDescription = missionDescription;
     }
 
     public Long getQuestionnaireId() {
