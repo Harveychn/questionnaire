@@ -57,6 +57,7 @@ $(function () {
         }, {
             field: 'noticeContext',
             title: '公告内容',
+            visible: false,
             sortable: true
         }, {
             field: 'noticeCreateTime',

@@ -36,7 +36,7 @@ $(function () {
         minimumCountColumns: 3,
         columns: [{
             field: 'missionId',
-            title: '任务ID',
+            title: '任务编号',
             align: 'center',
             sortable: true
         }, {
@@ -102,14 +102,18 @@ window.operateEvents = {
     },
     //删除问卷
     'click .remove': function (e, value, row, index) {
-        delMissionMagaUrl = '/researchManage/deleteMission?missionId'+row.missionId+'&questionnaireId='+row.questionnaireId,
+        delMissionMagaUrl = '/researchManage/deleteMission?missionId' + row.missionId + '&questionnaireId=' + row.questionnaireId,
             layerConfirmSingle('确认删除吗?', row, delMissionMagaUrl);
     }
-
 };
+
+function refreshTable() {
+    $table.bootstrapTable('refresh', {});
+}
+
 /*弹窗层*/
 function layerMsg(confirmText, ids, url) {
-    layer.open({
+    var layerLevel = layer.open({
         type: 2,
         title: '任务提醒',
         maxmin: true,
@@ -117,6 +121,7 @@ function layerMsg(confirmText, ids, url) {
         area: ['80%', '90%'],
         resize: true
     });
+    layer.full(layerLevel);
 }
 
 //删除
@@ -126,11 +131,11 @@ function layerConfirmSingle(confirmText, row, url) {
             btn: ['确定', '取消']
         },
         function (index) {
-            var missionIds=[];
-            var questionnaireIds=[];
+            var missionIds = [];
+            var questionnaireIds = [];
             missionIds.push(row.missionId);
             questionnaireIds.push(row.questionnaireId);
-            accessServer(missionIds,questionnaireIds, url);
+            accessServer(missionIds, questionnaireIds, url);
             layer.close(index);
         },
         function () {
@@ -143,15 +148,15 @@ function layerConfirmSingle(confirmText, row, url) {
  * @param questionnaireIds
  * @param url
  */
-function accessServer(missionIds,questionnaireIds, url) {
+function accessServer(missionIds, questionnaireIds, url) {
     $.ajax({
         url: url,
         type: 'post',
-        data: {missionId: missionIds,questionnaireId:questionnaireIds},
+        data: {missionId: missionIds, questionnaireId: questionnaireIds},
         dataType: 'text',
         traditional: true,
         success: function (data) {
-            analyzeResponse(data, url, missionIds,questionnaireIds);
+            analyzeResponse(data, url, missionIds, questionnaireIds);
         },
         error: function () {
             layer.msg('操作失败，出现点问题，刷新看看？', {icon: 2});
@@ -167,7 +172,7 @@ function accessServer(missionIds,questionnaireIds, url) {
  * @param missionIds
  * @param questionnaireIds
  */
-function analyzeResponse(data, url, missionIds,questionnaireIds) {
+function analyzeResponse(data, url, missionIds, questionnaireIds) {
     var responsePkt = JSON.parse(data);
     if (responsePkt.code === 200) {
         switch (url) {
@@ -176,7 +181,7 @@ function analyzeResponse(data, url, missionIds,questionnaireIds) {
                     $table.bootstrapTable('remove', {
                         field: 'missionIds',
                         values: missionIds
-                    },{
+                    }, {
                         field: 'questionnaireIds',
                         values: questionnaireIds
                     });
