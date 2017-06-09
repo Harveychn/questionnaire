@@ -25,6 +25,7 @@
     <select id="listMission" resultType="com.questionnaire.ssm.module.researchManage.pojo.ListMissionVO">
 		SELECT
 		ma.mission_id AS missionId,
+		m.mission_description AS missionDescription,
 		q.questionnaire_id AS questionnaireId,
 		q.questionnaire_title AS questionnaireTitle,
 		ma.min_submit_count AS minSubmitCount,

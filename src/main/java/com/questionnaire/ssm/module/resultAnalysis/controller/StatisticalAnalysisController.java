@@ -1,6 +1,7 @@
 package com.questionnaire.ssm.module.resultAnalysis.controller;
 
 import com.questionnaire.ssm.module.resultAnalysis.pojo.StatisticalAnalysisResultVO;
+import com.questionnaire.ssm.module.resultAnalysis.service.PrimaryDataService;
 import com.questionnaire.ssm.module.resultAnalysis.service.StatisticalAnalysisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,6 +36,7 @@ public class StatisticalAnalysisController {
         ModelAndView modelAndView = new ModelAndView();
         this.missionId = missionId;
         this.missionPaperId = missionPaperId;
+//        modelAndView.addObject("displayAnalysisVO",);
         modelAndView.setViewName("statisticalAnalysis/analyzeResult");
         return modelAndView;
     }
@@ -53,9 +55,12 @@ public class StatisticalAnalysisController {
     private String missionId;
     private String missionPaperId;
     private StatisticalAnalysisService statisticalAnalysisService;
+    private PrimaryDataService primaryDataService;
 
     @Autowired
-    public StatisticalAnalysisController(StatisticalAnalysisService statisticalAnalysisService) {
+    public StatisticalAnalysisController(StatisticalAnalysisService statisticalAnalysisService,
+                                         PrimaryDataService primaryDataService) {
         this.statisticalAnalysisService = statisticalAnalysisService;
+        this.primaryDataService=primaryDataService;
     }
 }
