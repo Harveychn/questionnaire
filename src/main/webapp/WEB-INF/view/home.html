@@ -42,11 +42,11 @@
         </div>
         <div class="col-sm-6">
             <blockquote class="text-primary" style="font-size:16px">
-                <h2>用户所属单位:<label style="font-size:16px" th:if="${myInfo.workingUnit!=null}"
-                                 th:text="${myInfo.workingUnit}"></label><br>
+                <h2>用户单位:<label style="font-size:20px;font-weight: 500" th:if="${myInfo.workingUnit!=null}"
+                                th:text="${myInfo.workingUnit}"></label><br>
                 </h2>
-                <h2> 用户角色:<label style="font-size:16px" th:if="${myInfo.userRole!=null}"
-                                th:text="${myInfo.userRole}"></label>
+                <h2> 用户角色:<label style="font-size:20px;font-weight: 500" th:if="${myInfo.userRole!=null}"
+                                 th:text="${myInfo.userRole}"></label>
                 </h2>
             </blockquote>
         </div>
@@ -57,7 +57,9 @@
         <div class="col-sm-6 ">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    最新公告
+                    <div class="panel-title">
+                        <h3 style="font-weight: 500;">最新公告</h3>
+                    </div>
                 </div>
                 <div class="panel-body">
                     <ul id="noticeList" class="sortable-list connectList agile-list">
@@ -72,7 +74,9 @@
         <div class="col-sm-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    调查任务信息
+                    <div class="panel-title">
+                        <h3 style="font-weight: 500;">调查任务信息</h3>
+                    </div>
                 </div>
                 <div class="panel-body">
                     <ul id="missionList" class="list-group">

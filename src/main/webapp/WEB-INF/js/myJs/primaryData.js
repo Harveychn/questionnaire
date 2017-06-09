@@ -36,11 +36,8 @@ $(function () {
         minimumCountColumns: 3,
 
         columns: [{
-            checkbox: true,
-            clickToSelect: true
-        }, {
             field: 'missionId',
-            title: '任务ID',
+            title: '任务编号',
             align: 'center',
             width: 100,
             sortable: true

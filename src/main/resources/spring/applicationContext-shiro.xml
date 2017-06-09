@@ -9,9 +9,9 @@
         <!--shiro的核心安全接口，这个属性是必须的-->
         <property name="securityManager" ref="securityManager"/>
         <!--身份认证失败，则跳转到登录页面的设置-->
-        <property name="loginUrl" value="/"/>
+        <property name="loginUrl" value="/user/getLoginView"/>
         <!--权限认证失败，则跳转到指定页面-->
-        <property name="unauthorizedUrl" value="/"/>
+        <property name="unauthorizedUrl" value="/user/getLoginView"/>
         <!-- Shiro连接约束配置,即过滤链的定义 -->
         <property name="filterChainDefinitions">
             <value>
@@ -30,7 +30,6 @@
                 /statisticalAnalysis/**=authc,user
                 /unit/**=authc,user
                 /userInfoManage/**=authc,user
-                /userInfoRestful/**=authc,user
                 /userManage/**=authc,user
                 /userPic/**=authc,user
             </value>

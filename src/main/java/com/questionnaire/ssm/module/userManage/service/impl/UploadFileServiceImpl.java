@@ -4,6 +4,7 @@ import com.questionnaire.ssm.module.generated.mapper.RoleMapper;
 import com.questionnaire.ssm.module.generated.mapper.UnitMapper;
 import com.questionnaire.ssm.module.generated.mapper.UserMapper;
 import com.questionnaire.ssm.module.generated.pojo.*;
+import com.questionnaire.ssm.module.global.constant.CONSTANT;
 import com.questionnaire.ssm.module.global.enums.UploadTemplateCaseEnum;
 import com.questionnaire.ssm.module.global.util.CheckUploadFileUtil;
 import com.questionnaire.ssm.module.global.util.GetExcelDataUtil;
@@ -52,15 +53,15 @@ public class UploadFileServiceImpl implements UploadFileService {
             //当前操作的文件名
             currentOriginFileName = checkUploadFileDTO.getOriginFileName();
 
-            /*文件转换错误*/
-            if (checkUploadFileDTO.isFileTransError()) {
-                UploadResultVO uploadResultVO = UploadResultUtil.fileTransErrorVO(currentOriginFileName);
-                uploadResultVOList.add(uploadResultVO);
-                continue;
-            }
             /*文件类型错误*/
             if (checkUploadFileDTO.isFileTypeError()) {
                 UploadResultVO uploadResultVO = UploadResultUtil.fileTypeErrorVO(currentOriginFileName);
+                uploadResultVOList.add(uploadResultVO);
+                continue;
+            }
+            /*文件转换错误*/
+            if (checkUploadFileDTO.isFileTransError()) {
+                UploadResultVO uploadResultVO = UploadResultUtil.fileTransErrorVO(currentOriginFileName);
                 uploadResultVOList.add(uploadResultVO);
                 continue;
             }
@@ -215,6 +216,7 @@ public class UploadFileServiceImpl implements UploadFileService {
         uploadResultVO.setFileFormatError(false);
         uploadResultVO.setFileName(currentOriginFileName);
         uploadResultVO.setErrorRecord(errorUnitExcelInfoList);
+        uploadResultVO.setTemplateName(CONSTANT.getUnitTemplateName());
         uploadResultVO.setErrorMsg(errorMsg);
         uploadResultVO.setSuccessRecordCount(successRecords);
 
@@ -328,6 +330,7 @@ public class UploadFileServiceImpl implements UploadFileService {
         uploadResultVO.setFileFormatError(false);
         uploadResultVO.setFileName(currentOriginFileName);
         uploadResultVO.setErrorMsg(resultMessage);
+        uploadResultVO.setTemplateName(CONSTANT.getUserTemplateName());
         uploadResultVO.setErrorRecord(errorUserExcelInfoList);
         uploadResultVO.setSuccessRecordCount(successRecords);
 

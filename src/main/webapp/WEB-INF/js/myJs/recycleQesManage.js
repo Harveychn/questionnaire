@@ -48,7 +48,7 @@ $(function () {
             clickToSelect: true
         }, {
             field: 'questionnaireId',
-            title: '问卷ID',
+            title: '问卷编号',
             sortable: true
         }, {
             field: 'questionnaireTitle',
