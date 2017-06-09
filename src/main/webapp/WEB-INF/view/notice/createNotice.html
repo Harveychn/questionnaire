@@ -99,7 +99,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
 
             <div class="panel-default">
@@ -267,7 +266,7 @@
             }
         });
     });
-
+    /*提交json格式的数据*/
     function submitJsonData(launchDate, unitIds) {
         var noticeInfo = {};
         noticeInfo.noticeTitle = $('#noticeTitle').val();
@@ -275,7 +274,29 @@
         noticeInfo.launchDate = new Date(launchDate);
         noticeInfo.unitObjectIds = unitIds;
         var url = '/notice/createNotice';
-        accessServerByJson(url, noticeInfo);
+        $.ajax({
+            url: url,
+            contentType: "application/json;charset=utf-8",
+            type: 'post',
+            dataType: 'json',
+            data: JSON.stringify(noticeInfo),
+            success: function (data) {
+                if (200 === data.code) {
+                    layer.msg("创建公告成功!", {
+                        icon: 1,
+                        time: 2000,
+                        shade: 0.5,
+                        closeBtn: 1
+                    },function () {
+                        window.location.href="/notice/getMyNoticeView";
+                    });
+                }
+                dealGlobalError(data);
+            },
+            error: function (data) {
+                alert(data);
+            }
+        });
     }
     /*重置按钮*/
     $('#resetBtn').on('click', function () {

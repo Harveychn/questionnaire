@@ -4,7 +4,6 @@
 var $table = $('#primaryDataTwoTable');
 
 $(function () {
-    console.log("primaryDataTwoTable");
     $table.bootstrapTable({
         url: '/resultAnalysis/listAnswerPaper',
         method: 'post',
@@ -41,11 +40,11 @@ $(function () {
         // detailFormatter: detailFormatter,
         columns: [{
             field: 'answerPaperId',
-            title: '答卷ID',
+            title: '答卷编号',
             sortable: true
         }, {
             field: 'submitUserTel',
-            title: '交卷人ID',
+            title: '交卷人账户',
             sortable: true
         }, {
             field: 'fillAnswerTime',

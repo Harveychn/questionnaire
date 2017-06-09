@@ -174,7 +174,7 @@ $multiDelBtn.on('click', function () {
     if (!checkIsSelectedOne(ids)) {
         return;
     }
-    layerConfirmMulti('确认批量移除问卷吗（可以在“删除问卷”中恢复这些问卷）', ids, delTemporaryUrl);
+    layerConfirmMulti('确认批量移除问卷吗（可以在“回收问卷”中恢复这些问卷）', ids, delTemporaryUrl);
 });
 /**
  * 批量处理结束
@@ -284,7 +284,7 @@ function analyzeResponse(data, url, questionnaireIds) {
                         field: 'questionnaireId',
                         values: questionnaireIds
                     });
-                    layer.msg('问卷已经移除！（可以在“删除问卷”中恢复）', {icon: 1});
+                    layer.msg('问卷已经移除！（可以在“回收问卷”中恢复）', {icon: 1});
                 }
                 dealGlobalError(responsePkt);
                 break;

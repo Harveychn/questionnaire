@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Created by 郑晓辉 on 2017/5/1.
@@ -50,12 +51,14 @@ public class UserInfoManageController {
      * @throws Exception
      */
     @PostMapping(value = "/changeMyInfo")
-    public String changeMyInfo(NewUserInfo newUserInfo) throws Exception {
+    public ModelAndView changeMyInfo(NewUserInfo newUserInfo) throws Exception {
         String userTel = UserValidationUtil.getUserTel(logger);
         userInfoService.changeMyInfo(userTel, newUserInfo);
-        return "userManage/changeMyInfoOK";
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("myNewInfo", userInfoService.getMyInfo(userTel));
+        modelAndView.setViewName("userManage/changeMyInfoOK");
+        return modelAndView;
     }
-
 
 
     private UserInfoService userInfoService;

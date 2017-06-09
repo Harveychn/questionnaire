@@ -83,10 +83,10 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-2 control-label">身份ID：</label>
+                            <label class="col-md-2 control-label">身份证：</label>
                             <div class="col-md-8">
                                 <input id="userID" name="userID" type="text" class="form-control"
-                                       placeholder="请输入身份ID"
+                                       placeholder="请输入身份证号码"
                                        minlength="18" maxlength="18" required/>
                             </div>
                         </div>
@@ -133,7 +133,6 @@
             url: '/userInfoManage/getMyInfo',
             type: 'post',
             success: function (data) {
-                console.log(data);
                 $('#userRealName').val(data.userRealName);
                 $('#userRole').val(data.userRole);
                 $('#workingUnit').val(data.workingUnit);

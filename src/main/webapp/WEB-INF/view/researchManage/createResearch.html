@@ -174,20 +174,21 @@
     </div>
 </div>
 
-<script src="../../js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
-<script src="../../js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+<script src="../../js/jquery.min.js"
+        th:src="@{/js/jquery.min.js}"></script>
+<script src="../../js/bootstrap.min.js"
+        th:src="@{/js/bootstrap.min.js}"></script>
 <script src="../../js/plugins/bootstrap-select/js/bootstrap-select.min.js"
         th:src="@{/js/plugins/bootstrap-select/js/bootstrap-select.min.js}"></script>
 <script src="../../js/plugins/bootstrap-select/js/i18n/defaults-zh_CN.min.js"
         th:src="@{/js/plugins/bootstrap-select/js/i18n/defaults-zh_CN.min.js}"></script>
-
-<script src="../../js/plugins/layui/layui.js" th:src="@{/js/plugins/layui/layui.js}"></script>
-<script src="../../js/myJs/responseAnalyze.js" th:src="@{/js/myJs/responseAnalyze.js}"></script>
-
+<script src="../../js/plugins/layui/layui.js"
+        th:src="@{/js/plugins/layui/layui.js}"></script>
+<script src="../../js/myJs/responseAnalyze.js"
+        th:src="@{/js/myJs/responseAnalyze.js}"></script>
 
 <script>
     $(function () {
-
         var unitOptions = '';
         var $researchUnit = $('#researchUnit');
         $.ajax({
@@ -211,7 +212,7 @@
                         selectAllText: '全部单位',
                         liveSearchPlaceholder: '查询单位',
                         deselectAllText: '重新选择',
-                        selectedTextFormat: 'count > 15',
+                        selectedTextFormat: 'count > 5',
                         countSelectedText: function () {
                             return '选中了  {0}   个单位   (单位总数 {1})';
                         }
@@ -294,23 +295,8 @@
                 laydate(end);
             };
         });
-        if ('' !== window.location.search) {
-            $('#pageName').html('发布问卷');
-        }
     });
 
-    //发布问卷时设置选中问卷
-    window.onload = function () {
-        var $questionnaireItem = $('select[name="questionnaireSelect"]');
-        var selectedQesId = window.location.search.split('=').pop();
-        if ('' !== selectedQesId) {
-            $questionnaireItem.find('option[value=' + selectedQesId + ']').attr("selected", true);
-            $questionnaireItem.selectpicker('render');
-        }
-        var $buttonGroup = $('#buttonGroup');
-        $buttonGroup.attr('class', 'col-md-offset-4');
-        $buttonGroup.prepend('<button class="btn btn-lg btn-link" onclick="window.history.back();">返回上一级</button>');
-    };
     /*提交数据*/
     $('#launchMissionBtn').on('click', function () {
         //获取选中的单位ID

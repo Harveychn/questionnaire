@@ -96,9 +96,14 @@
     var $missionList = $('#missionList');
     var _noticeDataList;
     $(function () {
-        $.ajaxSettings.async = false;//强制同步
+        getDynamicData();
+        window.setInterval(getDynamicData(), 60000);
+    });
+
+    function getDynamicData() {
         //获取公告信息
         $.getJSON('/homeData/getTop5NoticeForMe', function (noticeList) {
+            $noticeList.empty();
             _noticeDataList = noticeList;
             for (var i = 0; i < noticeList.length; i++) {
                 var htmlElement = '';
@@ -134,6 +139,7 @@
         });
         //获取进行中的调查信息
         $.getJSON('/researchManage/getReleasedMissions', function (releasedMissionList) {
+            $missionList.empty();
             var circleTime = 0;
             if (releasedMissionList.length < 6) {
                 circleTime = releasedMissionList.length;
@@ -184,7 +190,7 @@
                     '</li>');
             }
         })
-    });
+    }
     function clickNoticeElement(noticeId) {
         for (var i = 0; i < _noticeDataList.length; i++) {
             if (noticeId === _noticeDataList[i].noticeId) {

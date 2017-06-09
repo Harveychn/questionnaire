@@ -115,8 +115,34 @@ function getQesVOData(isDone, isTemplate) {
 
     //访问服务器
     var url = '/questionnaireManage/create';
-    accessServerByJson(url, dataBase);
+    submitQesDataByJson(url, dataBase);
+    window.location.href="/questionnaireManage/getListMyQesPaperView";
+}
 
+function submitQesDataByJson(url, jsonData) {
+    $.ajax({
+        url: url,
+        contentType: "application/json;charset=utf-8",
+        type: 'post',
+        dataType: 'json',
+        data: JSON.stringify(jsonData),
+        success: function (data) {
+            if (200 === data.code) {
+                layer.msg("操作成功！", {
+                    icon: 1,
+                    time: 2000,
+                    shade: 0.5,
+                    closeBtn: 1
+                },function () {
+                    window.location.href="/questionnaireManage/getListMyQesPaperView";
+                });
+            }
+            dealGlobalError(data);
+        },
+        error: function (data) {
+            alert(data);
+        }
+    });
 }
 
 //编辑标题是输入框状态

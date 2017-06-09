@@ -169,6 +169,9 @@ function analyzeResponse(data, url, noticeIds) {
                         values: noticeIds
                     });
                     layer.msg('公告已删除！', {icon: 1});
+                    if (noticeIds.length >= 5) {//超过5个公告则重新加载服务器数据
+                        $table.bootstrapTable('refresh', {});
+                    }
                 }
                 dealGlobalError(responsePkt);
                 break;
