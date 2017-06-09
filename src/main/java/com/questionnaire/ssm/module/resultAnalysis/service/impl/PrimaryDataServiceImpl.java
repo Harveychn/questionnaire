@@ -75,9 +75,9 @@ public class PrimaryDataServiceImpl implements PrimaryDataService {
     }
 
     /**
-     * 根据答卷ID查询展示问卷
+     * 根据答卷ID查询展示答卷
      *
-     * @param answerPaperId 问卷ID
+     * @param answerPaperId 答卷ID
      * @return
      * @throws Exception
      */

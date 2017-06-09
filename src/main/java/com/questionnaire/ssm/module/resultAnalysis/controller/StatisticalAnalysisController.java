@@ -1,6 +1,7 @@
 package com.questionnaire.ssm.module.resultAnalysis.controller;
 
 import com.questionnaire.ssm.module.resultAnalysis.pojo.StatisticalAnalysisResultVO;
+import com.questionnaire.ssm.module.resultAnalysis.service.PrimaryDataService;
 import com.questionnaire.ssm.module.resultAnalysis.service.StatisticalAnalysisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

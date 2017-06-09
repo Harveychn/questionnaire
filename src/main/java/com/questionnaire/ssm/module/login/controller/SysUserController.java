@@ -1,6 +1,9 @@
 package com.questionnaire.ssm.module.login.controller;
 
 import com.questionnaire.ssm.module.generated.pojo.User;
+import com.questionnaire.ssm.module.global.pojo.ResponsePkt;
+import com.questionnaire.ssm.module.global.util.ResultUtil;
+import com.questionnaire.ssm.module.login.pojo.ForgetPasswordVO;
 import com.questionnaire.ssm.module.login.pojo.LoginVO;
 import com.questionnaire.ssm.module.login.pojo.NewPasswordVO;
 import com.questionnaire.ssm.module.login.service.UserService;
@@ -91,6 +94,38 @@ public class SysUserController {
         }
         userService.updateUserPassword(newPasswordVO);
         return "login/newKeySuccess";
+    }
+
+    /**
+     * 获取忘记密码短信验证视图
+     * @return
+     * @throws Exception
+     */
+    @GetMapping(value = "getForgetPasswordView" )
+    public String getForgetPasswordView(Model model)throws Exception{
+        model.addAttribute("ForgetPasswordVO", new ForgetPasswordVO());
+        return "login/forgetPassword";
+    }
+
+//    /**
+//     * 获得短信验证码
+//     * @return
+//     * @throws Exception
+//     */
+//    @PostMapping(value="getVerificationCode")
+//    public ResponsePkt getVerificationCode()throws Exception{
+//
+//        return ResultUtil.success();
+//    }
+
+    /**
+     * 验证短信验证码并修改密码
+     * @return
+     * @throws Exception
+     */
+    @PostMapping(value = "changeForgetPassword")
+    public String changeForgetPassword()throws Exception{
+        return "login/login";
     }
 
 

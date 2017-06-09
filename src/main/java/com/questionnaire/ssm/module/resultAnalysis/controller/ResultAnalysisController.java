@@ -29,7 +29,6 @@ public class ResultAnalysisController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("resultAnalysis/primaryData");
         return modelAndView;
-
     }
 
     /**
@@ -41,8 +40,8 @@ public class ResultAnalysisController {
     @GetMapping(value = "/getPrimaryDataTwo")
     public ModelAndView getPrimaryDataTwo(Long missionId, Long qesId) throws Exception {
         ModelAndView modelAndView = new ModelAndView();
-        this.missionId=missionId;
-        this.qesId=qesId;
+        this.missionId = missionId;
+        this.qesId = qesId;
         modelAndView.setViewName("resultAnalysis/primaryDataTwo");
         return modelAndView;
     }
@@ -54,9 +53,9 @@ public class ResultAnalysisController {
      * @throws Exception
      */
     @GetMapping(value = "/getAnswerPaperInfo")
-    public ModelAndView getAnswerPaperInfo(Long answerPaperId)throws Exception{
-        ModelAndView modelAndView=new ModelAndView();
-        modelAndView.addObject("displayAnswerPaperVO",primaryDataService.getAnswerPaper(answerPaperId));
+    public ModelAndView getAnswerPaperInfo(Long answerPaperId) throws Exception {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("displayAnswerPaperVO", primaryDataService.getAnswerPaper(answerPaperId));
         modelAndView.setViewName("resultAnalysis/displayAnswerPaper");
         return modelAndView;
     }
@@ -82,7 +81,7 @@ public class ResultAnalysisController {
     @PostMapping(value = "/listAnswerPaper")
     @ResponseBody
     public List<ListAnswerPaperVO> listAnswerPaper() throws Exception {
-        MissionQuestionnaireVO missionQuestionnaire=new MissionQuestionnaireVO();
+        MissionQuestionnaireVO missionQuestionnaire = new MissionQuestionnaireVO();
         missionQuestionnaire.setMissionId(this.missionId);
         missionQuestionnaire.setQuestionnaireId(this.qesId);
 //        System.out.println(missionQuestionnaire.getMissionId() + "||" +missionQuestionnaire.getQuestionnaireId());
@@ -92,6 +91,7 @@ public class ResultAnalysisController {
     private PrimaryDataService primaryDataService;
     private Long missionId;
     private Long qesId;
+
     @Autowired
     public ResultAnalysisController(PrimaryDataService primaryDataService) {
         this.primaryDataService = primaryDataService;

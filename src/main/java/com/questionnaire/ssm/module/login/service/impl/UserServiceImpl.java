@@ -9,6 +9,7 @@ import com.questionnaire.ssm.module.global.exception.OperateDBException;
 import com.questionnaire.ssm.module.global.exception.UserValidaException;
 import com.questionnaire.ssm.module.global.service.UnitService;
 import com.questionnaire.ssm.module.global.util.UserValidationUtil;
+import com.questionnaire.ssm.module.login.pojo.ForgetPasswordVO;
 import com.questionnaire.ssm.module.login.pojo.NewPasswordVO;
 import com.questionnaire.ssm.module.login.service.UserService;
 import com.questionnaire.ssm.module.login.utils.UserUtil;
@@ -76,6 +77,33 @@ public class UserServiceImpl implements UserService {
     @Override
     public void updateUserLoginRecord(User userLoginRecord) throws Exception {
         userMapper.updateByPrimaryKeySelective(userLoginRecord);
+    }
+
+    @Override
+    public void changeForgetPassword(ForgetPasswordVO forgetPasswordVO)throws Exception{
+        User userNew=null;
+        try{
+            userNew=userMapper.selectByPrimaryKey(forgetPasswordVO.getUserTel());
+        }catch (Exception e){
+            throw new OperateDBException(CodeForVOEnum.UNKNOWN_ERROR, DBTableEnum.USER.getTableName());
+        }
+        if (userNew == null) {
+            throw new OperateDBException(CodeForVOEnum.DB_SELECT_FAIL, DBTableEnum.USER.getTableName());
+        }
+
+        userNew.setPassword(forgetPasswordVO.getNewPassword());
+
+        int result = 0;
+        try {
+            result = userMapper.updateByPrimaryKeySelective(UserUtil.encoded(userNew));
+        } catch (Exception e) {
+            logger.error(CodeForVOEnum.UNKNOWN_ERROR.getMessage() + "\n" + DBTableEnum.USER.getTableName());
+            throw new OperateDBException(CodeForVOEnum.UNKNOWN_ERROR, DBTableEnum.USER.getTableName());
+        }
+        if (result != 1) {
+            throw new OperateDBException(CodeForVOEnum.DB_UPDATE_FAIL, DBTableEnum.USER.getTableName());
+        }
+
     }
 
     private final static Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
