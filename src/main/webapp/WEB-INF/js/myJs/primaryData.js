@@ -79,7 +79,7 @@ function layerMsg(confirmText, ids, url) {
         title: '详细内容',
         maxmin: true,
         content: url, //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
-        area: ['80%', '90%'],
+        area: ['100%', '100%'],
         resize: true
     });
 }
