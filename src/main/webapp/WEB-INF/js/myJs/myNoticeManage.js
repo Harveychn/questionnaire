@@ -86,28 +86,27 @@ window.operateEvents = {
     //查看公告
     'click .scanNotice': function (e, value, row, index) {
         //查看公告处理
-        // layer.msg('未开放功能！', {icon: 4});
-        var unitString = '';
+        var unitObjElem = '<ol>';
         for (var i = 0; i < row.noticeUnitName.length; i++) {
-            unitString += '[' + row.noticeUnitName[i] + ']';
+            unitObjElem += '<li>' + row.noticeUnitName[i] + '</li>';
         }
+        unitObjElem += '</ol>';
         layer.open({
             type: 1,
             title: false, //不显示标题栏
             closeBtn: false,
-            area: 'auto',
+            area: '60%',
             shade: 0.8,
             id: 'noticeItemLayer', //设定一个id，防止重复弹出
             resize: false,
             btn: ['知道了'],
-            btnAlign: 'c',
+            btnAlign: 'r',
             moveType: 1, //拖拽模式，0或者1
-            content: '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;">' +
-            '<i>公告标题：</i>' + row.noticeTitle +
-            '<br><i>公告内容：</i>' + row.noticeContext +
-            '<br><i>预计发布时间：</i>' + row.noticeLaunchDate +
-            '<br><i>发布对象单位：</i>' + unitString +
-            '</div>'
+            content: '<div style="padding: 50px; line-height: 22px; background-color: #d9d9d9; color: #000; font-weight: 400;">' +
+            '<h2 align="center">' + row.noticeTitle + '</h2><hr/>' +
+            '<h4 style="font-weight: 500">公告内容：</h4>&emsp;' + row.noticeContext + '<hr>' +
+            '<h4 style="font-weight: 500">预计发布时间：</h4>&emsp;' + row.noticeLaunchDate + '<hr>' +
+            '<h4 style="font-weight: 500">发布对象单位：</h4>' + unitObjElem + '</div>'
         });
 
     }

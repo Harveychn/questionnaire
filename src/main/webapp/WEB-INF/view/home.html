@@ -198,19 +198,19 @@
                     type: 1,
                     title: false, //不显示标题栏
                     closeBtn: false,
-                    area: ['75%', '60%'],
+                    area: '60%',
                     shade: 0.8,
                     id: 'noticeItemLayer', //设定一个id，防止重复弹出
                     resize: false,
                     btn: ['知道了'],
-                    btnAlign: 'c',
+                    btnAlign: 'r',
                     moveType: 1, //拖拽模式，0或者1
-                    content: '<div style="padding: 50px; line-height: 22px; background-color: #fff; color: #000; font-weight: 300; font-size:18px">' +
-                    '<div style="font-size:24px; text-align:center;">' + _noticeDataList[i].noticeTitle + '</div>' + '<br>' +
-                    '<div class="row"><label class="col-sm-2 col-md-2">预计发布时间：</label>' + '<div class="col-sm-10 col-md-10">' + _noticeDataList[i].noticeLaunchDate + '</div>'+ '</div>'+'<br>'+
-                    '<div class="row"><label class="col-sm-2 col-md-2">发布对象单位：</label>' + '<div class="col-sm-10 col-md-10">' + _noticeDataList[i].createUnit + '</div>'+ '</div>'+'<br>'+
-                    '<div class="row"><label class="col-sm-2 col-md-2">公告内容：</label>' + '<div class="col-sm-10 col-md-10">' + '<div style="text-indent:2em;">' + _noticeDataList[i].noticeContent + '</div>' + '</div>'+ '</div>'+'<br>'+
-                    '</div>'
+                    content: '<div style="padding: 50px; line-height: 22px; background-color: #d9d9d9; color: #000; font-weight: 400;">' +
+                    '<h2 align="center">' + _noticeDataList[i].noticeTitle + '</h2><br>' +
+                    '<hr/>' +
+                    '<h4 style="font-weight: 500">公告内容：</h4>&emsp;' + _noticeDataList[i].noticeContent +'<br>' +
+                    '<div class="h5" align="right"><i>' + _noticeDataList[i].createUnit +'</i></div>'+
+                    '<div class="h5" align="right">' + _noticeDataList[i].noticeLaunchDate + '</div> '
                 });
 
             }
