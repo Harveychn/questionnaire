@@ -125,9 +125,7 @@ public class PrimaryDataServiceImpl implements PrimaryDataService {
             questionAnswerPaperVO.setQuestionId(currentQuestionId);
 
             answerDetail = resultAnalysisMapper.selectAnswerDetail(questionAnswerPaperVO);//获取答案
-            if(answerDetail=="."){
-                answerDetail=" ";
-            }
+
 //            answerDetailString= QesManageVODOUtil.toAnswerString(currentAnswerDetail,questionWithBLOBs.getQuestionType());
 
             answerQuestionVOList.add(order, AnswerPaperVODOUtil.toAnswerQuestionVO(questionWithBLOBs, answerDetail));
