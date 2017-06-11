@@ -30,9 +30,6 @@ public class ContinueEditServiceImpl implements ContinueEditService {
     public boolean continueEditSuccess(CreateQesVO createQesVO) throws Exception {
         List<Long> delIdList = new ArrayList<>();
         delIdList.add(createQesVO.getQuestionnaireId());
-
-        System.out.println(delIdList);
-
         createQesVO.setQuestionnaireId(0L);
         //删除原先的
         qesManageService.delDataForeverQesByIds(delIdList);

@@ -29,7 +29,6 @@ var exam = {
         var _this = this;
         var data = {}, addname = 0;
         this.editingQesId = loadDataFn();
-        console.log(this.editingQesId);
 
         $("#ui_sortable_exam").find("li").draggable({
             /* containment:'#pageContentId',*/
@@ -374,7 +373,6 @@ function loadDataFn() {
         $('#questionnaireDescription').val(responseData.questionnaireDescription);
 
         questionArray = responseData.questions;
-        console.log(questionArray);
         var questionData = {};
         for (var i = 0; i < questionArray.length; i++) {
             var questionTypeStr = questionArray[i].questionType;
@@ -416,8 +414,6 @@ function loadDataFn() {
                     }
                     optionItem.option = optionItemStr;
                     optionItemArray.push(optionItem);
-
-                    console.log(optionItemArray);
 
                     questionData = {
                         type: excQuestionCode(questionTypeStr),
