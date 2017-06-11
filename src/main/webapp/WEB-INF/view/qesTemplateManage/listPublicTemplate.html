@@ -148,7 +148,9 @@
         },
         //引用模板
         'click .usePaper': function (e, value, row, index) {
-            layer.msg('模块未发布', {icon: 4});
+//            layer.msg('模块未发布', {icon: 4});
+            window.location.href = '/QesManageRest/getQuoteQesPaperView/' + row.questionnaireId;
+
         },
         //添加公共模板
         'click .add2PrivateLib': function (e, value, row, index) {

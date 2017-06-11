@@ -111,9 +111,8 @@ function getQesVOData(isDone, isTemplate) {
     if (!isNoError) {
         return;
     }
-    dataBase.questionnaireId = exam.editingQesId;
     //访问服务器
-    var url = '/QesManageRest/postEditFinishQesData';
+    var url = '/QesManageRest/postQuoteQesPaperData';
     submitQesDataByJson(url, dataBase);
 }
 

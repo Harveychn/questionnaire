@@ -2,6 +2,8 @@ package com.questionnaire.ssm.module.questionnaireManage.util;
 
 import com.questionnaire.ssm.module.generated.pojo.MappingQuestionnaireQuestion;
 import com.questionnaire.ssm.module.generated.pojo.Questionnaire;
+import com.questionnaire.ssm.module.global.enums.CodeForVOEnum;
+import com.questionnaire.ssm.module.global.exception.UserValidaException;
 import com.questionnaire.ssm.module.global.util.UserValidationUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,7 +15,6 @@ import java.util.Date;
  * Description: 操作问卷动作的工具包
  */
 public class OperateQuestionnaireUtil {
-
     /**
      * 删除个人问卷到回收站
      *
@@ -50,20 +51,6 @@ public class OperateQuestionnaireUtil {
 //        questionnaire.setIsDone(true);
 //        questionnaire.setIsDelete(false);
         questionnaire.setIsVisible(true);
-        return questionnaire;
-    }
-
-    /**
-     * 对被操作问卷的更新操作
-     *
-     * @return
-     * @throws Exception
-     */
-    public static Questionnaire makeShareAttrTrue() throws Exception {
-        Questionnaire questionnaire = new Questionnaire();
-
-        questionnaire.setIsShare(true);
-
         return questionnaire;
     }
 

@@ -17,5 +17,6 @@ public interface ContinueEditService {
      * @throws Exception
      */
     @Transactional
-    boolean continueEditSuccess(CreateQesVO createQesVO) throws Exception;
+    boolean continueEdit(CreateQesVO createQesVO) throws Exception;
+
 }
