@@ -4,7 +4,6 @@
 //获取展示表格区域的ID
 var dom = document.getElementById("echartsArea");
 var myChart = echarts.init(dom);
-var app = {};
 
 var $curQuestionContent = $('#curQuestionContent');
 var $questionList = $('#questionList');
@@ -79,7 +78,6 @@ function initEchartData() {
                 }
             }
         },
-
         grid: {
             left: '3%',
             right: '4%',
@@ -87,36 +85,34 @@ function initEchartData() {
             containLabel: true
         },
         xAxis: {
+            type: 'category',
+            //动态数据
+            // data: []
+            data: curQuestionAnalyzeData.categories
+        },
+        yAxis: {
             position: 'top',
             type: 'value',
             boundaryGap: [0, 0.01]
-        },
-        yAxis: {
-            type: 'category',
-            //动态数据
-            data: initData.optionList
         },
         series: [
             //动态数据
             {
                 type: 'bar',
-                data: initData.valueList,
+                data: curQuestionAnalyzeData.data,
                 itemStyle: {
                     normal: {
-                        //定义一个list，然后根据所以取得不同的值
-						color: function(params) {
-							// 颜色列表
-							var colorList = [
-								'#C1232B', '#B5C334', '#FCCE10', '#E87C25', '#27727B',
-								'#FE8463', '#9BCA63', '#FAD860', '#F3A43B', '#60C0DD',
-								'#D7504B', '#C6E579', '#F4E001', '#F0805A', '#26C0C0'
-							];
-							return colorList[params.dataIndex]
-						},
                         //设置随机颜色
-                        // color: function(params) {
-                        //     return "#" + ("00000" + ((Math.random() * 16777215 + 0.5) >> 0).toString(16)).slice(-6);
-                        // },
+                        color: function(params) {
+                            // 颜色列表
+                            var colorList = [
+                                '#C1232B', '#B5C334', '#FCCE10', '#E87C25', '#27727B',
+                                '#FE8463', '#9BCA63', '#FAD860', '#F3A43B', '#60C0DD',
+                                '#D7504B', '#C6E579', '#F4E001', '#F0805A', '#26C0C0'
+                            ];
+                            return colorList[params.dataIndex]
+
+                        },
 
                         //显示位置和显示格式的设置了
                         label: {
@@ -132,6 +128,7 @@ function initEchartData() {
 
             }
         ]
+
     };
     setEchartOption(initOption);
 }
@@ -183,6 +180,7 @@ function setTableBodyData(i) {
 }
 
 function dynamicDataChange(dynamicDataChange) {
+
     var dynamicOption = {
         tooltip: {
             trigger: 'axis',
@@ -212,14 +210,15 @@ function dynamicDataChange(dynamicDataChange) {
             containLabel: true
         },
         xAxis: {
+            type: 'category',
+            //动态数据
+            // data: []
+            data: dynamicDataChange.categories
+        },
+        yAxis: {
             position: 'top',
             type: 'value',
             boundaryGap: [0, 0.01]
-        },
-        yAxis: {
-            type: 'category',
-            //动态数据
-            data: dynamicDataChange.categories
         },
         series: [
             //动态数据
@@ -251,11 +250,22 @@ function dynamicDataChange(dynamicDataChange) {
                 },
                 //柱条的宽度，不设时自适应。(数字的含义就是百分比,不需要填写％)
                 barWidth: 50
+
             }
         ]
+
     };
     setEchartOption(dynamicOption);
 }
+
+//点击表格按钮后样式
+$('#tableBtn').on('click', function () {
+    if ($questionTableData.attr('hidden') === undefined) {
+        $questionTableData.attr('hidden', 'hidden');
+    } else {
+        $questionTableData.removeAttr('hidden');
+    }
+});
 
 //点击柱状图
 $('#histogramBtn').on('click', function() {
@@ -320,7 +330,6 @@ $('#histogramBtn').on('click', function() {
                             return colorList[params.dataIndex]
 
                         },
-
                         //显示位置和显示格式的设置了
                         label: {
                             show: true,
@@ -332,10 +341,8 @@ $('#histogramBtn').on('click', function() {
                 },
                 //柱条的宽度，不设时自适应。(数字的含义就是百分比,不需要填写％)
                 barWidth: 50
-
             }
         ]
-
     };
     setEchartOption(histogramOption);
 });
@@ -417,3 +424,76 @@ function setEchartOption(optionType) {
         myChart.setOption(optionType, true);
     }
 }
+
+// 条形图样式备份
+// var dynamicOption = {
+//     tooltip: {
+//         trigger: 'axis',
+//         axisPointer: {
+//             type: 'shadow'
+//         }
+//     },
+//     toolbox: {
+//         show: true,
+//         orient: 'horizontal',
+//         feature: {
+//             saveAsImage: {
+//                 show: true
+//             },
+//             restore: {
+//                 show: true
+//             },
+//             dataZoom: {
+//                 show: true
+//             }
+//         }
+//     },
+//     grid: {
+//         left: '3%',
+//         right: '4%',
+//         bottom: '3%',
+//         containLabel: true
+//     },
+//     xAxis: {
+//         position: 'top',
+//         type: 'value',
+//         boundaryGap: [0, 0.01]
+//     },
+//     yAxis: {
+//         type: 'category',
+//         //动态数据
+//         data: dynamicDataChange.categories
+//     },
+//     series: [
+//         //动态数据
+//         {
+//             type: 'bar',
+//             data: dynamicDataChange.data,
+//             itemStyle: {
+//                 normal: {
+//                     //设置随机颜色
+//                     color: function(params) {
+//                         // 颜色列表
+//                         var colorList = [
+//                             '#C1232B', '#B5C334', '#FCCE10', '#E87C25', '#27727B',
+//                             '#FE8463', '#9BCA63', '#FAD860', '#F3A43B', '#60C0DD',
+//                             '#D7504B', '#C6E579', '#F4E001', '#F0805A', '#26C0C0'
+//                         ];
+//                         return colorList[params.dataIndex]
+//
+//                     },
+//
+//                     //显示位置和显示格式的设置了
+//                     label: {
+//                         show: true,
+//                         position: 'top',
+//                         //显示数据在柱状图上
+//                         formatter: '{c}'
+//                     }
+//                 }
+//             },
+//             //柱条的宽度，不设时自适应。(数字的含义就是百分比,不需要填写％)
+//             barWidth: 50
+//         }
+//     ]
+// };
