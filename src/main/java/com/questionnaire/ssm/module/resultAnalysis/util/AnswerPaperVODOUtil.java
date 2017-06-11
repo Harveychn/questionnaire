@@ -50,7 +50,12 @@ public class AnswerPaperVODOUtil {
             answerQuestionVO.setQuestionDescription(question.getQuestionDescription());
         }
         /*数据库中不为空字段*/
-        answerQuestionVO.setAnswerDetail(answerDetail);
+
+        if(answerDetail.equals(".")){
+            answerQuestionVO.setAnswerDetail(" ");
+        }else {
+            answerQuestionVO.setAnswerDetail(answerDetail);
+        }
         answerQuestionVO.setQuestionType(parse2VOQuestionType(question.getQuestionType()));
         answerQuestionVO.setMust(question.getIsMust());
         return answerQuestionVO;

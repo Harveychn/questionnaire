@@ -5,7 +5,6 @@ import com.questionnaire.ssm.module.generated.pojo.*;
 import com.questionnaire.ssm.module.global.enums.CodeForVOEnum;
 import com.questionnaire.ssm.module.global.enums.DBTableEnum;
 import com.questionnaire.ssm.module.global.exception.OperateDBException;
-import com.questionnaire.ssm.module.questionnaireManage.util.QesManageVODOUtil;
 import com.questionnaire.ssm.module.resultAnalysis.mapper.ResultAnalysisMapper;
 import com.questionnaire.ssm.module.resultAnalysis.pojo.*;
 import com.questionnaire.ssm.module.resultAnalysis.service.PrimaryDataService;
@@ -15,10 +14,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.TransactionScoped;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
+
+
 
 /**
  * Created by 95884 on 2017/5/5.
@@ -125,6 +125,7 @@ public class PrimaryDataServiceImpl implements PrimaryDataService {
             questionAnswerPaperVO.setQuestionId(currentQuestionId);
 
             answerDetail = resultAnalysisMapper.selectAnswerDetail(questionAnswerPaperVO);//获取答案
+
 //            answerDetailString= QesManageVODOUtil.toAnswerString(currentAnswerDetail,questionWithBLOBs.getQuestionType());
 
             answerQuestionVOList.add(order, AnswerPaperVODOUtil.toAnswerQuestionVO(questionWithBLOBs, answerDetail));
