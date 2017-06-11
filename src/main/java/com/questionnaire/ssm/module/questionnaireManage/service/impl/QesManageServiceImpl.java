@@ -205,7 +205,7 @@ public class QesManageServiceImpl implements QesManageService {
         if (questionIds.size() > 0) {
             QuestionExample questionExample = new QuestionExample();
             questionExample.createCriteria().andQuestionIdIn(questionIds);
-            //删除问题信息表格中的问题信息
+            //删除question表格中的问题信息
             try {
                 questionMapper.deleteByExample(questionExample);
             } catch (Exception e) {
@@ -214,7 +214,7 @@ public class QesManageServiceImpl implements QesManageService {
                         DBTableEnum.QUESTION.getTableName());
             }
         }
-        //开始删除问卷信息表格数据
+        //开始删除questionnaire表数据
         QuestionnaireExample qesPaperExample = new QuestionnaireExample();
         qesPaperExample.createCriteria().andQuestionnaireIdIn(questionnaireIds);
         try {

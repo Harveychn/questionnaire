@@ -101,7 +101,8 @@ window.operateEvents = {
     },
     //继续编辑问卷
     'click .continueEdit': function (e, value, row, index) {
-        layer.msg('模块未发布', {icon: 4});
+        // layer.msg('模块未发布', {icon: 4});
+        window.location.href = '/QesManageRest/getEditQesPaperView/' + row.questionnaireId;
     },
     //模板化问卷
     'click .templatePaper': function (e, value, row, index) {

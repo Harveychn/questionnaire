@@ -111,10 +111,10 @@ function getQesVOData(isDone, isTemplate) {
     if (!isNoError) {
         return;
     }
-    // console.log(JSON.stringify(dataBase));
-
+    dataBase.questionnaireId = exam.editingQesId;
+    console.log(dataBase);
     //访问服务器
-    var url = '/questionnaireManage/create';
+    var url = '/QesManageRest/postEditFinishQesData';
     submitQesDataByJson(url, dataBase);
 }
 
@@ -132,8 +132,8 @@ function submitQesDataByJson(url, jsonData) {
                     time: 2000,
                     shade: 0.5,
                     closeBtn: 1
-                },function () {
-                    window.location.href="/questionnaireManage/getListMyQesPaperView";
+                }, function () {
+                    window.location.href = "/questionnaireManage/getListMyQesPaperView";
                 });
             }
             dealGlobalError(data);
@@ -184,6 +184,8 @@ function editingOptionFunc(element) {
         )
         ;
     });
+    var textAreaStr = $(element).parent('.row').find('textarea[name="multiCompletionResult"]').val();
+    $(element).val(textAreaStr);
 }
 
 function keyDownFunc(element) {
