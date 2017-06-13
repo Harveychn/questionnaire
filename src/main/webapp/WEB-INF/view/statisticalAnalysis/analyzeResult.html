@@ -10,63 +10,62 @@
 
 <body>
 <div class="container">
-    <div class="row ">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <!--<h3 th:text="${displayAnswerPaperVO.questionnaireTitle}" align="center">问卷标题</h3>-->
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="panel-title">
+                结果分析
             </div>
-            <div class="panel-body">
-                <!--左侧题目-->
-                <div class="col-xs-3 col-sm-3 col-md-3">
-                    <ul id="questionList" class="nav nav-pills nav-stacked list-group affix">
-                    </ul>
-                </div>
-                <!--右侧展示-->
-                <div class="col-xs-8 col-sm-8 col-md-8 ">
-                    <div class="panel panel-default">
-                        <div class="panel-heading" id="curQuestionContent">
-                            第 [题目序号] 题 [题目内容]
+        </div>
+        <div class="panel-body">
+            <!--左侧题目-->
+            <div class="col-xs-3 col-sm-3 col-md-3">
+                <ul id="questionList" class="nav nav-pills nav-stacked list-group affix">
+                </ul>
+            </div>
+            <!--右侧展示-->
+            <div class="col-xs-8 col-sm-8 col-md-8 ">
+                <div class="panel panel-default">
+                    <div class="panel-heading" id="curQuestionContent">
+                        第 [题目序号] 题 [题目内容]
+                    </div>
+                    <div class="panel-body">
+                        <!--数据展示-->
+                        <div class="row">
+                            <table id="questionTableData" class="table table-bordered table-condensed table-hover">
+                                <thead>
+                                <tr class="active">
+                                    <th>选项</th>
+                                    <th>小计</th>
+                                    <th>比例</th>
+                                </tr>
+                                </thead>
+                                <tbody id="tableBody"></tbody>
+                            </table>
                         </div>
-                        <div class="panel-body">
-                            <!--数据展示-->
-                            <div class="row">
-                                <table id="questionTableData" class="table table-bordered table-condensed table-hover">
-                                    <thead>
-                                    <tr class="active">
-                                        <th>选项</th>
-                                        <th>小计</th>
-                                        <th>比例</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody id="tableBody"></tbody>
-                                </table>
-                            </div>
-                            <!--按钮组-->
-                            <div class="row">
-                                <div class="btn-group pull-right" align="right">
-                                    <div id="tableBtn" class="btn btn-default"
-                                         data-toggle="tooltip" title="点击隐藏/展示表格数据">表格
-                                    </div>
-                                    <button id="histogramBtn" class="btn btn-outline btn-default" data-toggle="tooltip"
-                                            title="点击展示柱状图数据">柱状图
-                                    </button>
-                                    <!--<button id="barGraphBtn" class="btn btn-outline btn-default" data-toggle="tooltip" title="点击展示条形图数据">条形图
-                                    </button>-->
-                                    <button id="pieChartBtn" class="btn btn-outline btn-default" data-toggle="tooltip"
-                                            title="点击展示饼状图数据">饼状图
-                                    </button>
+                        <!--按钮组-->
+                        <div class="row">
+                            <div class="btn-group pull-right" align="right">
+                                <div id="tableBtn" class="btn btn-default"
+                                     data-toggle="tooltip" title="点击隐藏/展示表格数据">表格
                                 </div>
+                                <button id="histogramBtn" class="btn btn-outline btn-default" data-toggle="tooltip"
+                                        title="点击展示柱状图数据">柱状图
+                                </button>
+                                <!--<button id="barGraphBtn" class="btn btn-outline btn-default" data-toggle="tooltip" title="点击展示条形图数据">条形图
+                                </button>-->
+                                <button id="pieChartBtn" class="btn btn-outline btn-default" data-toggle="tooltip"
+                                        title="点击展示饼状图数据">饼状图
+                                </button>
                             </div>
-                            <!--Echarts表格-->
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-12">
-                                    <div id="echartsArea" style="width: 700px;height:550px;"></div>
-                                </div>
+                        </div>
+                        <!--Echarts表格-->
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12">
+                                <div id="echartsArea" style="width: 700px;height:550px;"></div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -75,6 +74,7 @@
 
 <script src="../../js/jquery.min.js"></script>
 <script src="../../js/plugins/echarts/echarts.min.js"></script>
+<script src="../../js/plugins/layer/layer.min.js"></script>
 <script src="../../js/myJs/displayEcharts.js"></script>
 </body>
 

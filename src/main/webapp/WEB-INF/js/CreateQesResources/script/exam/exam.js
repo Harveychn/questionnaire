@@ -176,6 +176,9 @@ var exam = {
                     'font-size': ''
                 });
             }
+
+            $(this).html('<span style="font-size:18px;"></span>');
+
             $('.cq-into-edit .cq-edit-title').css({
                 'min-height': $(this).height() + 'px',
                 'padding-top': ($(this).outerHeight() - $(this).height()) / 2 + 'px',
@@ -185,6 +188,7 @@ var exam = {
             $(document).one('click', function () {
                 $('.cq-into-edit').remove();
             });
+
             $(document).on('click', '.cq-into-edit', function (e) {
                 e.stopPropagation();
             });

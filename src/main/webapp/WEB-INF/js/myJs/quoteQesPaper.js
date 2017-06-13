@@ -30,7 +30,7 @@ function getQesVOData(isDone, isTemplate) {
 
     var $qesPaperTitle = $('#questionnaireTitle');
     var qesTitleStr = $qesPaperTitle.find('span').html().toString();
-    if ($qesPaperTitle.hasClass('bg-danger') || qesTitleStr === '这里填写问卷标题') {
+    if ($qesPaperTitle.hasClass('bg-danger') || qesTitleStr === '这里填写问卷标题' || qesTitleStr === '') {
         layer.alert('请先填写正确问卷标题！', {icon: 7});
         return;
     }

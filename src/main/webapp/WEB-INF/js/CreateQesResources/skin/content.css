@@ -233,6 +233,7 @@ a.cotrlBtn.active {
 
 .questions-head-title h4 {
     width: 92%;
+    height: 40px;
     padding: 10px 5px;
     min-height: 20px;
     line-height: 20px;

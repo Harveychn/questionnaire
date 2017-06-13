@@ -16,6 +16,7 @@ import org.apache.xmlbeans.impl.xb.xsdschema.OpenAttrs;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -208,6 +209,8 @@ public class QesManageServiceImpl implements QesManageService {
             //删除question表格中的问题信息
             try {
                 questionMapper.deleteByExample(questionExample);
+            } catch (DataIntegrityViolationException e) {
+                logger.trace(e.getMessage());
             } catch (Exception e) {
                 logger.error(e.getMessage());
                 throw new OperateDBException(CodeForVOEnum.DB_DELETE_FAIL,
@@ -219,6 +222,8 @@ public class QesManageServiceImpl implements QesManageService {
         qesPaperExample.createCriteria().andQuestionnaireIdIn(questionnaireIds);
         try {
             questionnaireMapper.deleteByExample(qesPaperExample);
+        } catch (DataIntegrityViolationException e) {
+            logger.trace(e.getMessage());
         } catch (Exception e) {
             logger.error(e.getMessage());
             throw new OperateDBException(CodeForVOEnum.DB_DELETE_FAIL,

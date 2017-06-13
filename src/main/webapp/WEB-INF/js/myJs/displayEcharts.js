@@ -13,7 +13,7 @@ var $questionTableData = $('#questionTableData');
 //当前问卷结果分析数据
 var analyzeResultData;
 
-$(function() {
+$(function () {
     //初始化时样式
     //显示加载中样式
     myChart.showLoading();
@@ -23,27 +23,41 @@ $(function() {
         type: 'get',
         async: false,
         dataType: 'json',
-        success: function(data) {
-            analyzeResultData = data;
+        success: function (responseData) {
+            if (responseData.code === 200) {
+                analyzeResultData = responseData.data;
+            }
+            if (responseData.code === 600) {
+                layer.confirm(responseData.message,
+                    {
+                        icon: 7,
+                        title: '提示',
+                        btn: ['关闭界面']
+                    }, function (index) {
+                        layer.close(index);
+                        window.close();
+                    });
+            }
         },
-        error: function(data) {
-            console.log(data);
+        error: function (data) {
+            console.error(data);
         }
     });
 
-    for(var i = 0; i < analyzeResultData.length; i++) {
-        $questionList.append('<button class="list-group-item btn" style="text-align: left;" id="' + analyzeResultData[i].questionId +
-            '" onclick="clickQuestionListItem(this.id)">第' +
-            (i + 1) + '题  ' + analyzeResultData[i].questionContent + '(' + analyzeResultData[i].questionType + ')</button>');
-        if(i === 0) {
-            $curQuestionContent.html('第' +
-                (i + 1) + '题  ' + analyzeResultData[i].questionContent + '(' + analyzeResultData[i].questionType + ')');
-            //设置表格的数据
-            setTableBodyData(i);
+    if ('undefined' !== typeof analyzeResultData) {
+        for (var i = 0; i < analyzeResultData.length; i++) {
+            $questionList.append('<button class="list-group-item btn" style="text-align: left;" id="' + analyzeResultData[i].questionId +
+                '" onclick="clickQuestionListItem(this.id)">第' +
+                (i + 1) + '题  ' + analyzeResultData[i].questionContent + '(' + analyzeResultData[i].questionType + ')</button>');
+            if (i === 0) {
+                $curQuestionContent.html('第' +
+                    (i + 1) + '题  ' + analyzeResultData[i].questionContent + '(' + analyzeResultData[i].questionType + ')');
+                //设置表格的数据
+                setTableBodyData(i);
+            }
         }
+        initEchartData();
     }
-
-    initEchartData();
 });
 
 var curQuestionAnalyzeData = {};
@@ -103,7 +117,7 @@ function initEchartData() {
                 itemStyle: {
                     normal: {
                         //设置随机颜色
-                        color: function(params) {
+                        color: function (params) {
                             // 颜色列表
                             var colorList = [
                                 '#C1232B', '#B5C334', '#FCCE10', '#E87C25', '#27727B',
@@ -134,8 +148,8 @@ function initEchartData() {
 }
 
 function clickQuestionListItem(qesId) {
-    for(var i = 0; i < analyzeResultData.length; i++) {
-        if(analyzeResultData[i].questionId == qesId) {
+    for (var i = 0; i < analyzeResultData.length; i++) {
+        if (analyzeResultData[i].questionId == qesId) {
             curQuestionAnalyzeData.categories = analyzeResultData[i].optionList;
             curQuestionAnalyzeData.data = analyzeResultData[i].valueList;
             $curQuestionContent.html('第' +
@@ -155,15 +169,15 @@ function setTableBodyData(i) {
     var valueList = analyzeResultData[i].valueList;
     var sumValue = 0;
     var rowDataArray = [];
-    for(var index = 0; index < valueList.length; index++) {
+    for (var index = 0; index < valueList.length; index++) {
         sumValue += valueList[index];
         var tableRowData = {};
         tableRowData.option = optionList[index];
         tableRowData.value = valueList[index];
         rowDataArray.push(tableRowData);
     }
-    for(var rowindex = 0; rowindex < rowDataArray.length; rowindex++) {
-        if(sumValue === 0) {
+    for (var rowindex = 0; rowindex < rowDataArray.length; rowindex++) {
+        if (sumValue === 0) {
             $tableBody.append('<tr>' +
                 '<td>' + rowDataArray[rowindex].option + '</td>' +
                 '<td>' + rowDataArray[rowindex].value + '</td>' +
@@ -228,7 +242,7 @@ function dynamicDataChange(dynamicDataChange) {
                 itemStyle: {
                     normal: {
                         //设置随机颜色
-                        color: function(params) {
+                        color: function (params) {
                             // 颜色列表
                             var colorList = [
                                 '#C1232B', '#B5C334', '#FCCE10', '#E87C25', '#27727B',
@@ -268,7 +282,7 @@ $('#tableBtn').on('click', function () {
 });
 
 //点击柱状图
-$('#histogramBtn').on('click', function() {
+$('#histogramBtn').on('click', function () {
     myChart.showLoading();
     //设置数据
     myChart.hideLoading();
@@ -320,7 +334,7 @@ $('#histogramBtn').on('click', function() {
                 itemStyle: {
                     normal: {
                         //设置随机颜色
-                        color: function(params) {
+                        color: function (params) {
                             // 颜色列表
                             var colorList = [
                                 '#C1232B', '#B5C334', '#FCCE10', '#E87C25', '#27727B',
@@ -348,11 +362,11 @@ $('#histogramBtn').on('click', function() {
 });
 
 //点击扇形图后样式
-$('#pieChartBtn').on('click', function() {
+$('#pieChartBtn').on('click', function () {
     myChart.showLoading();
     var resultData = [];
     var dataLength = curQuestionAnalyzeData.data.length;
-    for(var i = 0; i < dataLength; i++) {
+    for (var i = 0; i < dataLength; i++) {
         var dataItem = {};
         dataItem.name = curQuestionAnalyzeData.categories[i];
         dataItem.value = curQuestionAnalyzeData.data[i];
@@ -420,7 +434,7 @@ $('#pieChartBtn').on('click', function() {
  * @param optionType
  */
 function setEchartOption(optionType) {
-    if(optionType && typeof optionType === "object") {
+    if (optionType && typeof optionType === "object") {
         myChart.setOption(optionType, true);
     }
 }

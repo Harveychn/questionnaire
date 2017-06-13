@@ -22,7 +22,6 @@ public enum CodeForVOEnum {
     DB_SELECT_SUCCESS(3, "查询数据成功!"),
     DB_DELETE_SUCCESS(4, "删除数据成功!"),
 
-
     /*用户信息校验编码*/
     VALIDA_FAIL(9, "校验失败"),
     VALIDA_OK(10, "校验成功!"),
@@ -31,6 +30,9 @@ public enum CodeForVOEnum {
     NO_PERMISSION(13, "用户无相应权限!"),
     OLD_PASSWORD_ERROR(14, "旧密码错误!"),
     NEW_USER_AUTHORITY_VO_DATA_ERROR(15, "用户权限信息数据错误!"),
+
+    /*结果分析无数据*/
+    NO_RESULT_FOR_ANALYZE(600, "目前还没有结果数据的提交！"),
 
     /*参数校验信息编码*/
     VALID_FAIL_CREATE_QUESTIONNAIRE(-1000, "创建问卷视图数据校验失败!"),

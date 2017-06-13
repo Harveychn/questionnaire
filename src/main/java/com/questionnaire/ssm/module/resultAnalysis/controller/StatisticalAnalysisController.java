@@ -1,7 +1,9 @@
 package com.questionnaire.ssm.module.resultAnalysis.controller;
 
+import com.questionnaire.ssm.module.global.enums.CodeForVOEnum;
+import com.questionnaire.ssm.module.global.pojo.ResponsePkt;
+import com.questionnaire.ssm.module.global.util.ResultUtil;
 import com.questionnaire.ssm.module.resultAnalysis.pojo.StatisticalAnalysisResultVO;
-import com.questionnaire.ssm.module.resultAnalysis.service.PrimaryDataService;
 import com.questionnaire.ssm.module.resultAnalysis.service.StatisticalAnalysisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,7 +38,6 @@ public class StatisticalAnalysisController {
         ModelAndView modelAndView = new ModelAndView();
         this.missionId = missionId;
         this.missionPaperId = missionPaperId;
-//        modelAndView.addObject("displayAnalysisVO",);
         modelAndView.setViewName("statisticalAnalysis/analyzeResult");
         return modelAndView;
     }
@@ -48,19 +49,21 @@ public class StatisticalAnalysisController {
      */
     @GetMapping(value = "/getQesPaperAnalyzeResult")
     @ResponseBody
-    public List<StatisticalAnalysisResultVO> getQesPaperAnalyzeResult() throws Exception {
-        return statisticalAnalysisService.getQesPaperAnalyzeResult(this.missionId, this.missionPaperId);
+    public ResponsePkt getQesPaperAnalyzeResult() throws Exception {
+        List<StatisticalAnalysisResultVO> resultVOList = statisticalAnalysisService.getQesPaperAnalyzeResult(this.missionId, this.missionPaperId);
+        if (resultVOList == null) {
+            return ResultUtil.error(CodeForVOEnum.NO_RESULT_FOR_ANALYZE.getCode(),
+                    CodeForVOEnum.NO_RESULT_FOR_ANALYZE.getMessage());
+        }
+        return ResultUtil.success(resultVOList);
     }
 
     private String missionId;
     private String missionPaperId;
     private StatisticalAnalysisService statisticalAnalysisService;
-    private PrimaryDataService primaryDataService;
 
     @Autowired
-    public StatisticalAnalysisController(StatisticalAnalysisService statisticalAnalysisService,
-                                         PrimaryDataService primaryDataService) {
+    public StatisticalAnalysisController(StatisticalAnalysisService statisticalAnalysisService) {
         this.statisticalAnalysisService = statisticalAnalysisService;
-        this.primaryDataService=primaryDataService;
     }
 }

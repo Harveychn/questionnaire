@@ -103,9 +103,12 @@ window.operateEvents = {
             btnAlign: 'r',
             moveType: 1, //拖拽模式，0或者1
             content: '<div style="padding: 50px; line-height: 22px; background-color: #d9d9d9; color: #000; font-weight: 400;">' +
-            '<h2 align="center">' + row.noticeTitle + '</h2><hr/>' +
-            '<h4 style="font-weight: 500">公告内容：</h4>&emsp;' + row.noticeContext + '<hr>' +
-            '<h4 style="font-weight: 500">预计发布时间：</h4>&emsp;' + row.noticeLaunchDate + '<hr>' +
+            '<h2 align="center">' + row.noticeTitle + '</h2>' +
+            '<div style="background-color: #363636;height:1px;border: none;"></div>' +
+            '<h4 style="font-weight: 500">公告内容：</h4>&emsp;' + row.noticeContext +
+            '<hr/>' +
+            '<h4 style="font-weight: 500">预计发布时间：</h4>&emsp;' + row.noticeLaunchDate +
+            '<hr>' +
             '<h4 style="font-weight: 500">发布对象单位：</h4>' + unitObjElem + '</div>'
         });
 
