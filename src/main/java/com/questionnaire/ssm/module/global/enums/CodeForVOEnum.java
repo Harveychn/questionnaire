@@ -30,6 +30,9 @@ public enum CodeForVOEnum {
     NO_PERMISSION(13, "用户无相应权限!"),
     OLD_PASSWORD_ERROR(14, "旧密码错误!"),
     NEW_USER_AUTHORITY_VO_DATA_ERROR(15, "用户权限信息数据错误!"),
+    NO_SUCH_USER_INFO(16, "系统不存在该账户相关信息！"),
+    VERIFY_CODE_ERROR(17, "短信校验码错误！"),
+    VERIFY_CODE_TIMEOUT(18, "短信校验码过期！"),
 
     /*结果分析无数据*/
     NO_RESULT_FOR_ANALYZE(600, "目前还没有结果数据的提交！"),

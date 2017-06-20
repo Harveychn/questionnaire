@@ -2,14 +2,11 @@ package com.questionnaire.ssm.module.login.service.impl;
 
 import com.questionnaire.ssm.module.generated.mapper.UserMapper;
 import com.questionnaire.ssm.module.generated.pojo.User;
-import com.questionnaire.ssm.module.global.constant.CONSTANT;
 import com.questionnaire.ssm.module.global.enums.CodeForVOEnum;
 import com.questionnaire.ssm.module.global.enums.DBTableEnum;
 import com.questionnaire.ssm.module.global.exception.OperateDBException;
 import com.questionnaire.ssm.module.global.exception.UserValidaException;
 import com.questionnaire.ssm.module.global.service.UnitService;
-import com.questionnaire.ssm.module.global.util.UserValidationUtil;
-import com.questionnaire.ssm.module.login.pojo.ForgetPasswordVO;
 import com.questionnaire.ssm.module.login.pojo.NewPasswordVO;
 import com.questionnaire.ssm.module.login.service.UserService;
 import com.questionnaire.ssm.module.login.utils.UserUtil;
@@ -25,27 +22,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService {
 
-    /**
-     * 更新用户密码
-     *
-     * @param newPasswordVO 新密码实体
-     * @throws Exception
-     */
     @Override
-    public void updateUserPassword(NewPasswordVO newPasswordVO) throws Exception {
-
-        User userNew = null;
-
-        String userTel = UserValidationUtil.getUserTel(logger);
-        try {
-            userNew = userMapper.selectByPrimaryKey(userTel);
-        } catch (Exception e) {
-            logger.error(CodeForVOEnum.UNKNOWN_ERROR.getMessage() + "\n" + DBTableEnum.USER.getTableName());
-            throw new OperateDBException(CodeForVOEnum.UNKNOWN_ERROR, DBTableEnum.USER.getTableName());
-        }
-        if (userNew == null) {
-            throw new OperateDBException(CodeForVOEnum.DB_SELECT_FAIL, DBTableEnum.USER.getTableName());
-        }
+    public void updateUserPassword(String userTel, NewPasswordVO newPasswordVO) throws Exception {
+        User userNew = getUserByUserTel(userTel);
 
         String oldPassword = userNew.getPassword();
         userNew.setPassword(newPasswordVO.getOldPassword());
@@ -53,49 +32,58 @@ public class UserServiceImpl implements UserService {
         if (!oldPassword.equals(UserUtil.encodePassword(userNew))) {
             throw new UserValidaException(CodeForVOEnum.OLD_PASSWORD_ERROR);
         }
-
+        //设置新密码
         userNew.setPassword(newPasswordVO.getNewPassword());
-
-        int result = 0;
-        try {
-            result = userMapper.updateByPrimaryKeySelective(UserUtil.encoded(userNew));
-        } catch (Exception e) {
-            logger.error(CodeForVOEnum.UNKNOWN_ERROR.getMessage() + "\n" + DBTableEnum.USER.getTableName());
-            throw new OperateDBException(CodeForVOEnum.UNKNOWN_ERROR, DBTableEnum.USER.getTableName());
-        }
-        if (result != 1) {
-            throw new OperateDBException(CodeForVOEnum.DB_UPDATE_FAIL, DBTableEnum.USER.getTableName());
-        }
+        //加密后保存
+        updateUserPwd(userNew);
     }
 
-    /**
-     * 用户登录系统记录信息
-     *
-     * @param userLoginRecord 用户登录系统数据
-     * @throws Exception
-     */
+    @Override
+    public void resetUserPwd(String userTel, String aNewPwd) throws Exception {
+        User curUserInfo = getUserByUserTel(userTel);
+        //设置新密码
+        curUserInfo.setPassword(aNewPwd);
+        //加密后保存
+        updateUserPwd(curUserInfo);
+    }
+
     @Override
     public void updateUserLoginRecord(User userLoginRecord) throws Exception {
         userMapper.updateByPrimaryKeySelective(userLoginRecord);
     }
 
-    @Override
-    public void changeForgetPassword(ForgetPasswordVO forgetPasswordVO)throws Exception{
-        User userNew=null;
-        try{
-            userNew=userMapper.selectByPrimaryKey(forgetPasswordVO.getUserTel());
-        }catch (Exception e){
+    /**
+     * 根据用户名查找数据库中用户信息
+     *
+     * @param userTel
+     * @return
+     * @throws Exception
+     */
+    private User getUserByUserTel(String userTel) throws Exception {
+        User curUser = null;
+
+        try {
+            curUser = userMapper.selectByPrimaryKey(userTel);
+        } catch (Exception e) {
+            logger.error(CodeForVOEnum.UNKNOWN_ERROR.getMessage() + "\n" + DBTableEnum.USER.getTableName());
             throw new OperateDBException(CodeForVOEnum.UNKNOWN_ERROR, DBTableEnum.USER.getTableName());
         }
-        if (userNew == null) {
+        if (curUser == null) {
             throw new OperateDBException(CodeForVOEnum.DB_SELECT_FAIL, DBTableEnum.USER.getTableName());
         }
+        return curUser;
+    }
 
-        userNew.setPassword(forgetPasswordVO.getNewPassword());
-
+    /**
+     * 加密新的密码并更新保存到数据库中
+     *
+     * @param aNewPwdInfo
+     * @throws Exception
+     */
+    private void updateUserPwd(User aNewPwdInfo) throws Exception {
         int result = 0;
         try {
-            result = userMapper.updateByPrimaryKeySelective(UserUtil.encoded(userNew));
+            result = userMapper.updateByPrimaryKeySelective(UserUtil.encoded(aNewPwdInfo));
         } catch (Exception e) {
             logger.error(CodeForVOEnum.UNKNOWN_ERROR.getMessage() + "\n" + DBTableEnum.USER.getTableName());
             throw new OperateDBException(CodeForVOEnum.UNKNOWN_ERROR, DBTableEnum.USER.getTableName());
@@ -103,7 +91,6 @@ public class UserServiceImpl implements UserService {
         if (result != 1) {
             throw new OperateDBException(CodeForVOEnum.DB_UPDATE_FAIL, DBTableEnum.USER.getTableName());
         }
-
     }
 
     private final static Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);

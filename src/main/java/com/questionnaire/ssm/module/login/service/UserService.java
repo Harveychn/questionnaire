@@ -1,7 +1,6 @@
 package com.questionnaire.ssm.module.login.service;
 
 import com.questionnaire.ssm.module.generated.pojo.User;
-import com.questionnaire.ssm.module.login.pojo.ForgetPasswordVO;
 import com.questionnaire.ssm.module.login.pojo.NewPasswordVO;
 
 /**
@@ -12,10 +11,20 @@ public interface UserService {
     /**
      * 更新用户密码
      *
+     * @param userTel       账户
      * @param newPasswordVO
      * @throws Exception
      */
-    void updateUserPassword(NewPasswordVO newPasswordVO) throws Exception;
+    void updateUserPassword(String userTel, NewPasswordVO newPasswordVO) throws Exception;
+
+    /**
+     * 重置用户密码
+     *
+     * @param userTel 要重置的用户密码
+     * @param aNewPwd 新的密码
+     * @throws Exception
+     */
+    void resetUserPwd(String userTel, String aNewPwd) throws Exception;
 
     /**
      * 用户登录系统记录
@@ -24,11 +33,4 @@ public interface UserService {
      * @throws Exception
      */
     void updateUserLoginRecord(User userLoginRecord) throws Exception;
-
-    /**
-     * 更改忘记的密码
-     * @param forgetPasswordVO
-     * @throws Exception
-     */
-    void changeForgetPassword(ForgetPasswordVO forgetPasswordVO)throws Exception;
 }

@@ -1,11 +1,11 @@
 package com.questionnaire.ssm.module.login.controller;
 
 import com.questionnaire.ssm.module.generated.pojo.User;
-import com.questionnaire.ssm.module.global.pojo.ResponsePkt;
-import com.questionnaire.ssm.module.global.util.ResultUtil;
-import com.questionnaire.ssm.module.login.pojo.ForgetPasswordVO;
+import com.questionnaire.ssm.module.global.constant.CONSTANT;
+import com.questionnaire.ssm.module.global.util.UserValidationUtil;
 import com.questionnaire.ssm.module.login.pojo.LoginVO;
 import com.questionnaire.ssm.module.login.pojo.NewPasswordVO;
+import com.questionnaire.ssm.module.login.service.LoginService;
 import com.questionnaire.ssm.module.login.service.UserService;
 import com.questionnaire.ssm.module.login.utils.UserUtil;
 import org.apache.shiro.SecurityUtils;
@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * 用户登录管理，登陆成功后
@@ -33,6 +34,12 @@ public class SysUserController {
 
     private static final Logger logger = LoggerFactory.getLogger(SysUserController.class);
 
+    /**
+     * 获取登录登录视图
+     *
+     * @return
+     * @throws Exception
+     */
     @GetMapping(value = "/getLoginView")
     public ModelAndView getLoginView() throws Exception {
         ModelAndView modelAndView = new ModelAndView();
@@ -42,6 +49,15 @@ public class SysUserController {
         return modelAndView;
     }
 
+    /**
+     * 登录
+     *
+     * @param loginVO
+     * @param bindingResult
+     * @param request
+     * @return
+     * @throws Exception
+     */
     @PostMapping(value = "/login")
     public ModelAndView login(@Valid LoginVO loginVO, BindingResult bindingResult, HttpServletRequest request) throws Exception {
         ModelAndView modelAndView = new ModelAndView();
@@ -68,7 +84,18 @@ public class SysUserController {
 
         subject.getSession().setAttribute("userTel", loginVO.getUserTel());
         modelAndView.addObject("user", loginVO);
-        modelAndView.setViewName("index");
+
+        Set<String> userRoleSet = loginService.listUserRole(loginVO.getUserTel());
+        if (userRoleSet.contains(CONSTANT.getRoleSystemAdmin())) {
+            modelAndView.setViewName("SystemAdminIndex");
+        }
+        if (userRoleSet.contains(CONSTANT.getRoleCenterAdmin())) {
+            modelAndView.setViewName("CenterAdminIndex");
+        }
+        if (userRoleSet.contains(CONSTANT.getRoleResearcher())) {
+            modelAndView.setViewName("login/nonPrivilegedTip");
+        }
+
         return modelAndView;
     }
 
@@ -81,58 +108,44 @@ public class SysUserController {
         return "redirect:/user/getLoginView";
     }
 
+    /**
+     * 获取的新密码视图
+     *
+     * @param model
+     * @return
+     * @throws Exception
+     */
     @GetMapping(value = "/newPasswordView")
     public String newPasswordView(Model model) throws Exception {
         model.addAttribute("newPasswordVO", new NewPasswordVO());
         return "login/changePassword";
     }
 
+    /**
+     * 修改密码
+     *
+     * @param newPasswordVO
+     * @param result
+     * @return
+     * @throws Exception
+     */
     @PostMapping(value = "/changPassword")
     public String changPassword(@Valid NewPasswordVO newPasswordVO, BindingResult result) throws Exception {
         if (result.hasErrors()) {
             return "login/changePassword";
         }
-        userService.updateUserPassword(newPasswordVO);
+        String userTel = UserValidationUtil.getUserTel(logger);
+        userService.updateUserPassword(userTel, newPasswordVO);
         return "login/newKeySuccess";
     }
 
-    /**
-     * 获取忘记密码短信验证视图
-     * @return
-     * @throws Exception
-     */
-    @GetMapping(value = "getForgetPasswordView" )
-    public String getForgetPasswordView(Model model)throws Exception{
-        model.addAttribute("ForgetPasswordVO", new ForgetPasswordVO());
-        return "login/forgetPassword";
-    }
-
-//    /**
-//     * 获得短信验证码
-//     * @return
-//     * @throws Exception
-//     */
-//    @PostMapping(value="getVerificationCode")
-//    public ResponsePkt getVerificationCode()throws Exception{
-//
-//        return ResultUtil.success();
-//    }
-
-    /**
-     * 验证短信验证码并修改密码
-     * @return
-     * @throws Exception
-     */
-    @PostMapping(value = "changeForgetPassword")
-    public String changeForgetPassword()throws Exception{
-        return "login/login";
-    }
-
-
     private UserService userService;
+    private LoginService loginService;
 
     @Autowired
-    public SysUserController(UserService userService) {
+    public SysUserController(UserService userService,
+                             LoginService loginService) {
         this.userService = userService;
+        this.loginService = loginService;
     }
 }
