@@ -28,10 +28,9 @@ function getQesVOData(isDone, isTemplate) {
     dataBase.done = isDone;
     dataBase.template = isTemplate;
 
-    var $qesPaperTitle = $('#questionnaireTitle');
-    var qesTitleStr = $qesPaperTitle.find('span').html().toString();
-    if ($qesPaperTitle.hasClass('bg-danger') || qesTitleStr === '这里填写问卷标题' || qesTitleStr === '') {
-        layer.alert('请先填写正确问卷标题！', {icon: 7});
+    var qesTitleStr = $('#questionnaireTitle').val();
+    if (qesTitleStr.match(/^\s*$/)) {
+        layer.alert('问卷标题不得为空！', {icon: 7});
         return;
     }
     dataBase.questionnaireTitle = qesTitleStr;

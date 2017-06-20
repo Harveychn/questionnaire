@@ -94,8 +94,6 @@ public class RetrievePwdController {
         req.setSmsTemplateCode("SMS_71220922");
         AlibabaAliqinFcSmsNumSendResponse rsp = client.execute(req);
 
-        System.out.println(rsp);
-
         return ResultUtil.success(rsp.getBody());
     }
 
@@ -132,6 +130,10 @@ public class RetrievePwdController {
     @PostMapping(value = "/resetPwd")
     @ResponseBody
     public ResponsePkt resetPwd(String newPwdStr, HttpSession httpSession) throws Exception {
+        if (newPwdStr.length() < 6) {
+            return ResultUtil.error(CodeForVOEnum.PASSWORD_TOO_SHORT.getCode(),
+                    CodeForVOEnum.PASSWORD_TOO_SHORT.getMessage());
+        }
         if (this.userTel == null) {
             return ResultUtil.error(CodeForVOEnum.REQUEST_ERROR.getCode(),
                     CodeForVOEnum.REQUEST_ERROR.getMessage());
@@ -143,7 +145,6 @@ public class RetrievePwdController {
         userService.resetUserPwd(this.userTel, newPwdStr);
         return ResultUtil.success();
     }
-
 
 
     //正在操作的用户

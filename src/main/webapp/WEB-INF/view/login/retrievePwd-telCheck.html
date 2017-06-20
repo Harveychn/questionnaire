@@ -127,11 +127,7 @@
 
             //发送数据到后台
             $.post('/retrievePwd/checkVCode', {phone: phoneStr, verifyCode: verifyCodeStr}, function (responseData) {
-
-                console.log(responseData);
-
                 if (200 === responseData.code) {
-                    console.log(responseData.data);
                     window.location.href = responseData.data;
                 }
                 else {

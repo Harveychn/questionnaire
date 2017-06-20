@@ -371,7 +371,7 @@ function loadDataFn() {
     $.ajaxSettings.async = false;
     $.getJSON('/QesManageRest/getEditQesPaperData', function (responseData) {
         editingQesPaperId = responseData.questionnaireId;
-        $('#questionnaireTitle').find('span').html(responseData.questionnaireTitle);
+        $('#questionnaireTitle').val(responseData.questionnaireTitle);
         $('#questionnaireSubtitle').val(responseData.questionnaireSubtitle);
         $('#questionnaireDescription').val(responseData.questionnaireDescription);
 

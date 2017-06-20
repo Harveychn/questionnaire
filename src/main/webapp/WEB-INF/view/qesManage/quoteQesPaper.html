@@ -75,8 +75,13 @@
                     <!--出题-->
                     <div class="create-questions">
                         <div class="questions-head-title">
-                            <h4 class="h4-bg T_edit T-center" data-Tid="10001" id="questionnaireTitle">
-                                <span style="font-size:18px;">这里填写问卷标题</span>
+                            <h4 class="h4-bg T-center" data-Tid="10001">
+                                <input id="questionnaireTitle"
+                                       class="form-control input-lg"
+                                       style="text-align: center;
+                                       border-radius:0px;"
+                                       onclick="editingTitleFunc(this);"
+                                       placeholder="这里填写问卷标题"/>
                             </h4>
                         </div>
                         <table class="questions-items-title">
@@ -86,7 +91,8 @@
                                 <td>
                                     <input data-Tid="10002" id="questionnaireSubtitle"
                                            class="form-control"
-                                           style="font-size:18px;border: none;color: #343434;"
+                                           style="font-size:18px;border: none;
+                                           color: #343434;text-align: right"
                                            onclick="editingTitleFunc(this);" placeholder="这里填写问卷副标题"/>
                                 </td>
                             </tr>
@@ -95,7 +101,8 @@
                                 <td>
                                     <input data-Tid="10003" id="questionnaireDescription"
                                            class="form-control"
-                                           style="font-size:18px;border: none;color: #343434;"
+                                           style="font-size:18px;border: none;
+                                           color: #343434;text-align: right"
                                            onclick="editingTitleFunc(this);" placeholder="这里填写问卷描述"/>
                                 </td>
                             </tr>

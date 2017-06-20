@@ -33,6 +33,8 @@ public enum CodeForVOEnum {
     NO_SUCH_USER_INFO(16, "系统不存在该账户相关信息！"),
     VERIFY_CODE_ERROR(17, "短信校验码错误！"),
     VERIFY_CODE_TIMEOUT(18, "短信校验码过期！"),
+    PASSWORD_TOO_SHORT(19, "密码长度不能短于6位！"),
+    USER_TEL_NULL(20, "用户名不得为空！"),
 
     /*结果分析无数据*/
     NO_RESULT_FOR_ANALYZE(600, "目前还没有结果数据的提交！"),

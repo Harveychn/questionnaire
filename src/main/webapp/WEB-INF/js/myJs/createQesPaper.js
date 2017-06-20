@@ -28,12 +28,12 @@ function getQesVOData(isDone, isTemplate) {
     dataBase.done = isDone;
     dataBase.template = isTemplate;
 
-    var $qesPaperTitle = $('#questionnaireTitle');
-    var qesTitleStr = $qesPaperTitle.find('span').html().toString();
-    if ($qesPaperTitle.hasClass('bg-danger') || qesTitleStr === '这里填写问卷标题' || qesTitleStr === '') {
-        layer.alert('请先填写正确问卷标题！', {icon: 7});
+    var qesTitleStr = $('#questionnaireTitle').val();
+    if (qesTitleStr.match(/^\s*$/)) {
+        layer.alert('问卷标题不得为空！', {icon: 7});
         return;
     }
+
     dataBase.questionnaireTitle = qesTitleStr;
 
     dataBase.questionnaireSubtitle = $('#questionnaireSubtitle').val();
@@ -111,7 +111,8 @@ function getQesVOData(isDone, isTemplate) {
     if (!isNoError) {
         return;
     }
-    // console.log(JSON.stringify(dataBase));
+
+    // console.debug(JSON.stringify(dataBase));
 
     //访问服务器
     var url = '/questionnaireManage/create';
@@ -132,8 +133,8 @@ function submitQesDataByJson(url, jsonData) {
                     time: 2000,
                     shade: 0.5,
                     closeBtn: 1
-                },function () {
-                    window.location.href="/questionnaireManage/getListMyQesPaperView";
+                }, function () {
+                    window.location.href = "/questionnaireManage/getListMyQesPaperView";
                 });
             }
             dealGlobalError(data);
