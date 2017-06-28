@@ -46,12 +46,19 @@ $(function () {
 
     if ('undefined' !== typeof analyzeResultData) {
         for (var i = 0; i < analyzeResultData.length; i++) {
-            $questionList.append('<button class="list-group-item btn" style="text-align: left;" id="' + analyzeResultData[i].questionId +
+            if (i === 0) {
+                $questionList.append('<button class="list-group-item btn" ' +
+                    'style="text-align: left; background-color: #9ce39b;" id="' + analyzeResultData[i].questionId +
+                    '" onclick="clickQuestionListItem(this.id)">第' +
+                    (i + 1) + '题  ' + analyzeResultData[i].questionContent + '(' + analyzeResultData[i].questionType + ')</button>');
+                continue;
+            }
+            $questionList.append('<button class="list-group-item btn" ' +
+                'style="text-align: left;" id="' + analyzeResultData[i].questionId +
                 '" onclick="clickQuestionListItem(this.id)">第' +
                 (i + 1) + '题  ' + analyzeResultData[i].questionContent + '(' + analyzeResultData[i].questionType + ')</button>');
             if (i === 0) {
-                $curQuestionContent.html('第' +
-                    (i + 1) + '题  ' + analyzeResultData[i].questionContent + '(' + analyzeResultData[i].questionType + ')');
+                $curQuestionContent.html('第' + (i + 1) + '题  ' + analyzeResultData[i].questionContent + '(' + analyzeResultData[i].questionType + ')');
                 //设置表格的数据
                 setTableBodyData(i);
             }
@@ -149,12 +156,15 @@ function initEchartData() {
 
 function clickQuestionListItem(qesId) {
     for (var i = 0; i < analyzeResultData.length; i++) {
+        //设置问题栏背景色
+        var $questionList = $('#questionList');
+        $questionList.find('button[id=' + qesId + ']').attr('style', 'text-align: left;background-color: #9ce39b;');
+        $questionList.find('button[id!=' + qesId + ']').attr('style', 'text-align: left;');
         if (analyzeResultData[i].questionId == qesId) {
             curQuestionAnalyzeData.categories = analyzeResultData[i].optionList;
             curQuestionAnalyzeData.data = analyzeResultData[i].valueList;
             $curQuestionContent.html('第' +
                 (i + 1) + '题  ' + analyzeResultData[i].questionContent + '(' + analyzeResultData[i].questionType + ')');
-
             //设置表格数据
             setTableBodyData(i);
         }
@@ -283,6 +293,8 @@ $('#tableBtn').on('click', function () {
 
 //点击柱状图
 $('#histogramBtn').on('click', function () {
+    $(this).attr('class', 'btn btn-outline btn-warning');
+    $('#pieChartBtn').attr('class', 'btn btn-outline btn-default');
     myChart.showLoading();
     //设置数据
     myChart.hideLoading();
@@ -363,6 +375,8 @@ $('#histogramBtn').on('click', function () {
 
 //点击扇形图后样式
 $('#pieChartBtn').on('click', function () {
+    $(this).attr('class', 'btn btn-outline btn-warning');
+    $('#histogramBtn').attr('class', 'btn btn-outline btn-default');
     myChart.showLoading();
     var resultData = [];
     var dataLength = curQuestionAnalyzeData.data.length;
@@ -375,11 +389,6 @@ $('#pieChartBtn').on('click', function () {
     myChart.hideLoading();
     //扇形图 option
     var pieChartOption = {
-        // title: {
-        //     text: '某站点用户访问来源',
-        //     subtext: '纯属虚构',
-        //     x: 'center'
-        // },
         tooltip: {
             trigger: 'item',
             formatter: "{a} <br/>{b} : {c} ({d}%)"
