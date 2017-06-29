@@ -47,7 +47,7 @@ public class Add2LibraryServiceImpl implements Add2LibraryService {
     }
 
     /**
-     * 分享问卷（复制问卷信息并且重新组织问卷-题目对应关系）
+     * 复制问卷信息并且重新组织问卷-题目对应关系
      *
      * @param questionnaireId 被操作问卷id
      * @param copiedQesPaper  复制的问卷
@@ -56,8 +56,8 @@ public class Add2LibraryServiceImpl implements Add2LibraryService {
      */
     @Override
     @Transactional
-    public Long Add2PublicOrPrivateLibrary(Long questionnaireId, Questionnaire copiedQesPaper) throws Exception {
-
+    public Long copiedQesPaperId(Long questionnaireId, Questionnaire copiedQesPaper) throws Exception {
+        //插入新的问卷信息
         try {
             questionnaireMapper.insertSelective(copiedQesPaper);
         } catch (Exception e) {
@@ -88,7 +88,6 @@ public class Add2LibraryServiceImpl implements Add2LibraryService {
                         DBTableEnum.MAPPING_QUESTIONNAIRE_QUESTION.getTableName());
             }
         }
-
         return copiedQuestionnaireId;
     }
 

@@ -2,9 +2,17 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>展示问卷视图</title>
+    <title>问卷信息</title>
     <link rel="shortcut icon" href="../../img/favicon.ico"/>
     <link href="../../css/bootstrap.min.css" rel="stylesheet"/>
+    <style>
+        .print-btn {
+            position: fixed;
+            top: 30%;
+            right: 3%;
+            z-index: 100;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
@@ -12,7 +20,7 @@
     <div class="panel panel-primary">
         <div class="panel-heading">
             <div class="panel-title">
-                问卷信息
+                问卷浏览
             </div>
         </div>
         <div class="panel-body">
@@ -148,9 +156,17 @@
     </div>
 
     <!--打印按钮-->
-    <div class="row hidden-print">
-        <div class="btn-group pull-right">
-            <button id="printQesBtn" class="btn btn-lg btn-success">打印</button>
+    <div class="row hidden-print print-btn">
+        <div class="btn-group-lg pull-right">
+            <button th:disabled="${isOutOfMinIndex == true}" id="prevPaperBtn" class="btn btn-default btn-block"
+                    data-toggle="tooltip" title="上一份">
+                <i class="glyphicon glyphicon-chevron-up"></i>
+            </button>
+            <button id="printQesBtn" class="btn btn-default btn-block">打印</button>
+            <button th:disabled="${isOutOfMaxIndex == true}" id="nextPaperBtn" class="btn btn-default btn-block"
+                    data-toggle="tooltip" title="下一份">
+                <i class="glyphicon glyphicon-chevron-down"></i>
+            </button>
         </div>
     </div>
 </div>
@@ -161,6 +177,12 @@
         $('#printQesBtn').on('click', function () {
             window.print();
         });
+        $('#prevPaperBtn').on('click', function () {
+            window.location.href = '/questionnaireManage/displayPrevQesPaper';
+        });
+        $('#nextPaperBtn').on('click', function () {
+            window.location.href = '/questionnaireManage/displayNextQesPaper';
+        })
     });
 </script>
 

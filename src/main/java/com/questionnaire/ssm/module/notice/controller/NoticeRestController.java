@@ -3,7 +3,9 @@ package com.questionnaire.ssm.module.notice.controller;
 import com.questionnaire.ssm.module.global.pojo.ResponsePkt;
 import com.questionnaire.ssm.module.global.util.ResultUtil;
 import com.questionnaire.ssm.module.global.util.UserValidationUtil;
-import com.questionnaire.ssm.module.notice.pojo.NoticeForSurveyorVO;
+import com.questionnaire.ssm.module.notice.enums.NoticeForCurUserActionEnum;
+import com.questionnaire.ssm.module.notice.pojo.NoticeForCurUserVO;
+import com.questionnaire.ssm.module.notice.service.Notice2MeService;
 import com.questionnaire.ssm.module.notice.service.NoticeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,26 +26,27 @@ import java.util.List;
 public class NoticeRestController {
 
     /**
-     * 获取当前用户(调查员)可查看的公告信息
+     * 获取当前用户可查看的公告信息
      *
      * @throws Exception
      */
     @GetMapping(value = "/listNoticeInfo")
     @ResponseBody
-    public ResponsePkt listNoticeForSurveyor() throws Exception {
+    public ResponsePkt listNoticeForCurUser() throws Exception {
         String userTel = UserValidationUtil.getUserTel(logger);
-        List<NoticeForSurveyorVO> noticeForSurveyorVOList = noticeService.listNoticeInfoForSurveyor(userTel);
-        if (null == noticeForSurveyorVOList) {
+        List<NoticeForCurUserVO> noticeForCurUserVOList
+                = notice2MeService.getReleasedNoticeForCurrentUser(userTel, NoticeForCurUserActionEnum.GET_ALL_RELEASED_NOTICE);
+        if (null == noticeForCurUserVOList) {
             return ResultUtil.success();
         }
-        return ResultUtil.success(noticeForSurveyorVOList);
+        return ResultUtil.success(noticeForCurUserVOList);
     }
 
-    private NoticeService noticeService;
+    private Notice2MeService notice2MeService;
     private final static Logger logger = LoggerFactory.getLogger(NoticeRestController.class);
 
     @Autowired
-    public NoticeRestController(NoticeService noticeService) {
-        this.noticeService = noticeService;
+    public NoticeRestController(Notice2MeService notice2MeService) {
+        this.notice2MeService = notice2MeService;
     }
 }

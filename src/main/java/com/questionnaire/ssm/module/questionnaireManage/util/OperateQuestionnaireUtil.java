@@ -2,6 +2,8 @@ package com.questionnaire.ssm.module.questionnaireManage.util;
 
 import com.questionnaire.ssm.module.generated.pojo.MappingQuestionnaireQuestion;
 import com.questionnaire.ssm.module.generated.pojo.Questionnaire;
+import com.questionnaire.ssm.module.global.enums.CodeForVOEnum;
+import com.questionnaire.ssm.module.global.exception.UserValidaException;
 import com.questionnaire.ssm.module.global.util.UserValidationUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,7 +15,6 @@ import java.util.Date;
  * Description: 操作问卷动作的工具包
  */
 public class OperateQuestionnaireUtil {
-
     /**
      * 删除个人问卷到回收站
      *
@@ -22,12 +23,14 @@ public class OperateQuestionnaireUtil {
      */
     public static Questionnaire deleteQesPaperTemporaryAction() throws Exception {
         Questionnaire questionnaire = new Questionnaire();
+/*2017-5-21 移除问卷操作只变动is_visible =false*/
+//        questionnaire.setIsTemplate(false);
+//        questionnaire.setIsShare(false);
+//        questionnaire.setIsVisible(false);
+//        questionnaire.setIsDone(true);
+//        questionnaire.setIsDelete(false);
 
-        questionnaire.setIsTemplate(false);
-        questionnaire.setIsShare(false);
         questionnaire.setIsVisible(false);
-        questionnaire.setIsDone(true);
-        questionnaire.setIsDelete(false);
 
         return questionnaire;
     }
@@ -41,63 +44,33 @@ public class OperateQuestionnaireUtil {
     public static Questionnaire restoreQesPaperAction() throws Exception {
         Questionnaire questionnaire = new Questionnaire();
 
-        questionnaire.setIsTemplate(false);
-        questionnaire.setIsShare(false);
+        /*2017-5-21恢复问卷到移除时位置*/
+//        questionnaire.setIsTemplate(false);
+//        questionnaire.setIsShare(false);
+//        questionnaire.setIsVisible(true);
+//        questionnaire.setIsDone(true);
+//        questionnaire.setIsDelete(false);
         questionnaire.setIsVisible(true);
-        questionnaire.setIsDone(true);
-        questionnaire.setIsDelete(false);
         return questionnaire;
     }
 
-    /**
-     * 删除问卷永久
-     *
-     * @return
-     * @throws Exception
-     */
-    public static Questionnaire deleteQesPaperForeverAction() throws Exception {
-        Questionnaire questionnaire = new Questionnaire();
-
-        questionnaire.setIsTemplate(false);
-        questionnaire.setIsShare(false);
-        questionnaire.setIsVisible(false);
-        questionnaire.setIsDone(true);
-        questionnaire.setIsDelete(true);
-
-        return questionnaire;
-    }
-
-    /**
-     * 对被操作问卷的更新操作
-     *
-     * @return
-     * @throws Exception
-     */
-    public static Questionnaire makeShareAttrTrue() throws Exception {
-        Questionnaire questionnaire = new Questionnaire();
-
-        questionnaire.setIsShare(true);
-
-        return questionnaire;
-    }
-
-    /**
-     * 共享问卷到公共模板库
-     *
-     * @return
-     * @throws Exception
-     */
-    public static Questionnaire share2PublicTemplateAction() throws Exception {
-        Questionnaire questionnaire = new Questionnaire();
-
-        questionnaire.setIsTemplate(true);
-        questionnaire.setIsShare(true);
-        questionnaire.setIsVisible(true);
-        questionnaire.setIsDone(true);
-        questionnaire.setIsDelete(false);
-
-        return questionnaire;
-    }
+//    /**
+//     * 共享问卷到公共模板库
+//     *
+//     * @return
+//     * @throws Exception
+//     */
+//    public static Questionnaire share2PublicTemplateAction() throws Exception {
+//        Questionnaire questionnaire = new Questionnaire();
+//
+//        questionnaire.setIsTemplate(true);
+//        questionnaire.setIsShare(true);
+//        questionnaire.setIsVisible(true);
+//        questionnaire.setIsDone(true);
+//        questionnaire.setIsDelete(false);
+//
+//        return questionnaire;
+//    }
 
     /**
      * 模板化问卷
@@ -105,28 +78,51 @@ public class OperateQuestionnaireUtil {
      * @return
      * @throws Exception
      */
-    public static Questionnaire templateQesPaperAction() throws Exception {
-        Questionnaire questionnaire = new Questionnaire();
+    public static Questionnaire templateQesPaper(Questionnaire templatingQes) throws Exception {
+        Questionnaire resultQes = new Questionnaire();
 
-        questionnaire.setIsTemplate(true);
-        questionnaire.setIsShare(false);
-        questionnaire.setIsVisible(true);
-        questionnaire.setIsDone(true);
-        questionnaire.setIsDelete(false);
+        resultQes.setIsTemplate(true);
+        resultQes.setIsShare(false);
+        resultQes.setIsVisible(true);
+        resultQes.setIsDone(true);
+        resultQes.setIsRelease(false);
 
-        return questionnaire;
+        /*问卷标题不得为空*/
+        resultQes.setQuestionnaireTitle(templatingQes.getQuestionnaireTitle());
+        if (templatingQes.getQuestionnaireSubtitle() != null) {
+            resultQes.setQuestionnaireSubtitle(templatingQes.getQuestionnaireSubtitle());
+        }
+        if (templatingQes.getQuestionnaireDescription() != null) {
+            resultQes.setQuestionnaireDescription(templatingQes.getQuestionnaireDescription());
+        }
+        //问卷模板化时间
+        resultQes.setCreateTime(new Date());
+        //模板化操作的用户
+        resultQes.setCreateUser(UserValidationUtil.getUserTel(logger));
+
+        return resultQes;
     }
 
     /**
-     * 共享问卷到公共模板时，需要赋值一份新的问卷信息
+     * 添加到公共模板
+     * 需要赋值一份新的问卷信息
      *
      * @param questionnaire 要复制的问卷信息
      * @return
      * @throws Exception
      */
     public static Questionnaire copyQesPaper2Public(Questionnaire questionnaire) throws Exception {
-        Questionnaire copiedQuestionnaire = share2PublicTemplateAction();
-        /*问卷标题不得为空*/
+        //设置属性信息
+//        Questionnaire copiedQuestionnaire = share2PublicTemplateAction();
+        Questionnaire copiedQuestionnaire = new Questionnaire();
+
+        copiedQuestionnaire.setIsTemplate(true);
+        copiedQuestionnaire.setIsShare(true);
+        copiedQuestionnaire.setIsVisible(true);
+        copiedQuestionnaire.setIsDone(true);
+        copiedQuestionnaire.setIsRelease(false);
+
+        /*标题不得为空*/
         copiedQuestionnaire.setQuestionnaireTitle(questionnaire.getQuestionnaireTitle());
         if (questionnaire.getQuestionnaireSubtitle() != null) {
             copiedQuestionnaire.setQuestionnaireSubtitle(questionnaire.getQuestionnaireSubtitle());
@@ -134,7 +130,7 @@ public class OperateQuestionnaireUtil {
         if (questionnaire.getQuestionnaireDescription() != null) {
             copiedQuestionnaire.setQuestionnaireDescription(questionnaire.getQuestionnaireDescription());
         }
-        //问卷分享时间
+        //分享时间
         copiedQuestionnaire.setCreateTime(new Date());
         //分享用户
         copiedQuestionnaire.setCreateUser(UserValidationUtil.getUserTel(logger));
@@ -155,7 +151,7 @@ public class OperateQuestionnaireUtil {
         copiedQuestionnaire.setIsShare(false);
         copiedQuestionnaire.setIsVisible(true);
         copiedQuestionnaire.setIsDone(true);
-        copiedQuestionnaire.setIsDelete(false);
+        copiedQuestionnaire.setIsRelease(false);
 
         /*问卷标题不得为空*/
         copiedQuestionnaire.setQuestionnaireTitle(questionnaire.getQuestionnaireTitle());

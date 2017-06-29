@@ -43,7 +43,7 @@ $(function () {
 
         search: true,
         searchAlign: 'right',
-        searchOnEnterKey: true,
+        searchOnEnterKey: false,
         toolbar: '#tableToolbar',
         showColumns: true,
         showRefresh: true,
@@ -97,11 +97,12 @@ window.operateEvents = {
     },
     //发布问卷
     'click .launchPaper': function (e, value, row, index) {
-        layer.msg('模块未发布', {icon: 4});
+        window.location.href = '/researchManage/createResearchView?questionnaireSelect=' + row.questionnaireId;
     },
     //继续编辑问卷
     'click .continueEdit': function (e, value, row, index) {
-        layer.msg('模块未发布', {icon: 4});
+        // layer.msg('模块未发布', {icon: 4});
+        window.location.href = '/QesManageRest/getEditQesPaperView/' + row.questionnaireId;
     },
     //模板化问卷
     'click .templatePaper': function (e, value, row, index) {
@@ -174,7 +175,7 @@ $multiDelBtn.on('click', function () {
     if (!checkIsSelectedOne(ids)) {
         return;
     }
-    layerConfirmMulti('确认批量移除问卷吗（可以在垃圾问卷中恢复这些问卷）', ids, delTemporaryUrl);
+    layerConfirmMulti('确认批量移除问卷吗（可以在“回收问卷”中恢复这些问卷）', ids, delTemporaryUrl);
 });
 /**
  * 批量处理结束
@@ -247,13 +248,15 @@ function accessServer(questionnaireIds, url) {
  * @param urlWithId 查看问卷带有问卷ID的url
  */
 function browseQesPaper(urlWithId) {
-    layer.full(layer.open({
-        type: 2,
-        content: urlWithId,
-        area: ['80%', '80%'],
-        maxmin: true,
-        closeBtn: 1
-    }));
+    window.open(urlWithId);
+    // layer.full(layer.open({
+    //     title: '   ',
+    //     type: 2,
+    //     content: urlWithId,
+    //     area: ['80%', '80%'],
+    //     maxmin: true,
+    //     closeBtn: 1
+    // }));
 }
 
 /**
@@ -268,10 +271,10 @@ function analyzeResponse(data, url, questionnaireIds) {
         switch (url) {
             case templateUrl://模板化问卷
                 if (responsePkt.code === 200) {
-                    $table.bootstrapTable('remove', {
-                        field: 'questionnaireId',
-                        values: questionnaireIds
-                    });
+                    // $table.bootstrapTable('remove', {
+                    //     field: 'questionnaireId',
+                    //     values: questionnaireIds
+                    // });
                     layer.msg('问卷已经成功添加到个人模板库！', {icon: 1});
                 }
                 dealGlobalError(responsePkt);
@@ -282,16 +285,16 @@ function analyzeResponse(data, url, questionnaireIds) {
                         field: 'questionnaireId',
                         values: questionnaireIds
                     });
-                    layer.msg('问卷已经移除！（可以在“垃圾”问卷中恢复）', {icon: 1});
+                    layer.msg('问卷已经移除！（可以在“回收问卷”中恢复）', {icon: 1});
                 }
                 dealGlobalError(responsePkt);
                 break;
             case shareUrl://共享问卷
                 if (responsePkt.code === 200) {
-                    $table.bootstrapTable('remove', {
-                        field: 'questionnaireId',
-                        values: questionnaireIds
-                    });
+                    // $table.bootstrapTable('remove', {
+                    //     field: 'questionnaireId',
+                    //     values: questionnaireIds
+                    // });
                     layer.msg('问卷成功共享！', {icon: 1});
                 }
                 dealGlobalError(responsePkt);

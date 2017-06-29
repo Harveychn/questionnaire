@@ -11,8 +11,11 @@ import java.util.List;
  */
 public interface ResultAnalysisMapper {
 
-    List<ListPrimaryDataInfoVO> listPrimaryDataInfo()throws Exception;
-    Long listCount(ListPrimaryDataInfoVO listPrimaryDataInfoVO)throws Exception;
-    List<ListAnswerPaperVO> listAnswerPaper(MissionQuestionnaireVO missionQuestionnaireVO)throws Exception;
-    String selectAnswerDetail(QuestionAnswerPaperVO questionAnswerPaperVO)throws Exception;
+    List<PrimaryDataInfoVO> listPrimaryDataInfo() throws Exception;
+
+    Long listCount(PrimaryDataInfoVO primaryDataInfoVO) throws Exception;
+
+    List<AnswerPaperVO> listAnswerPaper(MissionQuestionnaireVO missionQuestionnaireVO) throws Exception;
+
+    String selectAnswerDetail(QuestionAnswerPaperVO questionAnswerPaperVO) throws Exception;
 }

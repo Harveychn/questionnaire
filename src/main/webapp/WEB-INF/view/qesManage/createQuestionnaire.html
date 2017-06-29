@@ -15,7 +15,6 @@
             th:src="@{/js/CreateQesResources/script/configBase.js}"></script>
     <script type="text/javascript" src="/WEB-INF/js/CreateQesResources/script/exam/exam.js"
             th:src="@{/js/CreateQesResources/script/exam/exam.js}"></script>
-    -->
 </head>
 
 <body>
@@ -56,31 +55,36 @@
                                     <a href="javascript:;" data-checkType="50" data-questionType="多项填空题">
                                         <i class="icon-multiRow"></i>多项填空题</a>
                                 </li>
-                                <li data-uid="60" data-tempId="pic_single_choice_template">
-                                    <a href="javascript:;" data-checkType="60" data-questionType="图片单选题">
-                                        <i class="icon-picChoice"></i>图片单选题</a>
-                                </li>
-                                <li data-uid="70" data-tempId="pic_multi_choice_template">
-                                    <a href="javascript:;" data-checkType="70" data-questionType="图片多选题">
-                                        <i class="icon-picsChoice"></i>图片多选题</a>
-                                </li>
+                                <!--<li data-uid="60" data-tempId="pic_single_choice_template">-->
+                                <!--<a href="javascript:;" data-checkType="60" data-questionType="图片单选题">-->
+                                <!--<i class="icon-picChoice"></i>图片单选题</a>-->
+                                <!--</li>-->
+                                <!--<li data-uid="70" data-tempId="pic_multi_choice_template">-->
+                                <!--<a href="javascript:;" data-checkType="70" data-questionType="图片多选题">-->
+                                <!--<i class="icon-picsChoice"></i>图片多选题</a>-->
+                                <!--</li>-->
                             </ul>
                         </div>
-                        <div class="exam-item">
-                            <h4 class="exam-item-title">常用题型<i class="icon-expand"></i></h4>
-                            <ul class="exam-nav-list" id="ui_common_exam">
-                                <li data-uid="200" data-tempId="choice_template">
-                                    <a href="javascript:;" data-checkType="200" data-questionType="单选题">
-                                        <i class="icon-singleChoice"></i>个人信息</a>
-                                </li>
-                            </ul>
-                        </div>
+                        <!--<div class="exam-item">-->
+                        <!--<h4 class="exam-item-title">常用题型<i class="icon-expand"></i></h4>-->
+                        <!--<ul class="exam-nav-list" id="ui_common_exam">-->
+                        <!--<li data-uid="200" data-tempId="choice_template">-->
+                        <!--<a href="javascript:;" data-checkType="200" data-questionType="单选题">-->
+                        <!--<i class="icon-singleChoice"></i>个人信息</a>-->
+                        <!--</li>-->
+                        <!--</ul>-->
+                        <!--</div>-->
                     </div>
                     <!--出题-->
                     <div class="create-questions">
                         <div class="questions-head-title">
-                            <h4 class="h4-bg T_edit T-center" data-Tid="10001" id="questionnaireTitle">
-                                <span style="font-size:18px;">这里填写问卷标题</span>
+                            <h4 class="h4-bg T-center" data-Tid="10001">
+                                <input id="questionnaireTitle"
+                                       class="form-control input-lg"
+                                       style="text-align: center;
+                                       border-radius:0px;"
+                                       onclick="editingTitleFunc(this);"
+                                       placeholder="这里填写问卷标题"/>
                             </h4>
                         </div>
                         <table class="questions-items-title">
@@ -90,7 +94,8 @@
                                 <td>
                                     <input data-Tid="10002" id="questionnaireSubtitle"
                                            class="form-control"
-                                           style="font-size:18px;border: none;color: #343434;"
+                                           style="font-size:18px;border: none;
+                                           color: #343434;text-align: right"
                                            onclick="editingTitleFunc(this);" placeholder="这里填写问卷副标题"/>
                                 </td>
                             </tr>
@@ -99,7 +104,8 @@
                                 <td>
                                     <input data-Tid="10003" id="questionnaireDescription"
                                            class="form-control"
-                                           style="font-size:18px;border: none;color: #343434;"
+                                           style="font-size:18px;border: none;
+                                           color: #343434;text-align: right"
                                            onclick="editingTitleFunc(this);" placeholder="这里填写问卷描述"/>
                                 </td>
                             </tr>
@@ -172,15 +178,22 @@
                     {{/each}}
                 </div>
                 <div class="cq-items-ctrl">
-                    <a href="javascript:void(0);" class="ui-add-item-btn" data-tisp="添加"><i
-                            class="icon-add"></i></a>
-                    <a href="javascript:void(0);" class="ui-batch-item-btn" data-tisp="批量添加"><i
-                            class="icon-addList"></i></a>
-                    <a href="javascript:void(0);" class="ui-add-answer-btn" data-tisp="添加问题说明"><i
-                            class="icon-assignment"></i></a>
+                    <a href="javascript:void(0);" class="ui-add-item-btn" data-tisp="添加选项">
+                        <i class="icon-plus"></i>
+                    </a>
+                    <a href="javascript:void(0);" class="ui-remove-item-btn" data-tisp="移除选项">
+                        <i class="icon-jian"></i>
+                    </a>
+                    <!--<a href="javascript:void(0);" class="ui-batch-item-btn" data-tisp="批量添加">-->
+                    <!--<i class="icon-addList"></i>-->
+                    <!--</a>-->
+                    <a href="javascript:void(0);" class="ui-add-answer-btn" data-tisp="添加问题说明">
+                        <i class="icon-assignment"></i>
+                    </a>
                     <!--/*添加必做题按钮*/-->
                     <a href="javascript:void(0);" class="ui-set-must-done" data-tisp="设为必做题">
-                        <i class="icon-enshrine"></i></a>
+                        <i class="icon-enshrine"></i>
+                    </a>
                 </div>
             </div>
         </div>

@@ -2,7 +2,7 @@ package com.questionnaire.ssm.module.notice.service;
 
 import com.questionnaire.ssm.module.notice.pojo.CreateNoticeVO;
 import com.questionnaire.ssm.module.notice.pojo.ListMyNoticeInfoVO;
-import com.questionnaire.ssm.module.notice.pojo.NoticeForSurveyorVO;
+import com.questionnaire.ssm.module.notice.pojo.NoticeForCurUserVO;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -29,8 +29,6 @@ public interface NoticeService {
      * @throws Exception
      */
     List<ListMyNoticeInfoVO> listNoticeByUserTel(String userTel) throws Exception;
-
-    List<NoticeForSurveyorVO> listNoticeInfoForSurveyor(String userTel) throws Exception;
 
     /**
      * 根据公告ID删除公告

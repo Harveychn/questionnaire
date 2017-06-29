@@ -30,7 +30,7 @@ function accessServerByJson(url, jsonData) {
 function successResultLayer(successMsg) {
     layer.msg(successMsg, {
         icon: 1,
-        time: 3000,
+        time: 2000,
         shade: 0.5,
         closeBtn: 1
     });

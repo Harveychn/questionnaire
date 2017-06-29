@@ -1,6 +1,8 @@
 package com.questionnaire.ssm.module.researchManage.service;
 
+import com.questionnaire.ssm.module.researchManage.enums.MissionStatusEnum;
 import com.questionnaire.ssm.module.researchManage.pojo.CreateResearchMissionVO;
+import com.questionnaire.ssm.module.researchManage.pojo.MissionInfoVO;
 import com.questionnaire.ssm.module.researchManage.pojo.QuestionnaireInfoVO;
 import com.questionnaire.ssm.module.researchManage.pojo.ResearchListVO;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,4 +34,16 @@ public interface ResearchService {
      * @throws Exception
      */
     List<ResearchListVO> listResearchMission(String userTel) throws Exception;
+
+    /**
+     * 通过任务状态查询任务信息
+     * userTel为null或者‘’则查询全部信息
+     *
+     * @param userTel
+     * @param missionStatusEnum
+     * @return
+     * @throws Exception
+     */
+    List<MissionInfoVO> listMissionInfo(String userTel, MissionStatusEnum missionStatusEnum) throws Exception;
+
 }

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>找回密码|账户确认</title>
+    <link rel="shortcut icon" href="../../img/favicon.ico"/>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/animate.css">
+    <style>
+        .contain-box {
+            margin-top: 10%;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="contain-box col-md-offset-3 col-md-6 panel panel-default">
+            <div class="">
+                <h1>账户信息</h1>
+            </div>
+            <!--<div class="panel-heading animated bounce">-->
+            <!--<div class="panel-title">-->
+            <!--<h3>账户信息</h3>-->
+            <!--</div>-->
+            <!--</div>-->
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-horizontal">
+
+                        <div class="form-group animated fadeInLeft">
+                            <label class="col-md-3 control-label">手机号码:</label>
+                            <div class="col-md-8">
+                                <input class="form-control" name="phone" id="phone"
+                                       placeholder="输入账户手机号码"
+                                       type="number"
+                                       maxlength="11"
+                                       minlength="11"
+                                       required/>
+                            </div>
+                        </div>
+
+                        <div class="form-group animated fadeInRight">
+                            <label class="col-md-3 control-label">验证码：</label>
+                            <div class="col-md-6">
+                                <input id="verifyCode" name="verifyCode" class="form-control"
+                                       placeholder="输入收到的验证码"
+                                       type="number"
+                                       maxlength="6"
+                                       minlength="6"
+                                       required/>
+                            </div>
+                            <div class="col-md-2">
+                                <div id="getVCodeBtn" class="btn btn-primary">获取验证码</div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 animated fadeInUp">
+                            <button id="submitVerifyBtn" class="btn btn-block btn-success">提交验证</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--错误提示模板-->
+<script type="text/html" id="errorTip">
+    <div class="form-group animated shake">
+        <label class="control-label col-md-3 text-danger">错误信息：</label>
+        <div class="col-md-6">
+            <input class="form-control" value="{{errorMsg}}" disabled/>
+        </div>
+    </div>
+</script>
+
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/plugins/layer/layer.min.js"></script>
+<script src="../../js/plugins/validate/jquery.validate.min.js"></script>
+<script src="../../js/plugins/validate/messages_zh.min.js"></script>
+
+<script>
+    var $phoneInput = $('#phone');
+    var $getVCodeBtn = $('#getVCodeBtn');
+    var $submitVerifyBtn = $('#submitVerifyBtn');
+
+    $(function () {
+        //获取短信验证码点击监听事件
+        $getVCodeBtn.on('click', function () {
+            var $phone = $('#phone');
+            var phoneStr = $phone.val();
+            if (phoneStr === '') {
+                layerTipInfo('请先输入手机号！', 7, 0);
+                $phone.parents('.form-group').addClass('has-error');
+                return;
+            }
+            if (!(/^1[34578]\d{9}$/.test(phoneStr))) {
+                layerTipInfo("格式有误，请修改为正确的11位手机号码!", 7, 0);
+                $phoneInput.parents('.form-group').addClass('has-error');
+                return;
+            }
+
+            $.post('/retrievePwd/getVerifyCode', {phone: phoneStr}, function (responseData) {
+                if (200 === responseData.code) {
+                    layerTipInfo('获取验证码成功，请查收短信！', 1, 2000);
+                    $getVCodeBtn.attr('disabled', 'disabled');
+                }
+                else {
+                    layerTipInfo(responseData.message, 2, 2000);
+                }
+            });
+        });
+
+        $submitVerifyBtn.on('click', function () {
+            var phoneStr = $('#phone').val();
+            var verifyCodeStr = $('#verifyCode').val();
+            if (verifyCodeStr === '') {
+                layerTipInfo('验证码不能为空!', 7, 0);
+                $('#verifyCode').parents('.form-group').addClass('has-error');
+                return;
+            }
+
+            //发送数据到后台
+            $.post('/retrievePwd/checkVCode', {phone: phoneStr, verifyCode: verifyCodeStr}, function (responseData) {
+                if (200 === responseData.code) {
+                    window.location.href = responseData.data;
+                }
+                else {
+                    layerTipInfo(responseData.message, 2, 2000);
+                }
+            });
+        });
+
+        $phoneInput.on('focus', function () {
+            $('#phone').parents('.form-group').removeClass('has-error');
+        });
+    });
+
+    /**
+     * layer弹窗提示
+     * @param contentStr
+     * @param iconType
+     */
+    function layerTipInfo(contentStr, iconType, timeOut) {
+        layer.msg(contentStr,
+            {
+                title: '操作提示',
+                closeBtn: 1,
+                shade: 0.5,
+                icon: iconType,
+                anim: 6,
+                time: timeOut,
+                btn: ['知道了']
+            },
+            function () {
+            }
+        );
+    }
+</script>
+</body>
+</html>

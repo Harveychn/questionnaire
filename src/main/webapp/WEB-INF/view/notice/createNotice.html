@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>创建公告</title>
+    <link rel="shortcut icon" href="/WEB-INF/img/favicon.ico"
+          th:href="@{/img/favicon.ico}"/>
     <link rel="stylesheet" href="/WEB-INF/css/bootstrap.min.css"
           th:href="@{/css/bootstrap.min.css}"/>
     <link rel="stylesheet" href="/WEB-INF/js/plugins/bootstrap-select/css/bootstrap-select.min.css"
@@ -97,7 +99,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
 
             <div class="panel-default">
@@ -128,7 +129,7 @@
             </div>
 
             <div class="panel-body">
-                <div class="col-md-offset-5">
+                <div class="col-md-offset-5" id="btnGroup">
                     <button id="resetBtn" class="btn btn-lg btn-warning">重置</button>
                     <button id="launchBtn" class="btn btn-lg btn-success">发布</button>
                 </div>
@@ -154,6 +155,12 @@
 
 <script>
     $(function () {
+        console.log(window.location.search);
+        if (window.location.search === '?newNotice') {
+            var $buttonGroup = $('#btnGroup');
+            $buttonGroup.attr('class', 'col-md-offset-4');
+            $buttonGroup.prepend('<button class="btn btn-lg btn-link" onclick="window.history.back();">返回上一级</button>');
+        }
         var unitOptions = '';
         var $noticeUnit = $('#noticeUnit');
         $.ajax({
@@ -259,7 +266,7 @@
             }
         });
     });
-
+    /*提交json格式的数据*/
     function submitJsonData(launchDate, unitIds) {
         var noticeInfo = {};
         noticeInfo.noticeTitle = $('#noticeTitle').val();
@@ -267,7 +274,29 @@
         noticeInfo.launchDate = new Date(launchDate);
         noticeInfo.unitObjectIds = unitIds;
         var url = '/notice/createNotice';
-        accessServerByJson(url, noticeInfo);
+        $.ajax({
+            url: url,
+            contentType: "application/json;charset=utf-8",
+            type: 'post',
+            dataType: 'json',
+            data: JSON.stringify(noticeInfo),
+            success: function (data) {
+                if (200 === data.code) {
+                    layer.msg("创建公告成功!", {
+                        icon: 1,
+                        time: 2000,
+                        shade: 0.5,
+                        closeBtn: 1
+                    },function () {
+                        window.location.href="/notice/getMyNoticeView";
+                    });
+                }
+                dealGlobalError(data);
+            },
+            error: function (data) {
+                alert(data);
+            }
+        });
     }
     /*重置按钮*/
     $('#resetBtn').on('click', function () {

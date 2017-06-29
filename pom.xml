@@ -435,6 +435,12 @@
             <artifactId>poi-scratchpad</artifactId>
             <version>${POI.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.taobao</groupId>
+            <artifactId>alidayu</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
     <!--架包依赖 end-->
 

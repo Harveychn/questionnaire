@@ -1,6 +1,5 @@
 package com.questionnaire.ssm.module.userManage.controller;
 
-import com.questionnaire.ssm.module.generated.pojo.User;
 import com.questionnaire.ssm.module.global.util.UserValidationUtil;
 import com.questionnaire.ssm.module.userManage.pojo.MyInfoVO;
 import com.questionnaire.ssm.module.userManage.pojo.NewUserInfo;
@@ -10,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Created by 郑晓辉 on 2017/5/1.
@@ -30,6 +30,12 @@ public class UserInfoManageController {
         return "userManage/changeMyInfo";
     }
 
+    /**
+     * 获取用户个人信息
+     *
+     * @return
+     * @throws Exception
+     */
     @PostMapping(value = "/getMyInfo")
     @ResponseBody
     public MyInfoVO getMyInfo() throws Exception {
@@ -37,12 +43,23 @@ public class UserInfoManageController {
         return userInfoService.getMyInfo(userTel);
     }
 
+    /**
+     * 修改个人信息
+     *
+     * @param newUserInfo
+     * @return
+     * @throws Exception
+     */
     @PostMapping(value = "/changeMyInfo")
-    public String changeMyInfo(NewUserInfo newUserInfo) throws Exception {
+    public ModelAndView changeMyInfo(NewUserInfo newUserInfo) throws Exception {
         String userTel = UserValidationUtil.getUserTel(logger);
-        userInfoService.changeMyInfo(userTel,newUserInfo);
-        return "userManage/changeMyInfoOK";
+        userInfoService.changeMyInfo(userTel, newUserInfo);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("myNewInfo", userInfoService.getMyInfo(userTel));
+        modelAndView.setViewName("userManage/changeMyInfoOK");
+        return modelAndView;
     }
+
 
     private UserInfoService userInfoService;
     private final static Logger logger = LoggerFactory.getLogger(UserInfoManageController.class);

@@ -16,4 +16,12 @@ public interface UnitInfoMapper {
      * @throws Exception
      */
     List<UnitInfoVO> listUnitInfo() throws Exception;
+
+    /**
+     * 根据String类型的单位id查询单位名
+     * @param unitIds
+     * @return
+     * @throws Exception
+     */
+    List<String> listUnitNameByUnitIDs(List<String> unitIds)throws Exception;
 }

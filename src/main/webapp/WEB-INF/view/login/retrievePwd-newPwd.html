@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>找回密码|设置新密码</title>
+    <link rel="shortcut icon" href="../../img/favicon.ico"/>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../css/animate.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <style>
+        .contain-box {
+            margin-top: 10%;
+        }
+    </style>
+</head>
+<body class="grey-bg">
+<div class="container">
+    <div class="row">
+        <div class="contain-box col-md-offset-2 col-sm-8 col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-heading animated bounceIn">
+                    <div class="panel-title">
+                        <h3 style="font-weight: 500;">重置密码</h3>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <form id="newPasswordForm" class="form-horizontal">
+                        <div class="form-group animated lightSpeedIn">
+                            <label class="col-sm-3 col-md-3 control-label">新密码：</label>
+                            <div class="col-sm-7 col-md-7">
+                                <input id="newPassword" name="newPassword" class="form-control" type="password"
+                                       placeholder="请输入新密码"
+                                       minlength="6" required/>
+                            </div>
+                        </div>
+                        <div class="form-group animated lightSpeedIn">
+                            <label class="col-sm-3 col-md-3 control-label">确认密码：</label>
+                            <div class="col-sm-7 col-md-7">
+                                <input id="confirm_password" class="form-control" type="password"
+                                       placeholder="请再次输入新密码"
+                                       minlength="6" required equalTo="#newPassword"/>
+                            </div>
+                        </div>
+                        <div class="from-group animated fadeInUp">
+                            <div class="col-sm-offset-3 col-sm-8 btn-group">
+                                <button class="col-sm-4 btn btn-warning" type="reset">重置信息</button>
+                                <button id="submitCodeBtn" onclick="submitData();" class="col-sm-4 btn btn-success">
+                                    更新密码
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/plugins/validate/jquery.validate.min.js"></script>
+<script src="../../js/plugins/layer/layer.min.js"></script>
+
+<script type="text/javascript">
+    $.validator.setDefaults({
+        highlight: function (element) {
+            $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+        },
+        success: function (element) {
+            element.closest('.form-group').removeClass('has-error').addClass('has-success');
+        },
+        errorElement: "span",
+        errorPlacement: function (error, element) {
+            if (element.is(":radio") || element.is(":checkbox")) {
+                error.appendTo(element.parent().parent().parent());
+            } else {
+                error.appendTo(element.parent());
+            }
+        },
+        errorClass: "help-block m-b-none",
+        validClass: "help-block m-b-none"
+    });
+    !function (a) {
+        "function" == typeof define && define.amd ? define(["jquery", "jquery.validate.min"], a) : a(jQuery)
+    }(function (a) {
+        var icon = "<i class='fa fa-times-circle'></i>  ";
+        a.extend(a.validator.messages, {
+            required: icon + "此项必填",
+            equalTo: icon + "你的前后输入不相同",
+            maxlength: a.validator.format(icon + "最多 {0} 个字符"),
+            minlength: a.validator.format(icon + "最少 {0} 个字符"),
+            rangelength: a.validator.format(icon + "请输入长度为 {0} 至 {1} 之间的字串")
+        })
+    });
+    $(function () {
+        $("#newPasswordForm").validate();
+    });
+    //点击更新密码
+    function submitData() {
+        window.event.returnValue = false;
+        var newPwdStr = $('#newPassword').val();
+        if ('' === newPwdStr || '' === $('#confirm_password').val()) {
+            return;
+        }
+
+        $.ajax({
+            type: "post",
+            url: "/retrievePwd/resetPwd",
+            data: {newPwdStr: newPwdStr},
+            async: false,
+            success: function (responseData) {
+                if (responseData.code === 200) {
+                    layer.msg('找回密码成功！ 3 秒后跳转登录界面',
+                        {
+                            title: '操作提示',
+                            closeBtn: 1,
+                            shade: 0.5,
+                            icon: 1,
+                            anim: 6,
+                            time: 3000,
+                            btn: ['知道了']
+                        },
+                        function () {
+                            window.location.href = '/user/getLoginView';
+                        }
+                    );
+                } else {
+                    layer.msg(responseData.message,
+                        {
+                            title: '操作提示',
+                            closeBtn: 1,
+                            shade: 0.5,
+                            icon: 2,
+                            anim: 6,
+                            time: 0,
+                            btn: ['知道了']
+                        },
+                        function () {
+                        }
+                    );
+                }
+            }
+        });
+    }
+    /**
+     * layer弹窗提示
+     * @param contentStr
+     * @param iconType
+     */
+    function layerTipInfo(contentStr, iconType, timeOut) {
+        layer.msg(contentStr,
+            {
+                title: '操作提示',
+                closeBtn: 1,
+                shade: 0.5,
+                icon: iconType,
+                anim: 6,
+                time: timeOut,
+                btn: ['知道了']
+            },
+            function () {
+            }
+        );
+    }
+</script>
+</html>

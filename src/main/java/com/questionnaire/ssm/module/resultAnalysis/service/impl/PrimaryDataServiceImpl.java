@@ -1,14 +1,10 @@
 package com.questionnaire.ssm.module.resultAnalysis.service.impl;
 
-import com.questionnaire.ssm.module.generated.mapper.AnswerDetailMapper;
-import com.questionnaire.ssm.module.generated.mapper.AnswerPaperMapper;
-import com.questionnaire.ssm.module.generated.mapper.MappingQuestionnaireQuestionMapper;
-import com.questionnaire.ssm.module.generated.mapper.QuestionMapper;
+import com.questionnaire.ssm.module.generated.mapper.*;
 import com.questionnaire.ssm.module.generated.pojo.*;
 import com.questionnaire.ssm.module.global.enums.CodeForVOEnum;
 import com.questionnaire.ssm.module.global.enums.DBTableEnum;
 import com.questionnaire.ssm.module.global.exception.OperateDBException;
-import com.questionnaire.ssm.module.questionnaireManage.util.QesManageVODOUtil;
 import com.questionnaire.ssm.module.resultAnalysis.mapper.ResultAnalysisMapper;
 import com.questionnaire.ssm.module.resultAnalysis.pojo.*;
 import com.questionnaire.ssm.module.resultAnalysis.service.PrimaryDataService;
@@ -18,10 +14,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.TransactionScoped;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  * Created by 95884 on 2017/5/5.
@@ -35,27 +31,27 @@ public class PrimaryDataServiceImpl implements PrimaryDataService {
      * @throws Exception
      */
     @Override
-    public List<ListPrimaryDataInfoVO> listPrimaryData() throws Exception {
-        List<ListPrimaryDataInfoVO> listPrimaryDataInfoVOList = new ArrayList<>();
-        List<ListPrimaryDataInfoVO> listPrimaryDataInfoVOS = new ArrayList<>();
+    public List<PrimaryDataInfoVO> listPrimaryData() throws Exception {
+        List<PrimaryDataInfoVO> result = new ArrayList<>();
+        List<PrimaryDataInfoVO> primaryDataInfoVOS = null;
         try {
-            listPrimaryDataInfoVOList = resultAnalysisMapper.listPrimaryDataInfo();
+            primaryDataInfoVOS = resultAnalysisMapper.listPrimaryDataInfo();
         } catch (Exception e) {
             logger.error(e.getMessage());
             throw new OperateDBException(CodeForVOEnum.UNKNOWN_ERROR, "获取问卷失败");
         }
         //获取问卷完成数量
         Long count = null;
-        for (ListPrimaryDataInfoVO listPrimaryDataInfoVO : listPrimaryDataInfoVOList) {
-            count = resultAnalysisMapper.listCount(listPrimaryDataInfoVO);
-            listPrimaryDataInfoVO.setQuestionnaireCount(count);
+        for (PrimaryDataInfoVO primaryDataInfoVO : primaryDataInfoVOS) {
+            count = resultAnalysisMapper.listCount(primaryDataInfoVO);
+            primaryDataInfoVO.setQuestionnaireCount(count);
             try {
-                listPrimaryDataInfoVOS.add(listPrimaryDataInfoVO);
+                result.add(primaryDataInfoVO);
             } catch (Exception e) {
                 logger.error(e.getMessage());
             }
         }
-        return listPrimaryDataInfoVOS;
+        return result;
     }
 
     /**
@@ -66,21 +62,21 @@ public class PrimaryDataServiceImpl implements PrimaryDataService {
      * @throws Exception
      */
     @Override
-    public List<ListAnswerPaperVO> listAnswerPaper(MissionQuestionnaireVO missionQuestionnaireVO) throws Exception {
-        List<ListAnswerPaperVO> listAnswerPaperVOList = new ArrayList<>();
+    public List<AnswerPaperVO> listAnswerPaper(MissionQuestionnaireVO missionQuestionnaireVO) throws Exception {
+        List<AnswerPaperVO> answerPaperVOS = new ArrayList<>();
         try {
-            listAnswerPaperVOList = resultAnalysisMapper.listAnswerPaper(missionQuestionnaireVO);
+            answerPaperVOS = resultAnalysisMapper.listAnswerPaper(missionQuestionnaireVO);
         } catch (Exception e) {
             logger.error(e.getMessage());
             throw new OperateDBException(CodeForVOEnum.UNKNOWN_ERROR, "获取答卷失败");
         }
-        return listAnswerPaperVOList;
+        return answerPaperVOS;
     }
 
     /**
-     * 根据答卷ID查询展示问卷
+     * 根据答卷ID查询展示答卷
      *
-     * @param answerPaperId 问卷ID
+     * @param answerPaperId 答卷ID
      * @return
      * @throws Exception
      */
@@ -96,9 +92,14 @@ public class PrimaryDataServiceImpl implements PrimaryDataService {
         if (answerPaperDO == null) {
             throw new OperateDBException(CodeForVOEnum.DB_SELECT_FAIL, DBTableEnum.ANSWER_PAPER.getTableName());
         }
-        DisplayAnswerPaperVO displayAnswerPaperVO = AnswerPaperVODOUtil.toDisplayQuestionnaireVO(answerPaperDO);
+        DisplayAnswerPaperVO displayAnswerPaperVO = AnswerPaperVODOUtil.toDisplayAnswerPaperVO(answerPaperDO);
 
+        Questionnaire questionnaire = new Questionnaire();
         long questionnaireId = displayAnswerPaperVO.getQuestionnaireId();
+        questionnaire = questionnaireMapper.selectByPrimaryKey(questionnaireId);
+        displayAnswerPaperVO.setQuestionnaireTitle(questionnaire.getQuestionnaireTitle());
+        displayAnswerPaperVO.setQuestionnaireSubtitle(questionnaire.getQuestionnaireSubtitle());
+        displayAnswerPaperVO.setQuestionnaireDescription(questionnaire.getQuestionnaireDescription());
         /*根据查询出来的问卷ID查询问题*/
         List<MappingQuestionnaireQuestion> mapDOList = null;
         MappingQuestionnaireQuestionExample mapDOExample = new MappingQuestionnaireQuestionExample();
@@ -113,7 +114,7 @@ public class PrimaryDataServiceImpl implements PrimaryDataService {
         Long currentQuestionId = null;
         List<AnswerQuestionVO> answerQuestionVOList = new ArrayList<>();
         QuestionWithBLOBs questionWithBLOBs = null;
-        String answerDetail=null;
+        String answerDetail = null;
         for (int order = 0; order < mapDOList.size(); order++) {
             currentQuestionId = mapDOList.get(order).getQuestionId();//获取当前问题id
             questionWithBLOBs = questionMapper.selectByPrimaryKey(currentQuestionId);//获取当前问题标题内容
@@ -123,6 +124,7 @@ public class PrimaryDataServiceImpl implements PrimaryDataService {
             questionAnswerPaperVO.setQuestionId(currentQuestionId);
 
             answerDetail = resultAnalysisMapper.selectAnswerDetail(questionAnswerPaperVO);//获取答案
+
 //            answerDetailString= QesManageVODOUtil.toAnswerString(currentAnswerDetail,questionWithBLOBs.getQuestionType());
 
             answerQuestionVOList.add(order, AnswerPaperVODOUtil.toAnswerQuestionVO(questionWithBLOBs, answerDetail));
@@ -135,7 +137,7 @@ public class PrimaryDataServiceImpl implements PrimaryDataService {
     private AnswerPaperMapper answerPaperMapper;
     private QuestionMapper questionMapper;
     private MappingQuestionnaireQuestionMapper mappingQuestionnaireQuestionMapper;
-    private AnswerDetailMapper answerDetailMapper;
+    private QuestionnaireMapper questionnaireMapper;
     private static final Logger logger = LoggerFactory.getLogger(PrimaryDataServiceImpl.class);
 
     @Autowired
@@ -143,11 +145,11 @@ public class PrimaryDataServiceImpl implements PrimaryDataService {
                                   AnswerPaperMapper answerPaperMapper,
                                   QuestionMapper questionMapper,
                                   MappingQuestionnaireQuestionMapper mappingQuestionnaireQuestionMapper,
-                                  AnswerDetailMapper answerDetailMapper) {
+                                  QuestionnaireMapper questionnaireMapper) {
         this.resultAnalysisMapper = resultAnalysisMapper;
         this.answerPaperMapper = answerPaperMapper;
         this.questionMapper = questionMapper;
         this.mappingQuestionnaireQuestionMapper = mappingQuestionnaireQuestionMapper;
-        this.answerDetailMapper = answerDetailMapper;
+        this.questionnaireMapper = questionnaireMapper;
     }
 }

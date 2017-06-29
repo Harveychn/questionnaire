@@ -5,9 +5,10 @@ import com.questionnaire.ssm.module.global.enums.CodeForVOEnum;
 import com.questionnaire.ssm.module.global.pojo.ResponsePkt;
 import com.questionnaire.ssm.module.global.util.ResultUtil;
 import com.questionnaire.ssm.module.global.util.UserValidationUtil;
-import com.questionnaire.ssm.module.questionnaireManage.pojo.CreateQuestionnaireVO;
-import com.questionnaire.ssm.module.questionnaireManage.pojo.ListQuestionnaireVO;
-import com.questionnaire.ssm.module.questionnaireManage.pojo.ListTempDelQesPaperVO;
+import com.questionnaire.ssm.module.questionnaireManage.pojo.CreateQesVO;
+import com.questionnaire.ssm.module.questionnaireManage.pojo.MyQesVO;
+import com.questionnaire.ssm.module.questionnaireManage.pojo.PreOrNextQes;
+import com.questionnaire.ssm.module.questionnaireManage.pojo.TempDelQesPaperVO;
 import com.questionnaire.ssm.module.questionnaireManage.service.QesManageService;
 import com.questionnaire.ssm.module.questionnaireManage.util.OperateQuestionnaireUtil;
 import org.slf4j.Logger;
@@ -19,7 +20,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import javax.xml.transform.Result;
 import java.util.Arrays;
 import java.util.List;
 
@@ -30,7 +30,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/questionnaireManage")
-public class QesManageController {
+public class QesManageController extends IsOutOfIndex {
 
     /**
      * 获取创建问卷的视图
@@ -41,7 +41,7 @@ public class QesManageController {
     @GetMapping(value = "/getCreateView")
     public ModelAndView getCreateView() throws Exception {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("createQuestionnaireVO", new CreateQuestionnaireVO());
+        modelAndView.addObject("createQuestionnaireVO", new CreateQesVO());
         modelAndView.setViewName("qesManage/createQuestionnaire");
         return modelAndView;
     }
@@ -50,18 +50,18 @@ public class QesManageController {
      * 校验前台参数，失败直接返回失败原因
      * 否则创建问卷 创建正常则返回正常代码，错误会抛出InsertException
      *
-     * @param createQuestionnaireVO
+     * @param createQesVO
      * @return
      * @throws Exception
      */
     @PostMapping(value = "/create")
     @ResponseBody
-    public ResponsePkt create(@Valid @RequestBody CreateQuestionnaireVO createQuestionnaireVO, BindingResult bindingResult) throws Exception {
+    public ResponsePkt create(@Valid @RequestBody CreateQesVO createQesVO, BindingResult bindingResult) throws Exception {
         if (bindingResult.hasErrors()) {
             return ResultUtil.error(CodeForVOEnum.VALID_FAIL_CREATE_QUESTIONNAIRE.getCode(),
                     bindingResult.getFieldError().getDefaultMessage());
         }
-        qesManageService.insertQuestionnaire(createQuestionnaireVO);
+        qesManageService.insertQuestionnaire(createQesVO);
         return ResultUtil.success();
     }
 
@@ -84,24 +84,89 @@ public class QesManageController {
      */
     @PostMapping(value = "/listMyQuestionnaire")
     @ResponseBody
-    public List<ListQuestionnaireVO> listMyQuestionnaire() throws Exception {
+    public List<MyQesVO> listMyQuestionnaire() throws Exception {
         String userTel = UserValidationUtil.getUserTel(logger);
-        return qesManageService.listQuestionnaireInfoByUserTel(userTel);
+        List<MyQesVO> resultVO = qesManageService.listQuestionnaireInfoByUserTel(userTel);
+        Long[] qesIds = new Long[resultVO.size()];
+        for (int i = 0; i < resultVO.size(); i++) {
+            qesIds[i] = resultVO.get(i).getQuestionnaireId();
+        }
+        preOrNextQes = null;
+        preOrNextQes = new PreOrNextQes(qesIds);
+        return resultVO;
     }
 
     /**
      * 预览，展示问卷
      *
-     * @param questionnaireId 问卷id
+     * @param curQesId 问卷id
      * @return
      * @throws Exception
      */
     @GetMapping(value = "/displayQuestionnaire/{questionnaireId}")
-    public ModelAndView displayQuestionnaire(@PathVariable("questionnaireId") long questionnaireId) throws Exception {
-        ModelAndView modelAndView = new ModelAndView();
+    public ModelAndView displayQuestionnaire(@PathVariable("questionnaireId") long curQesId) throws Exception {
+        ModelAndView modelAndView = new ModelAndView("qesManage/displayQuestionnaire");
         modelAndView.addObject("displayQuestionnaireVO",
-                qesManageService.getQuestionnaireById(questionnaireId));
-        modelAndView.setViewName("qesManage/displayQuestionnaire");
+                qesManageService.getQuestionnaireById(curQesId));
+        preOrNextQes.setCurrentQesPaperId(curQesId);
+        isOutOfMinIndex(preOrNextQes,modelAndView);
+        isOutOfMaxIndex(preOrNextQes,modelAndView);
+        //设置当前查看的问卷id
+        preOrNextQes.setCurrentQesPaperId(curQesId);
+        return modelAndView;
+    }
+
+    /**
+     * 展示下一份问卷信息
+     *
+     * @return
+     * @throws Exception
+     */
+    @GetMapping(value = "/displayNextQesPaper")
+    public ModelAndView displayNextQesPaper() throws Exception {
+        ModelAndView modelAndView = new ModelAndView("qesManage/displayQuestionnaire");
+        //获取下一份问卷id
+        Long displayingQesId = preOrNextQes.getNextQesPaperId();
+        if (displayingQesId == PreOrNextQes.OUT_OF_INDEX) {        //没有下一份问卷
+            modelAndView.addObject("displayQuestionnaireVO",
+                    qesManageService.getQuestionnaireById(preOrNextQes.getCurrentQesPaperId()));
+            modelAndView.addObject("isOutOfMaxIndex", true);
+        } else { //有下一份问卷
+            modelAndView.addObject("displayQuestionnaireVO",
+                    qesManageService.getQuestionnaireById(displayingQesId));
+            //设置当前问卷为下一份问卷id
+            preOrNextQes.setCurrentQesPaperId(displayingQesId);
+            isOutOfMaxIndex(preOrNextQes,modelAndView);
+        }
+        //左边界判断是否超出
+        isOutOfMinIndex(preOrNextQes,modelAndView);
+        return modelAndView;
+    }
+
+    /**
+     * 展示上一份问卷信息
+     *
+     * @return
+     * @throws Exception
+     */
+    @GetMapping(value = "/displayPrevQesPaper")
+    public ModelAndView displayPrevQesPaper() throws Exception {
+        ModelAndView modelAndView = new ModelAndView("qesManage/displayQuestionnaire");
+        Long displayingQesId = preOrNextQes.getPreviousQesPaperId();
+        //超出左边界
+        if (displayingQesId == PreOrNextQes.OUT_OF_INDEX) {
+            modelAndView.addObject("displayQuestionnaireVO",
+                    qesManageService.getQuestionnaireById(preOrNextQes.getCurrentQesPaperId()));
+            modelAndView.addObject("isOutOfMinIndex", true);
+        } else {
+            modelAndView.addObject("displayQuestionnaireVO",
+                    qesManageService.getQuestionnaireById(displayingQesId));
+            //设置当前问卷为下一份问卷id
+            preOrNextQes.setCurrentQesPaperId(displayingQesId);
+            isOutOfMinIndex(preOrNextQes,modelAndView);
+        }
+        //判断右边界是否超出
+        isOutOfMaxIndex(preOrNextQes,modelAndView);
         return modelAndView;
     }
 
@@ -120,12 +185,12 @@ public class QesManageController {
                     CodeForVOEnum.QUESTIONNAIRE_IDS_NULL.getMessage());
         }
         Questionnaire questionnaire = OperateQuestionnaireUtil.deleteQesPaperTemporaryAction();
-        qesManageService.delOrTemplateQesByIds(Arrays.asList(questionnaireIds), questionnaire);
+        qesManageService.delQesByIds(Arrays.asList(questionnaireIds), questionnaire);
         return ResultUtil.success();
     }
 
     /**
-     * 恢复回收站问卷到个人问卷中
+     * 恢复回收站问卷到原来位置
      *
      * @param questionnaireIds
      * @return
@@ -139,7 +204,7 @@ public class QesManageController {
                     CodeForVOEnum.QUESTIONNAIRE_IDS_NULL.getMessage());
         }
         Questionnaire questionnaire = OperateQuestionnaireUtil.restoreQesPaperAction();
-        qesManageService.delOrTemplateQesByIds(Arrays.asList(questionnaireIds), questionnaire);
+        qesManageService.delQesByIds(Arrays.asList(questionnaireIds), questionnaire);
         return ResultUtil.success();
     }
 
@@ -157,10 +222,37 @@ public class QesManageController {
             return ResultUtil.error(CodeForVOEnum.QUESTIONNAIRE_IDS_NULL.getCode(),
                     CodeForVOEnum.QUESTIONNAIRE_IDS_NULL.getMessage());
         }
-        Questionnaire questionnaire = OperateQuestionnaireUtil.deleteQesPaperForeverAction();
-        qesManageService.delOrTemplateQesByIds(Arrays.asList(questionnaireIds)
-                , questionnaire);
+        qesManageService.delDataForeverQesByIds(Arrays.asList(questionnaireIds));
+//        Questionnaire questionnaire = OperateQuestionnaireUtil.deleteQesPaperForeverAction();
+//        qesManageService.delOrTemplateQesByIds(Arrays.asList(questionnaireIds),
+//                questionnaire);
         return ResultUtil.success();
+    }
+
+    /**
+     * 获取暂时删除的问卷视图
+     *
+     * @return
+     * @throws Exception
+     */
+    @GetMapping(value = "/temporaryDeleteQesPaperView")
+    public ModelAndView temporaryDeleteQesPaperView() throws Exception {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("qesManage/recycleBinQuestionnaire");
+        return modelAndView;
+    }
+
+    /**
+     * 获取暂时删除的问卷信息
+     *
+     * @return
+     * @throws Exception
+     */
+    @PostMapping(value = "/listTemporaryDeleteQesPaper")
+    @ResponseBody
+    public List<TempDelQesPaperVO> listTemporaryDeleteQesPaper() throws Exception {
+        String userTel = UserValidationUtil.getUserTel(logger);
+        return qesManageService.listTempDelQesPaperByUserTel(userTel);
     }
 
     /**
@@ -177,12 +269,9 @@ public class QesManageController {
             return ResultUtil.error(CodeForVOEnum.QUESTIONNAIRE_IDS_NULL.getCode(),
                     CodeForVOEnum.QUESTIONNAIRE_IDS_NULL.getMessage());
         }
-        Questionnaire questionnaire = OperateQuestionnaireUtil.templateQesPaperAction();
-        qesManageService.delOrTemplateQesByIds(Arrays.asList(questionnaireIds)
-                , questionnaire);
+        qesManageService.templateQesPaperByIds(Arrays.asList(questionnaireIds));
         return ResultUtil.success();
     }
-
 
     /**
      * 批量共享问卷
@@ -202,25 +291,14 @@ public class QesManageController {
         return ResultUtil.success();
     }
 
-    @GetMapping(value = "/temporaryDeleteQesPaperView")
-    public ModelAndView temporaryDeleteQesPaperView() throws Exception {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("qesManage/recycleBinQuestionnaire");
-        return modelAndView;
-    }
-
-    @PostMapping(value = "/listTemporaryDeleteQesPaper")
-    @ResponseBody
-    public List<ListTempDelQesPaperVO> listTemporaryDeleteQesPaper() throws Exception {
-        String userTel = UserValidationUtil.getUserTel(logger);
-        return qesManageService.listTempDelQesPaperByUserTel(userTel);
-    }
-
     private static final Logger logger = LoggerFactory.getLogger(QesManageController.class);
+    private PreOrNextQes preOrNextQes;
     private QesManageService qesManageService;
+
 
     @Autowired
     public QesManageController(QesManageService qesManageService) {
+        this.preOrNextQes = null;
         this.qesManageService = qesManageService;
     }
 }

@@ -13,7 +13,7 @@ $(function () {
         striped: true,
 //            clickToSelect: true,
         undefinedText: '--',
-        sortName: ['missionId', 'questionnaireId', 'questionnaireTitle', 'questionnaireSubtitle', 'questionnaireCount', 'min_submit_count'],
+        sortName: ['missionId', 'questionnaireTitle', 'questionnaireCount'],
         sortOrder: 'desc',
         height: getHeight(),
 
@@ -28,7 +28,7 @@ $(function () {
 
         toolbar: '#tableToolbar',
 
-        showColumns: true,
+        // showColumns: true,
         showRefresh: true,
         showToggle: true,
         showPaginationSwitch: true,
@@ -36,34 +36,24 @@ $(function () {
         minimumCountColumns: 3,
 
         columns: [{
-            checkbox: true,
-            clickToSelect: true
-        }, {
             field: 'missionId',
-            title: '任务ID',
-            sortable: true
-        }, {
-            field: 'questionnaireId',
-            title: '问卷ID',
+            title: '任务编号',
+            align: 'center',
+            width: 100,
             sortable: true
         }, {
             field: 'questionnaireTitle',
             title: '问卷标题',
             sortable: true
         }, {
-            field: 'questionnaireSubtitle',
-            title: '问卷副标题',
-            sortable: true
-        }, {
             field: 'questionnaireCount',
             title: '问卷完成量',
-            sortable: true
-        }, {
-            field: 'minSubmitCount',
-            title: '最低提交量',
+            align: 'center',
+            width: 200,
             sortable: true
         }, {
             title: '操作',
+            width: 200,
             align: 'center',
             events: operateEvents,
             formatter: operateFormatter
@@ -77,7 +67,6 @@ var checkDataUrl = '';
 window.operateEvents = {
     //查看
     'click .check': function (e, value, row, index) {
-        // layer.alert(row.missionId + "||" + row.questionnaireId);
         checkDataUrl = '/resultAnalysis/getPrimaryDataTwo?missionId=' + row.missionId + '&qesId=' + row.questionnaireId;
         layerMsg('查看', row, checkDataUrl);
     }
@@ -89,7 +78,7 @@ function layerMsg(confirmText, ids, url) {
         title: '详细内容',
         maxmin: true,
         content: url, //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
-        area: ['800px', '600px'],
+        area: ['100%', '100%'],
         resize: true
     });
 }

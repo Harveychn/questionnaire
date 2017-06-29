@@ -18,7 +18,7 @@ $(function () {
         striped: true,
 //            clickToSelect: true,
         undefinedText: '--',
-        sortName: ['questionnaireTitle', 'questionnaireSubtitle'],
+        sortName: ['questionnaireTitle', 'questionnaireSubtitle', 'originSource'],
         sortOrder: 'desc',
         height: getHeight(),
 
@@ -48,7 +48,7 @@ $(function () {
             clickToSelect: true
         }, {
             field: 'questionnaireId',
-            title: '问卷ID',
+            title: '问卷编号',
             sortable: true
         }, {
             field: 'questionnaireTitle',
@@ -57,6 +57,10 @@ $(function () {
         }, {
             field: 'questionnaireSubtitle',
             title: '问卷副标题',
+            sortable: true
+        }, {
+            field: 'originSource',
+            title: '原始位置',
             sortable: true
         }, {
             title: '操作',
@@ -77,7 +81,7 @@ window.operateEvents = {
     },
     //恢复问卷
     'click .restore': function (e, value, row, index) {
-        layerConfirm("确认恢复到个人问卷库中吗?", row, restoreUrl);
+        layerConfirm("确认恢复到【" + row.originSource + "】中吗?", row, restoreUrl);
     }
 };
 

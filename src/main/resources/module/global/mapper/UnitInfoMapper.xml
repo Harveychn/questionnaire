@@ -12,4 +12,18 @@
         ORDER BY
             u.unit_name
     </select>
+
+
+    <select id="listUnitNameByUnitIDs" parameterType="List"
+            resultType="String">
+        SELECT
+            u.unit_name
+        FROM
+            unit AS u
+        WHERE
+            u.unit_id IN
+            <foreach collection="list" open="(" separator="," close=")" item="unitIDStr">
+                #{unitIDStr}
+            </foreach>
+    </select>
 </mapper>

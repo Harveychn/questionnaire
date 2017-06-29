@@ -3,6 +3,8 @@ package com.questionnaire.ssm.module.notice.util;
 import com.questionnaire.ssm.module.generated.pojo.NoticeWithBLOBs;
 import com.questionnaire.ssm.module.global.constant.CONSTANT;
 import com.questionnaire.ssm.module.notice.pojo.CreateNoticeVO;
+import com.questionnaire.ssm.module.notice.pojo.NoticeForCurUserDTO;
+import com.questionnaire.ssm.module.notice.pojo.NoticeForCurUserVO;
 
 import java.util.List;
 
@@ -43,4 +45,24 @@ public class NoticeVODOUtil {
         noticeWithBLOBs.setNoticeUnitText(unitIdString.toString());
         return noticeWithBLOBs;
     }
+
+    /**
+     * 数据库中公告给用户的公告信息 克隆 到视图信息中
+     *
+     * @param noticeForCurUserDTO
+     * @return
+     * @throws Exception
+     */
+    public static NoticeForCurUserVO toNoticeForUserVO(NoticeForCurUserDTO noticeForCurUserDTO) throws Exception {
+        NoticeForCurUserVO noticeForCurUserVO = new NoticeForCurUserVO();
+
+        noticeForCurUserVO.setNoticeId(noticeForCurUserDTO.getNoticeId());
+        noticeForCurUserVO.setNoticeTitle(noticeForCurUserDTO.getNoticeTitle());
+        noticeForCurUserVO.setNoticeContent(noticeForCurUserDTO.getNoticeContent());
+        noticeForCurUserVO.setNoticeLaunchDate(noticeForCurUserDTO.getNoticeLaunchDate());
+        noticeForCurUserVO.setCreateUnit(noticeForCurUserDTO.getCreateUnit());
+
+        return noticeForCurUserVO;
+    }
+
 }

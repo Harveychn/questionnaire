@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>问卷调查系统--无权访问提示</title>
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html"/>
+    <![endif]-->
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/animate.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <style>
+        .lockscreen.middle-box {
+            width: 200px;
+            padding-top: 0;
+        }
+    </style>
+    <script>if (window.top !== window.self) {
+        window.top.location = window.location;
+    }</script>
+</head>
+<body class="gray-bg">
+<div class="middle-box animated fadeInDown">
+    <h2 align="center">您的系统角色权限不够！</h2>
+</div>
+<div class="middle-box text-center lockscreen animated fadeInDown">
+    <div>
+        <div id="infoTip" class="m-b-md">
+            <img alt="image" class="img-circle circle-border" src="../../img/infoTip.jpg">
+        </div>
+    </div>
+</div>
+
+<div class="animated bounce" align="center">
+    <h2>请通过平板设备访问系统<br/>
+        <i><h3>或者</h3></i>联系系统管理员改变您的系统角色</h2>
+</div>
+<!-- 全局js -->
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script>
+    $infoTip = $('#infoTip');
+    $infoTip.hover(function () {
+        $infoTip.attr('class', 'animated wobble');
+    }, function () {
+        $infoTip.attr('class', '');
+    });
+</script>
+</body>
+</html>

@@ -19,8 +19,19 @@
                 <!--用户获取修改密码的界面前需要登录认证,user标识'记住我'则直接进入-->
                 /user/newPasswordView=authc,user
                 /questionnaireManager/**=authc,user
-                /user/testRoleLimit=authc
-                /success=authc
+                /notice/**=authc,user
+                /noticeRestful/**=authc,user
+                /QesManageRest/**=authc,user
+                /qesTemplateManage/**=authc,user
+                /recycleQesManage/**=authc,user
+                /researchManage/**=authc,user
+                /researchResult/**=authc,user
+                /resultAnalysis/**=authc,user
+                /statisticalAnalysis/**=authc,user
+                /unit/**=authc,user
+                /userInfoManage/**=authc,user
+                /userManage/**=authc,user
+                /userPic/**=authc,user
             </value>
         </property>
     </bean>

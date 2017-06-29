@@ -13,11 +13,9 @@
         .col-xs-2 {
             text-align: center;
         }
-
         .col-xs-4 {
             text-align: center;
         }
-
         .container {
             padding-right: 5px;
             padding-left: 5px;
@@ -31,7 +29,7 @@
 <div class="container">
     <div class="panel panel-primary">
         <div class="panel-heading">
-            <div class="panel-title">
+            <div class="panel-title" id="pageName">
                 创建调查
             </div>
         </div>
@@ -165,7 +163,7 @@
             </div>
 
             <div class="panel-body">
-                <div class="col-md-offset-5">
+                <div class="col-md-offset-5" id="buttonGroup">
                     <button id="resetBtn" class="btn btn-lg btn-warning">重置</button>
                     <button id="launchMissionBtn" class="btn btn-lg btn-success">发布</button>
                 </div>
@@ -210,7 +208,7 @@
                         selectAllText: '全部单位',
                         liveSearchPlaceholder: '查询单位',
                         deselectAllText: '重新选择',
-                        selectedTextFormat: 'count > 15',
+                        selectedTextFormat: 'count > 5',
                         countSelectedText: function () {
                             return '选中了  {0}   个单位   (单位总数 {1})';
                         }
@@ -219,7 +217,7 @@
                 );
             },
             error: function (data) {
-                console.log(data);
+                console.error(data);
             }
         });
         var qesItemOptions = '';
@@ -236,7 +234,6 @@
                         '[' + data[index].isTemplate + ']</option>';
                 }
                 $questionnaireItem.append(qesItemOptions);
-
                 $($questionnaireItem).selectpicker({
                         liveSearch: true,
                         noneSelectedText: '未选择发布问卷',
@@ -246,13 +243,10 @@
                 );
             },
             error: function () {
-
             }
         });
-
         layui.use(['laydate'], function () {
             var laydate = layui.laydate;
-
             var start = {
                 format: 'YYYY-MM-DD hh:mm:ss',
                 min: laydate.now(),
@@ -269,7 +263,6 @@
                     end.start = datas //将结束日的初始值设定为开始日
                 }
             };
-
             var end = {
                 format: 'YYYY-MM-DD hh:mm:ss',
                 max: '2099-06-16 23:59:59',
@@ -293,8 +286,22 @@
                 laydate(end);
             };
         });
-
+        if ('' !== window.location.search) {
+            $('#pageName').html('发布问卷');
+        }
     });
+    //发布问卷时设置选中问卷
+    window.onload = function () {
+        var $questionnaireItem = $('select[name="questionnaireSelect"]');
+        var selectedQesId = window.location.search.split('=').pop();
+        if ('' !== selectedQesId) {
+            $questionnaireItem.find('option[value=' + selectedQesId + ']').attr("selected", true);
+            $questionnaireItem.selectpicker('render');
+            var $buttonGroup = $('#buttonGroup');
+            $buttonGroup.attr('class', 'col-md-offset-4');
+            $buttonGroup.prepend('<button class="btn btn-lg btn-link" onclick="window.history.back();">返回上一级</button>');
+        }
+    };
     /*提交数据*/
     $('#launchMissionBtn').on('click', function () {
         //获取选中的单位ID
@@ -302,7 +309,6 @@
         $('#researchUnit').find('option:selected').each(function () {
             unitIds.push($(this).val());
         });
-
         var missionDescription = $('#missionDescription').val();
         var startDate = $('#begindate').val();
         var endDate = $('#enddate').val();
@@ -314,7 +320,6 @@
             qesItem.minSubmit = ($(this).closest('div[class="col-md-offset-0 col-md-12"]').find('input[name="minSubmit"]').val());
             qesItemInfoArray.push(qesItem);
         });
-
         layui.use('layer', function () {
             var layer = layui.layer;
             //校验调查单位数量不能少于一个
@@ -341,20 +346,19 @@
                 return;
             }
             for (var i = 0; i < qesItemInfoArray.length; i++) {
-                console.log(qesItemInfoArray[i].questionnaireId);
-                console.log(typeof qesItemInfoArray[i].questionnaireId);
                 if (qesItemInfoArray[i].questionnaireId === undefined || qesItemInfoArray[i].questionnaireId.match(/^\s*$/)) {
                     layer.msg('未选择要发布的问卷', function () {
                     });
                     return;
                 }
-                if (qesItemInfoArray[i].minSubmit === undefined || qesItemInfoArray[i].minSubmit === 0) {
+                if (qesItemInfoArray[i].minSubmit === undefined
+                    || qesItemInfoArray[i].minSubmit === 0
+                    || qesItemInfoArray[i].minSubmit.match(/^\s*$/)) {
                     layer.msg('未设置问卷的最少提交量', function () {
                     });
                     return;
                 }
             }
-
             if (missionDescription.match(/^\s*$/)) {
                 layer.confirm('不填写调查描述可以吗，默认将设置为“无描述”', {
                     icon: 3,
@@ -370,7 +374,6 @@
             }
         });
     });
-
     function submitJsonData(missionDescription, unitIds, qesItemInfoArray) {
         var createResearchMissionVO = {};
         createResearchMissionVO.missionDescription = missionDescription;
@@ -381,12 +384,10 @@
         var url = '/researchManage/createResearchMission';
         accessServerByJson(url, createResearchMissionVO);
     }
-
     /*重置按钮*/
     $('#resetBtn').on('click', function () {
         layui.use('layer', function () {
             var layer = layui.layer;
-
             layer.confirm('确认重置？', {
                     icon: 3,
                     btn: ['确定', '取消']
@@ -405,8 +406,6 @@
                 }
             )
         });
-
-
     });
 </script>
 </body>

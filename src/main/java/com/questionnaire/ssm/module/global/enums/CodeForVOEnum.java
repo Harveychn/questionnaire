@@ -22,7 +22,6 @@ public enum CodeForVOEnum {
     DB_SELECT_SUCCESS(3, "查询数据成功!"),
     DB_DELETE_SUCCESS(4, "删除数据成功!"),
 
-
     /*用户信息校验编码*/
     VALIDA_FAIL(9, "校验失败"),
     VALIDA_OK(10, "校验成功!"),
@@ -30,15 +29,24 @@ public enum CodeForVOEnum {
     NO_ROLE(12, "用户不具备角色!"),
     NO_PERMISSION(13, "用户无相应权限!"),
     OLD_PASSWORD_ERROR(14, "旧密码错误!"),
+    NEW_USER_AUTHORITY_VO_DATA_ERROR(15, "用户权限信息数据错误!"),
+    NO_SUCH_USER_INFO(16, "系统不存在该账户相关信息！"),
+    VERIFY_CODE_ERROR(17, "短信校验码错误！"),
+    VERIFY_CODE_TIMEOUT(18, "短信校验码过期！"),
+    PASSWORD_TOO_SHORT(19, "密码长度不能短于6位！"),
+    USER_TEL_NULL(20, "用户名不得为空！"),
+
+    /*结果分析无数据*/
+    NO_RESULT_FOR_ANALYZE(600, "目前还没有结果数据的提交！"),
 
     /*参数校验信息编码*/
     VALID_FAIL_CREATE_QUESTIONNAIRE(-1000, "创建问卷视图数据校验失败!"),
     QUESTIONNAIRE_IDS_NULL(-1010, "未选择要操作的问卷!"),
     TEMPLATE_IDS_NULL(-1020, "未选择要操作的模板"),;
 
-    /*错误代码*/
+    /*代码*/
     private int code;
-    /*错误代码代表信息*/
+    /*代码代表信息*/
     private String message;
 
     CodeForVOEnum(int code, String message) {

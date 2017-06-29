@@ -7,6 +7,8 @@ import com.questionnaire.ssm.module.resultAnalysis.pojo.DisplayAnswerPaperVO;
 
 import java.util.List;
 
+import static com.questionnaire.ssm.module.questionnaireManage.util.QesManageVODOUtil.parse2VOQuestionType;
+
 /**
  * Created by 95884 on 2017/5/16.
  */
@@ -18,7 +20,7 @@ public class AnswerPaperVODOUtil {
      * @return
      * @throws Exception
      */
-    public static DisplayAnswerPaperVO toDisplayQuestionnaireVO(AnswerPaper answerPaper) throws Exception {
+    public static DisplayAnswerPaperVO toDisplayAnswerPaperVO(AnswerPaper answerPaper) throws Exception {
         DisplayAnswerPaperVO displayAnswerPaperVO = new DisplayAnswerPaperVO();
 
         displayAnswerPaperVO.setAnswerPaperId(answerPaper.getAnswerPaperId());
@@ -47,9 +49,14 @@ public class AnswerPaperVODOUtil {
         if (question.getQuestionDescription() != null) {
             answerQuestionVO.setQuestionDescription(question.getQuestionDescription());
         }
-        answerQuestionVO.setAnswerDetail(answerDetail);
         /*数据库中不为空字段*/
-        answerQuestionVO.setQuestionType(question.getQuestionType());
+
+        if(answerDetail.equals(".")){
+            answerQuestionVO.setAnswerDetail(" ");
+        }else {
+            answerQuestionVO.setAnswerDetail(answerDetail);
+        }
+        answerQuestionVO.setQuestionType(parse2VOQuestionType(question.getQuestionType()));
         answerQuestionVO.setMust(question.getIsMust());
         return answerQuestionVO;
     }

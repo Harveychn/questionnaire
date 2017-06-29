@@ -24,8 +24,8 @@
                 <div id="tableToolbar" class="btn-group hidden-xs" role="group">
                     <button id="multiDelBtn" type="button" class="btn btn-outline btn-default"
                             data-toggle="tooltip"
-                            title="批量删除模板">
-                        <i class="glyphicon glyphicon-floppy-remove" aria-hidden="true"> 批量删除</i>
+                            title="批量移除模板">
+                        <i class="glyphicon glyphicon-floppy-remove" aria-hidden="true"> 批量移除</i>
                     </button>
                     <button id="multiAdd2PrivateLibBtn" type="button" class="btn btn-outline btn-default"
                             data-toggle="tooltip"
@@ -52,9 +52,9 @@
         th:src="@{/js/myJs/responseAnalyze.js}"></script>
 
 <script>
-    //批量永久删除按钮
+    //批量移除按钮
     var $multiDelBtn = $('#multiDelBtn');
-    //批量添加到公共模板
+    //批量添加到个人模板
     var $multiAdd2PrivateLibBtn = $('#multiAdd2PrivateLibBtn');
 
     var $table = $('#publicTemplateInfoTable');
@@ -62,8 +62,8 @@
     var tableDataUrl = '/qesTemplateManage/getPublicTemplateInfo';
     var getDataMethod = 'get';
 
-    var restoreUrl = '/qesTemplateManage/restoreMultiQuestionnaire';
-    var deleteForeverUrl = '/questionnaireManage/delForeverMultiQuestionnaire';
+    var deleteTemporaryUrl = '/qesTemplateManage/multiDeleteTemplate';
+    var add2PrivateLibUrl = '/qesTemplateManage/add2MyTemplateLib';
 
     $(function () {
         $table.bootstrapTable({
@@ -88,7 +88,7 @@
 
             search: true,
             searchAlign: 'right',
-            searchOnEnterKey: true,
+            searchOnEnterKey: false,
 
             toolbar: '#tableToolbar',
 
@@ -142,19 +142,19 @@
             browseQesUrl += '/' + row.questionnaireId;
             browseQesPaper(browseQesUrl);
         },
-        //删除模板
+        //移除模板
         'click .remove': function (e, value, row, index) {
-            layer.msg('模块未发布', {icon: 4});
-//            layerConfirmSingle('确认移除模板吗?', row, delTemporaryUrl);
+            layerConfirmSingle('确认移除模板吗?', row, deleteTemporaryUrl);
         },
         //引用模板
         'click .usePaper': function (e, value, row, index) {
-            layer.msg('模块未发布', {icon: 4});
+//            layer.msg('模块未发布', {icon: 4});
+            window.location.href = '/QesManageRest/getQuoteQesPaperView/' + row.questionnaireId;
+
         },
         //添加公共模板
         'click .add2PrivateLib': function (e, value, row, index) {
-            layer.msg('模块未发布', {icon: 4});
-//            layerConfirmSingle('确认共享个人模板到公共模板库？', row, shareUrl);
+            layerConfirmSingle('确认共享个人模板到公共模板库？', row, add2PrivateLibUrl);
         }
     };
 
@@ -163,26 +163,25 @@
         return [
             '<a class="scanPaper btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="查看模板">',
             '<i class="glyphicon glyphicon-level-up"></i> 查看',
-            '<a class="remove btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="删除模板">',
-            '<i class="glyphicon glyphicon-remove"></i> 删除',
+            '<a class="remove btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="移除模板">',
+            '<i class="glyphicon glyphicon-remove"></i> 移除',
             '</a>',
             '<a class="usePaper btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="引用模板">',
             '<i class="glyphicon glyphicon-export"></i> 引用',
             '</a>',
             '<a class="add2PrivateLib btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="添加到个人模板库">',
-            '<i class="glyphicon glyphicon-log-in"></i> 添加个人模板',
+            '<i class="glyphicon glyphicon-log-in"></i> 添加到个人模板',
             '</a>'
         ].join('');
     }
 
-    //批量永久删除处理
+    //批量移除处理
     $multiDelBtn.on('click', function () {
         var ids = getIdSelections();
         if (!checkIsSelectedOne(ids)) {
             return;
         }
-        layer.msg('模块未发布', {icon: 4});
-//        layerMsg("确认永久删除模板吗?", ids, deleteForeverUrl);
+        layerConfirmMulti("确认批量移除模板吗?", ids, deleteTemporaryUrl);
     });
 
     //批量添加到个人模板库
@@ -191,7 +190,7 @@
         if (!checkIsSelectedOne(ids)) {
             return;
         }
-        layer.msg('模块未发布', {icon: 4});
+        layerConfirmMulti('确认批量添加到个人模板吗？', ids, add2PrivateLibUrl);
     });
 
     /*检查是否选中一种模板*/
@@ -203,8 +202,7 @@
         return true;
     }
 
-    /*弹窗层*/
-    function layerMsg(confirmText, ids, url) {
+    function layerConfirmMulti(confirmText, ids, url) {
         layer.confirm(confirmText, {
                 icon: 3,
                 btn: ['确定', '取消']
@@ -219,7 +217,7 @@
         )
     }
 
-    function layerConfirm(confirmText, row, url) {
+    function layerConfirmSingle(confirmText, row, url) {
         layer.confirm(confirmText, {
                 icon: 3,
                 btn: ['确定', '取消']
@@ -241,29 +239,30 @@
      * @param urlWithId 查看问卷带有问卷ID的url
      */
     function browseQesPaper(urlWithId) {
-        layer.full(layer.open({
-            type: 2,
-            content: urlWithId,
-            area: ['80%', '80%'],
-            maxmin: true,
-            closeBtn: 1
-        }));
+        window.open(urlWithId);
+//        layer.full(layer.open({
+//            type: 2,
+//            content: urlWithId,
+//            area: ['80%', '80%'],
+//            maxmin: true,
+//            closeBtn: 1
+//        }));
     }
 
     /**
      * 异步加载服务器
-     * @param questionnaireIds
+     * @param templateIds
      * @param url
      */
-    function accessServer(questionnaireIds, url) {
+    function accessServer(templateIds, url) {
         $.ajax({
             url: url,
             type: 'post',
-            data: {questionnaireIds: questionnaireIds},
+            data: {templateIds: templateIds},
             dataType: 'text',
             traditional: true,
             success: function (data) {
-                analyzeResponse(data, url, questionnaireIds);
+                analyzeResponse(data, url, templateIds);
             },
             error: function () {
                 layer.msg('操作失败，出现点问题，刷新看看？', {icon: 2});
@@ -276,32 +275,25 @@
      * 解析回复数据包
      * @param data
      * @param url
-     * @param questionnaireIds
+     * @param templateIds
      */
-    function analyzeResponse(data, url, questionnaireIds) {
+    function analyzeResponse(data, url, templateIds) {
         var responsePkt = JSON.parse(data);
         if (responsePkt.code === 200) {
             switch (url) {
-                case restoreUrl: //恢复回收站模板
+                case deleteTemporaryUrl://移除模板
                     if (responsePkt.code === 200) {
                         $table.bootstrapTable('remove', {
                             field: 'questionnaireId',
-                            values: questionnaireIds
+                            values: templateIds
                         });
-                        layer.msg('模板已经恢复到模板库中！', {icon: 1});
+                        layer.msg('模板已经移除！', {icon: 1});
                     }
-                    dealGlobalError(responsePkt);
                     break;
-                case deleteForeverUrl://永久删除模板
+                case add2PrivateLibUrl://添加个人模板
                     if (responsePkt.code === 200) {
-                        $table.bootstrapTable('remove', {
-                            field: 'questionnaireId',
-                            values: questionnaireIds
-                        });
-                        layer.msg('模板已经永久删除！', {icon: 1});
+                        layer.msg('成功添加到个人模板！', {icon: 1});
                     }
-                    dealGlobalError(responsePkt);
-                    break;
                 default:
                     return;
             }

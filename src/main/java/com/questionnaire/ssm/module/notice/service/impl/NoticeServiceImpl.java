@@ -84,48 +84,6 @@ public class NoticeServiceImpl implements NoticeService {
         return noticeInfoVOList;
     }
 
-
-    /**
-     * 获取用户可见公告信息
-     *
-     * @param userTel
-     * @return
-     * @throws Exception
-     */
-    @Override
-    public List<NoticeForSurveyorVO> listNoticeInfoForSurveyor(String userTel) throws Exception {
-        //全部发布中公告信息
-        List<NoticeForSurveyorDTO> noticeForSurveyorDTOList = noticeManageMapper.listNoticeInfoForSurveyor();
-        if(noticeForSurveyorDTOList.size()<=0){
-            return null;
-        }
-        //用户所在单位ID
-        Long userUnitId = unitService.getUnitIdByUserTel(userTel);
-        List<NoticeForSurveyorVO> noticeForSurveyorVOList = new ArrayList<>();
-        String[] noticeObjUnitIds = null;
-        NoticeForSurveyorVO noticeForSurveyorVO = null;
-        //筛选用户可见公告信息
-        for (NoticeForSurveyorDTO noticeForSurveyorDTO : noticeForSurveyorDTOList) {
-            noticeObjUnitIds = noticeForSurveyorDTO.getObjectUnitText().split("\\|\\|");
-            for (String noticeObj : noticeObjUnitIds) {
-                if (Long.valueOf(noticeObj).equals(userUnitId)) {
-                    noticeForSurveyorVO = new NoticeForSurveyorVO();
-
-                    noticeForSurveyorVO.setNoticeId(noticeForSurveyorDTO.getNoticeId());
-                    noticeForSurveyorVO.setNoticeTitle(noticeForSurveyorDTO.getNoticeTitle());
-                    noticeForSurveyorVO.setNoticeContent(noticeForSurveyorDTO.getNoticeContent());
-                    noticeForSurveyorVO.setNoticeLaunchDate(noticeForSurveyorDTO.getNoticeLaunchDate());
-                    noticeForSurveyorVO.setCreateUnit(noticeForSurveyorDTO.getCreateUnit());
-
-                    noticeForSurveyorVOList.add(noticeForSurveyorVO);
-                    break;
-                }
-            }
-        }
-        return noticeForSurveyorVOList;
-    }
-
-
     @Override
     @Transactional
     public void deleteNotice(Long noticeId) throws Exception {

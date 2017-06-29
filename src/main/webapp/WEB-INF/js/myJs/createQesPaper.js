@@ -28,12 +28,12 @@ function getQesVOData(isDone, isTemplate) {
     dataBase.done = isDone;
     dataBase.template = isTemplate;
 
-    var $qesPaperTitle = $('#questionnaireTitle');
-    var qesTitleStr = $qesPaperTitle.find('span').html().toString();
-    if ($qesPaperTitle.hasClass('bg-danger') || qesTitleStr === '这里填写问卷标题') {
-        layer.alert('请先填写正确问卷标题！', {icon: 7});
+    var qesTitleStr = $('#questionnaireTitle').val();
+    if (qesTitleStr.match(/^\s*$/)) {
+        layer.alert('问卷标题不得为空！', {icon: 7});
         return;
     }
+
     dataBase.questionnaireTitle = qesTitleStr;
 
     dataBase.questionnaireSubtitle = $('#questionnaireSubtitle').val();
@@ -111,12 +111,38 @@ function getQesVOData(isDone, isTemplate) {
     if (!isNoError) {
         return;
     }
-    // console.log(JSON.stringify(dataBase));
+
+    // console.debug(JSON.stringify(dataBase));
 
     //访问服务器
     var url = '/questionnaireManage/create';
-    accessServerByJson(url, dataBase);
+    submitQesDataByJson(url, dataBase);
+}
 
+function submitQesDataByJson(url, jsonData) {
+    $.ajax({
+        url: url,
+        contentType: "application/json;charset=utf-8",
+        type: 'post',
+        dataType: 'json',
+        data: JSON.stringify(jsonData),
+        success: function (data) {
+            if (200 === data.code) {
+                layer.msg("操作成功！", {
+                    icon: 1,
+                    time: 2000,
+                    shade: 0.5,
+                    closeBtn: 1
+                }, function () {
+                    window.location.href = "/questionnaireManage/getListMyQesPaperView";
+                });
+            }
+            dealGlobalError(data);
+        },
+        error: function (data) {
+            alert(data);
+        }
+    });
 }
 
 //编辑标题是输入框状态
