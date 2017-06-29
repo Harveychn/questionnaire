@@ -3,7 +3,7 @@ package com.questionnaire.ssm.module.resultAnalysis.pojo;
 /**
  * Created by 95884 on 2017/5/7.
  */
-public class ListAnswerPaperVO {
+public class AnswerPaperVO {
     /*答卷id*/
     private Long answerPaperId;
     /*交卷人id*/
@@ -15,7 +15,7 @@ public class ListAnswerPaperVO {
 
     @Override
     public String toString() {
-        return "ListAnswerPaperVO{" +
+        return "AnswerPaperVO{" +
                 "answerPaperId=" + answerPaperId +
                 ", submitUserTel='" + submitUserTel + '\'' +
                 ", fillAnswerTime='" + fillAnswerTime + '\'' +

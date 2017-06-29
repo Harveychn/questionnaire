@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
 /**
  * Created by 95884 on 2017/5/5.
  */
@@ -32,27 +31,27 @@ public class PrimaryDataServiceImpl implements PrimaryDataService {
      * @throws Exception
      */
     @Override
-    public List<ListPrimaryDataInfoVO> listPrimaryData() throws Exception {
-        List<ListPrimaryDataInfoVO> listPrimaryDataInfoVOList = new ArrayList<>();
-        List<ListPrimaryDataInfoVO> listPrimaryDataInfoVOS = new ArrayList<>();
+    public List<PrimaryDataInfoVO> listPrimaryData() throws Exception {
+        List<PrimaryDataInfoVO> result = new ArrayList<>();
+        List<PrimaryDataInfoVO> primaryDataInfoVOS = null;
         try {
-            listPrimaryDataInfoVOList = resultAnalysisMapper.listPrimaryDataInfo();
+            primaryDataInfoVOS = resultAnalysisMapper.listPrimaryDataInfo();
         } catch (Exception e) {
             logger.error(e.getMessage());
             throw new OperateDBException(CodeForVOEnum.UNKNOWN_ERROR, "获取问卷失败");
         }
         //获取问卷完成数量
         Long count = null;
-        for (ListPrimaryDataInfoVO listPrimaryDataInfoVO : listPrimaryDataInfoVOList) {
-            count = resultAnalysisMapper.listCount(listPrimaryDataInfoVO);
-            listPrimaryDataInfoVO.setQuestionnaireCount(count);
+        for (PrimaryDataInfoVO primaryDataInfoVO : primaryDataInfoVOS) {
+            count = resultAnalysisMapper.listCount(primaryDataInfoVO);
+            primaryDataInfoVO.setQuestionnaireCount(count);
             try {
-                listPrimaryDataInfoVOS.add(listPrimaryDataInfoVO);
+                result.add(primaryDataInfoVO);
             } catch (Exception e) {
                 logger.error(e.getMessage());
             }
         }
-        return listPrimaryDataInfoVOS;
+        return result;
     }
 
     /**
@@ -63,15 +62,15 @@ public class PrimaryDataServiceImpl implements PrimaryDataService {
      * @throws Exception
      */
     @Override
-    public List<ListAnswerPaperVO> listAnswerPaper(MissionQuestionnaireVO missionQuestionnaireVO) throws Exception {
-        List<ListAnswerPaperVO> listAnswerPaperVOList = new ArrayList<>();
+    public List<AnswerPaperVO> listAnswerPaper(MissionQuestionnaireVO missionQuestionnaireVO) throws Exception {
+        List<AnswerPaperVO> answerPaperVOS = new ArrayList<>();
         try {
-            listAnswerPaperVOList = resultAnalysisMapper.listAnswerPaper(missionQuestionnaireVO);
+            answerPaperVOS = resultAnalysisMapper.listAnswerPaper(missionQuestionnaireVO);
         } catch (Exception e) {
             logger.error(e.getMessage());
             throw new OperateDBException(CodeForVOEnum.UNKNOWN_ERROR, "获取答卷失败");
         }
-        return listAnswerPaperVOList;
+        return answerPaperVOS;
     }
 
     /**

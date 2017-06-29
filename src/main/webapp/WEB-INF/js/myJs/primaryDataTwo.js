@@ -69,7 +69,8 @@ window.operateEvents = {
     //查看
     'click .check': function (e, value, row, index) {
         checkDataUrl = '/resultAnalysis/getAnswerPaperInfo?answerPaperId=' + row.answerPaperId;
-        layerMsg('查看', row, checkDataUrl);
+        // layerMsg('查看', row, checkDataUrl);
+        window.open(checkDataUrl);
     }
 };
 function layerMsg(confirmText, ids, url) {

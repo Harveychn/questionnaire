@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -31,7 +30,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/questionnaireManage")
-public class QesManageController {
+public class QesManageController extends IsOutOfIndex {
 
     /**
      * 获取创建问卷的视图
@@ -110,8 +109,8 @@ public class QesManageController {
         modelAndView.addObject("displayQuestionnaireVO",
                 qesManageService.getQuestionnaireById(curQesId));
         preOrNextQes.setCurrentQesPaperId(curQesId);
-        isOutOfMinIndex(modelAndView);
-        isOutOfMaxIndex(modelAndView);
+        isOutOfMinIndex(preOrNextQes,modelAndView);
+        isOutOfMaxIndex(preOrNextQes,modelAndView);
         //设置当前查看的问卷id
         preOrNextQes.setCurrentQesPaperId(curQesId);
         return modelAndView;
@@ -137,10 +136,10 @@ public class QesManageController {
                     qesManageService.getQuestionnaireById(displayingQesId));
             //设置当前问卷为下一份问卷id
             preOrNextQes.setCurrentQesPaperId(displayingQesId);
-            isOutOfMaxIndex(modelAndView);
+            isOutOfMaxIndex(preOrNextQes,modelAndView);
         }
         //左边界判断是否超出
-        isOutOfMinIndex(modelAndView);
+        isOutOfMinIndex(preOrNextQes,modelAndView);
         return modelAndView;
     }
 
@@ -164,10 +163,10 @@ public class QesManageController {
                     qesManageService.getQuestionnaireById(displayingQesId));
             //设置当前问卷为下一份问卷id
             preOrNextQes.setCurrentQesPaperId(displayingQesId);
-            isOutOfMinIndex(modelAndView);
+            isOutOfMinIndex(preOrNextQes,modelAndView);
         }
         //判断右边界是否超出
-        isOutOfMaxIndex(modelAndView);
+        isOutOfMaxIndex(preOrNextQes,modelAndView);
         return modelAndView;
     }
 
@@ -290,24 +289,6 @@ public class QesManageController {
         }
         qesManageService.shareQesPaperByIds(Arrays.asList(questionnaireIds));
         return ResultUtil.success();
-    }
-
-    //判断是否超出最小边界
-    private void isOutOfMinIndex(ModelAndView modelAndView) throws Exception {
-        if (preOrNextQes.getPreviousQesPaperId() == PreOrNextQes.OUT_OF_INDEX) {
-            modelAndView.addObject("isOutOfMinIndex", true);
-        } else {
-            modelAndView.addObject("isOutOfMinIndex", false);
-        }
-    }
-
-    //判断是否超出最大边界
-    private void isOutOfMaxIndex(ModelAndView modelAndView) throws Exception {
-        if (preOrNextQes.getNextQesPaperId() == PreOrNextQes.OUT_OF_INDEX) {
-            modelAndView.addObject("isOutOfMaxIndex", true);
-        } else {
-            modelAndView.addObject("isOutOfMaxIndex", false);
-        }
     }
 
     private static final Logger logger = LoggerFactory.getLogger(QesManageController.class);

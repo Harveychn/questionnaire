@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>展示答卷</title>
+    <title>答卷展示</title>
     <link rel="shortcut icon" href="../../img/favicon.ico"/>
     <link href="../../css/bootstrap.min.css" rel="stylesheet"/>
     <style>
@@ -66,46 +66,36 @@
                     </div>
                 </div>
             </div>
-            <input type="button" value="上一页" onclick="up()"/>
-            <input type="button" value="下一页" onclick="down()"/>
+            <!--<input type="button" value="上一页" onclick="up()"/>-->
+            <!--<input type="button" value="下一页" onclick="down()"/>-->
         </div>
     </div>
 
     <!--打印按钮-->
-    <!--<div class="row hidden-print print-btn">-->
-        <!--<div class="btn-group pull-right">-->
-            <!--<button id="printQesBtn" class="btn btn-lg btn-link">打印</button>-->
-        <!--</div>-->
-    <!--</div>-->
+    <div class="row hidden-print print-btn">
+        <div class="btn-group-lg pull-right">
+            <button th:disabled="${isOutOfMinIndex == true}" id="prevPaperBtn" class="btn btn-default btn-block"
+                    data-toggle="tooltip" title="上一份">
+                <i class="glyphicon glyphicon-chevron-up"></i>
+            </button>
+            <button th:disabled="${isOutOfMaxIndex == true}" id="nextPaperBtn" class="btn btn-default btn-block"
+                    data-toggle="tooltip" title="下一份">
+                <i class="glyphicon glyphicon-chevron-down"></i>
+            </button>
+        </div>
+    </div>
 </div>
 
 <script src="../../js/jquery.min.js"></script>
 <script>
-//    //打印答卷
-//    $(function () {
-//        $('#printQesBtn').on('click', function () {
-//            window.print();
-//        });
-//    });
-
-    //上一页
-    function up(){
-        var pageno=1;
-        if(pageno==0){
-            alert("当前已经是第一页!");
-            return false;
-        }
-        window.location.href="/resultAnalysis/getAnswerPaperInfo?answerPaperId="+pageno;
-    }
-    //下一页
-    function down(){
-        var pageno=1;
-        if(pageno==2){
-            alert("当前已经是最后一页!");
-            return false;
-        }
-        window.location.href="/resultAnalysis/getAnswerPaperInfo?answerPaperId="+pageno;
-    }
+    $(function () {
+        $('#prevPaperBtn').on('click', function () {
+            window.location.href = '/resultAnalysis/prevAnswerPaper';
+        });
+        $('#nextPaperBtn').on('click', function () {
+            window.location.href = '/resultAnalysis/nextAnswerPaper';
+        })
+    });
 </script>
 
 </body>

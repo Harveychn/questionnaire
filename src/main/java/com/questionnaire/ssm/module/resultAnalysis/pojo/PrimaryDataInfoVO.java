@@ -4,7 +4,7 @@ package com.questionnaire.ssm.module.resultAnalysis.pojo;
  * Created by 95884 on 2017/5/6.
  * Description: 展示原始数据视图实体类
  */
-public class ListPrimaryDataInfoVO {
+public class PrimaryDataInfoVO {
     /*调查任务id*/
     private Long missionId;
     /*问卷id*/
@@ -20,7 +20,7 @@ public class ListPrimaryDataInfoVO {
 
     @Override
     public String toString() {
-        return "ListPrimaryDataInfoVO{" +
+        return "PrimaryDataInfoVO{" +
                 "missionId=" + missionId +
                 ", questionnaireId=" + questionnaireId +
                 ", questionnaireTitle='" + questionnaireTitle + '\'' +

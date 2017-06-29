@@ -67,7 +67,6 @@ var checkDataUrl = '';
 window.operateEvents = {
     //查看
     'click .check': function (e, value, row, index) {
-        // layer.alert(row.missionId + "||" + row.questionnaireId);
         checkDataUrl = '/resultAnalysis/getPrimaryDataTwo?missionId=' + row.missionId + '&qesId=' + row.questionnaireId;
         layerMsg('查看', row, checkDataUrl);
     }
