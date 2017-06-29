@@ -47,6 +47,10 @@ $(function () {
     if ('undefined' !== typeof analyzeResultData) {
         for (var i = 0; i < analyzeResultData.length; i++) {
             if (i === 0) {
+                $curQuestionContent.html('第' + (i + 1) + '题  ' + analyzeResultData[i].questionContent + '(' + analyzeResultData[i].questionType + ')');
+                //设置表格的数据
+                setTableBodyData(i);
+
                 $questionList.append('<button class="list-group-item btn" ' +
                     'style="text-align: left; background-color: #9ce39b;" id="' + analyzeResultData[i].questionId +
                     '" onclick="clickQuestionListItem(this.id)">第' +
@@ -58,9 +62,7 @@ $(function () {
                 '" onclick="clickQuestionListItem(this.id)">第' +
                 (i + 1) + '题  ' + analyzeResultData[i].questionContent + '(' + analyzeResultData[i].questionType + ')</button>');
             if (i === 0) {
-                $curQuestionContent.html('第' + (i + 1) + '题  ' + analyzeResultData[i].questionContent + '(' + analyzeResultData[i].questionType + ')');
-                //设置表格的数据
-                setTableBodyData(i);
+
             }
         }
         initEchartData();

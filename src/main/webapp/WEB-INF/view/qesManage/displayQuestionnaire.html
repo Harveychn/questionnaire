@@ -152,19 +152,21 @@
                     </div>
                 </div>
             </div>
-            <!--<div class="row hidden-print">-->
-            <!--<div class="col-md-offset-5 btn-group-lg">-->
-            <!--<button id="prePaperBtn" class="btn btn-link">上一份</button>-->
-            <!--<button id="nextPaperBtn" class="btn btn-link">下一份</button>-->
-            <!--</div>-->
-            <!--</div>-->
         </div>
     </div>
 
     <!--打印按钮-->
     <div class="row hidden-print print-btn">
         <div class="btn-group-lg pull-right">
-            <button id="printQesBtn" class="btn btn-success">打印</button>
+            <button th:disabled="${isOutOfMinIndex == true}" id="prevPaperBtn" class="btn btn-default btn-block"
+                    data-toggle="tooltip" title="上一份">
+                <i class="glyphicon glyphicon-chevron-up"></i>
+            </button>
+            <button id="printQesBtn" class="btn btn-success btn-block">打印</button>
+            <button th:disabled="${isOutOfMaxIndex == true}" id="nextPaperBtn" class="btn btn-default btn-block"
+                    data-toggle="tooltip" title="下一份">
+                <i class="glyphicon glyphicon-chevron-down"></i>
+            </button>
         </div>
     </div>
 </div>
@@ -175,7 +177,12 @@
         $('#printQesBtn').on('click', function () {
             window.print();
         });
-        console.log(window.location.search);
+        $('#prevPaperBtn').on('click', function () {
+            window.location.href = '/questionnaireManage/displayPrevQesPaper';
+        });
+        $('#nextPaperBtn').on('click', function () {
+            window.location.href = '/questionnaireManage/displayNextQesPaper';
+        })
     });
 </script>
 

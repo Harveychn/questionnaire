@@ -7,6 +7,7 @@ import com.questionnaire.ssm.module.global.util.ResultUtil;
 import com.questionnaire.ssm.module.global.util.UserValidationUtil;
 import com.questionnaire.ssm.module.questionnaireManage.pojo.CreateQesVO;
 import com.questionnaire.ssm.module.questionnaireManage.pojo.MyQesVO;
+import com.questionnaire.ssm.module.questionnaireManage.pojo.PreOrNextQes;
 import com.questionnaire.ssm.module.questionnaireManage.pojo.TempDelQesPaperVO;
 import com.questionnaire.ssm.module.questionnaireManage.service.QesManageService;
 import com.questionnaire.ssm.module.questionnaireManage.util.OperateQuestionnaireUtil;
@@ -86,22 +87,87 @@ public class QesManageController {
     @ResponseBody
     public List<MyQesVO> listMyQuestionnaire() throws Exception {
         String userTel = UserValidationUtil.getUserTel(logger);
-        return qesManageService.listQuestionnaireInfoByUserTel(userTel);
+        List<MyQesVO> resultVO = qesManageService.listQuestionnaireInfoByUserTel(userTel);
+        Long[] qesIds = new Long[resultVO.size()];
+        for (int i = 0; i < resultVO.size(); i++) {
+            qesIds[i] = resultVO.get(i).getQuestionnaireId();
+        }
+        preOrNextQes = null;
+        preOrNextQes = new PreOrNextQes(qesIds);
+        return resultVO;
     }
 
     /**
      * 预览，展示问卷
      *
-     * @param questionnaireId 问卷id
+     * @param curQesId 问卷id
      * @return
      * @throws Exception
      */
     @GetMapping(value = "/displayQuestionnaire/{questionnaireId}")
-    public ModelAndView displayQuestionnaire(@PathVariable("questionnaireId") long questionnaireId) throws Exception {
-        ModelAndView modelAndView = new ModelAndView();
+    public ModelAndView displayQuestionnaire(@PathVariable("questionnaireId") long curQesId) throws Exception {
+        ModelAndView modelAndView = new ModelAndView("qesManage/displayQuestionnaire");
         modelAndView.addObject("displayQuestionnaireVO",
-                qesManageService.getQuestionnaireById(questionnaireId));
-        modelAndView.setViewName("qesManage/displayQuestionnaire");
+                qesManageService.getQuestionnaireById(curQesId));
+        preOrNextQes.setCurrentQesPaperId(curQesId);
+        isOutOfMinIndex(modelAndView);
+        isOutOfMaxIndex(modelAndView);
+        //设置当前查看的问卷id
+        preOrNextQes.setCurrentQesPaperId(curQesId);
+        return modelAndView;
+    }
+
+    /**
+     * 展示下一份问卷信息
+     *
+     * @return
+     * @throws Exception
+     */
+    @GetMapping(value = "/displayNextQesPaper")
+    public ModelAndView displayNextQesPaper() throws Exception {
+        ModelAndView modelAndView = new ModelAndView("qesManage/displayQuestionnaire");
+        //获取下一份问卷id
+        Long displayingQesId = preOrNextQes.getNextQesPaperId();
+        if (displayingQesId == PreOrNextQes.OUT_OF_INDEX) {        //没有下一份问卷
+            modelAndView.addObject("displayQuestionnaireVO",
+                    qesManageService.getQuestionnaireById(preOrNextQes.getCurrentQesPaperId()));
+            modelAndView.addObject("isOutOfMaxIndex", true);
+        } else { //有下一份问卷
+            modelAndView.addObject("displayQuestionnaireVO",
+                    qesManageService.getQuestionnaireById(displayingQesId));
+            //设置当前问卷为下一份问卷id
+            preOrNextQes.setCurrentQesPaperId(displayingQesId);
+            isOutOfMaxIndex(modelAndView);
+        }
+        //左边界判断是否超出
+        isOutOfMinIndex(modelAndView);
+        return modelAndView;
+    }
+
+    /**
+     * 展示上一份问卷信息
+     *
+     * @return
+     * @throws Exception
+     */
+    @GetMapping(value = "/displayPrevQesPaper")
+    public ModelAndView displayPrevQesPaper() throws Exception {
+        ModelAndView modelAndView = new ModelAndView("qesManage/displayQuestionnaire");
+        Long displayingQesId = preOrNextQes.getPreviousQesPaperId();
+        //超出左边界
+        if (displayingQesId == PreOrNextQes.OUT_OF_INDEX) {
+            modelAndView.addObject("displayQuestionnaireVO",
+                    qesManageService.getQuestionnaireById(preOrNextQes.getCurrentQesPaperId()));
+            modelAndView.addObject("isOutOfMinIndex", true);
+        } else {
+            modelAndView.addObject("displayQuestionnaireVO",
+                    qesManageService.getQuestionnaireById(displayingQesId));
+            //设置当前问卷为下一份问卷id
+            preOrNextQes.setCurrentQesPaperId(displayingQesId);
+            isOutOfMinIndex(modelAndView);
+        }
+        //判断右边界是否超出
+        isOutOfMaxIndex(modelAndView);
         return modelAndView;
     }
 
@@ -226,11 +292,32 @@ public class QesManageController {
         return ResultUtil.success();
     }
 
+    //判断是否超出最小边界
+    private void isOutOfMinIndex(ModelAndView modelAndView) throws Exception {
+        if (preOrNextQes.getPreviousQesPaperId() == PreOrNextQes.OUT_OF_INDEX) {
+            modelAndView.addObject("isOutOfMinIndex", true);
+        } else {
+            modelAndView.addObject("isOutOfMinIndex", false);
+        }
+    }
+
+    //判断是否超出最大边界
+    private void isOutOfMaxIndex(ModelAndView modelAndView) throws Exception {
+        if (preOrNextQes.getNextQesPaperId() == PreOrNextQes.OUT_OF_INDEX) {
+            modelAndView.addObject("isOutOfMaxIndex", true);
+        } else {
+            modelAndView.addObject("isOutOfMaxIndex", false);
+        }
+    }
+
     private static final Logger logger = LoggerFactory.getLogger(QesManageController.class);
+    private PreOrNextQes preOrNextQes;
     private QesManageService qesManageService;
+
 
     @Autowired
     public QesManageController(QesManageService qesManageService) {
+        this.preOrNextQes = null;
         this.qesManageService = qesManageService;
     }
 }
