@@ -52,7 +52,7 @@ $(function () {
                 setTableBodyData(i);
 
                 $questionList.append('<button class="list-group-item btn" ' +
-                    'style="text-align: left; background-color: #9ce39b;" id="' + analyzeResultData[i].questionId +
+                    'style="text-align: left; background-color: rgba(51,122,183,0.82);color: whitesmoke;" id="' + analyzeResultData[i].questionId +
                     '" onclick="clickQuestionListItem(this.id)">第' +
                     (i + 1) + '题  ' + analyzeResultData[i].questionContent + '(' + analyzeResultData[i].questionType + ')</button>');
                 continue;
@@ -160,7 +160,7 @@ function clickQuestionListItem(qesId) {
     for (var i = 0; i < analyzeResultData.length; i++) {
         //设置问题栏背景色
         var $questionList = $('#questionList');
-        $questionList.find('button[id=' + qesId + ']').attr('style', 'text-align: left;background-color: #9ce39b;');
+        $questionList.find('button[id=' + qesId + ']').attr('style', 'text-align: left;background-color: rgba(51,122,183,0.82);color: whitesmoke;"');
         $questionList.find('button[id!=' + qesId + ']').attr('style', 'text-align: left;');
         if (analyzeResultData[i].questionId == qesId) {
             curQuestionAnalyzeData.categories = analyzeResultData[i].optionList;
@@ -295,7 +295,7 @@ $('#tableBtn').on('click', function () {
 
 //点击柱状图
 $('#histogramBtn').on('click', function () {
-    $(this).attr('class', 'btn btn-outline btn-warning');
+    $(this).attr('class', 'btn btn-outline btn-clicked');
     $('#pieChartBtn').attr('class', 'btn btn-outline btn-default');
     myChart.showLoading();
     //设置数据
@@ -377,7 +377,7 @@ $('#histogramBtn').on('click', function () {
 
 //点击扇形图后样式
 $('#pieChartBtn').on('click', function () {
-    $(this).attr('class', 'btn btn-outline btn-warning');
+    $(this).attr('class', 'btn btn-outline btn-clicked');
     $('#histogramBtn').attr('class', 'btn btn-outline btn-default');
     myChart.showLoading();
     var resultData = [];

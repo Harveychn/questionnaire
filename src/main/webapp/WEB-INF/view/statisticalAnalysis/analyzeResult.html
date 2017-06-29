@@ -6,6 +6,18 @@
     <title>结果分析</title>
     <link rel="shortcut icon" href="../../img/favicon.ico"/>
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <style>
+        .btn-clicked {
+            color: #fff;
+            background-color: #6a6a6a;
+            border-color: #69666a;
+        }
+        .btn-clicked:hover {
+            color: #fff;
+            background-color: rgba(70, 70, 70, 0.93);
+            border-color: rgba(59, 59, 59, 0.9);
+        }
+    </style>
 </head>
 
 <body>
@@ -48,7 +60,7 @@
                                 <div id="tableBtn" class="btn btn-default"
                                      data-toggle="tooltip" title="点击隐藏/展示表格数据">表格
                                 </div>
-                                <button id="histogramBtn" class="btn btn-outline btn-warning" data-toggle="tooltip"
+                                <button id="histogramBtn" class="btn btn-outline btn-clicked" data-toggle="tooltip"
                                         title="点击展示柱状图数据">柱状图
                                 </button>
                                 <!--<button id="barGraphBtn" class="btn btn-outline btn-default" data-toggle="tooltip" title="点击展示条形图数据">条形图
