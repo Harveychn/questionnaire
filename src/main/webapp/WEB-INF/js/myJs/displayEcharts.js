@@ -199,7 +199,7 @@ function setTableBodyData(i) {
             $tableBody.append('<tr>' +
                 '<td>' + rowDataArray[rowindex].option + '</td>' +
                 '<td>' + rowDataArray[rowindex].value + '</td>' +
-                '<td>' + rowDataArray[rowindex].value / sumValue * 100 + '%</td>' +
+                '<td>' + (rowDataArray[rowindex].value / sumValue * 100).toFixed(2) + '%</td>' +
                 '</tr>');
         }
     }
@@ -428,6 +428,21 @@ $('#pieChartBtn').on('click', function () {
             center: ['60%', '60%'],
             //动态数据
             data: resultData,
+            label: {
+                normal: {
+                    show: true,
+                    position: 'outside',
+                    formatter: '{b} - {d}%',
+                },
+                emphasis: {
+                    show: true
+                }
+            },
+            labelLine: {
+                normal: {
+                    show: true
+                }
+            },
             itemStyle: {
                 emphasis: {
                     shadowBlur: 10,

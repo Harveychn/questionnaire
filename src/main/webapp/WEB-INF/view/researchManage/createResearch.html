@@ -13,9 +13,11 @@
         .col-xs-2 {
             text-align: center;
         }
+
         .col-xs-4 {
             text-align: center;
         }
+
         .container {
             padding-right: 5px;
             padding-left: 5px;
@@ -191,6 +193,7 @@
             url: '/unit/listUnitInfo',
             type: 'post',
             dataType: 'json',
+            async: false,
             traditional: true,
             success: function (data) {
                 for (var index = 0; index < data.length; index++) {
