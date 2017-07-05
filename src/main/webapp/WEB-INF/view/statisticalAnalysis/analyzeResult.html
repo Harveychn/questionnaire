@@ -12,10 +12,15 @@
             background-color: #868686;
             border-color: #827f83;
         }
+
         .btn-clicked:hover {
             color: #fff;
             background-color: rgba(110, 110, 110, 0.93);
             border-color: rgba(104, 104, 104, 0.9);
+        }
+
+        .row-active {
+            background-color: white;
         }
     </style>
 </head>
@@ -56,18 +61,33 @@
                         </div>
                         <!--按钮组-->
                         <div class="row">
-                            <div class="btn-group pull-right" align="right">
-                                <div id="tableBtn" class="btn btn-default"
-                                     data-toggle="tooltip" title="点击隐藏/展示表格数据">表格
+                            <div class="pull-right" align="right">
+                                <div class="btn-group">
+                                    <button id="exportBtn" class="btn btn-link dropdown-toggle"
+                                            data-toggle="dropdown">
+                                        <i class="glyphicon glyphicon-save"></i>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-light pull-right">
+                                        <li>
+                                            <a href="#" class="export-png">
+                                                导出表格数据为图片
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <button id="histogramBtn" class="btn btn-outline btn-clicked" data-toggle="tooltip"
-                                        title="点击展示柱状图数据">柱状图
-                                </button>
-                                <!--<button id="barGraphBtn" class="btn btn-outline btn-default" data-toggle="tooltip" title="点击展示条形图数据">条形图
-                                </button>-->
-                                <button id="pieChartBtn" class="btn btn-outline btn-default" data-toggle="tooltip"
-                                        title="点击展示饼状图数据">饼状图
-                                </button>
+                                <div class="btn-group">
+                                    <button id="tableBtn" class="btn btn-default"
+                                            data-toggle="tooltip" title="点击隐藏/展示表格数据">表格
+                                    </button>
+                                    <button id="histogramBtn" class="btn btn-outline btn-clicked" data-toggle="tooltip"
+                                            title="点击展示柱状图数据">柱状图
+                                    </button>
+                                    <!--<button id="barGraphBtn" class="btn btn-outline btn-default" data-toggle="tooltip" title="点击展示条形图数据">条形图
+                                    </button>-->
+                                    <button id="pieChartBtn" class="btn btn-outline btn-default" data-toggle="tooltip"
+                                            title="点击展示饼状图数据">饼状图
+                                    </button>
+                                </div>
                             </div>
                         </div>
                         <!--Echarts表格-->
@@ -85,8 +105,17 @@
 </div>
 
 <script src="../../js/jquery.min.js"></script>
-<script src="../../js/plugins/echarts/echarts.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
 <script src="../../js/plugins/layer/layer.min.js"></script>
+<!--echarts功能-->
+<script src="../../js/plugins/echarts/echarts.min.js"></script>
+
+<!--table-export功能-->
+<script src="../../js/plugins/table-export/FileSaver/FileSaver.min.js"></script>
+<script src="../../js/plugins/table-export/html2canvas/html2canvas.min.js"></script>
+<script src="../../js/plugins/table-export/tableExport.min.js"></script>
+<script src="../../js/plugins/table-export/table-export.js"></script>
+
 <script src="../../js/myJs/displayEcharts.js"></script>
 </body>
 

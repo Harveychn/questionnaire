@@ -10,6 +10,11 @@ var $questionList = $('#questionList');
 var $tableBody = $('#tableBody');
 var $questionTableData = $('#questionTableData');
 
+setExportDataAttr();
+window.onload = function () {
+    TableExport.init();
+}
+
 //当前问卷结果分析数据
 var analyzeResultData;
 
@@ -190,13 +195,13 @@ function setTableBodyData(i) {
     }
     for (var rowindex = 0; rowindex < rowDataArray.length; rowindex++) {
         if (sumValue === 0) {
-            $tableBody.append('<tr>' +
+            $tableBody.append('<tr class="row-active">' +
                 '<td>' + rowDataArray[rowindex].option + '</td>' +
                 '<td>' + rowDataArray[rowindex].value + '</td>' +
                 '<td>0%</td>' +
                 '</tr>');
         } else {
-            $tableBody.append('<tr>' +
+            $tableBody.append('<tr class="row-active">' +
                 '<td>' + rowDataArray[rowindex].option + '</td>' +
                 '<td>' + rowDataArray[rowindex].value + '</td>' +
                 '<td>' + (rowDataArray[rowindex].value / sumValue * 100).toFixed(2) + '%</td>' +

@@ -13,19 +13,19 @@
     <bookmark url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/qesManage/createQuestionnaire.html" line="97" />
     <bookmark url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/qesManage/createQuestionnaire.html" line="81" />
     <bookmark url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/js/myJs/createQesPaper.js" line="30" />
-    <bookmark url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/js/myJs/displayEcharts.js" line="163" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/js/myJs/displayEcharts.js" line="168" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fe54f503-f484-4c95-9b43-cda9857c44c4" name="Default" comment="结果可视化页面问题栏美化">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/shiro-activeSessionCache.data" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/shiro-activeSessionCache.index" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.rebel-remote.xml.bak" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/SystemAdminIndex.html" />
+    <list default="true" id="fe54f503-f484-4c95-9b43-cda9857c44c4" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/plugins/table-export/FileSaver/FileSaver.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/plugins/table-export/FileSaver/LICENSE.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/plugins/table-export/html2canvas/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/plugins/table-export/html2canvas/html2canvas.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/plugins/table-export/table-export.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/plugins/table-export/tableExport.min.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/questionnaire.iml" afterPath="$PROJECT_DIR$/questionnaire.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/aspect/QesManageAspect.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/aspect/QesManageAspect.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/myJs/displayEcharts.js" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/myJs/displayEcharts.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/researchManage/createResearch.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/researchManage/createResearch.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/statisticalAnalysis/analyzeResult.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/statisticalAnalysis/analyzeResult.html" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -77,7 +77,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>keyDownFunc</find>
       <find>&lt;div class=&quot;describe-edit-content T_plugins&quot; data-tid=&quot;{{items[0].tid}}&quot;&gt;</find>
       <find>loadDataFn</find>
       <find>textarea</find>
@@ -107,6 +106,7 @@
       <find>/resultAnalysis/listPrimaryData</find>
       <find>$tableBody</find>
       <find>createCover</find>
+      <find>tableContent</find>
     </findStrings>
     <replaceStrings>
       <replace>displayQuestionnaireVO</replace>
@@ -146,7 +146,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/service/impl/ContinueEditServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/util/OperateQuestionnaireUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/service/impl/QesManageServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/home.html" />
@@ -175,7 +174,6 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/CreateQesResources/script/exam/editQesObj.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/qesManage/quoteQesPaper.html" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/myJs/quoteQesPaper.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/statisticalAnalysis/analyzeResult.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/service/impl/PreOrNextQesServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/service/PreOrNextQesService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/controller/DisplayQesController.java" />
@@ -196,6 +194,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/userManage/service/impl/UploadFileServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/aspect/QesManageAspect.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/researchManage/createResearch.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/plugins/table-export/table-export.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/statisticalAnalysis/analyzeResult.html" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/myJs/displayEcharts.js" />
       </list>
     </option>
@@ -312,118 +312,6 @@
               <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="questionnaire" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="questionnaire" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="questionnaire" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="questionnaire" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="view" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="questionnaire" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="questionnaire" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="view" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="statisticalAnalysis" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="questionnaire" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="questionnaire" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
@@ -517,19 +405,19 @@
       <recent name="com.questionnaire.ssm.module.userManage.mapper" />
       <recent name="com.questionnaire.ssm.module.researchManage.mapper" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\Project\questionnaire\questionnaire\src\main\webapp\WEB-INF\css\login" />
-      <recent name="E:\Project\questionnaire\questionnaire\src\main\resources" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Project\questionnaire\questionnaire\src\main\webapp\WEB-INF\js\plugins\table-export\pdfMake" />
+      <recent name="E:\Project\questionnaire\questionnaire\src\main\webapp\WEB-INF\js\plugins\table-export" />
+      <recent name="E:\Project\questionnaire\questionnaire\src\main\webapp\WEB-INF\view\login" />
+      <recent name="E:\Project\questionnaire\questionnaire\src\main\webapp\WEB-INF\js\plugins\sweetalert" />
+      <recent name="E:\Project\questionnaire\questionnaire\src\main\webapp\WEB-INF\view" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\Project\questionnaire\questionnaire\src\main\webapp\WEB-INF\view\login" />
-      <recent name="E:\Project\questionnaire\questionnaire\src\main\webapp\WEB-INF\js\plugins\sweetalert" />
-      <recent name="E:\Project\questionnaire\questionnaire\src\main\webapp\WEB-INF\view" />
-      <recent name="E:\Project\questionnaire\questionnaire\src\main\webapp\WEB-INF\img" />
-      <recent name="E:\Project\questionnaire\questionnaire\src\main\webapp\WEB-INF\js\CreateQesResources\script\exam" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Project\questionnaire\questionnaire\src\main\webapp\WEB-INF\css\login" />
+      <recent name="E:\Project\questionnaire\questionnaire\src\main\resources" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -1323,7 +1211,9 @@
       <workItem from="1498614760396" duration="7254000" />
       <workItem from="1498653644890" duration="1695000" />
       <workItem from="1498695270809" duration="16411000" />
-      <workItem from="1499143266658" duration="5776000" />
+      <workItem from="1499143266658" duration="6005000" />
+      <workItem from="1499152722052" duration="382000" />
+      <workItem from="1499231456250" duration="6061000" />
     </task>
     <task id="LOCAL-00001" summary="首页动态开始">
       <created>1494416498066</created>
@@ -1514,7 +1404,14 @@
       <option name="project" value="LOCAL" />
       <updated>1498705912196</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="1、结果可视化页面--扇形图比例展示&#10;2、发布问卷时，问卷不展示问题解决&#10;3、权限控制细粒度">
+      <created>1499151153673</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1499151153673</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1550,7 +1447,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="461180000" />
+    <option name="totallyTimeSpent" value="467852000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1592,11 +1489,11 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41080198" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3535188" sideWeight="0.49394855" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.4969743" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19894099" sideWeight="0.2831424" order="4" side_tool="false" content_ui="combo" />
-      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20953101" sideWeight="0.27986908" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23373677" sideWeight="0.6439024" order="6" side_tool="true" content_ui="tabs" />
-      <window_info id="JRebel" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19894099" sideWeight="0.7168576" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="JRebel" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20485584" sideWeight="0.7201309" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22919819" sideWeight="0.7119476" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Dynamic Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32980332" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42716858" sideWeight="0.49546143" order="11" side_tool="false" content_ui="tabs" />
@@ -1659,7 +1556,8 @@
     <MESSAGE value="修正创建问卷标题样式导致的bug" />
     <MESSAGE value="统计分析页面按钮点击后颜色效果设置完成" />
     <MESSAGE value="上一份、下一份完成" />
-    <option name="LAST_COMMIT_MESSAGE" value="上一份、下一份完成" />
+    <MESSAGE value="1、结果可视化页面--扇形图比例展示&#10;2、发布问卷时，问卷不展示问题解决&#10;3、权限控制细粒度" />
+    <option name="LAST_COMMIT_MESSAGE" value="1、结果可视化页面--扇形图比例展示&#10;2、发布问卷时，问卷不展示问题解决&#10;3、权限控制细粒度" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1688,21 +1586,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/js/myJs/createQesPaper.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="23" column="3" lean-forward="true" selection-start-line="23" selection-start-column="3" selection-end-line="23" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/qesManage/quoteQesPaper.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="98" column="32" lean-forward="false" selection-start-line="98" selection-start-column="32" selection-end-line="98" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/SystemAdminIndex.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-180">
@@ -1837,7 +1720,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="97">
           <caret line="17" column="4" lean-forward="false" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1922,7 +1804,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="245">
           <caret line="169" column="14" lean-forward="true" selection-start-line="169" selection-start-column="14" selection-end-line="169" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1972,7 +1853,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="320">
           <caret line="16" column="45" lean-forward="true" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1980,7 +1860,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="305">
           <caret line="368" column="36" lean-forward="true" selection-start-line="368" selection-start-column="36" selection-end-line="368" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1988,7 +1867,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="20">
           <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1996,42 +1874,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-211">
           <caret line="31" column="39" lean-forward="true" selection-start-line="31" selection-start-column="39" selection-end-line="31" selection-end-column="39" />
-          <folding>
-            <element signature="docComment;method#getCreateView#0;class#QesManageController#0" expanded="false" />
-            <element signature="docComment;method#create#0;class#QesManageController#0" expanded="false" />
-            <element signature="e#2067#2098#0" expanded="false" />
-            <element signature="method#create#0;class#QesManageController#0" expanded="false" />
-            <element signature="docComment;method#getListMyQesPaperView#0;class#QesManageController#0" expanded="false" />
-            <element signature="docComment;method#listMyQuestionnaire#0;class#QesManageController#0" expanded="false" />
-            <element signature="e#2880#2924#0" expanded="false" />
-            <element signature="method#listMyQuestionnaire#0;class#QesManageController#0" expanded="false" />
-            <element signature="docComment;method#displayQuestionnaire#0;class#QesManageController#0" expanded="false" />
-            <element signature="method#displayQuestionnaire#0;class#QesManageController#0" expanded="false" />
-            <element signature="docComment;method#displayNextQesPaper#0;class#QesManageController#0" expanded="false" />
-            <element signature="method#displayNextQesPaper#0;class#QesManageController#0" expanded="false" />
-            <element signature="docComment;method#displayPrevQesPaper#0;class#QesManageController#0" expanded="false" />
-            <element signature="method#displayPrevQesPaper#0;class#QesManageController#0" expanded="false" />
-            <element signature="docComment;method#delTemporaryMultiQuestionnaire#0;class#QesManageController#0" expanded="false" />
-            <element signature="e#6487#6542#0" expanded="false" />
-            <element signature="method#delTemporaryMultiQuestionnaire#0;class#QesManageController#0" expanded="false" />
-            <element signature="docComment;method#restoreMultiQuestionnaire#0;class#QesManageController#0" expanded="false" />
-            <element signature="e#7247#7297#0" expanded="false" />
-            <element signature="method#restoreMultiQuestionnaire#0;class#QesManageController#0" expanded="false" />
-            <element signature="docComment;method#delForeverMultiQuestionnaire#0;class#QesManageController#0" expanded="false" />
-            <element signature="e#7985#8038#0" expanded="false" />
-            <element signature="method#delForeverMultiQuestionnaire#0;class#QesManageController#0" expanded="false" />
-            <element signature="docComment;method#temporaryDeleteQesPaperView#0;class#QesManageController#0" expanded="false" />
-            <element signature="method#temporaryDeleteQesPaperView#0;class#QesManageController#0" expanded="false" />
-            <element signature="docComment;method#listTemporaryDeleteQesPaper#0;class#QesManageController#0" expanded="false" />
-            <element signature="e#9195#9247#0" expanded="false" />
-            <element signature="method#listTemporaryDeleteQesPaper#0;class#QesManageController#0" expanded="false" />
-            <element signature="docComment;method#templateMultiQuestionnaire#0;class#QesManageController#0" expanded="false" />
-            <element signature="e#9605#9656#0" expanded="false" />
-            <element signature="method#templateMultiQuestionnaire#0;class#QesManageController#0" expanded="false" />
-            <element signature="docComment;method#shareMultiQuestionnaire#0;class#QesManageController#0" expanded="false" />
-            <element signature="e#10259#10307#0" expanded="false" />
-            <element signature="method#shareMultiQuestionnaire#0;class#QesManageController#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2039,7 +1881,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
           <caret line="118" column="54" lean-forward="false" selection-start-line="118" selection-start-column="54" selection-end-line="118" selection-end-column="54" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2047,10 +1888,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="362">
           <caret line="197" column="33" lean-forward="true" selection-start-line="197" selection-start-column="33" selection-end-line="197" selection-end-column="33" />
-          <folding>
-            <element signature="e#11091#12598#0" expanded="false" />
-            <element signature="e#13401#16124#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2058,33 +1895,49 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="34" column="61" lean-forward="false" selection-start-line="34" selection-start-column="61" selection-end-line="34" selection-end-column="61" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/statisticalAnalysis/analyzeResult.html">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/js/plugins/table-export/pdfMake/vfs_fonts.js">
+      <provider selected="true" editor-type-id="LargeFileEditor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/js/plugins/table-export/table-export.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="89" column="37" lean-forward="false" selection-start-line="89" selection-start-column="37" selection-end-line="89" selection-end-column="37" />
+        <state relative-caret-position="80">
+          <caret line="4" column="50" lean-forward="true" selection-start-line="4" selection-start-column="50" selection-end-line="4" selection-end-column="50" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/js/myJs/displayEcharts.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1140">
-          <caret line="195" column="31" lean-forward="true" selection-start-line="195" selection-start-column="31" selection-end-line="195" selection-end-column="31" />
+        <state relative-caret-position="880">
+          <caret line="298" column="3" lean-forward="false" selection-start-line="298" selection-start-column="3" selection-end-line="298" selection-end-column="3" />
           <folding>
             <element signature="e#0#39#0" expanded="false" />
-            <element signature="e#366#2475#0" expanded="false" />
+            <element signature="e#444#2553#0" expanded="false" />
             <element signature="n#!!doc;n#initEchartData#0" expanded="false" />
             <element signature="n#!!block;n#initEchartData#0" expanded="false" />
             <element signature="n#!!block;n#dynamicDataChange#0" expanded="false" />
-            <element signature="e#9383#11715#0" expanded="false" />
-            <element signature="e#11772#13921#0" expanded="false" />
-            <element signature="e#14117#14127#0" expanded="false" />
-            <marker date="1499149691057" expanded="true" signature="1673:1749" ph="..." />
-            <marker date="1499149691057" expanded="true" signature="2134:2151" ph="..." />
+            <element signature="e#9499#11831#0" expanded="false" />
+            <element signature="e#11888#14037#0" expanded="false" />
+            <element signature="e#14233#14243#0" expanded="false" />
+            <marker date="1499237500432" expanded="true" signature="1751:1827" ph="..." />
+            <marker date="1499237500432" expanded="true" signature="2212:2229" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/statisticalAnalysis/analyzeResult.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="49" column="28" lean-forward="false" selection-start-line="49" selection-start-column="28" selection-end-line="49" selection-end-column="28" />
+          <folding>
+            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
