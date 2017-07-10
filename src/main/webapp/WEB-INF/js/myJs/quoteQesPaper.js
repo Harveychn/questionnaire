@@ -1,18 +1,33 @@
 /**
  * Created by 郑晓辉 on 2017/5/5.
  */
+var $saveAsQesBtn = $('#saveAsQesBtn');
+var $storeQesBtn = $('#storeQesBtn');
+var $templateQesBtn = $('#templateQesBtn');
+
+var isSubmitted = false;
 $(function () {
+    isSubmitted = false;
     exam.init();
     $("select").dcselect();
-    $('#saveAsQesBtn').on('click', function () {
+    $saveAsQesBtn.click(function () {
+        if (isSubmitted) {
+            return;
+        }
         getQesVOData(true, false);
     });
 
-    $('#storeQesBtn').on('click', function () {
+    $storeQesBtn.click(function () {
+        if (isSubmitted) {
+            return;
+        }
         getQesVOData(false, false);
     });
 
-    $('#templateQesBtn').on('click', function () {
+    $templateQesBtn.click(function () {
+        if (isSubmitted) {
+            return;
+        }
         getQesVOData(true, true);
     });
 });
@@ -121,6 +136,7 @@ function submitQesDataByJson(url, jsonData) {
         contentType: "application/json;charset=utf-8",
         type: 'post',
         dataType: 'json',
+        async: false,
         data: JSON.stringify(jsonData),
         success: function (data) {
             if (200 === data.code) {

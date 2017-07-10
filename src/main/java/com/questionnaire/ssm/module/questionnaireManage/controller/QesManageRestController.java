@@ -22,6 +22,13 @@ import javax.validation.Valid;
 @RestController
 public class QesManageRestController {
 
+    /**
+     * 查询json格式数据的问卷信息
+     *
+     * @param questionnaireId
+     * @return
+     * @throws Exception
+     */
     @GetMapping(value = "/displayQuestionnaire/{questionnaireId}")
     public DisplayQesVO displayQuestionnaire(@PathVariable("questionnaireId") long questionnaireId) throws Exception {
         return qesManageService.getQuestionnaireById(questionnaireId);

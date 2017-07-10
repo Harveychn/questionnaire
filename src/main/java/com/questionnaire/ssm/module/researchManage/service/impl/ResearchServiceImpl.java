@@ -6,6 +6,7 @@ import com.questionnaire.ssm.module.global.enums.CodeForVOEnum;
 import com.questionnaire.ssm.module.global.enums.DBTableEnum;
 import com.questionnaire.ssm.module.global.exception.OperateDBException;
 import com.questionnaire.ssm.module.global.mapper.UnitInfoMapper;
+import com.questionnaire.ssm.module.global.service.Add2LibraryService;
 import com.questionnaire.ssm.module.researchManage.enums.MissionStatusEnum;
 import com.questionnaire.ssm.module.researchManage.mapper.ResearchMissionMapper;
 import com.questionnaire.ssm.module.researchManage.pojo.*;
@@ -74,18 +75,23 @@ public class ResearchServiceImpl implements ResearchService {
                 continue;
             }
             copiedQes = ResearchVODOUtil.copyQesForPublish(qesForCopyDO);
-            //保存发布的问卷信息
-            try {
-                questionnaireMapper.insertSelective(copiedQes);
-            } catch (Exception e) {
-                logger.error(e.getMessage());
-                throw new OperateDBException(CodeForVOEnum.DB_INSERT_FAIL,
-                        DBTableEnum.QUESTIONNAIRE.getTableName());
-            }
-
-            //组织映射关系
+//            2017-7-10 修复空问卷信息bug
+//            //保存发布的问卷信息
+//            try {
+//                questionnaireMapper.insertSelective(copiedQes);
+//            } catch (Exception e) {
+//                logger.error(e.getMessage());
+//                throw new OperateDBException(CodeForVOEnum.DB_INSERT_FAIL,
+//                        DBTableEnum.QUESTIONNAIRE.getTableName());
+//            }
+//
+//            //组织映射关系
+//            mappingMissionQuestionnaire = ResearchVODOUtil.getMappingMissionQuestionnaireDO(missionId,
+//                    copiedQes.getQuestionnaireId(), missionQesPaperVO.getMinSubmit());
+//            组织映射关系
             mappingMissionQuestionnaire = ResearchVODOUtil.getMappingMissionQuestionnaireDO(missionId,
-                    copiedQes.getQuestionnaireId(), missionQesPaperVO.getMinSubmit());
+                    add2LibraryService.copiedQesPaperId(qesForCopyDO.getQuestionnaireId(), copiedQes), missionQesPaperVO.getMinSubmit());
+
             try {
                 mappingMissionQuestionnaireMapper.insertSelective(mappingMissionQuestionnaire);
             } catch (Exception e) {
@@ -214,6 +220,7 @@ public class ResearchServiceImpl implements ResearchService {
     private MapMissionQesPaperService mapMissionQesPaperService;
     private ResearchMissionMapper researchMissionMapper;
     private QuestionnaireMapper questionnaireMapper;
+    private Add2LibraryService add2LibraryService;
 
     @Autowired
     public ResearchServiceImpl(UnitInfoMapper unitInfoMapper,
@@ -222,7 +229,8 @@ public class ResearchServiceImpl implements ResearchService {
                                UserMapper userMapper,
                                MapMissionQesPaperService mapMissionQesPaperService,
                                ResearchMissionMapper researchMissionMapper,
-                               QuestionnaireMapper questionnaireMapper) {
+                               QuestionnaireMapper questionnaireMapper,
+                               Add2LibraryService add2LibraryService) {
         this.unitInfoMapper = unitInfoMapper;
         this.missionMapper = missionMapper;
         this.mappingMissionQuestionnaireMapper = mappingMissionQuestionnaireMapper;
@@ -230,6 +238,7 @@ public class ResearchServiceImpl implements ResearchService {
         this.mapMissionQesPaperService = mapMissionQesPaperService;
         this.researchMissionMapper = researchMissionMapper;
         this.questionnaireMapper = questionnaireMapper;
+        this.add2LibraryService = add2LibraryService;
     }
 
     private final static Logger logger = LoggerFactory.getLogger(ResearchServiceImpl.class);

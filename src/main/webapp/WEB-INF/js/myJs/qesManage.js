@@ -147,7 +147,6 @@ function accessServerByQesIds(questionnaireIds, url) {
  */
 function analyzeResponse(data, url, questionnaireIds) {
     var responsePkt = JSON.parse(data);
-    console.log(responsePkt);
     if (responsePkt.code === 200) {
         var successMsg = '';
         switch (url) {
@@ -181,3 +180,14 @@ function analyzeResponse(data, url, questionnaireIds) {
 
     }
 }
+
+function successResultLayer(successMsg) {
+    layer.msg(successMsg, {
+        icon: 1,
+        time: 2000,
+        shade: 0.5,
+        closeBtn: 1
+    });
+}
+
+

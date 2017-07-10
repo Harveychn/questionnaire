@@ -21,7 +21,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping(value = "/researchManage")
-public class ResearchController {
+public class ResearchRestController {
 
     /**
      * 获取创建调查视图
@@ -169,15 +169,15 @@ public class ResearchController {
     }
 
 
-    private final static Logger logger = LoggerFactory.getLogger(ResearchController.class);
+    private final static Logger logger = LoggerFactory.getLogger(ResearchRestController.class);
     private Long missionId;
     private ResearchService researchService;
     private MissionManageService missionManageService;
 
 
     @Autowired
-    public ResearchController(ResearchService researchService,
-                              MissionManageService missionManageService) {
+    public ResearchRestController(ResearchService researchService,
+                                  MissionManageService missionManageService) {
         this.researchService = researchService;
         this.missionManageService = missionManageService;
     }

@@ -9,7 +9,6 @@ $(document).ready(function () {
         $('input[name="templateId"]:checked').each(function () {
             templateIds.push($(this).val());
         });
-        console.log(templateIds);
         if (templateIds.length > 0) {
             accessServer(templateIds);
         }

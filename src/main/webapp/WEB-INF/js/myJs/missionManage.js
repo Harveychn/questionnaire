@@ -179,11 +179,11 @@ function analyzeResponse(data, url, missionIds, questionnaireIds) {
             case delMissionMagaUrl://永久删除问卷
                 if (responsePkt.code === 200) {
                     $table.bootstrapTable('remove', {
-                        field: 'missionIds',
+                        field: 'missionId',
                         values: missionIds
-                    }, {
-                        field: 'questionnaireIds',
-                        values: questionnaireIds
+                    // }, {
+                    //     field: 'questionnaireIds',
+                    //     values: questionnaireIds
                     });
                     layer.msg('已经永久删除！', {icon: 1});
                 }
