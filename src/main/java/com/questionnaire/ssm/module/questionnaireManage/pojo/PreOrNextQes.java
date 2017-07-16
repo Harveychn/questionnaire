@@ -1,7 +1,5 @@
 package com.questionnaire.ssm.module.questionnaireManage.pojo;
 
-import java.util.List;
-
 /**
  * Created by 郑晓辉 on 2017/6/29.
  * Description:

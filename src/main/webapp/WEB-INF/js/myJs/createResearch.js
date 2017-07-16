@@ -5,9 +5,36 @@
  */
 
 var isSubmitted = false;
-
 $(function () {
     isSubmitted = false;
+
+    var qesItemOptions = '';
+    var $questionnaireItem = $('select[name="questionnaireSelect"]');
+    $.ajax({
+        url: '/researchManage/listQuestionnaireInfo',
+        type: 'post',
+        dataType: 'json',
+        async: false,
+        traditional: true,
+        success: function (data) {
+            for (var index = 0; index < data.length; index++) {
+                qesItemOptions += '<option title="' + data[index].qesTitle + '" value="' + data[index].qesId + '">' +
+                    data[index].qesTitle + '························' + data[index].createDate +
+                    '[' + data[index].isTemplate + ']</option>';
+            }
+            $questionnaireItem.append(qesItemOptions);
+            $($questionnaireItem).selectpicker({
+                    liveSearch: true,
+                    noneSelectedText: '未选择发布问卷',
+                    liveSearchPlaceholder: '查询问卷'
+                },
+                'refresh', 'render'
+            );
+        },
+        error: function () {
+        }
+    });
+
     var unitOptions = '';
     var $researchUnit = $('#researchUnit');
     $.ajax({
@@ -44,31 +71,16 @@ $(function () {
             console.error(data);
         }
     });
-    var qesItemOptions = '';
-    var $questionnaireItem = $('select[name="questionnaireSelect"]');
-    $.ajax({
-        url: '/researchManage/listQuestionnaireInfo',
-        type: 'post',
-        dataType: 'json',
-        traditional: true,
-        success: function (data) {
-            for (var index = 0; index < data.length; index++) {
-                qesItemOptions += '<option title="' + data[index].qesTitle + '" value="' + data[index].qesId + '">' +
-                    data[index].qesTitle + '························' + data[index].createDate +
-                    '[' + data[index].isTemplate + ']</option>';
-            }
-            $questionnaireItem.append(qesItemOptions);
-            $($questionnaireItem).selectpicker({
-                    liveSearch: true,
-                    noneSelectedText: '未选择发布问卷',
-                    liveSearchPlaceholder: '查询问卷'
-                },
-                'refresh', 'render'
-            );
-        },
-        error: function () {
-        }
-    });
+
+    var selectedQesId = window.location.search.split('=').pop();
+    if ('' !== selectedQesId) {
+        $questionnaireItem.find('option[value=' + selectedQesId + ']').attr("selected", true);
+        $questionnaireItem.selectpicker('render');
+        var $buttonGroup = $('#buttonGroup');
+        $buttonGroup.attr('class', 'col-md-offset-4');
+        $buttonGroup.prepend('<button class="btn btn-lg btn-link" onclick="window.history.back();">返回上一级</button>');
+    }
+
     layui.use(['laydate'], function () {
         var laydate = layui.laydate;
         var start = {
@@ -114,18 +126,6 @@ $(function () {
         $('#pageName').html('发布问卷');
     }
 });
-//发布问卷时设置选中问卷
-window.onload = function () {
-    var $questionnaireItem = $('select[name="questionnaireSelect"]');
-    var selectedQesId = window.location.search.split('=').pop();
-    if ('' !== selectedQesId) {
-        $questionnaireItem.find('option[value=' + selectedQesId + ']').attr("selected", true);
-        $questionnaireItem.selectpicker('render');
-        var $buttonGroup = $('#buttonGroup');
-        $buttonGroup.attr('class', 'col-md-offset-4');
-        $buttonGroup.prepend('<button class="btn btn-lg btn-link" onclick="window.history.back();">返回上一级</button>');
-    }
-};
 /*提交数据*/
 $('#launchMissionBtn').on('click', function () {
     if (isSubmitted) {

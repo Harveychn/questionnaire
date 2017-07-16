@@ -23,7 +23,7 @@
                 答卷浏览
             </div>
         </div>
-        <div class="panel-body">
+        <div class="panel-body" th:if="${noError == true}">
             <div class="row">
                 <div class="center-block">
                     <div class="page-header">
@@ -66,9 +66,8 @@
                     </div>
                 </div>
             </div>
-            <!--<input type="button" value="上一页" onclick="up()"/>-->
-            <!--<input type="button" value="下一页" onclick="down()"/>-->
         </div>
+        <div class="panel-body" th:if="${noError == false}"><h1 align="center">这份问卷有点问题！看看其他的吧</h1></div>
     </div>
 
     <!--打印按钮-->

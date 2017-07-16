@@ -58,14 +58,14 @@ $(function () {
 
                 $questionList.append('<button class="list-group-item btn" ' +
                     'style="text-align: left; background-color: rgba(51,122,183,0.82);color: whitesmoke;" id="' + analyzeResultData[i].questionId +
-                    '" onclick="clickQuestionListItem(this.id)">第' +
-                    (i + 1) + '题  ' + analyzeResultData[i].questionContent + '(' + analyzeResultData[i].questionType + ')</button>');
+                    '" onclick="clickQuestionListItem(this.id)">' +
+                    (i + 1) + '、' + analyzeResultData[i].questionContent + '(' + analyzeResultData[i].questionType + ')</button>');
                 continue;
             }
             $questionList.append('<button class="list-group-item btn" ' +
                 'style="text-align: left;" id="' + analyzeResultData[i].questionId +
-                '" onclick="clickQuestionListItem(this.id)">第' +
-                (i + 1) + '题  ' + analyzeResultData[i].questionContent + '(' + analyzeResultData[i].questionType + ')</button>');
+                '" onclick="clickQuestionListItem(this.id)">' +
+                (i + 1) + '、' + analyzeResultData[i].questionContent + '(' + analyzeResultData[i].questionType + ')</button>');
             if (i === 0) {
 
             }

@@ -22,6 +22,17 @@
         .row-active {
             background-color: white;
         }
+
+        ul > button {
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        ul > button:hover {
+            text-overflow: ellipsis;
+            overflow: visible;
+            z-index: 999;
+        }
     </style>
 </head>
 
@@ -36,7 +47,7 @@
         <div class="panel-body">
             <!--左侧题目-->
             <div class="col-xs-3 col-sm-3 col-md-3">
-                <ul id="questionList" class="nav nav-pills nav-stacked list-group affix">
+                <ul id="questionList" class="nav nav-pills nav-stacked list-group">
                 </ul>
             </div>
             <!--右侧展示-->
