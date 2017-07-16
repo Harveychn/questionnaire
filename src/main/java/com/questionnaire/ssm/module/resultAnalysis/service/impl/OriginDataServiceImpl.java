@@ -2,12 +2,14 @@ package com.questionnaire.ssm.module.resultAnalysis.service.impl;
 
 import com.questionnaire.ssm.module.generated.mapper.*;
 import com.questionnaire.ssm.module.generated.pojo.*;
+import com.questionnaire.ssm.module.global.constant.CONSTANT;
 import com.questionnaire.ssm.module.global.enums.CodeForVOEnum;
 import com.questionnaire.ssm.module.global.enums.DBTableEnum;
 import com.questionnaire.ssm.module.global.exception.OperateDBException;
+import com.questionnaire.ssm.module.questionnaireManage.util.QesManageVODOUtil;
 import com.questionnaire.ssm.module.resultAnalysis.mapper.ResultAnalysisMapper;
 import com.questionnaire.ssm.module.resultAnalysis.pojo.*;
-import com.questionnaire.ssm.module.resultAnalysis.service.PrimaryDataService;
+import com.questionnaire.ssm.module.resultAnalysis.service.OriginDataService;
 import com.questionnaire.ssm.module.resultAnalysis.util.AnswerPaperVODOUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,7 +25,7 @@ import java.util.List;
  * Created by 95884 on 2017/5/5.
  */
 @Service
-public class PrimaryDataServiceImpl implements PrimaryDataService {
+public class OriginDataServiceImpl implements OriginDataService {
     /**
      * 获取问卷信息
      *
@@ -63,7 +65,7 @@ public class PrimaryDataServiceImpl implements PrimaryDataService {
      */
     @Override
     public List<AnswerPaperVO> listAnswerPaper(MissionQuestionnaireVO missionQuestionnaireVO) throws Exception {
-        List<AnswerPaperVO> answerPaperVOS = new ArrayList<>();
+        List<AnswerPaperVO> answerPaperVOS = null;
         try {
             answerPaperVOS = resultAnalysisMapper.listAnswerPaper(missionQuestionnaireVO);
         } catch (Exception e) {
@@ -94,7 +96,7 @@ public class PrimaryDataServiceImpl implements PrimaryDataService {
         }
         DisplayAnswerPaperVO displayAnswerPaperVO = AnswerPaperVODOUtil.toDisplayAnswerPaperVO(answerPaperDO);
 
-        Questionnaire questionnaire = new Questionnaire();
+        Questionnaire questionnaire = null;
         long questionnaireId = displayAnswerPaperVO.getQuestionnaireId();
         questionnaire = questionnaireMapper.selectByPrimaryKey(questionnaireId);
         displayAnswerPaperVO.setQuestionnaireTitle(questionnaire.getQuestionnaireTitle());
@@ -115,6 +117,7 @@ public class PrimaryDataServiceImpl implements PrimaryDataService {
         List<AnswerQuestionVO> answerQuestionVOList = new ArrayList<>();
         QuestionWithBLOBs questionWithBLOBs = null;
         String answerDetail = null;
+        List<String> answerDetailList = null;
         for (int order = 0; order < mapDOList.size(); order++) {
             currentQuestionId = mapDOList.get(order).getQuestionId();//获取当前问题id
             questionWithBLOBs = questionMapper.selectByPrimaryKey(currentQuestionId);//获取当前问题标题内容
@@ -123,13 +126,49 @@ public class PrimaryDataServiceImpl implements PrimaryDataService {
             questionAnswerPaperVO.setAnswerPaperId(answerPaperId);
             questionAnswerPaperVO.setQuestionId(currentQuestionId);
 
-            answerDetail = resultAnalysisMapper.selectAnswerDetail(questionAnswerPaperVO);//获取答案
-
-//            answerDetailString= QesManageVODOUtil.toAnswerString(currentAnswerDetail,questionWithBLOBs.getQuestionType());
+            answerDetailList = resultAnalysisMapper.selectAnswerDetail(questionAnswerPaperVO);
+            if (answerDetailList.size() > 0) {
+                answerDetail = resultAnalysisMapper.selectAnswerDetail(questionAnswerPaperVO).get(0);//获取答案
+            } else {
+                answerDetail = CONSTANT.getNullAnswerString();
+            }
 
             answerQuestionVOList.add(order, AnswerPaperVODOUtil.toAnswerQuestionVO(questionWithBLOBs, answerDetail));
         }
         displayAnswerPaperVO.setAnswerQuestions(answerQuestionVOList);
+        return displayAnswerPaperVO;
+    }
+
+    /**
+     * 查询答卷详细信息
+     *
+     * @param launchQesId   发布的问卷ID
+     * @param answerPaperId 答卷ID
+     * @return
+     * @throws Exception
+     */
+    @Override
+    @Transactional
+    public DisplayAnswerPaperVO getAnswerPaper(Long launchQesId, Long answerPaperId) throws Exception {
+        DisplayAnswerPaperVO displayAnswerPaperVO = resultAnalysisMapper.selectAnswerPaperByIds(launchQesId, answerPaperId);
+        if (displayAnswerPaperVO == null) {
+            return null;
+        }
+        //未处理的答卷详细信息
+        List<AnswerQuestionVO> answerQesDOS = resultAnalysisMapper.listAnswerDetailByIds(launchQesId, answerPaperId);
+        if (answerQesDOS.size() > 0) {
+            for (AnswerQuestionVO curAnswerDetailDO : answerQesDOS) {
+                curAnswerDetailDO.setQuestionType(
+                        QesManageVODOUtil.parse2VOQuestionType(curAnswerDetailDO.getQuestionType()));
+                if (curAnswerDetailDO.getAnswerDetail().equals(CONSTANT.getNullAnswerString())) {
+                    curAnswerDetailDO.setAnswerDetail(CONSTANT.getVoNullAnswerString());
+                }
+            }
+            //设置处理之后的答卷详细信息
+            displayAnswerPaperVO.setAnswerQuestions(answerQesDOS);
+        } else {//不存在问题的情况，基本不会出现，出现则有异常
+            return null;
+        }
         return displayAnswerPaperVO;
     }
 
@@ -138,14 +177,14 @@ public class PrimaryDataServiceImpl implements PrimaryDataService {
     private QuestionMapper questionMapper;
     private MappingQuestionnaireQuestionMapper mappingQuestionnaireQuestionMapper;
     private QuestionnaireMapper questionnaireMapper;
-    private static final Logger logger = LoggerFactory.getLogger(PrimaryDataServiceImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(OriginDataServiceImpl.class);
 
     @Autowired
-    public PrimaryDataServiceImpl(ResultAnalysisMapper resultAnalysisMapper,
-                                  AnswerPaperMapper answerPaperMapper,
-                                  QuestionMapper questionMapper,
-                                  MappingQuestionnaireQuestionMapper mappingQuestionnaireQuestionMapper,
-                                  QuestionnaireMapper questionnaireMapper) {
+    public OriginDataServiceImpl(ResultAnalysisMapper resultAnalysisMapper,
+                                 AnswerPaperMapper answerPaperMapper,
+                                 QuestionMapper questionMapper,
+                                 MappingQuestionnaireQuestionMapper mappingQuestionnaireQuestionMapper,
+                                 QuestionnaireMapper questionnaireMapper) {
         this.resultAnalysisMapper = resultAnalysisMapper;
         this.answerPaperMapper = answerPaperMapper;
         this.questionMapper = questionMapper;
