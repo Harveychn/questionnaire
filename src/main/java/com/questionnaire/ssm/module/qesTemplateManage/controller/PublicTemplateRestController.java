@@ -1,5 +1,6 @@
 package com.questionnaire.ssm.module.qesTemplateManage.controller;
 
+import com.questionnaire.ssm.module.global.service.PaginationDisplayService;
 import com.questionnaire.ssm.module.qesTemplateManage.pojo.PublicTemplateInfoVO;
 import com.questionnaire.ssm.module.qesTemplateManage.service.QesTemplateManageService;
 import com.questionnaire.ssm.module.questionnaireManage.controller.IsOutOfIndex;
@@ -69,53 +70,29 @@ public class PublicTemplateRestController extends IsOutOfIndex {
     @GetMapping(value = "/displayNextQesPaper")
     public ModelAndView displayNextQesPaper() throws Exception {
         ModelAndView modelAndView = new ModelAndView("qesTemplateManage/displayPubTemplate");
-        //获取下一份问卷id
-        Long displayingQesId = preOrNextQes.getNextQesPaperId();
-        if (displayingQesId == PreOrNextQes.OUT_OF_INDEX) {        //没有下一份问卷
-            modelAndView.addObject("displayQuestionnaireVO",
-                    qesManageService.getQuestionnaireById(preOrNextQes.getCurrentQesPaperId()));
-            modelAndView.addObject("isOutOfMaxIndex", true);
-        } else { //有下一份问卷
-            modelAndView.addObject("displayQuestionnaireVO",
-                    qesManageService.getQuestionnaireById(displayingQesId));
-            //设置当前问卷为下一份问卷id
-            preOrNextQes.setCurrentQesPaperId(displayingQesId);
-            isOutOfMaxIndex(preOrNextQes, modelAndView);
-        }
-        //左边界判断是否超出
-        isOutOfMinIndex(preOrNextQes, modelAndView);
+        paginationDisplayService.displayNext(preOrNextQes, modelAndView);
         return modelAndView;
     }
 
     @GetMapping(value = "/displayPrevQesPaper")
     public ModelAndView displayPrevQesPaper() throws Exception {
         ModelAndView modelAndView = new ModelAndView("qesTemplateManage/displayPubTemplate");
-        Long displayingQesId = preOrNextQes.getPreviousQesPaperId();
-        //超出左边界
-        if (displayingQesId == PreOrNextQes.OUT_OF_INDEX) {
-            modelAndView.addObject("displayQuestionnaireVO",
-                    qesManageService.getQuestionnaireById(preOrNextQes.getCurrentQesPaperId()));
-            modelAndView.addObject("isOutOfMinIndex", true);
-        } else {
-            modelAndView.addObject("displayQuestionnaireVO",
-                    qesManageService.getQuestionnaireById(displayingQesId));
-            //设置当前问卷为下一份问卷id
-            preOrNextQes.setCurrentQesPaperId(displayingQesId);
-            isOutOfMinIndex(preOrNextQes, modelAndView);
-        }
-        //判断右边界是否超出
-        isOutOfMaxIndex(preOrNextQes, modelAndView);
+        paginationDisplayService.displayPrevious(preOrNextQes, modelAndView);
         return modelAndView;
     }
 
     private PreOrNextQes preOrNextQes;
     private QesManageService qesManageService;
     private QesTemplateManageService qesTemplateManageService;
+    private PaginationDisplayService paginationDisplayService;
 
     @Autowired
     public PublicTemplateRestController(QesTemplateManageService qesTemplateManageService,
-                                        QesManageService qesManageService) {
+                                        QesManageService qesManageService,
+                                        PaginationDisplayService paginationDisplayService) {
+        this.preOrNextQes = null;
         this.qesTemplateManageService = qesTemplateManageService;
         this.qesManageService = qesManageService;
+        this.paginationDisplayService = paginationDisplayService;
     }
 }

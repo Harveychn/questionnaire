@@ -3,6 +3,7 @@ package com.questionnaire.ssm.module.questionnaireManage.controller;
 import com.questionnaire.ssm.module.generated.pojo.Questionnaire;
 import com.questionnaire.ssm.module.global.enums.CodeForVOEnum;
 import com.questionnaire.ssm.module.global.pojo.ResponsePkt;
+import com.questionnaire.ssm.module.global.service.PaginationDisplayService;
 import com.questionnaire.ssm.module.global.util.ResultUtil;
 import com.questionnaire.ssm.module.global.util.UserValidationUtil;
 import com.questionnaire.ssm.module.questionnaireManage.pojo.CreateQesVO;
@@ -125,21 +126,7 @@ public class QesManageController extends IsOutOfIndex {
     @GetMapping(value = "/displayNextQesPaper")
     public ModelAndView displayNextQesPaper() throws Exception {
         ModelAndView modelAndView = new ModelAndView("qesManage/displayQuestionnaire");
-        //获取下一份问卷id
-        Long displayingQesId = preOrNextQes.getNextQesPaperId();
-        if (displayingQesId == PreOrNextQes.OUT_OF_INDEX) {        //没有下一份问卷
-            modelAndView.addObject("displayQuestionnaireVO",
-                    qesManageService.getQuestionnaireById(preOrNextQes.getCurrentQesPaperId()));
-            modelAndView.addObject("isOutOfMaxIndex", true);
-        } else { //有下一份问卷
-            modelAndView.addObject("displayQuestionnaireVO",
-                    qesManageService.getQuestionnaireById(displayingQesId));
-            //设置当前问卷为下一份问卷id
-            preOrNextQes.setCurrentQesPaperId(displayingQesId);
-            isOutOfMaxIndex(preOrNextQes, modelAndView);
-        }
-        //左边界判断是否超出
-        isOutOfMinIndex(preOrNextQes, modelAndView);
+        paginationDisplayService.displayNext(preOrNextQes, modelAndView);
         return modelAndView;
     }
 
@@ -152,21 +139,7 @@ public class QesManageController extends IsOutOfIndex {
     @GetMapping(value = "/displayPrevQesPaper")
     public ModelAndView displayPrevQesPaper() throws Exception {
         ModelAndView modelAndView = new ModelAndView("qesManage/displayQuestionnaire");
-        Long displayingQesId = preOrNextQes.getPreviousQesPaperId();
-        //超出左边界
-        if (displayingQesId == PreOrNextQes.OUT_OF_INDEX) {
-            modelAndView.addObject("displayQuestionnaireVO",
-                    qesManageService.getQuestionnaireById(preOrNextQes.getCurrentQesPaperId()));
-            modelAndView.addObject("isOutOfMinIndex", true);
-        } else {
-            modelAndView.addObject("displayQuestionnaireVO",
-                    qesManageService.getQuestionnaireById(displayingQesId));
-            //设置当前问卷为下一份问卷id
-            preOrNextQes.setCurrentQesPaperId(displayingQesId);
-            isOutOfMinIndex(preOrNextQes, modelAndView);
-        }
-        //判断右边界是否超出
-        isOutOfMaxIndex(preOrNextQes, modelAndView);
+        paginationDisplayService.displayPrevious(preOrNextQes, modelAndView);
         return modelAndView;
     }
 
@@ -223,9 +196,6 @@ public class QesManageController extends IsOutOfIndex {
                     CodeForVOEnum.QUESTIONNAIRE_IDS_NULL.getMessage());
         }
         qesManageService.delDataForeverQesByIds(Arrays.asList(questionnaireIds));
-//        Questionnaire questionnaire = OperateQuestionnaireUtil.deleteQesPaperForeverAction();
-//        qesManageService.delOrTemplateQesByIds(Arrays.asList(questionnaireIds),
-//                questionnaire);
         return ResultUtil.success();
     }
 
@@ -294,11 +264,13 @@ public class QesManageController extends IsOutOfIndex {
     private static final Logger logger = LoggerFactory.getLogger(QesManageController.class);
     private PreOrNextQes preOrNextQes;
     private QesManageService qesManageService;
-
+    private PaginationDisplayService paginationDisplayService;
 
     @Autowired
-    public QesManageController(QesManageService qesManageService) {
+    public QesManageController(QesManageService qesManageService,
+                               PaginationDisplayService paginationDisplayService) {
         this.preOrNextQes = null;
         this.qesManageService = qesManageService;
+        this.paginationDisplayService = paginationDisplayService;
     }
 }

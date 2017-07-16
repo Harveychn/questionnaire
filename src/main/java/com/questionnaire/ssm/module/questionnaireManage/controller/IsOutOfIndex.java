@@ -9,10 +9,6 @@ import org.springframework.web.servlet.ModelAndView;
  */
 public class IsOutOfIndex {
 
-    public void judge(PreOrNextQes preOrNextQes, ModelAndView modelAndView) throws Exception {
-
-    }
-
     //判断是否超出最小边界
     public void isOutOfMinIndex(PreOrNextQes preOrNextQes, ModelAndView modelAndView) throws Exception {
         if (preOrNextQes.getPreviousQesPaperId() == PreOrNextQes.OUT_OF_INDEX) {
