@@ -59,7 +59,7 @@
 
     var $table = $('#privateTemplateInfoTable');
     //表格数据获取地址
-    var tableDataUrl = '/qesTemplateManage/getMyTemplateInfo';
+    var tableDataUrl = '/privateTemplateManage/getMyTemplateInfo';
     var getDataMethod = 'get';
 
     var deleteTemporaryUrl = '/qesTemplateManage/multiDeleteTemplate';
@@ -134,7 +134,7 @@
         //查看模板
         'click .scanPaper': function (e, value, row, index) {
             //查看问卷
-            var browseQesUrl = '/questionnaireManage/displayQuestionnaire';
+            var browseQesUrl = '/privateTemplateManage/displayPriTemplate';
             browseQesUrl += '/' + row.questionnaireId;
             browseQesPaper(browseQesUrl);
         },

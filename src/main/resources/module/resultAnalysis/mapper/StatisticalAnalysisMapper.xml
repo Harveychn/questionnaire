@@ -10,8 +10,8 @@
 			q.option_string AS optionStr,
 			q.question_type AS questionTypeCode
 		FROM
-			mapping_questionnaire_question AS mqq,
-			question AS q
+			question AS q,
+			mapping_questionnaire_question AS mqq
 		WHERE
 			q.question_id = mqq.question_id
 		AND q.question_type IN (#{singleChoiceDBCode}, #{multiChoiceDBCode})-- 单项选择题或者多项选择题
@@ -25,13 +25,13 @@
 			ad.answer_string AS answerStr
 		FROM
 			answer_paper AS ap,
-			answer_detail AS ad,
-			question AS q
+			question AS q,
+			answer_detail AS ad
 		WHERE
-			ap.mission_id = #{missionId}
-		AND ap.questionnaire_id = #{qesId}
-		AND ap.answer_paper_id = ad.answer_paper_id
+			ap.answer_paper_id = ad.answer_paper_id
 		AND q.question_id = ad.question_id
+		AND ap.mission_id = #{missionId}
+		AND ap.questionnaire_id = #{qesId}
 		AND q.question_type IN (#{singleChoiceDBCode}, #{multiChoiceDBCode})
 	</select>
 </mapper>

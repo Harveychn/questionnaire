@@ -1,11 +1,10 @@
 package com.questionnaire.ssm.module.resultAnalysis.controller;
 
 import com.questionnaire.ssm.module.questionnaireManage.controller.IsOutOfIndex;
-import com.questionnaire.ssm.module.questionnaireManage.pojo.DisplayQesVO;
 import com.questionnaire.ssm.module.questionnaireManage.pojo.PreOrNextQes;
 import com.questionnaire.ssm.module.resultAnalysis.pojo.AnswerPaperVO;
 import com.questionnaire.ssm.module.resultAnalysis.pojo.DisplayAnswerPaperVO;
-import com.questionnaire.ssm.module.resultAnalysis.pojo.PrimaryDataInfoVO;
+import com.questionnaire.ssm.module.resultAnalysis.pojo.OriginDataInfoVO;
 import com.questionnaire.ssm.module.resultAnalysis.pojo.MissionQuestionnaireVO;
 import com.questionnaire.ssm.module.resultAnalysis.service.OriginDataService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -153,7 +152,7 @@ public class ResultAnalysisController extends IsOutOfIndex {
      */
     @PostMapping(value = "/listPrimaryData")
     @ResponseBody
-    public List<PrimaryDataInfoVO> listPrimaryData() throws Exception {
+    public List<OriginDataInfoVO> listPrimaryData() throws Exception {
         return originDataService.listPrimaryData();
     }
 

@@ -37,7 +37,7 @@ public enum CodeForVOEnum {
     USER_TEL_NULL(20, "用户名不得为空！"),
 
     /*结果分析无数据*/
-    NO_RESULT_FOR_ANALYZE(600, "目前还没有结果数据的提交！"),
+    NO_RESULT_FOR_ANALYZE(600, "此次调查尚未提交或无可分析数据（单选、多选等）！"),
 
     /*参数校验信息编码*/
     VALID_FAIL_CREATE_QUESTIONNAIRE(-1000, "创建问卷视图数据校验失败!"),

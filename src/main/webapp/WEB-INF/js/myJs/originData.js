@@ -13,7 +13,8 @@ $(function () {
         striped: true,
 //            clickToSelect: true,
         undefinedText: '--',
-        sortName: ['missionId', 'questionnaireTitle', 'questionnaireCount'],
+        sortable: true,
+        sortName: ['missionId', 'missionDescription', 'questionnaireTitle', 'questionnaireCount'],
         sortOrder: 'desc',
         height: getHeight(),
 
@@ -37,13 +38,19 @@ $(function () {
 
         columns: [{
             field: 'missionId',
-            title: '任务编号',
+            title: '调查编号',
             align: 'center',
             width: 100,
             sortable: true
         }, {
+            field: 'missionDescription',
+            title: '调查描述',
+            align: 'left',
+            sortable: true
+        }, {
             field: 'questionnaireTitle',
             title: '问卷标题',
+            align: 'left',
             sortable: true
         }, {
             field: 'questionnaireCount',
@@ -69,6 +76,10 @@ window.operateEvents = {
     'click .check': function (e, value, row, index) {
         checkDataUrl = '/resultAnalysis/getPrimaryDataTwo?missionId=' + row.missionId + '&qesId=' + row.questionnaireId;
         layerMsg('查看', row, checkDataUrl);
+    },
+    //导出
+    'click .export': function (e, value, row, index) {
+        layer.msg('开发中..', {icon: 4})
     }
 };
 /*弹窗层*/
@@ -116,8 +127,11 @@ function getIdSelections() {
 //操作按钮格式设置
 function operateFormatter(value, row, index) {
     return [
-        '<a class="check btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="查看">',
+        '<a class="check btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="查看原始数据">',
         '<i class="glyphicon glyphicon-check"></i> 查看',
+        '</a>',
+        '<a class="export btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="导出原始数据">',
+        '<i class="glyphicon glyphicon-export"></i>导出',
         '</a>'
     ].join('');
 }

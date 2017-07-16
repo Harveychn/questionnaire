@@ -109,8 +109,8 @@ public class QesManageController extends IsOutOfIndex {
         modelAndView.addObject("displayQuestionnaireVO",
                 qesManageService.getQuestionnaireById(curQesId));
         preOrNextQes.setCurrentQesPaperId(curQesId);
-        isOutOfMinIndex(preOrNextQes,modelAndView);
-        isOutOfMaxIndex(preOrNextQes,modelAndView);
+        isOutOfMinIndex(preOrNextQes, modelAndView);
+        isOutOfMaxIndex(preOrNextQes, modelAndView);
         //设置当前查看的问卷id
         preOrNextQes.setCurrentQesPaperId(curQesId);
         return modelAndView;
@@ -136,10 +136,10 @@ public class QesManageController extends IsOutOfIndex {
                     qesManageService.getQuestionnaireById(displayingQesId));
             //设置当前问卷为下一份问卷id
             preOrNextQes.setCurrentQesPaperId(displayingQesId);
-            isOutOfMaxIndex(preOrNextQes,modelAndView);
+            isOutOfMaxIndex(preOrNextQes, modelAndView);
         }
         //左边界判断是否超出
-        isOutOfMinIndex(preOrNextQes,modelAndView);
+        isOutOfMinIndex(preOrNextQes, modelAndView);
         return modelAndView;
     }
 
@@ -163,10 +163,10 @@ public class QesManageController extends IsOutOfIndex {
                     qesManageService.getQuestionnaireById(displayingQesId));
             //设置当前问卷为下一份问卷id
             preOrNextQes.setCurrentQesPaperId(displayingQesId);
-            isOutOfMinIndex(preOrNextQes,modelAndView);
+            isOutOfMinIndex(preOrNextQes, modelAndView);
         }
         //判断右边界是否超出
-        isOutOfMaxIndex(preOrNextQes,modelAndView);
+        isOutOfMaxIndex(preOrNextQes, modelAndView);
         return modelAndView;
     }
 

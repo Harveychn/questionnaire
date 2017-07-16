@@ -12,9 +12,9 @@ import java.util.List;
  */
 public interface ResultAnalysisMapper {
 
-    List<PrimaryDataInfoVO> listPrimaryDataInfo() throws Exception;
+    List<OriginDataInfoVO> listPrimaryDataInfo() throws Exception;
 
-    Long listCount(PrimaryDataInfoVO primaryDataInfoVO) throws Exception;
+    Long listCount(OriginDataInfoVO originDataInfoVO) throws Exception;
 
     List<AnswerPaperVO> listAnswerPaper(MissionQuestionnaireVO missionQuestionnaireVO) throws Exception;
 

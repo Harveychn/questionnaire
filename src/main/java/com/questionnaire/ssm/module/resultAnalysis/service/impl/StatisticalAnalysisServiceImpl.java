@@ -21,6 +21,11 @@ public class StatisticalAnalysisServiceImpl implements StatisticalAnalysisServic
 
     @Override
     public List<StatisticalAnalysisResultVO> getQesPaperAnalyzeResult(String missionId, String missionPaperId) throws Exception {
+        List<AnswerInfoDealedDTO> answerInfoDealedDTOS = getAnswerInfoDOList(missionId, missionPaperId);
+        //无答卷提交信息
+        if (answerInfoDealedDTOS == null || answerInfoDealedDTOS.size() <= 0) {
+            return null;
+        }
         //问卷中所有问题所有答项信息，答项选中值初始为0
         QesQuestionInfoDTO qesQuestionInfoDTO = getQuestionAnalyzeDTOList(missionPaperId);
         if (qesQuestionInfoDTO == null) {
@@ -30,7 +35,6 @@ public class StatisticalAnalysisServiceImpl implements StatisticalAnalysisServic
 
         Map<Long, List<QuestionOptionAnalyzeDTO>> questionOptionMap = qesQuestionInfoDTO.getQuestionOptionMap();
 
-        List<AnswerInfoDealedDTO> answerInfoDealedDTOS = getAnswerInfoDOList(missionId, missionPaperId);
 
         //当前问题id的答项信息
         List<QuestionOptionAnalyzeDTO> curQesIdStandardOptionList = null;

@@ -1,21 +1,27 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.questionnaire.ssm.module.resultAnalysis.mapper.ResultAnalysisMapper">
     <select id="listPrimaryDataInfo"
-            resultType="com.questionnaire.ssm.module.resultAnalysis.pojo.PrimaryDataInfoVO">
+            resultType="com.questionnaire.ssm.module.resultAnalysis.pojo.OriginDataInfoVO">
         SELECT
-        m.mission_id AS missionId,
-        m.questionnaire_id AS questionnaireId,
-        q.questionnaire_title AS questionnaireTitle,
-        q.questionnaire_subtitle AS questionnaireSubtitle,
-        m.min_submit_count AS minSubmitCount
+            m.mission_id AS missionId,
+            m.mission_description AS missionDescription,
+            q.questionnaire_id AS questionnaireId,
+            q.questionnaire_title AS questionnaireTitle,
+            q.questionnaire_subtitle AS questionnaireSubtitle,
+            map.min_submit_count AS minSubmitCount
         FROM
-        questionnaire AS q,
-        mapping_mission_questionnaire AS m
-        WHERE q.questionnaire_id=m.questionnaire_id
-        ORDER BY m.mission_id
+            mission AS m,
+            questionnaire AS q,
+            mapping_mission_questionnaire AS map
+        WHERE
+            q.questionnaire_id = map.questionnaire_id
+        AND m.mission_id = map.mission_id
+        AND map.questionnaire_id = q.questionnaire_id
+        ORDER BY
+            map.mission_id DESC
     </select>
 
-    <select id="listCount" parameterType="com.questionnaire.ssm.module.resultAnalysis.pojo.PrimaryDataInfoVO"
+    <select id="listCount" parameterType="com.questionnaire.ssm.module.resultAnalysis.pojo.OriginDataInfoVO"
             resultType="Long">
         SELECT
         COUNT(questionnaire_id) AS questionnaireCount

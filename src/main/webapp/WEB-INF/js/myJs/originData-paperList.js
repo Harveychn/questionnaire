@@ -48,7 +48,7 @@ $(function () {
             sortable: true
         }, {
             field: 'fillAnswerTime',
-            title: '最后回答时间',
+            title: '最后填写时间',
             sortable: true
         }, {
             field: 'submitTime',
