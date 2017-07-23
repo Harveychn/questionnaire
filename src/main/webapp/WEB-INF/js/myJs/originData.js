@@ -79,9 +79,11 @@ window.operateEvents = {
     },
     //导出
     'click .export': function (e, value, row, index) {
-        layer.msg('开发中..', {icon: 4})
+        var exportDataUrl = '/export/exportTxtData2Excel?missionId=' + row.missionId + '&qesId=' + row.questionnaireId;
+        window.location.href = exportDataUrl;
     }
 };
+
 /*弹窗层*/
 function layerMsg(confirmText, ids, url) {
     layer.open({
@@ -110,6 +112,7 @@ function layerConfirm(confirmText, row, url) {
         }
     )
 }
+
 /*检查是否选中一种问卷*/
 function checkIsSelectedOne(ids) {
     if (0 === ids.length) {
@@ -118,12 +121,14 @@ function checkIsSelectedOne(ids) {
     }
     return true;
 }
+
 //获取批量选中的id
 function getIdSelections() {
     return $.map($table.bootstrapTable('getSelections'), function (row) {
         return row.questionnaireId;
     });
 }
+
 //操作按钮格式设置
 function operateFormatter(value, row, index) {
     return [
@@ -135,6 +140,7 @@ function operateFormatter(value, row, index) {
         '</a>'
     ].join('');
 }
+
 //获取屏幕高度
 function getHeight() {
     return $(window).height() - $('.panel-body').outerHeight(true);
