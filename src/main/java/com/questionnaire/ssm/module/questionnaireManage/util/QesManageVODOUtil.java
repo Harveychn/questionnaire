@@ -169,7 +169,7 @@ public class QesManageVODOUtil {
     /**
      * 将数据库中的问题类型代码转化为 汉字表达形式
      *
-     * @param typeCode
+     * @param typeCode 数据库中的存储代码
      * @return
      * @throws Exception
      */

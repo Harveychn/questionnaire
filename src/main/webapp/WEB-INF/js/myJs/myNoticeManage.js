@@ -107,7 +107,7 @@ window.operateEvents = {
             '<div style="background-color: #363636;height:1px;border: none;"></div>' +
             '<h4 style="font-weight: 500">公告内容：</h4>&emsp;' + row.noticeContext +
             '<hr/>' +
-            '<h4 style="font-weight: 500">预计发布时间：</h4>&emsp;' + row.noticeLaunchDate +
+            '<h4 style="font-weight: 500">计划发布时间：</h4>&emsp;' + row.noticeLaunchDate +
             '<hr>' +
             '<h4 style="font-weight: 500">发布对象单位：</h4>' + unitObjElem + '</div>'
         });

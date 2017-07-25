@@ -45,17 +45,17 @@ public class QesManageAspect {
     public void getCreateQuestionnaireViewPointcut() {
 
     }
-
-    /**
-     * 获取创建问卷的视图之前，校验用户是否有相应的权限、角色
-     */
-    @Before("getCreateQuestionnaireViewPointcut()")
-    public void beforeGetCreateQuestionnaireView() throws Exception {
-        Set<String> needPermissions = new HashSet<>();
-        needPermissions.add(PermissionEnum.CREATE_QUESTIONNAIRE.getPermission());
-        String role = "疾控中心管理员";
-        UserValidationUtil.checkUserValid(role, needPermissions, logger);
-    }
+// 2017-7-4 去掉细粒度的权限控制
+//    /**
+//     * 获取创建问卷的视图之前，校验用户是否有相应的权限、角色
+//     */
+//    @Before("getCreateQuestionnaireViewPointcut()")
+//    public void beforeGetCreateQuestionnaireView() throws Exception {
+//        Set<String> needPermissions = new HashSet<>();
+//        needPermissions.add(PermissionEnum.CREATE_QUESTIONNAIRE.getPermission());
+//        String role = "疾控中心管理员";
+//        UserValidationUtil.checkUserValid(role, needPermissions, logger);
+//    }
 
     private static final Logger logger = LoggerFactory.getLogger(QesManageAspect.class);
 }

@@ -7,13 +7,13 @@ package com.questionnaire.ssm.module.global.constant;
 public class CONSTANT {
     /*上传文件路径*/
     private final static String UPLOAD_FILE_PATH = "E:\\创新实践\\uploadFiles\\excels";
-//    private final static String UPLOAD_FILE_PATH = "C:\\Program Files\\Apache Software Foundation\\questionnaire_files\\temp_excels";
+//        private final static String UPLOAD_FILE_PATH = "C:\\Program Files\\Apache Software Foundation\\questionnaire_files\\temp_excels";
     /*服务器模板文件路径*/
     private final static String DOWNLOAD_FOLDER_PATH = "E:\\创新实践\\uploadFiles\\uploadFile-template";
-//    private final static String DOWNLOAD_FOLDER_PATH = "C:\\Program Files\\Apache Software Foundation\\questionnaire_files\\upload_templateFiles";
+//        private final static String DOWNLOAD_FOLDER_PATH = "C:\\Program Files\\Apache Software Foundation\\questionnaire_files\\upload_templateFiles";
     /*服务器用户头像路径*/
     private final static String USER_PICTURE_PATH = "E:\\创新实践\\uploadFiles\\user-pictures";
-//    private final static String USER_PICTURE_PATH = "C:\\Program Files\\Apache Software Foundation\\questionnaire_files\\user-pictures";
+//        private final static String USER_PICTURE_PATH = "C:\\Program Files\\Apache Software Foundation\\questionnaire_files\\user-pictures";
     //数据库中单位id文本切割符
     private final static String DIVIDE_SYMBOL = "||";
     /*默认头像*/
@@ -25,6 +25,9 @@ public class CONSTANT {
     private final static String USER_TEMPLATE_NAME = "USER_INFO_TEMPLATE";
     /*答案为空时，数据库中answer_detail默认为 ‘.’ */
     private final static String NULL_ANSWER_STRING = ".";
+    //答案数据为空时，视图中展示的字符串
+    private final static String VO_NULL_ANSWER_STRING = " ";
+
     /*系统角色*/
     private final static String ROLE_SYSTEM_ADMIN = "系统管理员";
     private final static String ROLE_CENTER_ADMIN = "疾控中心管理员";
@@ -76,5 +79,9 @@ public class CONSTANT {
 
     public static String getRoleResearcher() {
         return ROLE_RESEARCHER;
+    }
+
+    public static String getVoNullAnswerString() {
+        return VO_NULL_ANSWER_STRING;
     }
 }

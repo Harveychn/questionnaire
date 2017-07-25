@@ -8,13 +8,13 @@ import java.util.List;
  */
 public class DisplayAnswerPaperVO {
     /*答卷信息*/
-    private Long answerPaperId;//答卷id 1
-    private Long questionnaireId;//问卷id 1
+    private Long answerPaperId;//答卷id
+    private Long questionnaireId;//问卷id
     private String questionnaireTitle;//问卷标题
     private String questionnaireSubtitle;//问卷副标题
     private String questionnaireDescription;//问卷描述
-    private BigDecimal longitude;//经度 1
-    private BigDecimal latitude;//纬度 1
+    private BigDecimal longitude;//经度
+    private BigDecimal latitude;//纬度
     /*答卷题目*/
     private List<AnswerQuestionVO> answerQuestions;
 

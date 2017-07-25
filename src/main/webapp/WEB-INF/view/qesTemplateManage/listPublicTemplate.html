@@ -59,7 +59,7 @@
 
     var $table = $('#publicTemplateInfoTable');
     //表格数据获取地址
-    var tableDataUrl = '/qesTemplateManage/getPublicTemplateInfo';
+    var tableDataUrl = '/publicTemplateManage/getPublicTemplateInfo';
     var getDataMethod = 'get';
 
     var deleteTemporaryUrl = '/qesTemplateManage/multiDeleteTemplate';
@@ -138,7 +138,7 @@
         //查看模板
         'click .scanPaper': function (e, value, row, index) {
             //查看问卷
-            var browseQesUrl = '/questionnaireManage/displayQuestionnaire';
+            var browseQesUrl = '/publicTemplateManage/displayPubTemplate';
             browseQesUrl += '/' + row.questionnaireId;
             browseQesPaper(browseQesUrl);
         },
@@ -152,9 +152,9 @@
             window.location.href = '/QesManageRest/getQuoteQesPaperView/' + row.questionnaireId;
 
         },
-        //添加公共模板
+        //添加个人模板
         'click .add2PrivateLib': function (e, value, row, index) {
-            layerConfirmSingle('确认共享个人模板到公共模板库？', row, add2PrivateLibUrl);
+            layerConfirmSingle('确认添加到个人模板库？', row, add2PrivateLibUrl);
         }
     };
 

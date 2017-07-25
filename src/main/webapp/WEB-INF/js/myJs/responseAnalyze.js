@@ -5,36 +5,6 @@
  * 需要提前引入jq、layer js
  */
 
-function accessServerByJson(url, jsonData) {
-    $.ajax({
-        url: url,
-        contentType: "application/json;charset=utf-8",
-        type: 'post',
-        dataType: 'json',
-        data: JSON.stringify(jsonData),
-        success: function (data) {
-            if (200 === data.code) {
-                successResultLayer("操作成功！");
-            }
-            dealGlobalError(data);
-        },
-        error: function (data) {
-            alert(data);
-        }
-    });
-}
-/**
- * code === 200 layer层展示
- * @param successMsg
- */
-function successResultLayer(successMsg) {
-    layer.msg(successMsg, {
-        icon: 1,
-        time: 2000,
-        shade: 0.5,
-        closeBtn: 1
-    });
-}
 /**
  * 全局错误通用处理
  * @param responsePkt
@@ -96,6 +66,6 @@ function layerErrorMessage(responsePkt) {
         icon: 5,
         shade: 0.5,
         btn: ['知道了'],
-        time : 0
+        time: 0
     });
 }

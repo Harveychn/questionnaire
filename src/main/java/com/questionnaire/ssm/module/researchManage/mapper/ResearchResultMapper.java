@@ -20,7 +20,6 @@ public interface ResearchResultMapper {
      * @throws Exception
      */
     int insert2AnswerPaperBatch(List<AnswerPaper> answerPaperList) throws Exception;
-
     /**
      * 批量插入答卷详细信息
      *

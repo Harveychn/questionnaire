@@ -29,13 +29,13 @@ public class ResearchResultServiceImpl implements ResearchResultService {
     @Transactional
     public int multiSubmitAnswerPaper(String userTel, List<AnswerPaperVO> answerPaperVOList) throws Exception {
         List<AnswerPaper> answerPaperDOList = new ArrayList<>();
-        List<AnswerDetail> curPaperDetailDOList = new ArrayList<>();
         Map<Integer, List<AnswerDetail>> answerDetailDOMap = new HashMap<>();
+        List<AnswerDetail> curPaperDetailDOList = null;
         AnswerPaper answerPaper = null;
         AnswerDetail answerDetail = null;
-
         List<AnswerDetailVO> currentAnswerDetailVOList = null;
         AnswerPaperVO currentAnswerPaperVO = null;
+
         for (int i = 0; i < answerPaperVOList.size(); i++) {
             currentAnswerPaperVO = answerPaperVOList.get(i);
             answerPaper = new AnswerPaper();
@@ -49,7 +49,6 @@ public class ResearchResultServiceImpl implements ResearchResultService {
             /*此处设置当前登陆用户名*/
             answerPaper.setSubmitUserTel(userTel);
             answerPaper.setMissionId(currentAnswerPaperVO.getResearchId());
-
             answerPaper.setLongitude(BigDecimal.valueOf(currentAnswerPaperVO.getLongitude()));
             answerPaper.setLatitude(BigDecimal.valueOf(currentAnswerPaperVO.getLatitude()));
             answerPaper.setFillAnswerTime(currentAnswerPaperVO.getFillAnswerTime());
@@ -58,6 +57,8 @@ public class ResearchResultServiceImpl implements ResearchResultService {
 
             currentAnswerDetailVOList = currentAnswerPaperVO.getAnswerDetailVOList();
             if (currentAnswerDetailVOList.size() > 0) {
+
+                curPaperDetailDOList = new ArrayList<>();
                 //答卷id均未设置，在答卷信息保存后设置
                 for (AnswerDetailVO currentAnswerDetailVO : currentAnswerDetailVOList) {
                     //答卷id未设置

@@ -1,6 +1,7 @@
 package com.questionnaire.ssm.module.resultAnalysis.mapper;
 
 import com.questionnaire.ssm.module.resultAnalysis.pojo.*;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -11,11 +12,34 @@ import java.util.List;
  */
 public interface ResultAnalysisMapper {
 
-    List<PrimaryDataInfoVO> listPrimaryDataInfo() throws Exception;
+    List<OriginDataInfoVO> listPrimaryDataInfo() throws Exception;
 
-    Long listCount(PrimaryDataInfoVO primaryDataInfoVO) throws Exception;
+    Long listCount(OriginDataInfoVO originDataInfoVO) throws Exception;
 
     List<AnswerPaperVO> listAnswerPaper(MissionQuestionnaireVO missionQuestionnaireVO) throws Exception;
 
-    String selectAnswerDetail(QuestionAnswerPaperVO questionAnswerPaperVO) throws Exception;
+    List<String> selectAnswerDetail(QuestionAnswerPaperVO questionAnswerPaperVO) throws Exception;
+
+
+    /**
+     * 根据编号，查询答卷信息
+     *
+     * @param launchQesId         发布的问卷ID
+     * @param answerPaperID 答卷ID
+     * @return
+     * @throws Exception
+     */
+    DisplayAnswerPaperVO selectAnswerPaperByIds(@Param("launchQesId") long launchQesId, @Param("answerPaperID") long answerPaperID)
+    throws Exception;
+
+    /**
+     * 根据编号，查询答卷详细信息
+     *
+     * @param launchQesId         发布的问卷ID
+     * @param answerPaperID 答卷ID
+     * @return
+     * @throws Exception
+     */
+    List<AnswerQuestionVO> listAnswerDetailByIds(@Param("launchQesId") long launchQesId, @Param("answerPaperID") long answerPaperID)
+            throws Exception;
 }

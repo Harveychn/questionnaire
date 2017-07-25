@@ -16,10 +16,11 @@
 		FROM
 			questionnaire
 		WHERE
-			create_user = #{userTel}
-		AND is_done = TRUE
+			is_done = TRUE
 		AND is_visible = TRUE
 		AND is_release = FALSE
+		AND is_template = FALSE
+		AND create_user = #{userTel}
 </select>
 
     <select id="listMission" resultType="com.questionnaire.ssm.module.researchManage.pojo.ListMissionVO">
@@ -197,8 +198,8 @@
         ) AS submit_info ON qesPaperInfo.questionnaireId = submit_info.questionnaireId
     </select>
 
-	<select id="listCount" parameterType="com.questionnaire.ssm.module.researchManage.pojo.ListMissionVO"
-			resultType="Long">
+    <select id="listCount" parameterType="com.questionnaire.ssm.module.researchManage.pojo.ListMissionVO"
+            resultType="Long">
 		SELECT
 		COUNT(questionnaire_id) AS questionnaireCount
 		FROM
@@ -207,8 +208,8 @@
 		AND mission_id=#{missionId}
 	</select>
 
-	<select id="findMission" parameterType="com.questionnaire.ssm.module.researchManage.pojo.ListMissionVO"
-                         resultType="Long">
+    <select id="findMission" parameterType="com.questionnaire.ssm.module.researchManage.pojo.ListMissionVO"
+            resultType="Long">
     SELECT
     id
     FROM

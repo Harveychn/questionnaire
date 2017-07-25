@@ -43,6 +43,10 @@ $(function () {
             title: '调查编号',
             sortable: true
         }, {
+            field: 'description',
+            title: '调查描述',
+            sortable: true
+        }, {
             field: 'beginDate',
             title: '调查开始时间',
             sortable: true,
@@ -59,10 +63,6 @@ $(function () {
         }, {
             field: 'creatorUnit',
             title: '创建人所属单位',
-            sortable: true
-        }, {
-            field: 'description',
-            title: '调查描述',
             sortable: true
         }, {
             title: '操作',

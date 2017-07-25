@@ -3,9 +3,10 @@ package com.questionnaire.ssm.module.resultAnalysis.controller;
 import com.questionnaire.ssm.module.questionnaireManage.controller.IsOutOfIndex;
 import com.questionnaire.ssm.module.questionnaireManage.pojo.PreOrNextQes;
 import com.questionnaire.ssm.module.resultAnalysis.pojo.AnswerPaperVO;
-import com.questionnaire.ssm.module.resultAnalysis.pojo.PrimaryDataInfoVO;
+import com.questionnaire.ssm.module.resultAnalysis.pojo.DisplayAnswerPaperVO;
+import com.questionnaire.ssm.module.resultAnalysis.pojo.OriginDataInfoVO;
 import com.questionnaire.ssm.module.resultAnalysis.pojo.MissionQuestionnaireVO;
-import com.questionnaire.ssm.module.resultAnalysis.service.PrimaryDataService;
+import com.questionnaire.ssm.module.resultAnalysis.service.OriginDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +28,7 @@ public class ResultAnalysisController extends IsOutOfIndex {
      */
     @GetMapping(value = "/getPrimaryDataView")
     public ModelAndView getPrimaryData() throws Exception {
-        return new ModelAndView("resultAnalysis/primaryData");
+        return new ModelAndView("resultAnalysis/originData");
     }
 
     /**
@@ -40,7 +41,7 @@ public class ResultAnalysisController extends IsOutOfIndex {
     public ModelAndView getPrimaryDataTwo(Long missionId, Long qesId) throws Exception {
         this.missionId = missionId;
         this.qesId = qesId;
-        return new ModelAndView("resultAnalysis/primaryDataTwo");
+        return new ModelAndView("resultAnalysis/originData-paperList");
     }
 
     /**
@@ -53,7 +54,13 @@ public class ResultAnalysisController extends IsOutOfIndex {
     @GetMapping(value = "/getAnswerPaperInfo")
     public ModelAndView getAnswerPaperInfo(Long answerPaperId) throws Exception {
         ModelAndView modelAndView = new ModelAndView("resultAnalysis/displayAnswerPaper");
-        modelAndView.addObject("displayAnswerPaperVO", primaryDataService.getAnswerPaper(answerPaperId));
+        DisplayAnswerPaperVO displayAnswerPaperVO = originDataService.getAnswerPaper(this.qesId, answerPaperId);
+        if (displayAnswerPaperVO != null) {
+            modelAndView.addObject("displayAnswerPaperVO", displayAnswerPaperVO);
+            modelAndView.addObject("noError", true);
+        } else {
+            modelAndView.addObject("noError", false);
+        }
         //当前查看问卷的id
         preOrNextQes.setCurrentQesPaperId(answerPaperId);
         isOutOfMinIndex(preOrNextQes, modelAndView);
@@ -71,14 +78,25 @@ public class ResultAnalysisController extends IsOutOfIndex {
     public ModelAndView displayPrevAnswerPaper() throws Exception {
         ModelAndView modelAndView = new ModelAndView("resultAnalysis/displayAnswerPaper");
         Long displayingQesId = preOrNextQes.getPreviousQesPaperId();
+        DisplayAnswerPaperVO displayAnswerPaperVO = null;
         //超出左边界
         if (displayingQesId == PreOrNextQes.OUT_OF_INDEX) {
-            modelAndView.addObject("displayAnswerPaperVO",
-                    primaryDataService.getAnswerPaper(preOrNextQes.getCurrentQesPaperId()));
+            displayAnswerPaperVO = originDataService.getAnswerPaper(this.qesId, preOrNextQes.getCurrentQesPaperId());
+            if (displayAnswerPaperVO != null) {
+                modelAndView.addObject("displayAnswerPaperVO", displayAnswerPaperVO);
+                modelAndView.addObject("noError", true);
+            } else {
+                modelAndView.addObject("noError", false);
+            }
             modelAndView.addObject("isOutOfMinIndex", true);
         } else {
-            modelAndView.addObject("displayAnswerPaperVO",
-                    primaryDataService.getAnswerPaper(displayingQesId));
+            displayAnswerPaperVO = originDataService.getAnswerPaper(this.qesId, displayingQesId);
+            if (displayAnswerPaperVO != null) {
+                modelAndView.addObject("displayAnswerPaperVO", displayAnswerPaperVO);
+                modelAndView.addObject("noError", true);
+            } else {
+                modelAndView.addObject("noError", false);
+            }
             //设置当前问卷为下一份问卷id
             preOrNextQes.setCurrentQesPaperId(displayingQesId);
             isOutOfMinIndex(preOrNextQes, modelAndView);
@@ -98,14 +116,25 @@ public class ResultAnalysisController extends IsOutOfIndex {
     public ModelAndView displayNextAnswerPaper() throws Exception {
         ModelAndView modelAndView = new ModelAndView("resultAnalysis/displayAnswerPaper");
         //获取下一份问卷id
+        DisplayAnswerPaperVO displayAnswerPaperVO = null;
         Long displayingQesId = preOrNextQes.getNextQesPaperId();
         if (displayingQesId == PreOrNextQes.OUT_OF_INDEX) {        //没有下一份问卷
-            modelAndView.addObject("displayAnswerPaperVO",
-                    primaryDataService.getAnswerPaper(preOrNextQes.getCurrentQesPaperId()));
+            displayAnswerPaperVO = originDataService.getAnswerPaper(this.qesId, preOrNextQes.getCurrentQesPaperId());
+            if (displayAnswerPaperVO != null) {
+                modelAndView.addObject("displayAnswerPaperVO", displayAnswerPaperVO);
+                modelAndView.addObject("noError", true);
+            } else {
+                modelAndView.addObject("noError", false);
+            }
             modelAndView.addObject("isOutOfMaxIndex", true);
         } else { //有下一份问卷
-            modelAndView.addObject("displayAnswerPaperVO",
-                    primaryDataService.getAnswerPaper(displayingQesId));
+            displayAnswerPaperVO = originDataService.getAnswerPaper(this.qesId, displayingQesId);
+            if (displayAnswerPaperVO != null) {
+                modelAndView.addObject("displayAnswerPaperVO", displayAnswerPaperVO);
+                modelAndView.addObject("noError", true);
+            } else {
+                modelAndView.addObject("noError", false);
+            }
             //设置当前问卷为下一份问卷id
             preOrNextQes.setCurrentQesPaperId(displayingQesId);
             isOutOfMaxIndex(preOrNextQes, modelAndView);
@@ -123,8 +152,8 @@ public class ResultAnalysisController extends IsOutOfIndex {
      */
     @PostMapping(value = "/listPrimaryData")
     @ResponseBody
-    public List<PrimaryDataInfoVO> listPrimaryData() throws Exception {
-        return primaryDataService.listPrimaryData();
+    public List<OriginDataInfoVO> listPrimaryData() throws Exception {
+        return originDataService.listPrimaryData();
     }
 
     /**
@@ -139,7 +168,7 @@ public class ResultAnalysisController extends IsOutOfIndex {
         MissionQuestionnaireVO missionQuestionnaire = new MissionQuestionnaireVO();
         missionQuestionnaire.setMissionId(this.missionId);
         missionQuestionnaire.setQuestionnaireId(this.qesId);
-        List<AnswerPaperVO> result = primaryDataService.listAnswerPaper(missionQuestionnaire);
+        List<AnswerPaperVO> result = originDataService.listAnswerPaper(missionQuestionnaire);
         int len = result.size();
         Long[] ids = new Long[len];
         for (int i = 0; i < len; i++) {
@@ -153,12 +182,12 @@ public class ResultAnalysisController extends IsOutOfIndex {
 
     private Long missionId;
     private Long qesId;
-    private PrimaryDataService primaryDataService;
+    private OriginDataService originDataService;
     private PreOrNextQes preOrNextQes;
 
     @Autowired
-    public ResultAnalysisController(PrimaryDataService primaryDataService) {
-        this.primaryDataService = primaryDataService;
+    public ResultAnalysisController(OriginDataService originDataService) {
+        this.originDataService = originDataService;
         this.preOrNextQes = null;
     }
 }

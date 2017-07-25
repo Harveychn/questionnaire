@@ -10,6 +10,11 @@ var $questionList = $('#questionList');
 var $tableBody = $('#tableBody');
 var $questionTableData = $('#questionTableData');
 
+setExportDataAttr();
+window.onload = function () {
+    TableExport.init();
+}
+
 //当前问卷结果分析数据
 var analyzeResultData;
 
@@ -53,14 +58,14 @@ $(function () {
 
                 $questionList.append('<button class="list-group-item btn" ' +
                     'style="text-align: left; background-color: rgba(51,122,183,0.82);color: whitesmoke;" id="' + analyzeResultData[i].questionId +
-                    '" onclick="clickQuestionListItem(this.id)">第' +
-                    (i + 1) + '题  ' + analyzeResultData[i].questionContent + '(' + analyzeResultData[i].questionType + ')</button>');
+                    '" onclick="clickQuestionListItem(this.id)">' +
+                    (i + 1) + '、' + analyzeResultData[i].questionContent + '(' + analyzeResultData[i].questionType + ')</button>');
                 continue;
             }
             $questionList.append('<button class="list-group-item btn" ' +
                 'style="text-align: left;" id="' + analyzeResultData[i].questionId +
-                '" onclick="clickQuestionListItem(this.id)">第' +
-                (i + 1) + '题  ' + analyzeResultData[i].questionContent + '(' + analyzeResultData[i].questionType + ')</button>');
+                '" onclick="clickQuestionListItem(this.id)">' +
+                (i + 1) + '、' + analyzeResultData[i].questionContent + '(' + analyzeResultData[i].questionType + ')</button>');
             if (i === 0) {
 
             }
@@ -190,16 +195,16 @@ function setTableBodyData(i) {
     }
     for (var rowindex = 0; rowindex < rowDataArray.length; rowindex++) {
         if (sumValue === 0) {
-            $tableBody.append('<tr>' +
+            $tableBody.append('<tr class="row-active">' +
                 '<td>' + rowDataArray[rowindex].option + '</td>' +
                 '<td>' + rowDataArray[rowindex].value + '</td>' +
                 '<td>0%</td>' +
                 '</tr>');
         } else {
-            $tableBody.append('<tr>' +
+            $tableBody.append('<tr class="row-active">' +
                 '<td>' + rowDataArray[rowindex].option + '</td>' +
                 '<td>' + rowDataArray[rowindex].value + '</td>' +
-                '<td>' + rowDataArray[rowindex].value / sumValue * 100 + '%</td>' +
+                '<td>' + (rowDataArray[rowindex].value / sumValue * 100).toFixed(2) + '%</td>' +
                 '</tr>');
         }
     }
@@ -428,6 +433,21 @@ $('#pieChartBtn').on('click', function () {
             center: ['60%', '60%'],
             //动态数据
             data: resultData,
+            label: {
+                normal: {
+                    show: true,
+                    position: 'outside',
+                    formatter: '{b} - {d}%',
+                },
+                emphasis: {
+                    show: true
+                }
+            },
+            labelLine: {
+                normal: {
+                    show: true
+                }
+            },
             itemStyle: {
                 emphasis: {
                     shadowBlur: 10,

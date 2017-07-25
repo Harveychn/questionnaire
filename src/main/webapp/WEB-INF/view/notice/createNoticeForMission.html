@@ -292,6 +292,35 @@
             )
         });
     });
+
+    function accessServerByJson(url, jsonData) {
+        $.ajax({
+            url: url,
+            contentType: "application/json;charset=utf-8",
+            type: 'post',
+            async: false,
+            dataType: 'json',
+            data: JSON.stringify(jsonData),
+            success: function (data) {
+                if (200 === data.code) {
+                    successResultLayer("操作成功！");
+                }
+                dealGlobalError(data);
+            },
+            error: function (data) {
+                alert(data);
+            }
+        });
+    }
+
+    function successResultLayer(successMsg) {
+        layer.msg(successMsg, {
+            icon: 1,
+            time: 2000,
+            shade: 0.5,
+            closeBtn: 1
+        });
+    }
 </script>
 </body>
 </html>

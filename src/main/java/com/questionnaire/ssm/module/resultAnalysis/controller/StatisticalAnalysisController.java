@@ -51,7 +51,7 @@ public class StatisticalAnalysisController {
     @ResponseBody
     public ResponsePkt getQesPaperAnalyzeResult() throws Exception {
         List<StatisticalAnalysisResultVO> resultVOList = statisticalAnalysisService.getQesPaperAnalyzeResult(this.missionId, this.missionPaperId);
-        if (resultVOList == null) {
+        if (resultVOList == null || resultVOList.size() <= 0) {
             return ResultUtil.error(CodeForVOEnum.NO_RESULT_FOR_ANALYZE.getCode(),
                     CodeForVOEnum.NO_RESULT_FOR_ANALYZE.getMessage());
         }

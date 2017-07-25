@@ -8,6 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
  * Description: 检查是否超出数组的索引范围
  */
 public class IsOutOfIndex {
+
     //判断是否超出最小边界
     public void isOutOfMinIndex(PreOrNextQes preOrNextQes, ModelAndView modelAndView) throws Exception {
         if (preOrNextQes.getPreviousQesPaperId() == PreOrNextQes.OUT_OF_INDEX) {
