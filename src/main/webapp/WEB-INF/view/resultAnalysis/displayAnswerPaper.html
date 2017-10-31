@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>答卷展示</title>
+    <link rel="shortcut icon" href="../../img/favicon.ico"/>
+    <link href="../../css/bootstrap.min.css" rel="stylesheet"/>
+    <style>
+        .print-btn {
+            position: fixed;
+            top: 30%;
+            right: 2%;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!--标题信息-->
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="panel-title">
+                答卷浏览
+            </div>
+        </div>
+        <div class="panel-body" th:if="${noError == true}">
+            <div class="row">
+                <div class="center-block">
+                    <div class="page-header">
+                        <h1 th:text="${displayAnswerPaperVO.questionnaireTitle}" align="center">标题</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <blockquote class="blockquote-reverse">
+                    <p th:if="${not #strings.isEmpty(displayAnswerPaperVO.questionnaireSubtitle)}"
+                       th:text="${displayAnswerPaperVO.questionnaireSubtitle}">副标题</p>
+                    <p th:if="${not #strings.isEmpty(displayAnswerPaperVO.questionnaireDescription)}"
+                       th:text="${displayAnswerPaperVO.questionnaireDescription}">描述信息</p>
+                    <p th:text="'经度:'+${displayAnswerPaperVO.longitude}">经度</p>
+                    <p th:text="'纬度:'+${displayAnswerPaperVO.latitude}">纬度</p>
+                </blockquote>
+            </div>
+            <!--答卷卷中详细问题信息开始-->
+
+            <!--遍历答卷题目信息-->
+            <div class="panel-group" th:if="${#lists.size(displayAnswerPaperVO.answerQuestions)>0}"
+                 th:each="curQes,iterStat: ${displayAnswerPaperVO.answerQuestions}">
+                <div class="panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            第 <span th:text="${iterStat.count}">[题号]</span> 题：
+                            <span th:text="${curQes.questionContext}"></span>
+                            (
+                            <span th:text="${curQes.questionType}">题型</span>
+                            <span th:if="${#bools.isTrue(curQes.must)}" style="color: red;">*</span>
+                            )
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-inline">
+                            <div class="form-group">
+                                <label th:text="${curQes.answerDetail}">答案</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" th:if="${noError == false}"><h1 align="center">这份问卷有点问题！看看其他的吧</h1></div>
+    </div>
+
+    <!--打印按钮-->
+    <div class="row hidden-print print-btn">
+        <div class="btn-group-lg pull-right">
+            <button th:disabled="${isOutOfMinIndex == true}" id="prevPaperBtn" class="btn btn-default btn-block"
+                    data-toggle="tooltip" title="上一份">
+                <i class="glyphicon glyphicon-chevron-up"></i>
+            </button>
+            <button th:disabled="${isOutOfMaxIndex == true}" id="nextPaperBtn" class="btn btn-default btn-block"
+                    data-toggle="tooltip" title="下一份">
+                <i class="glyphicon glyphicon-chevron-down"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<script src="../../js/jquery.min.js"></script>
+<script>
+    $(function () {
+        $('#prevPaperBtn').on('click', function () {
+            window.location.href = '/resultAnalysis/prevAnswerPaper';
+        });
+        $('#nextPaperBtn').on('click', function () {
+            window.location.href = '/resultAnalysis/nextAnswerPaper';
+        })
+    });
+</script>
+
+</body>
+</html>

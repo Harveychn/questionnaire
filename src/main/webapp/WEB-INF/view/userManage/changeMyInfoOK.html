@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>用户信息修改成功</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/animate.css">
+    <link rel="stylesheet" href="../../js/plugins/layui/css/layui.css">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-offset-2 col-md-8">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        操作成功
+                    </div>
+                </div>
+
+                <div class="panel-body">
+                    <div class="form-horizontal layui-form">
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">姓名：</label>
+                            <div class="col-md-8">
+                                <input th:value="${myNewInfo.userRealName}" type="text"
+                                       class="form-control"
+                                       placeholder="姓名" disabled>
+                            </div>
+                        </div>
+                        <form id="userInfoForm" action="/userInfoManage/changeMyInfo" method="post">
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">性别：</label>
+                                <div class="col-md-8">
+                                    <input th:value="${myNewInfo.userSex==1?'男':'女'}" type="text"
+                                           class="form-control"
+                                           placeholder="性别" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">出生日期：</label>
+                                <div class="col-md-8">
+                                    <input th:value="${#dates.format(myNewInfo.userBirthday,'yyyy-MM-dd')}" type="text"
+                                           class="form-control"
+                                           placeholder="出生日期" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">身份证：</label>
+                                <div class="col-md-8">
+                                    <input th:value="${myNewInfo.userID}" type="text"
+                                           class="form-control"
+                                           placeholder="身份证号码" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">邮箱：</label>
+                                <div class="col-md-8">
+                                    <input th:value="${myNewInfo.mailAddress}" type="text"
+                                           class="form-control"
+                                           placeholder="常用邮箱" disabled>
+                                </div>
+                            </div>
+                        </form>
+                        <!--<div id="time-count" class="h2 text-center">-->
+                        <!--</div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/plugins/layui/layui.js"></script>
+</body>
+</html>

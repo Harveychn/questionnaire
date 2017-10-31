@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>文件上传</title>
+    <meta name="keywords" content="响应式后台">
+
+    <link rel="shortcut icon" href="/WEB-INF/img/favicon.ico"
+          th:href="@{/img/favicon.ico}"/>
+    <link href="/WEB-INF/css/bootstrap.min.css" rel="stylesheet"
+          th:href="@{/css/bootstrap.min.css}"/>
+    <link href="/WEB-INF/css/font-awesome.min.css" rel="stylesheet"
+          th:href="@{/css/font-awesome.min.css}"/>
+    <link href="/WEB-INF/css/animate.css" rel="stylesheet"
+          th:href="@{/css/animate.css}"/>
+    <link href="/WEB-INF/css/plugins/dropzone/basic.css" rel="stylesheet"
+          th:href="@{/css/plugins/dropzone/basic.css}"/>
+    <link href="/WEB-INF/css/plugins/dropzone/dropzone.css" rel="stylesheet"
+          th:href="@{/css/plugins/dropzone/dropzone.css}"/>
+    <link href="/WEB-INF/css/style.css" rel="stylesheet"
+          th:href="@{/css/style.css}"/>
+    <style>
+        #message {
+            font-family: "Microsoft YaHei UI";
+            font-size: 300%;
+            filter: none;
+            height: 123px;
+            left: 50%;
+            margin-left: -214px;
+            margin-top: -61.5px;
+            opacity: 1;
+            position: absolute;
+            top: 50%;
+            transition: opacity 0.3s ease-in-out 0s;
+            width: 428px;
+        }
+    </style>
+</head>
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeIn">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="panel-title">
+                数据上传
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="col-md-12">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            上传模板下载
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <div class="col-md-10 col-sm-10">
+                                    <select id="templateNameSelect" class="form-control">
+                                        <option>单位信息上传模板</option>
+                                        <option>用户信息上传模板</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-1 col-sm-1">
+                                    <div id="downloadTemplateBtn" class="btn btn-success"> 下载模板</div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        <form id="my-awesome-dropzone" class="dropzone"
+                              action="/userManage/uploadData"
+                              th:action="@{/userManage/uploadData}" method="post"
+                              enctype="multipart/form-data">
+                            <div class="dropzone-previews">
+                            </div>
+                            <button type="submit" class="btn btn-primary pull-right">提交</button>
+                            <div class="dz-message" id="message">
+                                拖拽文件至此<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                或点击选择文件
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 全局js -->
+<script src="/WEB-INF/js/jquery.min.js" type="text/javascript"
+        th:src="@{/js/jquery.min.js}"></script>
+<script src="/WEB-INF/js/bootstrap.min.js" type="text/javascript"
+        th:src="@{/js/bootstrap.min.js}"></script>
+
+<!--Layer-->
+<script src="/WEB-INF/js/plugins/layer/layer.min.js" type="text/javascript"
+        th:src="@{/js/plugins/layer/layer.min.js}"></script>
+<!-- DROPZONE -->
+<script src="/WEB-INF/js/plugins/dropzone/dropzone.js" type="text/javascript"
+        th:src="@{/js/plugins/dropzone/dropzone.js}"></script>
+
+
+<script>
+    $(document).ready(function () {
+        Dropzone.options.myAwesomeDropzone = {
+            autoProcessQueue: false,
+            uploadMultiple: true,
+            parallelUploads: 100,
+            maxFiles: 100,
+            maxFileSize: 1,
+            paramName: "files",
+            method: "post",
+            addRemoveLinks: true,
+            dictRemoveFile: '移除',
+            // Dropzone settings
+            init: function () {
+                var myDropzone = this;
+                var uploading = null;
+
+                this.element.querySelector("button[type=submit]").addEventListener("click", function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    myDropzone.processQueue();
+                });
+                this.on("sendingmultiple", function () {
+                    uploading = layer.load(0, {
+                        shade: [0.8, 'white']
+                    });
+                });
+                this.on("successmultiple", function (files, response) {
+                    layer.close(uploading);
+                    this.removeFile(files);
+                    if (response.code === 200) {
+                        var index = layer.open({
+                            title: '服务器处理数据结果',
+                            type: 2,
+                            anim: 2,
+                            content: '/userManage/uploadResultView',
+                            area: ['90%', '90%'],
+                            maxmin: true,
+                            closeBtn: 1
+                        });
+                        layer.full(index);
+                    } else {
+                        layer.open({
+                            type: 1,
+                            skin: 'layui-layer-demo', //样式类名
+                            closeBtn: 0, //不显示关闭按钮
+                            anim: 2,
+                            shadeClose: true, //开启遮罩关闭
+                            content: response.message
+                        });
+                    }
+
+                });
+                this.on("errormultiple", function (files, response) {
+                    layer.close(uploading);
+                    $('.dz-error-message').html("<span data-dz-errormessage='" + "'>上传失败</span>");
+                });
+            }
+
+        }
+    });
+
+    $('#downloadTemplateBtn').click(function () {
+        downloadTemplate();
+    });
+
+    function downloadTemplate() {
+        var selectedTemplate = $('#templateNameSelect').val();
+        layer.confirm('确定下载： ' + selectedTemplate + ' ?',
+            {
+                icon: 3,
+                title: '提示',
+                btn: ['确定', '取消']
+            },
+            function (index) {
+                layer.close(index);
+                window.location.href = "/userManage/downloadUploadTemplate?templateName=" + selectedTemplate;
+            }, function () {
+                layer.msg('取消下载模版成功!', {
+                    icon: 7
+                });
+            }
+        );
+
+    }
+</script>
+
+</body>
+
+</html>

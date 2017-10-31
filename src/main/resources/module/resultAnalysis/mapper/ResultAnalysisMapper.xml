@@ -1,0 +1,100 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.questionnaire.ssm.module.resultAnalysis.mapper.ResultAnalysisMapper">
+    <select id="listPrimaryDataInfo"
+            resultType="com.questionnaire.ssm.module.resultAnalysis.pojo.OriginDataInfoVO">
+        SELECT
+            m.mission_id AS missionId,
+            m.mission_description AS missionDescription,
+            q.questionnaire_id AS questionnaireId,
+            q.questionnaire_title AS questionnaireTitle,
+            q.questionnaire_subtitle AS questionnaireSubtitle,
+            map.min_submit_count AS minSubmitCount
+        FROM
+            mission AS m,
+            questionnaire AS q,
+            mapping_mission_questionnaire AS map
+        WHERE
+            q.questionnaire_id = map.questionnaire_id
+        AND m.mission_id = map.mission_id
+        AND map.questionnaire_id = q.questionnaire_id
+        ORDER BY
+            map.mission_id DESC
+    </select>
+
+    <select id="listCount" parameterType="com.questionnaire.ssm.module.resultAnalysis.pojo.OriginDataInfoVO"
+            resultType="Long">
+        SELECT
+        COUNT(questionnaire_id) AS questionnaireCount
+        FROM
+        answer_paper
+        WHERE questionnaire_id=#{questionnaireId}
+        AND mission_id=#{missionId}
+    </select>
+
+    <select id="listAnswerPaper" parameterType="com.questionnaire.ssm.module.resultAnalysis.pojo.MissionQuestionnaireVO"
+            resultType="com.questionnaire.ssm.module.resultAnalysis.pojo.AnswerPaperVO">
+        SELECT
+        answer_paper_id AS answerPaperId,
+        submit_user_tel AS submitUserTel,
+        fill_answer_time AS fillAnswerTime,
+        submit_time AS submitTime
+        FROM
+        answer_paper
+        WHERE questionnaire_id=#{questionnaireId}
+        AND mission_id=#{missionId}
+    </select>
+    <!--<select id="selectAnswerDetail"-->
+    <!--parameterType="com.questionnaire.ssm.module.resultAnalysis.pojo.QuestionAnswerPaperVO"-->
+    <!--resultType="String">-->
+    <select id="selectAnswerDetail"
+            parameterType="com.questionnaire.ssm.module.resultAnalysis.pojo.QuestionAnswerPaperVO"
+            resultType="java.lang.String">
+        SELECT
+        answer_string AS answerString
+        FROM
+        answer_detail
+        WHERE question_id=#{questionId}
+        AND answer_paper_id=#{answerPaperId}
+    </select>
+
+    <select id="selectAnswerPaperByIds" parameterType="Long"
+            resultType="com.questionnaire.ssm.module.resultAnalysis.pojo.DisplayAnswerPaperVO">
+        SELECT
+            ap.answer_paper_id AS answerPaperId,
+            ap.questionnaire_id AS questionnaireId,
+            q.questionnaire_title AS questionnaireTitle,
+            q.questionnaire_subTitle AS questionnaireSubtitle,
+            q.questionnaire_description AS questionnaireDescription,
+            ap.longitude AS longitude,
+            ap.latitude AS latitude
+        FROM
+            answer_paper AS ap,
+            questionnaire AS q
+        WHERE
+            ap.questionnaire_id = q.questionnaire_id
+        AND ap.questionnaire_id = #{launchQesId}
+        AND ap.answer_paper_id = #{answerPaperID};
+    </select>
+
+    <select id="listAnswerDetailByIds" parameterType="Long"
+            resultType="com.questionnaire.ssm.module.resultAnalysis.pojo.AnswerQuestionVO">
+      SELECT
+        q.question_id AS questionId,
+        q.question_context AS questionContext,
+        q.question_type AS questionType,
+        q.question_description AS questionDescription,
+        q.is_must AS isMust,
+        ad.answer_string AS answerDetail
+    FROM
+        questionnaire AS paper,
+        question AS q,
+        answer_detail AS ad,
+        mapping_questionnaire_question AS map
+    WHERE
+        map.questionnaire_id = paper.questionnaire_id
+    AND ad.question_id = q.question_id
+    AND map.question_id = q.question_id
+    AND map.questionnaire_id = #{launchQesId}
+    AND ad.answer_paper_id = #{answerPaperID};
+    </select>
+</mapper>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>创建调查</title>
+    <link rel="shortcut icon" href="/WEB-INF/img/favicon.ico" th:href="@{/img/favicon.ico}"/>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" href="../../js/plugins/bootstrap-select/css/bootstrap-select.min.css"
+          th:href="@{/js/plugins/bootstrap-select/css/bootstrap-select.min.css}">
+    <link rel="stylesheet" href="/WEB-INF/js/plugins/layui/css/layui.css" th:href="@{/js/plugins/layui/css/layui.css}">
+    <style>
+        .col-xs-2 {
+            text-align: center;
+        }
+
+        .col-xs-4 {
+            text-align: center;
+        }
+
+        .container {
+            padding-right: 5px;
+            padding-left: 5px;
+            margin-right: auto;
+            margin-left: auto
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="panel-title" id="pageName">
+                创建调查
+            </div>
+        </div>
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        调查名称
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-offset-0 col-md-12">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <div class="control-label col-xs-2">调查描述：</div>
+                                            <div class="col-xs-9">
+                                                <input id='missionDescription' class="form-control"
+                                                       placeholder="该次调查的描述信息"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        调查单位
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-offset-0 col-md-12">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <div class="control-label col-xs-2">执行单位：</div>
+                                            <div class="col-xs-9">
+                                                <select id='researchUnit' class="form-control" multiple> </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        调查时间
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-offset-0 col-md-12">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="row">
+                                            <div class="control-label col-xs-4">开始时间：</div>
+                                            <div class="col-xs-5">
+                                                <input id="begindate" class="form-control" placeholder="调查开始的时间"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="row">
+                                            <div class="control-label col-xs-4">结束时间：</div>
+                                            <div class="col-xs-5">
+                                                <input id="enddate" class="form-control" placeholder="调查结束的时间"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        调查详情
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-offset-0 col-md-12">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="row">
+                                            <div class="control-label col-xs-4">调查问卷：</div>
+                                            <div class="col-xs-5">
+                                                <select name="questionnaireSelect" class="form-control selectpicker"
+                                                        title="选择发布的问卷"> </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="row">
+                                            <div class="control-label col-xs-4">最低提交：</div>
+                                            <div class="col-xs-5">
+                                                <input name="minSubmit" type="number" class="form-control"
+                                                       min="1" placeholder="当前问卷最低提交量">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--添加新问卷-->
+                <!--<div class="panel-body">-->
+                <!--<div class="btn btn-default btn-block glyphicon glyphicon-plus"></div>-->
+                <!--</div>-->
+            </div>
+
+            <div class="panel-body">
+                <div class="col-md-offset-5" id="buttonGroup">
+                    <button id="resetBtn" class="btn btn-lg btn-warning">重置</button>
+                    <button id="launchMissionBtn" class="btn btn-lg btn-success">发布</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../../js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+<script src="../../js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+<script src="../../js/plugins/bootstrap-select/js/bootstrap-select.min.js"
+        th:src="@{/js/plugins/bootstrap-select/js/bootstrap-select.min.js}"></script>
+<script src="../../js/plugins/bootstrap-select/js/i18n/defaults-zh_CN.min.js"
+        th:src="@{/js/plugins/bootstrap-select/js/i18n/defaults-zh_CN.min.js}"></script>
+
+<script src="../../js/plugins/layui/layui.js" th:src="@{/js/plugins/layui/layui.js}"></script>
+<script src="../../js/myJs/responseAnalyze.js" th:src="@{/js/myJs/responseAnalyze.js}"></script>
+
+<script src="../../js/myJs/createResearch.js"></script>
+
+</body>
+
+</html>

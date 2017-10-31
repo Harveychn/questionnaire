@@ -1,0 +1,554 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <title>引用模板</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="问卷调查系统-引用模板页面">
+    <meta name="robots" content="noindex,nofollow">
+    <link rel="shortcut icon" href="../../img/favicon.ico"/>
+    <link rel="stylesheet" href="../../js/CreateQesResources/skin/base.css">
+    <link rel="stylesheet" href="../../js/CreateQesResources/skin/content.css">
+    <link rel="stylesheet" href="../../js/CreateQesResources/skin/blue.css">
+    <link rel="stylesheet" href="../../js/CreateQesResources/skin/bootstrap.min.css">
+</head>
+
+<body>
+<!--主体框架开始-->
+<div class="pagebox" id="pageContentId">
+    <div class="home-desktop" id="desktop_scroll">
+        <div class="container">
+            <div class="row">
+                <div class="title">
+                    <div class="name left">引用模板</div>
+                    <div class="function left">
+                        <!--[&nbsp;<a href="javascript:;" onclick="definedLayer('/addTeacherData.html',{},'html');">添加</a>&nbsp;]-->
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="create-questions-content">
+                    <div class="exam-nav">
+                        <div class="exam-item">
+                            <h4 class="exam-item-title">所有题型<i class="icon-expand"></i></h4>
+                            <ul class="exam-nav-list" id="ui_sortable_exam">
+                                <li data-uid="10" data-tempId="choice_template">
+                                    <a href="javascript:;" data-checkType="10" data-questionType="单选题">
+                                        <i class="icon-singleChoice"></i>单选题</a>
+                                </li>
+                                <li data-uid="20" data-tempId="choice_template">
+                                    <a href="javascript:;" data-checkType="20" data-questionType="多选题">
+                                        <i class="icon-multipleChoice"></i>多选题</a>
+                                </li>
+                                <li data-uid="30" data-tempId="single_completion_template">
+                                    <a href="javascript:;" data-checkType="30" data-questionType="简答题">
+                                        <span class="glyphicon glyphicon-pencil"></span>简答题</a>
+                                </li>
+                                <li data-uid="40" data-tempId="single_completion_template">
+                                    <a href="javascript:;" data-checkType="40" data-questionType="单项填空题">
+                                        <i class="icon-gapFilling"></i>单项填空题</a>
+                                </li>
+                                <li data-uid="50" data-tempId="multi_completion_template">
+                                    <a href="javascript:;" data-checkType="50" data-questionType="多项填空题">
+                                        <i class="icon-multiRow"></i>多项填空题</a>
+                                </li>
+                                <!--<li data-uid="60" data-tempId="pic_single_choice_template">-->
+                                <!--<a href="javascript:;" data-checkType="60" data-questionType="图片单选题">-->
+                                <!--<i class="icon-picChoice"></i>图片单选题</a>-->
+                                <!--</li>-->
+                                <!--<li data-uid="70" data-tempId="pic_multi_choice_template">-->
+                                <!--<a href="javascript:;" data-checkType="70" data-questionType="图片多选题">-->
+                                <!--<i class="icon-picsChoice"></i>图片多选题</a>-->
+                                <!--</li>-->
+                            </ul>
+                        </div>
+                        <!--<div class="exam-item">-->
+                        <!--<h4 class="exam-item-title">常用题型<i class="icon-expand"></i></h4>-->
+                        <!--<ul class="exam-nav-list" id="ui_common_exam">-->
+                        <!--<li data-uid="200" data-tempId="choice_template">-->
+                        <!--<a href="javascript:;" data-checkType="200" data-questionType="单选题">-->
+                        <!--<i class="icon-singleChoice"></i>个人信息</a>-->
+                        <!--</li>-->
+                        <!--</ul>-->
+                        <!--</div>-->
+                    </div>
+                    <!--出题-->
+                    <div class="create-questions">
+                        <div class="questions-head-title">
+                            <h4 class="h4-bg T-center" data-Tid="10001">
+                                <input id="questionnaireTitle"
+                                       class="form-control input-lg"
+                                       style="text-align: center;
+                                       border-radius:0px;"
+                                       onclick="editingTitleFunc(this);"
+                                       placeholder="这里填写问卷标题"/>
+                            </h4>
+                        </div>
+                        <table class="questions-items-title">
+                            <tbody>
+                            <tr>
+                                <td class="module-menu">&nbsp;</td>
+                                <td>
+                                    <input data-Tid="10002" id="questionnaireSubtitle"
+                                           class="form-control"
+                                           style="font-size:18px;border: none;
+                                           color: #343434;text-align: right"
+                                           onclick="editingTitleFunc(this);" placeholder="这里填写问卷副标题"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="module-menu"></td>
+                                <td>
+                                    <input data-Tid="10003" id="questionnaireDescription"
+                                           class="form-control"
+                                           style="font-size:18px;border: none;
+                                           color: #343434;text-align: right"
+                                           onclick="editingTitleFunc(this);" placeholder="这里填写问卷描述"/>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <ul class="ui-questions-content-list"></ul>
+                        <ul class="ui-foot-all-list"></ul>
+                    </div>
+                </div>
+
+                <div class="pull-right">
+                    <div class="btn-group btn-group-lg">
+                        <button class="btn btn-warning" id="storeQesBtn">
+                            暂存问卷
+                        </button>
+                        <button class="btn btn-primary" id="saveAsQesBtn">
+                            完成问卷
+                        </button>
+                        <button class="btn btn-info" id="templateQesBtn">
+                            设为模板
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--重新加载部分模板开始-->
+<!--重新加载选择题（单选、多选）模板-->
+<script type="text/html" id="reload_choice_template">
+    <li class="ui-module items-questions">
+        <div class="theme-type">
+            <div class="module-menu">
+                {{if must==true}}
+                <h4 style="background:#ED9E2C;color: #6a6a6a;font-size: 16px;"></h4>
+                {{else if must==false}}
+                <h4 style="background:#FFFFFF;color: #6a6a6a;font-size: 14px;border-color: #FFFFFF"></h4>
+                {{/if}}
+                <div class="module-ctrl">
+                    <a href="javascript:void(0);" class="ui-up-btn" data-tisp="上移"><i class="icon-up"></i></a>
+                    <a href="javascript:void(0);" class="ui-down-btn" data-tisp="下移"><i class="icon-down"></i></a>
+                    <a href="javascript:void(0);" class="ui-clone-btn" data-tisp="复制"><i class="icon-clone"></i></a>
+                    <a href="javascript:void(0);" class="ui-del-btn" data-tisp="删除"><i class="icon-del"></i></a>
+                </div>
+            </div>
+            <div class="ui-drag-area">
+                <div data-Tid="{{itmetid}}" data-questionType="{{questionType}}">
+                    {{if type==10}}
+                    <input class="form-control"
+                           style="font-size:16px;border: 1px double #e8e8e8;"
+                           onclick="editingTitleFunc(this);" value="{{questionContext}}" placeholder="请输入单项选择题标题"/>
+                    {{else if type==20}}
+                    <input class="form-control"
+                           style="font-size:16px;border: 1px double #e8e8e8;"
+                           onclick="editingTitleFunc(this);" value="{{questionContext}}" placeholder="请输入多项选择题标题"/>
+                    {{/if}}
+                </div>
+            </div>
+            <div class="cq-items-content">
+                <div class="form-horizontal" data-checkType="{{type}}" data-nameStr="{{name}}">
+                    {{each items as itemData i}}
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">
+                            <input type="{{if type==10}}radio{{else if type==20}}checkbox{{/if}}"
+                                   name="{{name}}" value="{{itemData.value}}"/>
+                        </label>
+                        <div class="col-sm-10">
+                            <input class="form-control" style="border: 1px double #fff;"
+                                   onclick="editingOptionFunc(this);"
+                                   data-Tid=" {{itemData.tid}}"
+                                   value="{{itemData.option}}"
+                                   placeholder="选项{{i+1}}"/>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+                <div class="cq-items-ctrl">
+                    <a href="javascript:void(0);" class="ui-add-item-btn" data-tisp="添加选项">
+                        <i class="icon-plus"></i>
+                    </a>
+                    <a href="javascript:void(0);" class="ui-remove-item-btn" data-tisp="移除选项">
+                        <i class="icon-jian"></i>
+                    </a>
+                    <!--<a href="javascript:void(0);" class="ui-batch-item-btn" data-tisp="批量添加">-->
+                    <!--<i class="icon-addList"></i>-->
+                    <!--</a>-->
+                    <a href="javascript:void(0);" class="ui-add-answer-btn" data-tisp="添加问题说明">
+                        <i class="icon-assignment"></i>
+                    </a>
+                    <!--/*添加必做题按钮*/-->
+                    <a href="javascript:void(0);" class="ui-set-must-done" data-tisp="设为必做题">
+                        <i class="icon-enshrine"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </li>
+</script>
+<!--重新加载单项填空题模板-->
+<script type="text/html" id="reload_single_completion_template">
+    <li class="ui-module items-questions">
+        <div class="theme-type">
+            <div class="module-menu">
+                {{if must==true}}
+                <h4 style="background:#ED9E2C;color: #6a6a6a;font-size: 16px;"></h4>
+                {{else if must==false}}
+                <h4 style="background:#FFFFFF;color: #6a6a6a;font-size: 14px;border-color: #FFFFFF"></h4>
+                {{/if}}
+                <div class="module-ctrl">
+                    <a href="javascript:void(0);" class="ui-up-btn" data-tisp="上移"><i class="icon-up"></i></a>
+                    <a href="javascript:void(0);" class="ui-down-btn" data-tisp="下移"><i class="icon-down"></i></a>
+                    <a href="javascript:void(0);" class="ui-clone-btn" data-tisp="复制"><i class="icon-clone"></i></a>
+                    <a href="javascript:void(0);" class="ui-del-btn" data-tisp="删除"><i class="icon-del"></i></a>
+                </div>
+            </div>
+            <div class="ui-drag-area">
+                <div data-Tid="{{itmetid}}" data-questionType="{{questionType}}">
+                    {{if type==40}}
+                    <input class="form-control"
+                           style="font-size:16px;border: 1px double #fff;"
+                           onclick="editingTitleFunc(this);" value="{{questionContext}}" placeholder="请输入单项填空题标题"/>
+                    {{else if type==30}}
+                    <input class="form-control"
+                           style="font-size:16px;border: 1px double #fff;"
+                           onclick="editingTitleFunc(this);" value="{{questionContext}}" placeholder="请输入简答题标题"/>
+                    {{/if}}
+                </div>
+            </div>
+            <div class="cq-items-content">
+                <div class="describe-edit-content T_plugins" data-tid="{{items[0].tid}}">
+                    {{if type==40}}
+                    <textarea style="line-height: 1.6;font-size: 14px;" class="form-control"
+                              placeholder="此处为单项填空题答题区"
+                              disabled="disabled"
+                              rows="2"></textarea>
+                    {{else if type==30}}
+                    <textarea style="line-height: 1.6;font-size: 14px;" class="form-control"
+                              placeholder="此处为简答题答题区"
+                              disabled="disabled"
+                              rows="3"></textarea>
+                    {{/if}}
+                </div>
+                <div class="cq-items-ctrl">
+                    <!--/*添加必做题按钮*/-->
+                    <a href="javascript:void(0);" class="ui-set-must-done" data-tisp="设为必做题">
+                        <i class="icon-enshrine"></i></a>
+                </div>
+            </div>
+        </div>
+    </li>
+</script>
+<!--重新加载多项填空题模板-->
+<script type="text/html" id="reload_multi_completion_template">
+    <li class="ui-module items-questions">
+        <div class="theme-type">
+            <div class="module-menu">
+                {{if must==true}}
+                <h4 style="background:#ED9E2C;color: #6a6a6a;font-size: 16px;"></h4>
+                {{else if must==false}}
+                <h4 style="background:#FFFFFF;color: #6a6a6a;font-size: 14px;border-color: #FFFFFF"></h4>
+                {{/if}}
+                <div class="module-ctrl">
+                    <a href="javascript:void(0);" class="ui-up-btn" data-tisp="上移"><i class="icon-up"></i></a>
+                    <a href="javascript:void(0);" class="ui-down-btn" data-tisp="下移"><i class="icon-down"></i></a>
+                    <a href="javascript:void(0);" class="ui-clone-btn" data-tisp="复制"><i class="icon-clone"></i></a>
+                    <a href="javascript:void(0);" class="ui-del-btn" data-tisp="删除"><i class="icon-del"></i></a>
+                </div>
+            </div>
+            <div class="ui-drag-area">
+                <div data-Tid="{{itmetid}}" data-questionType="{{questionType}}">
+                    <input class="form-control"
+                           style="font-size:16px;border: 1px double #fff;"
+                           onclick="editingTitleFunc(this);" value="{{questionContext}}" placeholder="请输入多项填空题标题"/>
+                </div>
+            </div>
+            <div class="cq-items-content">
+                <div class="describe-edit-content T_plugins" data-tid="{{items[0].tid}}">
+                    <div class="multi_completion_options">
+                        <div class="container" style="width:800px;">
+                            <div class="row">
+                                <textarea name="multiCompletionResult"
+                                          class="col-sm-12"
+                                          style="font-size: 15px;border: 1px dotted rgba(94,94,94,0.95);"
+                                          rows="3"
+                                          disabled="disabled"
+                                          placeholder="此处输出结果">{{items[0].option}}</textarea>
+                                <input name="editMultiCompletion" class="col-sm-12"
+                                       style="border: 1px double #fff;top: 10px;overflow: scroll"
+                                       onclick="editingOptionFunc(this);"
+                                       onkeydown="keyDownFunc(this);"
+                                       placeholder="此处编辑问题（以一个或多个‘_’分割）"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cq-items-ctrl">
+                    <!--/*添加必做题按钮*/-->
+                    <a href="javascript:void(0);" class="ui-set-must-done" data-tisp="设为必做题">
+                        <i class="icon-enshrine"></i></a>
+                </div>
+            </div>
+        </div>
+    </li>
+</script>
+
+<!--选择题（单选、多选）模板-->
+<script type="text/html" id="choice_template">
+    <li class="ui-module items-questions">
+        <div class="theme-type">
+            <div class="module-menu">
+                <h4></h4>
+                <div class="module-ctrl">
+                    <a href="javascript:void(0);" class="ui-up-btn" data-tisp="上移"><i class="icon-up"></i></a>
+                    <a href="javascript:void(0);" class="ui-down-btn" data-tisp="下移"><i class="icon-down"></i></a>
+                    <a href="javascript:void(0);" class="ui-clone-btn" data-tisp="复制"><i class="icon-clone"></i></a>
+                    <a href="javascript:void(0);" class="ui-del-btn" data-tisp="删除"><i class="icon-del"></i></a>
+                </div>
+            </div>
+            <div class="ui-drag-area">
+                <div data-Tid="{{itmetid}}" data-questionType="{{questionType}}">
+                    {{if type==10}}
+                    <input class="form-control"
+                           style="font-size:16px;border: 1px double #e8e8e8;"
+                           onclick="editingTitleFunc(this);" placeholder="请输入单项选择题标题"/>
+                    {{else if type==20}}
+                    <input class="form-control"
+                           style="font-size:16px;border: 1px double #e8e8e8;"
+                           onclick="editingTitleFunc(this);" placeholder="请输入多项选择题标题"/>
+                    {{/if}}
+                </div>
+            </div>
+            <div class="cq-items-content">
+                <div class="form-horizontal" data-checkType="{{type}}" data-nameStr="{{name}}">
+                    {{each items as itemData i}}
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">
+                            <input type="{{if type==10}}radio{{else if type==20}}checkbox{{/if}}"
+                                   name="{{name}}" value="{{itemData.value}}"/>
+                        </label>
+                        <div class="col-sm-10">
+                            <input class="form-control" style="border: 1px double #fff;"
+                                   onclick="editingOptionFunc(this);"
+                                   data-Tid=" {{itemData.tid}}"
+                                   placeholder="选项{{i+1}}"/>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+                <div class="cq-items-ctrl">
+                    <a href="javascript:void(0);" class="ui-add-item-btn" data-tisp="添加选项">
+                        <i class="icon-plus"></i>
+                    </a>
+                    <a href="javascript:void(0);" class="ui-remove-item-btn" data-tisp="移除选项">
+                        <i class="icon-jian"></i>
+                    </a>
+                    <!--<a href="javascript:void(0);" class="ui-batch-item-btn" data-tisp="批量添加">-->
+                    <!--<i class="icon-addList"></i>-->
+                    <!--</a>-->
+                    <a href="javascript:void(0);" class="ui-add-answer-btn" data-tisp="添加问题说明">
+                        <i class="icon-assignment"></i>
+                    </a>
+                    <!--/*添加必做题按钮*/-->
+                    <a href="javascript:void(0);" class="ui-set-must-done" data-tisp="设为必做题">
+                        <i class="icon-enshrine"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </li>
+</script>
+
+<!--添加选择题答项模板-->
+<script type="text/html" id="ui_additem_content">
+    {{each items as itemData i}}
+    <div class="form-group">
+        <label class="col-sm-1 control-label">
+            <input type="{{if type==10}}radio{{else if type==20}}checkbox{{/if}}"
+                   name="{{name}}" value="{{itemData.value}}"/>
+        </label>
+        <div class="col-sm-10">
+            <input class="form-control" style="border: 1px double #fff;"
+                   onclick="editingOptionFunc(this);"
+                   data-Tid="{{itemData.tid}}"
+                   placeholder="选项{{i+1+index}}"/>
+        </div>
+    </div>
+    {{/each}}
+</script>
+
+<!--单项填空题模板-->
+<script type="text/html" id="single_completion_template">
+    <li class="ui-module items-questions">
+        <div class="theme-type">
+            <div class="module-menu">
+                <h4></h4>
+                <div class="module-ctrl">
+                    <a href="javascript:void(0);" class="ui-up-btn" data-tisp="上移"><i class="icon-up"></i></a>
+                    <a href="javascript:void(0);" class="ui-down-btn" data-tisp="下移"><i class="icon-down"></i></a>
+                    <a href="javascript:void(0);" class="ui-clone-btn" data-tisp="复制"><i class="icon-clone"></i></a>
+                    <a href="javascript:void(0);" class="ui-del-btn" data-tisp="删除"><i class="icon-del"></i></a>
+                </div>
+            </div>
+            <div class="ui-drag-area">
+                <div data-Tid="{{itmetid}}" data-questionType="{{questionType}}">
+                    {{if type==40}}
+                    <input class="form-control"
+                           style="font-size:16px;border: 1px double #fff;"
+                           onclick="editingTitleFunc(this);" placeholder="请输入单项填空题标题"/>
+                    {{else if type==30}}
+                    <input class="form-control"
+                           style="font-size:16px;border: 1px double #fff;"
+                           onclick="editingTitleFunc(this);" placeholder="请输入简答题标题"/>
+                    {{/if}}
+                </div>
+            </div>
+            <div class="cq-items-content">
+                <div class="describe-edit-content T_plugins" data-tid="{{items[0].tid}}">
+                    {{if type==40}}
+                    <textarea style="line-height: 1.6;font-size: 14px;" class="form-control"
+                              placeholder="此处为单项填空题答题区"
+                              disabled="disabled"
+                              rows="2"></textarea>
+                    {{else if type==30}}
+                    <textarea style="line-height: 1.6;font-size: 14px;" class="form-control"
+                              placeholder="此处为简答题答题区"
+                              disabled="disabled"
+                              rows="3"></textarea>
+                    {{/if}}
+                </div>
+                <div class="cq-items-ctrl">
+                    <!--/*添加必做题按钮*/-->
+                    <a href="javascript:void(0);" class="ui-set-must-done" data-tisp="设为必做题">
+                        <i class="icon-enshrine"></i></a>
+                </div>
+            </div>
+        </div>
+    </li>
+</script>
+
+<!--多项填空题模板-->
+<script type="text/html" id="multi_completion_template">
+    <li class="ui-module items-questions">
+        <div class="theme-type">
+            <div class="module-menu">
+                <h4></h4>
+                <div class="module-ctrl">
+                    <a href="javascript:void(0);" class="ui-up-btn" data-tisp="上移"><i class="icon-up"></i></a>
+                    <a href="javascript:void(0);" class="ui-down-btn" data-tisp="下移"><i class="icon-down"></i></a>
+                    <a href="javascript:void(0);" class="ui-clone-btn" data-tisp="复制"><i class="icon-clone"></i></a>
+                    <a href="javascript:void(0);" class="ui-del-btn" data-tisp="删除"><i class="icon-del"></i></a>
+                </div>
+            </div>
+            <div class="ui-drag-area">
+                <div data-Tid="{{itmetid}}" data-questionType="{{questionType}}">
+                    <input class="form-control"
+                           style="font-size:16px;border: 1px double #fff;"
+                           onclick="editingTitleFunc(this);" placeholder="请输入多项填空题标题"/>
+                </div>
+            </div>
+            <div class="cq-items-content">
+                <div class="describe-edit-content T_plugins" data-tid="{{items[0].tid}}">
+                    <div class="multi_completion_options">
+                        <div class="container" style="width:800px;">
+                            <div class="row">
+                                <textarea name="multiCompletionResult"
+                                          class="col-sm-12"
+                                          style="font-size: 15px;border: 1px dotted rgba(94,94,94,0.95);"
+                                          rows="3"
+                                          disabled="disabled"
+                                          placeholder="此处输出结果"></textarea>
+                                <input name="editMultiCompletion" class="col-sm-12"
+                                       style="border: 1px double #fff;top: 10px;overflow: scroll"
+                                       onclick="editingOptionFunc(this);"
+                                       onkeydown="keyDownFunc(this);"
+                                       placeholder="此处编辑问题（以一个或多个‘_’分割）"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cq-items-ctrl">
+                    <!--/*添加必做题按钮*/-->
+                    <a href="javascript:void(0);" class="ui-set-must-done" data-tisp="设为必做题">
+                        <i class="icon-enshrine"></i></a>
+                </div>
+            </div>
+        </div>
+    </li>
+</script>
+
+<!--描述题-->
+<script type="text/html" id="drag_describe">
+    <li class="ui-module items-questions">
+        <div class="theme-type">
+            <div class="module-menu">
+                <h4></h4>
+                <div class="module-ctrl">
+                    <a href="javascript:void(0);" class="ui-up-btn" data-tisp="上移"><i class="icon-up"></i></a>
+                    <a href="javascript:void(0);" class="ui-down-btn" data-tisp="下移"><i class="icon-down"></i></a>
+                    <a href="javascript:void(0);" class="ui-clone-btn" data-tisp="复制"><i class="icon-clone"></i></a>
+                    <a href="javascript:void(0);" class="ui-del-btn" data-tisp="删除"><i class="icon-del"></i></a>
+                </div>
+            </div>
+            <div class="ui-drag-area">
+                <div class="cq-title T_edit T_plugins" data-Tid="{{itmetid}}"><span
+                        style="font-size:16px;">描述题目标题</span></div>
+            </div>
+            <div class="cq-items-content">
+                <div class="describe-edit-content T_edit T_plugins" data-tid="{{items[0].tid}}"><span
+                        style="line-height: 1.6;font-size:12px;">这里是描述题内容</span></div>
+            </div>
+            <div class="cq-items-ctrl">
+                <!--/*添加必做题按钮*/-->
+                <a href="javascript:void(0);" class="ui-set-must-done" data-tisp="设为必做题">
+                    <i class="icon-enshrine"></i></a>
+            </div>
+        </div>
+    </li>
+</script>
+
+<script type="text/html" id="drag_T_edit">
+    <div class="cq-into-edit">
+        <div class="add-edit cq-edit-title" contenteditable="true">{{title}}</div>
+    </div>
+</script>
+
+<script type="text/html" id="T_edit_plugins">
+    <div class="edit-plug-box">
+        <a href="javascript:void(0);"><i class="icon-picChoice"></i></a>
+        <a href="javascript:void(0);"><i class="icon-title"></i></a>
+    </div>
+</script>
+
+<script type="text/html" id="analysis_tmp">
+    <textarea class="exam-textarea analysis_contx" placeholder="请在此填写问题说明"></textarea>
+</script>
+
+<!--js插件-->
+<script src="../../js/CreateQesResources/script/jquery.min.js"></script>
+<script src="../../js/CreateQesResources/script/jquery-ui.min.js"></script>
+<script src="../../js/CreateQesResources/script/dcselect.js"></script>
+<script src="../../js/CreateQesResources/script/layer/layer.js"></script>
+<script src="../../js/CreateQesResources/script/artTemplate/template.js"></script>
+<script src="../../js/CreateQesResources/script/exam/editQesObj.js"></script>
+<script src="../../js/myJs/responseAnalyze.js"></script>
+<script src="../../js/myJs/quoteQesPaper.js"></script>
+<!--主体框架结束-->
+</body>
+
+</html>

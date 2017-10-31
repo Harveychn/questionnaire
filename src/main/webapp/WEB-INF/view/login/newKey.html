@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>更改密码</title>
+    <style>
+        .fieldError {
+            color: dodgerblue;
+            font-size: smaller;
+        }
+    </style>
+</head>
+<body>
+<div align="center">
+
+    <form action="/user/changPassword" method="post" th:object="${newPasswordVO}">
+        <label>原密码:<input type="password" th:field="*{oldPassword}"
+                          th:class="${#fields.hasErrors('oldPassword')}? fieldError"/></label><br/>
+        <label>新密码：<input type="password" th:field="*{newPassword}"
+                          th:class="${#fields.hasErrors('newPassword')}? fieldError"/></label><br/>
+        <input type="submit" value="提交"/>
+    </form>
+
+    <div th:if="${#fields.hasErrors('${newPasswordVO.*}')}" th:class="fieldError">
+        <div th:each="err : ${#fields.errors('${newPasswordVO.*}')}">
+            <label th:text="${err}">错误信息</label>
+        </div>
+    </div>
+</div>
+</body>
+</html>

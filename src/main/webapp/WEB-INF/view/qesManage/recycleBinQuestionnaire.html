@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>回收站问卷</title>
+    <link rel="shortcut icon" href="/WEB-INF/img/favicon.ico"
+          th:href="@{/img/favicon.ico}"/>
+    <link rel="stylesheet" href="/WEB-INF/css/bootstrap.min.css"
+          th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="/WEB-INF/css/plugins/bootstrap-table/bootstrap-table.min.css"
+          th:href="@{/css/plugins/bootstrap-table/bootstrap-table.min.css}">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    回收站问卷
+                </div>
+            </div>
+            <div class="panel-body">
+                <!--toolbar-->
+                <div id="tableToolbar" class="btn-group hidden-xs" role="group">
+                    <button id="multiDelBtn" type="button" class="btn btn-outline btn-default">
+                        <i class="glyphicon glyphicon-floppy-remove" aria-hidden="true"> 批量删除</i>
+                    </button>
+                    <button id="multiRestoreBtn" type="button" class="btn btn-default">
+                        <i class="glyphicon glyphicon-retweet" aria-hidden="true"> 批量恢复</i>
+                    </button>
+                </div>
+                <table id="recycleQesPaperTable"></table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/WEB-INF/js/jquery.min.js"
+        th:src="@{/js/jquery.min.js}"></script>
+<script src="/WEB-INF/js/bootstrap.min.js"
+        th:src="@{/js/bootstrap.min.js}"></script>
+<script src="/WEB-INF/js/plugins/bootstrap-table/bootstrap-table.min.js"
+        th:src="@{/js/plugins/bootstrap-table/bootstrap-table.min.js}"></script>
+<script src="/WEB-INF/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"
+        th:src="@{/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js}"></script>
+<script src="../../js/plugins/layer/layer.min.js"
+        th:src="@{/js/plugins/layer/layer.min.js}"></script>
+<script src="../../js/myJs/responseAnalyze.js"
+        th:src="@{/js/myJs/responseAnalyze.js}"></script>
+<script src="../../js/myJs/recycleQesManage.js"
+        th:src="@{/js/myJs/recycleQesManage.js}"></script>
+</body>
+</html>

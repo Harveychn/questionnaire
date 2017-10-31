@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.questionnaire.ssm.module.global.mapper.UnitInfoMapper">
+    <select id="listUnitInfo" resultType="com.questionnaire.ssm.module.global.pojo.UnitInfoVO">
+        SELECT
+            u.unit_id,
+            u.unit_name,
+            u.unit_province,
+            u.unit_city
+        FROM
+            unit AS u
+        ORDER BY
+            u.unit_name
+    </select>
+
+
+    <select id="listUnitNameByUnitIDs" parameterType="List"
+            resultType="String">
+        SELECT
+            u.unit_name
+        FROM
+            unit AS u
+        WHERE
+            u.unit_id IN
+            <foreach collection="list" open="(" separator="," close=")" item="unitIDStr">
+                #{unitIDStr}
+            </foreach>
+    </select>
+</mapper>

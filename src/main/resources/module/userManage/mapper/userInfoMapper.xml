@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.questionnaire.ssm.module.userManage.mapper.UserInfoMapper">
+    <select id="selectUserInfoByUserTel" parameterType="String"
+            resultType="com.questionnaire.ssm.module.userManage.pojo.MyInfoVO">
+		SELECT
+			u.user_real_name AS userRealName,
+			r.role AS userRole,
+			ut.unit_name AS workingUnit,
+			u.user_tel AS userTel,
+			u.user_sex AS userSex,
+			u.user_birthday AS userBirthday,
+			u.ID AS userID,
+			u.mail_address AS mailAddress
+		FROM
+			`user` AS u,
+			role AS r,
+			unit AS ut
+		WHERE
+			u.user_tel = #{userTel}
+		AND u.role_id = r.role_id
+		AND ut.unit_id = u.unit_id
+    </select>
+
+    <select id="selectHomePageUserInfo" parameterType="String"
+            resultType="com.questionnaire.ssm.module.userManage.pojo.UserInfoHomeVO">
+        SELECT
+        u.user_real_name AS userRealName,
+        r.role AS userRole,
+        ut.unit_name AS workingUnit,
+        u.user_tel AS userAccount,
+        u.last_login_date AS lastLoginDate,
+        u.last_login_ip AS lastLoginIp
+        FROM
+            `user` AS u,
+            role AS r,
+            unit AS ut
+        WHERE
+            u.user_tel =#{userTel}
+        AND u.role_id = r.role_id
+        AND ut.unit_id = u.unit_id
+    </select>
+
+    <resultMap id="selectSurveyorInfoByUserTelMap" type="com.questionnaire.ssm.module.userManage.pojo.SurveyorInfoVO">
+        <id property="userTel" column="userTel"/>
+        <result property="userRealName" column="userRealName"/>
+        <result property="userUnit" column="userUnit"/>
+        <result property="picAddress" column="picAddress"/>
+    </resultMap>
+
+    <select id="selectSurveyorInfoByUserTel" parameterType="String"
+            resultMap="selectSurveyorInfoByUserTelMap">
+		SELECT
+			u.user_tel AS userTel,
+			u.user_real_name AS userRealName,
+			ut.unit_name AS userUnit,
+			u.user_pic_url AS picAddress
+		FROM
+			`user` AS u,
+			unit AS ut
+		WHERE
+			u.user_tel = #{userTel}
+		AND ut.unit_id = u.unit_id
+    </select>
+
+    <select id="listUserAuthorityByUserTelAndRole" parameterType="String"
+            resultType="com.questionnaire.ssm.module.userManage.pojo.RoleAuthorityVO">
+        SELECT
+        u.user_tel AS account,
+        u.user_real_name AS realName,
+        r.role AS userRole,
+        CASE u.is_valid
+        WHEN TRUE THEN
+        '有效'
+        WHEN FALSE THEN
+        '无效'
+        END AS isAccountValid
+        FROM
+        `user` AS u,
+        role AS r,
+        unit AS ut
+        WHERE
+        u.role_id = r.role_id
+        AND ut.unit_id = u.unit_id
+        AND u.user_tel != #{userTel}
+        -- 查询用户单位内人员
+        <if test="userRole != '系统管理员'">
+            AND u.unit_id IN (
+            SELECT
+            u.unit_id
+            FROM
+            `user` AS u,
+            unit AS ut
+            WHERE
+            u.user_tel = #{userTel}
+            AND u.unit_id = ut.unit_id
+            )
+        </if>
+    </select>
+
+    <select id="listAllRole" resultType="com.questionnaire.ssm.module.userManage.pojo.AllRoleInfoVO">
+        SELECT * FROM role
+    </select>
+</mapper>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.questionnaire.ssm.module.qesTemplateManage.mapper.QesTemplateManageMapper">
+
+    <resultMap id="privateTemplateInfoMap"
+               type="com.questionnaire.ssm.module.qesTemplateManage.pojo.PrivateTemplateInfoVO">
+        <id property="questionnaireId" column="questionnaireId"/>
+        <result property="questionnaireTitle" column="questionnaireTitle"/>
+        <result property="questionnaireSubtitle" column="questionnaireSubtitle"/>
+        <result property="questionnaireDescription" column="questionnaireDescription"/>
+        <result property="addDate" column="templateDate"/>
+    </resultMap>
+    <select id="listPrivateTemplateInfo" parameterType="String" resultMap="privateTemplateInfoMap">
+        SELECT
+        q.questionnaire_id AS questionnaireId,
+        q.questionnaire_title AS questionnaireTitle,
+        q.questionnaire_subtitle AS questionnaireSubtitle,
+        q.questionnaire_description AS questionnaireDescription,
+        DATE_FORMAT(q.create_time,'%Y-%m-%d %H:%i:%s') AS templateDate
+        FROM
+        questionnaire AS q
+        <where>
+            <if test="userTel!=null and userTel!=''">
+                AND q.create_user = #{userTel}
+            </if>
+            AND q.is_template = TRUE
+            AND q.is_share = FALSE
+            AND q.is_visible = TRUE
+            AND q.is_done = TRUE
+            AND q.is_release = FALSE
+        </where>
+        ORDER BY q.create_time DESC
+    </select>
+
+    <resultMap id="publicTemplateInfoMap"
+               type="com.questionnaire.ssm.module.qesTemplateManage.pojo.PublicTemplateInfoVO">
+        <id property="questionnaireId" column="questionnaireId"/>
+        <result property="questionnaireTitle" column="questionnaireTitle"/>
+        <result property="questionnaireSubtitle" column="questionnaireSubtitle"/>
+        <result property="questionnaireDescription" column="questionnaireDescription"/>
+        <result property="isDone" column="isDone"/>
+        <result property="sharedUser" column="sharedUser"/>
+        <result property="shareDate"  column="shareDate"/>
+    </resultMap>
+
+    <select id="listPublicTemplateInfo" resultMap="publicTemplateInfoMap">
+		SELECT
+            q.questionnaire_id AS questionnaireId,
+            q.questionnaire_title AS questionnaireTitle,
+            q.questionnaire_subtitle AS questionnaireSubtitle,
+            q.questionnaire_description AS questionnaireDescription,
+            q.is_done AS isDone,
+            q.create_user AS sharedUser,
+            DATE_FORMAT(q.create_time,'%Y-%m-%d %H:%i:%s') AS shareDate
+        FROM
+            questionnaire AS q
+        WHERE
+         q.is_template = TRUE
+        AND q.is_share = TRUE
+        AND q.is_visible = TRUE
+        AND q.is_done = TRUE
+        AND q.is_release = FALSE
+        ORDER BY
+            q.create_time DESC
+    </select>
+
+
+</mapper>

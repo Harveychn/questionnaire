@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>问卷管理系统</title>
+    <link th:href="@{/img/favicon.ico}"
+          href="/WEB-INF/img/favicon.ico" rel="shortcut icon"/>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link th:href="@{/css/login/body.css}"
+          href="/WEB-INF/css/login/body.css" rel="stylesheet"/>
+    <link th:href="@{/css/login/main.css}"
+          href="/WEB-INF/css/login/main.css" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/css/animate.css}"
+          href="/WEB-INF/css/animate.css" rel="stylesheet" type="text/css"/>
+
+
+</head>
+<body>
+<section class="container animated fadeInRight">
+    <section class="row">
+        <section class="form-group">
+            <label class="col-md-4" style="margin-top: 5px; margin-left: 10px;">
+                <img class="img-responsive" src="../../css/login/img.jpg"/>
+            </label>
+        </section>
+    </section>
+
+    <section class="row">
+        <section class="form-group">
+            <label class="col-md-10 col-md-offset-1" style="text-align: center;">
+                <h1>欢迎登陆</h1>
+            </label>
+        </section>
+    </section>
+
+    <form id="test" method="post" action="/user/login" th:action="@{/user/login}" th:object="${loginVO}">
+        <legend></legend>
+        <section class="row">
+            <section class="form-group">
+                <div class="col-md-10 col-md-offset-1">
+                    <input id="username" type="text" placeholder="用户登录" size="14px"
+                           th:field="*{userTel}" class="form-control userimg"/>
+                    <span class="help-block m-b-none usercheck1" th:if="${#fields.hasErrors('userTel')}"
+                          th:errors="*{userTel}">
+					</span>
+                    <div class="userblock" style="margin-bottom: 20px;"></div>
+                </div>
+            </section>
+        </section>
+
+        <section class="row">
+            <section class="form-group">
+                <div class="col-md-10 col-md-offset-1">
+                    <input type="password" placeholder="登录密码" size="14px"
+                           th:field="*{password}" class="form-control password-img"/>
+                    <span class="help-block m-b-none passwordcheck1" th:if="${#fields.hasErrors('password')}"
+                          th:errors="*{password}">
+						</span>
+                    <span class="help-block m-b-none passwordcheck2" th:if="${errorMessage!=null}"
+                          th:text="${errorMessage}">
+                    </span>
+                    <div class="passwordblock" style="margin-bottom: 20px;"></div>
+                </div>
+            </section>
+        </section>
+
+        <section class="row">
+            <section class="form-group">
+                <div class="col-md-6 col-md-offset-1">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="rememberMe" th:field="*{rememberMe}" value="true"/>记住我
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-4 col-md-offset-1">
+                    <label>
+                        <a class="forget" href="/retrievePwd/getRetrievePwdTelCheckView">忘记密码</a>
+                    </label>
+                </div>
+            </section>
+        </section>
+
+        <section class="row">
+            <section class="form-group">
+                <div class="col-md-10 col-md-offset-1">
+                    <button class="btn btn-primary btn-block buttonsubmite" type="submit">登录</button>
+                </div>
+            </section>
+        </section>
+    </form>
+
+
+</section>
+
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script language="JavaScript">
+    if (window != top)
+        top.location.href = location.href;
+</script>
+</body>
+</html>

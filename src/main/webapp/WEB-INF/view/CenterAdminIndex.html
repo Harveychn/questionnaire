@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>后台管理</title>
+
+    <meta name="keywords" content="后台管理界面-业务管理员">
+    <meta name="description" content="问卷调查系统后台管理界面-业务管理员">
+
+    <link rel="shortcut icon" href="/WEB-INF/img/favicon.ico"
+          th:href="@{/img/favicon.ico}"/>
+    <link href="/WEB-INF/css/bootstrap.min.css" rel="stylesheet"
+          th:href="@{/css/bootstrap.min.css}"/>
+    <link href="/WEB-INF/css/style.css" rel="stylesheet"
+          th:href="@{/css/style.css}"/>
+    <link href="/WEB-INF/css/font-awesome.min.css" rel="stylesheet"
+          th:href="@{/css/font-awesome.min.css}"/>
+    <link href="/WEB-INF/css/animate.css" rel="stylesheet"
+          th:href="@{/css/animate.css}"/>
+    <style type="text/css">
+        .skin-1 .navbar-static-top {
+            background: #2e62b8;
+        }
+
+        .skin-1 .nav > li > a {
+            color: #FFFFFF;
+        }
+
+        .skin-1 .nav-header {
+            padding: 5px;
+        }
+
+        img.img-circle {
+            width: 100%;
+            height: 100%;
+        }
+
+        /*bootstrap.min.css 4809*/
+        .nav > li > a:focus,
+        .nav > li > a:hover {
+            text-decoration: none;
+            color: rgba(105, 111, 121, 0.75);
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+
+        .skin-1 .navbar-minimalize {
+            background: #2e62b8;
+            border-color: #2e62b8;
+        }
+
+        .skin-1 .navbar-minimalize:hover {
+            background: #1588cd;
+            border-color: #2e62b8;
+        }
+
+        .skin-1 .minimalize-styl-2 {
+            margin: 14px 5px 5px 15px;
+        }
+    </style>
+</head>
+
+<body class="fixed-sidebar full-height-layout gray-bg skin-1" style="overflow:hidden">
+<div id="wrapper">
+    <!--左侧导航开始-->
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="nav-close"><i class="fa fa-times-circle"></i></div>
+        <div class="sidebar-collapse">
+            <ul class="nav" id="side-menu">
+                <li class="nav-header">
+                    <div class="dropdown profile-element">
+								<span><img alt="image" class="img-circle" src="/WEB-INF/img/NIPD Logo Chn.jpg"
+                                           th:src="@{/img/NIPD Logo Chn.jpg}"></span>
+                    </div>
+                    <div class="logo-element">CDC
+                    </div>
+                </li>
+                <!--问卷管理-->
+                <li>
+                    <a href="#"><i class="fa fa-edit"></i>
+                        <span class="nav-label">问卷管理</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a class="J_menuItem" href="/questionnaireManage/getCreateView"
+                               th:href="@{/questionnaireManage/getCreateView}">创建问卷</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="/questionnaireManage/getListMyQesPaperView"
+                               th:href="@{/questionnaireManage/getListMyQesPaperView}">查看问卷</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="/questionnaireManage/temporaryDeleteQesPaperView"
+                               th:href="@{/questionnaireManage/temporaryDeleteQesPaperView}">回收问卷</a>
+                        </li>
+                    </ul>
+                </li>
+                <!--调查管理-->
+                <li>
+                    <a href="#">
+                        <i class="fa fa-search"></i>
+                        <span class="nav-label">调查管理</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a class="J_menuItem" href="/researchManage/createResearchView">
+                                创建调查
+                            </a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="/researchManage/getMissionManageView">
+                                任务管理
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <!--结果分析-->
+                <li>
+                    <a href="#"><i class="fa fa-bar-chart"></i>
+                        <span class="nav-label">结果分析</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a class="J_menuItem" href="/resultAnalysis/getPrimaryDataView">原始数据</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="/researchManage/getListAllMissionView">结果可视化分析</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <!--模板管理-->
+                <li>
+                    <a href="#"><i class="glyphicon glyphicon-inbox"></i>
+                        <span class="nav-label">模板管理</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a class="J_menuItem" href="/privateTemplateManage/getQesTemplateView">个人模板</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="/publicTemplateManage/getPublicTemplateView">公共模板</a>
+                        </li>
+                    </ul>
+                </li>
+                <!--公告管理-->
+                <li>
+                    <a href="#">
+                        <i class="fa fa-bullhorn"></i>
+                        <span class="nav-label">公告管理</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a class="J_menuItem" href="/notice/getMyNoticeView">查看公告</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="/notice/getCreateNotice">创建公告</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <!--人员管理-->
+                <!--<li>-->
+                    <!--<a href="#">-->
+                        <!--<i class="fa fa-user-plus"></i>-->
+                        <!--<span class="nav-label">人员管理</span>-->
+                        <!--<span class="fa arrow"></span>-->
+                    <!--</a>-->
+                    <!--<ul class="nav nav-second-level">-->
+                        <!--<li>-->
+                            <!--<a class="J_menuItem" href="/userManage/getRoleAuthorityView">人员查询</a>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a class="J_menuItem" href="/userManage/getUploadView"-->
+                               <!--th:href="@{/userManage/getUploadView}">上传数据</a>-->
+                        <!--</li>-->
+
+                    <!--</ul>-->
+
+                <!--</li>-->
+            </ul>
+        </div>
+    </nav>
+    <!--左侧导航结束-->
+
+    <!--右侧部分开始-->
+    <div id="page-wrapper" class="gray-bg dashbard-1">
+        <div class="row border-bottom">
+            <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <a class="navbar-minimalize minimalize-styl-2 btn btn-default " href="#">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                    <div class="container">
+                        <div class="row">
+                            <h2 style="float:left; color: #ffffff; margin-left: 40%;">后台管理</h2>
+                        </div>
+                    </div>
+                </div>
+                <ul class="nav navbar-top-links navbar-right">
+                    <li class="dropdown hidden-xs">
+                        <a class="right-sidebar-toggle" aria-expanded="false">
+                            <i class="fa fa-tasks"></i> 个人中心
+                        </a>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+        <div class="row content-tabs">
+            <button class="roll-nav roll-left J_tabLeft"><i class="fa fa-backward"></i></button>
+            <nav class="page-tabs J_menuTabs">
+                <div class="page-tabs-content">
+                    <a href="javascript:;" class="active J_menuTab" data-id="home.html">首页</a>
+                </div>
+            </nav>
+            <button class="roll-nav roll-right J_tabRight"><i class="fa fa-forward"></i>
+            </button>
+            <div class="btn-group roll-nav roll-right">
+                <button class="dropdown J_tabClose" data-toggle="dropdown">关闭操作<span class="caret"></span>
+
+                </button>
+                <ul role="menu" class="dropdown-menu dropdown-menu-right">
+                    <li class="J_tabCloseAll">
+                        <a>关闭全部选项卡</a>
+                    </li>
+                    <li class="J_tabCloseOther">
+                        <a>关闭其他选项卡</a>
+                    </li>
+                </ul>
+            </div>
+            <a href="/user/logout" th:href="@{/user/logout}" class="roll-nav roll-right J_tabExit">
+                <i class="fa fa fa-sign-out"></i>退出
+            </a>
+        </div>
+        <div class="row J_mainContent" id="content-main">
+            <iframe class="J_iframe" name="iframe0" width="100%" height="100%" th:src="@{/homeData/getHomeVO}" src="home.html"
+                    frameborder="0" data-id="home.html" seamless></iframe>
+        </div>
+        <div class="footer">
+            <div class="pull-right">&copy;2017<a href="http://ipd.org.cn/" target="_blank">中国疾病预防控制中心-寄生虫病预防控制所</a>
+            </div>
+        </div>
+    </div>
+    <!--右侧部分结束-->
+    <!--右侧边栏开始-->
+    <div id="right-sidebar">
+        <div class="sidebar-container">
+            <div class="sidebar-title">
+                <h3 align="center"><i class="fa fa-user"> : </i>
+                    <span th:text="${#session.getAttribute('userTel')}">用户账号</span>
+                </h3>
+            </div>
+            <div class="sidebar-title">
+                <a href="#" class="J_menuItem" th:href="@{/userInfoManage/getChangeInfoView}">
+                    <h3><i class="fa fa-file"></i> 信息维护</h3>
+                </a>
+                <small><i class="fa fa-tim"></i> 在此维护您的个人信息</small>
+            </div>
+            <div class="sidebar-title">
+                <a href="#" class="J_menuItem" th:href="@{/user/newPasswordView}">
+                    <h3><i class="fa fa-key"></i> 密码管理</h3>
+                </a>
+                <small><i class="fa fa-tim"></i> 在此进行密码的更改</small>
+            </div>
+            <div class="sidebar-title">
+                <!--<a href="#" th:href="@{/user/logout}">-->
+                <a class="J_menuTab" href="#" th:href="@{/user/logout}">
+                    <h3><i class="fa fa-sign-out"></i> 安全退出</h3>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!--右侧边栏结束-->
+</div>
+
+<!-- 全局js -->
+<script src="/WEB-INF/js/jquery.min.js"
+        th:src="@{/js/jquery.min.js}"></script>
+<script src="/WEB-INF/js/bootstrap.min.js"
+        th:src="@{/js/bootstrap.min.js}"></script>
+<script src="/WEB-INF/js/plugins/metisMenu/jquery.metisMenu.js"
+        th:src="@{/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+<script src="/WEB-INF/js/plugins/slimscroll/jquery.slimscroll.min.js"
+        th:src="@{/js/plugins/slimscroll/jquery.slimscroll.min.js}"></script>
+<script src="/WEB-INF/js/plugins/layer/layer.min.js"
+        th:src="@{/js/plugins/layer/layer.min.js}"></script>
+
+<!-- 自定义js -->
+<script src="/WEB-INF/js/hplus.js"
+        th:src="@{/js/hplus.js}"></script>
+<script src="/WEB-INF/js/contabs.js" type="text/javascript"
+        th:src="@{/js/contabs.js}"></script>
+<script src="/WEB-INF/js/plugins/pace/pace.min.js"
+        th:src="@{/js/plugins/pace/pace.min.js}"></script>
+</body>
+
+</html>

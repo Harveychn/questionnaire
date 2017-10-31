@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>公告</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/WEB-INF/css/bootstrap.min.css" rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link href="/WEB-INF/css/font-awesome.css" rel="stylesheet" th:href="@{/css/font-awesome.css}"/>
+    <link href="/WEB-INF/css/plugins/wenjian_notice/my-style.css" rel="stylesheet" th:href="@{/css/plugins/wenjian_notice/my-style.css}"/>
+    <link href="/WEB-INF/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet" th:href="@{/css/plugins/wenjian_notice/bootstrap-table.css}"/>
+    <link href="/WEB-INF/css/plugins/wenjian_notice/sweetalert.css" rel="stylesheet" th:href="@{/css/plugins/wenjian_notice/sweetalert.css}"/>
+    <link href="/WEB-INF/css/animate.css" rel="stylesheet" th:href="@{/css/animate.css}"/>
+    <link href="/WEB-INF/css/style.css" rel="stylesheet" th:href="@{/css/style.css}"/>
+    <style type="text/css">
+        .btn-primary {
+            background-color: #337ab7;
+            border-color: #2e6da4;
+            color: #fff;
+        }
+
+        .btn-default {
+            background-color: #337ab7;
+            border-color: #2e6da4;
+            color: #fff;
+        }
+    </style>
+
+    <script type="text/javascript" src="/WEB-INF/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+    <script src="/WEB-INF/js/bootstrap.min.js" type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+    <script type="text/javascript" src="/WEB-INF/js/plugins/wenjian_notice/bootstrap-table.min.js" th:src="@{/js/plugins/wenjian_notice/bootstrap-table.js}"></script>
+    <script type="text/javascript">
+        //查看公告
+        function showBg() {
+            $("#dialog").show();
+        }
+        //关闭查看的公告
+        function closeBg() {
+            $("#dialog").hide();
+        }
+        //删除公告
+        $(document).ready(function () {
+            $('.del').click(function () {
+                $(this).siblings().remove();
+                $(this).parentsUntil("tbody").remove();
+                $(this).remove();
+            });
+
+        });
+    </script>
+
+</head>
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content  animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h4 class="m-t">查看公告</h4>
+                </div>
+
+                <div class="ibox-content">
+                    <div class="container-fluid">
+                        <br/>
+                        <div class="row">
+                            <div class="col-md-1 col-sm-1">
+                                <a href="/notice/getCreateNotice">
+                                    <button type="button" class="btn btn-primary btn-block">
+                                        <span class="glyphicon glyphicon-plus"></span>
+                                        新建
+                                    </button>
+                                </a>
+                            </div>
+                            <div class="col-md-3 col-sm-3">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="搜索公告标题">
+                                    <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">搜索</button>
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <div class="col-md-12  col-sm-12 ">
+                                <table id="tableAll" data-toggle="table" data-height="246">
+                                    <thead>
+                                    <tr>
+                                        <td class="tbHead">序号</td>
+                                        <td class="tbHead">公告标题</td>
+                                        <td class="tbHead">公告内容</td>
+                                        <td class="tbHead">创建者</td>
+                                        <td class="tbHead">创建时间</td>
+                                        <td class="tbHead">是否完成</td>
+                                        <td class="tbHead">发布时间</td>
+                                        <td class="tbHead">公告对象</td>
+                                        <th class="tbHead">操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="notice:${noticeListVO}">
+                                        <td th:text="${noticeStat.count}"></td>
+                                        <td th:text="${notice.noticeTitle}"></td>
+                                        <td th:text="${notice.noticeContext}"></td>
+                                        <td th:text="${notice.userTel}"></td>
+                                        <td th:text="${#calendars.format(notice.noticeCreateTime,'yyyy-MM-dd HH:mm:ss')}"></td>
+                                        <td th:text="${notice.isDone==true?'完成':'未完'}"></td>
+                                        <td th:text="${#calendars.format(notice.noticeLaunchTime,'yyyy-MM-dd HH:mm:ss')}"></td>
+                                        <td th:text="${notice.noticeUnitText}"></td>
+                                        <td>
+                                            <label>
+                                                <a th:href="@{/notice/test/{id}(id=${notice.getNoticeId()})}"
+                                                   class="btn btn-sm btn-link">查看</a>
+                                            </label>
+                                            <label>
+                                                <a th:href="@{/notice/test/{id}(id=${notice.getNoticeId()})}"
+                                                   class="btn btn-sm btn-link">删除</a>
+                                            </label>
+                                        </td>
+                                    </tr>
+                                    <!--<tr>-->
+                                    <!--<td>1</td>-->
+                                    <!--<td>item</td>-->
+                                    <!--<td>2017/4/2</td>-->
+                                    <!--<td>杭州</td>-->
+                                    <!--<td>-->
+                                    <!--<a class="demo1">查看</a>-->
+                                    <!--<a class="demo4" href="#">删除</a>-->
+                                    <!--</td>-->
+                                    <!--</td>-->
+                                    <!--</tr>-->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/WEB-INF/js/plugins/wenjian_notice/sweetalert.min.js" th:src="@{/js/plugins/wenjian_notice/sweetalert.min.js}"></script>
+<script>
+    $(document).ready(function () {
+
+        $('.demo1').click(function () {
+            swal({
+                title: "Item",
+                text: "公告内容：XXXXXXX"
+
+            });
+        });
+
+        $('.demo4').click(function () {
+            swal({
+                    title: "您确定要删除这条信息吗",
+                    text: "删除后将无法恢复，请谨慎操作！",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "是的，我要删除！",
+                    cancelButtonText: "让我再考虑一下…",
+                    closeOnConfirm: false,
+                    closeOnCancel: false
+                },
+                function (isConfirm) {
+                    if (isConfirm) {
+                        swal("删除成功！", "您已经永久删除了这条信息。", "success");
+                    } else {
+                        swal("已取消", "您取消了删除操作！", "error");
+                    }
+                });
+        });
+
+    });
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>上传结果</title>
+    <link rel="shortcut icon" href="/WEB-INF/img/favicon.ico"
+          th:href="@{/img/favicon.ico}"/>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css"
+          th:href="@{/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="panel-body" th:if="${uploadResultVOList != null && uploadResultVOList.size()>0}"
+             th:each="resultItem,resultItemStat : ${uploadResultVOList}">
+            <!--文件名-->
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-success">
+                    <i th:text="${resultItemStat.count}"></i>--
+                    <span th:text="${resultItem.getFileName()}">文件名</span>
+                </li>
+                <li class="list-group-item">
+                    <span>成功保存记录数:</span>
+                    <span th:text="${resultItem.successRecordCount}">操作成功数</span>
+                </li>
+                <li class="list-group-item" th:if="${resultItem.errorMsg!=null}"
+                    th:text="${resultItem.errorMsg}">
+                </li>
+                <li class="list-group-item">
+                    <!--是否文件类型错误-->
+                    <span class="label label-danger" th:if="${resultItem.isFileTypeError()==true}">文件类型错误!</span>
+                    <!--是否文件本身错误-->
+                    <span class="label label-danger" th:if="${resultItem.isFileError()==true}">文件损坏或者存在异常!</span>
+                    <!--是否上传文件的数据格式组织错误-->
+                    <span class="label label-danger" th:if="${resultItem.isFileFormatError()==true}">文件数据格式错误!</span>
+                </li>
+
+                <li class="list-group-item" th:if="${resultItem.errorRecord!=null&&resultItem.errorRecord.size()>0}">
+                    <span>错误记录数：</span>
+                    <span th:text="${resultItem.errorRecord.size()}"></span>
+                    <!--<table class="table table-responsive table-bordered">-->
+                    <!--<thead>-->
+                    <!--&lt;!&ndash;用户信息模板表头&ndash;&gt;-->
+                    <!--<tr th:if="${resultItem.templateName=='USER_INFO_TEMPLATE'}">-->
+                    <!--<th>用户手机号码(账户)</th>-->
+                    <!--<th>用户角色</th>-->
+                    <!--<th>用户初始密码</th>-->
+                    <!--<th>用户姓名</th>-->
+                    <!--<th>是否激活账户</th>-->
+                    <!--<th>用户所在单位名</th>-->
+                    <!--<th>用户所在单位编号</th>-->
+                    <!--</tr>-->
+                    <!--&lt;!&ndash;单位信息模板表头&ndash;&gt;-->
+                    <!--<tr th:if="${resultItem.templateName=='UNIT_INFO_TEMPLATE'}">-->
+                    <!--<th>单位名</th>-->
+                    <!--<th>单位编号</th>-->
+                    <!--<th>单位级别</th>-->
+                    <!--<th>单位所在省</th>-->
+                    <!--<th>单位所在市</th>-->
+                    <!--<th>单位详细地址</th>-->
+                    <!--</tr>-->
+                    <!--</thead>-->
+                    <!--<tbody th:each="errorRecordItem : ${resultItem.errorRecord}">-->
+                    <!--<tr>-->
+                    <!--<td th:text="${errorRecordItem.unitName}"></td>-->
+                    <!--<td th:text="${errorRecordItem.unitCode}"></td>-->
+
+                    <!--<td th:if="${errorRecordItem.unitLevel!=null}" th:text="${errorRecordItem.unitLevel}"></td>-->
+                    <!--<td th:if="${errorRecordItem.unitLevel==null}"> </td>-->
+
+                    <!--<td th:text="${errorRecordItem.unitProvince}"></td>-->
+                    <!--<td th:text="${errorRecordItem.unitCity}"></td>-->
+                    <!--<td th:text="${errorRecordItem.address}"></td>-->
+                    <!--</tr>-->
+                    <!--</tbody>-->
+                    <!--</table>-->
+                </li>
+            </ul>
+        </div>
+        <div th:if="${uploadResultVOList.size()<=0}">
+            <h1>上传的文件中似乎没有数据</h1>
+        </div>
+    </div>
+</div>
+
+<script src="../../js/jquery.min.js"></script>
+</body>
+</html>

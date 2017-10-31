@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>查看问卷</title>
+    <link rel="shortcut icon" href="/WEB-INF/img/favicon.ico"
+          th:href="@{/img/favicon.ico}"/>
+    <link rel="stylesheet" href="/WEB-INF/css/bootstrap.min.css"
+          th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="/WEB-INF/css/plugins/bootstrap-table/bootstrap-table.min.css"
+          th:href="@{/css/plugins/bootstrap-table/bootstrap-table.min.css}">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    个人问卷
+                </div>
+            </div>
+            <div class="panel-body">
+                <!--toolbar-->
+                <div id="tableToolbar" class="btn-group hidden-xs" role="group">
+                    <button id="multiTemplateBtn" type="button" class="btn btn-outline btn-default"
+                            data-toggle="tooltip" title="批量模板化问卷">
+                        <i class="glyphicon glyphicon-briefcase" aria-hidden="true">批量模板</i>
+                    </button>
+                    <button id="multiShareBtn" type="button" class="btn btn-outline btn-default" data-toggle="tooltip"
+                            title="批量共享问卷到公共模板库">
+                        <i class="glyphicon glyphicon-share" aria-hidden="true">批量共享</i>
+                    </button>
+                    <button id="multiDelBtn" type="button" class="btn btn-outline btn-default" data-toggle="tooltip"
+                            title="批量移除问卷到回收站">
+                        <i class="glyphicon glyphicon-floppy-remove" aria-hidden="true"> 批量移除</i>
+                    </button>
+                </div>
+                <table id="myQesPaperTable"></table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/WEB-INF/js/jquery.min.js"
+        th:src="@{/js/jquery.min.js}"></script>
+<script src="/WEB-INF/js/bootstrap.min.js"
+        th:src="@{/js/bootstrap.min.js}"></script>
+<script src="/WEB-INF/js/plugins/bootstrap-table/bootstrap-table.min.js"
+        th:src="@{/js/plugins/bootstrap-table/bootstrap-table.min.js}"></script>
+<script src="/WEB-INF/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"
+        th:src="@{/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js}"></script>
+<script src="../../js/plugins/layer/layer.min.js"
+        th:src="@{/js/plugins/layer/layer.min.js}"></script>
+<script src="../../js/myJs/responseAnalyze.js"
+        th:src="@{/js/myJs/responseAnalyze.js}"></script>
+<script src="../../js/myJs/listQuestionnaire.js"
+        th:src="@{/js/myJs/listQuestionnaire.js}"></script>
+</body>
+</html>

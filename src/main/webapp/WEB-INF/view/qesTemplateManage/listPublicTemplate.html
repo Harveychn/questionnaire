@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>公共模板管理</title>
+    <link rel="shortcut icon" href="/WEB-INF/img/favicon.ico"
+          th:href="@{/img/favicon.ico}"/>
+    <link rel="stylesheet" href="/WEB-INF/css/bootstrap.min.css"
+          th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="/WEB-INF/css/plugins/bootstrap-table/bootstrap-table.min.css"
+          th:href="@{/css/plugins/bootstrap-table/bootstrap-table.min.css}">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    公共模板
+                </div>
+            </div>
+            <div class="panel-body">
+                <!--toolbar-->
+                <div id="tableToolbar" class="btn-group hidden-xs" role="group">
+                    <button id="multiDelBtn" type="button" class="btn btn-outline btn-default"
+                            data-toggle="tooltip"
+                            title="批量移除模板">
+                        <i class="glyphicon glyphicon-floppy-remove" aria-hidden="true"> 批量移除</i>
+                    </button>
+                    <button id="multiAdd2PrivateLibBtn" type="button" class="btn btn-outline btn-default"
+                            data-toggle="tooltip"
+                            title="批量添加模板到个人模板库">
+                        <i class="glyphicon glyphicon-duplicate" aria-hidden="true">批量添加个人模板</i>
+                    </button>
+                </div>
+                <table id="publicTemplateInfoTable"></table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/WEB-INF/js/jquery.min.js"
+        th:src="@{/js/jquery.min.js}"></script>
+<script src="/WEB-INF/js/bootstrap.min.js"
+        th:src="@{/js/bootstrap.min.js}"></script>
+<script src="/WEB-INF/js/plugins/bootstrap-table/bootstrap-table.min.js"
+        th:src="@{/js/plugins/bootstrap-table/bootstrap-table.min.js}"></script>
+<script src="/WEB-INF/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"
+        th:src="@{/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js}"></script>
+<script src="../../js/plugins/layer/layer.min.js"
+        th:src="@{/js/plugins/layer/layer.min.js}"></script>
+<script src="../../js/myJs/responseAnalyze.js"
+        th:src="@{/js/myJs/responseAnalyze.js}"></script>
+
+<script>
+    //批量移除按钮
+    var $multiDelBtn = $('#multiDelBtn');
+    //批量添加到个人模板
+    var $multiAdd2PrivateLibBtn = $('#multiAdd2PrivateLibBtn');
+
+    var $table = $('#publicTemplateInfoTable');
+    //表格数据获取地址
+    var tableDataUrl = '/publicTemplateManage/getPublicTemplateInfo';
+    var getDataMethod = 'get';
+
+    var deleteTemporaryUrl = '/qesTemplateManage/multiDeleteTemplate';
+    var add2PrivateLibUrl = '/qesTemplateManage/add2MyTemplateLib';
+
+    $(function () {
+        $table.bootstrapTable({
+            url: tableDataUrl,
+            method: getDataMethod,
+            dataType: 'json',
+            cache: false,
+
+            striped: true,
+//            clickToSelect: true,
+            undefinedText: '--',
+            sortName: ['questionnaireTitle', 'questionnaireSubtitle', 'sharedUser', 'shareDate'],
+            sortOrder: 'desc',
+            height: getHeight(),
+
+            pagination: true,
+            paginationLoop: true,
+            pageList: [10, 20, 30],
+            paginationPreText: '上一页',
+            paginationNextText: '下一页',
+            sidePagination: 'client',
+
+            search: true,
+            searchAlign: 'right',
+            searchOnEnterKey: false,
+
+            toolbar: '#tableToolbar',
+
+            showColumns: true,
+            showRefresh: true,
+            showToggle: true,
+            showPaginationSwitch: true,
+
+            minimumCountColumns: 2,
+            detailView: true,
+            detailFormatter: detailFormatter,
+            columns: [{
+                checkbox: true,
+                clickToSelect: true
+            }, {
+                field: 'questionnaireId',
+                title: '模板编号',
+                sortable: true
+            }, {
+                field: 'questionnaireTitle',
+                title: '模板标题',
+                sortable: true
+            }, {
+                field: 'sharedUser',
+                title: '共享人',
+                sortable: true
+            }, {
+                field: 'shareDate',
+                title: '分享日期',
+                sortable: true
+            }, {
+                field: 'questionnaireSubtitle',
+                title: '模板副标题',
+                visible: false,
+                sortable: true
+            }, {
+                title: '操作',
+                align: 'center',
+                events: operateEvents,
+                formatter: operateFormatter
+            }]
+        });
+    });
+
+    //单份处理
+    window.operateEvents = {
+        //查看模板
+        'click .scanPaper': function (e, value, row, index) {
+            //查看问卷
+            var browseQesUrl = '/publicTemplateManage/displayPubTemplate';
+            browseQesUrl += '/' + row.questionnaireId;
+            browseQesPaper(browseQesUrl);
+        },
+        //移除模板
+        'click .remove': function (e, value, row, index) {
+            layerConfirmSingle('确认移除模板吗?', row, deleteTemporaryUrl);
+        },
+        //引用模板
+        'click .usePaper': function (e, value, row, index) {
+//            layer.msg('模块未发布', {icon: 4});
+            window.location.href = '/QesManageRest/getQuoteQesPaperView/' + row.questionnaireId;
+
+        },
+        //添加个人模板
+        'click .add2PrivateLib': function (e, value, row, index) {
+            layerConfirmSingle('确认添加到个人模板库？', row, add2PrivateLibUrl);
+        }
+    };
+
+    //操作按钮格式设置
+    function operateFormatter(value, row, index) {
+        return [
+            '<a class="scanPaper btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="查看模板">',
+            '<i class="glyphicon glyphicon-level-up"></i> 查看',
+            '<a class="remove btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="移除模板">',
+            '<i class="glyphicon glyphicon-remove"></i> 移除',
+            '</a>',
+            '<a class="usePaper btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="引用模板">',
+            '<i class="glyphicon glyphicon-export"></i> 引用',
+            '</a>',
+            '<a class="add2PrivateLib btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="添加到个人模板库">',
+            '<i class="glyphicon glyphicon-log-in"></i> 添加到个人模板',
+            '</a>'
+        ].join('');
+    }
+
+    //批量移除处理
+    $multiDelBtn.on('click', function () {
+        var ids = getIdSelections();
+        if (!checkIsSelectedOne(ids)) {
+            return;
+        }
+        layerConfirmMulti("确认批量移除模板吗?", ids, deleteTemporaryUrl);
+    });
+
+    //批量添加到个人模板库
+    $multiAdd2PrivateLibBtn.on('click', function () {
+        var ids = getIdSelections();
+        if (!checkIsSelectedOne(ids)) {
+            return;
+        }
+        layerConfirmMulti('确认批量添加到个人模板吗？', ids, add2PrivateLibUrl);
+    });
+
+    /*检查是否选中一种模板*/
+    function checkIsSelectedOne(ids) {
+        if (0 === ids.length) {
+            layer.msg('还未选择操作的模板', {icon: 5});
+            return false;
+        }
+        return true;
+    }
+
+    function layerConfirmMulti(confirmText, ids, url) {
+        layer.confirm(confirmText, {
+                icon: 3,
+                btn: ['确定', '取消']
+            },
+            function (index) {
+                accessServer(ids, url);
+                layer.close(index);
+            },
+            function () {
+                layer.msg('取消成功！');
+            }
+        )
+    }
+
+    function layerConfirmSingle(confirmText, row, url) {
+        layer.confirm(confirmText, {
+                icon: 3,
+                btn: ['确定', '取消']
+            },
+            function (index) {
+                var ids = [];
+                ids.push(row.questionnaireId);
+                accessServer(ids, url);
+                layer.close(index);
+            },
+            function () {
+                layer.msg('取消成功！');
+            }
+        )
+    }
+
+    /**
+     * 查看问卷
+     * @param urlWithId 查看问卷带有问卷ID的url
+     */
+    function browseQesPaper(urlWithId) {
+        window.open(urlWithId);
+//        layer.full(layer.open({
+//            type: 2,
+//            content: urlWithId,
+//            area: ['80%', '80%'],
+//            maxmin: true,
+//            closeBtn: 1
+//        }));
+    }
+
+    /**
+     * 异步加载服务器
+     * @param templateIds
+     * @param url
+     */
+    function accessServer(templateIds, url) {
+        $.ajax({
+            url: url,
+            type: 'post',
+            data: {templateIds: templateIds},
+            dataType: 'text',
+            traditional: true,
+            success: function (data) {
+                analyzeResponse(data, url, templateIds);
+            },
+            error: function () {
+                layer.msg('操作失败，出现点问题，刷新看看？', {icon: 2});
+            }
+        });
+        return true;
+    }
+
+    /**
+     * 解析回复数据包
+     * @param data
+     * @param url
+     * @param templateIds
+     */
+    function analyzeResponse(data, url, templateIds) {
+        var responsePkt = JSON.parse(data);
+        if (responsePkt.code === 200) {
+            switch (url) {
+                case deleteTemporaryUrl://移除模板
+                    if (responsePkt.code === 200) {
+                        $table.bootstrapTable('remove', {
+                            field: 'questionnaireId',
+                            values: templateIds
+                        });
+                        layer.msg('模板已经移除！', {icon: 1});
+                    }
+                    break;
+                case add2PrivateLibUrl://添加个人模板
+                    if (responsePkt.code === 200) {
+                        layer.msg('成功添加到个人模板！', {icon: 1});
+                    }
+                default:
+                    return;
+            }
+        }
+    }
+
+    //获取批量选中的id
+    function getIdSelections() {
+        return $.map($table.bootstrapTable('getSelections'), function (row) {
+            return row.questionnaireId;
+        });
+    }
+
+    //详细信息格式
+    function detailFormatter(index, row) {
+        var html = [];
+        html.push('<p><i>模板编号:</i> ' + row.questionnaireId + '</p>');
+        html.push('<p><i>模板标题:</i> ' + row.questionnaireTitle + '</p>');
+        html.push('<p><i>模板描述:</i> ' + row.questionnaireDescription + '</p>');
+        return html.join('');
+    }
+
+    //获取屏幕高度
+    function getHeight() {
+        return $(window).height() - $('.panel-body').outerHeight(true);
+    }
+</script>
+</body>
+</html>

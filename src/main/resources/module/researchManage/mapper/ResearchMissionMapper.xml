@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.questionnaire.ssm.module.researchManage.mapper.ResearchMissionMapper">
+    <select id="listReadyLaunchQesInfoByUserTel" parameterType="String"
+            resultType="com.questionnaire.ssm.module.researchManage.pojo.QuestionnaireInfoVO">
+        SELECT
+			questionnaire_id AS qesId,
+			questionnaire_title AS qesTitle,
+			create_time AS createDate,
+			CASE is_template
+				WHEN TRUE THEN
+					'模板'
+				WHEN FALSE THEN
+					'问卷'
+				END  AS isTemplate
+		FROM
+			questionnaire
+		WHERE
+			is_done = TRUE
+		AND is_visible = TRUE
+		AND is_release = FALSE
+		AND is_template = FALSE
+		AND create_user = #{userTel}
+</select>
+
+    <select id="listMission" resultType="com.questionnaire.ssm.module.researchManage.pojo.ListMissionVO">
+		SELECT
+		ma.mission_id AS missionId,
+		m.mission_description AS missionDescription,
+		q.questionnaire_id AS questionnaireId,
+		q.questionnaire_title AS questionnaireTitle,
+		ma.min_submit_count AS minSubmitCount,
+		DATE_FORMAT(
+        m.mission_start_date,
+        '%Y-%m-%d %H:%i:%s'
+        ) AS missionStartDate,
+        DATE_FORMAT(
+        m.mission_final_date,
+        '%Y-%m-%d %H:%i:%s'
+        ) AS missionFinalDate
+        FROM
+        questionnaire AS q,
+        mapping_mission_questionnaire AS ma,
+        mission AS m
+        WHERE q.questionnaire_id=ma.questionnaire_id AND m.mission_id=ma.mission_id
+        ORDER BY ma.mission_id
+	</select>
+
+    <sql id="mission_info_VO_columns">
+        m.mission_id AS missionId,
+        u.user_real_name AS creator,
+        ut.unit_name AS creatorUnit,
+        m.mission_start_date AS beginDate,
+        m.mission_final_date AS endDate,
+        m.mission_description AS description,
+        m.mission_unit_text AS unitIdStr
+    </sql>
+
+    <select id="listGoingMissionInfo" parameterType="String"
+            resultType="com.questionnaire.ssm.module.researchManage.pojo.MissionInfoVO">
+        SELECT
+        <include refid="mission_info_VO_columns"/>
+        FROM
+        `user` AS u,
+        unit AS ut,
+        mission AS m
+        <where>
+            <if test="userTel!=null and userTel!=''">
+                AND m.create_user = #{userTel}
+            </if>
+            AND u.unit_id = ut.unit_id
+            AND m.create_user = u.user_tel
+            -- 进行中的调查
+            AND mission_start_date &lt; NOW()
+            AND m.mission_final_date > NOW();
+        </where>
+    </select>
+
+    <select id="listReleasedMissions" parameterType="String"
+            resultType="com.questionnaire.ssm.module.researchManage.pojo.MissionInfoVO">
+        SELECT
+        <include refid="mission_info_VO_columns"/>
+        FROM
+        `user` AS u,
+        unit AS ut,
+        mission AS m
+        <where>
+            <if test="userTel!=null and userTel!=''">
+                AND m.create_user = #{userTel}
+            </if>
+            AND u.unit_id = ut.unit_id
+            AND m.create_user = u.user_tel
+            -- 已经发布的调查
+            AND m.mission_start_date &lt; NOW()
+        </where>
+    </select>
+
+    <select id="listUnreleasedMissions" parameterType="String"
+            resultType="com.questionnaire.ssm.module.researchManage.pojo.MissionInfoVO">
+        SELECT
+        <include refid="mission_info_VO_columns"/>
+        FROM
+        `user` AS u,
+        unit AS ut,
+        mission AS m
+        <where>
+            <if test="userTel!=null and userTel!=''">
+                AND m.create_user = #{userTel}
+            </if>
+            AND u.unit_id = ut.unit_id
+            AND m.create_user = u.user_tel
+            -- 未发布的调查
+            AND m.mission_start_date > NOW()
+        </where>
+    </select>
+
+    <select id="listFinishMissions" parameterType="String"
+            resultType="com.questionnaire.ssm.module.researchManage.pojo.MissionInfoVO">
+        SELECT
+        <include refid="mission_info_VO_columns"/>
+        FROM
+        `user` AS u,
+        unit AS ut,
+        mission AS m
+        <where>
+            <if test="userTel!=null and userTel!=''">
+                AND m.create_user = #{userTel}
+            </if>
+            AND u.unit_id = ut.unit_id
+            AND m.create_user = u.user_tel
+            -- 已截止的调查
+            AND m.mission_final_date &lt; NOW()
+        </where>
+    </select>
+
+    <select id="listUnfinishMissions" parameterType="String"
+            resultType="com.questionnaire.ssm.module.researchManage.pojo.MissionInfoVO">
+        SELECT
+        <include refid="mission_info_VO_columns"/>
+        FROM
+        `user` AS u,
+        unit AS ut,
+        mission AS m
+        <where>
+            <if test="userTel!=null and userTel!=''">
+                AND m.create_user = #{userTel}
+            </if>
+            AND u.unit_id = ut.unit_id
+            AND m.create_user = u.user_tel
+            -- 未截止的调查
+            AND m.mission_final_date > NOW()
+        </where>
+    </select>
+
+    <select id="listMissionPaperByMissionId" parameterType="Long"
+            resultType="com.questionnaire.ssm.module.researchManage.pojo.MissionPaperDTO">
+        SELECT
+        qesPaperInfo.*, IFNULL(submit_info.submitNow,0) AS submitNow
+        FROM
+        (
+        SELECT
+        mmq.questionnaire_id AS questionnaireId,
+        q.questionnaire_title AS questionnaireTitle,
+        q.questionnaire_description AS questionnaireDescription,
+        mmq.min_submit_count AS minSubmit
+        FROM
+        mapping_mission_questionnaire AS mmq,
+        questionnaire AS q
+        WHERE
+        mmq.mission_id = #{missionId}
+        AND q.questionnaire_id = mmq.questionnaire_id
+        ) AS qesPaperInfo
+        LEFT JOIN (
+        SELECT
+        qesResult.questionnaire_id AS questionnaireId,
+        COUNT(DISTINCT a.answer_paper_id) AS submitNow
+        FROM
+        answer_paper AS a,
+        (
+        SELECT
+        questionnaire_id
+        FROM
+        mapping_mission_questionnaire
+        WHERE
+        mission_id = #{missionId}
+        ) AS qesResult
+        WHERE
+        a.mission_id = #{missionId}
+        AND a.questionnaire_id IN (
+        SELECT
+        questionnaire_id
+        FROM
+        mapping_mission_questionnaire
+        WHERE
+        mission_id = #{missionId}
+        )
+        AND qesResult.questionnaire_id = a.questionnaire_id
+        ) AS submit_info ON qesPaperInfo.questionnaireId = submit_info.questionnaireId
+    </select>
+
+    <select id="listCount" parameterType="com.questionnaire.ssm.module.researchManage.pojo.ListMissionVO"
+            resultType="Long">
+		SELECT
+		COUNT(questionnaire_id) AS questionnaireCount
+		FROM
+		answer_paper
+		WHERE questionnaire_id=#{questionnaireId}
+		AND mission_id=#{missionId}
+	</select>
+
+    <select id="findMission" parameterType="com.questionnaire.ssm.module.researchManage.pojo.ListMissionVO"
+            resultType="Long">
+    SELECT
+    id
+    FROM
+    mapping_mission_questionnaire
+    WHERE questionnaire_id=#{questionnaireId}
+    AND mission_id=#{missionId}
+</select>
+    <select id="findMissionByMissionId" parameterType="Long"
+            resultType="Long">
+        SELECT
+        mission_id AS missionId
+        FROM
+        mapping_mission_questionnaire
+        WHERE  mission_id=#{missionId}
+    </select>
+</mapper>

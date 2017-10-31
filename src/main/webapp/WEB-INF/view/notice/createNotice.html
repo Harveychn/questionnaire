@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>创建公告</title>
+    <link rel="shortcut icon" href="/WEB-INF/img/favicon.ico"
+          th:href="@{/img/favicon.ico}"/>
+    <link rel="stylesheet" href="/WEB-INF/css/bootstrap.min.css"
+          th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" href="/WEB-INF/js/plugins/bootstrap-select/css/bootstrap-select.min.css"
+          th:href="@{/js/plugins/bootstrap-select/css/bootstrap-select.min.css}">
+    <link rel="stylesheet" href="/WEB-INF/js/plugins/layui/css/layui.css"
+          th:href="@{/js/plugins/layui/css/layui.css}">
+</head>
+<body>
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="panel-title">
+                创建公告
+            </div>
+        </div>
+        <div class="panel-group">
+            <div class="panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        公告标题
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-offset-1 col-md-11">
+                                <div class="row">
+                                    <div class="col-sm-10">
+                                        <div class="row">
+                                            <div class="control-label col-xs-2">公告标题：</div>
+                                            <div class="col-xs-10">
+                                                <input id="noticeTitle" type="text" class="form-control"
+                                                       placeholder="公告的标题"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        公告对象
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-offset-1 col-md-11">
+                                <div class="row">
+                                    <div class="col-sm-10">
+                                        <div class="row">
+                                            <div class="control-label col-xs-2">对象单位：</div>
+                                            <div class="col-xs-10">
+                                                <select id='noticeUnit' class="form-control" multiple> </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        发布计划
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-offset-1 col-md-11">
+                                <div class="row">
+                                    <div class="col-sm-10">
+                                        <div class="row">
+                                            <div class="control-label col-xs-2">发布时间：</div>
+                                            <div class="col-xs-10">
+                                                <input id="launchDate" class="form-control" placeholder="调查开始的时间"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        公告内容
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-offset-1 col-md-11">
+                                <div class="row">
+                                    <div class="col-sm-10">
+                                        <div class="row">
+                                            <div class="control-label col-xs-2">公告内容：</div>
+                                            <div class="col-xs-10">
+                                                <textarea id="noticeContent" class="form-control" rows="6"
+                                                          placeholder="公告的内容"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body">
+                <div class="col-md-offset-5" id="btnGroup">
+                    <button id="resetBtn" class="btn btn-lg btn-warning">重置</button>
+                    <button id="launchBtn" class="btn btn-lg btn-success">发布</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="/WEB-INF/js/jquery.min.js"
+        th:src="@{/js/jquery.min.js}"></script>
+<script src="/WEB-INF/js/bootstrap.min.js"
+        th:src="@{/js/bootstrap.min.js}"></script>
+<script src="/WEB-INF/js/plugins/bootstrap-select/js/bootstrap-select.min.js"
+        th:src="@{/js/plugins/bootstrap-select/js/bootstrap-select.min.js}"></script>
+<script src="/WEB-INF/js/plugins/bootstrap-select/js/i18n/defaults-zh_CN.min.js"
+        th:src="@{/js/plugins/bootstrap-select/js/i18n/defaults-zh_CN.min.js}"></script>
+<script src="/WEB-INF/js/plugins/layui/layui.js"
+        th:src="@{/js/plugins/layui/layui.js}"></script>
+<script src="../../js/myJs/responseAnalyze.js"
+        th:src="@{/js/myJs/responseAnalyze.js}"></script>
+<script src="../../js/myJs/createNotice.js"></script>
+
+
+<script>
+
+</script>
+</body>
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>创建公告</title>
+    <link rel="stylesheet" href="/WEB-INF/css/bootstrap.min.css"
+          th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" href="/WEB-INF/js/plugins/bootstrap-select/css/bootstrap-select.min.css"
+          th:href="@{/js/plugins/bootstrap-select/css/bootstrap-select.min.css}">
+    <link rel="stylesheet" href="/WEB-INF/js/plugins/layui/css/layui.css"
+          th:href="@{/js/plugins/layui/css/layui.css}">
+</head>
+<body>
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="panel-title">
+                创建公告
+            </div>
+        </div>
+        <div class="panel-group">
+            <div class="panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        公告标题
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-offset-1 col-md-11">
+                                <div class="row">
+                                    <div class="col-sm-10">
+                                        <div class="row">
+                                            <div class="control-label col-xs-2">公告标题：</div>
+                                            <div class="col-xs-10">
+                                                <input id="noticeTitle" type="text" class="form-control"
+                                                       placeholder="公告的标题" value="任务提醒"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        公告单位
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-offset-1 col-md-11">
+                                <div class="row">
+                                    <div class="col-sm-10">
+                                        <div class="row">
+                                            <div class="control-label col-xs-2">对象单位：</div>
+                                            <div class="col-xs-10">
+                                                <select id='noticeUnit' class="form-control" multiple> </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        预计发布
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-offset-1 col-md-11">
+                                <div class="row">
+                                    <div class="col-sm-10">
+                                        <div class="row">
+                                            <div class="control-label col-xs-2">发布时间：</div>
+                                            <div class="col-xs-10">
+                                                <input id="launchDate" class="form-control" placeholder="调查开始的时间"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        公告内容
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-offset-1 col-md-11">
+                                <div class="row">
+                                    <div class="col-sm-10">
+                                        <div class="row">
+                                            <div class="control-label col-xs-2">公告内容：</div>
+                                            <div class="col-xs-10">
+                                                <textarea id="noticeContent" class="form-control" rows="6"
+                                                          placeholder="公告的内容" >
+                                                </textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body">
+                <div class="col-md-offset-5">
+                    <button id="resetBtn" class="btn btn-lg btn-warning">重置</button>
+                    <button id="launchBtn" class="btn btn-lg btn-success">发布</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="/WEB-INF/js/jquery.min.js"
+        th:src="@{/js/jquery.min.js}"></script>
+<script src="/WEB-INF/js/bootstrap.min.js"
+        th:src="@{/js/bootstrap.min.js}"></script>
+<script src="/WEB-INF/js/plugins/bootstrap-select/js/bootstrap-select.min.js"
+        th:src="@{/js/plugins/bootstrap-select/js/bootstrap-select.min.js}"></script>
+<script src="/WEB-INF/js/plugins/bootstrap-select/js/i18n/defaults-zh_CN.min.js"
+        th:src="@{/js/plugins/bootstrap-select/js/i18n/defaults-zh_CN.min.js}"></script>
+<script src="/WEB-INF/js/plugins/layui/layui.js"
+        th:src="@{/js/plugins/layui/layui.js}"></script>
+<script src="../../js/myJs/responseAnalyze.js"
+        th:src="@{/js/myJs/responseAnalyze.js}"></script>
+
+
+<script>
+    document.getElementById("noticeContent").value="请各单位及时完成调查任务";
+    $(function () {
+        var unitOptions = '';
+        var $noticeUnit = $('#noticeUnit');
+        $.ajax({
+            url: '/unit/listUnitInfo',
+            type: 'post',
+            dataType: 'json',
+            traditional: true,
+            success: function (data) {
+                for (var index = 0; index < data.length; index++) {
+                    unitOptions += '<option title="' + data[index].unitName + '" ' +
+                        'value="' + data[index].unitId + '">' + data[index].unitName +
+                        '·························'
+                        + data[index].unitProvince + ' - ' + data[index].unitCity + '</option>';
+                }
+                $($noticeUnit).append(unitOptions);
+                $($noticeUnit).selectpicker({
+                        multipleSeparator: ' || ',
+                        actionsBox: true,
+                        liveSearch: true,
+                        noneSelectedText: '未选择单位信息',
+                        selectAllText: '全部单位',
+                        liveSearchPlaceholder: '查询单位',
+                        deselectAllText: '重新选择',
+                        selectedTextFormat: 'count > 5',
+                        countSelectedText: function () {
+                            return '选中了  {0}   个单位   (单位总数 {1})';
+                        }
+                    },
+                    'refresh', 'render'
+                );
+            },
+            error: function (data) {
+                alert(data.message);
+            }
+        });
+        layui.use(['laydate'], function () {
+            var laydate = layui.laydate;
+
+            var start = {
+                format: 'YYYY-MM-DD hh:mm:ss',
+                min: laydate.now(),
+                max: '2099-06-16 23:59:59',
+                istime: true,
+                isclear: true, //是否显示清空
+                istoday: true, //是否显示今天
+                issure: true, //是否显示确认
+                festival: true, //是否显示节日
+                fixed: false, //是否固定在可视区域
+                zIndex: 99999999 //css z-index
+            };
+
+            document.getElementById('launchDate').onclick = function () {
+                start.elem = this;
+                laydate(start);
+            };
+        });
+    });
+    /*发布公告*/
+    $('#launchBtn').on('click', function () {
+        layui.use(['layer', 'laydate'], function () {
+            var layer = layui.layer;
+            var laydate = layui.laydate;
+
+            var noticeTitle = $('#noticeTitle').val();
+            if (noticeTitle.match(/^\s*$/)) {
+                layer.msg('请填写公告标题！', function () {
+                });
+                return;
+            }
+
+            //获取选中的单位ID
+            var unitIds = [];
+            $('#noticeUnit').find('option:selected').each(function () {
+                unitIds.push($(this).val());
+            });
+            if (unitIds.length <= 0) {
+                layer.msg('未选择公告单位！', function () {
+                });
+                return;
+            }
+
+            var noticeContent = $('#noticeContent').val();
+
+            if (noticeContent.match(/^\s*$/)) {
+                layer.msg('请填写公告内容！', function () {
+                });
+                return;
+            }
+
+            var launchDate = $('#launchDate').val();
+            if (launchDate.match(/^\s*$/)) {
+                layer.confirm('您未设置发布时间，立即发布吗！', {
+                    icon: 3,
+                    btn: ['确定发布', '返回修改']
+                }, function (index) {
+                    layer.close(index);
+                    submitJsonData(laydate.now(), unitIds);
+                }, function (index) {
+                    layer.close(index);
+                });
+            } else {
+                submitJsonData(launchDate, unitIds);
+            }
+        });
+    });
+
+    function submitJsonData(launchDate, unitIds) {
+        var noticeInfo = {};
+        noticeInfo.noticeTitle = $('#noticeTitle').val();
+        noticeInfo.noticeContent = $('#noticeContent').val();
+        noticeInfo.launchDate = new Date(launchDate);
+        noticeInfo.unitObjectIds = unitIds;
+        var url = '/notice/createNotice';
+        accessServerByJson(url, noticeInfo);
+    }
+    /*重置按钮*/
+    $('#resetBtn').on('click', function () {
+        layui.use('layer', function () {
+            var layer = layui.layer;
+            layer.confirm('确认重置？', {
+                    icon: 3,
+                    btn: ['确定', '取消']
+                },
+                function (index) {
+                    $('#noticeTitle').val(null);
+                    $('#noticeUnit').selectpicker('deselectAll');
+                    $('#noticeContent').val(null);
+                    $('#launchDate').val(null);
+                    layer.close(index);
+                },
+                function () {
+                    layer.msg('取消成功！');
+                }
+            )
+        });
+    });
+
+    function accessServerByJson(url, jsonData) {
+        $.ajax({
+            url: url,
+            contentType: "application/json;charset=utf-8",
+            type: 'post',
+            async: false,
+            dataType: 'json',
+            data: JSON.stringify(jsonData),
+            success: function (data) {
+                if (200 === data.code) {
+                    successResultLayer("操作成功！");
+                }
+                dealGlobalError(data);
+            },
+            error: function (data) {
+                alert(data);
+            }
+        });
+    }
+
+    function successResultLayer(successMsg) {
+        layer.msg(successMsg, {
+            icon: 1,
+            time: 2000,
+            shade: 0.5,
+            closeBtn: 1
+        });
+    }
+</script>
+</body>
+</html>

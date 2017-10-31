@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.questionnaire.ssm.module.questionnaireManage.mapper.QesManageMapper">
+
+    <select id="listQuestionnaireInfoByUserTel" parameterType="String"
+            resultType="com.questionnaire.ssm.module.questionnaireManage.pojo.MyQesVO">
+        SELECT
+        q.questionnaire_id AS questionnaireId,
+        q.questionnaire_title AS questionnaireTitle,
+        q.questionnaire_subtitle AS questionnaireSubtitle,
+        q.questionnaire_description AS questionnaireDescription,
+        DATE_FORMAT(q.create_time,'%Y-%m-%d %H:%i:%s') AS questionnaireCreateDate,
+        q.is_template AS isTemplate,
+        q.is_share AS isShare,
+        q.is_done AS isDone
+        FROM
+        questionnaire AS q
+        <where>
+            <if test="userTel!=null and userTel!=''">
+                AND q.create_user = #{userTel}
+            </if>
+            AND q.is_template = FALSE
+            AND q.is_visible = TRUE
+            AND q.is_release = FALSE
+        </where>
+        ORDER BY q.create_time DESC
+    </select>
+
+
+    <select id="listTempDelQesPaperByUserTel" parameterType="String"
+            resultType="com.questionnaire.ssm.module.questionnaireManage.pojo.TempDelQesPaperVO">
+        SELECT
+        q.questionnaire_id AS questionnaireId,
+        q.questionnaire_title AS questionnaireTitle,
+        q.questionnaire_subtitle AS questionnaireSubtitle,
+        q.questionnaire_description AS questionnaireDescription,
+        CASE
+            WHEN (
+                q.is_template = FALSE
+                AND q.is_share = FALSE
+            ) THEN
+                '个人问卷'
+            WHEN (
+                q.is_template = TRUE
+                AND q.is_share = FALSE
+            ) THEN
+                '个人模板'
+            WHEN (
+                q.is_template = TRUE
+                AND q.is_share = TRUE
+            ) THEN
+                '公共模板'
+            END AS originSource
+        FROM
+            questionnaire AS q
+        WHERE
+            q.create_user = #{userTel}
+          AND q.is_visible = FALSE
+          AND q.is_release = FALSE
+--           2017-5-21 回收站问卷信息查看问卷来源
+--         AND q.is_template = FALSE
+--         AND q.is_share = FALSE
+--         AND q.is_visible = FALSE
+--         AND q.is_done = TRUE
+--         AND q.is_delete = FALSE
+    </select>
+
+    <select id="listQuestionIdByQesPaperIds" parameterType="List" resultType="Long">
+        <if test="list.size()&lt;=0">
+            SELECT 0
+        </if>
+        <if test="list.size()>0">
+            SELECT
+            map.question_id
+            FROM
+            mapping_questionnaire_question AS map
+            WHERE
+            map.questionnaire_id IN
+            <foreach collection="list" item="curQesPaperId" open="(" separator="," close=")">
+                #{curQesPaperId}
+            </foreach>
+        </if>
+    </select>
+</mapper>

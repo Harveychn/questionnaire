@@ -1,0 +1,18 @@
+{
+  "name": "questionnaire",
+  "homepage": "https://github.com/Harveychn/questionnaire",
+  "authors": [
+    "Harveychn <zxh980278090@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

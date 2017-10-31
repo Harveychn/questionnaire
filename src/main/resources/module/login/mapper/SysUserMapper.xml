@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.questionnaire.ssm.module.login.mapper.SysUserMapper">
+    <select id="listUserRole" parameterType="String" resultType="String">
+        SELECT r.role FROM `user` u ,role r
+        <where>
+            AND u.role_id = r.role_id
+            AND u.user_tel = #{userTel}
+        </where>
+    </select>
+
+
+    <select id="listUserPermission" parameterType="String" resultType="String">
+        SELECT p.permission FROM `user` u,mapping_role_permission maprp,permission p
+        <where>
+            AND u.role_id = maprp.role_id
+            AND maprp.permission_id = p.permission_id
+            AND u.user_tel = #{userTel}
+        </where>
+    </select>
+
+
+</mapper>

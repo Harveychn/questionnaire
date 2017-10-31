@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>角色权限管理</title>
+    <link rel="shortcut icon" href="../../img/favicon.ico"/>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/plugins/bootstrap-table/bootstrap-table.min.css">
+</head>
+
+<body>
+<div class="container">
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    角色权限管理
+                </div>
+            </div>
+            <div class="panel-body">
+                <!--toolbar-->
+                <div id="tableToolbar" class="btn-group hidden-xs" role="group">
+                    <button id="multiEnableBtn" type="button" class="btn btn-outline btn-default">
+                        <i class="glyphicon glyphicon-ok-sign" aria-hidden="true"> 批量启用</i>
+                    </button>
+                    <button id="multiDisableBtn" type="button" class="btn btn-outline btn-default">
+                        <i class="glyphicon glyphicon-ban-circle" aria-hidden="true"> 批量禁用</i>
+                    </button>
+                    <button id="multiDelBtn" type="button" class="btn btn-outline btn-default">
+                        <i class="glyphicon glyphicon-remove" aria-hidden="true"> 批量删除</i>
+                    </button>
+                </div>
+                <table id="roleAuthorityTable"></table>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="../../js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../js/plugins/layer/layer.min.js"></script>
+<script src="../../js/myJs/responseAnalyze.js"></script>
+<script src="../../js/myJs/roleAuthority.js"></script>
+</body>
+
+</html>

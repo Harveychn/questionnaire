@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>人员管理-编辑</title>
+    <link rel="shortcut icon" href="../../img/favicon.ico"/>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../js/plugins/bootstrap-select/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="../../js/plugins/layui/css/layui.css">
+    <style>
+        .col-xs-2 {
+            text-align: center;
+        }
+
+        .col-xs-4 {
+            text-align: center;
+        }
+
+        .container {
+            padding-right: 5px;
+            padding-left: 5px;
+            margin-right: auto;
+            margin-left: auto
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <div class="panel">
+        <div class="panel-body">
+            <div class="form-horizontal">
+                <div class="form-group">
+
+
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="control-label col-xs-2">人员姓名：</div>
+                            <div class="col-xs-9">
+                                <input id='name' class="form-control" th:value="${accountOwner}"
+                                       placeholder="请填写姓名"/>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="control-label col-xs-2">人员账户：</div>
+                            <div class="col-xs-9">
+                                <input id="userAccount" class="form-control" th:value="${userAccount}" disabled/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="control-label col-xs-2">当前角色：</div>
+                            <div class="col-xs-9">
+                                <input class="form-control" disabled th:value="${userRole}"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="control-label col-xs-2">角色选择：</div>
+                            <div class="col-xs-9">
+                                <select id='role' class="form-control " title="选择用户的新角色"> </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="btn-group col-sm-offset-5">
+                    <button id="submitDataBtn" class="btn btn-lg btn-success">确认</button>
+                    <button id="cancelBtn" class="btn btn-lg btn-warning">取消</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/plugins/bootstrap-select/js/bootstrap-select.min.js"></script>
+<script src="../../js/plugins/bootstrap-select/js/i18n/defaults-zh_CN.min.js"></script>
+
+<script src="../../js/plugins/layui/layui.js"></script>
+<script src="../../js/myJs/responseAnalyze.js"></script>
+
+
+<script>
+    $(function () {
+        var roleOptions = '';
+        var $role = $('#role');
+        $.ajax({
+            url: '/userManage/getAllRole',
+            type: 'get',
+            dataType: 'json',
+            traditional: true,
+            success: function (data) {
+                for (var index = 0; index < data.length; index++) {
+                    roleOptions += '<option title="' + data[index].role + '" ' +
+                        'value="' + data[index].roleId + '">' + data[index].role + '</option>';
+                }
+                $($role).append(roleOptions);
+                $($role).selectpicker({
+                        liveSearch: true,
+                        noneSelectedText: '未选择新的角色',
+                        liveSearchPlaceholder: '查询角色'
+                    },
+                    'refresh', 'render'
+                );
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+
+
+    });
+    /*提交数据*/
+    $('#submitDataBtn').on('click', function () {
+        var newUserAuthorityInfo = {};
+        //获取用户账户
+        var userAccount = $('#userAccount').val();
+        newUserAuthorityInfo.userAccount = userAccount;
+        //获取用户真实姓名
+        var userRealName = $('#name').val();
+        if (userRealName.match(/^\s*$/)) {
+            layui.use('layer', function () {
+                var layer = layui.layer;
+                //校验调查单位数量不能少于一个
+                layer.msg("人员姓名不得为空!", function () {
+                });
+            });
+            return;
+        }
+        newUserAuthorityInfo.userRealName = userRealName;
+        //获取用户角色
+        var userNewRoleId = $('#role').find('option:selected').val();
+        if (userNewRoleId.match(/^\s*$/)) {
+            layui.use('layer', function () {
+                var layer = layui.layer;
+                layer.msg("人员新角色未选择!", function () {
+                });
+            });
+            return;
+        }
+        newUserAuthorityInfo.userRoleId = userNewRoleId;
+
+        var updateUserAuthorityUrl = '/userManage/updateUserAuthorityInfo';
+        layui.use('layer', function () {
+            var layer = layui.layer;
+            $.ajax({
+                url: updateUserAuthorityUrl,
+                contentType: "application/json;charset=utf-8",
+                type: 'post',
+                dataType: 'json',
+                data: JSON.stringify(newUserAuthorityInfo),
+                success: function (data) {
+                    if (200 === data.code) {
+                        layer.msg('操作成功，2秒后关闭窗口...', {
+                            icon: 1,
+                            time: 2000 //2秒关闭（如果不配置，默认是3秒）
+                        }, function () {
+                            //修改数据成功后、刷新父页面中table数据
+                            parent.refreshTable();
+                            closeLayer();
+                        });
+                    }
+                    dealGlobalError(data);
+                },
+                error: function (data) {
+                    layer.msg('出现错误了，刷新试试！');
+                    console.error(data);
+                }
+            });
+        });
+    });
+
+    /*取消按钮*/
+    $('#cancelBtn').on('click', function () {
+        layui.use('layer', closeLayer());
+    });
+
+    /**
+     * 关闭 layer 层
+     */
+    function closeLayer() {
+        var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+        parent.layer.close(index); //再执行关闭
+    }
+</script>
+</body>
+
+</html>
