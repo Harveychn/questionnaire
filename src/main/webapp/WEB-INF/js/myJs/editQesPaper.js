@@ -114,6 +114,20 @@ function getQesVOData(isDone, isTemplate) {
                     }
                 }
                 break;
+            case '图片单选题':
+                $(this).find('.form-horizontal').children('.form-group').each(function (optionIndex, formItem) {
+                    var listItem = {};
+                    listItem.optionOrder = optionIndex;
+                    listItem.option = $(formItem).find('form').attr('data-serv-url');
+                    if (listItem.option === '') {
+                        layer.alert('图片题出现问题！', {icon: 7});
+                        listItem = null;
+                        isNoError = false;
+                        return;
+                    }
+                    options.push(listItem);
+                });
+                break;
             default:
         }
         questionData.questionDescription = $(this).find('.analysis_contx').val() || 0;

@@ -62,4 +62,5 @@ public class ResultUtil {
     public static ResponsePkt badRequest() {
         return error(CodeForVOEnum.BAD_REQUEST.getCode(), CodeForVOEnum.BAD_REQUEST.getMessage());
     }
+
 }

@@ -6,9 +6,10 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import sun.misc.BASE64Encoder;
 
-import java.io.File;
-import java.io.IOException;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
 
 /**
  * creator: xiaohui zheng
@@ -43,5 +44,29 @@ public class DownloadPicUtil {
                     new File(servAbsolutePath + "\\" + CONSTANT.getUserDefaultPicture()));
         }
         return new ResponseEntity<>(fileByteArray, headers, HttpStatus.CREATED);
+    }
+
+    public static String outputPicStream(HttpServletResponse response, String servAbsolutePath, String picRelativePath) throws IOException {
+        String filePath = null;
+        if (picRelativePath == null) {
+            picRelativePath = CONSTANT.getUserDefaultPicture();
+        }
+        filePath = servAbsolutePath + "\\" + picRelativePath.trim();
+        File file = new File(filePath);
+
+        FileInputStream inputStream = null;
+        try {
+            inputStream = new FileInputStream(file);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        if (inputStream == null) {
+            return null;
+        }
+        byte[] data = new byte[inputStream.available()];
+        inputStream.read(data);
+        inputStream.close();
+        BASE64Encoder encoder = new BASE64Encoder();
+        return encoder.encode(data);
     }
 }

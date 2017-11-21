@@ -129,6 +129,7 @@ function getQesVOData(isDone, isTemplate) {
                     options.push(listItem);
                 });
                 break;
+
             default:
         }
         questionData.questionDescription = $(this).find('.analysis_contx').val() || 0;
@@ -141,14 +142,14 @@ function getQesVOData(isDone, isTemplate) {
         return;
     }
 
-    console.log(JSON.stringify(dataBase));
+    // console.debug(JSON.stringify(dataBase));
 
     //访问服务器
     if (isSubmitted) {
         return;
     }
     var url = '/questionnaireManage/create';
-    //TODO 启用提交数据
+
     submitQesDataByJson(url, dataBase);
 }
 

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
 /**
  * Created by 郑晓辉 on 2017/5/4.
  * Description:
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UserPicController {
 
     @GetMapping("/getUserPic")
+
     public ResponseEntity<byte[]> getUserPic(String userPicAddr) throws Exception {
         return DownloadPicUtil.download(CONSTANT.getUserPicturePath(), userPicAddr);
     }

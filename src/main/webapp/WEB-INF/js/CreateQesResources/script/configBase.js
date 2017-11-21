@@ -5,6 +5,7 @@
     isLayer: '../js/CreateQesResources/script/layer/',
     dropZoneCss: '../js/CreateQesResources/skin/dropZone/',
     dropZoneJs: '../js/CreateQesResources/script/dropZone/'
+
 };
 
 //扩展
@@ -30,3 +31,4 @@ fnExtend.includeFile(vars.jsPath, ['jquery-ui.min.js', 'dcselect.js', 'uploadUti
 fnExtend.includeFile(vars.isLayer, ['layer.js']);
 fnExtend.includeFile(vars.jsTmp, ['template.js']);
 fnExtend.includeFile(vars.dropZoneJs, ['dropzone.min.js']);
+

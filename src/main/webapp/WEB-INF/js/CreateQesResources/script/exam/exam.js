@@ -69,7 +69,7 @@ var exam = {
                 //name命名规则，q代表前缀+父级li的题型id
                 name: 'q' + $(this).attr('data-uid') + '_' + addname,
                 //生成1000以内的随机数
-                itmetid: 'itmetid' + parseInt(1000 * Math.random()),
+                itmetid: 'itmetid' + parseInt(1000 * Math.random()) + addname,
                 items: [{
                     value: '0',
                     //生成1000以内的随机数
@@ -88,7 +88,6 @@ var exam = {
             if ('picture_choice_template' === $(this).attr('data-tempId')) {
                 bindEl(data.itmetid);
             }
-
             _this.orderFn($('.ui-questions-content-list'));
             _this.sortFn();
         }).disableSelection();
@@ -317,7 +316,6 @@ var exam = {
 
             var data = null;
             if ($qesType === '图片单选题' || $qesType === '图片多选题') {
-                console.log($parentItems.attr('data-checktype'));
                 data = {
                     type: parseInt($parentItems.attr('data-checktype')),
                     name: $name,
@@ -327,7 +325,6 @@ var exam = {
                 $parentItems.append(template('ui_pic_additem_content', data));
                 bindEl(data.items[0].itmetid);
                 $parentItems.resize();
-                console.log($qesType);
                 return;
             }
 
