@@ -5,12 +5,20 @@
     <title>问卷信息</title>
     <link rel="shortcut icon" href="../../img/favicon.ico"/>
     <link href="../../css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../../js/CreateQesResources/skin/dropZone/basic.min.css"/>
+    <link rel="stylesheet" href="../../js/CreateQesResources/skin/dropZone/dropzone.min.css"/>
     <style>
         .print-btn {
             position: fixed;
             top: 30%;
             right: 3%;
             z-index: 100;
+        }
+
+        .dropzone {
+            min-height: 156px;
+            background: white;
+            border: none;
         }
     </style>
 </head>
@@ -133,6 +141,71 @@
                         </div>
                     </div>
                 </div>
+                <!--图片单选题模板-->
+                <div class="panel-default" th:case="'图片单选题'">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            第 <span th:text="${iterStat.count}">[题号]</span> 题：
+                            <span th:text="${curQes.questionContext}"></span>
+                            (
+                            <span th:text="${curQes.questionType}">题型</span>
+                            <span th:if="${#bools.isTrue(curQes.must)}" style="color: red;">*</span>
+                            )
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-horizontal row">
+                            <div class="form-group col-md-3 col-xs-3 col-sm-3" th:if="${#lists.size(curQes.options)>0}"
+                                 th:each="curQesOption: ${curQes.options}">
+                                <input style="margin: 5% 45%; vertical-align: middle!important;border: none!important;"
+                                       name="" value="0"
+                                       type="radio"/>
+                                <form action="#" class="dropzone">
+                                    <div class="dz-preview dz-processing dz-image-preview dz-success dz-complete">
+                                        <div class="dz-image">
+                                            <img style="width: inherit;height: inherit;"
+                                                 th:src="@{/fileIo/refPic(picRelativePath=${curQesOption.option})}"/>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--图片多选题模板-->
+                <div class="panel-default" th:case="'图片多选题'">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            第 <span th:text="${iterStat.count}">[题号]</span> 题：
+                            <span th:text="${curQes.questionContext}"></span>
+                            (
+                            <span th:text="${curQes.questionType}">题型</span>
+                            <span th:if="${#bools.isTrue(curQes.must)}" style="color: red;">*</span>
+                            )
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-horizontal row">
+                            <div class="form-group col-md-3 col-xs-3 col-sm-3" th:if="${#lists.size(curQes.options)>0}"
+                                 th:each="curQesOption: ${curQes.options}">
+                                <input style="margin: 5% 45%; vertical-align: middle!important;border: none!important;"
+                                       name="" value="0"
+                                       type="checkbox"/>
+                                <form action="#" class="dropzone">
+                                    <div class="dz-preview dz-processing dz-image-preview dz-success dz-complete">
+                                        <div class="dz-image">
+                                            <img style="width: inherit;height: inherit;"
+                                                 th:src="@{/fileIo/refPic(picRelativePath=${curQesOption.option})}"/>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!--简答题模板-->
                 <div class="panel-default" th:case="'简答题'">
                     <div class="panel-heading">

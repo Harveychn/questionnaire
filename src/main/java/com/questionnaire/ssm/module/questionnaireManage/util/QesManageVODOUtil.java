@@ -6,6 +6,7 @@ import com.questionnaire.ssm.module.generated.pojo.Questionnaire;
 import com.questionnaire.ssm.module.global.constant.CONSTANT;
 import com.questionnaire.ssm.module.global.enums.CodeForVOEnum;
 import com.questionnaire.ssm.module.global.exception.UserValidaException;
+import com.questionnaire.ssm.module.global.util.DownloadPicUtil;
 import com.questionnaire.ssm.module.global.util.UserValidationUtil;
 import com.questionnaire.ssm.module.questionnaireManage.enums.QuestionTypeEnum;
 import com.questionnaire.ssm.module.questionnaireManage.pojo.*;

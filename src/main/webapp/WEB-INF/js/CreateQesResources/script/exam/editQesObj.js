@@ -459,6 +459,7 @@ function loadDataFn() {
                         optionItem.value = 0;
                         optionItem.tid = 'itmetid' + new Date().getTime() + '' + j;
                         optionItem.option = questionOptionArray[j].option;
+                        console.log(questionOptionArray[j].option);
                         optionItem.encodedUrl = encodeURI(questionOptionArray[j].option);
                         var servData = $.ajax({
                             url: '/fileIo/download/picture/qesPaper?picRelativePath=' + encodeURI(questionOptionArray[j].option),

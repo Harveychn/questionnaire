@@ -15,13 +15,18 @@
     <bookmark url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/js/myJs/displayEcharts.js" line="168" />
     <bookmark url="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/researchManage/service/impl/ResearchServiceImpl.java" line="70" />
     <bookmark url="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/util/AnswerPaperVODOUtil.java" line="59" />
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/controller/QesManageController.java" line="112" />
     <bookmark url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/js/plugins/dropzone/dropzone.js" line="1075" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/qesManage/displayQuestionnaire.html" line="156" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fe54f503-f484-4c95-9b43-cda9857c44c4" name="Default" comment="图片选择题题型">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Spring_4_3_10_RELEASE.xml" afterPath="" />
+    <list default="true" id="fe54f503-f484-4c95-9b43-cda9857c44c4" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/controller/UploadPictureController.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/controller/UploadPictureController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/util/DownloadPicUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/util/DownloadPicUtil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/util/QesManageVODOUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/util/QesManageVODOUtil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/CreateQesResources/script/exam/editQesObj.js" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/CreateQesResources/script/exam/editQesObj.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/qesManage/displayQuestionnaire.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/qesManage/displayQuestionnaire.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/qesManage/editQesPaper.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/qesManage/editQesPaper.html" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -54,7 +59,100 @@
     <favorites_list name="questionnaire" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <splitter split-orientation="horizontal" split-proportion="0.54317695">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="UploadPictureController.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/controller/UploadPictureController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="660">
+                  <caret line="73" column="61" lean-forward="true" selection-start-line="73" selection-start-column="61" selection-end-line="73" selection-end-column="61" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="DownloadPicUtil.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/util/DownloadPicUtil.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="51">
+                  <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="QesManageVODOUtil.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/util/QesManageVODOUtil.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="366">
+                  <caret line="319" column="51" lean-forward="true" selection-start-line="319" selection-start-column="51" selection-end-line="319" selection-end-column="51" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="QesManageService.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/service/QesManageService.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="735">
+                  <caret line="42" column="17" lean-forward="false" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="17" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="displayQuestionnaire.html" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/qesManage/displayQuestionnaire.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="425">
+                  <caret line="158" column="75" lean-forward="true" selection-start-line="158" selection-start-column="75" selection-end-line="158" selection-end-column="75" />
+                  <folding>
+                    <element signature="n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                    <element signature="n#div#1;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                    <element signature="n#div#2;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                    <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#1;n#div#4;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#4;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#1;n#div#5;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#5;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="QesManageRestController.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/controller/QesManageRestController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1281">
+                  <caret line="73" column="34" lean-forward="false" selection-start-line="73" selection-start-column="34" selection-end-line="73" selection-end-column="34" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="displayQuestionnaire.html" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/qesManage/displayQuestionnaire.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="324">
+                  <caret line="193" column="50" lean-forward="false" selection-start-line="193" selection-start-column="50" selection-end-line="193" selection-end-column="50" />
+                  <folding>
+                    <element signature="n#div#2;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                    <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#1;n#div#4;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#4;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#1;n#div#5;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#5;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -72,9 +170,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>preOrNextQes = new PreOrNextQes</find>
-      <find>scanPaper</find>
-      <find>预计</find>
       <find>KeyNode</find>
       <find>valueNode</find>
       <find>topicACtrlFn</find>
@@ -84,7 +179,6 @@
       <find>itmetid</find>
       <find>tid</find>
       <find>noop</find>
-      <find>dropzone</find>
       <find>getDataTempId</find>
       <find>dz-preview</find>
       <find>classList</find>
@@ -102,6 +196,10 @@
       <find>removedfile</find>
       <find>console.log</find>
       <find>resize</find>
+      <find>dropzone</find>
+      <find>displayQesVO</find>
+      <find>questionOptionVOList</find>
+      <find>replace</find>
     </findStrings>
     <replaceStrings>
       <replace>displayQuestionnaireVO</replace>
@@ -137,6 +235,46 @@
         <entry key="$PROJECT_DIR$" value="backUp" />
       </map>
     </option>
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="Harvey" />
+              </list>
+            </value>
+          </entry>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/Harvey" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="master" />
+              </list>
+            </value>
+          </entry>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/master" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -146,9 +284,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/myJs/listAllMissions.js" />
-        <option value="$PROJECT_DIR$/src/main/resources/module/researchManage/mapper/ResearchMissionMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/SystemAdminIndex.html" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/CenterAdminIndex.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/qesTemplateManage/controller/QesTemplateRestController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/qesTemplateManage/displayTemplate.html" />
@@ -175,7 +310,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/service/AnswerTxtExportService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/util/ResultUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/enums/CodeForVOEnum.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/service/impl/QesManageServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/userManage/controller/UserPicController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/util/CheckUploadFileUtil.java" />
         <option value="$PROJECT_DIR$/src/main/resources/spring/applicationContext-transaction.xml" />
@@ -189,14 +323,18 @@
         <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/util/PathParserUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/constant/CONSTANT.java" />
         <option value="$PROJECT_DIR$/src/main/resources/properties/config.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/util/DownloadPicUtil.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/plugins/dropzone/dropzone.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/CreateQesResources/script/dropZone/my-dropzone.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/qesManage/editQesPaper.html" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/CreateQesResources/script/uploadUtil.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/myJs/editQesPaper.js" />
-        <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/controller/UploadPictureController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/util/DownloadPicUtil.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/CreateQesResources/script/exam/editQesObj.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/service/impl/QesManageServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/util/QesManageVODOUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/qesManage/editQesPaper.html" />
+        <option value="H:/Maven-3.3.9/localRepository/org/thymeleaf/thymeleaf/3.0.3.RELEASE/thymeleaf-3.0.3.RELEASE.jar!/org/thymeleaf/expression/Strings.class" />
+        <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/controller/UploadPictureController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/qesManage/displayQuestionnaire.html" />
       </list>
     </option>
   </component>
@@ -252,7 +390,8 @@
     <option name="skipTests" value="true" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-4" />
+    <option name="x" value="1821" />
+    <option name="y" value="77" />
     <option name="width" value="1378" />
     <option name="height" value="735" />
   </component>
@@ -314,6 +453,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -338,156 +479,29 @@
               <item name="questionnaire" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="questionnaire" type="b2602c69:ProjectViewProjectNode" />
               <item name="questionnaire" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="module" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="questionnaire" type="b2602c69:ProjectViewProjectNode" />
               <item name="questionnaire" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="questionnaire" type="b2602c69:ProjectViewProjectNode" />
-              <item name="questionnaire" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="questionnaire" type="b2602c69:ProjectViewProjectNode" />
-              <item name="questionnaire" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="questionnaire" type="b2602c69:ProjectViewProjectNode" />
-              <item name="questionnaire" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="error" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="questionnaire" type="b2602c69:ProjectViewProjectNode" />
-              <item name="questionnaire" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="module" type="462c0819:PsiDirectoryNode" />
               <item name="login" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="questionnaire" type="b2602c69:ProjectViewProjectNode" />
-              <item name="questionnaire" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="notice" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="questionnaire" type="b2602c69:ProjectViewProjectNode" />
-              <item name="questionnaire" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="qesManage" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="questionnaire" type="b2602c69:ProjectViewProjectNode" />
-              <item name="questionnaire" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="qesTemplateManage" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="questionnaire" type="b2602c69:ProjectViewProjectNode" />
-              <item name="questionnaire" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="researchManage" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="questionnaire" type="b2602c69:ProjectViewProjectNode" />
-              <item name="questionnaire" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="resultAnalysis" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="questionnaire" type="b2602c69:ProjectViewProjectNode" />
-              <item name="questionnaire" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="roleAuthority" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="questionnaire" type="b2602c69:ProjectViewProjectNode" />
-              <item name="questionnaire" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="statisticalAnalysis" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="questionnaire" type="b2602c69:ProjectViewProjectNode" />
-              <item name="questionnaire" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="upload" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="questionnaire" type="b2602c69:ProjectViewProjectNode" />
-              <item name="questionnaire" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="userManage" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope">
         <subPane subId="Project Files">
           <expand>
@@ -504,7 +518,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -516,7 +529,7 @@
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="editQesPaper&#9;FILE&#9;file://F:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/js/myJs/editQesPaper.js&#10;dropzone.min&#9;FILE&#9;file://F:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/js/CreateQesResources/script/dropZone/dropzone.min.js&#10;drop&#9;FILE&#9;file://F:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/js/plugins/dropzone/dropzone.js&#10;dropz&#9;FILE&#9;file://F:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/js/plugins/dropzone/dropzone.js&#10;upload&#9;FILE&#9;file://F:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/js/CreateQesResources/script/uploadUtil.js&#10;dropzone&#9;FILE&#9;file://F:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/js/plugins/dropzone/dropzone.js&#10;confi&#9;FILE&#9;file://F:/Project/questionnaire/questionnaire/src/main/resources/properties/config.properties&#10;logba&#9;FILE&#9;file://F:/Project/questionnaire/questionnaire/src/main/resources/logback.xml&#10;logback&#9;FILE&#9;file://F:/Project/questionnaire/questionnaire/src/main/resources/logback.xml&#10;crea&#9;FILE&#9;file://F:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/js/myJs/createQesPaper.js&#10;create&#9;FILE&#9;file://F:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/js/myJs/createQesPaper.js&#10;Const&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/constant/CONSTANT.java&#10;origin&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/js/myJs/originData.js&#10;Re&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/test/java/com/questionnaire/ssm/module/resultAnalysis/mapper/ResultExportMapperTest.java&#10;Pagination&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/service/impl/PaginationDisplayServiceImpl.java&#10;Consta&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/constant/CONSTANT.java&#10;IsOut&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/questionnaireManage/controller/IsOutOfIndex.java&#10;home&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/home.html&#10;listnoti&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/notice/listNotice.html&#10;list&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/qesTemplateManage/listPublicTemplate.html&#10;IsO&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/questionnaireManage/controller/IsOutOfIndex.java&#10;dis&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/qesManage/displayQuestionnaire.html&#10;listpubl&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/qesTemplateManage/listPublicTemplate.html&#10;Pu&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/qesTemplateManage/controller/PublicTemplateRestController.java&#10;/qesTemplateManage/getQesTe&#9;null&#9;null&#10;/questionnaireManage/displayQuestionnaire&#9;null&#9;null&#10;Glo&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/handle/GlobalExceptionHandler.java&#10;/researchManage/listQuestionnaireInfo&#9;null&#9;null&#10;createREs&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/researchManage/createResearch.html&#10;listPr&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/qesTemplateManage/listPrivateTemplate.html&#10;Code&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/enums/CodeForVOEnum.java&#10;/resultAnalysis/listPrimaryData&#9;null&#9;null&#10;/statisticalAnalysis/getQesPaperAnalyzeResult&#9;null&#9;null&#10;Con&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/constant/CONSTANT.java&#10;questionty&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/questionnaireManage/enums/QuestionTypeEnum.java&#10;/researchManage/createResearchMission&#9;null&#9;null&#10;missionMan&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/researchManage/missionManage.html&#10;question&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/js/myJs/listQuestionnaire.js&#10;qesManage&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/js/myJs/qesManage.js&#10;/researchManage/listMission&#9;null&#9;null&#10;createREsea&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/researchManage/createResearch.html&#10;createMission&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/notice/createNoticeForMission.html&#10;creater&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/researchManage/createResearch.html&#10;Constant&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/constant/CONSTANT.java&#10;/researchManage/createResearchView&#9;null&#9;null&#10;ConSTA&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/constant/CONSTANT.java&#10;displa&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/qesManage/displayQuestionnaire.html&#10;getList&#9;PSI&#9;JAVA://com.questionnaire.ssm.module.questionnaireManage.controller.QesManageController#getListMyQesPaperView&#10;/resultAnalysis/getAnswerPaperInfo&#9;null&#9;null&#10;display&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/qesManage/displayQuestionnaire.html" />
+    <property name="SearchEverywhereHistoryKey" value="/QesManageRest/getEditQesPaperData&#9;null&#9;null&#10;edi&#9;FILE&#9;file://F:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/js/CreateQesResources/script/exam/editQesObj.js&#10;edit&#9;FILE&#9;file://F:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/js/myJs/editQesPaper.js&#10;displayQuestionnaire&#9;FILE&#9;file://F:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/qesManage/displayQuestionnaire.html&#10;/questionnaireManage/displayQuestionnaire/&#9;null&#9;null&#10;editQesPaper&#9;FILE&#9;file://F:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/js/myJs/editQesPaper.js&#10;dropzone.min&#9;FILE&#9;file://F:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/js/CreateQesResources/script/dropZone/dropzone.min.js&#10;drop&#9;FILE&#9;file://F:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/js/plugins/dropzone/dropzone.js&#10;dropz&#9;FILE&#9;file://F:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/js/plugins/dropzone/dropzone.js&#10;upload&#9;FILE&#9;file://F:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/js/CreateQesResources/script/uploadUtil.js&#10;dropzone&#9;FILE&#9;file://F:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/js/plugins/dropzone/dropzone.js&#10;confi&#9;FILE&#9;file://F:/Project/questionnaire/questionnaire/src/main/resources/properties/config.properties&#10;logba&#9;FILE&#9;file://F:/Project/questionnaire/questionnaire/src/main/resources/logback.xml&#10;logback&#9;FILE&#9;file://F:/Project/questionnaire/questionnaire/src/main/resources/logback.xml&#10;crea&#9;FILE&#9;file://F:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/js/myJs/createQesPaper.js&#10;create&#9;FILE&#9;file://F:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/js/myJs/createQesPaper.js&#10;Const&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/constant/CONSTANT.java&#10;origin&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/js/myJs/originData.js&#10;Re&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/test/java/com/questionnaire/ssm/module/resultAnalysis/mapper/ResultExportMapperTest.java&#10;Pagination&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/service/impl/PaginationDisplayServiceImpl.java&#10;Consta&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/constant/CONSTANT.java&#10;IsOut&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/questionnaireManage/controller/IsOutOfIndex.java&#10;home&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/home.html&#10;listnoti&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/notice/listNotice.html&#10;list&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/qesTemplateManage/listPublicTemplate.html&#10;IsO&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/questionnaireManage/controller/IsOutOfIndex.java&#10;dis&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/qesManage/displayQuestionnaire.html&#10;listpubl&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/qesTemplateManage/listPublicTemplate.html&#10;Pu&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/qesTemplateManage/controller/PublicTemplateRestController.java&#10;/qesTemplateManage/getQesTe&#9;null&#9;null&#10;/questionnaireManage/displayQuestionnaire&#9;null&#9;null&#10;Glo&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/handle/GlobalExceptionHandler.java&#10;/researchManage/listQuestionnaireInfo&#9;null&#9;null&#10;createREs&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/researchManage/createResearch.html&#10;listPr&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/qesTemplateManage/listPrivateTemplate.html&#10;Code&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/enums/CodeForVOEnum.java&#10;/resultAnalysis/listPrimaryData&#9;null&#9;null&#10;/statisticalAnalysis/getQesPaperAnalyzeResult&#9;null&#9;null&#10;Con&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/constant/CONSTANT.java&#10;questionty&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/questionnaireManage/enums/QuestionTypeEnum.java&#10;/researchManage/createResearchMission&#9;null&#9;null&#10;missionMan&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/researchManage/missionManage.html&#10;question&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/js/myJs/listQuestionnaire.js&#10;qesManage&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/js/myJs/qesManage.js&#10;/researchManage/listMission&#9;null&#9;null&#10;createREsea&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/researchManage/createResearch.html&#10;createMission&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/notice/createNoticeForMission.html&#10;creater&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/researchManage/createResearch.html&#10;Constant&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/constant/CONSTANT.java&#10;/researchManage/createResearchView&#9;null&#9;null" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
@@ -1357,7 +1370,9 @@
       <workItem from="1511073609321" duration="655000" />
       <workItem from="1511227353368" duration="531000" />
       <workItem from="1511228528440" duration="3610000" />
-      <workItem from="1511234011275" duration="132000" />
+      <workItem from="1511234011275" duration="1717000" />
+      <workItem from="1511242540317" duration="9226000" />
+      <workItem from="1511260473302" duration="8186000" />
     </task>
     <task id="LOCAL-00001" summary="首页动态开始">
       <created>1494416498066</created>
@@ -1611,7 +1626,14 @@
       <option name="project" value="LOCAL" />
       <updated>1500792429429</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="图片选择题题型">
+      <created>1511234154865</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1511234154865</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1647,7 +1669,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="625608000" />
+    <option name="totallyTimeSpent" value="644605000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1659,11 +1681,12 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="1358" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45869565" sideWeight="0.5261194" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45821327" sideWeight="0.5261194" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32708934" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="JRebel Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32242227" sideWeight="0.5151286" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.60590017" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="JRebel Executor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.63993454" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1676,18 +1699,18 @@
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32980332" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36630434" sideWeight="0.4738806" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45434782" sideWeight="0.4738806" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32826087" sideWeight="0.4969743" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32826087" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6673913" sideWeight="0.49092284" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.667147" sideWeight="0.49092284" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.48414984" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3535188" sideWeight="0.49394855" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.4969743" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20202559" sideWeight="0.27608696" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35302594" sideWeight="0.49394855" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32708934" sideWeight="0.4969743" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.118336886" sideWeight="0.27608696" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23373677" sideWeight="0.6439024" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="JRebel" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1172466" sideWeight="0.723913" order="7" side_tool="true" content_ui="tabs" />
@@ -1701,7 +1724,7 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Dynamic Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32980332" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.425" sideWeight="0.49546143" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42363113" sideWeight="0.49546143" order="14" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1812,7 +1835,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="192" />
+      <option name="time" value="200" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
@@ -1832,57 +1855,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/controller/QesManageController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3520">
-          <caret line="198" column="33" lean-forward="false" selection-start-line="198" selection-start-column="33" selection-end-line="198" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/qesTemplateManage/controller/PublicTemplateRestController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1460">
-          <caret line="73" column="28" lean-forward="true" selection-start-line="73" selection-start-column="28" selection-end-line="73" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/controller/IsOutOfIndex.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/qesTemplateManage/controller/PrivateTemplateRestController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="26" column="57" lean-forward="false" selection-start-line="26" selection-start-column="57" selection-end-line="26" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/service/impl/PaginationDisplayServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="66" column="19" lean-forward="true" selection-start-line="66" selection-start-column="19" selection-end-line="66" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/controller/ResultAnalysisController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="724">
-          <caret line="125" column="20" lean-forward="true" selection-start-line="125" selection-start-column="20" selection-end-line="125" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/mapper/ResultAnalysisMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/questionnaire/ssm/module/generated/mapper/UserMapperTest.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_72/src.zip!/java/lang/System.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/pojo/AnswerTxtExportDO.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1968,13 +1940,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="274">
           <caret line="55" column="4" lean-forward="false" selection-start-line="55" selection-start-column="4" selection-end-line="55" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/service/impl/QesManageServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-13">
-          <caret line="312" column="93" lean-forward="false" selection-start-line="312" selection-start-column="93" selection-end-line="312" selection-end-column="93" />
         </state>
       </provider>
     </entry>
@@ -2162,33 +2127,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/js/myJs/editQesPaper.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1664">
-          <caret line="129" column="22" lean-forward="false" selection-start-line="129" selection-start-column="22" selection-end-line="129" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/util/DownloadPicUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="59" column="43" lean-forward="true" selection-start-line="59" selection-start-column="43" selection-end-line="59" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/js/myJs/createQesPaper.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="819">
           <caret line="39" column="43" lean-forward="true" selection-start-line="39" selection-start-column="43" selection-end-line="39" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/qesManage/editQesPaper.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="712" column="39" lean-forward="false" selection-start-line="712" selection-start-column="27" selection-end-line="712" selection-end-column="39" />
           <folding />
         </state>
       </provider>
@@ -2200,27 +2142,125 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/js/CreateQesResources/script/exam/exam.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6825">
+          <caret line="325" column="46" lean-forward="true" selection-start-line="325" selection-start-column="46" selection-end-line="325" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/pojo/QuestionVO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/pojo/QuestionOptionVO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="8" column="30" lean-forward="true" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/js/myJs/editQesPaper.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="122" column="57" lean-forward="false" selection-start-line="122" selection-start-column="57" selection-end-line="122" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/qesManage/editQesPaper.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="361" column="50" lean-forward="true" selection-start-line="361" selection-start-column="50" selection-end-line="361" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/js/CreateQesResources/script/exam/editQesObj.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2625">
-          <caret line="489" column="33" lean-forward="false" selection-start-line="489" selection-start-column="33" selection-end-line="489" selection-end-column="33" />
+        <state relative-caret-position="-487">
+          <caret line="430" column="22" lean-forward="true" selection-start-line="430" selection-start-column="22" selection-end-line="430" selection-end-column="22" />
+          <folding>
+            <marker date="1511246993014" expanded="true" signature="7158:7173" ph="..." />
+            <marker date="1511246993014" expanded="true" signature="8641:8656" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/service/impl/QesManageServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="141" column="60" lean-forward="false" selection-start-line="141" selection-start-column="60" selection-end-line="141" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/controller/QesManageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="87">
+          <caret line="111" column="0" lean-forward="false" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://H:/Maven-3.3.9/localRepository/org/thymeleaf/thymeleaf/3.0.3.RELEASE/thymeleaf-3.0.3.RELEASE.jar!/org/thymeleaf/expression/Strings.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="818" column="63" lean-forward="false" selection-start-line="818" selection-start-column="63" selection-end-line="818" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/controller/QesManageRestController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1281">
+          <caret line="73" column="34" lean-forward="false" selection-start-line="73" selection-start-column="34" selection-end-line="73" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/service/QesManageService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="735">
+          <caret line="42" column="17" lean-forward="false" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/util/QesManageVODOUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="366">
+          <caret line="319" column="51" lean-forward="true" selection-start-line="319" selection-start-column="51" selection-end-line="319" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/util/DownloadPicUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/controller/UploadPictureController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="24" column="25" lean-forward="true" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
+        <state relative-caret-position="660">
+          <caret line="73" column="61" lean-forward="true" selection-start-line="73" selection-start-column="61" selection-end-line="73" selection-end-column="61" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/js/CreateQesResources/script/exam/exam.js">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/qesManage/displayQuestionnaire.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6825">
-          <caret line="325" column="46" lean-forward="true" selection-start-line="325" selection-start-column="46" selection-end-line="325" selection-end-column="46" />
-          <folding />
+        <state relative-caret-position="324">
+          <caret line="193" column="50" lean-forward="false" selection-start-line="193" selection-start-column="50" selection-end-line="193" selection-end-column="50" />
+          <folding>
+            <element signature="n#div#2;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#1;n#div#4;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#4;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#1;n#div#5;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#5;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

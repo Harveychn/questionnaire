@@ -5,19 +5,13 @@ import com.questionnaire.ssm.module.global.pojo.ResponsePkt;
 import com.questionnaire.ssm.module.global.util.CheckPicUtil;
 import com.questionnaire.ssm.module.global.util.DownloadPicUtil;
 import com.questionnaire.ssm.module.global.util.ResultUtil;
-import org.apache.commons.io.FileUtils;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.File;
-import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
@@ -63,8 +57,21 @@ public class UploadPictureController {
      * @throws Exception
      */
     @GetMapping(value = "/download/picture/qesPaper")
-    public String downLoadPic(HttpServletResponse response, String picRelativePath) throws Exception {
+    public String downloadPic(String picRelativePath) throws Exception {
         picRelativePath = picRelativePath.replace("/", "\\");
-        return DownloadPicUtil.outputPicStream(response, CONSTANT.UPLOAD_PICTURE_QUESTION, picRelativePath);
+        return DownloadPicUtil.getPicBase64Str(CONSTANT.UPLOAD_PICTURE_QUESTION, picRelativePath);
+    }
+
+    /**
+     * 用于前台引用图片文件
+     *
+     * @param picRelativePath 图片在服务器的相对路径
+     * @return
+     * @throws Exception
+     */
+    @GetMapping(value = "/refPic")
+    public ResponseEntity<byte[]> refPicDest(HttpServletRequest request, String picRelativePath) throws Exception {
+        picRelativePath = picRelativePath.replace("/", "\\");
+        return DownloadPicUtil.download(CONSTANT.UPLOAD_PICTURE_QUESTION, picRelativePath);
     }
 }

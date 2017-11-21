@@ -21,7 +21,8 @@ public class DownloadPicUtil {
     /**
      * 根据路径下载图片文件
      *
-     * @param picRelativePath
+     * @param servAbsolutePath 服务器文件夹绝对路径
+     * @param picRelativePath  服务器文件夹相对路径
      * @return
      * @throws IOException
      */
@@ -46,7 +47,15 @@ public class DownloadPicUtil {
         return new ResponseEntity<>(fileByteArray, headers, HttpStatus.CREATED);
     }
 
-    public static String outputPicStream(HttpServletResponse response, String servAbsolutePath, String picRelativePath) throws IOException {
+    /**
+     * 获取图片base64格式字符串的图片格式
+     *
+     * @param servAbsolutePath 服务器文件夹路径
+     * @param picRelativePath  服务器相对路径
+     * @return
+     * @throws IOException
+     */
+    public static String getPicBase64Str(String servAbsolutePath, String picRelativePath) throws IOException {
         String filePath = null;
         if (picRelativePath == null) {
             picRelativePath = CONSTANT.getUserDefaultPicture();
