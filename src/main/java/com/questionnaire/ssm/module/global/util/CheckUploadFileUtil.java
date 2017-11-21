@@ -50,7 +50,7 @@ public class CheckUploadFileUtil {
             File fileFolder = new File(folderPath);
             //文件目录不存在则创建目录
             if (!fileFolder.exists()) {
-                fileFolder.mkdir();
+                fileFolder.mkdirs();
             }
 
             tempFilePath = folderPath + "/" + fileSdf.format(new Date()) + "-" + fileOriginName;

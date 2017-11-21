@@ -1,12 +1,11 @@
 ﻿var vars = {
-    // jsPath: 'CreateQesResources/script/',
-    // jsTmp: 'CreateQesResources/script/artTemplate/',
-    // cssPath: 'CreateQesResources/skin/',
-    // isLayer: 'CreateQesResources/script/layer/'
     jsPath: '../js/CreateQesResources/script/',
     jsTmp: '../js/CreateQesResources/script/artTemplate/',
     cssPath: '../js/CreateQesResources/skin/',
-    isLayer: '../js/CreateQesResources/script/layer/'
+    isLayer: '../js/CreateQesResources/script/layer/',
+    dropZoneCss: '../js/CreateQesResources/skin/dropZone/',
+    dropZoneJs: '../js/CreateQesResources/script/dropZone/'
+
 };
 
 //扩展
@@ -26,7 +25,10 @@ var fnExtend = {
 
 //插入css文件
 fnExtend.includeFile(vars.cssPath, ['base.css', 'content.css', 'blue.css', 'bootstrap.min.css']);
+fnExtend.includeFile(vars.dropZoneCss, ['basic.min.css', 'dropzone.min.css']);
 //插入js文件
-fnExtend.includeFile(vars.jsPath, ['jquery-ui.min.js', 'dcselect.js']);
+fnExtend.includeFile(vars.jsPath, ['jquery-ui.min.js', 'dcselect.js', 'uploadUtil.js']);
 fnExtend.includeFile(vars.isLayer, ['layer.js']);
 fnExtend.includeFile(vars.jsTmp, ['template.js']);
+fnExtend.includeFile(vars.dropZoneJs, ['dropzone.min.js']);
+

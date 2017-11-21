@@ -10,6 +10,7 @@ public enum CodeForVOEnum {
     UNKNOWN_ERROR(500, "系统未知错误!"),
     REQUEST_SUCCESS(200, "请求成功!"),
     REQUEST_ERROR(400, "请求失败!"),
+    BAD_REQUEST(401, "请求无效!"),
 
     /*操作数据库信息编码*/
     DB_SELECT_NO_MESSAGE(-5, "没有查询到您想要的信息"),

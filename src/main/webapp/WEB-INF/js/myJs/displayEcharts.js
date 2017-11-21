@@ -3,7 +3,11 @@
  */
 //获取展示表格区域的ID
 var dom = document.getElementById("echartsArea");
+<<<<<<< HEAD
+var myChart = echarts.init(dom, 'infographic');
+=======
 var myChart = echarts.init(dom);
+>>>>>>> f4832beb225cfa9825c19f56d62df590216346cc
 
 var $curQuestionContent = $('#curQuestionContent');
 var $questionList = $('#questionList');
@@ -13,7 +17,15 @@ var $questionTableData = $('#questionTableData');
 setExportDataAttr();
 window.onload = function () {
     TableExport.init();
+<<<<<<< HEAD
+};
+
+$(window).resize(function () {
+    myChart.resize();
+});
+=======
 }
+>>>>>>> f4832beb225cfa9825c19f56d62df590216346cc
 
 //当前问卷结果分析数据
 var analyzeResultData;
@@ -76,6 +88,8 @@ $(function () {
 
 var curQuestionAnalyzeData = {};
 
+<<<<<<< HEAD
+=======
 /**
  * 初始化展示Echarts视图
  */
@@ -161,6 +175,7 @@ function initEchartData() {
     setEchartOption(initOption);
 }
 
+>>>>>>> f4832beb225cfa9825c19f56d62df590216346cc
 function clickQuestionListItem(qesId) {
     for (var i = 0; i < analyzeResultData.length; i++) {
         //设置问题栏背景色
@@ -211,6 +226,28 @@ function setTableBodyData(i) {
 }
 
 function dynamicDataChange(dynamicDataChange) {
+<<<<<<< HEAD
+    var dynamicOption = barOp({
+        xData: dynamicDataChange.categories,
+        seriesData: dynamicDataChange.data
+    });
+    setEchartOption(dynamicOption);
+}
+
+/**
+ * 初始化展示Echarts视图
+ */
+function initEchartData() {
+    var initData = analyzeResultData[0];
+    curQuestionAnalyzeData.categories = initData.optionList;
+    curQuestionAnalyzeData.data = initData.valueList;
+    myChart.hideLoading();
+    var initOption = barOp({
+        xData: curQuestionAnalyzeData.categories,
+        seriesData: curQuestionAnalyzeData.data
+    });
+    setEchartOption(initOption);
+=======
 
     var dynamicOption = {
         tooltip: {
@@ -287,6 +324,7 @@ function dynamicDataChange(dynamicDataChange) {
 
     };
     setEchartOption(dynamicOption);
+>>>>>>> f4832beb225cfa9825c19f56d62df590216346cc
 }
 
 //点击表格按钮后样式
@@ -300,13 +338,55 @@ $('#tableBtn').on('click', function () {
 
 //点击柱状图
 $('#histogramBtn').on('click', function () {
+<<<<<<< HEAD
+    exStatus('#pieChartBtn', this);
+
+=======
     $(this).attr('class', 'btn btn-outline btn-clicked');
     $('#pieChartBtn').attr('class', 'btn btn-outline btn-default');
+>>>>>>> f4832beb225cfa9825c19f56d62df590216346cc
     myChart.showLoading();
     //设置数据
     myChart.hideLoading();
     //柱状图 option
+<<<<<<< HEAD
+    var barOption = barOp({
+        xData: curQuestionAnalyzeData.categories,
+        seriesData: curQuestionAnalyzeData.data
+    });
+    setEchartOption(barOption);
+});
+
+//点击扇形图后样式
+$('#pieChartBtn').on('click', function () {
+    exStatus('#histogramBtn', this);
+    myChart.showLoading();
+    var resultData = [];
+    var dataLength = curQuestionAnalyzeData.data.length;
+    for (var i = 0; i < dataLength; i++) {
+        var dataItem = {};
+        dataItem.name = curQuestionAnalyzeData.categories[i];
+        dataItem.value = curQuestionAnalyzeData.data[i];
+        resultData.push(dataItem);
+    }
+    myChart.hideLoading();
+    //扇形图 option
+    var pieOption = pieOp({
+        legends: curQuestionAnalyzeData.categories,
+        seriesData: resultData
+    });
+    setEchartOption(pieOption);
+});
+
+/**
+ * 柱状图选项
+ * @param optionData
+ */
+function barOp(optionData) {
+    return {
+=======
     var histogramOption = {
+>>>>>>> f4832beb225cfa9825c19f56d62df590216346cc
         tooltip: {
             trigger: 'axis',
             axisPointer: {
@@ -330,6 +410,28 @@ $('#histogramBtn').on('click', function () {
         },
         grid: {
             left: '3%',
+<<<<<<< HEAD
+            right: '3%',
+            bottom: '15%',
+            containLabel: true,
+            // height: '60%'
+        },
+        xAxis: {
+            type: 'category',
+            axisLabel: {
+                rotate: 45,
+                margin: 10,
+                showMinLabel: true,
+                showMaxLabel: true,
+                interval:0,
+                textStyle:{
+                    fontWeight:'lighter',
+                    fontSize:12,
+                    baseline:'bottom'
+                }
+            },
+            data: optionData.xData
+=======
             right: '4%',
             bottom: '3%',
             containLabel: true
@@ -339,6 +441,7 @@ $('#histogramBtn').on('click', function () {
             //动态数据
             // data: []
             data: curQuestionAnalyzeData.categories
+>>>>>>> f4832beb225cfa9825c19f56d62df590216346cc
         },
         yAxis: {
             position: 'top',
@@ -349,7 +452,11 @@ $('#histogramBtn').on('click', function () {
             //动态数据
             {
                 type: 'bar',
+<<<<<<< HEAD
+                data: optionData.seriesData,
+=======
                 data: curQuestionAnalyzeData.data,
+>>>>>>> f4832beb225cfa9825c19f56d62df590216346cc
                 itemStyle: {
                     normal: {
                         //设置随机颜色
@@ -363,6 +470,10 @@ $('#histogramBtn').on('click', function () {
                             return colorList[params.dataIndex]
 
                         },
+<<<<<<< HEAD
+
+=======
+>>>>>>> f4832beb225cfa9825c19f56d62df590216346cc
                         //显示位置和显示格式的设置了
                         label: {
                             show: true,
@@ -376,6 +487,17 @@ $('#histogramBtn').on('click', function () {
                 barWidth: 50
             }
         ]
+<<<<<<< HEAD
+    }
+};
+
+/**
+ * 扇形图选项
+ * @param optionData
+ */
+function pieOp(optionData) {
+    return {
+=======
     };
     setEchartOption(histogramOption);
 });
@@ -396,6 +518,7 @@ $('#pieChartBtn').on('click', function () {
     myChart.hideLoading();
     //扇形图 option
     var pieChartOption = {
+>>>>>>> f4832beb225cfa9825c19f56d62df590216346cc
         tooltip: {
             trigger: 'item',
             formatter: "{a} <br/>{b} : {c} ({d}%)"
@@ -416,6 +539,19 @@ $('#pieChartBtn').on('click', function () {
             }
         },
         legend: {
+<<<<<<< HEAD
+            type: 'scroll',
+            bottom: 10,
+            data: optionData.legends
+        },
+        series: [{
+            name: '比例',
+            type: 'pie',
+            radius: '40%',
+            center: ['50%', '50%'],
+            //动态数据
+            data: optionData.seriesData,
+=======
             orient: 'vertical',
             left: 'left',
             right: '20%',
@@ -433,11 +569,16 @@ $('#pieChartBtn').on('click', function () {
             center: ['60%', '60%'],
             //动态数据
             data: resultData,
+>>>>>>> f4832beb225cfa9825c19f56d62df590216346cc
             label: {
                 normal: {
                     show: true,
                     position: 'outside',
+<<<<<<< HEAD
+                    formatter: '{b} - {d}%'
+=======
                     formatter: '{b} - {d}%',
+>>>>>>> f4832beb225cfa9825c19f56d62df590216346cc
                 },
                 emphasis: {
                     show: true
@@ -456,9 +597,19 @@ $('#pieChartBtn').on('click', function () {
                 }
             }
         }]
+<<<<<<< HEAD
+    }
+}
+
+function exStatus(btnId, element) {
+    $(element).attr('class', 'btn btn-outline btn-clicked');
+    $(btnId).attr('class', 'btn btn-outline btn-default');
+}
+=======
     };
     setEchartOption(pieChartOption);
 });
+>>>>>>> f4832beb225cfa9825c19f56d62df590216346cc
 
 /**
  *设置echarts样式
@@ -468,6 +619,9 @@ function setEchartOption(optionType) {
     if (optionType && typeof optionType === "object") {
         myChart.setOption(optionType, true);
     }
+<<<<<<< HEAD
+}
+=======
 }
 
 // 条形图样式备份
@@ -542,3 +696,4 @@ function setEchartOption(optionType) {
 //         }
 //     ]
 // };
+>>>>>>> f4832beb225cfa9825c19f56d62df590216346cc

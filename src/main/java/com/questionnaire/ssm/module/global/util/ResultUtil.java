@@ -44,4 +44,23 @@ public class ResultUtil {
         responsePkt.setMessage(message);
         return responsePkt;
     }
+
+    /**
+     * 请求失败
+     *
+     * @return
+     */
+    public static ResponsePkt error() {
+        return error(CodeForVOEnum.REQUEST_ERROR.getCode(), CodeForVOEnum.REQUEST_ERROR.getMessage());
+    }
+
+    /**
+     * 无效请求
+     *
+     * @return
+     */
+    public static ResponsePkt badRequest() {
+        return error(CodeForVOEnum.BAD_REQUEST.getCode(), CodeForVOEnum.BAD_REQUEST.getMessage());
+    }
+
 }

@@ -37,6 +37,8 @@
 </head>
 
 <body>
+<div id="particles-js" style="position: absolute;width: 100%;height: 1080px;"></div>
+
 <div class="container">
     <div class="panel panel-primary">
         <div class="panel-heading">
@@ -46,12 +48,12 @@
         </div>
         <div class="panel-body">
             <!--左侧题目-->
-            <div class="col-xs-3 col-sm-3 col-md-3">
+            <div class="col-xs-3 col-sm-3 col-md-3" style="height: 800px;overflow-y: scroll;">
                 <ul id="questionList" class="nav nav-pills nav-stacked list-group">
                 </ul>
             </div>
             <!--右侧展示-->
-            <div class="col-xs-8 col-sm-8 col-md-8 ">
+            <div class="col-xs-9 col-sm-9 col-md-9">
                 <div class="panel panel-default">
                     <div class="panel-heading" id="curQuestionContent">
                         第 [题目序号] 题 [题目内容]
@@ -114,7 +116,10 @@
                         <!--Echarts表格-->
                         <div class="row">
                             <div class="col-xs-12 col-sm-12">
-                                <div id="echartsArea" style="width: 700px;height:550px;"></div>
+                                <div style="height: 700px;z-index: 900;">
+                                    <div id="echartsArea"
+                                         style="width: 100%;height:100%;border: 2px solid whitesmoke;"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -129,7 +134,8 @@
 <script src="../../js/bootstrap.min.js"></script>
 <script src="../../js/plugins/layer/layer.min.js"></script>
 <!--echarts功能-->
-<script src="../../js/plugins/echarts/echarts.min.js"></script>
+<script src="../../js/echarts.min.js"></script>
+<script src="../../js/infographic.js"></script>
 
 <!--table-export功能-->
 <script src="../../js/plugins/table-export/FileSaver/FileSaver.min.js"></script>
@@ -137,6 +143,9 @@
 <script src="../../js/plugins/table-export/js-xlsx/xlsx.core.min.js"></script>
 <script src="../../js/plugins/table-export/tableExport.min.js"></script>
 <script src="../../js/plugins/table-export/table-export.js"></script>
+
+<!--<script src="../../js/plugins/particles/particles.min.js"></script>-->
+<!--<script src="../../js/plugins/particles/app.js"></script>-->
 
 <script src="../../js/myJs/displayEcharts.js"></script>
 </body>

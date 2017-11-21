@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="questionnaire:war exploded" />
+      <artifact name="questionnaire:war" />
     </artifacts-to-build>
   </component>
   <component name="BookmarkManager">
@@ -20,16 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fe54f503-f484-4c95-9b43-cda9857c44c4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/controller/ResultExportController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/mapper/ResultExportMapper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/pojo/AnswerTxtExportDO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/pojo/ExportTxtDataDTO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/service/AnswerTxtExportService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/service/impl/AnswerTxtExportServiceImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/module/resultAnalysis/mapper/ResultExportMapper.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/myJs/originData.js" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/myJs/originData.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/service/AnswerTxtExportService.java" afterPath="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/service/AnswerTxtExportService.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -62,120 +54,7 @@
     <favorites_list name="questionnaire" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="UserManageController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/userManage/controller/UserManageController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="119" column="56" lean-forward="true" selection-start-line="119" selection-start-column="56" selection-end-line="119" selection-end-column="56" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ResultExportController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/controller/ResultExportController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="444">
-              <caret line="34" column="25" lean-forward="true" selection-start-line="34" selection-start-column="25" selection-end-line="34" selection-end-column="25" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AnswerTxtExportServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/service/impl/AnswerTxtExportServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-60">
-              <caret line="12" column="19" lean-forward="true" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="originData.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/js/myJs/originData.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="85" column="0" lean-forward="true" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ExportTxtDataDTO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/pojo/ExportTxtDataDTO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2201">
-              <caret line="119" column="10" lean-forward="false" selection-start-line="119" selection-start-column="10" selection-end-line="119" selection-end-column="10" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="docComment;method#orgData#0;class#ExportTxtDataDTO#0" expanded="false" />
-                <element signature="e#1771#1772#0" expanded="true" />
-                <element signature="e#1806#1807#0" expanded="true" />
-                <element signature="e#1834#1835#0" expanded="true" />
-                <element signature="e#1876#1877#0" expanded="true" />
-                <element signature="e#3067#3068#0" expanded="true" />
-                <element signature="e#3103#3104#0" expanded="true" />
-                <element signature="e#3147#3148#0" expanded="true" />
-                <element signature="e#3189#3190#0" expanded="true" />
-                <element signature="e#3230#3231#0" expanded="true" />
-                <element signature="e#3271#3272#0" expanded="true" />
-                <element signature="e#3327#3328#0" expanded="true" />
-                <element signature="e#3379#3380#0" expanded="true" />
-                <element signature="e#3936#3937#0" expanded="true" />
-                <element signature="e#3980#3981#0" expanded="true" />
-                <element signature="e#4040#4041#0" expanded="true" />
-                <element signature="e#4098#4099#0" expanded="true" />
-                <element signature="e#4138#4139#0" expanded="true" />
-                <element signature="e#4178#4179#0" expanded="true" />
-                <element signature="e#4232#4233#0" expanded="true" />
-                <element signature="e#4282#4283#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AnswerTxtExportService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/service/AnswerTxtExportService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ResultExportMapper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/mapper/ResultExportMapper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2">
-              <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ResultExportMapper.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/module/resultAnalysis/mapper/ResultExportMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="13" column="50" lean-forward="true" selection-start-line="13" selection-start-column="50" selection-end-line="13" selection-end-column="50" />
-              <folding>
-                <marker date="1500727701034" expanded="true" signature="385:566" ph="/* @param mi... " />
-                <marker date="1500727701034" expanded="true" signature="575:1373" ph="SELECT paper... answer_paper_id" />
-                <marker date="1500727701034" expanded="true" signature="575:1538" ph="SELECT paper... answer_paper_id" />
-                <marker date="1500727701034" expanded="true" signature="818:1226" ph="SELECT ap.an... answer_paper" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -307,17 +186,17 @@
         <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/controller/QesManageController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/qesTemplateManage/controller/PublicTemplateRestController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/qesTemplateManage/controller/PrivateTemplateRestController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/constant/CONSTANT.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/logback.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/module/resultAnalysis/mapper/ResultExportMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/mapper/ResultExportMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/pojo/AnswerTxtExportDO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/service/AnswerTxtExportService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/pojo/ExportTxtDataDTO.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/questionnaire/ssm/module/resultAnalysis/mapper/ResultExportMapperTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/service/impl/AnswerTxtExportServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/myJs/originData.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/controller/ResultExportController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/service/AnswerTxtExportService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/constant/CONSTANT.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/logback.xml" />
       </list>
     </option>
   </component>
@@ -372,7 +251,7 @@
   <component name="MavenRunner">
     <option name="skipTests" value="true" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1378" />
@@ -436,6 +315,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
+      <pane id="Scratches" />
       <pane id="Scope">
         <subPane subId="Project Files">
           <expand>
@@ -452,7 +333,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -460,120 +340,11 @@
               <item name="questionnaire" type="b2602c69:ProjectViewProjectNode" />
               <item name="questionnaire" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="questionnaire" type="b2602c69:ProjectViewProjectNode" />
-              <item name="questionnaire" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="questionnaire" type="b2602c69:ProjectViewProjectNode" />
-              <item name="questionnaire" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="questionnaire" type="b2602c69:ProjectViewProjectNode" />
-              <item name="questionnaire" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="questionnaire" type="b2602c69:ProjectViewProjectNode" />
-              <item name="questionnaire" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="module" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="questionnaire" type="b2602c69:ProjectViewProjectNode" />
-              <item name="questionnaire" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="module" type="462c0819:PsiDirectoryNode" />
-              <item name="resultAnalysis" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="questionnaire" type="b2602c69:ProjectViewProjectNode" />
-              <item name="questionnaire" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="module" type="462c0819:PsiDirectoryNode" />
-              <item name="resultAnalysis" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="questionnaire" type="b2602c69:ProjectViewProjectNode" />
-              <item name="questionnaire" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="module" type="462c0819:PsiDirectoryNode" />
-              <item name="resultAnalysis" type="462c0819:PsiDirectoryNode" />
-              <item name="mapper" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="questionnaire" type="b2602c69:ProjectViewProjectNode" />
-              <item name="questionnaire" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="module" type="462c0819:PsiDirectoryNode" />
-              <item name="resultAnalysis" type="462c0819:PsiDirectoryNode" />
-              <item name="pojo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="questionnaire" type="b2602c69:ProjectViewProjectNode" />
-              <item name="questionnaire" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="module" type="462c0819:PsiDirectoryNode" />
-              <item name="userManage" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="questionnaire" type="b2602c69:ProjectViewProjectNode" />
-              <item name="questionnaire" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="module" type="462c0819:PsiDirectoryNode" />
-              <item name="userManage" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="questionnaire" type="b2602c69:ProjectViewProjectNode" />
-              <item name="questionnaire" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="questionnaire" type="b2602c69:ProjectViewProjectNode" />
-              <item name="questionnaire" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="module" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="questionnaire" type="b2602c69:ProjectViewProjectNode" />
-              <item name="questionnaire" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="module" type="462c0819:PsiDirectoryNode" />
-              <item name="mapper" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -585,7 +356,7 @@
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="origin&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/js/myJs/originData.js&#10;Re&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/test/java/com/questionnaire/ssm/module/resultAnalysis/mapper/ResultExportMapperTest.java&#10;Pagination&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/service/impl/PaginationDisplayServiceImpl.java&#10;Consta&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/constant/CONSTANT.java&#10;IsOut&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/questionnaireManage/controller/IsOutOfIndex.java&#10;home&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/home.html&#10;create&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/notice/createNotice.html&#10;listnoti&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/notice/listNotice.html&#10;list&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/qesTemplateManage/listPublicTemplate.html&#10;IsO&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/questionnaireManage/controller/IsOutOfIndex.java&#10;dis&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/qesManage/displayQuestionnaire.html&#10;listpubl&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/qesTemplateManage/listPublicTemplate.html&#10;Pu&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/qesTemplateManage/controller/PublicTemplateRestController.java&#10;/qesTemplateManage/getQesTe&#9;null&#9;null&#10;/questionnaireManage/displayQuestionnaire&#9;null&#9;null&#10;Glo&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/handle/GlobalExceptionHandler.java&#10;/researchManage/listQuestionnaireInfo&#9;null&#9;null&#10;createREs&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/researchManage/createResearch.html&#10;listPr&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/qesTemplateManage/listPrivateTemplate.html&#10;Code&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/enums/CodeForVOEnum.java&#10;/resultAnalysis/listPrimaryData&#9;null&#9;null&#10;/statisticalAnalysis/getQesPaperAnalyzeResult&#9;null&#9;null&#10;Con&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/constant/CONSTANT.java&#10;questionty&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/questionnaireManage/enums/QuestionTypeEnum.java&#10;/researchManage/createResearchMission&#9;null&#9;null&#10;missionMan&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/researchManage/missionManage.html&#10;question&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/js/myJs/listQuestionnaire.js&#10;qesManage&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/js/myJs/qesManage.js&#10;/researchManage/listMission&#9;null&#9;null&#10;createREsea&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/researchManage/createResearch.html&#10;createMission&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/notice/createNoticeForMission.html&#10;creater&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/researchManage/createResearch.html&#10;crea&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/js/myJs/createQesPaper.js&#10;Constant&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/constant/CONSTANT.java&#10;/researchManage/createResearchView&#9;null&#9;null&#10;ConSTA&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/constant/CONSTANT.java&#10;displa&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/qesManage/displayQuestionnaire.html&#10;getList&#9;PSI&#9;JAVA://com.questionnaire.ssm.module.questionnaireManage.controller.QesManageController#getListMyQesPaperView&#10;/resultAnalysis/getAnswerPaperInfo&#9;null&#9;null&#10;display&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/qesManage/displayQuestionnaire.html&#10;disp&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/resultAnalysis/displayAnswerPaper.html&#10;Qes&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/questionnaireManage/controller/QesManageController.java&#10;/resultAnalysis/listAnswerPaper&#9;null&#9;null&#10;/resultAnalysis/getPrimaryDataTwo&#9;null&#9;null&#10;pri&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/resultAnalysis/primaryData.html&#10;/resultAnalysis/getPrimaryDataView&#9;null&#9;null&#10;prima&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/js/myJs/primaryDataTwo.js&#10;primaryda&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/js/myJs/primaryData.js&#10;()&#9;ACTION&#9;ConfigureKotlinJsInProject" />
+    <property name="SearchEverywhereHistoryKey" value="Const&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/constant/CONSTANT.java&#10;origin&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/js/myJs/originData.js&#10;Re&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/test/java/com/questionnaire/ssm/module/resultAnalysis/mapper/ResultExportMapperTest.java&#10;Pagination&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/service/impl/PaginationDisplayServiceImpl.java&#10;Consta&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/constant/CONSTANT.java&#10;IsOut&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/questionnaireManage/controller/IsOutOfIndex.java&#10;home&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/home.html&#10;create&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/notice/createNotice.html&#10;listnoti&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/notice/listNotice.html&#10;list&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/qesTemplateManage/listPublicTemplate.html&#10;IsO&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/questionnaireManage/controller/IsOutOfIndex.java&#10;dis&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/qesManage/displayQuestionnaire.html&#10;listpubl&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/qesTemplateManage/listPublicTemplate.html&#10;Pu&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/qesTemplateManage/controller/PublicTemplateRestController.java&#10;/qesTemplateManage/getQesTe&#9;null&#9;null&#10;/questionnaireManage/displayQuestionnaire&#9;null&#9;null&#10;Glo&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/handle/GlobalExceptionHandler.java&#10;/researchManage/listQuestionnaireInfo&#9;null&#9;null&#10;createREs&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/researchManage/createResearch.html&#10;listPr&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/qesTemplateManage/listPrivateTemplate.html&#10;Code&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/enums/CodeForVOEnum.java&#10;/resultAnalysis/listPrimaryData&#9;null&#9;null&#10;/statisticalAnalysis/getQesPaperAnalyzeResult&#9;null&#9;null&#10;Con&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/constant/CONSTANT.java&#10;questionty&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/questionnaireManage/enums/QuestionTypeEnum.java&#10;/researchManage/createResearchMission&#9;null&#9;null&#10;missionMan&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/researchManage/missionManage.html&#10;question&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/js/myJs/listQuestionnaire.js&#10;qesManage&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/js/myJs/qesManage.js&#10;/researchManage/listMission&#9;null&#9;null&#10;createREsea&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/researchManage/createResearch.html&#10;createMission&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/notice/createNoticeForMission.html&#10;creater&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/researchManage/createResearch.html&#10;crea&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/js/myJs/createQesPaper.js&#10;Constant&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/constant/CONSTANT.java&#10;/researchManage/createResearchView&#9;null&#9;null&#10;ConSTA&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/global/constant/CONSTANT.java&#10;displa&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/qesManage/displayQuestionnaire.html&#10;getList&#9;PSI&#9;JAVA://com.questionnaire.ssm.module.questionnaireManage.controller.QesManageController#getListMyQesPaperView&#10;/resultAnalysis/getAnswerPaperInfo&#9;null&#9;null&#10;display&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/qesManage/displayQuestionnaire.html&#10;disp&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/resultAnalysis/displayAnswerPaper.html&#10;Qes&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/java/com/questionnaire/ssm/module/questionnaireManage/controller/QesManageController.java&#10;/resultAnalysis/listAnswerPaper&#9;null&#9;null&#10;/resultAnalysis/getPrimaryDataTwo&#9;null&#9;null&#10;pri&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/view/resultAnalysis/primaryData.html&#10;/resultAnalysis/getPrimaryDataView&#9;null&#9;null&#10;prima&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/js/myJs/primaryDataTwo.js&#10;primaryda&#9;FILE&#9;file://E:/Project/questionnaire/questionnaire/src/main/webapp/WEB-INF/js/myJs/primaryData.js&#10;()&#9;ACTION&#9;ConfigureKotlinJsInProject" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
@@ -1414,7 +1185,8 @@
       <workItem from="1500075858740" duration="21503000" />
       <workItem from="1500118773570" duration="34159000" />
       <workItem from="1500288181406" duration="29000" />
-      <workItem from="1500684188900" duration="25267000" />
+      <workItem from="1500684188900" duration="25801000" />
+      <workItem from="1500942780059" duration="84000" />
     </task>
     <task id="LOCAL-00001" summary="首页动态开始">
       <created>1494416498066</created>
@@ -1661,7 +1433,14 @@
       <option name="project" value="LOCAL" />
       <updated>1500202802534</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="答卷文本信息下载完成">
+      <created>1500792429429</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1500792429429</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1697,7 +1476,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="574788000" />
+    <option name="totallyTimeSpent" value="575406000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1709,8 +1488,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1366" height="768" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39934534" sideWeight="0.5151286" order="0" side_tool="true" content_ui="tabs" />
@@ -1729,7 +1507,6 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4293948" sideWeight="0.48487142" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.4969743" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1738,7 +1515,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.48414984" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3535188" sideWeight="0.49394855" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.4969743" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16111952" sideWeight="0.2782324" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2708018" sideWeight="0.2782324" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23373677" sideWeight="0.6439024" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="JRebel" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20485584" sideWeight="0.7201309" order="7" side_tool="true" content_ui="tabs" />
@@ -1747,6 +1524,7 @@
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Dynamic Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32980332" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.4969743" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42716858" sideWeight="0.49546143" order="11" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -1821,7 +1599,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="模板管理 &#10;1、添加公共模板到个人模板&#10;2、移除功能" />
     <MESSAGE value="人员管理&#10;人员权限信息查询&#10;人员账户启用&#10;人员账户禁用&#10;人员账户删除&#10; 完成" />
     <MESSAGE value="人员管理--人员权限修改 完成" />
     <MESSAGE value="结果可视化 任务展示页面完成" />
@@ -1846,7 +1623,8 @@
     <MESSAGE value="bug修复&#10;1、上传保存数据逻辑出现重复数据修复&#10;2、原始数据问卷展示错误修复" />
     <MESSAGE value="bug修复&#10;1、发布问卷去除问卷模板&#10;2、查看模板问卷功能修复（重用优化未完成）" />
     <MESSAGE value="查看模板问卷功能修复（重用优化完成）" />
-    <option name="LAST_COMMIT_MESSAGE" value="查看模板问卷功能修复（重用优化完成）" />
+    <MESSAGE value="答卷文本信息下载完成" />
+    <option name="LAST_COMMIT_MESSAGE" value="答卷文本信息下载完成" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2080,25 +1858,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/logback.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="580">
-          <caret line="29" column="23" lean-forward="true" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/constant/CONSTANT.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" column="57" lean-forward="true" selection-start-line="8" selection-start-column="57" selection-end-line="8" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/questionnaireManage/controller/IsOutOfIndex.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
           <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2106,7 +1869,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="26" column="57" lean-forward="false" selection-start-line="26" selection-start-column="57" selection-end-line="26" selection-end-column="57" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2114,7 +1876,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="244">
           <caret line="66" column="19" lean-forward="true" selection-start-line="66" selection-start-column="19" selection-end-line="66" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2122,7 +1883,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="724">
           <caret line="125" column="20" lean-forward="true" selection-start-line="125" selection-start-column="20" selection-end-line="125" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2130,7 +1890,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
           <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2138,14 +1897,69 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="194">
           <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_72/src.zip!/java/lang/System.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="109" column="36" lean-forward="false" selection-start-line="109" selection-start-column="36" selection-end-line="109" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/pojo/AnswerTxtExportDO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/pojo/ExportTxtDataDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2201">
+          <caret line="119" column="10" lean-forward="false" selection-start-line="119" selection-start-column="10" selection-end-line="119" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/poi/poi-ooxml/3.14/poi-ooxml-3.14-sources.jar!/org/apache/poi/xssf/usermodel/XSSFWorkbook.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="216" column="11" lean-forward="false" selection-start-line="216" selection-start-column="11" selection-end-line="216" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_72/src.zip!/java/io/FileOutputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="99" column="11" lean-forward="false" selection-start-line="99" selection-start-column="11" selection-end-line="99" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/userManage/controller/UserInfoManageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/questionnaire/ssm/module/resultAnalysis/mapper/ResultExportMapperTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="864">
+          <caret line="103" column="9" lean-forward="true" selection-start-line="103" selection-start-column="9" selection-end-line="103" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/js/myJs/originData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="85" column="0" lean-forward="true" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/module/resultAnalysis/mapper/ResultExportMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="13" column="50" lean-forward="true" selection-start-line="13" selection-start-column="50" selection-end-line="13" selection-end-column="50" />
+        <state relative-caret-position="60">
+          <caret line="9" column="52" lean-forward="true" selection-start-line="9" selection-start-column="52" selection-end-line="9" selection-end-column="52" />
           <folding>
             <marker date="1500727701034" expanded="true" signature="385:566" ph="/* @param mi... " />
             <marker date="1500727701034" expanded="true" signature="575:1373" ph="SELECT paper... answer_paper_id" />
@@ -2159,120 +1973,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2">
           <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/service/AnswerTxtExportService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_72/src.zip!/java/lang/System.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="109" column="36" lean-forward="false" selection-start-line="109" selection-start-column="36" selection-end-line="109" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/pojo/AnswerTxtExportDO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding>
-            <element signature="e#692#693#0" expanded="true" />
-            <element signature="e#725#726#0" expanded="true" />
-            <element signature="e#775#776#0" expanded="true" />
-            <element signature="e#819#820#0" expanded="true" />
-            <element signature="e#861#862#0" expanded="true" />
-            <element signature="e#899#900#0" expanded="true" />
-            <element signature="e#961#962#0" expanded="true" />
-            <element signature="e#1015#1016#0" expanded="true" />
-            <element signature="e#1053#1054#0" expanded="true" />
-            <element signature="e#1089#1090#0" expanded="true" />
-            <element signature="e#1145#1146#0" expanded="true" />
-            <element signature="e#1195#1196#0" expanded="true" />
-            <element signature="e#1231#1232#0" expanded="true" />
-            <element signature="e#1263#1264#0" expanded="true" />
-            <element signature="e#1313#1314#0" expanded="true" />
-            <element signature="e#1355#1356#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/pojo/ExportTxtDataDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2201">
-          <caret line="119" column="10" lean-forward="false" selection-start-line="119" selection-start-column="10" selection-end-line="119" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;method#orgData#0;class#ExportTxtDataDTO#0" expanded="false" />
-            <element signature="e#1771#1772#0" expanded="true" />
-            <element signature="e#1806#1807#0" expanded="true" />
-            <element signature="e#1834#1835#0" expanded="true" />
-            <element signature="e#1876#1877#0" expanded="true" />
-            <element signature="e#3067#3068#0" expanded="true" />
-            <element signature="e#3103#3104#0" expanded="true" />
-            <element signature="e#3147#3148#0" expanded="true" />
-            <element signature="e#3189#3190#0" expanded="true" />
-            <element signature="e#3230#3231#0" expanded="true" />
-            <element signature="e#3271#3272#0" expanded="true" />
-            <element signature="e#3327#3328#0" expanded="true" />
-            <element signature="e#3379#3380#0" expanded="true" />
-            <element signature="e#3936#3937#0" expanded="true" />
-            <element signature="e#3980#3981#0" expanded="true" />
-            <element signature="e#4040#4041#0" expanded="true" />
-            <element signature="e#4098#4099#0" expanded="true" />
-            <element signature="e#4138#4139#0" expanded="true" />
-            <element signature="e#4178#4179#0" expanded="true" />
-            <element signature="e#4232#4233#0" expanded="true" />
-            <element signature="e#4282#4283#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/poi/poi-ooxml/3.14/poi-ooxml-3.14-sources.jar!/org/apache/poi/xssf/usermodel/XSSFWorkbook.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="216" column="11" lean-forward="false" selection-start-line="216" selection-start-column="11" selection-end-line="216" selection-end-column="11" />
-          <folding>
-            <element signature="e#8404#8405#0" expanded="false" />
-            <element signature="e#8447#8448#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_72/src.zip!/java/io/FileOutputStream.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="99" column="11" lean-forward="false" selection-start-line="99" selection-start-column="11" selection-end-line="99" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/userManage/controller/UserInfoManageController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/questionnaire/ssm/module/resultAnalysis/mapper/ResultExportMapperTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="864">
-          <caret line="103" column="9" lean-forward="true" selection-start-line="103" selection-start-column="9" selection-end-line="103" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/service/impl/AnswerTxtExportServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-60">
+        <state relative-caret-position="-1122">
           <caret line="12" column="19" lean-forward="true" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -2280,11 +1986,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/js/myJs/originData.js">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/service/AnswerTxtExportService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="85" column="0" lean-forward="true" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="53" lean-forward="false" selection-start-line="0" selection-start-column="53" selection-end-line="0" selection-end-column="53" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/controller/ResultExportController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="24">
+          <caret line="19" column="34" lean-forward="true" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2292,17 +2008,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="119" column="56" lean-forward="true" selection-start-line="119" selection-start-column="56" selection-end-line="119" selection-end-column="56" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/resultAnalysis/controller/ResultExportController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/questionnaire/ssm/module/global/constant/CONSTANT.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="34" column="25" lean-forward="true" selection-start-line="34" selection-start-column="25" selection-end-line="34" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="120">
+          <caret line="6" column="23" lean-forward="true" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/logback.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="14" column="37" lean-forward="true" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
         </state>
       </provider>
     </entry>

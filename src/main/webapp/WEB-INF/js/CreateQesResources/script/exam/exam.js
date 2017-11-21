@@ -60,14 +60,16 @@ var exam = {
                 _this.orderFn($('.ui-questions-content-list'));
             }
         }).on('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
             addname++;
             data = {
-                type: $(this).children('a').attr('data-checkType'),//1为单项选择题，2为多项选择题,3为单项填空题,4为多项填空题,5为图片单选题，6为图片多选题
+                type: $(this).children('a').attr('data-checkType'),//data-checkType为问题模板题型
                 questionType: $(this).children('a').attr('data-questionType'),
                 //name命名规则，q代表前缀+父级li的题型id
                 name: 'q' + $(this).attr('data-uid') + '_' + addname,
                 //生成1000以内的随机数
-                itmetid: addname + parseInt(1000 * Math.random()),
+                itmetid: 'itmetid' + parseInt(1000 * Math.random()) + addname,
                 items: [{
                     value: '0',
                     //生成1000以内的随机数
@@ -78,7 +80,14 @@ var exam = {
                     tid: addname + parseInt(1000 * Math.random())
                 }]
             };
+
             $('.ui-questions-content-list').append(template($(this).attr('data-tempId'), data));
+
+            //TODO 图片上传
+            //指定dom位置中
+            if ('picture_choice_template' === $(this).attr('data-tempId')) {
+                bindEl(data.itmetid);
+            }
             _this.orderFn($('.ui-questions-content-list'));
             _this.sortFn();
         }).disableSelection();
@@ -299,14 +308,30 @@ var exam = {
         //添加选项栏
         var $tid = 100 + parseInt(1000 * Math.random());
         $(document).on('click', parentObj + ' ' + addObj, function (e) {
-            // var $parentItems = $(this).closest('li.ui-module').find('.cq-unset-list');
+            var $qesTypeEle = $(this).closest('li.ui-module').find('.ui-drag-area div');
+            var $qesType = $qesTypeEle.attr('data-questionType');
+
             var $parentItems = $(this).closest('li.ui-module').find('.form-horizontal');
             var $name = $.trim($parentItems.attr('data-nameStr'));
+
+            var data = null;
+            if ($qesType === '图片单选题' || $qesType === '图片多选题') {
+                data = {
+                    type: parseInt($parentItems.attr('data-checktype')),
+                    name: $name,
+                    index: $parentItems.children('.form-group:last').index() + 1,
+                    items: [{value: '0', tid: $tid, itmetid: 'itmetid' + new Date().getTime()}]
+                };
+                $parentItems.append(template('ui_pic_additem_content', data));
+                bindEl(data.items[0].itmetid);
+                $parentItems.resize();
+                return;
+            }
+
             $tid++;
-            var data = {
+            data = {
                 type: parseInt($parentItems.attr('data-checktype')),
                 name: $name,
-                // index: $parentItems.children('li:last').index() + 1,
                 index: $parentItems.children('.form-group:last').index() + 1,
                 items: [{value: '0', tid: $tid}]
             };

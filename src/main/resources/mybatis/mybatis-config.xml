@@ -12,8 +12,7 @@
 		
 		<!--设置超时时间-->
 		<setting name="defaultStatementTimeout" value="3000"/>
-		
-		
+
 		<!--本地缓存机制-->
 		<setting name="localCacheScope" value="STATEMENT"/>
 		

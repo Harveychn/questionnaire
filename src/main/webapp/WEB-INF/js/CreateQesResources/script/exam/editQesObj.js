@@ -72,7 +72,7 @@ var exam = {
                 //name命名规则，q代表前缀+父级li的题型id
                 name: 'q' + $(this).attr('data-uid') + '_' + addname,
                 //生成1000以内的随机数
-                itmetid: addname + parseInt(1000 * Math.random()),
+                itmetid: 'itmetid' + parseInt(1000 * Math.random()) + addname,
                 items: [{
                     value: '0',
                     //生成1000以内的随机数
@@ -84,6 +84,10 @@ var exam = {
                 }]
             };
             $('.ui-questions-content-list').append(template($(this).attr('data-tempId'), data));
+
+            if ('picture_choice_template' === $(this).attr('data-tempId')) {
+                bindEl(data.itmetid);
+            }
             _this.orderFn($('.ui-questions-content-list'));
             _this.sortFn();
         }).disableSelection();
@@ -303,14 +307,29 @@ var exam = {
         //添加选项栏
         var $tid = 100 + parseInt(1000 * Math.random());
         $(document).on('click', parentObj + ' ' + addObj, function (e) {
-            // var $parentItems = $(this).closest('li.ui-module').find('.cq-unset-list');
+            var $qesTypeEle = $(this).closest('li.ui-module').find('.ui-drag-area div');
+            var $qesType = $qesTypeEle.attr('data-questionType');
+
             var $parentItems = $(this).closest('li.ui-module').find('.form-horizontal');
             var $name = $.trim($parentItems.attr('data-nameStr'));
+            var data = null;
+            if ($qesType === '图片单选题' || $qesType === '图片多选题') {
+                data = {
+                    type: parseInt($parentItems.attr('data-checktype')),
+                    name: $name,
+                    index: $parentItems.children('.form-group:last').index() + 1,
+                    items: [{value: '0', tid: $tid, itmetid: 'itmetid' + new Date().getTime()}]
+                };
+                $parentItems.append(template('ui_pic_additem_content', data));
+                bindEl(data.items[0].itmetid);
+                $parentItems.resize();
+                return;
+            }
+
             $tid++;
-            var data = {
+            data = {
                 type: parseInt($parentItems.attr('data-checktype')),
                 name: $name,
-                // index: $parentItems.children('li:last').index() + 1,
                 index: $parentItems.children('.form-group:last').index() + 1,
                 items: [{value: '0', tid: $tid}]
             };
@@ -382,6 +401,10 @@ function loadDataFn() {
             var questionOptionArray = questionArray[i].options;
             var optionItemArray = [];
             var optionItem = {};
+
+            //图片选择题Id用于绑定效果
+            var picItems = [];
+
             switch (questionTypeStr) {
                 case '单选题':
                 case '多选题':
@@ -428,10 +451,45 @@ function loadDataFn() {
                         itmetid: i + parseInt(1000 * Math.random()),
                         items: optionItemArray
                     };
+                case '图片单选题':
+                case '图片多选题':
+                    optionItemArray = [];
+                    for (var j = 0; j < questionOptionArray.length; j++) {
+                        optionItem = {};
+                        optionItem.value = 0;
+                        optionItem.tid = 'itmetid' + new Date().getTime() + '' + j;
+                        optionItem.option = questionOptionArray[j].option;
+                        optionItem.encodedUrl = encodeURI(questionOptionArray[j].option);
+                        var servData = $.ajax({
+                            url: '/fileIo/download/picture/qesPaper?picRelativePath=' + encodeURI(questionOptionArray[j].option),
+                            method: 'get',
+                            dataType: 'text'
+                        });
+
+                        optionItem.respText = servData.responseText;
+                        optionItemArray.push(optionItem);
+                        //添加图片容器的id信息用于绑定元素
+                        picItems.push(optionItem.tid);
+                    }
+
+                    questionData = {
+                        type: excQuestionCode(questionTypeStr),
+                        must: questionArray[i].must,
+                        questionType: questionArray[i].questionType,
+                        questionContext: questionArray[i].questionContext,
+                        name: 'q' + excQuestionCode(questionTypeStr) + '_' + i,
+                        //生成1000以内的随机数
+                        itmetid: i + parseInt(1000 * Math.random()),
+                        items: optionItemArray
+                    };
+                    break;
                 default:
                     break;
             }
             $('.ui-questions-content-list').append(template(getDataTempId(questionTypeStr), questionData));
+            picItems.forEach(function (t) {
+                initDropzone(t);
+            })
         }
         //设置问题序号
         $('.ui-questions-content-list').find('li.items-questions').each(function (i) {
@@ -440,6 +498,7 @@ function loadDataFn() {
     });
     return editingQesPaperId;
 }
+
 /**
  * 把文字类型的问题类型转为模板数据类型
  * @param typeStr
@@ -457,10 +516,15 @@ function excQuestionCode(typeStr) {
             return 40;
         case '多项填空题':
             return 50;
+        case '图片单选题':
+            return 60;
+        case '图片多选题':
+            return 70;
         default:
             return -1;
     }
 }
+
 /**
  * 根据问题类型字符串获取模板名称
  * @param typeStr
@@ -476,6 +540,9 @@ function getDataTempId(typeStr) {
             return 'reload_single_completion_template';
         case '多项填空题':
             return 'reload_multi_completion_template';
+        case '图片单选题':
+        case '图片多选题':
+            return 'reload_picture_choice_template';
         default:
     }
 }

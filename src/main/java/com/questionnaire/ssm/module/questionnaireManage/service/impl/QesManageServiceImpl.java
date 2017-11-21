@@ -12,7 +12,6 @@ import com.questionnaire.ssm.module.questionnaireManage.pojo.*;
 import com.questionnaire.ssm.module.questionnaireManage.service.QesManageService;
 import com.questionnaire.ssm.module.questionnaireManage.util.OperateQuestionnaireUtil;
 import com.questionnaire.ssm.module.questionnaireManage.util.QesManageVODOUtil;
-import org.apache.xmlbeans.impl.xb.xsdschema.OpenAttrs;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -288,7 +287,6 @@ public class QesManageServiceImpl implements QesManageService {
      * @param questionnaireId
      * @throws Exception
      */
-    @Transactional
     private Long templateSingleQuestionnaire(Long questionnaireId) throws Exception {
         //获取模板化的问卷信息
         Questionnaire templatingQesPaper = add2LibraryService.getSharingQesPaperFromDB(questionnaireId);
@@ -303,7 +301,6 @@ public class QesManageServiceImpl implements QesManageService {
      * @param questionnaireId
      * @throws Exception
      */
-    @Transactional
     private Long shareSingleQuestionnaire(Long questionnaireId) throws Exception {
         //获取分享中的问卷信息
         Questionnaire sharingQesPaper = add2LibraryService.getSharingQesPaperFromDB(questionnaireId);
@@ -314,10 +311,11 @@ public class QesManageServiceImpl implements QesManageService {
 
 
     private static final Logger logger = LoggerFactory.getLogger(QesManageServiceImpl.class);
-    private QuestionnaireMapper questionnaireMapper;
-    private QuestionMapper questionMapper;
-    private MappingQuestionnaireQuestionMapper mappingQuestionnaireQuestionMapper;
-    private QesManageMapper qesManageMapper;
+    private final QuestionnaireMapper questionnaireMapper;
+    private final QuestionMapper questionMapper;
+    private final MappingQuestionnaireQuestionMapper mappingQuestionnaireQuestionMapper;
+    private final QesManageMapper qesManageMapper;
+
 
     private Add2LibraryService add2LibraryService;
 
