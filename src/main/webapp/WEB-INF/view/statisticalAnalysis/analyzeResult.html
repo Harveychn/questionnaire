@@ -23,6 +23,14 @@
             background-color: white;
         }
 
+        .hide-table {
+            display: none;
+        }
+
+        .show-table {
+            display: table;
+        }
+
         ul > button {
             overflow: hidden;
             text-overflow: ellipsis;
@@ -37,7 +45,6 @@
 </head>
 
 <body>
-<div id="particles-js" style="position: absolute;width: 100%;height: 1080px;"></div>
 
 <div class="container">
     <div class="panel panel-primary">
@@ -61,7 +68,7 @@
                     <div class="panel-body">
                         <!--数据展示-->
                         <div class="row">
-                            <table id="questionTableData" class="table table-bordered table-condensed table-hover">
+                            <table id="questionTableData" class="table table-bordered table-condensed table-hover show-table">
                                 <thead>
                                 <tr class="active">
                                     <th>选项</th>
@@ -143,9 +150,6 @@
 <script src="../../js/plugins/table-export/js-xlsx/xlsx.core.min.js"></script>
 <script src="../../js/plugins/table-export/tableExport.min.js"></script>
 <script src="../../js/plugins/table-export/table-export.js"></script>
-
-<!--<script src="../../js/plugins/particles/particles.min.js"></script>-->
-<!--<script src="../../js/plugins/particles/app.js"></script>-->
 
 <script src="../../js/myJs/displayEcharts.js"></script>
 </body>

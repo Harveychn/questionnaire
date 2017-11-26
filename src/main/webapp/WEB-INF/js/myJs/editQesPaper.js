@@ -115,6 +115,7 @@ function getQesVOData(isDone, isTemplate) {
                 }
                 break;
             case '图片单选题':
+            case '图片多选题':
                 $(this).find('.form-horizontal').children('.form-group').each(function (optionIndex, formItem) {
                     var listItem = {};
                     listItem.optionOrder = optionIndex;
