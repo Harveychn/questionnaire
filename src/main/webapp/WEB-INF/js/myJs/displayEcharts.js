@@ -70,9 +70,6 @@ $(function () {
                 'style="text-align: left;" id="' + analyzeResultData[i].questionId +
                 '" onclick="clickQuestionListItem(this.id)">' +
                 (i + 1) + '、' + analyzeResultData[i].questionContent + '(' + analyzeResultData[i].questionType + ')</button>');
-            if (i === 0) {
-
-            }
         }
         initEchartData();
     }

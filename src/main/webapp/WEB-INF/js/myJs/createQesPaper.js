@@ -143,7 +143,7 @@ function getQesVOData(isDone, isTemplate) {
         return;
     }
 
-    // console.debug(JSON.stringify(dataBase));
+    console.debug(JSON.stringify(dataBase));
 
     //访问服务器
     if (isSubmitted) {
@@ -151,7 +151,7 @@ function getQesVOData(isDone, isTemplate) {
     }
     var url = '/questionnaireManage/create';
 
-    submitQesDataByJson(url, dataBase);
+    // submitQesDataByJson(url, dataBase);
 }
 
 function submitQesDataByJson(url, jsonData) {
