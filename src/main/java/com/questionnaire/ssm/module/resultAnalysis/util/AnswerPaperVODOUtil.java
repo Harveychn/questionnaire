@@ -6,8 +6,6 @@ import com.questionnaire.ssm.module.global.constant.CONSTANT;
 import com.questionnaire.ssm.module.resultAnalysis.pojo.AnswerQuestionVO;
 import com.questionnaire.ssm.module.resultAnalysis.pojo.DisplayAnswerPaperVO;
 
-import java.util.List;
-
 import static com.questionnaire.ssm.module.questionnaireManage.util.QesManageVODOUtil.parse2VOQuestionType;
 
 /**

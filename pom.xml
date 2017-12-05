@@ -441,6 +441,7 @@
             <artifactId>alidayu</artifactId>
             <version>1.0</version>
         </dependency>
+
     </dependencies>
     <!--架包依赖 end-->
 
@@ -462,6 +463,12 @@
             </resource>
         </resources>
         <plugins>
+            <!--mybatis代码生成器-->
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.3.5</version>
+            </plugin>
             <!-- Compiler 插件, 设定JDK版本 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -544,7 +551,6 @@
                     <scanIntervalSeconds>10</scanIntervalSeconds>
                 </configuration>
             </plugin>
-
 
             <!-- resource插件 -->
             <plugin>
