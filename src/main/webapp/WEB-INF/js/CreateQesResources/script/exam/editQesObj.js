@@ -17,9 +17,14 @@ var exam = {
         //题操作事件初始化
         this.listAllCtrlFn('.ui-questions-content-list', '.ui-up-btn', '.ui-down-btn', '.ui-clone-btn', '.ui-del-btn');
         //批量添加事件初始化
-        this.topicACtrlFn('.ui-questions-content-list', '.ui-add-item-btn',
-            '.ui-batch-item-btn', '.ui-add-answer-btn',
-            '.ui-set-must-done', '.ui-remove-item-btn');
+        this.topicACtrlFn(
+            '.ui-questions-content-list',
+            '.ui-add-item-btn',
+            '.ui-batch-item-btn',
+            '.ui-add-answer-btn',
+            '.ui-set-must-done',
+            '.ui-remove-item-btn',
+            '.ui-add-logic');
         //
         this.moveTispFn('.ui-up-btn,.ui-down-btn,.ui-clone-btn,.ui-del-btn');
         this.moveTispFn('.ui-add-item-btn,.ui-batch-item-btn,.ui-add-answer-btn,.ui-set-must-done,.ui-remove-item-btn');
@@ -112,10 +117,31 @@ var exam = {
     },
     //标题序列号
     orderFn: function (obj) {
+        var altered = [];
         obj.find('li.items-questions').each(function (i) {
-            $(this).find('.module-menu h4').html((i + 1));
-            // $(this).find('.module-menu h4').html("Q"+(i+1));
+            if (i === 0) {
+                altered.slice(0, altered.length);
+            }
+            var qesOrder = i + 1;
+            //设置题目编号
+            $(this).find('.module-menu h4').html((qesOrder));
+            var opFollow;
+            // altered = [];
+            $(this).find('.cq-items-content .form-group').each(function (opIndex, opEL) {
+                opFollow = $(opEL).attr('data-option-follow');
+                //TODO 最后一道题目同样设置后跟为初始值
+                if ((opFollow && opFollow != -1 && opFollow <= qesOrder)) {
+                    $(opEL).attr('data-option-follow', -1);
+                    altered.push({qesOrder: qesOrder, opIndex: opIndex + 1});
+                }
+            });
         });
+        if (altered.length > 0) {
+            LayerUtil.htmlLayer({
+                title: '逻辑变动提示',
+                content: template('alter_logic_tip_template', {alterData: altered})
+            });
+        }
     },
     //题目菜单滚动固定顶部
     fixFn: function () {
@@ -158,10 +184,6 @@ var exam = {
                 $('body').append(template('drag_T_edit', data));
                 $('.cq-into-edit').attr('data-gettid', $(this).attr('data-tid'));
             }
-            //标题编辑工具
-            // if ($(this).hasClass('T_plugins')) {
-            //     $('.cq-into-edit').append(template('T_edit_plugins', {}));
-            // }
             $('.cq-into-edit').css({
                 'top': ($(this).offset().top - 1) + 'px',
                 'left': ($(this).offset().left) + 'px',
@@ -205,10 +227,6 @@ var exam = {
 
         $(document).on('blur', '.cq-into-edit .cq-edit-title', function () {
             $('.T_edit[data-tid=' + $('.cq-into-edit').attr('data-gettid') + ']').html($('.cq-into-edit .cq-edit-title').html());
-            // var $itemInput = $('.T_edit[data-tid=' + $('.cq-into-edit').attr('data-gettid') + ']').closest('li').find('.input-check').find('input');
-            // if ($itemInput.size()) {
-            //     $itemInput.val($('.cq-into-edit .cq-edit-title').html());
-            // }
             var questionnaireTitle;
             var $qesPaperTitle = $('#questionnaireTitle');
             try {
@@ -303,7 +321,7 @@ var exam = {
         });
     },
     //单题添加，批量添加
-    topicACtrlFn: function (parentObj, addObj, batchAddObj, addAnswerObj, setMustObj, removeObj) {
+    topicACtrlFn: function (parentObj, addObj, batchAddObj, addAnswerObj, setMustObj, removeObj, logicObj) {
         //添加选项栏
         var $tid = 100 + parseInt(1000 * Math.random());
         $(document).on('click', parentObj + ' ' + addObj, function (e) {
@@ -376,6 +394,55 @@ var exam = {
                 });
             }
         });
+        //添加逻辑按钮
+        $(document).on('click', parentObj + ' ' + logicObj, function (e) {
+            var totalQNum = $(parentObj).find('li.items-questions').size();
+            var curtOrder = $(this).parents('li').find('h4').html();
+            var _allOpSelector = $(this).parents('.cq-items-content').find('.form-horizontal .form-group');
+            var opSize = _allOpSelector.size();
+            //没有问题时情况
+            if (totalQNum <= 0) {
+                LayerUtil.errorMsg('未添加问题信息!');
+            }
+            //要添加逻辑问题在最后一道题情况
+            if (curtOrder == totalQNum) {
+                LayerUtil.errorMsg('最后一道问题无法添加逻辑设置!');
+                return;
+            }
+
+            var followOrders = [];
+            var i;
+            for (i = curtOrder; i < totalQNum; i++) {
+                curtOrder++;
+                followOrders.push(curtOrder);
+            }
+            var renderData = {
+                qesOrder: curtOrder,
+                optionArray: ArrayUtil.initArray({"initVal": 0, "capacity": opSize}),
+                totalQNum: followOrders
+            };
+            //TODO 在用户改变题目顺序之后，提示用户题目逻辑信息改变
+            var renderedHtml = template('add_logic_template', renderData);
+
+            $(window).bind('open-layer', function (e, layUiId) {
+                e.stopPropagation();
+                var _trs = $('#' + layUiId).find('.layer-tale-container table tr');
+                _allOpSelector.each(function (i, el) {
+                    if ($(el).attr('data-option-follow') != undefined) {
+                        $(_trs).eq(i).find('td:last select').val($(el).attr('data-option-follow'));
+                    }
+                });
+                $(window).unbind('open-layer');
+            });
+
+            LayerUtil.htmlLayer({title: '添加题目逻辑', content: renderedHtml});
+            $(window).trigger('open-layer', ['logicEditUI']);
+
+            $('.layer-tale-container select').bind('change', {qesOrder: $(this).parents('li').find('h4').html() - 1}, function (e) {
+                var _qesModule = $('.ui-questions-content-list').find('.ui-module')[e.data.qesOrder];
+                $($(_qesModule).find('.cq-items-content .form-group')[$(this).attr('data-option-index')]).attr('data-option-follow', $(this).find('option:selected').val());
+            })
+        });
     }
 };
 
@@ -416,9 +483,9 @@ function loadDataFn() {
                         optionItem.value = 0;
                         optionItem.tid = i + parseInt(1000 * Math.random());
                         optionItem.option = questionOptionArray[j].option;
+                        optionItem.optionFollow = questionOptionArray[j].optionFollow;
                         optionItemArray.push(optionItem);
                     }
-
                     questionData = {
                         type: excQuestionCode(questionTypeStr),
                         must: questionArray[i].must,
@@ -459,7 +526,7 @@ function loadDataFn() {
                         optionItem.value = 0;
                         optionItem.tid = 'itmetid' + new Date().getTime() + '' + j;
                         optionItem.option = questionOptionArray[j].option;
-                        console.log(questionOptionArray[j].option);
+                        optionItem.optionFollow = questionOptionArray[j].optionFollow;
                         optionItem.encodedUrl = encodeURI(questionOptionArray[j].option);
                         var servData = $.ajax({
                             url: '/fileIo/download/picture/qesPaper?picRelativePath=' + encodeURI(questionOptionArray[j].option),

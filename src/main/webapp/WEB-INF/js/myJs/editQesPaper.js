@@ -83,7 +83,7 @@ function getQesVOData(isDone, isTemplate) {
         switch (questionType) {
             case '单选题':
             case '多选题':
-                $(this).find('.form-horizontal').children('.form-group').each(function (optionIndex) {
+                $(this).find('.form-horizontal').children('.form-group').each(function (optionIndex, elItem) {
                     var $optionInput = $(this).find('.col-sm-10 input');
                     var optionStr = $optionInput.val();
                     if (optionStr.match(/^\s*$/)) {
@@ -94,6 +94,8 @@ function getQesVOData(isDone, isTemplate) {
                     var listItems = {};
                     listItems.optionOrder = optionIndex;
                     listItems.option = optionStr;
+                    //获取问题后跟设置值
+                    getOpFollow(listItems, elItem);
                     options.push(listItems);
                 });
                 break;
@@ -126,6 +128,8 @@ function getQesVOData(isDone, isTemplate) {
                         isNoError = false;
                         return;
                     }
+                    //获取问题后跟设置值
+                    getOpFollow(listItem, formItem);
                     options.push(listItem);
                 });
                 break;
@@ -143,6 +147,7 @@ function getQesVOData(isDone, isTemplate) {
     dataBase.questionnaireId = exam.editingQesId;
     //访问服务器
     var url = '/QesManageRest/postEditFinishQesData';
+
     submitQesDataByJson(url, dataBase);
 }
 

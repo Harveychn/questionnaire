@@ -131,7 +131,6 @@ public class UserValidationUtil {
         checkUserValid(logger);
         Subject subject = SecurityUtils.getSubject();
         return (String) subject.getPrincipal();
-//        return (String) SecurityUtils.getSubject().getSession().getAttribute("userTel");
     }
 
     /**

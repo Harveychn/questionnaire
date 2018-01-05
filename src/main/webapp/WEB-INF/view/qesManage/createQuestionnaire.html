@@ -134,6 +134,54 @@
     </div>
 </div>
 
+<!--添加逻辑视图模板-->
+<script type="text/html" id="add_logic_template">
+    <div class="layer-tale-container">
+        <table class="table table-bordered">
+            {{each optionArray}}
+            <tr>
+                <td>
+                    选项{{$index + 1}}
+                </td>
+                <td>
+                    <i class="icon-set"></i>
+                    <sm>关联</sm>
+                </td>
+                <td>
+                    <select data-option-index="{{$index}}">
+                        <option value="-1" selected></option>
+                        {{each totalQNum}}
+                        <option value="{{$value}}">题目{{$value}}</option>
+                        {{/each}}
+                    </select>
+                </td>
+            </tr>
+            {{/each}}
+        </table>
+    </div>
+</script>
+<!--改变逻辑后提示-->
+<script type="text/html" id="alter_logic_tip_template">
+    <div class="layer-tale-container">
+        <table class="table table-bordered">
+            {{each alterData}}
+            <tr>
+                <td>
+                    <i class="icon-warning"></i>
+                    <sm>重置逻辑</sm>
+                </td>
+                <td>
+                    题目 {{$value.qesOrder}}
+                </td>
+                <td>
+                    选项 {{$value.opIndex}}
+                </td>
+            </tr>
+            {{/each}}
+        </table>
+    </div>
+</script>
+
 <!--选择题（单选、多选）模板-->
 <script type="text/html" id="choice_template">
     <li class="ui-module items-questions">
@@ -155,6 +203,7 @@
                            onclick="editingTitleFunc(this);" placeholder="请输入单项选择题标题"/>
                     {{else if type==20}}
                     <input class="form-control"
+                           data-follow="-1"
                            style="font-size:16px;border: 1px double #e8e8e8;"
                            onclick="editingTitleFunc(this);" placeholder="请输入多项选择题标题"/>
                     {{/if}}
@@ -184,15 +233,14 @@
                     <a href="javascript:void(0);" class="ui-remove-item-btn" data-tisp="移除选项">
                         <i class="icon-jian"></i>
                     </a>
-                    <!--<a href="javascript:void(0);" class="ui-batch-item-btn" data-tisp="批量添加">-->
-                    <!--<i class="icon-addList"></i>-->
-                    <!--</a>-->
+                    <a href="javascript:void(0);" class="ui-set-must-done" data-tisp="设为必做题">
+                        <i class="icon-enshrine"></i>
+                    </a>
                     <a href="javascript:void(0);" class="ui-add-answer-btn" data-tisp="添加问题说明">
                         <i class="icon-assignment"></i>
                     </a>
-                    <!--/*添加必做题按钮*/-->
-                    <a href="javascript:void(0);" class="ui-set-must-done" data-tisp="设为必做题">
-                        <i class="icon-enshrine"></i>
+                    <a href="javascript:void(0);" class="ui-add-logic" data-tisp="添加逻辑设置">
+                        <i class="icon-set"></i>
                     </a>
                 </div>
             </div>
@@ -243,12 +291,15 @@
                     <a href="javascript:void(0);" class="ui-remove-item-btn" data-tisp="移除选项">
                         <i class="icon-jian"></i>
                     </a>
-                    <a href="javascript:void(0);" class="ui-add-answer-btn" data-tisp="添加问题说明">
-                        <i class="icon-assignment"></i>
-                    </a>
                     <!--/*添加必做题按钮*/-->
                     <a href="javascript:void(0);" class="ui-set-must-done" data-tisp="设为必做题">
                         <i class="icon-enshrine"></i>
+                    </a>
+                    <a href="javascript:void(0);" class="ui-add-answer-btn" data-tisp="添加问题说明">
+                        <i class="icon-assignment"></i>
+                    </a>
+                    <a href="javascript:void(0);" class="ui-add-logic" data-tisp="添加逻辑设置">
+                        <i class="icon-set"></i>
                     </a>
                 </div>
             </div>
@@ -331,7 +382,8 @@
                 <div class="cq-items-ctrl">
                     <!--/*添加必做题按钮*/-->
                     <a href="javascript:void(0);" class="ui-set-must-done" data-tisp="设为必做题">
-                        <i class="icon-enshrine"></i></a>
+                        <i class="icon-enshrine"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -381,7 +433,8 @@
                 <div class="cq-items-ctrl">
                     <!--/*添加必做题按钮*/-->
                     <a href="javascript:void(0);" class="ui-set-must-done" data-tisp="设为必做题">
-                        <i class="icon-enshrine"></i></a>
+                        <i class="icon-enshrine"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -412,7 +465,8 @@
             <div class="cq-items-ctrl">
                 <!--/*添加必做题按钮*/-->
                 <a href="javascript:void(0);" class="ui-set-must-done" data-tisp="设为必做题">
-                    <i class="icon-enshrine"></i></a>
+                    <i class="icon-enshrine"></i>
+                </a>
             </div>
         </div>
     </li>

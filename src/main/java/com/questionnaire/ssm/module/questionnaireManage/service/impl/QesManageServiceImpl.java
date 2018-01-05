@@ -137,10 +137,9 @@ public class QesManageServiceImpl implements QesManageService {
             currentQuestionId = mapDOList.get(order).getQuestionId();
             questionWithBLOBs = questionMapper.selectByPrimaryKey(currentQuestionId);
 
-            currentOptionString = questionWithBLOBs.getOptionString();
             //根据问题类型以及问题选线文本切割获取视图层可以展示的问题信息
-            questionOptionVOList = QesManageVODOUtil.toOptionsItem(currentOptionString
-                    , questionWithBLOBs.getQuestionType());
+            questionOptionVOList = QesManageVODOUtil.toOptionsItem(questionWithBLOBs.getOptionString()
+                    , questionWithBLOBs.getOptionFollow(), questionWithBLOBs.getQuestionType());
 
             questionVOList.add(order, QesManageVODOUtil.toQuestionVO(questionWithBLOBs, questionOptionVOList));
         }

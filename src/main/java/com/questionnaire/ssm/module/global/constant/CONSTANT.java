@@ -7,7 +7,7 @@ package com.questionnaire.ssm.module.global.constant;
 public class CONSTANT {
 
     /*上传图片路径*/
-        public final static String UPLOAD_PICTURE_QUESTION = "F:\\创新实践\\uploadFiles\\question-picture";
+    public final static String UPLOAD_PICTURE_QUESTION = "F:\\创新实践\\uploadFiles\\question-picture";
     //    public final static String UPLOAD_PICTURE_QUESTION = "C:\\Program Files\\Apache Software Foundation\\questionnaire_files\\question-picture";
     /*上传文件路径*/
     private final static String UPLOAD_FILE_PATH = "F:\\创新实践\\uploadFiles\\excels";
@@ -19,6 +19,7 @@ public class CONSTANT {
     private final static String USER_PICTURE_PATH = "F:\\创新实践\\uploadFiles\\user-pictures";
     //        private final static String USER_PICTURE_PATH = "C:\\Program Files\\Apache Software Foundation\\questionnaire_files\\user-pictures";
 
+    public final static int NO_FOLLOW_DEFAULT_VALUE = -1;
     //数据库中单位id文本切割符
     private final static String DIVIDE_SYMBOL = "||";
     /*默认头像*/

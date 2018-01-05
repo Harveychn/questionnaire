@@ -75,6 +75,7 @@ public class ResearchRestController {
         missionManageService.changeFinalTime(this.missionId, missionVO);
         return ResultUtil.success();
     }
+
     /**
      * 删除任务
      *
@@ -83,8 +84,8 @@ public class ResearchRestController {
      */
     @PostMapping(value = "/deleteMission")
     @ResponseBody
-    public void deleteMission(@RequestParam("missionId")Long missionId,@RequestParam("questionnaireId")Long questionnaireId)throws Exception{
-        missionManageService.deleteMission(missionId,questionnaireId);
+    public void deleteMission(@RequestParam("missionId") Long missionId, @RequestParam("questionnaireId") Long questionnaireId) throws Exception {
+        missionManageService.deleteMission(missionId, questionnaireId);
     }
 
 
@@ -122,6 +123,9 @@ public class ResearchRestController {
     @PostMapping(value = "/createResearchMission")
     @ResponseBody
     public ResponsePkt createResearchMission(@RequestBody CreateResearchMissionVO createResearchMissionVO) throws Exception {
+        if (createResearchMissionVO.getMissionQuestionnaireInfo().size() <= 0) {
+            return ResultUtil.error();
+        }
         //判断用户是否登录
         String userTel = UserValidationUtil.getUserTel(logger);
         //保存创建的调查任务信息

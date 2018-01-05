@@ -104,6 +104,8 @@ public class QesManageVODOUtil {
         if (questionOptionVOList.size() > 0) {
             questionVO.setOptions(questionOptionVOList);
         }
+        //问题后跟选项
+        questionVO.setQuestionFollow(question.getQuestionFollow());
         /*数据库中不为空字段*/
         questionVO.setQuestionType(parse2VOQuestionType(question.getQuestionType()));
         questionVO.setMust(question.getIsMust());
@@ -120,26 +122,22 @@ public class QesManageVODOUtil {
     public static List<QuestionWithBLOBs> toQuestionMultiDO(List<QuestionVO> voQuestions) throws Exception {
         List<QuestionWithBLOBs> questionWithBLOBsList = new ArrayList<>();
 
-        QuestionWithBLOBs questionWithBLOBs = null;
+        QuestionWithBLOBs qesItem = null;
 
-        for (QuestionVO currentVOQuestion : voQuestions) {
+        for (QuestionVO iteVOQes : voQuestions) {
 
-            questionWithBLOBs = new QuestionWithBLOBs();
-            questionWithBLOBs.setQuestionContext(currentVOQuestion.getQuestionContext());
-            questionWithBLOBs.setQuestionDescription(currentVOQuestion.getQuestionDescription());
-            questionWithBLOBs.setIsMust(currentVOQuestion.getMust());
+            qesItem = new QuestionWithBLOBs();
+            qesItem.setQuestionContext(iteVOQes.getQuestionContext());
+            qesItem.setQuestionDescription(iteVOQes.getQuestionDescription());
+            //获取 ‘转到问题’ 在当前问卷实体中的数组编号 此处注意 数组编号从0 开始，故前台为填写时的默认值为:-1
+            qesItem.setQuestionFollow(iteVOQes.getQuestionFollow());
+            qesItem.setIsMust(iteVOQes.getMust());
             /*需要将汉字问题类型装换为数据库中的类型编码*/
-            questionWithBLOBs.setQuestionType(parse2DOQuestionType(currentVOQuestion.getQuestionType()));
+            qesItem.setQuestionType(parse2DOQuestionType(iteVOQes.getQuestionType()));
 
-            /*需要进行数据库操作，有数据库返回的自增值或者已有值来完成赋值*/
-            //question.setQuestionId();
+            toOptionDOItem(qesItem, iteVOQes.getOptions(), qesItem.getQuestionType());
 
-            List<QuestionOptionVO> options = currentVOQuestion.getOptions();
-
-            //questionType已经转化为数据库中问题类型编码
-            questionWithBLOBs.setOptionString(toOptionsString(options, questionWithBLOBs.getQuestionType()));
-
-            questionWithBLOBsList.add(questionWithBLOBs);
+            questionWithBLOBsList.add(qesItem);
         }
 
         return questionWithBLOBsList;
@@ -238,6 +236,43 @@ public class QesManageVODOUtil {
         return QuestionTypeEnum.UNKNOWN_TYPE.getCode();
     }
 
+
+    /**
+     * 将optionVO实体集封装到后台数据库实体中
+     *
+     * @param optionDOItem 后台存储实体集
+     * @param optionVOList 前端数据信息
+     * @param qesType      问题类型
+     */
+    //TODO 未测试是否正常效果
+    private static void toOptionDOItem(QuestionWithBLOBs optionDOItem, List<QuestionOptionVO> optionVOList, String qesType) {
+        int optionSize = optionVOList.size();
+        StringBuilder optionStrBuilder = new StringBuilder();
+        StringBuilder opFollowBuilder = new StringBuilder();
+        for (int optionOrder = 0; optionOrder < optionSize; optionOrder++) {
+
+            optionStrBuilder.append(optionVOList.get(optionOrder).getOption());
+            opFollowBuilder.append(optionVOList.get(optionOrder).getOptionFollow());
+
+            if (optionSize != optionOrder + 1) {
+                //需要根据题目类型采用不同的切割符号
+                if (qesType.equals(QuestionTypeEnum.SINGLE_CHOICE.getCode())
+                        || qesType.equals(QuestionTypeEnum.MULTIPLE_CHOICE.getCode())
+                        || qesType.equals(QuestionTypeEnum.SINGLE_LINE_BLANK.getCode())
+                        || qesType.equals(QuestionTypeEnum.MULTI_LINE_BLANK.getCode())
+                        || qesType.equals(QuestionTypeEnum.DROP_SELECTION.getCode())
+                        || qesType.equals(QuestionTypeEnum.PICTURE_SINGLE_SELECTION.getCode())
+                        || qesType.equals(QuestionTypeEnum.PICTURE_MULTIPLE_SELECTION.getCode())) {
+
+                    optionStrBuilder.append(QuestionTypeEnum.SINGLE_CHOICE.getDivideStr());
+                    opFollowBuilder.append(QuestionTypeEnum.SINGLE_CHOICE.getDivideStr());
+                }
+            }
+        }
+        optionDOItem.setOptionString(optionStrBuilder.toString());
+        optionDOItem.setOptionFollow(opFollowBuilder.toString());
+    }
+
     /**
      * 将选项条目转换为选项条目字符串
      *
@@ -246,7 +281,7 @@ public class QesManageVODOUtil {
      * @return
      * @throws Exception
      */
-    private static String toOptionsString(List<QuestionOptionVO> optionVOList, String questionTypeCode) throws Exception {
+    private static String toOptionsString(List<QuestionOptionVO> optionVOList, String questionTypeCode) {
         int optionSize = optionVOList.size();
         StringBuilder optionStrBuilder = new StringBuilder();
         for (int optionOrder = 0; optionOrder < optionSize; optionOrder++) {
@@ -300,14 +335,15 @@ public class QesManageVODOUtil {
      * 将数据库选项字符串切割成正常的选项信息
      *
      * @param optionString
+     * @param optionFollowStr 选项后跟题目
      * @return
      * @throws Exception
      */
-    public static List<QuestionOptionVO> toOptionsItem(String optionString, String questionTypeCode) throws Exception {
+    public static List<QuestionOptionVO> toOptionsItem(String optionString, String optionFollowStr, String questionTypeCode) throws Exception {
         List<QuestionOptionVO> questionOptionVOList = new ArrayList<>();
         QuestionOptionVO questionOptionVO = null;
 
-        String[] options = null;
+        String[] options = null, optionFollow = null;
         if (questionTypeCode.equals(QuestionTypeEnum.SINGLE_CHOICE.getCode())
                 || questionTypeCode.equals(QuestionTypeEnum.MULTIPLE_CHOICE.getCode())
                 || questionTypeCode.equals(QuestionTypeEnum.SINGLE_LINE_BLANK.getCode())
@@ -317,6 +353,7 @@ public class QesManageVODOUtil {
                 || questionTypeCode.equals(QuestionTypeEnum.PICTURE_MULTIPLE_SELECTION.getCode())
                 || questionTypeCode.equals(QuestionTypeEnum.SHORT_ANSWER.getCode())) {
             options = optionString.split("\\|\\|");
+            optionFollow = optionFollowStr.split("\\|\\|");
         }
         if (options == null) {
             return null;
@@ -326,6 +363,11 @@ public class QesManageVODOUtil {
             questionOptionVO = new QuestionOptionVO();
             questionOptionVO.setOptionOrder(order);
             questionOptionVO.setOption(options[order]);
+            try {
+                questionOptionVO.setOptionFollow(Integer.valueOf(optionFollow[order]));
+            } catch (NumberFormatException e) {
+                questionOptionVO.setOptionFollow(CONSTANT.NO_FOLLOW_DEFAULT_VALUE);
+            }
             questionOptionVOList.add(order, questionOptionVO);
         }
         return questionOptionVOList;

@@ -505,6 +505,31 @@ textarea.exam-textarea, .exam-textarea {
     padding: 0 3px;
 }
 
+.layer-tale-container {
+    padding: 20px 15px;
+}
+
+/*2017-12-12添加layer skin样式开始*/
+body .layer-ui-html .layui-layer-title {
+    background: #767676;
+    color: #fff;
+    border: none;
+}
+
+body .layer-ui-html .layui-layer-btn {
+    border-top: 1px solid #E9E7E7
+}
+
+body .layer-ui-html .layui-layer-btn a {
+    background: #333;
+}
+
+body .layer-ui-html .layui-layer-btn .layui-layer-btn1 {
+    background: #999;
+}
+
+/*2017-12-12添加layer skin样式结束*/
+
 @media screen and (min-width: 1000px) {
 }
 

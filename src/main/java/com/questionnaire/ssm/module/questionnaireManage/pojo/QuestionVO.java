@@ -1,5 +1,7 @@
 package com.questionnaire.ssm.module.questionnaireManage.pojo;
 
+import com.questionnaire.ssm.module.global.constant.CONSTANT;
+
 import java.util.List;
 
 /**
@@ -16,6 +18,8 @@ public class QuestionVO {
     private String questionDescription;//题目描述
     private Boolean isMust;//是否必做题
 
+    //2017-12-5添加字段  因考虑到数组下标从0开始，此处设置默认值为-1
+    private int questionFollow = CONSTANT.NO_FOLLOW_DEFAULT_VALUE;//题目转到第几题
 
     /**
      * 题目选项信息
@@ -30,6 +34,7 @@ public class QuestionVO {
                 ", questionType='" + questionType + '\'' +
                 ", questionDescription='" + questionDescription + '\'' +
                 ", isMust=" + isMust +
+                ", questionFollow='" + questionFollow + '\'' +
                 ", options=" + options +
                 '}';
     }
@@ -72,6 +77,14 @@ public class QuestionVO {
 
     public void setMust(Boolean must) {
         isMust = must;
+    }
+
+    public int getQuestionFollow() {
+        return questionFollow;
+    }
+
+    public void setQuestionFollow(int questionFollow) {
+        this.questionFollow = questionFollow;
     }
 
     public List<QuestionOptionVO> getOptions() {
