@@ -9,7 +9,7 @@
                 user.dir - User's current working directory
                 java.io.tmpdir - Default temp file path
         -->
-    <diskStore path="user.dir"/>
+    <diskStore path="java.io.tmpdir"/>
     <!--Default Cache configuration. These will applied to caches programmatically created through
         the CacheManager.
 

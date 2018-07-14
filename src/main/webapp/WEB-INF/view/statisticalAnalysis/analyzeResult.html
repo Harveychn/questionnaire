@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>结果分析</title>
     <link rel="shortcut icon" href="../../img/favicon.ico"/>
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/animate.css">
     <style>
         .btn-clicked {
             color: #fff;
@@ -68,7 +68,8 @@
                     <div class="panel-body">
                         <!--数据展示-->
                         <div class="row">
-                            <table id="questionTableData" class="table table-bordered table-condensed table-hover show-table">
+                            <table id="questionTableData"
+                                   class="table table-bordered table-condensed table-hover show-table fadeIn">
                                 <thead>
                                 <tr class="active">
                                     <th>选项</th>

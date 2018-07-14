@@ -14,7 +14,7 @@
 			mapping_questionnaire_question AS mqq
 		WHERE
 			q.question_id = mqq.question_id
-		AND q.question_type IN (#{singleChoiceDBCode}, #{multiChoiceDBCode})-- 单项选择题或者多项选择题
+		AND q.question_type IN (#{singleChoiceDBCode}, #{multiChoiceDBCode},#{singlePicChoiceDBCode}, #{multiPicChoiceDBCode})-- 单项选择题或者多项选择题
 		AND mqq.questionnaire_id = #{qesId}
     </select>
 
@@ -32,6 +32,6 @@
 		AND q.question_id = ad.question_id
 		AND ap.mission_id = #{missionId}
 		AND ap.questionnaire_id = #{qesId}
-		AND q.question_type IN (#{singleChoiceDBCode}, #{multiChoiceDBCode})
+		AND q.question_type IN (#{singleChoiceDBCode}, #{multiChoiceDBCode},#{singlePicChoiceDBCode}, #{multiPicChoiceDBCode})
 	</select>
 </mapper>

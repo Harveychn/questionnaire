@@ -19,6 +19,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
     public ResponsePkt insertHandler(Exception e) {
+        e.printStackTrace();
         /*操作数据库异常*/
         if (e instanceof OperateDBException) {
             OperateDBException operateDBException = (OperateDBException) e;

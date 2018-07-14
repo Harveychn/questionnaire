@@ -2,6 +2,7 @@ package com.questionnaire.ssm.module.questionnaireManage.service.impl;
 
 import com.questionnaire.ssm.module.generated.mapper.*;
 import com.questionnaire.ssm.module.generated.pojo.*;
+import com.questionnaire.ssm.module.global.constant.CONSTANT;
 import com.questionnaire.ssm.module.global.enums.DBTableEnum;
 import com.questionnaire.ssm.module.global.enums.CodeForVOEnum;
 import com.questionnaire.ssm.module.global.exception.OperateDBException;
@@ -138,6 +139,9 @@ public class QesManageServiceImpl implements QesManageService {
             questionWithBLOBs = questionMapper.selectByPrimaryKey(currentQuestionId);
 
             //根据问题类型以及问题选线文本切割获取视图层可以展示的问题信息
+//            if (questionWithBLOBs.getOptionFollow() == null) {
+//                questionWithBLOBs.setOptionFollow(String.valueOf(CONSTANT.NO_FOLLOW_DEFAULT_VALUE));
+//            }
             questionOptionVOList = QesManageVODOUtil.toOptionsItem(questionWithBLOBs.getOptionString()
                     , questionWithBLOBs.getOptionFollow(), questionWithBLOBs.getQuestionType());
 

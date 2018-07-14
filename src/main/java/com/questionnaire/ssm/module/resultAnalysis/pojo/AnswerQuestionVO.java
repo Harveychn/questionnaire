@@ -1,7 +1,5 @@
 package com.questionnaire.ssm.module.resultAnalysis.pojo;
 
-import java.util.List;
-
 /**
  * Created by 95884 on 2017/5/16.
  */

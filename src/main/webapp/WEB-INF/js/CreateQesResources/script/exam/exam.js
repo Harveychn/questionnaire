@@ -79,10 +79,6 @@ var exam = {
                     value: '0',
                     //生成1000以内的随机数
                     tid: addname + parseInt(1000 * Math.random())
-                }, {
-                    value: '0',
-                    //生成1000以内的随机数
-                    tid: addname + parseInt(1000 * Math.random())
                 }]
             };
 
@@ -355,6 +351,17 @@ var exam = {
                 return;
             }
 
+            if ($qesType === '时间题') {
+                data = {
+                    type: parseInt($parentItems.attr('data-checktype')),
+                    name: $name,
+                    index: $parentItems.children('.form-group:last').index() + 1,
+                    items: [{value: '0', tid: $tid, itmetid: 'itmetid' + new Date().getTime()}]
+                };
+                $parentItems.append(template('time_point_option_template', data));
+                return;
+            }
+
             $tid++;
             data = {
                 type: parseInt($parentItems.attr('data-checktype')),
@@ -447,7 +454,7 @@ var exam = {
             $('.layer-tale-container select').bind('change', {qesOrder: $(this).parents('li').find('h4').html() - 1}, function (e) {
                 var _qesModule = $('.ui-questions-content-list').find('.ui-module')[e.data.qesOrder];
                 $($(_qesModule).find('.cq-items-content .form-group')[$(this).attr('data-option-index')]).attr('data-option-follow', $(this).find('option:selected').val());
-            })
+            });
         });
     }
 };

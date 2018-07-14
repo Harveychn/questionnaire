@@ -105,7 +105,11 @@ public class QesManageVODOUtil {
             questionVO.setOptions(questionOptionVOList);
         }
         //问题后跟选项
-        questionVO.setQuestionFollow(question.getQuestionFollow());
+        if (question.getOptionFollow() != null) {
+            questionVO.setQuestionFollow(question.getQuestionFollow());
+        } else {
+            questionVO.setQuestionFollow(CONSTANT.NO_FOLLOW_DEFAULT_VALUE);
+        }
         /*数据库中不为空字段*/
         questionVO.setQuestionType(parse2VOQuestionType(question.getQuestionType()));
         questionVO.setMust(question.getIsMust());
@@ -197,6 +201,9 @@ public class QesManageVODOUtil {
         if (QuestionTypeEnum.SHORT_ANSWER.getCode().equals(typeCode)) {
             return QuestionTypeEnum.SHORT_ANSWER.getQuestionType();
         }
+        if (QuestionTypeEnum.TIME_POINT.getCode().equals(typeCode)) {
+            return QuestionTypeEnum.TIME_POINT.getQuestionType();
+        }
         return QuestionTypeEnum.UNKNOWN_TYPE.getQuestionType();
     }
 
@@ -233,6 +240,9 @@ public class QesManageVODOUtil {
         if (QuestionTypeEnum.SHORT_ANSWER.getQuestionType().equals(typeString)) {
             return QuestionTypeEnum.SHORT_ANSWER.getCode();
         }
+        if (QuestionTypeEnum.TIME_POINT.getQuestionType().equals(typeString)) {
+            return QuestionTypeEnum.TIME_POINT.getCode();
+        }
         return QuestionTypeEnum.UNKNOWN_TYPE.getCode();
     }
 
@@ -262,7 +272,8 @@ public class QesManageVODOUtil {
                         || qesType.equals(QuestionTypeEnum.MULTI_LINE_BLANK.getCode())
                         || qesType.equals(QuestionTypeEnum.DROP_SELECTION.getCode())
                         || qesType.equals(QuestionTypeEnum.PICTURE_SINGLE_SELECTION.getCode())
-                        || qesType.equals(QuestionTypeEnum.PICTURE_MULTIPLE_SELECTION.getCode())) {
+                        || qesType.equals(QuestionTypeEnum.PICTURE_MULTIPLE_SELECTION.getCode())
+                        || qesType.equals(QuestionTypeEnum.TIME_POINT.getCode())) {
 
                     optionStrBuilder.append(QuestionTypeEnum.SINGLE_CHOICE.getDivideStr());
                     opFollowBuilder.append(QuestionTypeEnum.SINGLE_CHOICE.getDivideStr());
@@ -323,7 +334,8 @@ public class QesManageVODOUtil {
                         || questionTypeCode.equals(QuestionTypeEnum.MULTI_LINE_BLANK.getCode())
                         || questionTypeCode.equals(QuestionTypeEnum.DROP_SELECTION.getCode())
                         || questionTypeCode.equals(QuestionTypeEnum.PICTURE_SINGLE_SELECTION.getCode())
-                        || questionTypeCode.equals(QuestionTypeEnum.PICTURE_MULTIPLE_SELECTION.getCode())) {
+                        || questionTypeCode.equals(QuestionTypeEnum.PICTURE_MULTIPLE_SELECTION.getCode())
+                        || questionTypeCode.equals(QuestionTypeEnum.TIME_POINT.getCode())) {
                     optionStrBuilder.append(QuestionTypeEnum.SINGLE_CHOICE.getDivideStr());
                 }
             }
@@ -351,9 +363,12 @@ public class QesManageVODOUtil {
                 || questionTypeCode.equals(QuestionTypeEnum.DROP_SELECTION.getCode())
                 || questionTypeCode.equals(QuestionTypeEnum.PICTURE_SINGLE_SELECTION.getCode())
                 || questionTypeCode.equals(QuestionTypeEnum.PICTURE_MULTIPLE_SELECTION.getCode())
-                || questionTypeCode.equals(QuestionTypeEnum.SHORT_ANSWER.getCode())) {
+                || questionTypeCode.equals(QuestionTypeEnum.SHORT_ANSWER.getCode())
+                || questionTypeCode.equals(QuestionTypeEnum.TIME_POINT.getCode())) {
             options = optionString.split("\\|\\|");
-            optionFollow = optionFollowStr.split("\\|\\|");
+            if (optionFollowStr != null) {
+                optionFollow = optionFollowStr.split("\\|\\|");
+            }
         }
         if (options == null) {
             return null;
@@ -364,7 +379,11 @@ public class QesManageVODOUtil {
             questionOptionVO.setOptionOrder(order);
             questionOptionVO.setOption(options[order]);
             try {
-                questionOptionVO.setOptionFollow(Integer.valueOf(optionFollow[order]));
+                if (optionFollow != null) {
+                    questionOptionVO.setOptionFollow(Integer.valueOf(optionFollow[order]));
+                } else {
+                    questionOptionVO.setOptionFollow(CONSTANT.NO_FOLLOW_DEFAULT_VALUE);
+                }
             } catch (NumberFormatException e) {
                 questionOptionVO.setOptionFollow(CONSTANT.NO_FOLLOW_DEFAULT_VALUE);
             }

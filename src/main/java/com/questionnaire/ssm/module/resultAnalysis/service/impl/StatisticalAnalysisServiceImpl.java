@@ -117,7 +117,9 @@ public class StatisticalAnalysisServiceImpl implements StatisticalAnalysisServic
         List<QuestionAnalyzeDO> questionAnalyzeDOS = statisticalAnalysisMapper.listQuestionAnalyzeDOByQesPaperId(
                 missionPaperId,
                 QuestionTypeEnum.SINGLE_CHOICE.getCode(),
-                QuestionTypeEnum.MULTIPLE_CHOICE.getCode());
+                QuestionTypeEnum.MULTIPLE_CHOICE.getCode(),
+                QuestionTypeEnum.PICTURE_SINGLE_SELECTION.getCode(),
+                QuestionTypeEnum.PICTURE_MULTIPLE_SELECTION.getCode());
         if (questionAnalyzeDOS.size() <= 0) {
             return null;
         }
@@ -168,7 +170,9 @@ public class StatisticalAnalysisServiceImpl implements StatisticalAnalysisServic
                 missionPaperId,
                 missionId,
                 QuestionTypeEnum.SINGLE_CHOICE.getCode(),
-                QuestionTypeEnum.MULTIPLE_CHOICE.getCode());
+                QuestionTypeEnum.MULTIPLE_CHOICE.getCode(),
+                QuestionTypeEnum.PICTURE_SINGLE_SELECTION.getCode(),
+                QuestionTypeEnum.PICTURE_MULTIPLE_SELECTION.getCode());
         if (answerInfoDOList.size() <= 0) {
             return null;
         }

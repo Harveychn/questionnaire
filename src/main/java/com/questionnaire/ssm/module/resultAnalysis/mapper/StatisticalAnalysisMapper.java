@@ -23,7 +23,9 @@ public interface StatisticalAnalysisMapper {
      */
     List<QuestionAnalyzeDO> listQuestionAnalyzeDOByQesPaperId(@Param("qesId") String qesId,
                                                               @Param("singleChoiceDBCode") String singleChoiceDBCode,
-                                                              @Param("multiChoiceDBCode") String multiChoiceDBCode) throws Exception;
+                                                              @Param("multiChoiceDBCode") String multiChoiceDBCode,
+                                                              @Param("singlePicChoiceDBCode") String singlePicChoiceDBCode,
+                                                              @Param("multiPicChoiceDBCode") String multiPicChoiceDBCode) throws Exception;
 
     /**
      * 通过调查问卷id、调查任务查询答案信息
@@ -38,5 +40,7 @@ public interface StatisticalAnalysisMapper {
     List<AnswerInfoDO> listAnswerInfoDOByQesPaperIdMissionId(@Param("qesId") String qesId,
                                                              @Param("missionId") String missionId,
                                                              @Param("singleChoiceDBCode") String singleChoiceDBCode,
-                                                             @Param("multiChoiceDBCode") String multiChoiceDBCode) throws Exception;
+                                                             @Param("multiChoiceDBCode") String multiChoiceDBCode,
+                                                             @Param("singlePicChoiceDBCode") String singlePicChoiceDBCode,
+                                                             @Param("multiPicChoiceDBCode") String multiPicChoiceDBCode) throws Exception;
 }

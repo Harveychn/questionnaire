@@ -134,7 +134,23 @@ function getQesVOData(isDone, isTemplate) {
                     options.push(listItem);
                 });
                 break;
-
+            case '时间题':
+                $(this).find('.form-horizontal').children('.form-group').each(function (optionIndex, formItem) {
+                    var $optionInput = $(this).find('.col-sm-10 input');
+                    var optionStr = $optionInput.val();
+                    // if (optionStr.match(/^\s*$/)) {
+                    //     $optionInput.css('box-shadow', '4px 1px 15px #DE1709');
+                    //     isNoError = false;
+                    //     return;
+                    // }
+                    var listItems = {};
+                    listItems.optionOrder = optionIndex;
+                    listItems.option = optionStr;
+                    //获取问题后跟设置值
+                    getOpFollow(listItems, formItem);
+                    options.push(listItems);
+                });
+                break;
             default:
         }
         questionData.questionDescription = $(this).find('.analysis_contx').val() || 0;
@@ -147,14 +163,14 @@ function getQesVOData(isDone, isTemplate) {
         return;
     }
 
-    // console.debug(JSON.stringify(dataBase));
+    // console.log(JSON.stringify(dataBase));
 
     //访问服务器
+    //FIXME 恢复访问服务器
     if (isSubmitted) {
         return;
     }
     var url = '/questionnaireManage/create';
-
     submitQesDataByJson(url, dataBase);
 }
 

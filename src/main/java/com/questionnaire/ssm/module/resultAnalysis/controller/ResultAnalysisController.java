@@ -2,10 +2,7 @@ package com.questionnaire.ssm.module.resultAnalysis.controller;
 
 import com.questionnaire.ssm.module.questionnaireManage.controller.IsOutOfIndex;
 import com.questionnaire.ssm.module.questionnaireManage.pojo.PreOrNextQes;
-import com.questionnaire.ssm.module.resultAnalysis.pojo.AnswerPaperVO;
-import com.questionnaire.ssm.module.resultAnalysis.pojo.DisplayAnswerPaperVO;
-import com.questionnaire.ssm.module.resultAnalysis.pojo.OriginDataInfoVO;
-import com.questionnaire.ssm.module.resultAnalysis.pojo.MissionQuestionnaireVO;
+import com.questionnaire.ssm.module.resultAnalysis.pojo.*;
 import com.questionnaire.ssm.module.resultAnalysis.service.OriginDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -56,7 +53,7 @@ public class ResultAnalysisController extends IsOutOfIndex {
         ModelAndView modelAndView = new ModelAndView("resultAnalysis/displayAnswerPaper");
         DisplayAnswerPaperVO displayAnswerPaperVO = originDataService.getAnswerPaper(this.qesId, answerPaperId);
         if (displayAnswerPaperVO != null) {
-            modelAndView.addObject("displayAnswerPaperVO", displayAnswerPaperVO);
+            modelAndView.addObject("displayAnswerPaperVO", AnswerQesVO.translate(displayAnswerPaperVO));
             modelAndView.addObject("noError", true);
         } else {
             modelAndView.addObject("noError", false);

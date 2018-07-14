@@ -5,12 +5,28 @@
     <title>答卷展示</title>
     <link rel="shortcut icon" href="../../img/favicon.ico"/>
     <link href="../../css/bootstrap.min.css" rel="stylesheet"/>
+
+    <link rel="stylesheet" href="../../js/CreateQesResources/skin/dropZone/basic.min.css"/>
+    <link rel="stylesheet" href="../../js/CreateQesResources/skin/dropZone/dropzone.min.css"/>
     <style>
         .print-btn {
             position: fixed;
             top: 30%;
             right: 2%;
             z-index: 100;
+        }
+
+        .print-btn {
+            position: fixed;
+            top: 30%;
+            right: 3%;
+            z-index: 100;
+        }
+
+        .dropzone {
+            min-height: 156px;
+            background: white;
+            border: none;
         }
     </style>
 </head>
@@ -46,7 +62,7 @@
             <!--遍历答卷题目信息-->
             <div class="panel-group" th:if="${#lists.size(displayAnswerPaperVO.answerQuestions)>0}"
                  th:each="curQes,iterStat: ${displayAnswerPaperVO.answerQuestions}">
-                <div class="panel-default">
+                <div class="panel-default" th:if="${curQes.questionType!='图片单选题' and curQes.questionType!='图片多选题'}">
                     <div class="panel-heading">
                         <div class="panel-title">
                             第 <span th:text="${iterStat.count}">[题号]</span> 题：
@@ -59,43 +75,80 @@
                     </div>
                     <div class="panel-body">
                         <div class="form-inline">
-                            <div class="form-group">
-                                <label th:text="${curQes.answerDetail}">答案</label>
+                            <div class="form-group" th:each="ans : ${curQes.answerList}">
+                                <label class="col-sm-1 control-label text-nowrap">
+                                    <input type="radio" th:text="${ans}" th:if="${curQes.questionType=='单选题'}"/>
+                                    <input type="checkbox" th:text="${ans}" th:if="${curQes.questionType=='多选题'}"/>
+                                    <input type="text" th:value="${ans}"
+                                           th:if="${curQes.questionType=='单项填空题'
+                                            or curQes.questionType=='多项填空题'}"/>
+                                    <input type="text" th:value="${ans}" th:if="${curQes.questionType=='时间题'}"/>
+                                    <textarea th:text="${ans}" th:if="${curQes.questionType=='简答题'}" rows="2"/>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-default" th:if="${curQes.questionType=='图片单选题' or curQes.questionType=='图片多选题'}">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            第 <span th:text="${iterStat.count}">[题号]</span> 题：
+                            <span th:text="${curQes.questionContext}"></span>
+                            (
+                            <span th:text="${curQes.questionType}">题型</span>
+                            <span th:if="${#bools.isTrue(curQes.must)}" style="color: red;">*</span>
+                            )
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-inline">
+                            <div class="form-group col-md-3 col-xs-3 col-sm-3"
+                                 th:each="ans : ${curQes.answerList}">
+                                <input style="margin: 5% 45%; vertical-align: middle!important;border: none!important;"
+                                       name="" value="0"
+                                       type="radio"/>
+                                <form action="#" class="dropzone">
+                                    <div class="dz-preview dz-processing dz-image-preview dz-success dz-complete">
+                                        <div class="dz-image">
+                                            <img style="width: inherit;height: inherit;"
+                                                 th:src="@{/fileIo/refPic(picRelativePath=${ans})}"/>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="panel-body" th:if="${noError == false}"><h1 align="center">这份问卷有点问题！看看其他的吧</h1></div>
         </div>
-        <div class="panel-body" th:if="${noError == false}"><h1 align="center">这份问卷有点问题！看看其他的吧</h1></div>
+
+        <!--打印按钮-->
+        <div class="row hidden-print print-btn">
+            <div class="btn-group-lg pull-right">
+                <button th:disabled="${isOutOfMinIndex == true}" id="prevPaperBtn" class="btn btn-default btn-block"
+                        data-toggle="tooltip" title="上一份">
+                    <i class="glyphicon glyphicon-chevron-up"></i>
+                </button>
+                <button th:disabled="${isOutOfMaxIndex == true}" id="nextPaperBtn" class="btn btn-default btn-block"
+                        data-toggle="tooltip" title="下一份">
+                    <i class="glyphicon glyphicon-chevron-down"></i>
+                </button>
+            </div>
+        </div>
     </div>
 
-    <!--打印按钮-->
-    <div class="row hidden-print print-btn">
-        <div class="btn-group-lg pull-right">
-            <button th:disabled="${isOutOfMinIndex == true}" id="prevPaperBtn" class="btn btn-default btn-block"
-                    data-toggle="tooltip" title="上一份">
-                <i class="glyphicon glyphicon-chevron-up"></i>
-            </button>
-            <button th:disabled="${isOutOfMaxIndex == true}" id="nextPaperBtn" class="btn btn-default btn-block"
-                    data-toggle="tooltip" title="下一份">
-                <i class="glyphicon glyphicon-chevron-down"></i>
-            </button>
-        </div>
-    </div>
-</div>
-
-<script src="../../js/jquery.min.js"></script>
-<script>
-    $(function () {
-        $('#prevPaperBtn').on('click', function () {
-            window.location.href = '/resultAnalysis/prevAnswerPaper';
+    <script src="../../js/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $('#prevPaperBtn').on('click', function () {
+                window.location.href = '/resultAnalysis/prevAnswerPaper';
+            });
+            $('#nextPaperBtn').on('click', function () {
+                window.location.href = '/resultAnalysis/nextAnswerPaper';
+            })
         });
-        $('#nextPaperBtn').on('click', function () {
-            window.location.href = '/resultAnalysis/nextAnswerPaper';
-        })
-    });
-</script>
+    </script>
 
 </body>
 </html>

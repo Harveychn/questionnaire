@@ -102,7 +102,28 @@ function setTableBodyData(i) {
     var valueList = analyzeResultData[i].valueList;
     //图片题设置
     if (analyzeResultData[i].questionType == '图片单选题' || analyzeResultData[i].questionType == '图片多选题') {
-        console.log($tableBody.parent().find('table').attr('class'));
+
+        console.log(optionList);
+        console.log(valueList);
+        for (var i = 0; i < optionList.length; i++) {
+
+            $.ajax({
+                url: '/fileIo/download/picture/qesPaper?picRelativePath=' + encodeURI(optionList[i]),
+                method: 'get',
+                dataType: 'text',
+                success: function (data) {
+                    console.log(data);
+                    $tableBody.append(' <div class="col-xs-6 col-md-3">\n' +
+                        '    <a href="#" class="thumbnail">\n' +
+                        '      <img src="data:image/png;base64,' + data + '" alt="图片题">\n' +
+                        '    </a>\n' +
+                        '  </div>')
+                    // $tableBody.append('<img src="data:image/png;base64,' + data + '" style="width: 20px;height: 20px;"/>');
+
+                }
+            });
+            // $tableBody.append('<img style="width: inherit;height: inherit;" th:src="@{/fileIo/refPic(picRelativePath=' + optionList[i] + ')}"/>');
+        }
         return;
     }
     var sumValue = 0;
@@ -155,12 +176,10 @@ function initEchartData() {
 }
 
 //点击表格按钮后样式
+var _isShow = true;
 $('#tableBtn').on('click', function () {
-    if ($questionTableData.attr('hidden') === undefined) {
-        $questionTableData.attr('hidden', 'hidden');
-    } else {
-        $questionTableData.removeAttr('hidden');
-    }
+    _isShow ? $questionTableData.hide() : $questionTableData.show();
+    _isShow = !_isShow;
 });
 
 //点击柱状图

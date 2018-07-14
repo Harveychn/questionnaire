@@ -82,10 +82,6 @@ var exam = {
                     value: '0',
                     //生成1000以内的随机数
                     tid: addname + parseInt(1000 * Math.random())
-                }, {
-                    value: '0',
-                    //生成1000以内的随机数
-                    tid: addname + parseInt(1000 * Math.random())
                 }]
             };
             $('.ui-questions-content-list').append(template($(this).attr('data-tempId'), data));
@@ -344,6 +340,17 @@ var exam = {
                 return;
             }
 
+            if ($qesType === '时间题') {
+                data = {
+                    type: parseInt($parentItems.attr('data-checktype')),
+                    name: $name,
+                    index: $parentItems.children('.form-group:last').index() + 1,
+                    items: [{value: '0', tid: $tid, itmetid: 'itmetid' + new Date().getTime()}]
+                };
+                $parentItems.append(template('time_point_option_template', data));
+                return;
+            }
+
             $tid++;
             data = {
                 type: parseInt($parentItems.attr('data-checktype')),
@@ -477,6 +484,7 @@ function loadDataFn() {
                 case '多选题':
                 case '简答题':
                 case '单项填空题':
+                case '时间题':
                     optionItemArray = [];
                     for (var j = 0; j < questionOptionArray.length; j++) {
                         optionItem = {};
@@ -588,6 +596,8 @@ function excQuestionCode(typeStr) {
             return 60;
         case '图片多选题':
             return 70;
+        case '时间题':
+            return 80;
         default:
             return -1;
     }
@@ -611,6 +621,8 @@ function getDataTempId(typeStr) {
         case '图片单选题':
         case '图片多选题':
             return 'reload_picture_choice_template';
+        case '时间题':
+            return 'reload_time_point_template';
         default:
     }
 }

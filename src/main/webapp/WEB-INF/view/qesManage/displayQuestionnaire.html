@@ -168,7 +168,6 @@
                                         </div>
                                     </div>
                                 </form>
-
                             </div>
                         </div>
                     </div>
@@ -201,6 +200,28 @@
                                     </div>
                                 </form>
 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--时间题模板-->
+                <div class="panel-default" th:case="'时间题'">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            第 <span th:text="${iterStat.count}">[题号]</span> 题：
+                            <span th:text="${curQes.questionContext}"></span>
+                            (
+                            <span th:text="${curQes.questionType}">题型</span>
+                            <span th:if="${#bools.isTrue(curQes.must)}" style="color: red;">*</span>
+                            )
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-inline">
+                            <div class="form-group" th:if="${#lists.size(curQes.options)>0}"
+                                 th:each="curQesOption: ${curQes.options}">
+                                <input type="date" class="form-control" placeholder="点击选择时间"/>
                             </div>
                         </div>
                     </div>

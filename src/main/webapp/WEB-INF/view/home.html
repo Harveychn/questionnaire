@@ -27,30 +27,6 @@
 </head>
 <body class="grey-bg">
 <div class="row border-bottom white-bg dashboard-header">
-    <!--个人相关信息-->
-    <div class="row">
-        <div class="col-sm-6">
-            <blockquote class="text-primary" style="font-size:16px">
-                <h2>当前用户名(账户名):<label th:if="${myInfo.userRealName != null}"
-                                      th:text="${myInfo.userRealName}">真实姓名</label>(<label
-                        th:if="${myInfo.userAccount != null}" th:text="${myInfo.userAccount}">账户名</label>)</h2><br>
-                本次登录时间:<label th:if="${myInfo.lastLoginDate!=null}"
-                              th:text="${#dates.format(myInfo.lastLoginDate,'yyyy-MM-dd HH:mm:ss')}"></label>
-                <br>
-            </blockquote>
-            <hr>
-        </div>
-        <div class="col-sm-6">
-            <blockquote class="text-primary" style="font-size:16px">
-                <h2>用户单位:<label style="font-size:20px;font-weight: 500" th:if="${myInfo.workingUnit!=null}"
-                                th:text="${myInfo.workingUnit}"></label><br>
-                </h2>
-                <h2> 用户角色:<label style="font-size:20px;font-weight: 500" th:if="${myInfo.userRole!=null}"
-                                 th:text="${myInfo.userRole}"></label>
-                </h2>
-            </blockquote>
-        </div>
-    </div>
     <!--公告以及我发布的调查信息-->
     <div class="row">
         <!--公告信息-->
@@ -191,6 +167,7 @@
             }
         })
     }
+
     function clickNoticeElement(noticeId) {
         for (var i = 0; i < _noticeDataList.length; i++) {
             if (noticeId === _noticeDataList[i].noticeId) {
