@@ -38,7 +38,7 @@
         <jsp-api.version>2.0</jsp-api.version>
         <servlet-api.version>2.5</servlet-api.version>
         <!--shiro-->
-        <shiro.version>1.3.2</shiro.version>
+        <shiro.version>1.6.0</shiro.version>
         <!--ehcache-->
         <ehcache.version>2.4.8</ehcache.version>
 
