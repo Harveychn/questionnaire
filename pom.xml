@@ -49,7 +49,7 @@
         <!--thymeleaf版本-->
         <thymeleaf.version>3.0.3.RELEASE</thymeleaf.version>
         <!--POI Excel文件处理包-->
-        <POI.version>3.14</POI.version>
+        <POI.version>5.2.1</POI.version>
 
         <commons-fileupload.version>1.3.1</commons-fileupload.version>
         <commons-io.version>2.4</commons-io.version>
